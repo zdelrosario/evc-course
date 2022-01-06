@@ -1,0 +1,5412 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Isolation &#8212; Data Science for Engineers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Data Visualization Basics" href="d01-e-vis00-basics-solution.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/home.html">
+   Data Science for Engineers
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../frontmatter/exercises.html">
+   Exercise Solutions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
+     Introduction to Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
+     Data Visualization Basics
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Data Isolation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/exercises_solution/d02-e-data01-isolate-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d02-e-data01-isolate-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Data Isolation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-dataframe-object">
+   The DataFrame Object
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#head-and-tail">
+     Head and Tail
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q1-get-the-tail-of-a-dataframe">
+       <strong>
+        q1
+       </strong>
+       Get the tail of a DataFrame
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#piping">
+   Piping
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q2-convert-to-piped-code">
+     <strong>
+      q2
+     </strong>
+     Convert to piped code
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#column-selection">
+   Column Selection
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q3-select-particular-columns">
+     <strong>
+      q3
+     </strong>
+     Select particular columns
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#selection-helpers">
+     Selection Helpers
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-match-columns">
+       <strong>
+        q4
+       </strong>
+       Match columns
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#re-arranging-columns-with-gr-everything">
+     Re-arranging columns with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       gr.everything()
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-re-arrange-columns">
+       <strong>
+        q5
+       </strong>
+       Re-arrange columns
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#row-filtering">
+   Row Filtering
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#accessing-column-values">
+     Accessing column values
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#making-a-comparison">
+     Making a comparison
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtering-using-comparisons">
+     Filtering using comparisons
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q6-find-the-early-departures">
+       <strong>
+        q6
+       </strong>
+       Find the early departures
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-data-pronoun-df">
+     The data pronoun
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DF
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q7-use-df-to-fix-this-code">
+       <strong>
+        q7
+       </strong>
+       Use
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         DF
+        </span>
+       </code>
+       to fix this code
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arranging">
+   Arranging
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q8-find-the-earliest-departures">
+     <strong>
+      q8
+     </strong>
+     Find the earliest departures
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#isolating-to-answer-questions">
+   Isolating to answer questions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q9-what-are-these-data-for">
+     <strong>
+      q9
+     </strong>
+     What are these data for?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Data Isolation</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Data Isolation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-dataframe-object">
+   The DataFrame Object
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#head-and-tail">
+     Head and Tail
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q1-get-the-tail-of-a-dataframe">
+       <strong>
+        q1
+       </strong>
+       Get the tail of a DataFrame
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#piping">
+   Piping
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q2-convert-to-piped-code">
+     <strong>
+      q2
+     </strong>
+     Convert to piped code
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#column-selection">
+   Column Selection
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q3-select-particular-columns">
+     <strong>
+      q3
+     </strong>
+     Select particular columns
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#selection-helpers">
+     Selection Helpers
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-match-columns">
+       <strong>
+        q4
+       </strong>
+       Match columns
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#re-arranging-columns-with-gr-everything">
+     Re-arranging columns with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       gr.everything()
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-re-arrange-columns">
+       <strong>
+        q5
+       </strong>
+       Re-arrange columns
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#row-filtering">
+   Row Filtering
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#accessing-column-values">
+     Accessing column values
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#making-a-comparison">
+     Making a comparison
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtering-using-comparisons">
+     Filtering using comparisons
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q6-find-the-early-departures">
+       <strong>
+        q6
+       </strong>
+       Find the early departures
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-data-pronoun-df">
+     The data pronoun
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DF
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q7-use-df-to-fix-this-code">
+       <strong>
+        q7
+       </strong>
+       Use
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         DF
+        </span>
+       </code>
+       to fix this code
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arranging">
+   Arranging
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q8-find-the-earliest-departures">
+     <strong>
+      q8
+     </strong>
+     Find the earliest departures
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#isolating-to-answer-questions">
+   Isolating to answer questions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q9-what-are-these-data-for">
+     <strong>
+      q9
+     </strong>
+     What are these data for?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="data-isolation">
+<h1>Data Isolation<a class="headerlink" href="#data-isolation" title="Permalink to this headline">¶</a></h1>
+<p><em>Purpose</em>: One of the keys to a successful analysis is the ability to <em>focus</em> on particular topics. When analyzing a dataset, our ability to focus is tied to our facility at <em>isolating data</em>. In this exercise, you will practice isolating columns with <code class="docutils literal notranslate"><span class="pre">tf_select()</span></code>, picking specific rows with <code class="docutils literal notranslate"><span class="pre">tf_filter()</span></code>, and sorting your data with <code class="docutils literal notranslate"><span class="pre">tf_arrange()</span></code> to see what rises to the top.</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll use the <code class="docutils literal notranslate"><span class="pre">nycflights13</span></code> package in this exercise: This is a dataset of flights involving the New York City area during 2013.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nycflights13</span> <span class="kn">import</span> <span class="n">flights</span> <span class="k">as</span> <span class="n">df_flights</span>
+<span class="n">df_flights</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>517.0</td>
+      <td>515</td>
+      <td>2.0</td>
+      <td>830.0</td>
+      <td>819</td>
+      <td>11.0</td>
+      <td>UA</td>
+      <td>1545</td>
+      <td>N14228</td>
+      <td>EWR</td>
+      <td>IAH</td>
+      <td>227.0</td>
+      <td>1400</td>
+      <td>5</td>
+      <td>15</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>533.0</td>
+      <td>529</td>
+      <td>4.0</td>
+      <td>850.0</td>
+      <td>830</td>
+      <td>20.0</td>
+      <td>UA</td>
+      <td>1714</td>
+      <td>N24211</td>
+      <td>LGA</td>
+      <td>IAH</td>
+      <td>227.0</td>
+      <td>1416</td>
+      <td>5</td>
+      <td>29</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>542.0</td>
+      <td>540</td>
+      <td>2.0</td>
+      <td>923.0</td>
+      <td>850</td>
+      <td>33.0</td>
+      <td>AA</td>
+      <td>1141</td>
+      <td>N619AA</td>
+      <td>JFK</td>
+      <td>MIA</td>
+      <td>160.0</td>
+      <td>1089</td>
+      <td>5</td>
+      <td>40</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>544.0</td>
+      <td>545</td>
+      <td>-1.0</td>
+      <td>1004.0</td>
+      <td>1022</td>
+      <td>-18.0</td>
+      <td>B6</td>
+      <td>725</td>
+      <td>N804JB</td>
+      <td>JFK</td>
+      <td>BQN</td>
+      <td>183.0</td>
+      <td>1576</td>
+      <td>5</td>
+      <td>45</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554.0</td>
+      <td>600</td>
+      <td>-6.0</td>
+      <td>812.0</td>
+      <td>837</td>
+      <td>-25.0</td>
+      <td>DL</td>
+      <td>461</td>
+      <td>N668DN</td>
+      <td>LGA</td>
+      <td>ATL</td>
+      <td>116.0</td>
+      <td>762</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>336771</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>1455</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1634</td>
+      <td>NaN</td>
+      <td>9E</td>
+      <td>3393</td>
+      <td>NaN</td>
+      <td>JFK</td>
+      <td>DCA</td>
+      <td>NaN</td>
+      <td>213</td>
+      <td>14</td>
+      <td>55</td>
+      <td>2013-09-30T18:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336772</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>2200</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2312</td>
+      <td>NaN</td>
+      <td>9E</td>
+      <td>3525</td>
+      <td>NaN</td>
+      <td>LGA</td>
+      <td>SYR</td>
+      <td>NaN</td>
+      <td>198</td>
+      <td>22</td>
+      <td>0</td>
+      <td>2013-10-01T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336773</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>1210</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1330</td>
+      <td>NaN</td>
+      <td>MQ</td>
+      <td>3461</td>
+      <td>N535MQ</td>
+      <td>LGA</td>
+      <td>BNA</td>
+      <td>NaN</td>
+      <td>764</td>
+      <td>12</td>
+      <td>10</td>
+      <td>2013-09-30T16:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336774</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>1159</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1344</td>
+      <td>NaN</td>
+      <td>MQ</td>
+      <td>3572</td>
+      <td>N511MQ</td>
+      <td>LGA</td>
+      <td>CLE</td>
+      <td>NaN</td>
+      <td>419</td>
+      <td>11</td>
+      <td>59</td>
+      <td>2013-09-30T15:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336775</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>840</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1020</td>
+      <td>NaN</td>
+      <td>MQ</td>
+      <td>3531</td>
+      <td>N839MQ</td>
+      <td>LGA</td>
+      <td>RDU</td>
+      <td>NaN</td>
+      <td>431</td>
+      <td>8</td>
+      <td>40</td>
+      <td>2013-09-30T12:00:00Z</td>
+    </tr>
+  </tbody>
+</table>
+<p>336776 rows × 19 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="the-dataframe-object">
+<h1>The DataFrame Object<a class="headerlink" href="#the-dataframe-object" title="Permalink to this headline">¶</a></h1>
+<p>The variable <code class="docutils literal notranslate"><span class="pre">df_flights</span></code> above is a <em>DataFrame</em>; a way of storing data in Python.</p>
+<p><em>Aside</em>: The DataFrame class is provided by the <a class="reference external" href="https://pandas.pydata.org/docs/index.html">Pandas</a> package, but we will use <a class="reference external" href="https://github.com/zdelrosario/py_grama">Grama</a> to work with DataFrames.</p>
+<div class="section" id="head-and-tail">
+<h2>Head and Tail<a class="headerlink" href="#head-and-tail" title="Permalink to this headline">¶</a></h2>
+<p>Looking at an entire DataFrame is usually overwhelming; it is useful to be able to focus on a small subset of the data. One of our most basic tools is to get the first or last few rows of a DataFrame, which we can do with <code class="docutils literal notranslate"><span class="pre">DataFrame.head(n)</span></code> and <code class="docutils literal notranslate"><span class="pre">DataFrame.tail(n)</span></code>. These functions are called with the following syntax:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_flights</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="q1-get-the-tail-of-a-dataframe">
+<h3><strong>q1</strong> Get the tail of a DataFrame<a class="headerlink" href="#q1-get-the-tail-of-a-dataframe" title="Permalink to this headline">¶</a></h3>
+<p>Get the last 10 rows of <code class="docutils literal notranslate"><span class="pre">df_flights</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Get the last 10 rows of df_flights</span>
+
+<span class="n">df_flights</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1"># solution-end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>336766</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>2240.0</td>
+      <td>2250</td>
+      <td>-10.0</td>
+      <td>2347.0</td>
+      <td>7</td>
+      <td>-20.0</td>
+      <td>B6</td>
+      <td>2002</td>
+      <td>N281JB</td>
+      <td>JFK</td>
+      <td>BUF</td>
+      <td>52.0</td>
+      <td>301</td>
+      <td>22</td>
+      <td>50</td>
+      <td>2013-10-01T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336767</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>2241.0</td>
+      <td>2246</td>
+      <td>-5.0</td>
+      <td>2345.0</td>
+      <td>1</td>
+      <td>-16.0</td>
+      <td>B6</td>
+      <td>486</td>
+      <td>N346JB</td>
+      <td>JFK</td>
+      <td>ROC</td>
+      <td>47.0</td>
+      <td>264</td>
+      <td>22</td>
+      <td>46</td>
+      <td>2013-10-01T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336768</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>2307.0</td>
+      <td>2255</td>
+      <td>12.0</td>
+      <td>2359.0</td>
+      <td>2358</td>
+      <td>1.0</td>
+      <td>B6</td>
+      <td>718</td>
+      <td>N565JB</td>
+      <td>JFK</td>
+      <td>BOS</td>
+      <td>33.0</td>
+      <td>187</td>
+      <td>22</td>
+      <td>55</td>
+      <td>2013-10-01T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336769</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>2349.0</td>
+      <td>2359</td>
+      <td>-10.0</td>
+      <td>325.0</td>
+      <td>350</td>
+      <td>-25.0</td>
+      <td>B6</td>
+      <td>745</td>
+      <td>N516JB</td>
+      <td>JFK</td>
+      <td>PSE</td>
+      <td>196.0</td>
+      <td>1617</td>
+      <td>23</td>
+      <td>59</td>
+      <td>2013-10-01T03:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336770</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>1842</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2019</td>
+      <td>NaN</td>
+      <td>EV</td>
+      <td>5274</td>
+      <td>N740EV</td>
+      <td>LGA</td>
+      <td>BNA</td>
+      <td>NaN</td>
+      <td>764</td>
+      <td>18</td>
+      <td>42</td>
+      <td>2013-09-30T22:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336771</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>1455</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1634</td>
+      <td>NaN</td>
+      <td>9E</td>
+      <td>3393</td>
+      <td>NaN</td>
+      <td>JFK</td>
+      <td>DCA</td>
+      <td>NaN</td>
+      <td>213</td>
+      <td>14</td>
+      <td>55</td>
+      <td>2013-09-30T18:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336772</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>2200</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2312</td>
+      <td>NaN</td>
+      <td>9E</td>
+      <td>3525</td>
+      <td>NaN</td>
+      <td>LGA</td>
+      <td>SYR</td>
+      <td>NaN</td>
+      <td>198</td>
+      <td>22</td>
+      <td>0</td>
+      <td>2013-10-01T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336773</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>1210</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1330</td>
+      <td>NaN</td>
+      <td>MQ</td>
+      <td>3461</td>
+      <td>N535MQ</td>
+      <td>LGA</td>
+      <td>BNA</td>
+      <td>NaN</td>
+      <td>764</td>
+      <td>12</td>
+      <td>10</td>
+      <td>2013-09-30T16:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336774</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>1159</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1344</td>
+      <td>NaN</td>
+      <td>MQ</td>
+      <td>3572</td>
+      <td>N511MQ</td>
+      <td>LGA</td>
+      <td>CLE</td>
+      <td>NaN</td>
+      <td>419</td>
+      <td>11</td>
+      <td>59</td>
+      <td>2013-09-30T15:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336775</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>840</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1020</td>
+      <td>NaN</td>
+      <td>MQ</td>
+      <td>3531</td>
+      <td>N839MQ</td>
+      <td>LGA</td>
+      <td>RDU</td>
+      <td>NaN</td>
+      <td>431</td>
+      <td>8</td>
+      <td>40</td>
+      <td>2013-09-30T12:00:00Z</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="piping">
+<h1>Piping<a class="headerlink" href="#piping" title="Permalink to this headline">¶</a></h1>
+<p>Often, when carrying out studies with data, we want to perform <em>multiple</em> operations on the same dataset. We could do this by assigning <em>intermediate variables</em>, such as a temporary DataFrame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
+<span class="n">df_tmp</span> <span class="o">=</span> <span class="n">df_flights</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># Temporary DataFrame</span>
+<span class="n">df_tmp</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554.0</td>
+      <td>558</td>
+      <td>-4.0</td>
+      <td>740.0</td>
+      <td>728</td>
+      <td>12.0</td>
+      <td>UA</td>
+      <td>1696</td>
+      <td>N39463</td>
+      <td>EWR</td>
+      <td>ORD</td>
+      <td>150.0</td>
+      <td>719</td>
+      <td>5</td>
+      <td>58</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>555.0</td>
+      <td>600</td>
+      <td>-5.0</td>
+      <td>913.0</td>
+      <td>854</td>
+      <td>19.0</td>
+      <td>B6</td>
+      <td>507</td>
+      <td>N516JB</td>
+      <td>EWR</td>
+      <td>FLL</td>
+      <td>158.0</td>
+      <td>1065</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>557.0</td>
+      <td>600</td>
+      <td>-3.0</td>
+      <td>709.0</td>
+      <td>723</td>
+      <td>-14.0</td>
+      <td>EV</td>
+      <td>5708</td>
+      <td>N829AS</td>
+      <td>LGA</td>
+      <td>IAD</td>
+      <td>53.0</td>
+      <td>229</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>557.0</td>
+      <td>600</td>
+      <td>-3.0</td>
+      <td>838.0</td>
+      <td>846</td>
+      <td>-8.0</td>
+      <td>B6</td>
+      <td>79</td>
+      <td>N593JB</td>
+      <td>JFK</td>
+      <td>MCO</td>
+      <td>140.0</td>
+      <td>944</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>558.0</td>
+      <td>600</td>
+      <td>-2.0</td>
+      <td>753.0</td>
+      <td>745</td>
+      <td>8.0</td>
+      <td>AA</td>
+      <td>301</td>
+      <td>N3ALAA</td>
+      <td>LGA</td>
+      <td>ORD</td>
+      <td>138.0</td>
+      <td>733</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Alternatively, we could <em>chain</em> together calls:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
+<span class="n">df_flights</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554.0</td>
+      <td>558</td>
+      <td>-4.0</td>
+      <td>740.0</td>
+      <td>728</td>
+      <td>12.0</td>
+      <td>UA</td>
+      <td>1696</td>
+      <td>N39463</td>
+      <td>EWR</td>
+      <td>ORD</td>
+      <td>150.0</td>
+      <td>719</td>
+      <td>5</td>
+      <td>58</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>555.0</td>
+      <td>600</td>
+      <td>-5.0</td>
+      <td>913.0</td>
+      <td>854</td>
+      <td>19.0</td>
+      <td>B6</td>
+      <td>507</td>
+      <td>N516JB</td>
+      <td>EWR</td>
+      <td>FLL</td>
+      <td>158.0</td>
+      <td>1065</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>557.0</td>
+      <td>600</td>
+      <td>-3.0</td>
+      <td>709.0</td>
+      <td>723</td>
+      <td>-14.0</td>
+      <td>EV</td>
+      <td>5708</td>
+      <td>N829AS</td>
+      <td>LGA</td>
+      <td>IAD</td>
+      <td>53.0</td>
+      <td>229</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>557.0</td>
+      <td>600</td>
+      <td>-3.0</td>
+      <td>838.0</td>
+      <td>846</td>
+      <td>-8.0</td>
+      <td>B6</td>
+      <td>79</td>
+      <td>N593JB</td>
+      <td>JFK</td>
+      <td>MCO</td>
+      <td>140.0</td>
+      <td>944</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>558.0</td>
+      <td>600</td>
+      <td>-2.0</td>
+      <td>753.0</td>
+      <td>745</td>
+      <td>8.0</td>
+      <td>AA</td>
+      <td>301</td>
+      <td>N3ALAA</td>
+      <td>LGA</td>
+      <td>ORD</td>
+      <td>138.0</td>
+      <td>733</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Rather than these two approaches, using <a class="reference external" href="https://github.com/zdelrosario/py_grama">grama</a> we can form a <em>data pipeline</em> using the pipe operator <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>. The following code demonstrates the use of the pipe operator:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554.0</td>
+      <td>558</td>
+      <td>-4.0</td>
+      <td>740.0</td>
+      <td>728</td>
+      <td>12.0</td>
+      <td>UA</td>
+      <td>1696</td>
+      <td>N39463</td>
+      <td>EWR</td>
+      <td>ORD</td>
+      <td>150.0</td>
+      <td>719</td>
+      <td>5</td>
+      <td>58</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>555.0</td>
+      <td>600</td>
+      <td>-5.0</td>
+      <td>913.0</td>
+      <td>854</td>
+      <td>19.0</td>
+      <td>B6</td>
+      <td>507</td>
+      <td>N516JB</td>
+      <td>EWR</td>
+      <td>FLL</td>
+      <td>158.0</td>
+      <td>1065</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>557.0</td>
+      <td>600</td>
+      <td>-3.0</td>
+      <td>709.0</td>
+      <td>723</td>
+      <td>-14.0</td>
+      <td>EV</td>
+      <td>5708</td>
+      <td>N829AS</td>
+      <td>LGA</td>
+      <td>IAD</td>
+      <td>53.0</td>
+      <td>229</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>557.0</td>
+      <td>600</td>
+      <td>-3.0</td>
+      <td>838.0</td>
+      <td>846</td>
+      <td>-8.0</td>
+      <td>B6</td>
+      <td>79</td>
+      <td>N593JB</td>
+      <td>JFK</td>
+      <td>MCO</td>
+      <td>140.0</td>
+      <td>944</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>558.0</td>
+      <td>600</td>
+      <td>-2.0</td>
+      <td>753.0</td>
+      <td>745</td>
+      <td>8.0</td>
+      <td>AA</td>
+      <td>301</td>
+      <td>N3ALAA</td>
+      <td>LGA</td>
+      <td>ORD</td>
+      <td>138.0</td>
+      <td>733</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>It’s useful to think of the pipe operator as the English word “then”. This allows us to translate code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>into something looking like a plain-language sentence</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">Start</span> <span class="k">with</span> <span class="n">df_flights</span>
+    <span class="s2">&quot;then&quot;</span> <span class="n">take</span> <span class="n">the</span> <span class="n">first</span> <span class="mi">10</span>
+    <span class="s2">&quot;then&quot;</span> <span class="n">take</span> <span class="n">the</span> <span class="n">last</span> <span class="mf">5.</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><em>Aside</em>: Most of the grama functions we’ll use in this exercise start with the <code class="docutils literal notranslate"><span class="pre">tf_</span></code> prefix; this means they take in a DataFrame and return a DataFrame (they <code class="docutils literal notranslate"><span class="pre">tr</span></code>ansform data).</p>
+<div class="section" id="q2-convert-to-piped-code">
+<h2><strong>q2</strong> Convert to piped code<a class="headerlink" href="#q2-convert-to-piped-code" title="Permalink to this headline">¶</a></h2>
+<p>Convert the following code to a pipe-enabled version.</p>
+<p><em>Note</em>: The pipe-enabled version of <code class="docutils literal notranslate"><span class="pre">DataFrame.head()</span></code> is <code class="docutils literal notranslate"><span class="pre">tf_head()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Convert the following code to pipe-enabled form</span>
+<span class="n">df_flights</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>517.0</td>
+      <td>515</td>
+      <td>2.0</td>
+      <td>830.0</td>
+      <td>819</td>
+      <td>11.0</td>
+      <td>UA</td>
+      <td>1545</td>
+      <td>N14228</td>
+      <td>EWR</td>
+      <td>IAH</td>
+      <td>227.0</td>
+      <td>1400</td>
+      <td>5</td>
+      <td>15</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>533.0</td>
+      <td>529</td>
+      <td>4.0</td>
+      <td>850.0</td>
+      <td>830</td>
+      <td>20.0</td>
+      <td>UA</td>
+      <td>1714</td>
+      <td>N24211</td>
+      <td>LGA</td>
+      <td>IAH</td>
+      <td>227.0</td>
+      <td>1416</td>
+      <td>5</td>
+      <td>29</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>542.0</td>
+      <td>540</td>
+      <td>2.0</td>
+      <td>923.0</td>
+      <td>850</td>
+      <td>33.0</td>
+      <td>AA</td>
+      <td>1141</td>
+      <td>N619AA</td>
+      <td>JFK</td>
+      <td>MIA</td>
+      <td>160.0</td>
+      <td>1089</td>
+      <td>5</td>
+      <td>40</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>544.0</td>
+      <td>545</td>
+      <td>-1.0</td>
+      <td>1004.0</td>
+      <td>1022</td>
+      <td>-18.0</td>
+      <td>B6</td>
+      <td>725</td>
+      <td>N804JB</td>
+      <td>JFK</td>
+      <td>BQN</td>
+      <td>183.0</td>
+      <td>1576</td>
+      <td>5</td>
+      <td>45</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554.0</td>
+      <td>600</td>
+      <td>-6.0</td>
+      <td>812.0</td>
+      <td>837</td>
+      <td>-25.0</td>
+      <td>DL</td>
+      <td>461</td>
+      <td>N668DN</td>
+      <td>LGA</td>
+      <td>ATL</td>
+      <td>116.0</td>
+      <td>762</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554.0</td>
+      <td>558</td>
+      <td>-4.0</td>
+      <td>740.0</td>
+      <td>728</td>
+      <td>12.0</td>
+      <td>UA</td>
+      <td>1696</td>
+      <td>N39463</td>
+      <td>EWR</td>
+      <td>ORD</td>
+      <td>150.0</td>
+      <td>719</td>
+      <td>5</td>
+      <td>58</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>555.0</td>
+      <td>600</td>
+      <td>-5.0</td>
+      <td>913.0</td>
+      <td>854</td>
+      <td>19.0</td>
+      <td>B6</td>
+      <td>507</td>
+      <td>N516JB</td>
+      <td>EWR</td>
+      <td>FLL</td>
+      <td>158.0</td>
+      <td>1065</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>557.0</td>
+      <td>600</td>
+      <td>-3.0</td>
+      <td>709.0</td>
+      <td>723</td>
+      <td>-14.0</td>
+      <td>EV</td>
+      <td>5708</td>
+      <td>N829AS</td>
+      <td>LGA</td>
+      <td>IAD</td>
+      <td>53.0</td>
+      <td>229</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>557.0</td>
+      <td>600</td>
+      <td>-3.0</td>
+      <td>838.0</td>
+      <td>846</td>
+      <td>-8.0</td>
+      <td>B6</td>
+      <td>79</td>
+      <td>N593JB</td>
+      <td>JFK</td>
+      <td>MCO</td>
+      <td>140.0</td>
+      <td>944</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>558.0</td>
+      <td>600</td>
+      <td>-2.0</td>
+      <td>753.0</td>
+      <td>745</td>
+      <td>8.0</td>
+      <td>AA</td>
+      <td>301</td>
+      <td>N3ALAA</td>
+      <td>LGA</td>
+      <td>ORD</td>
+      <td>138.0</td>
+      <td>733</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="column-selection">
+<h1>Column Selection<a class="headerlink" href="#column-selection" title="Permalink to this headline">¶</a></h1>
+<p>The grama function <code class="docutils literal notranslate"><span class="pre">gr.tf_select()</span></code> allows us to select particular columns, which is helpful for getting a more “focused” view of a datset.</p>
+<div class="section" id="q3-select-particular-columns">
+<h2><strong>q3</strong> Select particular columns<a class="headerlink" href="#q3-select-particular-columns" title="Permalink to this headline">¶</a></h2>
+<p>Select the columns “month”, “day”, “origin”, and “dest”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Select the columns &quot;month&quot;, &quot;day&quot;, &quot;origin&quot;, and &quot;dest&quot;</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;month&quot;</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="s2">&quot;dest&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>month</th>
+      <th>day</th>
+      <th>origin</th>
+      <th>dest</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>EWR</td>
+      <td>IAH</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>LGA</td>
+      <td>IAH</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>1</td>
+      <td>JFK</td>
+      <td>MIA</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>JFK</td>
+      <td>BQN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>1</td>
+      <td>LGA</td>
+      <td>ATL</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>336771</th>
+      <td>9</td>
+      <td>30</td>
+      <td>JFK</td>
+      <td>DCA</td>
+    </tr>
+    <tr>
+      <th>336772</th>
+      <td>9</td>
+      <td>30</td>
+      <td>LGA</td>
+      <td>SYR</td>
+    </tr>
+    <tr>
+      <th>336773</th>
+      <td>9</td>
+      <td>30</td>
+      <td>LGA</td>
+      <td>BNA</td>
+    </tr>
+    <tr>
+      <th>336774</th>
+      <td>9</td>
+      <td>30</td>
+      <td>LGA</td>
+      <td>CLE</td>
+    </tr>
+    <tr>
+      <th>336775</th>
+      <td>9</td>
+      <td>30</td>
+      <td>LGA</td>
+      <td>RDU</td>
+    </tr>
+  </tbody>
+</table>
+<p>336776 rows × 4 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="selection-helpers">
+<h2>Selection Helpers<a class="headerlink" href="#selection-helpers" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">gr.tf_select()</span></code> function is helpful, but it is made <em>extremely powerful</em> with a few selection helpers. Rather than specify specific column names, we can use helpers to <em>match</em> names that satisfy different criteria.</p>
+<p>Here are a few of the most important selection helpers:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Helper</p></th>
+<th class="head"><p>Selects</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gr.starts_with(s)</span></code></p></td>
+<td><p>Columns that start with string <code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gr.ends_with(s)</span></code></p></td>
+<td><p>Columns that end with string <code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gr.contains(s)</span></code></p></td>
+<td><p>Columns that contain the string <code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gr.everything()</span></code></p></td>
+<td><p>All columns <em>not already selected</em></p></td>
+</tr>
+</tbody>
+</table>
+<p>For instance, the following code will select all the columns whose name starts with <code class="docutils literal notranslate"><span class="pre">&quot;dep_&quot;</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">starts_with</span><span class="p">(</span><span class="s2">&quot;dep_&quot;</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dep_time</th>
+      <th>dep_delay</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>517.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>533.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>542.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>544.0</td>
+      <td>-1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>554.0</td>
+      <td>-6.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>336771</th>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>336772</th>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>336773</th>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>336774</th>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>336775</th>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>336776 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="section" id="q4-match-columns">
+<h3><strong>q4</strong> Match columns<a class="headerlink" href="#q4-match-columns" title="Permalink to this headline">¶</a></h3>
+<p>Select only those columns whose name ends with <code class="docutils literal notranslate"><span class="pre">&quot;_time&quot;</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Select only those columns whose name ends with &quot;_time&quot;</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">ends_with</span><span class="p">(</span><span class="s2">&quot;_time&quot;</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>air_time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>517.0</td>
+      <td>515</td>
+      <td>830.0</td>
+      <td>819</td>
+      <td>227.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>533.0</td>
+      <td>529</td>
+      <td>850.0</td>
+      <td>830</td>
+      <td>227.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>542.0</td>
+      <td>540</td>
+      <td>923.0</td>
+      <td>850</td>
+      <td>160.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>544.0</td>
+      <td>545</td>
+      <td>1004.0</td>
+      <td>1022</td>
+      <td>183.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>554.0</td>
+      <td>600</td>
+      <td>812.0</td>
+      <td>837</td>
+      <td>116.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>336771</th>
+      <td>NaN</td>
+      <td>1455</td>
+      <td>NaN</td>
+      <td>1634</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>336772</th>
+      <td>NaN</td>
+      <td>2200</td>
+      <td>NaN</td>
+      <td>2312</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>336773</th>
+      <td>NaN</td>
+      <td>1210</td>
+      <td>NaN</td>
+      <td>1330</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>336774</th>
+      <td>NaN</td>
+      <td>1159</td>
+      <td>NaN</td>
+      <td>1344</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>336775</th>
+      <td>NaN</td>
+      <td>840</td>
+      <td>NaN</td>
+      <td>1020</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>336776 rows × 5 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="re-arranging-columns-with-gr-everything">
+<h2>Re-arranging columns with <code class="docutils literal notranslate"><span class="pre">gr.everything()</span></code><a class="headerlink" href="#re-arranging-columns-with-gr-everything" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">gr.everything()</span></code> helper may seem silly, but it is actually <em>extremely</em> useful; since the everything helper selects all columns <em>not already selected</em>, we can use it to re-arrange the columns in a DataFrame for a more convenient view. For instance, we can bring a few columns closer together to aid in column comparisons, as the following code demonstrates:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="s2">&quot;dest&quot;</span><span class="p">,</span> <span class="s2">&quot;distance&quot;</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">everything</span><span class="p">())</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>distance</th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>air_time</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>EWR</td>
+      <td>IAH</td>
+      <td>1400</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>517.0</td>
+      <td>515</td>
+      <td>2.0</td>
+      <td>830.0</td>
+      <td>819</td>
+      <td>11.0</td>
+      <td>UA</td>
+      <td>1545</td>
+      <td>N14228</td>
+      <td>227.0</td>
+      <td>5</td>
+      <td>15</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>LGA</td>
+      <td>IAH</td>
+      <td>1416</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>533.0</td>
+      <td>529</td>
+      <td>4.0</td>
+      <td>850.0</td>
+      <td>830</td>
+      <td>20.0</td>
+      <td>UA</td>
+      <td>1714</td>
+      <td>N24211</td>
+      <td>227.0</td>
+      <td>5</td>
+      <td>29</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>JFK</td>
+      <td>MIA</td>
+      <td>1089</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>542.0</td>
+      <td>540</td>
+      <td>2.0</td>
+      <td>923.0</td>
+      <td>850</td>
+      <td>33.0</td>
+      <td>AA</td>
+      <td>1141</td>
+      <td>N619AA</td>
+      <td>160.0</td>
+      <td>5</td>
+      <td>40</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>JFK</td>
+      <td>BQN</td>
+      <td>1576</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>544.0</td>
+      <td>545</td>
+      <td>-1.0</td>
+      <td>1004.0</td>
+      <td>1022</td>
+      <td>-18.0</td>
+      <td>B6</td>
+      <td>725</td>
+      <td>N804JB</td>
+      <td>183.0</td>
+      <td>5</td>
+      <td>45</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>LGA</td>
+      <td>ATL</td>
+      <td>762</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554.0</td>
+      <td>600</td>
+      <td>-6.0</td>
+      <td>812.0</td>
+      <td>837</td>
+      <td>-25.0</td>
+      <td>DL</td>
+      <td>461</td>
+      <td>N668DN</td>
+      <td>116.0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>336771</th>
+      <td>JFK</td>
+      <td>DCA</td>
+      <td>213</td>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>1455</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1634</td>
+      <td>NaN</td>
+      <td>9E</td>
+      <td>3393</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>14</td>
+      <td>55</td>
+      <td>2013-09-30T18:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336772</th>
+      <td>LGA</td>
+      <td>SYR</td>
+      <td>198</td>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>2200</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2312</td>
+      <td>NaN</td>
+      <td>9E</td>
+      <td>3525</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>22</td>
+      <td>0</td>
+      <td>2013-10-01T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336773</th>
+      <td>LGA</td>
+      <td>BNA</td>
+      <td>764</td>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>1210</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1330</td>
+      <td>NaN</td>
+      <td>MQ</td>
+      <td>3461</td>
+      <td>N535MQ</td>
+      <td>NaN</td>
+      <td>12</td>
+      <td>10</td>
+      <td>2013-09-30T16:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336774</th>
+      <td>LGA</td>
+      <td>CLE</td>
+      <td>419</td>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>1159</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1344</td>
+      <td>NaN</td>
+      <td>MQ</td>
+      <td>3572</td>
+      <td>N511MQ</td>
+      <td>NaN</td>
+      <td>11</td>
+      <td>59</td>
+      <td>2013-09-30T15:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336775</th>
+      <td>LGA</td>
+      <td>RDU</td>
+      <td>431</td>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>840</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1020</td>
+      <td>NaN</td>
+      <td>MQ</td>
+      <td>3531</td>
+      <td>N839MQ</td>
+      <td>NaN</td>
+      <td>8</td>
+      <td>40</td>
+      <td>2013-09-30T12:00:00Z</td>
+    </tr>
+  </tbody>
+</table>
+<p>336776 rows × 19 columns</p>
+</div></div></div>
+</div>
+<div class="section" id="q5-re-arrange-columns">
+<h3><strong>q5</strong> Re-arrange columns<a class="headerlink" href="#q5-re-arrange-columns" title="Permalink to this headline">¶</a></h3>
+<p>Re-arrange the columns to place <code class="docutils literal notranslate"><span class="pre">dest,</span> <span class="pre">origin,</span> <span class="pre">carrier</span></code> at the left, but retain all other columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Bring &quot;dest&quot;, &quot;origin&quot;, and &quot;carrier&quot; to the left,</span>
+<span class="c1"># but keep all other columns</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;dest&quot;</span><span class="p">,</span> <span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="s2">&quot;carrier&quot;</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">everything</span><span class="p">())</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dest</th>
+      <th>origin</th>
+      <th>carrier</th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>IAH</td>
+      <td>EWR</td>
+      <td>UA</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>517.0</td>
+      <td>515</td>
+      <td>2.0</td>
+      <td>830.0</td>
+      <td>819</td>
+      <td>11.0</td>
+      <td>1545</td>
+      <td>N14228</td>
+      <td>227.0</td>
+      <td>1400</td>
+      <td>5</td>
+      <td>15</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>IAH</td>
+      <td>LGA</td>
+      <td>UA</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>533.0</td>
+      <td>529</td>
+      <td>4.0</td>
+      <td>850.0</td>
+      <td>830</td>
+      <td>20.0</td>
+      <td>1714</td>
+      <td>N24211</td>
+      <td>227.0</td>
+      <td>1416</td>
+      <td>5</td>
+      <td>29</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>MIA</td>
+      <td>JFK</td>
+      <td>AA</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>542.0</td>
+      <td>540</td>
+      <td>2.0</td>
+      <td>923.0</td>
+      <td>850</td>
+      <td>33.0</td>
+      <td>1141</td>
+      <td>N619AA</td>
+      <td>160.0</td>
+      <td>1089</td>
+      <td>5</td>
+      <td>40</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>BQN</td>
+      <td>JFK</td>
+      <td>B6</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>544.0</td>
+      <td>545</td>
+      <td>-1.0</td>
+      <td>1004.0</td>
+      <td>1022</td>
+      <td>-18.0</td>
+      <td>725</td>
+      <td>N804JB</td>
+      <td>183.0</td>
+      <td>1576</td>
+      <td>5</td>
+      <td>45</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ATL</td>
+      <td>LGA</td>
+      <td>DL</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554.0</td>
+      <td>600</td>
+      <td>-6.0</td>
+      <td>812.0</td>
+      <td>837</td>
+      <td>-25.0</td>
+      <td>461</td>
+      <td>N668DN</td>
+      <td>116.0</td>
+      <td>762</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>336771</th>
+      <td>DCA</td>
+      <td>JFK</td>
+      <td>9E</td>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>1455</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1634</td>
+      <td>NaN</td>
+      <td>3393</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>213</td>
+      <td>14</td>
+      <td>55</td>
+      <td>2013-09-30T18:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336772</th>
+      <td>SYR</td>
+      <td>LGA</td>
+      <td>9E</td>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>2200</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2312</td>
+      <td>NaN</td>
+      <td>3525</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>198</td>
+      <td>22</td>
+      <td>0</td>
+      <td>2013-10-01T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336773</th>
+      <td>BNA</td>
+      <td>LGA</td>
+      <td>MQ</td>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>1210</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1330</td>
+      <td>NaN</td>
+      <td>3461</td>
+      <td>N535MQ</td>
+      <td>NaN</td>
+      <td>764</td>
+      <td>12</td>
+      <td>10</td>
+      <td>2013-09-30T16:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336774</th>
+      <td>CLE</td>
+      <td>LGA</td>
+      <td>MQ</td>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>1159</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1344</td>
+      <td>NaN</td>
+      <td>3572</td>
+      <td>N511MQ</td>
+      <td>NaN</td>
+      <td>419</td>
+      <td>11</td>
+      <td>59</td>
+      <td>2013-09-30T15:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336775</th>
+      <td>RDU</td>
+      <td>LGA</td>
+      <td>MQ</td>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>840</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1020</td>
+      <td>NaN</td>
+      <td>3531</td>
+      <td>N839MQ</td>
+      <td>NaN</td>
+      <td>431</td>
+      <td>8</td>
+      <td>40</td>
+      <td>2013-09-30T12:00:00Z</td>
+    </tr>
+  </tbody>
+</table>
+<p>336776 rows × 19 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="row-filtering">
+<h1>Row Filtering<a class="headerlink" href="#row-filtering" title="Permalink to this headline">¶</a></h1>
+<p>Just as we can select particular columns, we can <em>filter</em> to obtain particular rows.</p>
+<div class="section" id="accessing-column-values">
+<h2>Accessing column values<a class="headerlink" href="#accessing-column-values" title="Permalink to this headline">¶</a></h2>
+<p>To access a single column of a DataFrame, we can use bracket <code class="docutils literal notranslate"><span class="pre">[]</span></code> notation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span><span class="p">[</span><span class="s2">&quot;origin&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         EWR
+1         LGA
+2         JFK
+3         JFK
+4         LGA
+         ... 
+336771    JFK
+336772    LGA
+336773    LGA
+336774    LGA
+336775    LGA
+Name: origin, Length: 336776, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that returns a different datatype: a Pandas <em>series</em>.</p>
+</div>
+<div class="section" id="making-a-comparison">
+<h2>Making a comparison<a class="headerlink" href="#making-a-comparison" title="Permalink to this headline">¶</a></h2>
+<p>Remember that we have the following comparison operators:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Compares</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">y</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span></code> less than <code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;=</span> <span class="pre">y</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span></code> less than or equal to <code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span></code> greater than <code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span></code> greater than or equal to <code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">y</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span></code> (exactly) equals <code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>Note that <code class="docutils literal notranslate"><span class="pre">==</span></code> works for strings too!</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">y</span></code></p></td>
+<td><p>Error!</p></td>
+</tr>
+</tbody>
+</table>
+<p>With a single column, we can make a comparison against a desired value:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span><span class="p">[</span><span class="s2">&quot;origin&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;JFK&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         False
+1         False
+2          True
+3          True
+4         False
+          ...  
+336771     True
+336772    False
+336773    False
+336774    False
+336775    False
+Name: origin, Length: 336776, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code above gives us <code class="docutils literal notranslate"><span class="pre">True</span></code> when the <code class="docutils literal notranslate"><span class="pre">&quot;origin&quot;</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;JFK&quot;</span></code>, and <code class="docutils literal notranslate"><span class="pre">False</span></code> when it is not.</p>
+</div>
+<div class="section" id="filtering-using-comparisons">
+<h2>Filtering using comparisons<a class="headerlink" href="#filtering-using-comparisons" title="Permalink to this headline">¶</a></h2>
+<p>These <code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">False</span></code> values are useful, because we can use them to <em>filter</em> to only those rows where the comparison yields <code class="docutils literal notranslate"><span class="pre">True</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">df_flights</span><span class="p">[</span><span class="s2">&quot;origin&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;JFK&quot;</span><span class="p">)</span>
+    <span class="c1"># Show that the &quot;origin&quot; is indeed &quot;JFK&quot;</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">everything</span><span class="p">())</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>origin</th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>JFK</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>542.0</td>
+      <td>540</td>
+      <td>2.0</td>
+      <td>923.0</td>
+      <td>850</td>
+      <td>33.0</td>
+      <td>AA</td>
+      <td>1141</td>
+      <td>N619AA</td>
+      <td>MIA</td>
+      <td>160.0</td>
+      <td>1089</td>
+      <td>5</td>
+      <td>40</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>JFK</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>544.0</td>
+      <td>545</td>
+      <td>-1.0</td>
+      <td>1004.0</td>
+      <td>1022</td>
+      <td>-18.0</td>
+      <td>B6</td>
+      <td>725</td>
+      <td>N804JB</td>
+      <td>BQN</td>
+      <td>183.0</td>
+      <td>1576</td>
+      <td>5</td>
+      <td>45</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>JFK</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>557.0</td>
+      <td>600</td>
+      <td>-3.0</td>
+      <td>838.0</td>
+      <td>846</td>
+      <td>-8.0</td>
+      <td>B6</td>
+      <td>79</td>
+      <td>N593JB</td>
+      <td>MCO</td>
+      <td>140.0</td>
+      <td>944</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>JFK</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>558.0</td>
+      <td>600</td>
+      <td>-2.0</td>
+      <td>849.0</td>
+      <td>851</td>
+      <td>-2.0</td>
+      <td>B6</td>
+      <td>49</td>
+      <td>N793JB</td>
+      <td>PBI</td>
+      <td>149.0</td>
+      <td>1028</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>JFK</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>558.0</td>
+      <td>600</td>
+      <td>-2.0</td>
+      <td>853.0</td>
+      <td>856</td>
+      <td>-3.0</td>
+      <td>B6</td>
+      <td>71</td>
+      <td>N657JB</td>
+      <td>TPA</td>
+      <td>158.0</td>
+      <td>1005</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>111274</th>
+      <td>JFK</td>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>2240.0</td>
+      <td>2250</td>
+      <td>-10.0</td>
+      <td>2347.0</td>
+      <td>7</td>
+      <td>-20.0</td>
+      <td>B6</td>
+      <td>2002</td>
+      <td>N281JB</td>
+      <td>BUF</td>
+      <td>52.0</td>
+      <td>301</td>
+      <td>22</td>
+      <td>50</td>
+      <td>2013-10-01T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>111275</th>
+      <td>JFK</td>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>2241.0</td>
+      <td>2246</td>
+      <td>-5.0</td>
+      <td>2345.0</td>
+      <td>1</td>
+      <td>-16.0</td>
+      <td>B6</td>
+      <td>486</td>
+      <td>N346JB</td>
+      <td>ROC</td>
+      <td>47.0</td>
+      <td>264</td>
+      <td>22</td>
+      <td>46</td>
+      <td>2013-10-01T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>111276</th>
+      <td>JFK</td>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>2307.0</td>
+      <td>2255</td>
+      <td>12.0</td>
+      <td>2359.0</td>
+      <td>2358</td>
+      <td>1.0</td>
+      <td>B6</td>
+      <td>718</td>
+      <td>N565JB</td>
+      <td>BOS</td>
+      <td>33.0</td>
+      <td>187</td>
+      <td>22</td>
+      <td>55</td>
+      <td>2013-10-01T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>111277</th>
+      <td>JFK</td>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>2349.0</td>
+      <td>2359</td>
+      <td>-10.0</td>
+      <td>325.0</td>
+      <td>350</td>
+      <td>-25.0</td>
+      <td>B6</td>
+      <td>745</td>
+      <td>N516JB</td>
+      <td>PSE</td>
+      <td>196.0</td>
+      <td>1617</td>
+      <td>23</td>
+      <td>59</td>
+      <td>2013-10-01T03:00:00Z</td>
+    </tr>
+    <tr>
+      <th>111278</th>
+      <td>JFK</td>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>1455</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1634</td>
+      <td>NaN</td>
+      <td>9E</td>
+      <td>3393</td>
+      <td>NaN</td>
+      <td>DCA</td>
+      <td>NaN</td>
+      <td>213</td>
+      <td>14</td>
+      <td>55</td>
+      <td>2013-09-30T18:00:00Z</td>
+    </tr>
+  </tbody>
+</table>
+<p>111279 rows × 19 columns</p>
+</div></div></div>
+</div>
+<div class="section" id="q6-find-the-early-departures">
+<h3><strong>q6</strong> Find the early departures<a class="headerlink" href="#q6-find-the-early-departures" title="Permalink to this headline">¶</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">gr.tf_filter()</span></code> to find all the flights that left early.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Filter for only those rows with a negative &quot;dep_delay&quot;</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;dep_delay&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>544.0</td>
+      <td>545</td>
+      <td>-1.0</td>
+      <td>1004.0</td>
+      <td>1022</td>
+      <td>-18.0</td>
+      <td>B6</td>
+      <td>725</td>
+      <td>N804JB</td>
+      <td>JFK</td>
+      <td>BQN</td>
+      <td>183.0</td>
+      <td>1576</td>
+      <td>5</td>
+      <td>45</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554.0</td>
+      <td>600</td>
+      <td>-6.0</td>
+      <td>812.0</td>
+      <td>837</td>
+      <td>-25.0</td>
+      <td>DL</td>
+      <td>461</td>
+      <td>N668DN</td>
+      <td>LGA</td>
+      <td>ATL</td>
+      <td>116.0</td>
+      <td>762</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554.0</td>
+      <td>558</td>
+      <td>-4.0</td>
+      <td>740.0</td>
+      <td>728</td>
+      <td>12.0</td>
+      <td>UA</td>
+      <td>1696</td>
+      <td>N39463</td>
+      <td>EWR</td>
+      <td>ORD</td>
+      <td>150.0</td>
+      <td>719</td>
+      <td>5</td>
+      <td>58</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>555.0</td>
+      <td>600</td>
+      <td>-5.0</td>
+      <td>913.0</td>
+      <td>854</td>
+      <td>19.0</td>
+      <td>B6</td>
+      <td>507</td>
+      <td>N516JB</td>
+      <td>EWR</td>
+      <td>FLL</td>
+      <td>158.0</td>
+      <td>1065</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>557.0</td>
+      <td>600</td>
+      <td>-3.0</td>
+      <td>709.0</td>
+      <td>723</td>
+      <td>-14.0</td>
+      <td>EV</td>
+      <td>5708</td>
+      <td>N829AS</td>
+      <td>LGA</td>
+      <td>IAD</td>
+      <td>53.0</td>
+      <td>229</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>183570</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>2237.0</td>
+      <td>2245</td>
+      <td>-8.0</td>
+      <td>2345.0</td>
+      <td>2353</td>
+      <td>-8.0</td>
+      <td>B6</td>
+      <td>234</td>
+      <td>N318JB</td>
+      <td>JFK</td>
+      <td>BTV</td>
+      <td>43.0</td>
+      <td>266</td>
+      <td>22</td>
+      <td>45</td>
+      <td>2013-10-01T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>183571</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>2240.0</td>
+      <td>2245</td>
+      <td>-5.0</td>
+      <td>2334.0</td>
+      <td>2351</td>
+      <td>-17.0</td>
+      <td>B6</td>
+      <td>1816</td>
+      <td>N354JB</td>
+      <td>JFK</td>
+      <td>SYR</td>
+      <td>41.0</td>
+      <td>209</td>
+      <td>22</td>
+      <td>45</td>
+      <td>2013-10-01T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>183572</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>2240.0</td>
+      <td>2250</td>
+      <td>-10.0</td>
+      <td>2347.0</td>
+      <td>7</td>
+      <td>-20.0</td>
+      <td>B6</td>
+      <td>2002</td>
+      <td>N281JB</td>
+      <td>JFK</td>
+      <td>BUF</td>
+      <td>52.0</td>
+      <td>301</td>
+      <td>22</td>
+      <td>50</td>
+      <td>2013-10-01T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>183573</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>2241.0</td>
+      <td>2246</td>
+      <td>-5.0</td>
+      <td>2345.0</td>
+      <td>1</td>
+      <td>-16.0</td>
+      <td>B6</td>
+      <td>486</td>
+      <td>N346JB</td>
+      <td>JFK</td>
+      <td>ROC</td>
+      <td>47.0</td>
+      <td>264</td>
+      <td>22</td>
+      <td>46</td>
+      <td>2013-10-01T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>183574</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>2349.0</td>
+      <td>2359</td>
+      <td>-10.0</td>
+      <td>325.0</td>
+      <td>350</td>
+      <td>-25.0</td>
+      <td>B6</td>
+      <td>745</td>
+      <td>N516JB</td>
+      <td>JFK</td>
+      <td>PSE</td>
+      <td>196.0</td>
+      <td>1617</td>
+      <td>23</td>
+      <td>59</td>
+      <td>2013-10-01T03:00:00Z</td>
+    </tr>
+  </tbody>
+</table>
+<p>183575 rows × 19 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="the-data-pronoun-df">
+<h2>The data pronoun <code class="docutils literal notranslate"><span class="pre">DF</span></code><a class="headerlink" href="#the-data-pronoun-df" title="Permalink to this headline">¶</a></h2>
+<p>Way back at the beginning of this notebook, you may have noticed this line of code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">intention</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This assigned the “data pronoun” to the variable <code class="docutils literal notranslate"><span class="pre">DF</span></code>. This pronoun can be used inside grama functions to refer to the data <em>as it is</em> at any stage in the pipeline. Rather than:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">df_flights</span><span class="p">[</span><span class="s2">&quot;dep_delay&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>we instead write</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;dep_delay&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The data pronoun <code class="docutils literal notranslate"><span class="pre">DF</span></code> is really just an alias for the DataFrame, so we can still use bracket notation <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p>
+<p>The data pronoun <code class="docutils literal notranslate"><span class="pre">DF</span></code> is not just convenient; it is <em>necessary</em> to make some operations work! Imagine we wanted to find all cases that satisfy both <code class="docutils literal notranslate"><span class="pre">dep_delay</span> <span class="pre">&lt;</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">arr_delay</span> <span class="pre">&lt;</span> <span class="pre">0</span></code>. Consider the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="c1"># This filter works properly</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">df_flights</span><span class="p">[</span><span class="s2">&quot;dep_delay&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># We now have fewer rows! The next filter will fail</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">df_flights</span><span class="p">[</span><span class="s2">&quot;arr_delay&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The data pronoun <code class="docutils literal notranslate"><span class="pre">DF</span></code> allows us to refer to the data <em>as it is</em> in the pipeline; this resolves the issue with having fewer rows in the second filter. You’ll get a chance to fix this code in the next task.</p>
+<div class="section" id="q7-use-df-to-fix-this-code">
+<h3><strong>q7</strong> Use <code class="docutils literal notranslate"><span class="pre">DF</span></code> to fix this code<a class="headerlink" href="#q7-use-df-to-fix-this-code" title="Permalink to this headline">¶</a></h3>
+<p>Use the data pronoun <code class="docutils literal notranslate"><span class="pre">DF</span></code> to fix the following code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Fix this code using the data pronoun DF</span>
+
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;dep_delay&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;arr_delay&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="c1"># solution-end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>544.0</td>
+      <td>545</td>
+      <td>-1.0</td>
+      <td>1004.0</td>
+      <td>1022</td>
+      <td>-18.0</td>
+      <td>B6</td>
+      <td>725</td>
+      <td>N804JB</td>
+      <td>JFK</td>
+      <td>BQN</td>
+      <td>183.0</td>
+      <td>1576</td>
+      <td>5</td>
+      <td>45</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554.0</td>
+      <td>600</td>
+      <td>-6.0</td>
+      <td>812.0</td>
+      <td>837</td>
+      <td>-25.0</td>
+      <td>DL</td>
+      <td>461</td>
+      <td>N668DN</td>
+      <td>LGA</td>
+      <td>ATL</td>
+      <td>116.0</td>
+      <td>762</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>557.0</td>
+      <td>600</td>
+      <td>-3.0</td>
+      <td>709.0</td>
+      <td>723</td>
+      <td>-14.0</td>
+      <td>EV</td>
+      <td>5708</td>
+      <td>N829AS</td>
+      <td>LGA</td>
+      <td>IAD</td>
+      <td>53.0</td>
+      <td>229</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>557.0</td>
+      <td>600</td>
+      <td>-3.0</td>
+      <td>838.0</td>
+      <td>846</td>
+      <td>-8.0</td>
+      <td>B6</td>
+      <td>79</td>
+      <td>N593JB</td>
+      <td>JFK</td>
+      <td>MCO</td>
+      <td>140.0</td>
+      <td>944</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>558.0</td>
+      <td>600</td>
+      <td>-2.0</td>
+      <td>849.0</td>
+      <td>851</td>
+      <td>-2.0</td>
+      <td>B6</td>
+      <td>49</td>
+      <td>N793JB</td>
+      <td>JFK</td>
+      <td>PBI</td>
+      <td>149.0</td>
+      <td>1028</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>144341</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>2237.0</td>
+      <td>2245</td>
+      <td>-8.0</td>
+      <td>2345.0</td>
+      <td>2353</td>
+      <td>-8.0</td>
+      <td>B6</td>
+      <td>234</td>
+      <td>N318JB</td>
+      <td>JFK</td>
+      <td>BTV</td>
+      <td>43.0</td>
+      <td>266</td>
+      <td>22</td>
+      <td>45</td>
+      <td>2013-10-01T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>144342</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>2240.0</td>
+      <td>2245</td>
+      <td>-5.0</td>
+      <td>2334.0</td>
+      <td>2351</td>
+      <td>-17.0</td>
+      <td>B6</td>
+      <td>1816</td>
+      <td>N354JB</td>
+      <td>JFK</td>
+      <td>SYR</td>
+      <td>41.0</td>
+      <td>209</td>
+      <td>22</td>
+      <td>45</td>
+      <td>2013-10-01T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>144343</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>2240.0</td>
+      <td>2250</td>
+      <td>-10.0</td>
+      <td>2347.0</td>
+      <td>7</td>
+      <td>-20.0</td>
+      <td>B6</td>
+      <td>2002</td>
+      <td>N281JB</td>
+      <td>JFK</td>
+      <td>BUF</td>
+      <td>52.0</td>
+      <td>301</td>
+      <td>22</td>
+      <td>50</td>
+      <td>2013-10-01T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>144344</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>2241.0</td>
+      <td>2246</td>
+      <td>-5.0</td>
+      <td>2345.0</td>
+      <td>1</td>
+      <td>-16.0</td>
+      <td>B6</td>
+      <td>486</td>
+      <td>N346JB</td>
+      <td>JFK</td>
+      <td>ROC</td>
+      <td>47.0</td>
+      <td>264</td>
+      <td>22</td>
+      <td>46</td>
+      <td>2013-10-01T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>144345</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>2349.0</td>
+      <td>2359</td>
+      <td>-10.0</td>
+      <td>325.0</td>
+      <td>350</td>
+      <td>-25.0</td>
+      <td>B6</td>
+      <td>745</td>
+      <td>N516JB</td>
+      <td>JFK</td>
+      <td>PSE</td>
+      <td>196.0</td>
+      <td>1617</td>
+      <td>23</td>
+      <td>59</td>
+      <td>2013-10-01T03:00:00Z</td>
+    </tr>
+  </tbody>
+</table>
+<p>144346 rows × 19 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="arranging">
+<h1>Arranging<a class="headerlink" href="#arranging" title="Permalink to this headline">¶</a></h1>
+<p>Filtering is particularly helpful when combined with <em>sorting</em>; we can sort on any column using the function <code class="docutils literal notranslate"><span class="pre">gr.tf_arrange()</span></code>. For instance, the following code sorts by the <code class="docutils literal notranslate"><span class="pre">&quot;distance&quot;</span></code>, pulling the shortest flights to the top of the DataFrame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="c1"># Sorts from smallest to largest</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_arrange</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">])</span>
+    <span class="c1"># Inspect the route</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;distance&quot;</span><span class="p">,</span> <span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="s2">&quot;dest&quot;</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">everything</span><span class="p">())</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>distance</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>air_time</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>17</td>
+      <td>EWR</td>
+      <td>LGA</td>
+      <td>2013</td>
+      <td>7</td>
+      <td>27</td>
+      <td>NaN</td>
+      <td>106</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>245</td>
+      <td>NaN</td>
+      <td>US</td>
+      <td>1632</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>6</td>
+      <td>2013-07-27T05:00:00Z</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>80</td>
+      <td>EWR</td>
+      <td>PHL</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>4</td>
+      <td>1240.0</td>
+      <td>1200</td>
+      <td>40.0</td>
+      <td>1333.0</td>
+      <td>1306</td>
+      <td>27.0</td>
+      <td>EV</td>
+      <td>4193</td>
+      <td>N14972</td>
+      <td>30.0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>2013-01-04T17:00:00Z</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>80</td>
+      <td>EWR</td>
+      <td>PHL</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>19</td>
+      <td>1617.0</td>
+      <td>1617</td>
+      <td>0.0</td>
+      <td>1722.0</td>
+      <td>1722</td>
+      <td>0.0</td>
+      <td>EV</td>
+      <td>4616</td>
+      <td>N12540</td>
+      <td>34.0</td>
+      <td>16</td>
+      <td>17</td>
+      <td>2013-01-19T21:00:00Z</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>80</td>
+      <td>EWR</td>
+      <td>PHL</td>
+      <td>2013</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2128.0</td>
+      <td>2129</td>
+      <td>-1.0</td>
+      <td>2216.0</td>
+      <td>2224</td>
+      <td>-8.0</td>
+      <td>EV</td>
+      <td>4619</td>
+      <td>N13969</td>
+      <td>24.0</td>
+      <td>21</td>
+      <td>29</td>
+      <td>2013-02-02T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>80</td>
+      <td>EWR</td>
+      <td>PHL</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>23</td>
+      <td>2128.0</td>
+      <td>2129</td>
+      <td>-1.0</td>
+      <td>2221.0</td>
+      <td>2224</td>
+      <td>-3.0</td>
+      <td>EV</td>
+      <td>4619</td>
+      <td>N12135</td>
+      <td>23.0</td>
+      <td>21</td>
+      <td>29</td>
+      <td>2013-01-24T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>336771</th>
+      <td>4983</td>
+      <td>JFK</td>
+      <td>HNL</td>
+      <td>2013</td>
+      <td>12</td>
+      <td>18</td>
+      <td>928.0</td>
+      <td>930</td>
+      <td>-2.0</td>
+      <td>1543.0</td>
+      <td>1535</td>
+      <td>8.0</td>
+      <td>HA</td>
+      <td>51</td>
+      <td>N395HA</td>
+      <td>641.0</td>
+      <td>9</td>
+      <td>30</td>
+      <td>2013-12-18T14:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336772</th>
+      <td>4983</td>
+      <td>JFK</td>
+      <td>HNL</td>
+      <td>2013</td>
+      <td>6</td>
+      <td>2</td>
+      <td>956.0</td>
+      <td>1000</td>
+      <td>-4.0</td>
+      <td>1442.0</td>
+      <td>1435</td>
+      <td>7.0</td>
+      <td>HA</td>
+      <td>51</td>
+      <td>N383HA</td>
+      <td>617.0</td>
+      <td>10</td>
+      <td>0</td>
+      <td>2013-06-02T14:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336773</th>
+      <td>4983</td>
+      <td>JFK</td>
+      <td>HNL</td>
+      <td>2013</td>
+      <td>3</td>
+      <td>17</td>
+      <td>1006.0</td>
+      <td>1000</td>
+      <td>6.0</td>
+      <td>1607.0</td>
+      <td>1530</td>
+      <td>37.0</td>
+      <td>HA</td>
+      <td>51</td>
+      <td>N380HA</td>
+      <td>686.0</td>
+      <td>10</td>
+      <td>0</td>
+      <td>2013-03-17T14:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336774</th>
+      <td>4983</td>
+      <td>JFK</td>
+      <td>HNL</td>
+      <td>2013</td>
+      <td>5</td>
+      <td>28</td>
+      <td>953.0</td>
+      <td>1000</td>
+      <td>-7.0</td>
+      <td>1447.0</td>
+      <td>1500</td>
+      <td>-13.0</td>
+      <td>HA</td>
+      <td>51</td>
+      <td>N385HA</td>
+      <td>631.0</td>
+      <td>10</td>
+      <td>0</td>
+      <td>2013-05-28T14:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336775</th>
+      <td>4983</td>
+      <td>JFK</td>
+      <td>HNL</td>
+      <td>2013</td>
+      <td>8</td>
+      <td>11</td>
+      <td>950.0</td>
+      <td>1000</td>
+      <td>-10.0</td>
+      <td>1438.0</td>
+      <td>1440</td>
+      <td>-2.0</td>
+      <td>HA</td>
+      <td>51</td>
+      <td>N391HA</td>
+      <td>628.0</td>
+      <td>10</td>
+      <td>0</td>
+      <td>2013-08-11T14:00:00Z</td>
+    </tr>
+  </tbody>
+</table>
+<p>336776 rows × 19 columns</p>
+</div></div></div>
+</div>
+<p>We can also reverse the order of the sort with the <code class="docutils literal notranslate"><span class="pre">gr.desc()</span></code> helper, as shown below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="c1"># Sorts from largest to smallest (*desc*ending)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_arrange</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">desc</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]))</span>
+    <span class="c1"># Inspect the route</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;distance&quot;</span><span class="p">,</span> <span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="s2">&quot;dest&quot;</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">everything</span><span class="p">())</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>distance</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>air_time</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4983</td>
+      <td>JFK</td>
+      <td>HNL</td>
+      <td>2013</td>
+      <td>5</td>
+      <td>14</td>
+      <td>959.0</td>
+      <td>1000</td>
+      <td>-1.0</td>
+      <td>1433.0</td>
+      <td>1500</td>
+      <td>-27.0</td>
+      <td>HA</td>
+      <td>51</td>
+      <td>N388HA</td>
+      <td>608.0</td>
+      <td>10</td>
+      <td>0</td>
+      <td>2013-05-14T14:00:00Z</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4983</td>
+      <td>JFK</td>
+      <td>HNL</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>11</td>
+      <td>855.0</td>
+      <td>900</td>
+      <td>-5.0</td>
+      <td>1442.0</td>
+      <td>1530</td>
+      <td>-48.0</td>
+      <td>HA</td>
+      <td>51</td>
+      <td>N383HA</td>
+      <td>613.0</td>
+      <td>9</td>
+      <td>0</td>
+      <td>2013-01-11T14:00:00Z</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4983</td>
+      <td>JFK</td>
+      <td>HNL</td>
+      <td>2013</td>
+      <td>4</td>
+      <td>6</td>
+      <td>957.0</td>
+      <td>1000</td>
+      <td>-3.0</td>
+      <td>1510.0</td>
+      <td>1510</td>
+      <td>0.0</td>
+      <td>HA</td>
+      <td>51</td>
+      <td>N382HA</td>
+      <td>638.0</td>
+      <td>10</td>
+      <td>0</td>
+      <td>2013-04-06T14:00:00Z</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4983</td>
+      <td>JFK</td>
+      <td>HNL</td>
+      <td>2013</td>
+      <td>2</td>
+      <td>15</td>
+      <td>858.0</td>
+      <td>900</td>
+      <td>-2.0</td>
+      <td>1436.0</td>
+      <td>1540</td>
+      <td>-64.0</td>
+      <td>HA</td>
+      <td>51</td>
+      <td>N382HA</td>
+      <td>611.0</td>
+      <td>9</td>
+      <td>0</td>
+      <td>2013-02-15T14:00:00Z</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4983</td>
+      <td>JFK</td>
+      <td>HNL</td>
+      <td>2013</td>
+      <td>7</td>
+      <td>24</td>
+      <td>958.0</td>
+      <td>1000</td>
+      <td>-2.0</td>
+      <td>1435.0</td>
+      <td>1430</td>
+      <td>5.0</td>
+      <td>HA</td>
+      <td>51</td>
+      <td>N384HA</td>
+      <td>609.0</td>
+      <td>10</td>
+      <td>0</td>
+      <td>2013-07-24T14:00:00Z</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>336771</th>
+      <td>80</td>
+      <td>EWR</td>
+      <td>PHL</td>
+      <td>2013</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1926.0</td>
+      <td>1929</td>
+      <td>-3.0</td>
+      <td>2011.0</td>
+      <td>2023</td>
+      <td>-12.0</td>
+      <td>EV</td>
+      <td>4457</td>
+      <td>N21144</td>
+      <td>30.0</td>
+      <td>19</td>
+      <td>29</td>
+      <td>2013-03-03T00:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336772</th>
+      <td>80</td>
+      <td>EWR</td>
+      <td>PHL</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>27</td>
+      <td>2128.0</td>
+      <td>2129</td>
+      <td>-1.0</td>
+      <td>2213.0</td>
+      <td>2224</td>
+      <td>-11.0</td>
+      <td>EV</td>
+      <td>4619</td>
+      <td>N13969</td>
+      <td>29.0</td>
+      <td>21</td>
+      <td>29</td>
+      <td>2013-01-28T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336773</th>
+      <td>80</td>
+      <td>EWR</td>
+      <td>PHL</td>
+      <td>2013</td>
+      <td>2</td>
+      <td>3</td>
+      <td>2153.0</td>
+      <td>2129</td>
+      <td>24.0</td>
+      <td>2247.0</td>
+      <td>2224</td>
+      <td>23.0</td>
+      <td>EV</td>
+      <td>4619</td>
+      <td>N13913</td>
+      <td>21.0</td>
+      <td>21</td>
+      <td>29</td>
+      <td>2013-02-04T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336774</th>
+      <td>80</td>
+      <td>EWR</td>
+      <td>PHL</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>9</td>
+      <td>2126.0</td>
+      <td>2129</td>
+      <td>-3.0</td>
+      <td>2217.0</td>
+      <td>2224</td>
+      <td>-7.0</td>
+      <td>EV</td>
+      <td>4619</td>
+      <td>N17560</td>
+      <td>27.0</td>
+      <td>21</td>
+      <td>29</td>
+      <td>2013-01-10T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336775</th>
+      <td>17</td>
+      <td>EWR</td>
+      <td>LGA</td>
+      <td>2013</td>
+      <td>7</td>
+      <td>27</td>
+      <td>NaN</td>
+      <td>106</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>245</td>
+      <td>NaN</td>
+      <td>US</td>
+      <td>1632</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>6</td>
+      <td>2013-07-27T05:00:00Z</td>
+    </tr>
+  </tbody>
+</table>
+<p>336776 rows × 19 columns</p>
+</div></div></div>
+</div>
+<div class="section" id="q8-find-the-earliest-departures">
+<h2><strong>q8</strong> Find the earliest departures<a class="headerlink" href="#q8-find-the-earliest-departures" title="Permalink to this headline">¶</a></h2>
+<p>Find the top 10 <em>earliest</em> departures. How early did these depart? Do these early departures have anything in common?</p>
+<p><em>Hint</em>: You will need to combine functions to accomplish this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Find the top 10 earliest departures</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_arrange</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;dep_delay&quot;</span><span class="p">])</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;dep_delay&quot;</span><span class="p">,</span> <span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="s2">&quot;dest&quot;</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">everything</span><span class="p">())</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dep_delay</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-43.0</td>
+      <td>JFK</td>
+      <td>DEN</td>
+      <td>2013</td>
+      <td>12</td>
+      <td>7</td>
+      <td>2040.0</td>
+      <td>2123</td>
+      <td>40.0</td>
+      <td>2352</td>
+      <td>48.0</td>
+      <td>B6</td>
+      <td>97</td>
+      <td>N592JB</td>
+      <td>265.0</td>
+      <td>1626</td>
+      <td>21</td>
+      <td>23</td>
+      <td>2013-12-08T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-33.0</td>
+      <td>LGA</td>
+      <td>MSY</td>
+      <td>2013</td>
+      <td>2</td>
+      <td>3</td>
+      <td>2022.0</td>
+      <td>2055</td>
+      <td>2240.0</td>
+      <td>2338</td>
+      <td>-58.0</td>
+      <td>DL</td>
+      <td>1715</td>
+      <td>N612DL</td>
+      <td>162.0</td>
+      <td>1183</td>
+      <td>20</td>
+      <td>55</td>
+      <td>2013-02-04T01:00:00Z</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-32.0</td>
+      <td>LGA</td>
+      <td>IAD</td>
+      <td>2013</td>
+      <td>11</td>
+      <td>10</td>
+      <td>1408.0</td>
+      <td>1440</td>
+      <td>1549.0</td>
+      <td>1559</td>
+      <td>-10.0</td>
+      <td>EV</td>
+      <td>5713</td>
+      <td>N825AS</td>
+      <td>52.0</td>
+      <td>229</td>
+      <td>14</td>
+      <td>40</td>
+      <td>2013-11-10T19:00:00Z</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-30.0</td>
+      <td>LGA</td>
+      <td>TPA</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>11</td>
+      <td>1900.0</td>
+      <td>1930</td>
+      <td>2233.0</td>
+      <td>2243</td>
+      <td>-10.0</td>
+      <td>DL</td>
+      <td>1435</td>
+      <td>N934DL</td>
+      <td>139.0</td>
+      <td>1010</td>
+      <td>19</td>
+      <td>30</td>
+      <td>2013-01-12T00:00:00Z</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-27.0</td>
+      <td>LGA</td>
+      <td>DEN</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>29</td>
+      <td>1703.0</td>
+      <td>1730</td>
+      <td>1947.0</td>
+      <td>1957</td>
+      <td>-10.0</td>
+      <td>F9</td>
+      <td>837</td>
+      <td>N208FR</td>
+      <td>250.0</td>
+      <td>1620</td>
+      <td>17</td>
+      <td>30</td>
+      <td>2013-01-29T22:00:00Z</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>-26.0</td>
+      <td>LGA</td>
+      <td>DTW</td>
+      <td>2013</td>
+      <td>8</td>
+      <td>9</td>
+      <td>729.0</td>
+      <td>755</td>
+      <td>1002.0</td>
+      <td>955</td>
+      <td>7.0</td>
+      <td>MQ</td>
+      <td>3478</td>
+      <td>N711MQ</td>
+      <td>88.0</td>
+      <td>502</td>
+      <td>7</td>
+      <td>55</td>
+      <td>2013-08-09T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>-25.0</td>
+      <td>LGA</td>
+      <td>DTW</td>
+      <td>2013</td>
+      <td>3</td>
+      <td>30</td>
+      <td>2030.0</td>
+      <td>2055</td>
+      <td>2213.0</td>
+      <td>2250</td>
+      <td>-37.0</td>
+      <td>MQ</td>
+      <td>4573</td>
+      <td>N725MQ</td>
+      <td>87.0</td>
+      <td>502</td>
+      <td>20</td>
+      <td>55</td>
+      <td>2013-03-31T00:00:00Z</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>-25.0</td>
+      <td>EWR</td>
+      <td>TYS</td>
+      <td>2013</td>
+      <td>10</td>
+      <td>23</td>
+      <td>1907.0</td>
+      <td>1932</td>
+      <td>2143.0</td>
+      <td>2143</td>
+      <td>0.0</td>
+      <td>EV</td>
+      <td>4361</td>
+      <td>N13994</td>
+      <td>111.0</td>
+      <td>631</td>
+      <td>19</td>
+      <td>32</td>
+      <td>2013-10-23T23:00:00Z</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>-24.0</td>
+      <td>LGA</td>
+      <td>STL</td>
+      <td>2013</td>
+      <td>9</td>
+      <td>18</td>
+      <td>1631.0</td>
+      <td>1655</td>
+      <td>1812.0</td>
+      <td>1845</td>
+      <td>-33.0</td>
+      <td>AA</td>
+      <td>2223</td>
+      <td>N4XXAA</td>
+      <td>125.0</td>
+      <td>888</td>
+      <td>16</td>
+      <td>55</td>
+      <td>2013-09-18T20:00:00Z</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>-24.0</td>
+      <td>JFK</td>
+      <td>BUF</td>
+      <td>2013</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1431.0</td>
+      <td>1455</td>
+      <td>1601.0</td>
+      <td>1631</td>
+      <td>-30.0</td>
+      <td>9E</td>
+      <td>3318</td>
+      <td>N929XJ</td>
+      <td>55.0</td>
+      <td>301</td>
+      <td>14</td>
+      <td>55</td>
+      <td>2013-03-02T19:00:00Z</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="isolating-to-answer-questions">
+<h1>Isolating to answer questions<a class="headerlink" href="#isolating-to-answer-questions" title="Permalink to this headline">¶</a></h1>
+<p>Before we close this exercise, let’s use these data isolation tools to answer a real question about the dataset:</p>
+<div class="section" id="q9-what-are-these-data-for">
+<h2><strong>q9</strong> What are these data for?<a class="headerlink" href="#q9-what-are-these-data-for" title="Permalink to this headline">¶</a></h2>
+<p>What are these data for? In particular, in what way are they “focused on the NYC area”? Complete the following tasks, and answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Filter to only those cases where the destination airport</span>
+<span class="c1"># is one of &quot;JFK&quot;, &quot;LGA&quot;, or &quot;EWR&quot;</span>
+<span class="n">df_q9dest</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;dest&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;JFK&quot;</span><span class="p">)</span> <span class="o">|</span>
+        <span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;dest&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;LGA&quot;</span><span class="p">)</span> <span class="o">|</span>
+        <span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;dest&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;EWR&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># NOTE: No need to edit; use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="n">df_q9dest</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> \
+    <span class="s2">&quot;Incorrect filter&quot;</span>
+
+<span class="n">df_q9dest</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2013</td>
+      <td>7</td>
+      <td>27</td>
+      <td>NaN</td>
+      <td>106</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>245</td>
+      <td>NaN</td>
+      <td>US</td>
+      <td>1632</td>
+      <td>NaN</td>
+      <td>EWR</td>
+      <td>LGA</td>
+      <td>NaN</td>
+      <td>17</td>
+      <td>1</td>
+      <td>6</td>
+      <td>2013-07-27T05:00:00Z</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Filter to only those cases where the origin airport</span>
+<span class="c1"># is one of &quot;JFK&quot;, &quot;LGA&quot;, or &quot;EWR&quot;</span>
+<span class="n">df_q9origin</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;origin&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;JFK&quot;</span><span class="p">)</span> <span class="o">|</span>
+        <span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;origin&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;LGA&quot;</span><span class="p">)</span> <span class="o">|</span>
+        <span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;origin&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;EWR&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># NOTE: No need to edit; use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="n">df_q9origin</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">df_flights</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> \
+    <span class="s2">&quot;Incorrect filter&quot;</span>
+
+<span class="n">df_q9origin</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>517.0</td>
+      <td>515</td>
+      <td>2.0</td>
+      <td>830.0</td>
+      <td>819</td>
+      <td>11.0</td>
+      <td>UA</td>
+      <td>1545</td>
+      <td>N14228</td>
+      <td>EWR</td>
+      <td>IAH</td>
+      <td>227.0</td>
+      <td>1400</td>
+      <td>5</td>
+      <td>15</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>533.0</td>
+      <td>529</td>
+      <td>4.0</td>
+      <td>850.0</td>
+      <td>830</td>
+      <td>20.0</td>
+      <td>UA</td>
+      <td>1714</td>
+      <td>N24211</td>
+      <td>LGA</td>
+      <td>IAH</td>
+      <td>227.0</td>
+      <td>1416</td>
+      <td>5</td>
+      <td>29</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>542.0</td>
+      <td>540</td>
+      <td>2.0</td>
+      <td>923.0</td>
+      <td>850</td>
+      <td>33.0</td>
+      <td>AA</td>
+      <td>1141</td>
+      <td>N619AA</td>
+      <td>JFK</td>
+      <td>MIA</td>
+      <td>160.0</td>
+      <td>1089</td>
+      <td>5</td>
+      <td>40</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>544.0</td>
+      <td>545</td>
+      <td>-1.0</td>
+      <td>1004.0</td>
+      <td>1022</td>
+      <td>-18.0</td>
+      <td>B6</td>
+      <td>725</td>
+      <td>N804JB</td>
+      <td>JFK</td>
+      <td>BQN</td>
+      <td>183.0</td>
+      <td>1576</td>
+      <td>5</td>
+      <td>45</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554.0</td>
+      <td>600</td>
+      <td>-6.0</td>
+      <td>812.0</td>
+      <td>837</td>
+      <td>-25.0</td>
+      <td>DL</td>
+      <td>461</td>
+      <td>N668DN</td>
+      <td>LGA</td>
+      <td>ATL</td>
+      <td>116.0</td>
+      <td>762</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>336771</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>1455</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1634</td>
+      <td>NaN</td>
+      <td>9E</td>
+      <td>3393</td>
+      <td>NaN</td>
+      <td>JFK</td>
+      <td>DCA</td>
+      <td>NaN</td>
+      <td>213</td>
+      <td>14</td>
+      <td>55</td>
+      <td>2013-09-30T18:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336772</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>2200</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2312</td>
+      <td>NaN</td>
+      <td>9E</td>
+      <td>3525</td>
+      <td>NaN</td>
+      <td>LGA</td>
+      <td>SYR</td>
+      <td>NaN</td>
+      <td>198</td>
+      <td>22</td>
+      <td>0</td>
+      <td>2013-10-01T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336773</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>1210</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1330</td>
+      <td>NaN</td>
+      <td>MQ</td>
+      <td>3461</td>
+      <td>N535MQ</td>
+      <td>LGA</td>
+      <td>BNA</td>
+      <td>NaN</td>
+      <td>764</td>
+      <td>12</td>
+      <td>10</td>
+      <td>2013-09-30T16:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336774</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>1159</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1344</td>
+      <td>NaN</td>
+      <td>MQ</td>
+      <td>3572</td>
+      <td>N511MQ</td>
+      <td>LGA</td>
+      <td>CLE</td>
+      <td>NaN</td>
+      <td>419</td>
+      <td>11</td>
+      <td>59</td>
+      <td>2013-09-30T15:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336775</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>840</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1020</td>
+      <td>NaN</td>
+      <td>MQ</td>
+      <td>3531</td>
+      <td>N839MQ</td>
+      <td>LGA</td>
+      <td>RDU</td>
+      <td>NaN</td>
+      <td>431</td>
+      <td>8</td>
+      <td>40</td>
+      <td>2013-09-30T12:00:00Z</td>
+    </tr>
+  </tbody>
+</table>
+<p>336776 rows × 19 columns</p>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>How many rows have either “JFK”, “LGA”, or “EWR” as their <em>destination</em>?</p>
+<ul>
+<li><p>Just one!</p></li>
+</ul>
+</li>
+<li><p>How many rows have either “JFK”, “LGA”, or “EWR” as their <em>origin</em>?</p>
+<ul>
+<li><p><strong>All</strong> of the rows have “JFK”, “LGA”, or “EWR” as their origin</p></li>
+</ul>
+</li>
+<li><p>Would we be answer questions related to flights <em>entering</em> the NYC area using this dataset?</p>
+<ul>
+<li><p>Nope! We have virtually no data on those flights.</p></li>
+</ul>
+</li>
+<li><p>In what sense is this dataset “focused on NYC”?</p>
+<ul>
+<li><p>This dataset is focused on flights <em>departing</em> from NYC.</p></li>
+</ul>
+</li>
+</ul>
+<p><em>Aside</em>: Data are not just numbers. Data are <em>numbers with context</em>. Every dataset is put together for some reason. This reason will inform what observations (rows) and variables (columns) are <em>in the data</em>, and which are <em>not in the data</em>. Conversely, thinking carefully about what data a person or organization bothered to collect—and what they ignored—can tell you something about the <em>perspective</em> of those who collected the data. Thinking about these issues is partly what separates <strong>data science</strong> from programming or machine learning. (<code class="docutils literal notranslate"><span class="pre">end-rant</span></code>)</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./exercises_solution"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="d01-e-vis00-basics-solution.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Data Visualization Basics</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Zachary del Rosario<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

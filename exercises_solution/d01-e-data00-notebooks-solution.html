@@ -1,0 +1,1401 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to Jupyter Notebooks &#8212; Data Science for Engineers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Visualization Basics" href="d01-e-vis00-basics-solution.html" />
+    <link rel="prev" title="Exercise Solutions" href="../frontmatter/exercises.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/home.html">
+   Data Science for Engineers
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../frontmatter/exercises.html">
+   Exercise Solutions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Introduction to Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
+     Data Visualization Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
+     Data Isolation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/exercises_solution/d01-e-data00-notebooks-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d01-e-data00-notebooks-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Introduction to Jupyter Notebooks
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#highest-level-view">
+     Highest-level View
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#python">
+       Python
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#jupyter">
+       Jupyter
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-use-this-notebook">
+     How to use this Notebook
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q0-an-example-question">
+       <strong>
+        q0
+       </strong>
+       : An example question
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-introduction">
+   Jupyter Introduction
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cells">
+     Cells
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q1-create-a-new-cell">
+       <strong>
+        q1
+       </strong>
+       Create a new cell
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#types-of-cells">
+       Types of cells
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#edit-and-format-execute-cells">
+       Edit and format / execute cells
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-cells">
+       Code cells
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-introduction">
+   Python Introduction
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simple-operations">
+     Simple operations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q2-average-some-values">
+       <strong>
+        q2
+       </strong>
+       Average some values
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variables">
+     Variables
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-display-a-variable">
+       <strong>
+        q3
+       </strong>
+       Display a variable
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lists">
+     Lists
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-working-with-lists">
+       <strong>
+        q4
+       </strong>
+       Working with lists
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-and-slicing">
+     Indexing and Slicing
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-take-the-middle">
+       <strong>
+        q5
+       </strong>
+       Take the middle
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modules">
+     Modules
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q6-do-the-math">
+       <strong>
+        q6
+       </strong>
+       Do the math
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditionals-and-logic">
+     Conditionals and logic
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     Functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q7-define-a-function">
+       <strong>
+        q7
+       </strong>
+       Define a function
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-help">
+     Getting help
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q8-consult-the-documentation">
+       <strong>
+        q8
+       </strong>
+       Consult the documentation
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#end-notes">
+   End Notes
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#save-close-quit-and-re-open-this-notebook">
+     Save, close, quit, and re-open this notebook
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#additional-notebook-tips">
+     Additional notebook tips
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jupyter-magic-functions">
+     Jupyter magic functions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introduction to Jupyter Notebooks</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Introduction to Jupyter Notebooks
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#highest-level-view">
+     Highest-level View
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#python">
+       Python
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#jupyter">
+       Jupyter
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-use-this-notebook">
+     How to use this Notebook
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q0-an-example-question">
+       <strong>
+        q0
+       </strong>
+       : An example question
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-introduction">
+   Jupyter Introduction
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cells">
+     Cells
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q1-create-a-new-cell">
+       <strong>
+        q1
+       </strong>
+       Create a new cell
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#types-of-cells">
+       Types of cells
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#edit-and-format-execute-cells">
+       Edit and format / execute cells
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-cells">
+       Code cells
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-introduction">
+   Python Introduction
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simple-operations">
+     Simple operations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q2-average-some-values">
+       <strong>
+        q2
+       </strong>
+       Average some values
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variables">
+     Variables
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-display-a-variable">
+       <strong>
+        q3
+       </strong>
+       Display a variable
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lists">
+     Lists
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-working-with-lists">
+       <strong>
+        q4
+       </strong>
+       Working with lists
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-and-slicing">
+     Indexing and Slicing
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-take-the-middle">
+       <strong>
+        q5
+       </strong>
+       Take the middle
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modules">
+     Modules
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q6-do-the-math">
+       <strong>
+        q6
+       </strong>
+       Do the math
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditionals-and-logic">
+     Conditionals and logic
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     Functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q7-define-a-function">
+       <strong>
+        q7
+       </strong>
+       Define a function
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-help">
+     Getting help
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q8-consult-the-documentation">
+       <strong>
+        q8
+       </strong>
+       Consult the documentation
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#end-notes">
+   End Notes
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#save-close-quit-and-re-open-this-notebook">
+     Save, close, quit, and re-open this notebook
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#additional-notebook-tips">
+     Additional notebook tips
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jupyter-magic-functions">
+     Jupyter magic functions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-jupyter-notebooks">
+<h1>Introduction to Jupyter Notebooks<a class="headerlink" href="#introduction-to-jupyter-notebooks" title="Permalink to this headline">¶</a></h1>
+<p><em>Original Authors: Enze Chen, Malcolm Davidson, Zach del Rosario</em></p>
+<p><em>Purpose</em>: We’re going to use programming tools throughout this workshop. There are many benefits to using programming to do data science, but to reap these benefits you will need to know some basics about coding in Python, and working in Jupyter notebooks.</p>
+<div class="section" id="highest-level-view">
+<h2>Highest-level View<a class="headerlink" href="#highest-level-view" title="Permalink to this headline">¶</a></h2>
+<p>Throughout this day of the workshop, we will be writing computer software. Before diving into the details, it is beneficial to understand what tools we’ll be using, and why.</p>
+<div class="section" id="python">
+<h3>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
+<p>Python is a <a class="reference external" href="https://www.python.org"><em>programming language</em></a>, and an extremely popular one at that. Python is praised for its readability, is consistently ranked as a top programming language, and is used by both top <a class="reference external" href="https://en.wikipedia.org/wiki/Python_(programming_language)#Uses">software companies</a> and scientists doing computation. All of this is to say that knowing how to write Python code is a valuable skill.</p>
+</div>
+<div class="section" id="jupyter">
+<h3>Jupyter<a class="headerlink" href="#jupyter" title="Permalink to this headline">¶</a></h3>
+<p>Jupyter is a <a class="reference external" href="https://jupyter.org"><em>programming environment</em></a>, often used for writing and sharing Python code. Just as one could choose to write English on stone tablets or on paper, one could choose to write Python code in simple files or in <em>jupyter notebooks</em>. These notebooks are useful for a number of reasons:</p>
+<ol class="simple">
+<li><p>Multimedia: This document you’re reading now is a jupyter notebook – it is a combination of (executable) Python code and (formatted) plain text. By allowing the juxtaposition of different media (code and natural language, to name a couple options), one can provide human-readable context next to executable software.</p></li>
+<li><p>Saves state: Jupyter notebooks <em>save state</em>, allowing you to run some code, save the results, close the document and come back to it later. This is certainly possible in other coding environments, but jupyter has built-in facilities to make this easy.</p></li>
+<li><p>Reproducible: <a class="reference external" href="https://en.wikipedia.org/wiki/Reproducibility">Reproducibility</a> is a critical issue in science – results cannot be considered scientifically valid unless they can be reproduced under similar conditions. The same principles apply to computational experiments; all too often software is written under time pressure, resulting in scattered documentation and analysis. Consolidating documentation and analysis within a single notebook facilitates scientific reproducibility.</p></li>
+</ol>
+<p>Jupyter notebooks are not <em>always</em> the best media for writing code; for instance, python <em>packages</em> are not written in jupyter notebooks. However, for our purposes, jupyter is a good solution.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="how-to-use-this-notebook">
+<h2>How to use this Notebook<a class="headerlink" href="#how-to-use-this-notebook" title="Permalink to this headline">¶</a></h2>
+<p>This jupyter notebook is an <em>interactive exercise</em> – it contains some reading, but the focus is on fill-in-the-blank sections that are meant to test your understanding and spark further learning. Pedagogy research shows that so-called <em>active learning</em> – learning by doing – is far more effective than lecture alone. Thus, you will get the most out of this workshop if you do the work! Try – to the best of your ability – to complete the exercises in these notebooks, and please feel free to ask the instructors questions if you get stuck. (It’s what we’re here for.)</p>
+<div class="warning admonition">
+<p class="admonition-title">Run this notebook locally!</p>
+<p>If you’re reading this on the workshop website—and <em>not</em> in your local jupyter reader—then it is <em>necessary</em> that you download this notebook locally and open it in jupyter. Look for the download bar in the top-right of this page, as pictured below.</p>
+<p><strong>TODO UPDATE SETUP INSTRUCTIONS</strong></p>
+</div>
+<p>Exercise portions of the notebook will be marked with a “q” subheading, like the following:</p>
+<div class="section" id="q0-an-example-question">
+<h3><strong>q0</strong>: An example question<a class="headerlink" href="#q0-an-example-question" title="Permalink to this headline">¶</a></h3>
+<p>Here’s an example of an exercise prompt. Follow the directions here to start the exercise.</p>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="jupyter-introduction">
+<h1>Jupyter Introduction<a class="headerlink" href="#jupyter-introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="cells">
+<h2>Cells<a class="headerlink" href="#cells" title="Permalink to this headline">¶</a></h2>
+<p>A Jupyter notebook is organized as a sequence of different <strong>cells</strong>. Cells contain chunks of information and allow you to switch between text and code.</p>
+<p><strong>Current cell</strong>: The currently-selected cell will have a color bar appear on the far left. Use your cursor or arrow keys to select different cells.</p>
+<p><strong>Create new cell</strong>: To create a new cell, click the “<strong>+</strong>” icon at the top. This will create a cell below the currently selected cell.</p>
+<p><strong>Delete a cell</strong>: To delete the currently-selected cell, click the “<strong>scissors</strong>” icon at the top.</p>
+<div class="section" id="q1-create-a-new-cell">
+<h3><strong>q1</strong> Create a new cell<a class="headerlink" href="#q1-create-a-new-cell" title="Permalink to this headline">¶</a></h3>
+<p><strong>Create a new cell below this one.</strong> Note that it has a different background color! This is because cells have different <em>types</em>.</p>
+</div>
+<div class="section" id="types-of-cells">
+<h3>Types of cells<a class="headerlink" href="#types-of-cells" title="Permalink to this headline">¶</a></h3>
+<p>There are two types of cells we will discuss here: <code class="docutils literal notranslate"><span class="pre">Markdown</span></code> and <code class="docutils literal notranslate"><span class="pre">Code</span></code>. A single cell can only have 1 type.</p>
+<p><strong>Markdown</strong>: These are text cells that use the Markdown language for formatting. You can put instructions, headings, links, images, and much more; even <span class="math notranslate nohighlight">\(\LaTeX\)</span> (<a class="reference external" href="https://www.latex-project.org">a language for typesetting mathematics</a>). Here is a <a class="reference external" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">cheatsheet</a> for Markdown syntax.</p>
+<p><strong>Code</strong>: These are cells where you can type Python code, just as you would in a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file. They will have a label <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[</span> <span class="pre">]:</span></code> to their left.</p>
+<p>To switch the type of cell, you can use the dropdown menu at the top of the cell. (Note: While you’re moused-over this cell, the dropdown menu should read <code class="docutils literal notranslate"><span class="pre">Markdown</span></code>.)</p>
+</div>
+<div class="section" id="edit-and-format-execute-cells">
+<h3>Edit and format / execute cells<a class="headerlink" href="#edit-and-format-execute-cells" title="Permalink to this headline">¶</a></h3>
+<p>To edit a Markdown cell, <strong>triple-click</strong> within the cell if you currently see a blue bar. The color bar on the left will turn green. Then type and edit as normal.</p>
+<p>To format (“execute”) a Markdown cell, press <strong>Ctrl+Enter</strong> when in “edit” mode. The color bar on the left will turn blue and the cursor will disappear. Your formatting will also take effect.</p>
+<hr class="docutils" />
+<p>To edit a Code cell, click within the cell. The color bar on the left will turn green. Then type and edit as normal.</p>
+<p>To execute a Code cell, press <strong>Ctrl+Enter</strong> while it is selected. The color bar on the left will turn blue and the cursor will disappear.</p>
+</div>
+<div class="section" id="code-cells">
+<h3>Code cells<a class="headerlink" href="#code-cells" title="Permalink to this headline">¶</a></h3>
+<p>So far we’ve only seen Markdown cells. Let’s see what we can do with Code cells! Try selecting the code cell below this one and executing it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is a python code cell</span>
+<span class="mi">6</span> <span class="o">*</span> <span class="mi">7</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>42
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that code cells are visually distinct from markdown cells – they have a grey background and the <code class="docutils literal notranslate"><span class="pre">[-]:</span></code> prefix.</p>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="python-introduction">
+<h1>Python Introduction<a class="headerlink" href="#python-introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="simple-operations">
+<h2>Simple operations<a class="headerlink" href="#simple-operations" title="Permalink to this headline">¶</a></h2>
+<p>We can use python like a calculator to carry out simple operations. Some of these include:</p>
+<ul class="simple">
+<li><p>Simple math operators <code class="docutils literal notranslate"><span class="pre">(+,</span> <span class="pre">-,</span> <span class="pre">*,</span> <span class="pre">/)</span></code></p></li>
+<li><p>Other math operators; exponentiation <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">**</span> <span class="pre">2</span> <span class="pre">==</span> <span class="pre">100</span></code>; modulus <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">%</span> <span class="pre">2</span> <span class="pre">==</span> <span class="pre">1</span></code></p></li>
+<li><p>Parentheses <code class="docutils literal notranslate"><span class="pre">(,</span> <span class="pre">)</span></code> for grouping operations</p></li>
+<li><p>Python functions; console output <code class="docutils literal notranslate"><span class="pre">print(&quot;Hello&quot;)</span></code></p></li>
+</ul>
+<div class="section" id="q2-average-some-values">
+<h3><strong>q2</strong> Average some values<a class="headerlink" href="#q2-average-some-values" title="Permalink to this headline">¶</a></h3>
+<p>Use basic python operations to average the following numbers: <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">4,</span> <span class="pre">6,</span> <span class="pre">8]</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Average the numbers [2, 4, 6, 8]</span>
+<span class="c1"># TODO: Use basic python operations to compute the arithmetic mean</span>
+<span class="c1">###</span>
+
+
+<span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">+</span> <span class="mi">8</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
+<p>Jupyter notebooks will save variables across different cells. We can assign values with the <code class="docutils literal notranslate"><span class="pre">=</span></code> operator. Furthermore, typing just the variable on the last line of a code cell will typically display the variable’s values/attributes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="q3-display-a-variable">
+<h3><strong>q3</strong> Display a variable<a class="headerlink" href="#q3-display-a-variable" title="Permalink to this headline">¶</a></h3>
+<p>Display the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> in the chunk below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Display a variable</span>
+<span class="c1"># TODO: Type the variable name below and execute</span>
+<span class="c1">###</span>
+<span class="n">c</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<p>A couple things happened here. First, the variable was saved. Second, Jupyter notebooks will display the value of any lone variables in the last line of each Code cell. This is helpful for debugging.</p>
+<p>If you want to display multiple quantities from a single cell, you can always use a print statement <code class="docutils literal notranslate"><span class="pre">print(variable)</span></code>. For instance, we could write</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also see that Code cells with output will have an associated <code class="docutils literal notranslate"><span class="pre">Out</span> <span class="pre">[#]</span></code> right below. Notice what happens to the cell below when the code is running.</p>
+</div>
+</div>
+<div class="section" id="lists">
+<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
+<p>A <em>list</em> is a Python <a class="reference external" href="https://en.wikipedia.org/wiki/Data_structure">data structure</a>. We’ll use lists (and other <em>iterable</em> data structures) quite a bit when doing data analysis – generally we have many observations (elements) to consider.</p>
+<p>Lists (i.e. arrays) in Python are created with square brackets. The entries of a list are called <em>elements</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">append()</span></code> method adds a single element to the end of the array. Note how we can add elements of different types to the same list (unlike Java or C++).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="n">l</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, &#39;a&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that I <em>needed</em> to place <code class="docutils literal notranslate"><span class="pre">l</span></code> at the end of the cell to display the result. <code class="docutils literal notranslate"><span class="pre">append()</span></code> modified the list <em>in place</em> – it makes the list longer.</p>
+<p>We can also <em>combine</em> lists with the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 5, 6]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that I <em>did not need</em> to write an additional line to print the result. This is because the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator <em>returns</em> a list as a result, which is printed by jupyter.</p>
+<div class="section" id="q4-working-with-lists">
+<h3><strong>q4</strong> Working with lists<a class="headerlink" href="#q4-working-with-lists" title="Permalink to this headline">¶</a></h3>
+<p>Test your understanding of lists; make a prediction about what the following code will display:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">list_a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">list_b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">list_a</span> <span class="o">+</span> <span class="n">list_b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">list_a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">list_b</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><em>After</em> you’ve made a prediction, <strong>make a new cell and test your prediction</strong>.</p>
+</div>
+</div>
+<div class="section" id="indexing-and-slicing">
+<h2>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">¶</a></h2>
+<p>We can access specific elements of a list (and other <em>iterables</em>) by <em>indexing</em>. Python is uses zero-based indexing, meaning the first element of an iterable is <code class="docutils literal notranslate"><span class="pre">0</span></code>, the second is <code class="docutils literal notranslate"><span class="pre">1</span></code>, and so on.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Index</span>    <span class="mi">0</span>    <span class="mi">1</span>    <span class="mi">2</span>    <span class="mi">3</span>    <span class="mi">4</span>
+<span class="n">List</span>  <span class="p">[</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>For instance:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;l[0] = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;l[1] = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;l[2] = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>l[0] = a
+l[1] = b
+l[2] = c
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also use <em>negative indices</em> to conveniently access from the “right”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;l[-1] = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;l[-2] = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>l[-1] = c
+l[-2] = b
+</pre></div>
+</div>
+</div>
+</div>
+<p>In Python, it’s easy to take subsets of lists and strings (i.e. substrings) using <strong>slicing</strong>. Given a list (string) named <code class="docutils literal notranslate"><span class="pre">var</span></code>, we can take a subset of elements (characters) ranging from <code class="docutils literal notranslate"><span class="pre">low</span></code> to <code class="docutils literal notranslate"><span class="pre">high-1</span></code> with the syntax <code class="docutils literal notranslate"><span class="pre">var[low:high]</span></code>. Run the following code and observe what happens.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="c1"># var = &#39;012345&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The second element:&#39;</span><span class="p">,</span> <span class="n">var</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The second and third elements:&#39;</span><span class="p">,</span> <span class="n">var</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The second element onwards:&#39;</span><span class="p">,</span> <span class="n">var</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Everything before the second element:&#39;</span><span class="p">,</span> <span class="n">var</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Everything before the second TO LAST element:&#39;</span><span class="p">,</span> <span class="n">var</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The second element: 1
+The second and third elements: [1, 2]
+The second element onwards: [1, 2, 3, 4, 5]
+Everything before the second element: [0]
+Everything before the second TO LAST element: [0, 1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="q5-take-the-middle">
+<h3><strong>q5</strong> Take the middle<a class="headerlink" href="#q5-take-the-middle" title="Permalink to this headline">¶</a></h3>
+<p>Using your understanding of python indexing &amp; slicing, select the <em>middle three elements</em> of the following list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Take the middle values</span>
+<span class="c1"># TODO: Use python slicing to take the middle three values</span>
+<span class="c1">###</span>
+<span class="n">test</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
+<span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1, 0, 1]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<p>By default, python provides a relatively small set of functionality. To carry out more specialized operations, we can <em>import module</em>. A module is a set of tools that help us carry out some tasks. For instance, the following module will help us control the execution of python code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import a module first</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="c1"># Pause code execution for 5 seconds</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Print some output to signal code has reached this point</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cell is finished running!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cell is finished running!
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the first line of the above Code cell, we imported a function <code class="docutils literal notranslate"><span class="pre">sleep()</span></code> from a module. A function takes some number of inputs (possibly zero, like <code class="docutils literal notranslate"><span class="pre">sleep()</span></code>), and returns some number of outputs (possibly zero, like <code class="docutils literal notranslate"><span class="pre">sleep()</span></code>). The inputs to a function are called <em>arguments</em>, and are put inside the parentheses, if needed.</p>
+<p>Python modules, even when installed on your machine, must be explicitly imported before they can be used. Some modules, like <code class="docutils literal notranslate"><span class="pre">time</span></code>, are bundled with Python (we might call these “standard modules”), while others must be installed separately from an external source (“third-party modules”) before importing.</p>
+<p>In later parts of the workshop, we will use some highly-specialized modules to carry out materials informatics tasks.</p>
+<p>If we don’t import a <em>specific</em> object from a module, then we need to explicitly reference the module in order to use its contents. For instance, we could write the above as the following.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cell is finished running!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cell is finished running!
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll see this a lot later when we start working with the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code> modules, where we tend to use <em>canonical</em> aliases:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="q6-do-the-math">
+<h3><strong>q6</strong> Do the math<a class="headerlink" href="#q6-do-the-math" title="Permalink to this headline">¶</a></h3>
+<p>Import the functions <code class="docutils literal notranslate"><span class="pre">sin,</span> <span class="pre">cos</span></code> and the constant <code class="docutils literal notranslate"><span class="pre">pi</span></code> from the <code class="docutils literal notranslate"><span class="pre">math</span></code> module, and use them to complete the following code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Compute some trigonometric operations</span>
+<span class="c1"># TODO: Import sin, cos, pi from the math module</span>
+<span class="c1"># TODO: Convert degrees to radians</span>
+<span class="c1"># TODO: Use sin() and cos() to complete the code below</span>
+<span class="c1">###</span>
+
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
+<span class="n">angle_degrees</span> <span class="o">=</span> <span class="mi">15</span>
+
+<span class="n">angle_radians</span> <span class="o">=</span> <span class="n">angle_degrees</span> <span class="o">/</span> <span class="mi">180</span> <span class="o">*</span> <span class="n">pi</span>
+<span class="n">my_sine</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">angle_radians</span><span class="p">)</span>
+<span class="n">my_cosine</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">angle_radians</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">my_sine</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">my_cosine</span><span class="o">**</span><span class="mi">2</span>
+<span class="c1"># -- PRINT THE ANSWER ----</span>
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="conditionals-and-logic">
+<h2>Conditionals and logic<a class="headerlink" href="#conditionals-and-logic" title="Permalink to this headline">¶</a></h2>
+<p>Conditionals and logic allow us to adapt a program to the data.  Python conditional statements are <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code>, and <code class="docutils literal notranslate"><span class="pre">else</span></code>, and they follow a particular syntax:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Not printed....&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that we <strong>must</strong> either indent or provide four spaces to all lines falling under a conditional.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+<span class="k">pass</span> <span class="c1"># This will throw an error!</span>
+<span class="c1">###</span>
+<span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This will work!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The reason for this is because python uses <em>whitespace</em> in the same way C/C++ uses braces, or MATLAB uses <code class="docutils literal notranslate"><span class="pre">end</span></code> statements. Proponents of python argue that the structure of the language <em>enforces</em> readability.</p>
+<ul class="simple">
+<li><p>An <code class="docutils literal notranslate"><span class="pre">if</span></code> statement will execute only if its argument evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code>; we can use this to select particular actions.</p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">else</span></code> statement must follow an <code class="docutils literal notranslate"><span class="pre">if</span></code> or <code class="docutils literal notranslate"><span class="pre">elif</span></code> statement; it will evaluate if none of the other conditionals are triggered.</p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">elif</span></code> statement is a python-specific construct, and must follow an <code class="docutils literal notranslate"><span class="pre">if</span></code> or another <code class="docutils literal notranslate"><span class="pre">elif</span></code> statement. An <code class="docutils literal notranslate"><span class="pre">elif</span></code> is like an <code class="docutils literal notranslate"><span class="pre">if</span></code>, but only evaluates if the preceding conditionals are not met.</p></li>
+</ul>
+<p>Comparisons for equality are similar to other programming languages (<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>).</p>
+<p>Logic can be done using <em>keywords</em> <code class="docutils literal notranslate"><span class="pre">not</span></code>, <code class="docutils literal notranslate"><span class="pre">and</span></code>, and <code class="docutils literal notranslate"><span class="pre">or</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uncomment and pick a number!</span>
+<span class="c1"># n = ???</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Positive.&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="ow">not</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Negative.&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Zero.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Zero.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<p>Functions are defined in Python using the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword. We specify the arguments by putting variable names in the parentheses <code class="docutils literal notranslate"><span class="pre">()</span></code>. We can specify a value to provide as output by using the <code class="docutils literal notranslate"><span class="pre">return</span></code> keyword, as demonstrated below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fcn_example</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>Like with conditional statements, we must end a function definition line with a colon <code class="docutils literal notranslate"><span class="pre">:</span></code>, and start the following lines indented:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="c1"># This will throw an error: Missing colon</span>
+<span class="k">def</span> <span class="nf">fcn_wrong1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span>
+ <span class="c1"># This will throw an error: Missing indentation</span>
+<span class="k">def</span> <span class="nf">fcn_wrong2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<p>We can then “call” (or “execute”) that function by typing the function name and including the function inputs in parentheses.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fcn_example</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fcn_example</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The inputs <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are called <em>arguments</em>. Arguments without default values must be provided (such as <code class="docutils literal notranslate"><span class="pre">x</span></code>), while arguments with default values are called <em>keyword arguments</em> and do not need to be specified when calling the function (such as <code class="docutils literal notranslate"><span class="pre">y</span></code>). Providing a keyword argument (<code class="docutils literal notranslate"><span class="pre">fcn_example(1,</span> <span class="pre">y=2)</span></code>) allows us to override the default value.</p>
+<div class="section" id="q7-define-a-function">
+<h3><strong>q7</strong> Define a function<a class="headerlink" href="#q7-define-a-function" title="Permalink to this headline">¶</a></h3>
+<p>Define a function named <code class="docutils literal notranslate"><span class="pre">fcn_q7</span></code> that takes a single input, adds <code class="docutils literal notranslate"><span class="pre">2</span></code>, and returns the result.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Define a function `fcn_q7` that adds `2` to the input</span>
+
+
+<span class="k">def</span> <span class="nf">fcn_q7</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="c1"># No need to edit this; use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="n">fcn_q7</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">,</span> \
+    <span class="s2">&quot;Incorrect value&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="getting-help">
+<h2>Getting help<a class="headerlink" href="#getting-help" title="Permalink to this headline">¶</a></h2>
+<p>If there is a python function that is mysterious to you, you can always consult the <em>documentation</em>. You can call the python built-in <code class="docutils literal notranslate"><span class="pre">help()</span></code> function on an object to display its documentation. The following documentation for <code class="docutils literal notranslate"><span class="pre">list</span></code> points to a number of functions that operate on lists that we did not cover; for instance, the <code class="docutils literal notranslate"><span class="pre">list.sort()</span></code> method is <em>extremely useful</em> for data science.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="nb">list</span><span class="o">.</span><span class="n">sort</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on method_descriptor:
+
+sort(self, /, *, key=None, reverse=False)
+    Sort the list in ascending order and return None.
+    
+    The sort is in-place (i.e. the list itself is modified) and stable (i.e. the
+    order of two equal elements is maintained).
+    
+    If a key function is given, apply it once to each list item and sort them,
+    ascending or descending, according to their function values.
+    
+    The reverse flag can be set to sort in descending order.
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is a caveat here, which is that <code class="docutils literal notranslate"><span class="pre">help()</span></code> will generally provide <em>very technical details</em> on the object in question, which is useful for reference, but often unhelpful when first learning. If you find a particular python object <em>very mysterious</em>, try to formulate your question and type it into Google. <strong>Learning how to find useful information about programming concepts is one of the key skills of learning to program well.</strong></p>
+<div class="admonition-jupyter-help-shortcut admonition">
+<p class="admonition-title">Jupyter help shortcut</p>
+<p>Note that in Jupyter, there’s another way to access documentation on a function. If you move your cursor over a function, click there, and press <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Tab</span></code>, this will open a documentation panel for easy reference!</p>
+</div>
+<div class="section" id="q8-consult-the-documentation">
+<h3><strong>q8</strong> Consult the documentation<a class="headerlink" href="#q8-consult-the-documentation" title="Permalink to this headline">¶</a></h3>
+<p>Consult the documentation for <code class="docutils literal notranslate"><span class="pre">list.sort()</span></code> to reverse-sort the following list.</p>
+<p><em>Hint</em>: You will need to set a certain keyword argument to complete this task.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Reverse-sort the following list</span>
+<span class="n">l_rev</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="n">l_rev</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">l_rev</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">l_rev</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5, 4, 3, 2, 1]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="end-notes">
+<h1>End Notes<a class="headerlink" href="#end-notes" title="Permalink to this headline">¶</a></h1>
+<p>The following notes are not required, but you may find these additional Jupyter tips helpsul.</p>
+<div class="section" id="save-close-quit-and-re-open-this-notebook">
+<h2>Save, close, quit, and re-open this notebook<a class="headerlink" href="#save-close-quit-and-re-open-this-notebook" title="Permalink to this headline">¶</a></h2>
+<p>You can save by clicking the floppy-disk icon in the top-left of this notebook pane, and can close the notebook by clicking the “X” of its tab. Re-open by double-clicking on <code class="docutils literal notranslate"><span class="pre">e-data00-notebooks-assignment.ipynb</span></code> in the left-hand navigation pane.</p>
+<p>You should find that everything is exactly as you had left it! You will have to re-run the cells to load variables, but having the output saved can be helpful, particularly since Jupyter saves figures.</p>
+</div>
+<div class="section" id="additional-notebook-tips">
+<h2>Additional notebook tips<a class="headerlink" href="#additional-notebook-tips" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Save your notebooks frequently! Use the “<strong>Save</strong>” icon at the top or the <strong>Ctrl+S</strong>/<strong>Cmd+S</strong> shortcut.</p></li>
+<li><p>Use <strong>Shift+Enter</strong> to run a cell and move on to the next cell. This allows you to sequentially execute all the cells in your notebook.</p></li>
+<li><p><strong>Restart &amp; Clear Output</strong>. This option is found under the <em>Kernel</em> menu. It is extremely helpful to reset all code cell executions, stale package imports, and variable values.</p></li>
+<li><p>Take the time to explore other menu options and tinker around. There’s a ton of <a class="reference external" href="https://www.cheatography.com/weidadeyue/cheat-sheets/jupyter-notebook/pdf_bw/">keyboard shortcuts</a> and <a class="reference external" href="https://towardsdatascience.com/how-to-effortlessly-optimize-jupyter-notebooks-e864162a06ee">nifty customizations</a> you can do with notebooks.</p></li>
+</ul>
+</div>
+<div class="section" id="jupyter-magic-functions">
+<h2>Jupyter magic functions<a class="headerlink" href="#jupyter-magic-functions" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://ipython.readthedocs.io/en/stable/interactive/magics.html">Magic functions</a> are a set of commands exclusively for Jupyter notebooks that are part of what makes notebooks so powerful. All magic commands start with a <code class="docutils literal notranslate"><span class="pre">%</span></code> sign, and we give examples of some below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># This command will output how long it takes the following inline command to run</span>
+<span class="o">%</span><span class="k">time</span> np.mean(np.random.randint(low=1, high=7, size=1000))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 174 µs, sys: 27 µs, total: 201 µs
+Wall time: 206 µs
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.442
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># You&#39;ll see this command later; it allows Jupyter to render plots</span>
+<span class="c1"># as output in the notebook instead of opening a new window.</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This shows which variables are in your environment.</span>
+<span class="c1"># Can be packages, functions, variables, and more!</span>
+<span class="o">%</span><span class="k">who</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a	 angle_degrees	 angle_radians	 b	 c	 cos	 fcn_q7	 l	 l_rev	 
+my_cosine	 my_sine	 n	 np	 pi	 result	 sin	 sleep	 test	 
+time	 var	 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># You&#39;ll see this command later; it allows Jupyter to automatically</span>
+<span class="c1"># pick up on changes in referenced code without reloading the kernel.</span>
+<span class="o">%</span><span class="k">load_ext</span> autoreload
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This command will list your system environment variables.</span>
+<span class="o">%</span><span class="k">env</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;TERM_PROGRAM&#39;: &#39;Apple_Terminal&#39;,
+ &#39;SHELL&#39;: &#39;/bin/zsh&#39;,
+ &#39;TERM&#39;: &#39;xterm-color&#39;,
+ &#39;TMPDIR&#39;: &#39;/var/folders/xv/k5cp232j1cn3y8kym53_nnkc0000gn/T/&#39;,
+ &#39;TERM_PROGRAM_VERSION&#39;: &#39;433&#39;,
+ &#39;TERM_SESSION_ID&#39;: &#39;01564885-A099-4817-BABF-CA2FF06726FF&#39;,
+ &#39;USER&#39;: &#39;zach&#39;,
+ &#39;SSH_AUTH_SOCK&#39;: &#39;/private/tmp/com.apple.launchd.579xXmwCdD/Listeners&#39;,
+ &#39;PATH&#39;: &#39;/Users/zach/opt/anaconda3/bin:/Users/zach/opt/anaconda3/condabin:/Users/zach/Git/pyutil/pyutil/tex:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin&#39;,
+ &#39;LaunchInstanceID&#39;: &#39;D8670BB0-CDD5-4DD6-B831-89F4FCCA4381&#39;,
+ &#39;PWD&#39;: &#39;/Users/zach/Git/Olin/evc-course&#39;,
+ &#39;LANG&#39;: &#39;en_US.UTF-8&#39;,
+ &#39;XPC_FLAGS&#39;: &#39;0x0&#39;,
+ &#39;XPC_SERVICE_NAME&#39;: &#39;0&#39;,
+ &#39;SHLVL&#39;: &#39;1&#39;,
+ &#39;HOME&#39;: &#39;/Users/zach&#39;,
+ &#39;LOGNAME&#39;: &#39;zach&#39;,
+ &#39;SECURITYSESSIONID&#39;: &#39;186a6&#39;,
+ &#39;OLDPWD&#39;: &#39;/Users/zach/Git/Olin/evc-course/challenges&#39;,
+ &#39;PYTHONPATH&#39;: &#39;/Users/zach/Git/smlb:/Users/zach/Git/pyutil:/Users/zach/Git/py_grama:&#39;,
+ &#39;CITRINATION_API_KEY&#39;: &#39;&lt;hidden&gt;&#39;,
+ &#39;SL_RESULTS&#39;: &#39;/Users/zach/Documents/sl-results/&#39;,
+ &#39;ZSH&#39;: &#39;/Users/zach/.oh-my-zsh&#39;,
+ &#39;PAGER&#39;: &#39;cat&#39;,
+ &#39;LESS&#39;: &#39;-R&#39;,
+ &#39;LSCOLORS&#39;: &#39;Gxfxcxdxbxegedabagacad&#39;,
+ &#39;CONDA_EXE&#39;: &#39;/Users/zach/opt/anaconda3/bin/conda&#39;,
+ &#39;_CE_M&#39;: &#39;&#39;,
+ &#39;_CE_CONDA&#39;: &#39;&#39;,
+ &#39;CONDA_PYTHON_EXE&#39;: &#39;/Users/zach/opt/anaconda3/bin/python&#39;,
+ &#39;CONDA_SHLVL&#39;: &#39;1&#39;,
+ &#39;CONDA_PREFIX&#39;: &#39;/Users/zach/opt/anaconda3&#39;,
+ &#39;CONDA_DEFAULT_ENV&#39;: &#39;base&#39;,
+ &#39;CONDA_PROMPT_MODIFIER&#39;: &#39;(base) &#39;,
+ &#39;RSTUDIO_PASS&#39;: &#39;temporarylocalkeyphrase&#39;,
+ &#39;_&#39;: &#39;/Users/zach/opt/anaconda3/bin/jupyter&#39;,
+ &#39;GIT_PYTHON_REFRESH&#39;: &#39;quiet&#39;,
+ &#39;JPY_PARENT_PID&#39;: &#39;68060&#39;,
+ &#39;CLICOLOR&#39;: &#39;1&#39;,
+ &#39;GIT_PAGER&#39;: &#39;cat&#39;,
+ &#39;MPLBACKEND&#39;: &#39;module://ipykernel.pylab.backend_inline&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./exercises_solution"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../frontmatter/exercises.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Exercise Solutions</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="d01-e-vis00-basics-solution.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Visualization Basics</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Zachary del Rosario<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

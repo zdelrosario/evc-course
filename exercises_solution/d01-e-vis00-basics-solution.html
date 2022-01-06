@@ -1,0 +1,811 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Visualization Basics &#8212; Data Science for Engineers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Isolation" href="d02-e-data01-isolate-solution.html" />
+    <link rel="prev" title="Introduction to Jupyter Notebooks" href="d01-e-data00-notebooks-solution.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/home.html">
+   Data Science for Engineers
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../frontmatter/exercises.html">
+   Exercise Solutions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
+     Introduction to Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Data Visualization Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
+     Data Isolation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/exercises_solution/d01-e-vis00-basics-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d01-e-vis00-basics-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Data Visualization Basics
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-grammar-of-graphics">
+   The Grammar of Graphics
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fundamentals">
+     Fundamentals
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q1-make-a-simple-scatterplot">
+       <strong>
+        q1
+       </strong>
+       Make a simple scatterplot
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aesthetics">
+     Aesthetics
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q2-modify-and-interpret">
+       <strong>
+        q2
+       </strong>
+       Modify and interpret
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-swap-aesthetics">
+       <strong>
+        q3
+       </strong>
+       “Swap” aesthetics
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#options">
+     Options
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-set-an-option">
+       <strong>
+        q4
+       </strong>
+       Set an option
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Data Visualization Basics</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Data Visualization Basics
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-grammar-of-graphics">
+   The Grammar of Graphics
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fundamentals">
+     Fundamentals
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q1-make-a-simple-scatterplot">
+       <strong>
+        q1
+       </strong>
+       Make a simple scatterplot
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aesthetics">
+     Aesthetics
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q2-modify-and-interpret">
+       <strong>
+        q2
+       </strong>
+       Modify and interpret
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-swap-aesthetics">
+       <strong>
+        q3
+       </strong>
+       “Swap” aesthetics
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#options">
+     Options
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-set-an-option">
+       <strong>
+        q4
+       </strong>
+       Set an option
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="data-visualization-basics">
+<h1>Data Visualization Basics<a class="headerlink" href="#data-visualization-basics" title="Permalink to this headline">¶</a></h1>
+<p><em>Purpose</em>: The most powerful way for us to learn about a dataset is to <em>visualize the data</em>. Throughout this class we will make extensive use of the <em>grammar of graphics</em>, a powerful graphical programming <em>grammar</em> that will allow us to create just about any graph you can imagine!</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following code loads a built-in dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_diamonds</span>
+<span class="n">df_diamonds</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carat</th>
+      <th>cut</th>
+      <th>color</th>
+      <th>clarity</th>
+      <th>depth</th>
+      <th>table</th>
+      <th>price</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.23</td>
+      <td>Ideal</td>
+      <td>E</td>
+      <td>SI2</td>
+      <td>61.5</td>
+      <td>55.0</td>
+      <td>326</td>
+      <td>3.95</td>
+      <td>3.98</td>
+      <td>2.43</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.21</td>
+      <td>Premium</td>
+      <td>E</td>
+      <td>SI1</td>
+      <td>59.8</td>
+      <td>61.0</td>
+      <td>326</td>
+      <td>3.89</td>
+      <td>3.84</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.23</td>
+      <td>Good</td>
+      <td>E</td>
+      <td>VS1</td>
+      <td>56.9</td>
+      <td>65.0</td>
+      <td>327</td>
+      <td>4.05</td>
+      <td>4.07</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.29</td>
+      <td>Premium</td>
+      <td>I</td>
+      <td>VS2</td>
+      <td>62.4</td>
+      <td>58.0</td>
+      <td>334</td>
+      <td>4.20</td>
+      <td>4.23</td>
+      <td>2.63</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.31</td>
+      <td>Good</td>
+      <td>J</td>
+      <td>SI2</td>
+      <td>63.3</td>
+      <td>58.0</td>
+      <td>335</td>
+      <td>4.34</td>
+      <td>4.35</td>
+      <td>2.75</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.24</td>
+      <td>Very Good</td>
+      <td>J</td>
+      <td>VVS2</td>
+      <td>62.8</td>
+      <td>57.0</td>
+      <td>336</td>
+      <td>3.94</td>
+      <td>3.96</td>
+      <td>2.48</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">head()</span></code> function allows us to select the first few rows of the dataset; from the call above, we can see that the dataset has variables such as <code class="docutils literal notranslate"><span class="pre">carat</span></code>, <code class="docutils literal notranslate"><span class="pre">cut</span></code>, <code class="docutils literal notranslate"><span class="pre">color</span></code>, <code class="docutils literal notranslate"><span class="pre">clarity</span></code>, and <code class="docutils literal notranslate"><span class="pre">price</span></code>. This is a dataset of the attributes and prices of various diamonds: With these data, we can see how variables like <code class="docutils literal notranslate"><span class="pre">carat</span></code> affect the price of a diamond.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">head()</span></code> function shows us just a few rows, while the <code class="docutils literal notranslate"><span class="pre">shape()</span></code> function will tell us how many rows and columns the dataset has.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_diamonds</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(53940, 10)
+</pre></div>
+</div>
+</div>
+</div>
+<p>That’s nearly <code class="docutils literal notranslate"><span class="pre">54,000</span></code> rows! Inspecting that many rows would be impossible; instead, let’s <em>visualize</em> the dataset to get a sense for these diamonds.</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="the-grammar-of-graphics">
+<h1>The Grammar of Graphics<a class="headerlink" href="#the-grammar-of-graphics" title="Permalink to this headline">¶</a></h1>
+<p>The <em>grammar of graphics</em> (ggplot) is an extremely powerful idea for making graphs. Ggplot is implemented in the Python package <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/">plotnine</a>, which is available through grama.</p>
+<div class="section" id="fundamentals">
+<h2>Fundamentals<a class="headerlink" href="#fundamentals" title="Permalink to this headline">¶</a></h2>
+<p>The following code annotates a basic ggplot.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="c1"># Select a dataset</span>
+    <span class="n">df_dataset</span>
+    <span class="c1"># Start the plot</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span>
+        <span class="c1"># Map the aesthetics to variables in df_dataset</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x_variable_name&quot;</span><span class="p">,</span> 
+            <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y_variable_name&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="c1"># Select a geometry to visualize the aesthetics</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Note the special syntax: We use a pipe <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> to “give” the dataset <code class="docutils literal notranslate"><span class="pre">df_dataset</span></code> to <code class="docutils literal notranslate"><span class="pre">gr.ggplot()</span></code>. We then use “addition” <code class="docutils literal notranslate"><span class="pre">+</span></code> to add graphical elements to the ggplot.</p>
+<p>This will make a scatterplot of <code class="docutils literal notranslate"><span class="pre">df_dataset</span></code> with <code class="docutils literal notranslate"><span class="pre">&quot;x_variable_name&quot;</span></code> on the horizontal axis and <code class="docutils literal notranslate"><span class="pre">&quot;y_variable_name&quot;</span></code> on the vertical axis.</p>
+<div class="section" id="q1-make-a-simple-scatterplot">
+<h3><strong>q1</strong> Make a simple scatterplot<a class="headerlink" href="#q1-make-a-simple-scatterplot" title="Permalink to this headline">¶</a></h3>
+<p>Visualize the <code class="docutils literal notranslate"><span class="pre">df_diamonds</span></code> dataset with a scatterplot. Put <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> on the vertical axis and <code class="docutils literal notranslate"><span class="pre">&quot;carat&quot;</span></code> on the horizontal axis. Study the plot, and note your <em>observations</em> below.</p>
+<p><em>Hint</em>: Copy and modify the example code above to make this plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Visualize df_diamonds with &quot;price&quot; on the vertical</span>
+<span class="c1">## and &quot;carat&quot; on the horizontal.</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;carat&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;price&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d01-e-vis00-basics-solution_10_0.png" src="../_images/d01-e-vis00-basics-solution_10_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8771699550928)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">price</span></code> generally increases with <code class="docutils literal notranslate"><span class="pre">carat</span></code></p></li>
+<li><p>The trend is not ‘clean’; there is no single curve in the relationship</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="aesthetics">
+<h2>Aesthetics<a class="headerlink" href="#aesthetics" title="Permalink to this headline">¶</a></h2>
+<p>The function <code class="docutils literal notranslate"><span class="pre">gr.aes()</span></code> is short for <em>aesthetics</em>. Aesthetics in ggplot are the mapping of variables in a dataframe to visual elements in the graph. For instance, in the plot above you assigned <code class="docutils literal notranslate"><span class="pre">carat</span></code> to the <code class="docutils literal notranslate"><span class="pre">x</span></code> aesthetic, and <code class="docutils literal notranslate"><span class="pre">price</span></code> to the <code class="docutils literal notranslate"><span class="pre">y</span></code> aesthetic. But there are <em>many more</em> aesthetics you can set, some of which vary based on the <code class="docutils literal notranslate"><span class="pre">geom_</span></code> you are using to visualize.</p>
+<p>Adding additional aesthetic mappings is done by adding additional <em>keyword arguments</em> to <code class="docutils literal notranslate"><span class="pre">gr.aes()</span></code>. For instance, the following <strong>single line change</strong> allows us to visualize an additional variable.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_dataset</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x_variable_name&quot;</span><span class="p">,</span> 
+            <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y_variable_name&quot;</span><span class="p">,</span>
+            <span class="c1"># One-line change allows us to visualize an</span>
+            <span class="c1"># additional variable</span>
+            <span class="n">color</span><span class="o">=</span><span class="s2">&quot;color_variable_name&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The next question will have you apply this idea.</p>
+<div class="section" id="q2-modify-and-interpret">
+<h3><strong>q2</strong> Modify and interpret<a class="headerlink" href="#q2-modify-and-interpret" title="Permalink to this headline">¶</a></h3>
+<p>Modify the following graph to visualize an additional variable <code class="docutils literal notranslate"><span class="pre">&quot;cut&quot;</span></code>. Study the plot, and note your <em>observations</em> below.</p>
+<p><em>Hint</em>: Remember that you can add additional aesthetic mappings in <code class="docutils literal notranslate"><span class="pre">aes()</span></code>. Some options include <code class="docutils literal notranslate"><span class="pre">size</span></code>, <code class="docutils literal notranslate"><span class="pre">color</span></code>, and <code class="docutils literal notranslate"><span class="pre">shape</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Modify the plot below to *also* visualize the variable &quot;cut&quot;.</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;carat&quot;</span><span class="p">,</span> 
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;price&quot;</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;cut&quot;</span><span class="p">,</span>
+    <span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d01-e-vis00-basics-solution_14_0.png" src="../_images/d01-e-vis00-basics-solution_14_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8771700930452)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">price</span></code> generally increases with <code class="docutils literal notranslate"><span class="pre">carat</span></code></p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">cut</span></code> helps explain the variation in price;</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Ideal</span></code> cut diamonds tend to be more expensive</p></li>
+<li><p>Many of the low-price diamonds have <code class="docutils literal notranslate"><span class="pre">Fair</span></code> cut</p></li>
+</ul>
+</li>
+</ul>
+<p>Part of the <strong>big advantage</strong> of ggplot is the ability to easily try out different plots. We specify the mapping from variables to aesthetics, and ggplot automatically takes care of generating the plot.</p>
+</div>
+<div class="section" id="q3-swap-aesthetics">
+<h3><strong>q3</strong> “Swap” aesthetics<a class="headerlink" href="#q3-swap-aesthetics" title="Permalink to this headline">¶</a></h3>
+<p>Swap the aesthetic mappings for <code class="docutils literal notranslate"><span class="pre">&quot;carat&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;cut&quot;</span></code> and inspect the plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Swap &quot;carat&quot; and &quot;cut&quot;</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;cut&quot;</span><span class="p">,</span> 
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;price&quot;</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;carat&quot;</span><span class="p">,</span>
+    <span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d01-e-vis00-basics-solution_18_0.png" src="../_images/d01-e-vis00-basics-solution_18_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8771699740856)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Compare this plot with the previous one; is it as effective at showing trends in the data?</p>
+<ul>
+<li><p>This plot is not very effective; it’s difficult to say much about the data based on this visualization.</p></li>
+</ul>
+</li>
+<li><p>How difficult was it to try out this new plot? How difficult would it be to swap the variables again?</p>
+<ul>
+<li><p>It was very easy to modify the plot! It would be simplicity itself to try something different.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+</div>
+<div class="section" id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
+<p>In addition to mapping variables to aesthetics, we can also <em>fix</em> aesthetics to modify the plot. This is one way we can toggle various <em>options</em> in the plot.</p>
+<p>For instance, rather than mapping color to a variable, we can simply fix color to a single value:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_dataset</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x_variable_name&quot;</span><span class="p">,</span> 
+            <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y_variable_name&quot;</span><span class="p">,</span>
+            <span class="c1"># Don&#39;t map color</span>
+            <span class="c1"># color=&quot;color_variable_name&quot;,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;salmon&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that here we set the <code class="docutils literal notranslate"><span class="pre">color</span></code> keyword in the geometry <code class="docutils literal notranslate"><span class="pre">gr.geom_point()</span></code>, <em>not</em> in the aesthetic <code class="docutils literal notranslate"><span class="pre">gr.aes()</span></code>. Every aesthetic of a geometry can be set to a fixed value, or mapped to a variable. You will practice doing this in the next task.</p>
+<div class="section" id="q4-set-an-option">
+<h3><strong>q4</strong> Set an option<a class="headerlink" href="#q4-set-an-option" title="Permalink to this headline">¶</a></h3>
+<p>Make the points in the following plot highly transparent using the <code class="docutils literal notranslate"><span class="pre">alpha</span></code> aesthetic. Answer the questions under <em>observations</em> below.</p>
+<p><em>Note</em>: The <code class="docutils literal notranslate"><span class="pre">alpha</span></code> keyword argument takes values between <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>; values of <code class="docutils literal notranslate"><span class="pre">1</span></code> are completely opaque, while values of <code class="docutils literal notranslate"><span class="pre">0</span></code> are completely transparent. Intermediate values are more or less opaque.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Modify the following visual to reduce the transparency</span>
+<span class="c1"># of the points with the `alpha` keyword argument.</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;carat&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;price&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d01-e-vis00-basics-solution_22_0.png" src="../_images/d01-e-vis00-basics-solution_22_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8771700697733)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Due to the transparency, darker regions are places where there are more points, and lighter regions are plaes where there are fewer points. Keep this in mind when interpreting the graph.</p>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Where do you see more points? Where do you see fewer points?</p>
+<ul>
+<li><p>There are generally more points at lower carat, with a large bulk below <code class="docutils literal notranslate"><span class="pre">carat</span> <span class="pre">&lt;</span> <span class="pre">1.5</span></code>. There are also concentrations of points at some select higher <code class="docutils literal notranslate"><span class="pre">carat</span></code> values.</p></li>
+</ul>
+</li>
+<li><p>Do you see any strange “patterns” in the plot?</p>
+<ul>
+<li><p>There are strange “vertical bands” in the data at special <code class="docutils literal notranslate"><span class="pre">carat</span></code> values; for instance, note the vertical band near <code class="docutils literal notranslate"><span class="pre">carat</span> <span class="pre">==</span> <span class="pre">1.5</span></code> and <code class="docutils literal notranslate"><span class="pre">carat</span> <span class="pre">==</span> <span class="pre">2.0</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./exercises_solution"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="d01-e-data00-notebooks-solution.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction to Jupyter Notebooks</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="d02-e-data01-isolate-solution.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Isolation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Zachary del Rosario<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
