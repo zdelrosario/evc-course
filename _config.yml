@@ -1,0 +1,18 @@
+title: "Data Science for Engineers"
+author: Zachary del Rosario
+copyright: "2022"
+execute:
+  execute_notebooks: "off"
+exclude_patterns: [exercises/*, exercises_assignment/*, challenges/*, metadata/*]
+parse:
+  myst_enable_extensions:
+    - amsmath
+    - colon_fence
+    - deflist
+    - dollarmath
+    # - html_admonition
+    # - html_image
+    - linkify
+    # - replacements
+    # - smartquotes
+    - substitution

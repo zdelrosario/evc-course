@@ -1,0 +1,7 @@
+format: jb-article
+root: frontmatter/home
+sections:
+- file: frontmatter/setup
+- file: frontmatter/exercises
+  sections:
+  - glob: exercises_solution/*solution
