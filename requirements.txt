@@ -14,3 +14,4 @@ py-grama>=0.2.2
 plotnine
 ipympl
 nycflights13
+pathos
