@@ -25,7 +25,6 @@ jobs:
     - name: Install dependencies
       run: |
         pip install jupyter-book nbstripout ghp-import
-        pip install -r requirements.txt
 
     # Build the book
     - name: Build the book
