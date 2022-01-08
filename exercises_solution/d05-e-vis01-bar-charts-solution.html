@@ -1,0 +1,896 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bar Charts &#8212; Data Science for Engineers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Grama Basics" href="d04-e-grama01-basics-solution.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/home.html">
+   Data Science for Engineers
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../frontmatter/exercises.html">
+   Exercise Solutions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
+     Introduction to Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
+     Data Visualization Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
+     Data Isolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
+     Introduction to Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
+     Grama Basics
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Bar Charts
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/exercises_solution/d05-e-vis01-bar-charts-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d05-e-vis01-bar-charts-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Bar Charts
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bars-and-cols">
+   Bars and Cols
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q1-convert-bars-to-cols">
+     <strong>
+      q1
+     </strong>
+     Convert bars to cols
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#challenges-with-bar-charts">
+   Challenges with bar charts
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overlapping-labels">
+     Overlapping Labels
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q2-flip-coordinates-to-fix-overlap">
+       <strong>
+        q2
+       </strong>
+       Flip coordinates to fix overlap
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#to-1-data">
+     1-to-1 Data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-inspect-the-plot">
+       <strong>
+        q3
+       </strong>
+       Inspect the plot
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-check-if-data-are-1-to-1">
+       <strong>
+        q4
+       </strong>
+       Check if data are 1-to-1
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#design-considerations">
+   Design Considerations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#picking-aesthetics">
+     Picking aesthetics
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-compare-two-plots">
+       <strong>
+        q5
+       </strong>
+       Compare two plots
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q6-pros-and-cons-of-double-assignment">
+       <strong>
+        q6
+       </strong>
+       Pros and cons of double-assignment
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Bar Charts</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Bar Charts
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bars-and-cols">
+   Bars and Cols
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q1-convert-bars-to-cols">
+     <strong>
+      q1
+     </strong>
+     Convert bars to cols
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#challenges-with-bar-charts">
+   Challenges with bar charts
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overlapping-labels">
+     Overlapping Labels
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q2-flip-coordinates-to-fix-overlap">
+       <strong>
+        q2
+       </strong>
+       Flip coordinates to fix overlap
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#to-1-data">
+     1-to-1 Data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-inspect-the-plot">
+       <strong>
+        q3
+       </strong>
+       Inspect the plot
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-check-if-data-are-1-to-1">
+       <strong>
+        q4
+       </strong>
+       Check if data are 1-to-1
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#design-considerations">
+   Design Considerations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#picking-aesthetics">
+     Picking aesthetics
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-compare-two-plots">
+       <strong>
+        q5
+       </strong>
+       Compare two plots
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q6-pros-and-cons-of-double-assignment">
+       <strong>
+        q6
+       </strong>
+       Pros and cons of double-assignment
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="bar-charts">
+<h1>Bar Charts<a class="headerlink" href="#bar-charts" title="Permalink to this headline">¶</a></h1>
+<p><em>Purpose</em>: <em>Bar charts</em> are a key tool for EDA. In this exercise, we’ll learn how to construct a variety of different bar charts, as well as when—and when <em>not</em>—to use various charts.</p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll use the <code class="docutils literal notranslate"><span class="pre">mpg</span></code> dataset from <code class="docutils literal notranslate"><span class="pre">plotnine</span></code>: This is a dataset describing different automobiles, including their mileage (hence mpg).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plotnine.data</span> <span class="kn">import</span> <span class="n">mpg</span> <span class="k">as</span> <span class="n">df_mpg</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="bars-and-cols">
+<h1>Bars and Cols<a class="headerlink" href="#bars-and-cols" title="Permalink to this headline">¶</a></h1>
+<p>A bar chart visualizes data using bars. A bar chart is most effective at showing a continuous variable against a discrete one.</p>
+<p>With ggplot we have two ways to make a bar chart: The first is <code class="docutils literal notranslate"><span class="pre">geom_bar()</span></code>, which takes just one aesthetic <code class="docutils literal notranslate"><span class="pre">x</span></code>. The geometry <code class="docutils literal notranslate"><span class="pre">geom_bar()</span></code> visualizes the number of observations (count) in the dataset associated with each unique value of the given variable. For instance, the following plot shows the number of vehicles according to each <code class="docutils literal notranslate"><span class="pre">class</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_bar</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d05-e-vis01-bar-charts-solution_6_0.png" src="../_images/d05-e-vis01-bar-charts-solution_6_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783402740818)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Clearly, there are far more SUVs, compacts, and midsize vehicles in the dataset than other classes.</p>
+<p>The other bar geometry is <code class="docutils literal notranslate"><span class="pre">geom_col()</span></code>, which takes two aesthetics. The geometry <code class="docutils literal notranslate"><span class="pre">geom_col()</span></code> extends from zero to a desired value <code class="docutils literal notranslate"><span class="pre">y</span></code>, within each <code class="docutils literal notranslate"><span class="pre">x</span></code> value. The following gives a simple demo with made-up data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+        <span class="n">category</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">],</span>
+        <span class="n">value</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;category&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d05-e-vis01-bar-charts-solution_9_0.png" src="../_images/d05-e-vis01-bar-charts-solution_9_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783407751319)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can actually recreate a <code class="docutils literal notranslate"><span class="pre">geom_bar()</span></code> plot by using <code class="docutils literal notranslate"><span class="pre">tf_count()</span></code> and <code class="docutils literal notranslate"><span class="pre">geom_col()</span></code>, which you’ll do in the next task.</p>
+<div class="section" id="q1-convert-bars-to-cols">
+<h2><strong>q1</strong> Convert bars to cols<a class="headerlink" href="#q1-convert-bars-to-cols" title="Permalink to this headline">¶</a></h2>
+<p>Recreate the following plot using <code class="docutils literal notranslate"><span class="pre">geom_col()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Convert this plot to use geom_cols()</span>
+
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_count</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">trans</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;trans&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="c1"># solution-end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d05-e-vis01-bar-charts-solution_12_0.png" src="../_images/d05-e-vis01-bar-charts-solution_12_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783407757800)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the labels for <code class="docutils literal notranslate"><span class="pre">trans</span></code> overlap; we’ll fix that in the next section.</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="challenges-with-bar-charts">
+<h1>Challenges with bar charts<a class="headerlink" href="#challenges-with-bar-charts" title="Permalink to this headline">¶</a></h1>
+<p>There are a few “gotchas” when visualizing with bar charts; we’ll go over two:</p>
+<div class="section" id="overlapping-labels">
+<h2>Overlapping Labels<a class="headerlink" href="#overlapping-labels" title="Permalink to this headline">¶</a></h2>
+<p>We saw in the previous plot that when our <code class="docutils literal notranslate"><span class="pre">x</span></code> variable has a lot of levels, the labels can overlap. One simple way to fix this is to flip the coordinates. We can’t simply swap the aesthetics <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>, as this will not give us what we want:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; run and inspet</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_count</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">trans</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;trans&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;n&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d05-e-vis01-bar-charts-solution_16_0.png" src="../_images/d05-e-vis01-bar-charts-solution_16_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783407786725)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Instead, we can <em>flip</em> the entire plot using <code class="docutils literal notranslate"><span class="pre">coord_flip()</span></code>. We use this by adding it to the <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">coord_flip</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="q2-flip-coordinates-to-fix-overlap">
+<h3><strong>q2</strong> Flip coordinates to fix overlap<a class="headerlink" href="#q2-flip-coordinates-to-fix-overlap" title="Permalink to this headline">¶</a></h3>
+<p>Flip the coordinates to fix the overlapping labels in the following plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Flip the coordinates to fix the overlapping labels</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;trans&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_bar</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">coord_flip</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d05-e-vis01-bar-charts-solution_19_0.png" src="../_images/d05-e-vis01-bar-charts-solution_19_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783407581154)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="to-1-data">
+<h2>1-to-1 Data<a class="headerlink" href="#to-1-data" title="Permalink to this headline">¶</a></h2>
+<p>A bar chart draws a bar for every observation, this means that the data need to be “1-to-1”. This is an important limitation of bar charts, which is best understood through an example:</p>
+<div class="section" id="q3-inspect-the-plot">
+<h3><strong>q3</strong> Inspect the plot<a class="headerlink" href="#q3-inspect-the-plot" title="Permalink to this headline">¶</a></h3>
+<p>Inspect the following plot, and answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;cty&quot;</span><span class="p">,</span> <span class="s2">&quot;hwy&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d05-e-vis01-bar-charts-solution_22_0.png" src="../_images/d05-e-vis01-bar-charts-solution_22_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783407498942)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>What is the largest <code class="docutils literal notranslate"><span class="pre">hwy</span></code> value shown in the plot above? Does this seem like a realistic value for the highway mileage?</p>
+<ul>
+<li><p>The largest <code class="docutils literal notranslate"><span class="pre">hwy</span></code> value is over 600; this is totally unreasonable!</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --><p>The following plot helps us understand the issue: With outlines around each bar, we can see that there are <em>multiple stacked bars</em> at each <code class="docutils literal notranslate"><span class="pre">x</span></code> level.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;cty&quot;</span><span class="p">,</span> <span class="s2">&quot;hwy&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_col</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d05-e-vis01-bar-charts-solution_25_0.png" src="../_images/d05-e-vis01-bar-charts-solution_25_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783408063242)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to avoid overlap, the data need to have just one observation for each level of the horizontal factor. Put differently, the data must be <a class="reference external" href="https://en.wikipedia.org/wiki/Injective_function">1-to-1</a>. We can check this with some simple counting.</p>
+</div>
+<div class="section" id="q4-check-if-data-are-1-to-1">
+<h3><strong>q4</strong> Check if data are 1-to-1<a class="headerlink" href="#q4-check-if-data-are-1-to-1" title="Permalink to this headline">¶</a></h3>
+<p>If the data were 1-to-1 in the <code class="docutils literal notranslate"><span class="pre">cty</span></code> to <code class="docutils literal notranslate"><span class="pre">hwy</span></code> values, then there would be only one <code class="docutils literal notranslate"><span class="pre">hwy</span></code> value for each unique <code class="docutils literal notranslate"><span class="pre">cty</span></code> value. Check whether this is the case in <code class="docutils literal notranslate"><span class="pre">df_mpg</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Check if the data are 1-to-1 (in cty and hwy)</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_count</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">cty</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">hwy</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cty</th>
+      <th>hwy</th>
+      <th>n</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>9</td>
+      <td>12</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>11</td>
+      <td>14</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11</td>
+      <td>15</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11</td>
+      <td>16</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>11</td>
+      <td>17</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Is the data 1-to-1? Why or why not?</p>
+<ul>
+<li><p>No, the data are not 1-to-1: For instance, for the value <code class="docutils literal notranslate"><span class="pre">cty==11</span></code>, <code class="docutils literal notranslate"><span class="pre">hwy</span></code> takes multiple different values.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="design-considerations">
+<h1>Design Considerations<a class="headerlink" href="#design-considerations" title="Permalink to this headline">¶</a></h1>
+<p>To close this exercise, we’ll cover some design considerations when making (bar) charts.</p>
+<div class="section" id="picking-aesthetics">
+<h2>Picking aesthetics<a class="headerlink" href="#picking-aesthetics" title="Permalink to this headline">¶</a></h2>
+<p>A major part of designing any plot is making choices about assigning variables to aesthetics.</p>
+<p>One option we have is to “double-assign” a variable to multiple aesthetics. In the next task you’ll compare the efficacy of double-assigning aesthetics.</p>
+<div class="section" id="q5-compare-two-plots">
+<h3><strong>q5</strong> Compare two plots<a class="headerlink" href="#q5-compare-two-plots" title="Permalink to this headline">¶</a></h3>
+<p>Compare the following two plots, and answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_bar</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d05-e-vis01-bar-charts-solution_33_0.png" src="../_images/d05-e-vis01-bar-charts-solution_33_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783408700489)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>What observations can you make?</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">suv</span></code> observations are most numerous</p></li>
+<li><p>There are fewest <code class="docutils literal notranslate"><span class="pre">2seater</span></code> observations</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;drv&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_bar</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d05-e-vis01-bar-charts-solution_35_0.png" src="../_images/d05-e-vis01-bar-charts-solution_35_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783408743382)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>What <strong>additional</strong> observations can you make on this version of the plot?</p>
+<ul>
+<li><p>Rear-wheel drive vehicles in the dataset are only <code class="docutils literal notranslate"><span class="pre">2seater</span></code>, <code class="docutils literal notranslate"><span class="pre">subcompact</span></code>, and <code class="docutils literal notranslate"><span class="pre">suv</span></code>.</p></li>
+<li><p>All the <code class="docutils literal notranslate"><span class="pre">2seater</span></code> vehicles are rear-wheel drive.</p></li>
+<li><p>All the <code class="docutils literal notranslate"><span class="pre">minivan</span></code> vehicles are forward-wheel drive.</p></li>
+</ul>
+</li>
+<li><p>What is different in the design of this graph, as compared with the previous one?</p>
+<ul>
+<li><p>This version of the graph uses <code class="docutils literal notranslate"><span class="pre">fill</span></code> for an additional variable <code class="docutils literal notranslate"><span class="pre">drv</span></code>, rather than repeating the <code class="docutils literal notranslate"><span class="pre">x</span></code> aesthetic <code class="docutils literal notranslate"><span class="pre">class</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="q6-pros-and-cons-of-double-assignment">
+<h3><strong>q6</strong> Pros and cons of double-assignment<a class="headerlink" href="#q6-pros-and-cons-of-double-assignment" title="Permalink to this headline">¶</a></h3>
+<p>Answer the questions below:</p>
+<ul class="simple">
+<li><p>What are some pros of double-assigning a single variable to multiple aesthetics?</p>
+<ul>
+<li><p>Double-assigning a variable can more highly-emphasize a variable.</p></li>
+</ul>
+</li>
+<li><p>What are some pros of single-assigning aesthetics, in order to show more variables?</p>
+<ul>
+<li><p>Showing more variables opens up the possibility of seeing more patterns.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./exercises_solution"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="d04-e-grama01-basics-solution.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Grama Basics</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Zachary del Rosario<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

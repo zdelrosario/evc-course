@@ -1,0 +1,1255 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to Exploratory Data Analysis &#8212; Data Science for Engineers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Grama Basics" href="d04-e-grama01-basics-solution.html" />
+    <link rel="prev" title="Data Isolation" href="d02-e-data01-isolate-solution.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/home.html">
+   Data Science for Engineers
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../frontmatter/exercises.html">
+   Exercise Solutions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
+     Introduction to Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
+     Data Visualization Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
+     Data Isolation
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Introduction to Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
+     Grama Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
+     Bar Charts
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/exercises_solution/d03-e-stat01-eda-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d03-e-stat01-eda-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Introduction to Exploratory Data Analysis
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reading">
+     Reading
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-eda-tools">
+   Basic EDA Tools
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q1-take-the-head">
+     <strong>
+      q1
+     </strong>
+     Take the head
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q2-use-descriptive-statistics">
+     <strong>
+      q2
+     </strong>
+     Use descriptive statistics
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#distinct-values-levels">
+     Distinct Values (levels)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-find-the-distinct-cut-values">
+       <strong>
+        q3
+       </strong>
+       Find the distinct
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cut
+        </span>
+       </code>
+       values
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#counts">
+     Counts
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-find-the-count-of-cut-values">
+       <strong>
+        q4
+       </strong>
+       Find the count of cut values
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#guided-eda">
+   Guided EDA
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hypothesis-1">
+     Hypothesis 1
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-assess-hypothesis-1">
+       <strong>
+        q5
+       </strong>
+       Assess hypothesis 1
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hypothesis-2">
+     Hypothesis 2
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q6-assess-hypothesis-2">
+       <strong>
+        q6
+       </strong>
+       Assess hypothesis 2
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q7-assess-hypothesis-2-take-2">
+       <strong>
+        q7
+       </strong>
+       Assess hypothesis 2, take 2
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q8-unravel-hypothesis-2">
+       <strong>
+        q8
+       </strong>
+       Unravel hypothesis 2
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introduction to Exploratory Data Analysis</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Introduction to Exploratory Data Analysis
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reading">
+     Reading
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-eda-tools">
+   Basic EDA Tools
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q1-take-the-head">
+     <strong>
+      q1
+     </strong>
+     Take the head
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q2-use-descriptive-statistics">
+     <strong>
+      q2
+     </strong>
+     Use descriptive statistics
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#distinct-values-levels">
+     Distinct Values (levels)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-find-the-distinct-cut-values">
+       <strong>
+        q3
+       </strong>
+       Find the distinct
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cut
+        </span>
+       </code>
+       values
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#counts">
+     Counts
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-find-the-count-of-cut-values">
+       <strong>
+        q4
+       </strong>
+       Find the count of cut values
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#guided-eda">
+   Guided EDA
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hypothesis-1">
+     Hypothesis 1
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-assess-hypothesis-1">
+       <strong>
+        q5
+       </strong>
+       Assess hypothesis 1
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hypothesis-2">
+     Hypothesis 2
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q6-assess-hypothesis-2">
+       <strong>
+        q6
+       </strong>
+       Assess hypothesis 2
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q7-assess-hypothesis-2-take-2">
+       <strong>
+        q7
+       </strong>
+       Assess hypothesis 2, take 2
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q8-unravel-hypothesis-2">
+       <strong>
+        q8
+       </strong>
+       Unravel hypothesis 2
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-exploratory-data-analysis">
+<h1>Introduction to Exploratory Data Analysis<a class="headerlink" href="#introduction-to-exploratory-data-analysis" title="Permalink to this headline">¶</a></h1>
+<p><em>Purpose</em>: <em>Exploratory Data Analysis</em> (EDA) is a <strong>crucial</strong> skill for a practicing data scientist. Unfortunately, much like human-centered design EDA is hard to teach. This is because EDA is <strong>not</strong> a strict procedure, so much as it is a <strong>mindset</strong>. Also, much like human-centered design, EDA is an <em>iterative, nonlinear process</em>. There are two key principles to keep in mind when doing EDA:</p>
+<ul class="simple">
+<li><ol class="simple">
+<li><p>Curiosity: Generate lots of ideas and hypotheses about your data.</p></li>
+</ol>
+</li>
+<li><ol class="simple">
+<li><p>Skepticism: Remain unconvinced of those ideas, unless you can find credible
+patterns to support them.</p></li>
+</ol>
+</li>
+</ul>
+<p>Since EDA is both <em>crucial</em> and <em>difficult</em>, we will practice doing EDA <em>a lot</em> in this course!</p>
+<div class="section" id="reading">
+<h2>Reading<a class="headerlink" href="#reading" title="Permalink to this headline">¶</a></h2>
+<p><em>Reading</em>: <a class="reference external" href="https://rstudio.cloud/learn/primers/3.1">Exploratory Data Analysis</a></p>
+<p><em>Topics</em>: (All topics)</p>
+<p><em>Reading Time</em>: ~45 minutes</p>
+</div>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll study the diamonds dataset for this exercise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_diamonds</span>
+<span class="n">df_diamonds</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+        <span class="c1"># Order the cut to aid in plotting</span>
+        <span class="n">cut</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">as_factor</span><span class="p">(</span>
+            <span class="n">DF</span><span class="o">.</span><span class="n">cut</span><span class="p">,</span>
+            <span class="n">categories</span><span class="o">=</span><span class="p">[</span>
+                <span class="s2">&quot;Fair&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Good&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Very Good&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Premium&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Ideal&quot;</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="basic-eda-tools">
+<h1>Basic EDA Tools<a class="headerlink" href="#basic-eda-tools" title="Permalink to this headline">¶</a></h1>
+<p>There are a few simple tools we can use to investigate a dataset. We should use these tools even before making visuals of the data.</p>
+<div class="section" id="q1-take-the-head">
+<h2><strong>q1</strong> Take the head<a class="headerlink" href="#q1-take-the-head" title="Permalink to this headline">¶</a></h2>
+<p>Use the appropriate function to get the first 5 observations in <code class="docutils literal notranslate"><span class="pre">df_diamonds</span></code>. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Get the first 10 observations</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carat</th>
+      <th>cut</th>
+      <th>color</th>
+      <th>clarity</th>
+      <th>depth</th>
+      <th>table</th>
+      <th>price</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.23</td>
+      <td>Ideal</td>
+      <td>E</td>
+      <td>SI2</td>
+      <td>61.5</td>
+      <td>55.0</td>
+      <td>326</td>
+      <td>3.95</td>
+      <td>3.98</td>
+      <td>2.43</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.21</td>
+      <td>Premium</td>
+      <td>E</td>
+      <td>SI1</td>
+      <td>59.8</td>
+      <td>61.0</td>
+      <td>326</td>
+      <td>3.89</td>
+      <td>3.84</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.23</td>
+      <td>Good</td>
+      <td>E</td>
+      <td>VS1</td>
+      <td>56.9</td>
+      <td>65.0</td>
+      <td>327</td>
+      <td>4.05</td>
+      <td>4.07</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.29</td>
+      <td>Premium</td>
+      <td>I</td>
+      <td>VS2</td>
+      <td>62.4</td>
+      <td>58.0</td>
+      <td>334</td>
+      <td>4.20</td>
+      <td>4.23</td>
+      <td>2.63</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.31</td>
+      <td>Good</td>
+      <td>J</td>
+      <td>SI2</td>
+      <td>63.3</td>
+      <td>58.0</td>
+      <td>335</td>
+      <td>4.34</td>
+      <td>4.35</td>
+      <td>2.75</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+</div>
+<div class="section" id="q2-use-descriptive-statistics">
+<h2><strong>q2</strong> Use descriptive statistics<a class="headerlink" href="#q2-use-descriptive-statistics" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">gr.tf_describe()</span></code> function gives useful descriptive statistics on a dataset. Use these values to answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_describe</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carat</th>
+      <th>depth</th>
+      <th>table</th>
+      <th>price</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>53940.000000</td>
+      <td>53940.000000</td>
+      <td>53940.000000</td>
+      <td>53940.000000</td>
+      <td>53940.000000</td>
+      <td>53940.000000</td>
+      <td>53940.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.797940</td>
+      <td>61.749405</td>
+      <td>57.457184</td>
+      <td>3932.799722</td>
+      <td>5.731157</td>
+      <td>5.734526</td>
+      <td>3.538734</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.474011</td>
+      <td>1.432621</td>
+      <td>2.234491</td>
+      <td>3989.439738</td>
+      <td>1.121761</td>
+      <td>1.142135</td>
+      <td>0.705699</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.200000</td>
+      <td>43.000000</td>
+      <td>43.000000</td>
+      <td>326.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.400000</td>
+      <td>61.000000</td>
+      <td>56.000000</td>
+      <td>950.000000</td>
+      <td>4.710000</td>
+      <td>4.720000</td>
+      <td>2.910000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.700000</td>
+      <td>61.800000</td>
+      <td>57.000000</td>
+      <td>2401.000000</td>
+      <td>5.700000</td>
+      <td>5.710000</td>
+      <td>3.530000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>1.040000</td>
+      <td>62.500000</td>
+      <td>59.000000</td>
+      <td>5324.250000</td>
+      <td>6.540000</td>
+      <td>6.540000</td>
+      <td>4.040000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>5.010000</td>
+      <td>79.000000</td>
+      <td>95.000000</td>
+      <td>18823.000000</td>
+      <td>10.740000</td>
+      <td>58.900000</td>
+      <td>31.800000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>How many observations are in the dataset?</p>
+<ul>
+<li><p>There are <code class="docutils literal notranslate"><span class="pre">53940</span></code> observations.</p></li>
+</ul>
+</li>
+<li><p>What is a typical value for the <code class="docutils literal notranslate"><span class="pre">price</span></code> of a diamond, according to this dataset?</p>
+<ul>
+<li><p>A typical price is around <code class="docutils literal notranslate"><span class="pre">3000</span></code>. The mean price is <code class="docutils literal notranslate"><span class="pre">3932.80</span></code> and the median price is <code class="docutils literal notranslate"><span class="pre">2401</span></code>.</p></li>
+</ul>
+</li>
+<li><p>What is the largest diamond in the dataset? (According to <code class="docutils literal notranslate"><span class="pre">carat</span></code>.) What is the smallest?</p>
+<ul>
+<li><p>The largest carat is <code class="docutils literal notranslate"><span class="pre">0.2</span></code> and the smallest carat is <code class="docutils literal notranslate"><span class="pre">5.01</span></code>.</p></li>
+</ul>
+</li>
+<li><p>You identified all the variables in the dataset in <strong>q1</strong> above. Do the results from <code class="docutils literal notranslate"><span class="pre">gr.tf_describe()</span></code> provide information on <strong>all</strong> of these variables?</p>
+<ul>
+<li><p>No: we do not see results for <code class="docutils literal notranslate"><span class="pre">cut</span></code>, <code class="docutils literal notranslate"><span class="pre">color</span></code>, or <code class="docutils literal notranslate"><span class="pre">clarity</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="distinct-values-levels">
+<h2>Distinct Values (levels)<a class="headerlink" href="#distinct-values-levels" title="Permalink to this headline">¶</a></h2>
+<p>Variables that do not take numerical values are sometimes called <em>categorical variables</em>; there are other tools that are useful for investigating categorical variables.</p>
+<p>The verb <code class="docutils literal notranslate"><span class="pre">gr.tf_distinct()</span></code> is like <code class="docutils literal notranslate"><span class="pre">gr.tf_filter()</span></code>, but it filters for rows that are <em>distinct</em> according to the given variables. For instance, if we wanted to know what distinct values of <code class="docutils literal notranslate"><span class="pre">x</span></code> exist in <code class="docutils literal notranslate"><span class="pre">df_data</span></code>, we would call:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_distinct</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">variable</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><em>Aside</em>: A categorical variable is sometimes called a <em>factor</em>. The unique values of a categorical variable are called <em>levels</em>.</p>
+</div></blockquote>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">gr.tf_distinct()</span></code> to figure out what values show up for a categorical variable.</p>
+<div class="section" id="q3-find-the-distinct-cut-values">
+<h3><strong>q3</strong> Find the distinct <code class="docutils literal notranslate"><span class="pre">cut</span></code> values<a class="headerlink" href="#q3-find-the-distinct-cut-values" title="Permalink to this headline">¶</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">gr.tf_distinct()</span></code> to find the unique values of <code class="docutils literal notranslate"><span class="pre">cut</span></code> in <code class="docutils literal notranslate"><span class="pre">df_diamonds</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Find the distinct `cut` values in the dataset</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_distinct</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">cut</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carat</th>
+      <th>cut</th>
+      <th>color</th>
+      <th>clarity</th>
+      <th>depth</th>
+      <th>table</th>
+      <th>price</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.23</td>
+      <td>Ideal</td>
+      <td>E</td>
+      <td>SI2</td>
+      <td>61.5</td>
+      <td>55.0</td>
+      <td>326</td>
+      <td>3.95</td>
+      <td>3.98</td>
+      <td>2.43</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.21</td>
+      <td>Premium</td>
+      <td>E</td>
+      <td>SI1</td>
+      <td>59.8</td>
+      <td>61.0</td>
+      <td>326</td>
+      <td>3.89</td>
+      <td>3.84</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.23</td>
+      <td>Good</td>
+      <td>E</td>
+      <td>VS1</td>
+      <td>56.9</td>
+      <td>65.0</td>
+      <td>327</td>
+      <td>4.05</td>
+      <td>4.07</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.24</td>
+      <td>Very Good</td>
+      <td>J</td>
+      <td>VVS2</td>
+      <td>62.8</td>
+      <td>57.0</td>
+      <td>336</td>
+      <td>3.94</td>
+      <td>3.96</td>
+      <td>2.48</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.22</td>
+      <td>Fair</td>
+      <td>E</td>
+      <td>VS2</td>
+      <td>65.1</td>
+      <td>61.0</td>
+      <td>337</td>
+      <td>3.87</td>
+      <td>3.78</td>
+      <td>2.49</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="counts">
+<h2>Counts<a class="headerlink" href="#counts" title="Permalink to this headline">¶</a></h2>
+<p>Another approach to assessing a categorical is to simply count the number of rows that correspond to each distinct value. We can do this with the <code class="docutils literal notranslate"><span class="pre">gr.tf_count()</span></code> verb. For instance, if we wanted to know how may rows there are for each value of <code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">df_data</span></code>, we would call:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_count</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="q4-find-the-count-of-cut-values">
+<h3><strong>q4</strong> Find the count of cut values<a class="headerlink" href="#q4-find-the-count-of-cut-values" title="Permalink to this headline">¶</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">gr.tf_count()</span></code> to find the number of rows for each distinct <code class="docutils literal notranslate"><span class="pre">cut</span></code> value in <code class="docutils literal notranslate"><span class="pre">df_diamonds</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Find the distinct `cut` values in the dataset</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_count</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">cut</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cut</th>
+      <th>n</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Fair</td>
+      <td>1610</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Good</td>
+      <td>4906</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Very Good</td>
+      <td>12082</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Premium</td>
+      <td>13791</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ideal</td>
+      <td>21551</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="guided-eda">
+<h1>Guided EDA<a class="headerlink" href="#guided-eda" title="Permalink to this headline">¶</a></h1>
+<p>I’m going to walk you through a train of thought I had when studying the diamonds dataset.</p>
+<p>There are four standard “C’s” of <a class="reference external" href="https://en.wikipedia.org/wiki/Diamond_(gemstone)">judging</a> a diamond. These are <code class="docutils literal notranslate"><span class="pre">carat,</span> <span class="pre">cut,</span> <span class="pre">color</span></code> and <code class="docutils literal notranslate"><span class="pre">clarity</span></code>, all of which are in the <code class="docutils literal notranslate"><span class="pre">diamonds</span></code> dataset.</p>
+<p><em>Note</em>: This remainder of this exercise will consist of interpreting pre-made graphs. You can run the whole notebook to generate all the figures at once. Just make sure to do all the exercises and write your observations!</p>
+<div class="section" id="hypothesis-1">
+<h2>Hypothesis 1<a class="headerlink" href="#hypothesis-1" title="Permalink to this headline">¶</a></h2>
+<p>Here’s a hypothesis:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">Ideal</span></code> is the “best” value of <code class="docutils literal notranslate"><span class="pre">cut</span></code> for a diamond. Since an <code class="docutils literal notranslate"><span class="pre">Ideal</span></code> cut seems more labor-intensive, I hypothesize that <code class="docutils literal notranslate"><span class="pre">Ideal</span></code> cut diamonds are less numerous than other cuts.</p>
+</div></blockquote>
+<div class="section" id="q5-assess-hypothesis-1">
+<h3><strong>q5</strong> Assess hypothesis 1<a class="headerlink" href="#q5-assess-hypothesis-1" title="Permalink to this headline">¶</a></h3>
+<p>Run the chunk below, and study the plot. Was hypothesis 1 correct? Why
+or why not?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;cut&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_bar</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d03-e-stat01-eda-solution_23_0.png" src="../_images/d03-e-stat01-eda-solution_23_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8762373088910)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Is hypothesis 1 true or not?</p>
+<ul>
+<li><p>The hypothesis was wrong: <code class="docutils literal notranslate"><span class="pre">Ideal</span></code> cut diamonds are <em>more</em> numerous than all other cuts! Perhaps because cutting a diamond is easier than mining a new one, gemcutters add value to a diamond by striving for an ideal cut.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="hypothesis-2">
+<h2>Hypothesis 2<a class="headerlink" href="#hypothesis-2" title="Permalink to this headline">¶</a></h2>
+<p>Another hypothesis:</p>
+<blockquote>
+<div><p>The <code class="docutils literal notranslate"><span class="pre">Ideal</span></code> cut diamonds should be the most pricey.</p>
+</div></blockquote>
+<div class="section" id="q6-assess-hypothesis-2">
+<h3><strong>q6</strong> Assess hypothesis 2<a class="headerlink" href="#q6-assess-hypothesis-2" title="Permalink to this headline">¶</a></h3>
+<p>Study the following graph; does it support, contradict, or not relate to hypothesis 2?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;cut&quot;</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d03-e-stat01-eda-solution_27_0.png" src="../_images/d03-e-stat01-eda-solution_27_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8762375049593)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Does this plot support, contradict, or not relate to hypothesis 2?</p>
+<ul>
+<li><p>This graph is virtually useless! There is severe overplotting. We cannot address Hypothesis 2 with this graph.</p></li>
+</ul>
+</li>
+</ul>
+<p>The following is a set of <em>boxplots</em>; the middle bar denotes the median, the boxes denote the <em>quartiles</em> (upper and lower “quarters” of the data), and the lines and dots denote large values and outliers.</p>
+</div>
+<div class="section" id="q7-assess-hypothesis-2-take-2">
+<h3><strong>q7</strong> Assess hypothesis 2, take 2<a class="headerlink" href="#q7-assess-hypothesis-2-take-2" title="Permalink to this headline">¶</a></h3>
+<p>Study the following graph; does it support or contradict hypothesis 2?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;cut&quot;</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_boxplot</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d03-e-stat01-eda-solution_31_0.png" src="../_images/d03-e-stat01-eda-solution_31_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8762375125170)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Does this plot support or contradict hypothesis 2?</p>
+<ul>
+<li><p>Surprisingly, <code class="docutils literal notranslate"><span class="pre">Ideal</span></code> diamonds tend to be the <em>least</em> pricey! This was very surprising to me.</p></li>
+</ul>
+</li>
+</ul>
+<p>Upon making the graph in <strong>q3</strong>, I was <em>very</em> surprised, so I did some reading on diamond cuts. It turns out that some gemcutters <a class="reference external" href="https://en.wikipedia.org/wiki/Diamond_(gemstone)#Cut">sacrifice cut for carat</a>. Could this effect explain the surprising pattern above?</p>
+</div>
+<div class="section" id="q8-unravel-hypothesis-2">
+<h3><strong>q8</strong> Unravel hypothesis 2<a class="headerlink" href="#q8-unravel-hypothesis-2" title="Permalink to this headline">¶</a></h3>
+<p>Study the following graph; does it support a “sacrifice cut for carat” hypothesis? How might this relate to price?</p>
+<p><em>Hint</em>: The article linked above will help you answer these questions!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;cut&quot;</span><span class="p">,</span> <span class="s2">&quot;carat&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_boxplot</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d03-e-stat01-eda-solution_35_0.png" src="../_images/d03-e-stat01-eda-solution_35_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8762373433293)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>The median of <code class="docutils literal notranslate"><span class="pre">Ideal</span></code> diamonds is a fair bit lower in <code class="docutils literal notranslate"><span class="pre">carat</span></code> than other cuts. This provides some evidence that gemcutters trade <code class="docutils literal notranslate"><span class="pre">cut</span></code> for <code class="docutils literal notranslate"><span class="pre">carat</span></code>.</p></li>
+<li><p>The very largest <code class="docutils literal notranslate"><span class="pre">carat</span></code> diamonds tend to be of <code class="docutils literal notranslate"><span class="pre">Fair</span></code> cut; this makes sense, as cutting the gemstone will only reduce weight.</p></li>
+<li><p>It seems that many diamond purchasers are more interested in carat than fine cut. This provides some rationale for why <code class="docutils literal notranslate"><span class="pre">Ideal</span></code> diamonds are cheaper; they are necessarily lower-carat.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./exercises_solution"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="d02-e-data01-isolate-solution.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Data Isolation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="d04-e-grama01-basics-solution.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Grama Basics</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Zachary del Rosario<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
