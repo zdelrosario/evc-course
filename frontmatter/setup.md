@@ -3,7 +3,7 @@
 
 In short, you'll need:
 
-- Exercise files (Download) **TODO**
+- Exercise files (Download)
 - Python and Jupyter (Recommended: Anaconda)
 
 **If you have any issues with these steps**: Please ask a TA! We will gladly
@@ -153,3 +153,20 @@ execute the command `jupyter lab`, open `check_install.ipynb`,
 and click on `Run > Run all cells`. If you can successfully run the
 notebook (without errors), then you are ready for the course!
 ```
+
+# Progression
+<!-- -------------------------------------------------- -->
+
+The `exercises_assignment/` folder contains the take-home exercises that will
+introduce you to the concepts and skills covered in the class. Each of these
+exercises is labeled with a prefix (e.g. `d01-` for the first day), so the
+exercises should appear in your folder in-order. You should try these exercises
+on your own, but if you get stuck, keep in mind that the
+[solutions](https://zdelrosario.github.io/evc-course/frontmatter/exercises.html)
+are available online!
+
+The `challenges_assignment/` folder contains the homeworks for the course. These
+are provided without solutions, so try to complete these to the best of your
+ability.
+
+**TODO** (Add schedule for exercises and challenges...)
