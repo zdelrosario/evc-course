@@ -1,0 +1,1041 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>c03-stang &#8212; Data Science for Engineers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/home.html">
+   Data Science for Engineers
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../frontmatter/exercises.html">
+   Exercise Solutions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d01-e-data00-notebooks-solution.html">
+     Introduction to Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d01-e-vis00-basics-solution.html">
+     Data Visualization Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d02-e-data01-isolate-solution.html">
+     Data Isolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d03-e-stat01-eda-solution.html">
+     Introduction to Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d04-e-grama01-basics-solution.html">
+     Grama Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d05-e-vis01-bar-charts-solution.html">
+     Bar Charts
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/challenges_assignment/c03-stang-assignment.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/challenges_assignment/c03-stang-assignment.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   c03-stang
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#background">
+     Background
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q1-tidy-the-data">
+       <strong>
+        q1
+       </strong>
+       Tidy the data
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eda">
+     EDA
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q2-eda-without-visualization">
+       <strong>
+        q2
+       </strong>
+       EDA without visualization
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-induced-or-real-variability">
+       <strong>
+        q3
+       </strong>
+       Induced or real variability?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assess-a-claim">
+     Assess a Claim
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-compare-evidence-against-a-claim">
+       <strong>
+        q4
+       </strong>
+       Compare evidence against a claim
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-check-the-data-collection-methods">
+       <strong>
+        q5
+       </strong>
+       Check the data collection methods
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#study-consequences-with-a-model">
+     Study Consequences With a Model
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#model-buckling-plate">
+       Model: Buckling plate
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q6-implement-a-model-for-a-buckling-plate">
+       <strong>
+        q6
+       </strong>
+       Implement a model for a buckling plate
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#two-contexts">
+       Two contexts
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q7-interpret-results-context-1">
+       <strong>
+        q7
+       </strong>
+       Interpret results, context 1
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q8-interpret-results-context-2">
+       <strong>
+        q8
+       </strong>
+       Interpret results, context 2
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>c03-stang</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   c03-stang
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#background">
+     Background
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q1-tidy-the-data">
+       <strong>
+        q1
+       </strong>
+       Tidy the data
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eda">
+     EDA
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q2-eda-without-visualization">
+       <strong>
+        q2
+       </strong>
+       EDA without visualization
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-induced-or-real-variability">
+       <strong>
+        q3
+       </strong>
+       Induced or real variability?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assess-a-claim">
+     Assess a Claim
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-compare-evidence-against-a-claim">
+       <strong>
+        q4
+       </strong>
+       Compare evidence against a claim
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-check-the-data-collection-methods">
+       <strong>
+        q5
+       </strong>
+       Check the data collection methods
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#study-consequences-with-a-model">
+     Study Consequences With a Model
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#model-buckling-plate">
+       Model: Buckling plate
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q6-implement-a-model-for-a-buckling-plate">
+       <strong>
+        q6
+       </strong>
+       Implement a model for a buckling plate
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#two-contexts">
+       Two contexts
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q7-interpret-results-context-1">
+       <strong>
+        q7
+       </strong>
+       Interpret results, context 1
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q8-interpret-results-context-2">
+       <strong>
+        q8
+       </strong>
+       Interpret results, context 2
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="c03-stang">
+<h1>c03-stang<a class="headerlink" href="#c03-stang" title="Permalink to this headline">¶</a></h1>
+<p><em>Purpose</em>: When designing structures such as bridges, boats, and planes, the design team needs data about <em>material properties</em>. Often when we engineers first learn about material properties through coursework, we talk about abstract ideas and look up values in tables without ever looking at the data that gave rise to published properties. In this challenge you’ll study an aluminum alloy dataset: This will give you a better sense of the challenges underlying published material values.</p>
+<p>We will also use grama to connect these material properties to engineering outcomes: This will give you a sense for how variability enters into engineering decision-making.</p>
+<p>In this challenge, you will load a real dataset, wrangle it into tidy form, and perform EDA to learn more about the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">pandas.api.types</span> <span class="kn">import</span> <span class="n">is_numeric_dtype</span>
+
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>In 1946, scientists at the Bureau of Standards tested a number of Aluminum plates to determine their <a class="reference external" href="https://en.wikipedia.org/wiki/Elastic_modulus">elasticity</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Poisson%27s_ratio">Poisson’s ratio</a> [1]. These are key quantities used in the design of structural members, such as aircraft skin under <a class="reference external" href="https://en.wikipedia.org/wiki/Buckling">buckling loads</a>. These scientists tested plats of various thicknesses, and at different angles with respect to the <a class="reference external" href="https://en.wikipedia.org/wiki/Rolling_(metalworking)">rolling</a> direction.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_stang_wide</span>
+<span class="n">df_stang_wide</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="q1-tidy-the-data">
+<h3><strong>q1</strong> Tidy the data<a class="headerlink" href="#q1-tidy-the-data" title="Permalink to this headline">¶</a></h3>
+<p>Tidy <code class="docutils literal notranslate"><span class="pre">df_stang_wide</span></code> to produce <code class="docutils literal notranslate"><span class="pre">df_stang</span></code>. You should have column names <code class="docutils literal notranslate"><span class="pre">thick,</span> <span class="pre">alloy,</span> <span class="pre">angle,</span> <span class="pre">E,</span> <span class="pre">nu</span></code>. Make sure the <code class="docutils literal notranslate"><span class="pre">angle</span></code> variable is of correct type. Filter out any invalid values.</p>
+<p><em>Hint</em>: This is <strong>far easier</strong> if you use the special <code class="docutils literal notranslate"><span class="pre">&quot;.value&quot;</span></code> argument for <code class="docutils literal notranslate"><span class="pre">names_to</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Tidy df_stang_wide</span>
+<span class="n">df_stang</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_stang_wide</span>
+    <span class="c1">## WRITE YOUR CODE HERE</span>
+<span class="c1"># task-end </span>
+
+<span class="p">)</span>
+
+<span class="n">df_stang</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use the following tests to check your work.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Correct columns</span>
+<span class="k">assert</span> \
+    <span class="nb">set</span><span class="p">(</span><span class="n">df_stang</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">==</span>  <span class="nb">set</span><span class="p">([</span><span class="s2">&quot;thick&quot;</span><span class="p">,</span> <span class="s2">&quot;alloy&quot;</span><span class="p">,</span> <span class="s2">&quot;angle&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;mu&quot;</span><span class="p">]),</span> \
+    <span class="s2">&quot;Incorrect columns in df_stang&quot;</span>
+
+<span class="c1"># Dimensions</span>
+<span class="k">assert</span> \
+    <span class="p">(</span><span class="n">df_stang</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">27</span><span class="p">),</span> \
+    <span class="s2">&quot;Too many rows; did you pivot the data?&quot;</span>
+<span class="k">assert</span> \
+    <span class="p">(</span><span class="n">df_stang</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">26</span><span class="p">),</span> \
+    <span class="s2">&quot;Too many rows; did you filter the invalid values?&quot;</span>
+<span class="k">assert</span> \
+    <span class="p">(</span><span class="n">df_stang</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">26</span><span class="p">),</span> \
+    <span class="s2">&quot;Too few rows; did you filter *only* invalid values?&quot;</span>
+    
+<span class="c1"># Types</span>
+<span class="k">assert</span> \
+    <span class="p">(</span><span class="n">is_numeric_dtype</span><span class="p">(</span><span class="n">df_stang</span><span class="p">[</span><span class="s2">&quot;angle&quot;</span><span class="p">])),</span> \
+    <span class="s2">&quot;angle columns is not numeric; make sure to convert this column&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="eda">
+<h2>EDA<a class="headerlink" href="#eda" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="q2-eda-without-visualization">
+<h3><strong>q2</strong> EDA without visualization<a class="headerlink" href="#q2-eda-without-visualization" title="Permalink to this headline">¶</a></h3>
+<p>Perform a basic EDA on the aluminum data <em>without visualization</em>. Use your analysis to answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Perform EDA *without visualization* here</span>
+<span class="c1">## Top-level facts?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Distinct alloys?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Distinct angles?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Distinct thicknesses?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Observations</strong>:</p>
+<ul class="simple">
+<li><p>Do you see identical values for the material properties?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>How many aluminum alloys are in this dataset? How do you know?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>What angles were tested?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>Were all angles tested with the same number of observations?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>What thicknesses were tested?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="q3-induced-or-real-variability">
+<h3><strong>q3</strong> Induced or real variability?<a class="headerlink" href="#q3-induced-or-real-variability" title="Permalink to this headline">¶</a></h3>
+<p>The variability we see in the material properties <code class="docutils literal notranslate"><span class="pre">E,</span> <span class="pre">mu</span></code> could be induced, real, or some mix of the two. Let’s read a bit from the original paper to see what the original investigators thought about their data. Read the following passage, and answer the questions under <em>observations</em> below.</p>
+<p><img alt="Stang passage" src="../_images/c03-stang-variability.png" /></p>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Based on what the authors wrote, do they believe that the observed variability is <em>purely</em> induced?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>Is there likely to be real variability in the observed material properties?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>Try doing a websearch for <code class="docutils literal notranslate"><span class="pre">&quot;elasticity</span> <span class="pre">of</span> <span class="pre">aluminum&quot;</span></code>; you are likely to find results that quote a single value for <code class="docutils literal notranslate"><span class="pre">E</span></code>. What does your previous observation tell us about the limitations of this “single number” view of material properties?</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="assess-a-claim">
+<h2>Assess a Claim<a class="headerlink" href="#assess-a-claim" title="Permalink to this headline">¶</a></h2>
+<p>We can use a combination of visualization tools and critical thinking to do useful work: You’ll practice this next.</p>
+<div class="section" id="q4-compare-evidence-against-a-claim">
+<h3><strong>q4</strong> Compare evidence against a claim<a class="headerlink" href="#q4-compare-evidence-against-a-claim" title="Permalink to this headline">¶</a></h3>
+<p>Consider the following definition:</p>
+<blockquote>
+<div><p>“A material’s property (or material property) is an intensive property of some material, i.e. a physical property that does not depend on the amount of the material.”[2]</p>
+</div></blockquote>
+<p>Note that the “amount of material” would vary with the thickness of a tested plate. Does the following graph support or contradict the following claim?</p>
+<blockquote>
+<div><p>Claim: Elasticity <code class="docutils literal notranslate"><span class="pre">E</span></code> is an intensive material property.</p>
+</div></blockquote>
+<p>Inspect the graph below, and answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_stang</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;mu&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;factor(thick)&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_color_discrete</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Thickness (in)&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Elasticity (ksi)&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Poisson&#39;s Ratio (-)&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Does this graph support or contradict the claim above?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>Is the evidence conclusive?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="q5-check-the-data-collection-methods">
+<h3><strong>q5</strong> Check the data collection methods<a class="headerlink" href="#q5-check-the-data-collection-methods" title="Permalink to this headline">¶</a></h3>
+<p>Read the following section from the original paper, and answer the questions below.</p>
+<p><img alt="Stang image" src="../_images/c03-stang-measurements.png" /></p>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>In <strong>q3</strong> we saw variation in the material properties <code class="docutils literal notranslate"><span class="pre">E,</span> <span class="pre">mu</span></code> with thickness. One possible explanation for that variation is that material properties can vary with thickness—hence, they are not intensive properties. What alternative explanation does this section from the paper suggest?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="study-consequences-with-a-model">
+<h2>Study Consequences With a Model<a class="headerlink" href="#study-consequences-with-a-model" title="Permalink to this headline">¶</a></h2>
+<p>The material properties <code class="docutils literal notranslate"><span class="pre">E</span></code> and <code class="docutils literal notranslate"><span class="pre">mu</span></code> are important for numerous engineering design problems. To illustrate how variability in data relates to engineering considerations, we’ll study the data in light of a specific context.</p>
+<div class="section" id="model-buckling-plate">
+<h3>Model: Buckling plate<a class="headerlink" href="#model-buckling-plate" title="Permalink to this headline">¶</a></h3>
+<p>A plate under compression is at risk of <em>buckling</em>: bowing inwards, leading to a reduction in the provided compression resisting the inward forces. If the buckling plate is used as a structural member (such as the top skin of an airplane wing), then the critical stress at which the plate buckles is an important design consideration.</p>
+<p>There are simple analytic models for the critical stress of a <a class="reference external" href="https://en.wikipedia.org/wiki/Buckling#Plate_buckling">plate buckling</a>. Your next task is to implement this model in grama.</p>
+<p>For convenience, the units of the Stang et al. dataset and other input variables are given below:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Units</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">E</span></code></p></td>
+<td><p>Elasticity</p></td>
+<td><p>kips/in^2 == 1000 psi</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mu</span></code></p></td>
+<td><p>Poisson’s ratio</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+<td><p>Length</p></td>
+<td><p>in</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
+<td><p>Width</p></td>
+<td><p>in</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">t</span></code></p></td>
+<td><p>Thickness</p></td>
+<td><p>in</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">m</span></code></p></td>
+<td><p>Wavenumber</p></td>
+<td><p>-</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="q6-implement-a-model-for-a-buckling-plate">
+<h3><strong>q6</strong> Implement a model for a buckling plate<a class="headerlink" href="#q6-implement-a-model-for-a-buckling-plate" title="Permalink to this headline">¶</a></h3>
+<p>Implement the buckling plate model, given by the following equations:</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{cr} = k_{cr} \frac{\pi^2 E}{12 (1 - \mu^2)} \left(\frac{t}{b}\right)^2\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[k_{cr} = \left(\frac{mb}{a} + \frac{a}{mb}\right)^2.\]</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">m</span></code> is the “wavenumber”; that is, the number of ripples in the bending shape.</p>
+<p>Provide the critical stress <span class="math notranslate nohighlight">\(\sigma_{cr}\)</span> in units of psi.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: This scaffolding will get you started</span>
+<span class="n">md_plate</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s2">&quot;Plate critical buckling stress&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_vec_function</span><span class="p">(</span>
+        <span class="n">fun</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">k_cr</span><span class="o">=</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">m</span> <span class="o">*</span> <span class="n">df</span><span class="o">.</span><span class="n">b</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">a</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">m</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+        <span class="p">),</span>
+        <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">],</span>
+        <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;k_cr&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="c1">## TASK: Complete the model to provide the sigma_cr output</span>
+
+<span class="p">)</span>
+
+<span class="n">md_plate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use the following to check your work.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit, use this to check your work</span>
+<span class="n">df_plate_test</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">md_plate</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_df</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+        <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">t</span><span class="o">=</span><span class="mf">0.125</span><span class="p">,</span>
+        <span class="n">E</span><span class="o">=</span><span class="mi">10500</span><span class="p">,</span>
+        <span class="n">mu</span><span class="o">=</span><span class="mf">0.32</span><span class="p">,</span>
+        <span class="n">m</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">))</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_plate_test</span><span class="p">)</span>
+
+<span class="k">assert</span> \
+    <span class="ow">not</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">df_plate_test</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.886228e3</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-3</span><span class="p">),</span> \
+    <span class="s2">&quot;Incorrect sigma_cr; did you remember to convert E from kips to lbf?&quot;</span>
+
+<span class="k">assert</span> \
+    <span class="ow">not</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">df_plate_test</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.886228e6</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-3</span><span class="p">),</span> \
+    <span class="s2">&quot;Incorrect sigma_cr; double-check your work&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="two-contexts">
+<h3>Two contexts<a class="headerlink" href="#two-contexts" title="Permalink to this headline">¶</a></h3>
+<p>Remember that models and data must be interpreted in a <em>context</em>. You will consider two different contexts below, in order to interpret the results.</p>
+</div>
+<div class="section" id="q7-interpret-results-context-1">
+<h3><strong>q7</strong> Interpret results, context 1<a class="headerlink" href="#q7-interpret-results-context-1" title="Permalink to this headline">¶</a></h3>
+<p>The following code sweeps the model over various aspect ratios (length / width) and wavenumbers <code class="docutils literal notranslate"><span class="pre">m</span></code>, and computes the critical buckling stress. It also considers the variability observed in the material properties <code class="docutils literal notranslate"><span class="pre">E,</span> <span class="pre">mu</span></code> and reports this as a band about each curve (as the min and max observed).</p>
+<p>Inspect the plot below, and answer the questions under <em>observe</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_stang</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">thick</span> <span class="o">==</span> <span class="mf">0.032</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_rename</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="s2">&quot;thick&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Sweep over additional variables</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_outer</span><span class="p">(</span>
+        <span class="n">df_outer</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_grid</span><span class="p">(</span>
+            <span class="n">m</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+            <span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">25</span><span class="p">),</span>
+            <span class="n">b</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="c1"># Use the model as a transformation (evaluation synonym)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_md</span><span class="p">(</span><span class="n">md_plate</span><span class="p">)</span>
+    
+    <span class="c1"># Compute summaries</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">sigma_cr_min</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">colmin</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+        <span class="n">sigma_cr_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+        <span class="n">sigma_cr_max</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">colmax</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># Visualize the results</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;a / b&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;factor(m)&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_ribbon</span><span class="p">(</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="s2">&quot;sigma_cr_min&quot;</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s2">&quot;sigma_cr_max&quot;</span><span class="p">),</span>
+        <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
+        <span class="n">fill</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;sigma_cr_mean&quot;</span><span class="p">))</span>
+    
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_y_continuous</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_color_discrete</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Wavenumber&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Aspect Ratio (-)&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Critical Buckling Stress (psi)&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observe</em></p>
+<p>Suppose you were making a decision about what aspect ratio of plate to use, deciding between values of <code class="docutils literal notranslate"><span class="pre">AR</span> <span class="pre">==</span> <span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">AR</span> <span class="pre">==</span> <span class="pre">1.5</span></code>. Your goal is to make the structure more efficient; to provide a higher critical buckling stress with the least weight possible.</p>
+<ul class="simple">
+<li><p>At an aspect ratio of 1, which buckling mode (wavenumber) will be the most concerning?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>At an aspect ratio of 2, which buckling mode (wavenumber) will be the most concerning?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>How does the variability in buckling strength due to material properties compare with the variability due to aspect ratio?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>Would it be necessary to consider the variability of material properties for making decisions about the aspect ratio? Say we were deciding between <code class="docutils literal notranslate"><span class="pre">AR</span> <span class="pre">==</span> <span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">AR</span> <span class="pre">==</span> <span class="pre">1.5</span></code>.</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="q8-interpret-results-context-2">
+<h3><strong>q8</strong> Interpret results, context 2<a class="headerlink" href="#q8-interpret-results-context-2" title="Permalink to this headline">¶</a></h3>
+<p>Next you’ll interpret results from the model in a different context. Run the following code, inspect the visual, and answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_stang</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">thick</span> <span class="o">==</span> <span class="mf">0.032</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_drop</span><span class="p">(</span><span class="s2">&quot;thick&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Sweep over thicknesses</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_outer</span><span class="p">(</span>
+        <span class="n">df_outer</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_grid</span><span class="p">(</span>
+            <span class="n">t</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.030</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">25</span><span class="p">),</span>
+            <span class="n">a</span><span class="o">=</span><span class="mi">12</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">,</span>
+            <span class="n">b</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+            <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># Use model as a transform</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_md</span><span class="p">(</span><span class="n">md_plate</span><span class="p">)</span>
+    
+    <span class="c1"># Compute summaries</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">sigma_cr_min</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">colmin</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+        <span class="n">sigma_cr_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+        <span class="n">sigma_cr_max</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">colmax</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># Visualize</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_segment</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">t</span><span class="o">=</span><span class="mf">0.0333</span><span class="p">,</span>
+            <span class="n">y</span><span class="o">=</span><span class="mi">1000</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span>
+            <span class="n">yend</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="s2">&quot;yend&quot;</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;salmon&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_segment</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">y</span><span class="o">=</span><span class="mi">1000</span> <span class="o">*</span> <span class="mf">1.25</span><span class="p">,</span>
+            <span class="n">t</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span>
+            <span class="n">tend</span><span class="o">=</span><span class="mf">0.0372</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="s2">&quot;tend&quot;</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;sigma_cr_min&quot;</span><span class="p">),</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;sigma_cr_mean&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;sigma_cr_max&quot;</span><span class="p">),</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+    
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Plate Thickness (in)&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Critical Buckling Stress (psi)&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<p>Suppose the plate will be subjected to a compressive stress of <code class="docutils literal notranslate"><span class="pre">1000</span></code> psi, and your goal is to pick the minimum-thickness possible while ensuring the plate will not buckle.</p>
+<ul class="simple">
+<li><p>Would a plate of thickness <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">==</span> <span class="pre">0.0333</span></code> in be safe? (Shown by salmon-colored line.) Why or why not?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>A colleague suggests using a factor of safety of <code class="docutils literal notranslate"><span class="pre">1.25</span></code> to increase the critical buckling stress in order to deal with the material variability. Compared to the variability observed, is this margin too small, too large, or just right?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<p>[1] Stang, Greenspan, and Newman, “Poisson’s ratio of some structural alloys for large strains” (1946) Journal of Research of the National Bureau of Standards, <a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/jres/37/jresv37n4p211_A1b.pdf">pdf link</a></p>
+<p>[2] Wikipedia, <em>List of material properties</em>, accessed 2020-06-26, <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_materials_properties">link</a></p>
+<p>[3] Wikipedia, <em>Buckling: Plate buckling</em>, accessed 2022-01-09, <a class="reference external" href="https://en.wikipedia.org/wiki/Buckling#Plate_buckling">link</a></p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./challenges_assignment"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Zachary del Rosario<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
