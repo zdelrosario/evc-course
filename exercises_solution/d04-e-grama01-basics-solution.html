@@ -559,9 +559,8 @@
 <li><p>Models (<code class="docutils literal notranslate"><span class="pre">md</span></code>), as represented by a <code class="docutils literal notranslate"><span class="pre">gr.Model</span></code>: Represents a model, including inputs, functions providing outputs, and uncertainties.</p></li>
 </ul>
 <p>The four verb classes allow us to move between the two object types, as summarized in the image below:</p>
-<div>
-<img src="./images/verb-classes.png" width="500"/>
-</div><div class="section" id="verb-classes">
+<p><img alt="Grama verb class diagram" src="../_images/verb-classes.png" /></p>
+<div class="section" id="verb-classes">
 <h2>Verb Classes<a class="headerlink" href="#verb-classes" title="Permalink to this headline">¶</a></h2>
 <p>Functions in grama are best thought of as “verbs”: functions that perform a specified action. The verb classes map between data and models. Every grama verb starts with a two-letter prefix, which gives us a hint as to how the verbs should be used. We’ve already seen a variety of transformation <code class="docutils literal notranslate"><span class="pre">tf_*</span></code> verbs for working with data. There are four primary verb classes, with an additional class for plotting.</p>
 <table class="colwidths-auto table">
