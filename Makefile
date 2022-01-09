@@ -4,6 +4,9 @@ main:
 	./prepend.py
 	cp -rf exercises/images exercises_assignment/.
 	cp -rf exercises/images exercises_solution/.
+	cd challenges; make
+	cp challenges/*assignment.ipynb challenges_assignment/.
+	cp -rf challenges/images challenges_assignment/.
 
 book: main
 	jb build .
