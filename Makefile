@@ -21,4 +21,6 @@ links:
 clean:
 	jb clean .
 	cd exercises; make clean
+	cd exercises_assignment; make clean
+	cd exercises_solution; make clean
 	cd challenges; make clean
