@@ -28,6 +28,7 @@ jobs:
           mkdir build                             # Collect the build
           cp -r challenges_assignment build/.
           cp -r exercises_assignment build/.
+          cp check_install.ipynb build/.
           cp requirements.txt build/.
           cp README.md build/.
     
