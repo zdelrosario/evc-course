@@ -9,18 +9,18 @@ In short, you'll need:
 **If you have any issues with these steps**: Please ask a TA! We will gladly
 help you set up your environment.
 
-## Exercises Files
+# Exercises Files
 <!-- ------------------------- -->
 
 We will work through a number of programming exercises in this course. We have
 consolidated the exercise notebooks and installation files in a single zip;
 download the following and unzip.
 
-- **TODO**
+- [Course materials](https://github.com/zdelrosario/evc-course/archive/refs/heads/build.zip)
 
 Save this to a stable location on your computer; for instance, your Documents folder.
 
-## Python and Jupyter Installation
+# Python and Jupyter Installation
 <!-- ------------------------- -->
 
 We recommend [Anaconda
@@ -28,7 +28,7 @@ python](https://www.anaconda.com/distribution/#download-section), which will
 provide *almost* everything you need. Make sure to install python version `>=
 3.0`.
 
-### Windows Installation
+## Windows Installation
 <!-- ------------------------- -->
 
 If you are on Windows, you may need to install [Visual C++ Build
@@ -53,7 +53,7 @@ Within this menu, make sure the C++ build tools are selected, as pictured below.
 Once you've selected these tools, you can click `Install`.
 ```
 
-## Tutorial: Using a Terminal
+# Tutorial: Using a Terminal
 <!-- -------------------------------------------------- -->
 
 Many software tools are most easily accessed through a programmatic interface
@@ -62,7 +62,7 @@ will make minimal use of the terminal in this course, but it will be
 absolutely essential for setting up your computer for the course. Please ask a
 TA if you have any issues using a terminal.
 
-### Opening a terminal
+## Opening a terminal
 
 - Mac: `terminal.app` is your terminal -- you can find this through Spotlight
   search (Command + Spacebar).
@@ -78,7 +78,7 @@ the following.
 
 To use the terminal, you manually type commands, then press Enter to execute.
 
-### Changing directory
+## Changing directory
 
 When looking for files (Mac: Finder, Windows: Explorer, Linux: e.g. Nautilus),
 we use a program to look at *directories*. Your terminal does something similar
@@ -102,7 +102,7 @@ I can then `cd` into the unzipped folder and install the required Python
 packages with `pip install -r requirements.txt`. However, I can only do this
 after I've installed Anaconda!
 
-## Python Module Installation
+# Python Module Installation
 <!-- ------------------------- -->
 
 Once you have installed python, you will need to install a handful of python
@@ -122,7 +122,7 @@ This will install the requirements for the course.
 ![terminal pip](./images/terminal_pip.png)
 
 (open-jupyter)=
-### Opening Jupyter Notebooks
+# Opening Jupyter Notebooks
 <!-- ------------------------- -->
 
 Jupyter notebooks are a particular way of working with Python code. They are
@@ -139,19 +139,17 @@ then click on the notebooks in that directory to open them. Go ahead and open
 `check_install.ipynb`, which you will run at the end of installation to check if
 everything is set up correctly.
 
-## Final Check
+# Final Check
 <!-- -------------------------------------------------- -->
 
 To check that you've successfully set up your computer for the course, please
 run the following jupyter notebook.
 
 ```{admonition} Test your installation
-Download and run
-**TODO**.
-This is also included in the `exercises.zip` file above.
+Download and run [check_install.ipynb](https://github.com/zdelrosario/evc-course/blob/main/check_install.ipynb). This is also included in the [course materials](https://github.com/zdelrosario/evc-course/archive/refs/heads/build.zip) file noted above.
 
 Navigate to the folder where you downloaded `check_install.ipynb`,
-execute the command `jupyter notebook`, open `check_install.ipynb`,
-and click on `Cells > Run All`. If you can successfully run the
+execute the command `jupyter lab`, open `check_install.ipynb`,
+and click on `Run > Run all cells`. If you can successfully run the
 notebook (without errors), then you are ready for the course!
 ```
