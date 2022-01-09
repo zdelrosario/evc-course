@@ -25,6 +25,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install coverage nbformat nbconvert unittest-xml-reporting
         pip install -r requirements.txt
+        conda install nb_conda_kernels 
     - name: Test notebooks
       run: |
         cd exercises; python -m unittest discover
