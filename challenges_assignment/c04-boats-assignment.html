@@ -1,0 +1,869 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>c04-boats &#8212; Data Science for Engineers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/home.html">
+   Data Science for Engineers
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../frontmatter/exercises.html">
+   Exercise Solutions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d01-e-data00-notebooks-solution.html">
+     Introduction to Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d01-e-vis00-basics-solution.html">
+     Data Visualization Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d02-e-data01-isolate-solution.html">
+     Data Isolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d03-e-stat01-eda-solution.html">
+     Introduction to Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d04-e-grama01-basics-solution.html">
+     Grama Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d05-e-vis01-bar-charts-solution.html">
+     Bar Charts
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/challenges_assignment/c04-boats-assignment.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/challenges_assignment/c04-boats-assignment.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   c04-boats
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#context">
+   Context
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basics-of-boat-hull-design">
+     Basics of Boat Hull Design
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#todo-boat-schematic">
+       TODO Boat schematic
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#statical-stability">
+       Statical Stability
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#archival-data">
+     Archival Data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-dictionary">
+       Data Dictionary
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eda-of-archival-data">
+   EDA of Archival Data
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-first-look">
+     <strong>
+      qX
+     </strong>
+     First look
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-how-many-designs-are-upright-stable">
+     <strong>
+      qX
+     </strong>
+     How many designs are upright-stable?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-assess-avs">
+     <strong>
+      qX
+     </strong>
+     Assess AVS
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-understand-what-the-angle-column-means">
+     <strong>
+      qX
+     </strong>
+     Understand what the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       angle
+      </span>
+     </code>
+     column means
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-re-code-the-angle">
+     <strong>
+      qX
+     </strong>
+     Re-code the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       angle
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-setup">
+   Model Setup
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ema-of-boat-performance">
+   EMA of Boat Performance
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>c04-boats</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   c04-boats
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#context">
+   Context
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basics-of-boat-hull-design">
+     Basics of Boat Hull Design
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#todo-boat-schematic">
+       TODO Boat schematic
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#statical-stability">
+       Statical Stability
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#archival-data">
+     Archival Data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-dictionary">
+       Data Dictionary
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eda-of-archival-data">
+   EDA of Archival Data
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-first-look">
+     <strong>
+      qX
+     </strong>
+     First look
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-how-many-designs-are-upright-stable">
+     <strong>
+      qX
+     </strong>
+     How many designs are upright-stable?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-assess-avs">
+     <strong>
+      qX
+     </strong>
+     Assess AVS
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-understand-what-the-angle-column-means">
+     <strong>
+      qX
+     </strong>
+     Understand what the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       angle
+      </span>
+     </code>
+     column means
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-re-code-the-angle">
+     <strong>
+      qX
+     </strong>
+     Re-code the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       angle
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-setup">
+   Model Setup
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ema-of-boat-performance">
+   EMA of Boat Performance
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="c04-boats">
+<h1>c04-boats<a class="headerlink" href="#c04-boats" title="Permalink to this headline">¶</a></h1>
+<p><em>Purpose</em>: TODO</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="c1"># Boat analysis code</span>
+<span class="kn">import</span> <span class="nn">boat_utils</span> <span class="k">as</span> <span class="nn">boat</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="context">
+<h1>Context<a class="headerlink" href="#context" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="basics-of-boat-hull-design">
+<h2>Basics of Boat Hull Design<a class="headerlink" href="#basics-of-boat-hull-design" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="todo-boat-schematic">
+<h3>TODO Boat schematic<a class="headerlink" href="#todo-boat-schematic" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="statical-stability">
+<h3>Statical Stability<a class="headerlink" href="#statical-stability" title="Permalink to this headline">¶</a></h3>
+<p>(TODO exposition)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; this will analyze an example boat</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">v_design</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">]</span>
+<span class="n">df_example</span> <span class="o">=</span> <span class="n">boat</span><span class="o">.</span><span class="n">fun_moment</span><span class="p">(</span><span class="n">v_design</span><span class="p">)</span>
+<span class="n">avs_example</span> <span class="o">=</span> <span class="n">boat</span><span class="o">.</span><span class="n">fun_avs</span><span class="p">(</span><span class="n">v_design</span><span class="p">)</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Execution time: </span><span class="si">{0:4.3f}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+
+<span class="p">(</span>
+    <span class="c1"># Visualize the moment curve</span>
+    <span class="n">df_example</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;angle * 180/3.14&quot;</span><span class="p">,</span> <span class="s2">&quot;M_net&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="n">avs_example</span><span class="p">,</span> <span class="n">M_net</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;AVS&quot;</span><span class="p">),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">),</span>
+        <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="p">)</span>
+    
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_color_discrete</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Boat Angle (Degrees)&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Net Moment (lbf * in)&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Some things worth noting about this example:</p>
+<ul class="simple">
+<li><p>The Boat Angle is the angle to which the boat hull is rotated (along its long axis).</p></li>
+<li><p>When the net moment is negative, a restoring torque acts to turn the boat back to upright.</p></li>
+<li><p>When the net moment is positive, an anti-restoring torque is applied.</p></li>
+<li><p>The point where the moment curve passes through the axis <code class="docutils literal notranslate"><span class="pre">M_net</span> <span class="pre">==</span> <span class="pre">0</span></code> with positive slope is called the <em>angle of vanishing stability</em> (AVS). Rotating the boat beyond this point will cause it to settle upside-down.</p></li>
+<li><p>The boat analysis takes a non-trivial amount of time to run! Analyzing a large number of boat designs will take a fair amount of simulation time.</p></li>
+</ul>
+<p>Note that not all boats have a well-defined AVS. For instance, the following boat is <em>universally stable</em>. The boat will always rotate back to upright, regardless of the angle to which it is rolled.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; this will analyze an example boat</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">v_design2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">]</span>
+<span class="n">df_example2</span> <span class="o">=</span> <span class="n">boat</span><span class="o">.</span><span class="n">fun_moment</span><span class="p">(</span><span class="n">v_design2</span><span class="p">)</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Execution time: </span><span class="si">{0:4.3f}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+
+<span class="p">(</span>
+    <span class="c1"># Visualize the moment curve</span>
+    <span class="n">df_example2</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;angle * 180/3.14&quot;</span><span class="p">,</span> <span class="s2">&quot;M_net&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">()</span>
+    
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Boat Angle (Degrees)&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Net Moment (lbf * in)&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="archival-data">
+<h2>Archival Data<a class="headerlink" href="#archival-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename_archival</span> <span class="o">=</span> <span class="s2">&quot;./data/doe-wide.csv&quot;</span>
+<span class="n">df_archival</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename_archival</span><span class="p">)</span>
+<span class="n">df_archival</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="data-dictionary">
+<h3>Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>I/O</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">d</span></code></p></td>
+<td><p>Input</p></td>
+<td><p>Displacement ratio (-)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">n</span></code></p></td>
+<td><p>Input</p></td>
+<td><p>Shape factor (-)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">f_com</span></code></p></td>
+<td><p>Input</p></td>
+<td><p>Height of COM from boat bottom (-)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">H</span></code></p></td>
+<td><p>Input</p></td>
+<td><p>Height of boat (in)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">W</span></code></p></td>
+<td><p>Input</p></td>
+<td><p>Width of boat (in)</p></td>
+</tr>
+<tr class="row-odd"><td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">M_max</span></code></p></td>
+<td><p>Output</p></td>
+<td><p>Max righting moment (<code class="docutils literal notranslate"><span class="pre">lbf*in</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M_min</span></code></p></td>
+<td><p>Output</p></td>
+<td><p>Min righting moment (<code class="docutils literal notranslate"><span class="pre">lbf*in</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mass</span></code></p></td>
+<td><p>Output</p></td>
+<td><p>Boat mass (lb)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dMdtheta_avs</span></code></p></td>
+<td><p>Output</p></td>
+<td><p>Slope of moment curve at AVS (<code class="docutils literal notranslate"><span class="pre">lbf</span> <span class="pre">in/rad</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dMdtheta_0</span></code></p></td>
+<td><p>Output</p></td>
+<td><p>Slope of moment curve at upright (<code class="docutils literal notranslate"><span class="pre">lbf*in/rad</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int_M_stable</span></code></p></td>
+<td><p>Output</p></td>
+<td><p>Integral of moment curve, up to the AVS (<code class="docutils literal notranslate"><span class="pre">lbf*in*rad</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">BM</span></code></p></td>
+<td><p>Output</p></td>
+<td><p>Metacentric radius (in)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">GM</span></code></p></td>
+<td><p>Output</p></td>
+<td><p>Metacentric height (in)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">angle</span></code></p></td>
+<td><p>Output</p></td>
+<td><p>Angle of vanishing stability (rad)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="s2">&quot;f_com&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">]</span>
+<span class="n">out</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;M_max&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;M_min&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;mass&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;dMdtheta_avs&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;dMdtheta_0&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;BM&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;GM&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;angle&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;int_M_stable&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="eda-of-archival-data">
+<h1>EDA of Archival Data<a class="headerlink" href="#eda-of-archival-data" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="qx-first-look">
+<h2><strong>qX</strong> First look<a class="headerlink" href="#qx-first-look" title="Permalink to this headline">¶</a></h2>
+<p>Use simple EDA techniques to answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Perform simple EDA, answer the questions below</span>
+<span class="p">(</span>
+    <span class="n">df_archival</span>
+
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>How many observations (distinct boat hulls) are there in-total?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>What are rough bounds for each of the input variables? (You’ll use these in a later task….)</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="qx-how-many-designs-are-upright-stable">
+<h2><strong>qX</strong> How many designs are upright-stable?<a class="headerlink" href="#qx-how-many-designs-are-upright-stable" title="Permalink to this headline">¶</a></h2>
+<p>Remember that “upright-stable” means the slope of the moment curve at an upright position is negative.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_archival</span>
+
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>How many boat designs in the dataset are upright-stable?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>How <em>fraction</em> of boat designs in the dataset are upright-stable?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>How many boat designs in the dataset are upright-stable?</p>
+<ul>
+<li><p>There are <code class="docutils literal notranslate"><span class="pre">670</span></code> upright-stable boats.</p></li>
+</ul>
+</li>
+<li><p>How <em>fraction</em> of boat designs in the dataset are upright-stable?</p>
+<ul>
+<li><p>This is <code class="docutils literal notranslate"><span class="pre">67%</span></code> percent of the dataset.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="qx-assess-avs">
+<h2><strong>qX</strong> Assess AVS<a class="headerlink" href="#qx-assess-avs" title="Permalink to this headline">¶</a></h2>
+<p>Visualize the distribution of the AVS (<code class="docutils literal notranslate"><span class="pre">angle</span></code>), and use an aesthetic to differentiate the upright-stable and upright-unstable boats.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_archival</span>
+
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Describe the distribution of the <code class="docutils literal notranslate"><span class="pre">AVS</span></code>.</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>How many designs have a well-defined <code class="docutils literal notranslate"><span class="pre">AVS</span></code>? Does this seem high or low?</p>
+<ul>
+<li><p><em>Hint</em>: <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> should throw a helpful <code class="docutils literal notranslate"><span class="pre">Warning</span></code> related to this….</p></li>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="qx-understand-what-the-angle-column-means">
+<h2><strong>qX</strong> Understand what the <code class="docutils literal notranslate"><span class="pre">angle</span></code> column means<a class="headerlink" href="#qx-understand-what-the-angle-column-means" title="Permalink to this headline">¶</a></h2>
+<p>Count the number of cases where <code class="docutils literal notranslate"><span class="pre">angle</span></code> is finite and the design is upright-stable. Answer the questions under <em>observations</em> below.</p>
+<p><em>Hint</em>: The grama helper <code class="docutils literal notranslate"><span class="pre">gr.not_nan()</span></code> will help with this task.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_archival</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_count</span><span class="p">(</span>
+
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Are there any boats that are upright-<strong>un</strong>stable with a well-defined AVS? Why might this be?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>Are there any boats that are upright-<strong>stable</strong> that do <em>not</em> have a well-defined AVS? Why might this be?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="qx-re-code-the-angle">
+<h2><strong>qX</strong> Re-code the <code class="docutils literal notranslate"><span class="pre">angle</span></code><a class="headerlink" href="#qx-re-code-the-angle" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_recoded</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_archival</span>
+
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="model-setup">
+<h1>Model Setup<a class="headerlink" href="#model-setup" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="ema-of-boat-performance">
+<h1>EMA of Boat Performance<a class="headerlink" href="#ema-of-boat-performance" title="Permalink to this headline">¶</a></h1>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./challenges_assignment"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Zachary del Rosario<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
