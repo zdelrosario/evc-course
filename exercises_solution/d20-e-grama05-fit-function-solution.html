@@ -1,0 +1,1362 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fitting Functions &#8212; Data Science for Engineers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Fitting Univariate Distributions" href="d22-e-grama06-fit-univar-solution.html" />
+    <link rel="prev" title="Distributions" href="d19-e-stat04-distributions-solution.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/home.html">
+   Data Science for Engineers
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/howto.html">
+   How To Use These Materials
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../frontmatter/exercises.html">
+   Exercise Solutions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
+     Introduction to Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
+     Data Visualization Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
+     Data Isolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
+     Introduction to Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
+     Grama Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
+     Bar Charts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d08-e-stat02-source-solution.html">
+     Sources of Variability: Real vs. Error
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d10-e-grama02-building-solution.html">
+     Grama Model Building
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d12-e-grama03-eval-solution.html">
+     Grama Model Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d18-e-grama04-ema-solution.html">
+     Exploratory Model Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d19-e-stat04-distributions-solution.html">
+     Distributions
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Fitting Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d22-e-grama06-fit-univar-solution.html">
+     Fitting Univariate Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d23-e-grama07-fit-multivar-solution.html">
+     Fitting Multivariate Distributions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/exercises_solution/d20-e-grama05-fit-function-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d20-e-grama05-fit-function-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Fitting Functions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fitting">
+   Fitting
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trajectory-data">
+     Trajectory Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ema-of-proposed-model">
+   EMA of Proposed Model
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trajectory-model">
+     Trajectory model
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#linear-drag-model">
+       Linear drag model
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sinews-and-bounds">
+     Sinews and bounds
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-sweep-values-of-tau">
+       <strong>
+        qX
+       </strong>
+       Sweep values of
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         tau
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-plot-a-few-trajectories">
+       <strong>
+        qX
+       </strong>
+       Plot a few trajectories
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fitting-with-least-squares">
+   Fitting with Least Squares
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-ft-nls-routine">
+     The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ft_nls()
+      </span>
+     </code>
+     routine
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-run-ft-nls">
+       <strong>
+        qX
+       </strong>
+       Run
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ft_nls()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-assess-the-fit">
+       <strong>
+        qX
+       </strong>
+       Assess the fit
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rough-estimation">
+     Rough estimation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#todo">
+       TODO
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-choose-reasonable-initial-parameters">
+       <strong>
+        qX
+       </strong>
+       Choose reasonable initial parameters
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-assessment">
+   Model Assessment
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#quantifying-uncertainty">
+     Quantifying uncertainty
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-inspect-plausible-parameter-values">
+       <strong>
+        qX
+       </strong>
+       Inspect plausible parameter values
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-inspect-plausible-trajectories">
+       <strong>
+        qX
+       </strong>
+       Inspect plausible trajectories
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-validation">
+   Model Validation
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#validation-data">
+     Validation data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-compare-the-fit-to-validation-data">
+       <strong>
+        qX
+       </strong>
+       Compare the fit to validation data
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Fitting Functions</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Fitting Functions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fitting">
+   Fitting
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trajectory-data">
+     Trajectory Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ema-of-proposed-model">
+   EMA of Proposed Model
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trajectory-model">
+     Trajectory model
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#linear-drag-model">
+       Linear drag model
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sinews-and-bounds">
+     Sinews and bounds
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-sweep-values-of-tau">
+       <strong>
+        qX
+       </strong>
+       Sweep values of
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         tau
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-plot-a-few-trajectories">
+       <strong>
+        qX
+       </strong>
+       Plot a few trajectories
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fitting-with-least-squares">
+   Fitting with Least Squares
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-ft-nls-routine">
+     The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ft_nls()
+      </span>
+     </code>
+     routine
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-run-ft-nls">
+       <strong>
+        qX
+       </strong>
+       Run
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ft_nls()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-assess-the-fit">
+       <strong>
+        qX
+       </strong>
+       Assess the fit
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rough-estimation">
+     Rough estimation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#todo">
+       TODO
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-choose-reasonable-initial-parameters">
+       <strong>
+        qX
+       </strong>
+       Choose reasonable initial parameters
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-assessment">
+   Model Assessment
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#quantifying-uncertainty">
+     Quantifying uncertainty
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-inspect-plausible-parameter-values">
+       <strong>
+        qX
+       </strong>
+       Inspect plausible parameter values
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-inspect-plausible-trajectories">
+       <strong>
+        qX
+       </strong>
+       Inspect plausible trajectories
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-validation">
+   Model Validation
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#validation-data">
+     Validation data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-compare-the-fit-to-validation-data">
+       <strong>
+        qX
+       </strong>
+       Compare the fit to validation data
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="fitting-functions">
+<h1>Fitting Functions<a class="headerlink" href="#fitting-functions" title="Permalink to this headline">¶</a></h1>
+<p><em>Purpose</em>: <strong>TODO</strong>.</p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="fitting">
+<h1>Fitting<a class="headerlink" href="#fitting" title="Permalink to this headline">¶</a></h1>
+<p>Recall that there are four classes of verb in grama; <em>fitting</em> verbs take data as an input and produce a model as an output. There are various ways to fit a model; in this exercise we’ll focus on fitting a <em>parameterized</em> model using  <em>nonlinear least squares</em>.</p>
+<p><img alt="Grama verb class diagram" src="../_images/verb-classes.png" /></p>
+<div class="section" id="trajectory-data">
+<h2>Trajectory Data<a class="headerlink" href="#trajectory-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_trajectory_windowed</span>
+<span class="p">(</span>
+    <span class="n">df_trajectory_windowed</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d20-e-grama05-fit-function-solution_6_0.png" src="../_images/d20-e-grama05-fit-function-solution_6_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8790281862226)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="ema-of-proposed-model">
+<h1>EMA of Proposed Model<a class="headerlink" href="#ema-of-proposed-model" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="trajectory-model">
+<h2>Trajectory model<a class="headerlink" href="#trajectory-model" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.models</span> <span class="kn">import</span> <span class="n">make_trajectory_linear</span>
+<span class="n">md_trajectory</span> <span class="o">=</span> <span class="n">make_trajectory_linear</span><span class="p">()</span>
+<span class="n">md_trajectory</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: Trajectory Model
+
+  inputs:
+    var_det:
+      t: [0, 600]
+      u0: [0.1, inf]
+      v0: [0.1, inf]
+      tau: [0.05, inf]
+
+    var_rand:
+
+    copula:
+      None
+
+  functions:
+      x_trajectory: [&#39;u0&#39;, &#39;v0&#39;, &#39;tau&#39;, &#39;t&#39;] -&gt; [&#39;x&#39;]
+      y_trajectory: [&#39;u0&#39;, &#39;v0&#39;, &#39;tau&#39;, &#39;t&#39;] -&gt; [&#39;y&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="linear-drag-model">
+<h3>Linear drag model<a class="headerlink" href="#linear-drag-model" title="Permalink to this headline">¶</a></h3>
+<p>The drag <span class="math notranslate nohighlight">\(\vec{F}_d\)</span> acting on the projectile in this model has a magnitude equal to</p>
+<div class="math notranslate nohighlight">
+\[F_d \propto - m \tau s\]</div>
+<p>where <span class="math notranslate nohighlight">\(m\)</span> is the mass of the projectile, <span class="math notranslate nohighlight">\(s\)</span> is its speed, and <span class="math notranslate nohighlight">\(\tau\)</span> is the <em>time constant</em> associated with the drag law.</p>
+<p>We can make sense of the model by inspecting the equations in the model. However, a complementary way to gain understanding is to do a little <em>exploratory model analysis</em>. You’ll use EMA below to understand the model’s behavior.</p>
+</div>
+</div>
+<div class="section" id="sinews-and-bounds">
+<h2>Sinews and bounds<a class="headerlink" href="#sinews-and-bounds" title="Permalink to this headline">¶</a></h2>
+<p>One “gotcha” with <code class="docutils literal notranslate"><span class="pre">ev_sinews()</span></code> is that it can only sweep inputs with <em>finite bounds</em>. For variables with one-sided bounds, such as <code class="docutils literal notranslate"><span class="pre">[0.1,</span> <span class="pre">inf]</span></code>, we cannot sweep values all the way to infinity! Instead, grama will set the inputs with one-sided bounds to their lower bound, and sweep the remaining variables. We need to set finite bounds in order to use <code class="docutils literal notranslate"><span class="pre">gr.ev_sinews()</span></code>.</p>
+<div class="section" id="qx-sweep-values-of-tau">
+<h3><strong>qX</strong> Sweep values of <code class="docutils literal notranslate"><span class="pre">tau</span></code><a class="headerlink" href="#qx-sweep-values-of-tau" title="Permalink to this headline">¶</a></h3>
+<p>Update the model to enable a sweep over values of <code class="docutils literal notranslate"><span class="pre">tau</span></code>. How does changing <code class="docutils literal notranslate"><span class="pre">tau</span></code> affect the trajectory? Answer the questions under <em>observations</em> below.</p>
+<p><em>Hint</em>: Remember that <code class="docutils literal notranslate"><span class="pre">gr.cp_bounds()</span></code> allows you to adjust the bounds of a grama model. Note that you may need to adjust the bounds of time <code class="docutils literal notranslate"><span class="pre">t</span></code> as well as <code class="docutils literal notranslate"><span class="pre">tau</span></code> to make an informative plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">md_trajectory</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_bounds</span><span class="p">(</span><span class="n">tau</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sinews</span><span class="p">(</span><span class="n">df_det</span><span class="o">=</span><span class="s2">&quot;swp&quot;</span><span class="p">,</span> <span class="n">n_sweeps</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_auto</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calling plot_sinew_outputs....
+</pre></div>
+</div>
+<img alt="../_images/d20-e-grama05-fit-function-solution_13_1.png" src="../_images/d20-e-grama05-fit-function-solution_13_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8790283837425)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Once you get a sweep of <code class="docutils literal notranslate"><span class="pre">tau</span></code> displayed, what do each of the curves in the <code class="docutils literal notranslate"><span class="pre">tau</span></code> column represent?</p>
+<ul>
+<li><p>Each curve in the <code class="docutils literal notranslate"><span class="pre">tau</span></code> column represents the effect <code class="docutils literal notranslate"><span class="pre">tau</span></code> has on the relevant output (<code class="docutils literal notranslate"><span class="pre">x</span></code> or <code class="docutils literal notranslate"><span class="pre">y</span></code>) <em>at a fixed point in time <code class="docutils literal notranslate"><span class="pre">t</span></code></em>.</p></li>
+</ul>
+</li>
+<li><p>What affect does <code class="docutils literal notranslate"><span class="pre">tau</span></code> have on the trajectory range <code class="docutils literal notranslate"><span class="pre">x</span></code> at a fixed point in time <code class="docutils literal notranslate"><span class="pre">t</span></code>?</p>
+<ul>
+<li><p>Increasing <code class="docutils literal notranslate"><span class="pre">tau</span></code> tends to increase the range at a fixed point in time.</p></li>
+</ul>
+</li>
+<li><p>What affect does <code class="docutils literal notranslate"><span class="pre">tau</span></code> have on the trajectory height <code class="docutils literal notranslate"><span class="pre">y</span></code> at a fixed point in time <code class="docutils literal notranslate"><span class="pre">t</span></code>?</p>
+<ul>
+<li><p>Increasing <code class="docutils literal notranslate"><span class="pre">tau</span></code> tends to decrease the height at a fixed point in time.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="qx-plot-a-few-trajectories">
+<h3><strong>qX</strong> Plot a few trajectories<a class="headerlink" href="#qx-plot-a-few-trajectories" title="Permalink to this headline">¶</a></h3>
+<p>Complete the code below to sweep over values of <code class="docutils literal notranslate"><span class="pre">tau</span></code> and <code class="docutils literal notranslate"><span class="pre">t</span></code>. Compare these results with what you found above. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Sweep tau and t to create trajectories</span>
+<span class="p">(</span>
+    <span class="n">md_trajectory</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_df</span><span class="p">(</span>
+        <span class="n">df</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_grid</span><span class="p">(</span>
+            <span class="n">u0</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+            <span class="n">v0</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+<span class="c1"># task-begin</span>
+            <span class="c1"># TASK: Complete the code to sweep tau and t</span>
+<span class="c1"># task-begin</span>
+            <span class="n">tau</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>
+            <span class="n">t</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;factor(tau)&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d20-e-grama05-fit-function-solution_16_0.png" src="../_images/d20-e-grama05-fit-function-solution_16_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8790282168089)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>What affect does <code class="docutils literal notranslate"><span class="pre">tau</span></code> have on the trajectory?</p>
+<ul>
+<li><p>Increasing <code class="docutils literal notranslate"><span class="pre">tau</span></code> tends to extend the trajectory, allowing the projectile to reach longer distances.</p></li>
+</ul>
+</li>
+<li><p>Imagine that <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">==</span> <span class="pre">0</span></code> represents the ground. Are the endpoints of these trajectories physically reasonable?</p>
+<ul>
+<li><p>No; the endpoints are below the ground.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="fitting-with-least-squares">
+<h1>Fitting with Least Squares<a class="headerlink" href="#fitting-with-least-squares" title="Permalink to this headline">¶</a></h1>
+<p>(Above, we guessed at parameter values. Now let’s use fitting to get reasonable values.)</p>
+<div class="section" id="the-ft-nls-routine">
+<h2>The <code class="docutils literal notranslate"><span class="pre">ft_nls()</span></code> routine<a class="headerlink" href="#the-ft-nls-routine" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="qx-run-ft-nls">
+<h3><strong>qX</strong> Run <code class="docutils literal notranslate"><span class="pre">ft_nls()</span></code><a class="headerlink" href="#qx-run-ft-nls" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: </span>
+<span class="n">md_fit</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_trajectory_windowed</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ft_nls</span><span class="p">(</span><span class="n">md</span><span class="o">=</span><span class="n">md_trajectory</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">md_fit</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>... fit_nls setting out = [&#39;x&#39;, &#39;y&#39;]
+... eval_nls setting out = [&#39;x&#39;, &#39;y&#39;]
+... eval_nls setting var_fix = []
+... eval_nls setting var_feat = [&#39;t&#39;]
+          u0          v0   tau  u0_0  v0_0  tau_0  success  \
+0  425.16129  447.996665  0.05   0.1   0.1   0.05     True   
+
+                                            message  n_iter       mse  
+0  CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL       3  25.49725  
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: Trajectory Model (Fitted)
+
+  inputs:
+    var_det:
+      t: (unbounded)
+
+    var_rand:
+
+    copula:
+      None
+
+  functions:
+      Fix variable levels: [&#39;t&#39;] -&gt; [&#39;u0&#39;, &#39;v0&#39;, &#39;tau&#39;]
+      Trajectory Model: [&#39;t&#39;, &#39;v0&#39;, &#39;u0&#39;, &#39;tau&#39;] -&gt; [&#39;x&#39;, &#39;y&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+</div>
+<div class="section" id="qx-assess-the-fit">
+<h3><strong>qX</strong> Assess the fit<a class="headerlink" href="#qx-assess-the-fit" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Compare the model predictions with</span>
+<span class="c1"># the original data df_trajectory_windowed</span>
+<span class="p">(</span>
+    <span class="n">md_fit</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_df</span><span class="p">(</span><span class="n">df_trajectory_windowed</span><span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_trajectory_windowed</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>... provided columns intersect model output.
+eval_df() is dropping {&#39;x&#39;, &#39;y&#39;}
+</pre></div>
+</div>
+<img alt="../_images/d20-e-grama05-fit-function-solution_24_1.png" src="../_images/d20-e-grama05-fit-function-solution_24_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8790282284487)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+</div>
+</div>
+<div class="section" id="rough-estimation">
+<h2>Rough estimation<a class="headerlink" href="#rough-estimation" title="Permalink to this headline">¶</a></h2>
+<p>Let’s do some back-of-the envelope calculations to get a rough sense of reasonable parameter values.</p>
+<div class="section" id="todo">
+<h3>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[u = \frac{dx}{dt} \approx \frac{u(t_2) - u(t_1)}{t_2 - t_1}\]</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">gr.lead()</span></code> function allows us to access values in the following row; we can use this to implement differences like <span class="math notranslate nohighlight">\(u(t_2) - u(t_1)\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[F_d/m \propto - \tau s\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[a_d / s \propto \tau.\]</div>
+<p>Note that this is <em>not</em> the total acceleration! This is just the acceleration due to drag, which we can’t access from the data alone. However, we can use the <em>total</em> acceleration to set a reasonable first-guess for the value of <code class="docutils literal notranslate"><span class="pre">tau</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_trajectory_windowed</span>
+    <span class="c1"># Estimate velocity components</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+        <span class="n">u</span><span class="o">=</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">lead</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">lead</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">DF</span><span class="o">.</span><span class="n">t</span><span class="p">),</span>
+        <span class="n">v</span><span class="o">=</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">lead</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">DF</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">lead</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">DF</span><span class="o">.</span><span class="n">t</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="c1"># Compute speed</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">DF</span><span class="o">.</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="c1"># Estimate acceleration</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+        <span class="n">a</span><span class="o">=</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">lead</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="n">DF</span><span class="o">.</span><span class="n">s</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">lead</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">DF</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="c1"># Estimate drag time constant</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">tau</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">a</span> <span class="o">/</span> <span class="n">DF</span><span class="o">.</span><span class="n">s</span><span class="p">))</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;u&quot;</span><span class="p">,</span> <span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="s2">&quot;tau&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_describe</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>u</th>
+      <th>v</th>
+      <th>tau</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>18.000000</td>
+      <td>18.000000</td>
+      <td>17.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>11.111111</td>
+      <td>6.055556</td>
+      <td>4.463891</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>4.114378</td>
+      <td>6.512181</td>
+      <td>4.756788</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>4.000000</td>
+      <td>-4.000000</td>
+      <td>0.194824</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>8.250000</td>
+      <td>1.250000</td>
+      <td>1.401754</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>11.000000</td>
+      <td>4.000000</td>
+      <td>2.465337</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>14.750000</td>
+      <td>12.500000</td>
+      <td>5.897357</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>18.000000</td>
+      <td>18.000000</td>
+      <td>16.172505</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="qx-choose-reasonable-initial-parameters">
+<h3><strong>qX</strong> Choose reasonable initial parameters<a class="headerlink" href="#qx-choose-reasonable-initial-parameters" title="Permalink to this headline">¶</a></h3>
+<p>Override the default initial parameter guess of <code class="docutils literal notranslate"><span class="pre">ft_nls()</span></code> by adding a keyword argument. Using the rough estimates above, you should be able to achieve a fit of the data that is quite reasonable. Answer the questions under <em>observations</em> below.</p>
+<p><em>Hint</em>: Remember to consult the documentation for <code class="docutils literal notranslate"><span class="pre">ft_nls()</span></code> to see how to use its arguments!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: </span>
+<span class="n">md_fit_init</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_trajectory_windowed</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ft_nls</span><span class="p">(</span>
+        <span class="n">md</span><span class="o">=</span><span class="n">md_trajectory</span><span class="p">,</span>
+        <span class="n">df_init</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">u0</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span>
+            <span class="n">v0</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span>
+            <span class="n">tau</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">md_fit_init</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_df</span><span class="p">(</span><span class="n">df_trajectory_windowed</span><span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_trajectory_windowed</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>... fit_nls setting out = [&#39;x&#39;, &#39;y&#39;]
+... eval_nls setting out = [&#39;x&#39;, &#39;y&#39;]
+... eval_nls setting var_fix = []
+... eval_nls setting var_feat = [&#39;t&#39;]
+          u0         v0      tau  u0_0  v0_0  tau_0  success  \
+0  18.792168  28.234802  2.80225    18    18     16     True   
+
+                                            message  n_iter       mse  
+0  CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL      26  0.093358  
+... provided columns intersect model output.
+eval_df() is dropping {&#39;x&#39;, &#39;y&#39;}
+</pre></div>
+</div>
+<img alt="../_images/d20-e-grama05-fit-function-solution_29_1.png" src="../_images/d20-e-grama05-fit-function-solution_29_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8790282002794)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>How well does the trend fit the data?</p>
+<ul>
+<li><p>Quite well! Certainly much better than the previous attempt.</p></li>
+</ul>
+</li>
+<li><p>How does your initial guess for <code class="docutils literal notranslate"><span class="pre">tau</span></code> compare with the fitted value? What might account for this?</p>
+<ul>
+<li><p>My initial guess of <code class="docutils literal notranslate"><span class="pre">tau</span> <span class="pre">==</span> <span class="pre">16</span></code> is quite a bit larger than the fitted value of <code class="docutils literal notranslate"><span class="pre">tau</span> <span class="pre">~=</span> <span class="pre">2.8</span></code>. As noted above, we estimated a time constant from the total acceleration, rather than the acceleration solely due to drag.</p></li>
+</ul>
+</li>
+<li><p>How does your initial guess for <code class="docutils literal notranslate"><span class="pre">u0</span></code> compare with the fitted value? What might account for this?</p>
+<ul>
+<li><p>My initial guess of <code class="docutils literal notranslate"><span class="pre">u0</span> <span class="pre">==</span> <span class="pre">18</span></code> is quite close to the fitted value of <code class="docutils literal notranslate"><span class="pre">u0</span> <span class="pre">~=</span> <span class="pre">18.79</span></code>. The fitted value is larger, which makes intuitive sense (drag should slow the projectile), though it’s closer than I might have expected.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="model-assessment">
+<h1>Model Assessment<a class="headerlink" href="#model-assessment" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="quantifying-uncertainty">
+<h2>Quantifying uncertainty<a class="headerlink" href="#quantifying-uncertainty" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE:  </span>
+<span class="n">md_fit_uq</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_trajectory_windowed</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ft_nls</span><span class="p">(</span>
+        <span class="n">md</span><span class="o">=</span><span class="n">md_trajectory</span><span class="p">,</span>
+        <span class="n">df_init</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">u0</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span>
+            <span class="n">v0</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span>
+            <span class="n">tau</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">uq_method</span><span class="o">=</span><span class="s2">&quot;linpool&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">md_fit_uq</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>... fit_nls setting out = [&#39;x&#39;, &#39;y&#39;]
+... eval_nls setting out = [&#39;x&#39;, &#39;y&#39;]
+... eval_nls setting var_fix = []
+... eval_nls setting var_feat = [&#39;t&#39;]
+          u0         v0      tau  u0_0  v0_0  tau_0  success  \
+0  18.792168  28.234802  2.80225    18    18     16     True   
+
+                                            message  n_iter       mse  
+0  CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL      26  0.093358  
+... provided columns intersect model output.
+eval_df() is dropping {&#39;x&#39;, &#39;y&#39;}
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: Trajectory Model (Fitted)
+
+  inputs:
+    var_det:
+      t: (unbounded)
+
+    var_rand:
+      u0: (+0) norm, {&#39;mean&#39;: &#39;1.879e+01&#39;, &#39;s.d.&#39;: &#39;1.700e-01&#39;, &#39;COV&#39;: 0.01, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
+      v0: (+0) norm, {&#39;mean&#39;: &#39;2.823e+01&#39;, &#39;s.d.&#39;: &#39;2.000e-01&#39;, &#39;COV&#39;: 0.01, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
+      tau: (+0) norm, {&#39;mean&#39;: &#39;2.800e+00&#39;, &#39;s.d.&#39;: &#39;1.300e-01&#39;, &#39;COV&#39;: 0.05, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
+
+    copula:
+      Gaussian copula with correlations:
+  var1 var2      corr
+0   u0   v0  0.000000
+1   u0  tau -0.678971
+2   v0  tau -0.704770
+
+  functions:
+      Trajectory Model: [&#39;t&#39;, &#39;v0&#39;, &#39;u0&#39;, &#39;tau&#39;] -&gt; [&#39;x&#39;, &#39;y&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="qx-inspect-plausible-parameter-values">
+<h3><strong>qX</strong> Inspect plausible parameter values<a class="headerlink" href="#qx-inspect-plausible-parameter-values" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK:</span>
+<span class="p">(</span>
+    <span class="n">md_fit_uq</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">df_det</span><span class="o">=</span><span class="s2">&quot;nom&quot;</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_auto</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eval_sample() is rounding n...
+Design runtime estimates unavailable; model has no timing data.
+Calling plot_scattermat....
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Matplotlib is currently using module://matplotlib_inline.backend_inline, which is a non-GUI backend, so cannot show the figure.
+</pre></div>
+</div>
+<img alt="../_images/d20-e-grama05-fit-function-solution_35_2.png" src="../_images/d20-e-grama05-fit-function-solution_35_2.png" />
+</div>
+</div>
+<p><em>Observations</em></p>
+</div>
+<div class="section" id="qx-inspect-plausible-trajectories">
+<h3><strong>qX</strong> Inspect plausible trajectories<a class="headerlink" href="#qx-inspect-plausible-trajectories" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK:</span>
+<span class="p">(</span>
+    <span class="n">md_fit_uq</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span>
+        <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> 
+        <span class="n">df_det</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+    <span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="c1"># NOTE: The `group` aesthetic allows us to draw</span>
+    <span class="c1"># individual lines for each value of u0; otherwise</span>
+    <span class="c1"># the lines would all be connected</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;u0&quot;</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+    <span class="c1"># Add the data</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_trajectory_windowed</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d20-e-grama05-fit-function-solution_38_0.png" src="../_images/d20-e-grama05-fit-function-solution_38_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8790282434277)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="model-validation">
+<h1>Model Validation<a class="headerlink" href="#model-validation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="validation-data">
+<h2>Validation data<a class="headerlink" href="#validation-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_trajectory_full</span>
+<span class="p">(</span>
+    <span class="n">df_trajectory_full</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d20-e-grama05-fit-function-solution_42_0.png" src="../_images/d20-e-grama05-fit-function-solution_42_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8790283533216)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="qx-compare-the-fit-to-validation-data">
+<h3><strong>qX</strong> Compare the fit to validation data<a class="headerlink" href="#qx-compare-the-fit-to-validation-data" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Compare the fitted model to the validation data;</span>
+<span class="c1"># make sure to quantify the parameter uncertainty</span>
+<span class="p">(</span>
+    <span class="n">md_fit_uq</span>
+<span class="c1"># solution-begin </span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span>
+        <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> 
+        <span class="n">df_det</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+    <span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;u0&quot;</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_trajectory_full</span><span class="p">)</span>
+<span class="c1"># solution-end </span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d20-e-grama05-fit-function-solution_44_0.png" src="../_images/d20-e-grama05-fit-function-solution_44_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8790275943048)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./exercises_solution"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="d19-e-stat04-distributions-solution.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Distributions</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="d22-e-grama06-fit-univar-solution.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Fitting Univariate Distributions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Zachary del Rosario<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

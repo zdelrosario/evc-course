@@ -1,0 +1,1571 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sources of Variability: Real vs. Error &#8212; Data Science for Engineers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Grama Model Building" href="d10-e-grama02-building-solution.html" />
+    <link rel="prev" title="Bar Charts" href="d05-e-vis01-bar-charts-solution.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/home.html">
+   Data Science for Engineers
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/howto.html">
+   How To Use These Materials
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../frontmatter/exercises.html">
+   Exercise Solutions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
+     Introduction to Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
+     Data Visualization Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
+     Data Isolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
+     Introduction to Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
+     Grama Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
+     Bar Charts
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Sources of Variability: Real vs. Error
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d10-e-grama02-building-solution.html">
+     Grama Model Building
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d12-e-grama03-eval-solution.html">
+     Grama Model Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d18-e-grama04-ema-solution.html">
+     Exploratory Model Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d19-e-stat04-distributions-solution.html">
+     Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d20-e-grama05-fit-function-solution.html">
+     Fitting Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d22-e-grama06-fit-univar-solution.html">
+     Fitting Univariate Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d23-e-grama07-fit-multivar-solution.html">
+     Fitting Multivariate Distributions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/exercises_solution/d08-e-stat02-source-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d08-e-stat02-source-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Sources of Variability: Real vs. Error
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#concepts">
+   Concepts
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variability">
+     Variability
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q1-make-a-histogram">
+       <strong>
+        q1
+       </strong>
+       Make a histogram
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#real-vs-erroneous-variability">
+     Real vs Erroneous Variability
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-manufacturing-of-metals">
+       Example: Manufacturing of Metals
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q2-consequences-of-variability">
+       <strong>
+        q2
+       </strong>
+       Consequences of variability
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scenarios">
+     Scenarios
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-multiple-measurements-same-part">
+       <strong>
+        q3
+       </strong>
+       Multiple measurements, same part
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-multiple-measurements-multiple-parts">
+       <strong>
+        q4
+       </strong>
+       Multiple measurements, multiple parts
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-single-measurements-multiple-parts">
+       <strong>
+        q5
+       </strong>
+       Single measurements, multiple parts
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#heuristics">
+   Heuristics
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pure-error-take-the-mean">
+     Pure Error: Take the mean
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q6-take-the-mean-strength">
+       <strong>
+        q6
+       </strong>
+       Take the mean strength
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#purely-real-use-quantiles">
+     Purely Real: Use quantiles
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q7-compute-a-quantile-of-strength">
+       <strong>
+        q7
+       </strong>
+       Compute a quantile of strength
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mixed-real-and-error-nested-data">
+     Mixed Real and Error: Nested data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q8-identify-real-and-erroneous-sources">
+       <strong>
+        q8
+       </strong>
+       Identify real and erroneous sources
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q9-apply-the-mean-heuristic">
+       <strong>
+        q9
+       </strong>
+       Apply the mean heuristic
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#consequences-of-eliminating-erroneous-variability">
+       Consequences of eliminating erroneous variability
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q10-apply-the-quantile-heuristic">
+       <strong>
+        q10
+       </strong>
+       Apply the quantile heuristic
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q11-importance-of-structured-data-collection">
+       <strong>
+        q11
+       </strong>
+       Importance of structured data collection
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#closing-punchline">
+   Closing punchline
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Sources of Variability: Real vs. Error</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Sources of Variability: Real vs. Error
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#concepts">
+   Concepts
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variability">
+     Variability
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q1-make-a-histogram">
+       <strong>
+        q1
+       </strong>
+       Make a histogram
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#real-vs-erroneous-variability">
+     Real vs Erroneous Variability
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-manufacturing-of-metals">
+       Example: Manufacturing of Metals
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q2-consequences-of-variability">
+       <strong>
+        q2
+       </strong>
+       Consequences of variability
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scenarios">
+     Scenarios
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-multiple-measurements-same-part">
+       <strong>
+        q3
+       </strong>
+       Multiple measurements, same part
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-multiple-measurements-multiple-parts">
+       <strong>
+        q4
+       </strong>
+       Multiple measurements, multiple parts
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-single-measurements-multiple-parts">
+       <strong>
+        q5
+       </strong>
+       Single measurements, multiple parts
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#heuristics">
+   Heuristics
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pure-error-take-the-mean">
+     Pure Error: Take the mean
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q6-take-the-mean-strength">
+       <strong>
+        q6
+       </strong>
+       Take the mean strength
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#purely-real-use-quantiles">
+     Purely Real: Use quantiles
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q7-compute-a-quantile-of-strength">
+       <strong>
+        q7
+       </strong>
+       Compute a quantile of strength
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mixed-real-and-error-nested-data">
+     Mixed Real and Error: Nested data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q8-identify-real-and-erroneous-sources">
+       <strong>
+        q8
+       </strong>
+       Identify real and erroneous sources
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q9-apply-the-mean-heuristic">
+       <strong>
+        q9
+       </strong>
+       Apply the mean heuristic
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#consequences-of-eliminating-erroneous-variability">
+       Consequences of eliminating erroneous variability
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q10-apply-the-quantile-heuristic">
+       <strong>
+        q10
+       </strong>
+       Apply the quantile heuristic
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q11-importance-of-structured-data-collection">
+       <strong>
+        q11
+       </strong>
+       Importance of structured data collection
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#closing-punchline">
+   Closing punchline
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="sources-of-variability-real-vs-error">
+<h1>Sources of Variability: Real vs. Error<a class="headerlink" href="#sources-of-variability-real-vs-error" title="Permalink to this headline">¶</a></h1>
+<p><em>Purpose</em>: Variability is an unavoidable reality of engineering: Physical systems do not behave in identical ways, even under similar circumstances. It is important to draw a distinction between sources of variability that corrupt measurements, and other sources of variability that can genuinely change physical outcomes: real vs erroneous variability. Therefore, we should analyze real and erroneous sources of variability differently—this can lead to more accurate data analysis and more efficient engineering designs.</p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="concepts">
+<h1>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h1>
+<p>Let’s go over some fundamental concepts.</p>
+<div class="section" id="variability">
+<h2>Variability<a class="headerlink" href="#variability" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>Variability</em> is a form of uncertainty that occurs when repeated measurements from a single chosen scenario exhibit different outcomes.</p>
+</div></blockquote>
+<p>There are several parts to this definition:</p>
+<p><em>Different outcomes</em></p>
+<p>We must have different outcomes for there to be variability. If repeated measurement of the same quantity produce the same value, then there is no variability.</p>
+<p><em>Repeated measurements</em></p>
+<p>Variability requires repeated measurements, implying that there must be more than one measurement. Unique events that will never occur again cannot be said to exhibit variability.</p>
+<p><em>A single chosen scenario</em></p>
+<p>Variability arises when we focus on a single scenario and take repeated measurements. Different scenarios would logically produce different measurements. We might describe a scenario in terms of detailed qualitative factors (e.g. a particular manufacturing process, a particular machinist) or we may describe a family of scenarios with continuous variables (e.g. a continuum of feed speeds when machining).</p>
+<p>Variability is perhaps best understood by way of example; let’s take a look at one.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dataset of die cast aluminum specimens</span>
+<span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_shewhart</span>
+<span class="n">df_shewhart</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>specimen</th>
+      <th>tensile_strength</th>
+      <th>hardness</th>
+      <th>density</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>29314</td>
+      <td>53.0</td>
+      <td>2.666</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>34860</td>
+      <td>70.2</td>
+      <td>2.708</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>36818</td>
+      <td>84.3</td>
+      <td>2.865</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>30120</td>
+      <td>55.3</td>
+      <td>2.627</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>34020</td>
+      <td>78.5</td>
+      <td>2.581</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>This is a dataset of measured physical properties for individual specimens of a die cast aluminum. You’ll investigate this dataset below.</p>
+<div class="section" id="q1-make-a-histogram">
+<h3><strong>q1</strong> Make a histogram<a class="headerlink" href="#q1-make-a-histogram" title="Permalink to this headline">¶</a></h3>
+<p>Make a histogram of the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> in <code class="docutils literal notranslate"><span class="pre">df_shewhart</span></code>. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Make a histogram</span>
+<span class="c1"># NOTE: I additionally compute statistics about the</span>
+<span class="c1"># observed variability</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">df_shewhart</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">mu</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span><span class="p">),</span>
+        <span class="n">sd</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">sd</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">cov</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">sd</span><span class="o">/</span><span class="n">DF</span><span class="o">.</span><span class="n">mu</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="p">(</span>
+    <span class="n">df_shewhart</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;tensile_strength&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             mu           sd       cov
+0  31869.366667  3996.380795  0.125399
+</pre></div>
+</div>
+<img alt="../_images/d08-e-stat02-source-solution_8_1.png" src="../_images/d08-e-stat02-source-solution_8_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783465755097)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Are all of the measured <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> values identical? Do the measurements exhibit <em>variability</em>?</p>
+<ul>
+<li><p>The measured values are <strong>not</strong> identical; the measurements do exhibit variability.</p></li>
+</ul>
+</li>
+<li><p>How much variability do the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> measurements exhibit? (You can use the histogram, or compute a quantitative summary.)</p>
+<ul>
+<li><p>The measurements are <em>highly</em> variable; the coefficient of variation is around <code class="docutils literal notranslate"><span class="pre">0.13</span></code>, which is huge for a material property.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="real-vs-erroneous-variability">
+<h2>Real vs Erroneous Variability<a class="headerlink" href="#real-vs-erroneous-variability" title="Permalink to this headline">¶</a></h2>
+<p>Variability in engineering applications falls into one of two broad categories:</p>
+<blockquote>
+<div><p><em>Real variability</em> is any source of variability that can affect a physical outcome.</p>
+</div></blockquote>
+<blockquote>
+<div><p><em>Error</em> (or <em>erroneous variability</em>) is any source of variability that corrupts a measurement.</p>
+</div></blockquote>
+<p>Note that errors cannot <em>directly</em> affect physical outcomes. A corrupted measurement does not reflect actual changes in the physical quantity one is trying to measure. <em>However</em>, making an engineering decision based on corrupted information will lead to a corrupted decision. Errors can only affect the physical world through actions taken based on those errors.</p>
+<p>Real and erroneous sources of variability can only be named in a specific context; to that end, let’s look at a specific example.</p>
+<div class="section" id="example-manufacturing-of-metals">
+<h3>Example: Manufacturing of Metals<a class="headerlink" href="#example-manufacturing-of-metals" title="Permalink to this headline">¶</a></h3>
+<p>The following image schematically depicts the manufacture and characterization of metallic materials.</p>
+<p><img alt="Manufacturing example" src="../_images/manufacturing-examples-numbered.png" />
+Image credit: Alana Huitric</p>
+<p>Variability can enter metals manufacturing at different stages and in different ways:</p>
+<ol class="simple">
+<li><p>(Real variability) Mistakes during the formulation stage of metals manufacturing can lead to an off-target composition. This will lead to explainable differences in the realized material properties, and will cause the material to not behave as desired.</p></li>
+<li><p>(Real variability) The presence of nicks and cracks in manufactured parts is an unavoidable reality. It is practically impossible to completely eliminate these imperfections. The presence and size of these imperfections will affect the fatigue life of a component. Thus, manufactured parts will tend to exhibit random variability in their fatigue properties.</p></li>
+<li><p>(Error) Material properties are characterized by physical tests, such as tensile tests. Mistakes during testing can occur, such as slippage of the part within the mechanical grips. Such mistakes will lead to explainable differences in the <em>measured</em> properties, but cannot directly lead to differences in physical outcomes.</p></li>
+<li><p>(Error) Property measurements typically involve a conversion from mechanical phenomena to electrical signals. However, we tend to take measurements in an electromagnetically dirty environment: Ambient EM interference can induce electrical noise that corrupts a measurement. Since an EM environment is too complex to explain deterministically, this will tend to lead to random differences in measured properties, but this variability cannot directly lead to differences in physical outcomes.</p></li>
+</ol>
+<p>Variability will have different consequences if it is real or erroneous. You will get some practice reasoning through these consequences in the next task.</p>
+</div>
+<div class="section" id="q2-consequences-of-variability">
+<h3><strong>q2</strong> Consequences of variability<a class="headerlink" href="#q2-consequences-of-variability" title="Permalink to this headline">¶</a></h3>
+<p>The following depicts the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> measurements, but with an additional vertical line depicting the applied stress from a loading scenario. Imagine that multiple parts will be constructed using the same manufacturing process characterized by the dataset. Answer the questions under <em>observations</em> below.</p>
+<p><em>Note</em>: Remember that a part fails if its tensile strength is less than an applied stress.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_shewhart</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;tensile_strength&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_vline</span><span class="p">(</span><span class="n">xintercept</span><span class="o">=</span><span class="mi">25000</span><span class="p">,</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_y_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d08-e-stat02-source-solution_16_0.png" src="../_images/d08-e-stat02-source-solution_16_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783465627603)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<p>Imagine that multiple parts will be constructed using the same manufacturing process characterized by the dataset. The vertical line represents the stress that will be applied to these parts.</p>
+<ul class="simple">
+<li><p>Suppose that the variability depicted above is <strong>purely erroneous</strong>; the tensile strength is actually a fixed constant, and all the observed variability is due to measurement error. How confident would you be that <strong>all</strong> the parts would survive their loading conditions?</p>
+<ul>
+<li><p>If the variability were purely error, then the tensile strength is a fixed constant most likely somewhere in the middle of the distribution of measured values. In this case, all of the parts are likely to survive their loading conditions.</p></li>
+</ul>
+</li>
+<li><p>Now suppose that the variability depicted above is <strong>purely real</strong>; the tensile strength varies from part to part. How confident would you be that <strong>all</strong> the parts would survive their loading conditions?</p>
+<ul>
+<li><p>If the variability were purely real, then the tensile strength varies with each part. Based on the results above, it is essentially guaranteed that some parts will not survive their loading conditions.</p></li>
+</ul>
+</li>
+<li><p>Which of the two assumptions above would be the most <em>conservative</em> assumption to make? Why?</p>
+<ul>
+<li><p>Considering the variability as real is a more conservative assumption; this is the less favorable assumption, one which will encourage us to take defensive design measures against possible failures.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="scenarios">
+<h2>Scenarios<a class="headerlink" href="#scenarios" title="Permalink to this headline">¶</a></h2>
+<p>Let’s get some practice reasoning with real and erroneous variability. To do so, let’s consider the following context:</p>
+<p><em>The Context</em>: A manufacturer is producing steel parts for a landing gear. The part in question takes a heavy load, and if it fails it will disable the aircraft on the ground. These parts will be manufactured in bulk; approximately 500 will be made and installed in commercial aircraft that will operate for decades.</p>
+<div class="section" id="q3-multiple-measurements-same-part">
+<h3><strong>q3</strong> Multiple measurements, same part<a class="headerlink" href="#q3-multiple-measurements-same-part" title="Permalink to this headline">¶</a></h3>
+<p>Imagine the manufacturer selects one part and performs multiple non-destructive tensile tests on that single part, under similar conditions. The measured elasticity from each test is slightly different. Is this variability real or erroneous?</p>
+<p><em>Questions</em></p>
+<ul class="simple">
+<li><p>Is this variability most likely real or erroneous?</p>
+<ul>
+<li><p>Erroneous</p></li>
+</ul>
+</li>
+<li><p>Why?</p>
+<ul>
+<li><p>The properties of the component are essentially set at manufacturing time; if multiple measurements on the same part return different values, then the variability is most likely induced by the measurement process.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="q4-multiple-measurements-multiple-parts">
+<h3><strong>q4</strong> Multiple measurements, multiple parts<a class="headerlink" href="#q4-multiple-measurements-multiple-parts" title="Permalink to this headline">¶</a></h3>
+<p>Imagine the manufacturer selects multiple parts and—for each part—performs multiple non-destructive tensile tests, all under similar conditions. The measured elasticity values for each part are averaged to provide a more reliable estimate for each part. Upon comparing the parts, each averaged value is fairly different. Is this variability real or erroneous?</p>
+<p><em>Questions</em></p>
+<ul class="simple">
+<li><p>Is this variability most likely real or erroneous?</p>
+<ul>
+<li><p>Real</p></li>
+</ul>
+</li>
+<li><p>Why?</p>
+<ul>
+<li><p>The properties of the component are essentially set at manufacturing time; but no manufacturing process can create items with identical properties. Particularly if variability remains after erroneous variability has been controlled and eliminated (as described in the prompt), then the remaining variability is real.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="q5-single-measurements-multiple-parts">
+<h3><strong>q5</strong> Single measurements, multiple parts<a class="headerlink" href="#q5-single-measurements-multiple-parts" title="Permalink to this headline">¶</a></h3>
+<p>Now the manufacturer selects multiple parts and performs a destructive tensile test to characterize the strength of each part, with tests carried out under similar conditions. The measured strength values exhibit a fair amount of variability. Is this variability real or erroneous?</p>
+<p><em>Questions</em></p>
+<ul class="simple">
+<li><p>Is this variability most likely real or erroneous?</p>
+<ul>
+<li><p>Without more information, it is impossible to say. It is likely a combination of real and erroneous sources.</p></li>
+</ul>
+</li>
+<li><p>Why?</p>
+<ul>
+<li><p>Real variability can arise from the manufacturing process, and error can arise from the measurement. Since the measurement is destructive, we cannot use multiple measurements to characterize the erroneous variability.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="heuristics">
+<h1>Heuristics<a class="headerlink" href="#heuristics" title="Permalink to this headline">¶</a></h1>
+<p>Recognizing whether variability is real or erroneous is important for making data analysis choices. The following two heuristics (rules of thumb) will help you make such choices.</p>
+<div class="section" id="pure-error-take-the-mean">
+<h2>Pure Error: Take the mean<a class="headerlink" href="#pure-error-take-the-mean" title="Permalink to this headline">¶</a></h2>
+<p>The following is a statistical rule-of-thumb when dealing with variability that is <em>purely</em> error:</p>
+<blockquote>
+<div><p>(Mean Heuristic) If the observed variability is purely error, then taking the mean of the data will tend to reduce the variability due to error.</p>
+</div></blockquote>
+<div class="warning admonition">
+<p class="admonition-title">Caveat: Bias in measurements</p>
+<p>Of course, if the errors are not actually random but insted exhibit <em>bias</em>, then taking the mean will not remove these systematic errors. One way to help combat bias is to take truly <em>independent</em> measurements; for instance, have different operators take the same measurement, or use two different measurement techniques on the same specimen.</p>
+</div>
+<div class="section" id="q6-take-the-mean-strength">
+<h3><strong>q6</strong> Take the mean strength<a class="headerlink" href="#q6-take-the-mean-strength" title="Permalink to this headline">¶</a></h3>
+<p>Compute the mean <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Compute the mean tensile_strength</span>
+<span class="p">(</span>
+    <span class="n">df_shewhart</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">ts_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ts_mean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>31869.366667</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+<p>Suppose that multiple parts will be made according to the same manufacturing process and subjected to a tensile load. As the parts are currently designed the applied stress will be <code class="docutils literal notranslate"><span class="pre">26,000</span></code> psi, but you are considering whether to redesign the part (to reduce the applied stress).</p>
+<ul class="simple">
+<li><p>Suppose the variability is purely erroneous. Does a redesign seem necessary, based on assuming pure error, the strength value you computed above, and current the applied load?</p>
+<ul>
+<li><p>The summarized strength of <span class="math notranslate nohighlight">\(\approx31,800\)</span> psi is well above the applied stress of <span class="math notranslate nohighlight">\(26,000\)</span> psi. Under the assumption of pure error, redesign does not seem necessary.</p></li>
+</ul>
+</li>
+<li><p>Is the analysis above safe for design purposes? Why or why not?</p>
+<ul>
+<li><p>The analysis above is not safe for design; if the assumption of pure error is wrong, then there exists the strong possibility of failure.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="purely-real-use-quantiles">
+<h2>Purely Real: Use quantiles<a class="headerlink" href="#purely-real-use-quantiles" title="Permalink to this headline">¶</a></h2>
+<p>The following is a statistical rule-of-thumb when dealing with purely real variability:</p>
+<blockquote>
+<div><p>(Quantile Heuristic) If the observed variability is purely real, then taking a lower or upper quantile of the data is a reasonable summary.</p>
+</div></blockquote>
+<div class="section" id="q7-compute-a-quantile-of-strength">
+<h3><strong>q7</strong> Compute a quantile of strength<a class="headerlink" href="#q7-compute-a-quantile-of-strength" title="Permalink to this headline">¶</a></h3>
+<p>Compute the <code class="docutils literal notranslate"><span class="pre">0.05</span></code> quantile of the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Compute the 0.05 quantile of the tensile_strength</span>
+<span class="p">(</span>
+    <span class="n">df_shewhart</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">ts_lo</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ts_lo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>25629.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+<p>Suppose that multiple parts will be made according to the same manufacturing process and subjected to a tensile load. As the parts are currently designed the applied stress will be <code class="docutils literal notranslate"><span class="pre">26,000</span></code> psi, but you are considering whether to redesign the part (to reduce the applied stress).</p>
+<ul class="simple">
+<li><p>Suppose the variability is purely real. Does a redesign seem necessary, based on assuming real variability, the strength value you computed above, and current the applied load?</p>
+<ul>
+<li><p>The summarized strength is <span class="math notranslate nohighlight">\(\approx25,600\)</span> psi, which is a bit below the applied stres of <span class="math notranslate nohighlight">\(26,000\)</span> psi. This suggests a redesign is necessary to reduce the applied stress and make the parts safer.</p></li>
+</ul>
+</li>
+<li><p>What probability of failure is associated with your computed strength value?</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">0.05</span></code> quantile is associated with a probability of failure of <span class="math notranslate nohighlight">\(5\%\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Is the analysis above safe for design purposes? Why or why not?</p>
+<ul>
+<li><p>The analysis above is certainly safer than assuming pure error; it helps us to achieve a desired (small) failure rate.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="mixed-real-and-error-nested-data">
+<h2>Mixed Real and Error: Nested data<a class="headerlink" href="#mixed-real-and-error-nested-data" title="Permalink to this headline">¶</a></h2>
+<p>In most practical situations, variability is not purely real or purely error; rather, it is mixed. This is a challenging situation, but we can still use the mean and quantile heuristics to guide choices about data analysis.</p>
+<p>The following code sets up data collected according to a <em>nested</em> collection scheme: Multiple independent measurements are taken on each of multiple specimens.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
+<span class="c1"># Parameters for data generation</span>
+<span class="n">n_sample</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n_meas</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">var_real</span> <span class="o">=</span> <span class="mf">0.20</span>
+<span class="n">var_meas</span> <span class="o">=</span> <span class="mf">0.05</span>
+
+<span class="c1"># Simulate nested data</span>
+<span class="n">df_nested</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;lognorm&quot;</span><span class="p">,</span> <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="n">var_real</span><span class="p">)</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="n">n_sample</span><span class="p">),</span>
+        <span class="n">i_sample</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="n">n_sample</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_outer</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">i_meas</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="n">n_meas</span><span class="p">)))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+        <span class="n">x_meas</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="n">var_meas</span><span class="p">)</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="n">n_sample</span><span class="o">*</span><span class="n">n_meas</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;i_sample&quot;</span><span class="p">,</span> <span class="s2">&quot;i_meas&quot;</span><span class="p">,</span> <span class="s2">&quot;x_meas&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_arrange</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">i_sample</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">i_meas</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">df_nested</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>i_sample</th>
+      <th>i_meas</th>
+      <th>x_meas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1.042817</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0.902662</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>2</td>
+      <td>1.042041</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>3</td>
+      <td>0.870676</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>4</td>
+      <td>1.005482</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>5</td>
+      <td>0.914736</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0</td>
+      <td>6</td>
+      <td>1.111457</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0</td>
+      <td>7</td>
+      <td>1.077125</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Here:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">i_sample</span></code> denotes the sample ID, each sample is an independent component</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">i_meas</span></code> denotes the measurement ID, measurement are repeated on each sample</p>
+<ul>
+<li><p>note that these are per-sample, e.g. <code class="docutils literal notranslate"><span class="pre">i_meas</span> <span class="pre">==</span> <span class="pre">0</span></code> for <code class="docutils literal notranslate"><span class="pre">i_sample</span> <span class="pre">==</span> <span class="pre">0</span></code> is unrelated to <code class="docutils literal notranslate"><span class="pre">i_meas</span> <span class="pre">==</span> <span class="pre">0</span></code> for <code class="docutils literal notranslate"><span class="pre">i_sample</span> <span class="pre">==</span> <span class="pre">1</span></code>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x_meas</span></code> is the measurement</p></li>
+</ul>
+<div class="section" id="q8-identify-real-and-erroneous-sources">
+<h3><strong>q8</strong> Identify real and erroneous sources<a class="headerlink" href="#q8-identify-real-and-erroneous-sources" title="Permalink to this headline">¶</a></h3>
+<p>Inspect the figure below; answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_nested</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">i_sample</span> <span class="o">&lt;=</span> <span class="mi">8</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;i_sample&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;x_meas&quot;</span><span class="p">),</span>
+        <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d08-e-stat02-source-solution_35_0.png" src="../_images/d08-e-stat02-source-solution_35_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783463817412)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Is the variability <em>within</em> each group of <code class="docutils literal notranslate"><span class="pre">i_sample</span></code> value most likely real or erroneous?</p>
+<ul>
+<li><p>This variability is most likely erroneous; these are repeated measurements of the same part.</p></li>
+</ul>
+</li>
+<li><p>Is the variability <em>across</em> each group of <code class="docutils literal notranslate"><span class="pre">i_sample</span></code> value most likely real or erroneous?</p>
+<ul>
+<li><p>This variability is most likely mixed; we have the same error mentioned in the previous question, plus the variability across each sample.</p></li>
+</ul>
+</li>
+<li><p>Suppose the variability <em>within</em> each group of <code class="docutils literal notranslate"><span class="pre">i_sample</span></code> were <em>purely</em> erroneous; which heuristic could you apply to each group?</p>
+<ul>
+<li><p>The mean heuristic</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="q9-apply-the-mean-heuristic">
+<h3><strong>q9</strong> Apply the mean heuristic<a class="headerlink" href="#q9-apply-the-mean-heuristic" title="Permalink to this headline">¶</a></h3>
+<p>Use the <em>mean heuristic</em> to construct a more stable measurement for each sample.</p>
+<p><em>Hint</em>: To do this, you will need to <code class="docutils literal notranslate"><span class="pre">group_by()</span></code> an appropriate variable in the data and <code class="docutils literal notranslate"><span class="pre">summarize()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Apply the mean heuristic to produce a more stable measurement</span>
+<span class="c1"># for each sample `x_mean`. Compute the variance within the same</span>
+<span class="c1"># grouping `var_meas`.</span>
+<span class="n">df_nested_mean</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_nested</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">i_sample</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">x_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x_meas</span><span class="p">),</span>
+        <span class="n">var_meas</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x_meas</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="c1"># Ensure the data are ungrouped after all operations</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="c1"># NOTE: No need to edit; use this to check your results</span>
+<span class="k">assert</span> \
+    <span class="n">df_nested_mean</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">n_sample</span><span class="p">,</span> \
+    <span class="s2">&quot;Incorrect number of rows; make sure you grouped by the correct variable.&quot;</span>
+<span class="k">assert</span> \
+    <span class="s2">&quot;x_mean&quot;</span> <span class="ow">in</span> <span class="n">df_nested_mean</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;x_mean column not found in result&quot;</span>
+<span class="k">assert</span> \
+    <span class="s2">&quot;var_meas&quot;</span> <span class="ow">in</span> <span class="n">df_nested_mean</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;var_meas column not found in result&quot;</span>
+<span class="k">assert</span> \
+    <span class="nb">abs</span><span class="p">(</span><span class="n">df_nested_mean</span><span class="o">.</span><span class="n">x_mean</span><span class="o">.</span><span class="n">var</span><span class="p">()</span> <span class="o">-</span> <span class="mf">0.20</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.1</span><span class="p">,</span> \
+    <span class="s2">&quot;Sanity check on x_mean failed; did you take the mean?&quot;</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Success!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Success!
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once you have successfully summarized the data, run the following code and answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; use this to inspect your results</span>
+<span class="c1"># This code estimates the variability due to measurement</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">df_nested_mean</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">var_meas</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">var_meas</span><span class="p">),</span>
+        <span class="n">var_real</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x_mean</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">var_total</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">var_meas</span> <span class="o">+</span> <span class="n">DF</span><span class="o">.</span><span class="n">var_real</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   var_meas  var_real  var_total
+0  0.052247  0.169566   0.221813
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>About how much variability is due to error?</p>
+<ul>
+<li><p>I find that <code class="docutils literal notranslate"><span class="pre">var_meas</span> <span class="pre">~</span> <span class="pre">0.05</span></code>, which is about <span class="math notranslate nohighlight">\(20\%\)</span> of the total.</p></li>
+</ul>
+</li>
+<li><p>About how much variability is real?</p>
+<ul>
+<li><p>I find that <code class="docutils literal notranslate"><span class="pre">var_real</span> <span class="pre">~</span> <span class="pre">0.20</span></code>, which is about <span class="math notranslate nohighlight">\(80\%\)</span> of the total.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="consequences-of-eliminating-erroneous-variability">
+<h3>Consequences of eliminating erroneous variability<a class="headerlink" href="#consequences-of-eliminating-erroneous-variability" title="Permalink to this headline">¶</a></h3>
+<p>Remember that the mean heuristic helps us reduce erroneous variability; what are the advantages of this technique? Let’s compare the nested and summarized datasets:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; visualize both the original and summarized data</span>
+<span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_density</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df_nested</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;Original&quot;</span><span class="p">),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x_meas&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;source&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_density</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df_nested_mean</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;Summarized&quot;</span><span class="p">),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x_mean&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;source&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d08-e-stat02-source-solution_43_0.png" src="../_images/d08-e-stat02-source-solution_43_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783463850144)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we might expect, the summarized data appears to be narrower, which would make sense if we had reduced the erroneous variability. This can have useful implications for designs based on our data analysis.</p>
+</div>
+<div class="section" id="q10-apply-the-quantile-heuristic">
+<h3><strong>q10</strong> Apply the quantile heuristic<a class="headerlink" href="#q10-apply-the-quantile-heuristic" title="Permalink to this headline">¶</a></h3>
+<p>Apply the quantile heuristic to the summarized data. Use the same quantiles <code class="docutils literal notranslate"><span class="pre">0.10,</span> <span class="pre">0.90</span></code> computed on the original data. Answer the questions under <em>observations</em> below.</p>
+<p><em>Hint</em>: Do you need to group again to apply the quantile heuristic?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; this is an analysis of the original data</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Quantiles of original data&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">df_nested</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">x_lo</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x_meas</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">),</span>
+        <span class="n">x_hi</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x_meas</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="c1"># Compute the interval width</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">-</span> <span class="n">DF</span><span class="o">.</span><span class="n">x_lo</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># TASK: Modify the code below</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Quantiles of summarized data&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">df_nested_mean</span>
+
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">x_lo</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x_mean</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">),</span>
+        <span class="n">x_hi</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x_mean</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="c1"># Compute the interval width</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">-</span> <span class="n">DF</span><span class="o">.</span><span class="n">x_lo</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Quantiles of original data
+       x_lo      x_hi     width
+0  0.444538  1.539972  1.095434
+
+Quantiles of summarized data
+       x_lo     x_hi     width
+0  0.514268  1.48297  0.968702
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Which interval is narrower (<code class="docutils literal notranslate"><span class="pre">width</span></code>)? The original or the summarized?</p>
+<ul>
+<li><p>The summarized data gives a narrower interval.</p></li>
+</ul>
+</li>
+<li><p>How has applying the mean heuristic affected the width of the interval? Why has this happened?</p>
+<ul>
+<li><p>Applying the mean heuristic has reduced the width of the interval. This makes sense, as applying the mean heuristic has reduced the variability due to error, allowing us to focus in on the real variability alone.</p></li>
+</ul>
+</li>
+<li><p>Suppose we were using these data to guide engineering design decisions, and a narrower interval would enable a more efficient design. Which analysis would enable a more efficient design?</p>
+<ul>
+<li><p>The summarized approach (using the mean and quantile heuristics) would enable a more efficient design.</p></li>
+</ul>
+</li>
+</ul>
+<p>Note that this kind of analysis is <strong>only</strong> possible when the data have this kind of nested structure; when we have multiple measurements of each specimen. The next task highlights this important fact.</p>
+</div>
+<div class="section" id="q11-importance-of-structured-data-collection">
+<h3><strong>q11</strong> Importance of structured data collection<a class="headerlink" href="#q11-importance-of-structured-data-collection" title="Permalink to this headline">¶</a></h3>
+<p>Inspect the data, and answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_nested</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x_meas</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x_meas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.042817</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.902662</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.042041</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.870676</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.005482</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.914736</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.111457</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1.077125</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>With this form of <code class="docutils literal notranslate"><span class="pre">df_nested</span></code>, could we apply the mean and quantile heuristics to analyze the data? Why or why not?</p>
+<ul>
+<li><p>We could not apply the mean and quantile heuristics; this is because we do not have access to information about how the data were collected. Practically, we have no variables to group by.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="closing-punchline">
+<h1>Closing punchline<a class="headerlink" href="#closing-punchline" title="Permalink to this headline">¶</a></h1>
+<p>Variability can come in different forms: Real variability affects the outcomes we are interested in, while erroneous variability corrupts measurements and inflates the variability we observe. A careful combination of planned data collection (nested data) and data analysis can help us reduce erroneous variability, which can enable more efficient designs.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./exercises_solution"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="d05-e-vis01-bar-charts-solution.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Bar Charts</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="d10-e-grama02-building-solution.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Grama Model Building</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Zachary del Rosario<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

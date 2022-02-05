@@ -1,0 +1,1757 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grama Model Evaluation &#8212; Data Science for Engineers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exploratory Model Analysis" href="d18-e-grama04-ema-solution.html" />
+    <link rel="prev" title="Grama Model Building" href="d10-e-grama02-building-solution.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/home.html">
+   Data Science for Engineers
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/howto.html">
+   How To Use These Materials
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../frontmatter/exercises.html">
+   Exercise Solutions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
+     Introduction to Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
+     Data Visualization Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
+     Data Isolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
+     Introduction to Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
+     Grama Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
+     Bar Charts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d08-e-stat02-source-solution.html">
+     Sources of Variability: Real vs. Error
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d10-e-grama02-building-solution.html">
+     Grama Model Building
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Grama Model Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d18-e-grama04-ema-solution.html">
+     Exploratory Model Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d19-e-stat04-distributions-solution.html">
+     Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d20-e-grama05-fit-function-solution.html">
+     Fitting Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d22-e-grama06-fit-univar-solution.html">
+     Fitting Univariate Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d23-e-grama07-fit-multivar-solution.html">
+     Fitting Multivariate Distributions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/exercises_solution/d12-e-grama03-eval-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d12-e-grama03-eval-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Grama Model Evaluation
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#todo">
+     TODO
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluation">
+   Evaluation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manual-input-values">
+   Manual Input Values
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataframe-evaluation-ev-df">
+     DataFrame evaluation
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ev_df()
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-set-the-input-values">
+       <strong>
+        qX
+       </strong>
+       Set the input values
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluation-as-transformation-tf-md">
+     Evaluation as transformation
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       tf_md()
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       TODO
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-use-a-model-as-a-transform">
+       <strong>
+        qX
+       </strong>
+       Use a model as a transform
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mixed-manual-automatic">
+   Mixed Manual &amp; Automatic
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nominal-evaluation">
+     Nominal Evaluation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-evaluate-at-nominal-values">
+       <strong>
+        qX
+       </strong>
+       Evaluate at nominal values
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-sweep-key-variables">
+       <strong>
+        qX
+       </strong>
+       Sweep key variables
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#random-sampling">
+     Random Sampling
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-evaluate-a-simple-random-sample">
+       <strong>
+        qX
+       </strong>
+       Evaluate a simple random sample
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-skip-evaluation">
+       <strong>
+        qX
+       </strong>
+       Skip evaluation
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-sweeps-with-sampling">
+       <strong>
+        qX
+       </strong>
+       Sweeps with sampling
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#automatic-input-values">
+   Automatic Input Values
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#contour-evaluation">
+     Contour Evaluation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-visualize-function-contours">
+       <strong>
+        qX
+       </strong>
+       Visualize function contours
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-find-specific-contour-levels">
+       <strong>
+        qX
+       </strong>
+       Find specific contour levels
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constrained-minimization">
+     Constrained Minimization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-of-evaluation-routines">
+   List of evaluation routines
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Grama Model Evaluation</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Grama Model Evaluation
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#todo">
+     TODO
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluation">
+   Evaluation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manual-input-values">
+   Manual Input Values
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataframe-evaluation-ev-df">
+     DataFrame evaluation
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ev_df()
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-set-the-input-values">
+       <strong>
+        qX
+       </strong>
+       Set the input values
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluation-as-transformation-tf-md">
+     Evaluation as transformation
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       tf_md()
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       TODO
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-use-a-model-as-a-transform">
+       <strong>
+        qX
+       </strong>
+       Use a model as a transform
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mixed-manual-automatic">
+   Mixed Manual &amp; Automatic
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nominal-evaluation">
+     Nominal Evaluation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-evaluate-at-nominal-values">
+       <strong>
+        qX
+       </strong>
+       Evaluate at nominal values
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-sweep-key-variables">
+       <strong>
+        qX
+       </strong>
+       Sweep key variables
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#random-sampling">
+     Random Sampling
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-evaluate-a-simple-random-sample">
+       <strong>
+        qX
+       </strong>
+       Evaluate a simple random sample
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-skip-evaluation">
+       <strong>
+        qX
+       </strong>
+       Skip evaluation
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-sweeps-with-sampling">
+       <strong>
+        qX
+       </strong>
+       Sweeps with sampling
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#automatic-input-values">
+   Automatic Input Values
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#contour-evaluation">
+     Contour Evaluation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-visualize-function-contours">
+       <strong>
+        qX
+       </strong>
+       Visualize function contours
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-find-specific-contour-levels">
+       <strong>
+        qX
+       </strong>
+       Find specific contour levels
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constrained-minimization">
+     Constrained Minimization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-of-evaluation-routines">
+   List of evaluation routines
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="grama-model-evaluation">
+<h1>Grama Model Evaluation<a class="headerlink" href="#grama-model-evaluation" title="Permalink to this headline">¶</a></h1>
+<p><em>Purpose</em>: Once we’ve done the hard work of building a grama model, we can use a variety of tools to use the model. Evaluations are core to using grama.</p>
+<div class="section" id="todo">
+<h2>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<p>To focus this exercise on using models, let’s load up a model to play with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.models</span> <span class="kn">import</span> <span class="n">make_plate_buckle</span>
+<span class="n">md_plate</span> <span class="o">=</span> <span class="n">make_plate_buckle</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="evaluation">
+<h1>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h1>
+<p>Recall that there are four classes of verb in grama; <em>evaluation</em> verbs take a model as an input and produce data as an output. Once we’ve generated that data, we can use visualization and other data tools to learn something about the model.</p>
+<p><img alt="Grama verb class diagram" src="../_images/verb-classes.png" /></p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="manual-input-values">
+<h1>Manual Input Values<a class="headerlink" href="#manual-input-values" title="Permalink to this headline">¶</a></h1>
+<p>There are two core evaluations—<code class="docutils literal notranslate"><span class="pre">ev_df()</span></code> and <code class="docutils literal notranslate"><span class="pre">tf_md()</span></code>—that require us to specify all the input values. These are manual but fundamental tools for working with a model.</p>
+<div class="section" id="dataframe-evaluation-ev-df">
+<h2>DataFrame evaluation <code class="docutils literal notranslate"><span class="pre">ev_df()</span></code><a class="headerlink" href="#dataframe-evaluation-ev-df" title="Permalink to this headline">¶</a></h2>
+<p>As the prefix implies, <code class="docutils literal notranslate"><span class="pre">ev_df()</span></code> takes a model as an input and returns data as an output. Since we need to specify all model input values, it is most convenient to pair <code class="docutils literal notranslate"><span class="pre">ev_df()</span></code> with the DataFrame constructor <code class="docutils literal notranslate"><span class="pre">df_make()</span></code>. Let’s talk about some practical considerations when putting these tools together.</p>
+<div class="section" id="qx-set-the-input-values">
+<h3><strong>qX</strong> Set the input values<a class="headerlink" href="#qx-set-the-input-values" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Complete the following code</span>
+<span class="p">(</span>
+    <span class="n">md_plate</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_df</span><span class="p">(</span>
+        <span class="n">df</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">m</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">t</span><span class="o">=</span><span class="mf">0.06</span><span class="p">,</span>
+            <span class="n">h</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+            <span class="n">w</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+            <span class="n">L</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span>
+            <span class="n">E</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span>
+            <span class="n">mu</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m</th>
+      <th>t</th>
+      <th>h</th>
+      <th>w</th>
+      <th>L</th>
+      <th>E</th>
+      <th>mu</th>
+      <th>g_buckle</th>
+      <th>k_cr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0.06</td>
+      <td>12</td>
+      <td>12</td>
+      <td>0.001</td>
+      <td>10000.0</td>
+      <td>0.33</td>
+      <td>0.921591</td>
+      <td>4.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="evaluation-as-transformation-tf-md">
+<h2>Evaluation as transformation <code class="docutils literal notranslate"><span class="pre">tf_md()</span></code><a class="headerlink" href="#evaluation-as-transformation-tf-md" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>TODO<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_stang</span>
+<span class="n">df_stang</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>thick</th>
+      <th>alloy</th>
+      <th>E</th>
+      <th>mu</th>
+      <th>ang</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>10600</td>
+      <td>0.321</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>10600</td>
+      <td>0.323</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>10400</td>
+      <td>0.329</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>10300</td>
+      <td>0.319</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>10500</td>
+      <td>0.323</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>10700</td>
+      <td>0.328</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="qx-use-a-model-as-a-transform">
+<h3><strong>qX</strong> Use a model as a transform<a class="headerlink" href="#qx-use-a-model-as-a-transform" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_stang</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+        <span class="n">m</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">L</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+        <span class="n">t</span><span class="o">=</span><span class="mf">0.06</span><span class="p">,</span>
+        <span class="n">h</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+        <span class="n">w</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_md</span><span class="p">(</span><span class="n">md_plate</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>thick</th>
+      <th>alloy</th>
+      <th>E</th>
+      <th>mu</th>
+      <th>ang</th>
+      <th>m</th>
+      <th>L</th>
+      <th>t</th>
+      <th>h</th>
+      <th>w</th>
+      <th>g_buckle</th>
+      <th>k_cr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>10600</td>
+      <td>0.321</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.001</td>
+      <td>0.06</td>
+      <td>12</td>
+      <td>12</td>
+      <td>0.970579</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>10600</td>
+      <td>0.323</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.001</td>
+      <td>0.06</td>
+      <td>12</td>
+      <td>12</td>
+      <td>0.971976</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>10400</td>
+      <td>0.329</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.001</td>
+      <td>0.06</td>
+      <td>12</td>
+      <td>12</td>
+      <td>0.957800</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>10300</td>
+      <td>0.319</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.001</td>
+      <td>0.06</td>
+      <td>12</td>
+      <td>12</td>
+      <td>0.941724</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>10500</td>
+      <td>0.323</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.001</td>
+      <td>0.06</td>
+      <td>12</td>
+      <td>12</td>
+      <td>0.962794</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>10400</td>
+      <td>0.327</td>
+      <td>90</td>
+      <td>1</td>
+      <td>0.001</td>
+      <td>0.06</td>
+      <td>12</td>
+      <td>12</td>
+      <td>0.956391</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>10500</td>
+      <td>0.320</td>
+      <td>90</td>
+      <td>1</td>
+      <td>0.001</td>
+      <td>0.06</td>
+      <td>12</td>
+      <td>12</td>
+      <td>0.960722</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>9900</td>
+      <td>0.314</td>
+      <td>90</td>
+      <td>1</td>
+      <td>0.001</td>
+      <td>0.06</td>
+      <td>12</td>
+      <td>12</td>
+      <td>0.901916</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>10000</td>
+      <td>0.316</td>
+      <td>90</td>
+      <td>1</td>
+      <td>0.001</td>
+      <td>0.06</td>
+      <td>12</td>
+      <td>12</td>
+      <td>0.912317</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>9900</td>
+      <td>0.314</td>
+      <td>90</td>
+      <td>1</td>
+      <td>0.001</td>
+      <td>0.06</td>
+      <td>12</td>
+      <td>12</td>
+      <td>0.901916</td>
+      <td>4.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>76 rows × 12 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="mixed-manual-automatic">
+<h1>Mixed Manual &amp; Automatic<a class="headerlink" href="#mixed-manual-automatic" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="nominal-evaluation">
+<h2>Nominal Evaluation<a class="headerlink" href="#nominal-evaluation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="qx-evaluate-at-nominal-values">
+<h3><strong>qX</strong> Evaluate at nominal values<a class="headerlink" href="#qx-evaluate-at-nominal-values" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">md_plate</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_nominal</span><span class="p">(</span><span class="n">df_det</span><span class="o">=</span><span class="s2">&quot;nom&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>E</th>
+      <th>mu</th>
+      <th>t</th>
+      <th>w</th>
+      <th>L</th>
+      <th>m</th>
+      <th>h</th>
+      <th>g_buckle</th>
+      <th>k_cr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10344.736842</td>
+      <td>0.321363</td>
+      <td>0.075</td>
+      <td>12.0</td>
+      <td>0.0016</td>
+      <td>3.0</td>
+      <td>12.0</td>
+      <td>4.116312</td>
+      <td>11.111111</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+</div>
+<div class="section" id="qx-sweep-key-variables">
+<h3><strong>qX</strong> Sweep key variables<a class="headerlink" href="#qx-sweep-key-variables" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">md_plate</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_nominal</span><span class="p">(</span>
+        <span class="n">df_det</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_grid</span><span class="p">(</span>
+            <span class="n">w</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+            <span class="n">t</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">32</span><span class="p">,</span>
+            <span class="n">L</span><span class="o">=</span><span class="mf">0.0016</span><span class="p">,</span>
+            <span class="n">m</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+            <span class="n">h</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="s2">&quot;g_buckle&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;factor(m)&quot;</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d12-e-grama03-eval-solution_19_0.png" src="../_images/d12-e-grama03-eval-solution_19_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8774455272717)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+</div>
+</div>
+<div class="section" id="random-sampling">
+<h2>Random Sampling<a class="headerlink" href="#random-sampling" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="qx-evaluate-a-simple-random-sample">
+<h3><strong>qX</strong> Evaluate a simple random sample<a class="headerlink" href="#qx-evaluate-a-simple-random-sample" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">md_plate</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mf">1e2</span><span class="p">,</span> <span class="n">df_det</span><span class="o">=</span><span class="s2">&quot;nom&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eval_sample() is rounding n...
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>E</th>
+      <th>mu</th>
+      <th>t</th>
+      <th>w</th>
+      <th>L</th>
+      <th>m</th>
+      <th>h</th>
+      <th>g_buckle</th>
+      <th>k_cr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10487.418224</td>
+      <td>0.318037</td>
+      <td>0.075</td>
+      <td>12.0</td>
+      <td>0.0016</td>
+      <td>3.0</td>
+      <td>12.0</td>
+      <td>4.163234</td>
+      <td>11.111111</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10100.665701</td>
+      <td>0.310464</td>
+      <td>0.075</td>
+      <td>12.0</td>
+      <td>0.0016</td>
+      <td>3.0</td>
+      <td>12.0</td>
+      <td>3.988507</td>
+      <td>11.111111</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>10236.675245</td>
+      <td>0.329909</td>
+      <td>0.075</td>
+      <td>12.0</td>
+      <td>0.0016</td>
+      <td>3.0</td>
+      <td>12.0</td>
+      <td>4.098744</td>
+      <td>11.111111</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>10371.138732</td>
+      <td>0.321072</td>
+      <td>0.075</td>
+      <td>12.0</td>
+      <td>0.0016</td>
+      <td>3.0</td>
+      <td>12.0</td>
+      <td>4.125961</td>
+      <td>11.111111</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>10617.745689</td>
+      <td>0.327634</td>
+      <td>0.075</td>
+      <td>12.0</td>
+      <td>0.0016</td>
+      <td>3.0</td>
+      <td>12.0</td>
+      <td>4.244263</td>
+      <td>11.111111</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>10223.087306</td>
+      <td>0.312448</td>
+      <td>0.075</td>
+      <td>12.0</td>
+      <td>0.0016</td>
+      <td>3.0</td>
+      <td>12.0</td>
+      <td>4.042403</td>
+      <td>11.111111</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>10449.882889</td>
+      <td>0.325747</td>
+      <td>0.075</td>
+      <td>12.0</td>
+      <td>0.0016</td>
+      <td>3.0</td>
+      <td>12.0</td>
+      <td>4.171371</td>
+      <td>11.111111</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>10195.561870</td>
+      <td>0.329865</td>
+      <td>0.075</td>
+      <td>12.0</td>
+      <td>0.0016</td>
+      <td>3.0</td>
+      <td>12.0</td>
+      <td>4.082143</td>
+      <td>11.111111</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>10302.250987</td>
+      <td>0.310896</td>
+      <td>0.075</td>
+      <td>12.0</td>
+      <td>0.0016</td>
+      <td>3.0</td>
+      <td>12.0</td>
+      <td>4.069353</td>
+      <td>11.111111</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>10411.165639</td>
+      <td>0.330716</td>
+      <td>0.075</td>
+      <td>12.0</td>
+      <td>0.0016</td>
+      <td>3.0</td>
+      <td>12.0</td>
+      <td>4.171136</td>
+      <td>11.111111</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 9 columns</p>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+</div>
+<div class="section" id="qx-skip-evaluation">
+<h3><strong>qX</strong> Skip evaluation<a class="headerlink" href="#qx-skip-evaluation" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">md_plate</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span>
+        <span class="n">n</span><span class="o">=</span><span class="mf">1e2</span><span class="p">,</span> 
+        <span class="n">df_det</span><span class="o">=</span><span class="s2">&quot;nom&quot;</span><span class="p">,</span>
+        <span class="n">skip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># NOTE: No need to edit</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_auto</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eval_sample() is rounding n...
+Design runtime estimates unavailable; model has no timing data.
+Calling plot_scattermat....
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Matplotlib is currently using module://matplotlib_inline.backend_inline, which is a non-GUI backend, so cannot show the figure.
+</pre></div>
+</div>
+<img alt="../_images/d12-e-grama03-eval-solution_26_2.png" src="../_images/d12-e-grama03-eval-solution_26_2.png" />
+</div>
+</div>
+<p><em>Observations</em></p>
+</div>
+<div class="section" id="qx-sweeps-with-sampling">
+<h3><strong>qX</strong> Sweeps with sampling<a class="headerlink" href="#qx-sweeps-with-sampling" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">md_plate</span>
+
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span>
+        <span class="n">n</span><span class="o">=</span><span class="mf">1e2</span><span class="p">,</span>
+        <span class="n">df_det</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_grid</span><span class="p">(</span>
+            <span class="n">w</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+            <span class="n">t</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">32</span><span class="p">,</span>
+            <span class="n">L</span><span class="o">=</span><span class="mf">0.0016</span><span class="p">,</span>
+            <span class="n">m</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+            <span class="n">h</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    
+    <span class="c1">## NOTE: No need to edit below; use to inspect results</span>
+    <span class="c1"># Compute low, middle, high values at each m, h</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">h</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">g_lo</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_buckle</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.25</span><span class="p">),</span>
+        <span class="n">g_mu</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_buckle</span><span class="p">),</span>
+        <span class="n">g_hi</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_buckle</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.75</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="c1"># Visualize</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="s2">&quot;g_mu&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;factor(m)&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_ribbon</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="s2">&quot;g_lo&quot;</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s2">&quot;g_hi&quot;</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eval_sample() is rounding n...
+</pre></div>
+</div>
+<img alt="../_images/d12-e-grama03-eval-solution_29_1.png" src="../_images/d12-e-grama03-eval-solution_29_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8774445932261)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="automatic-input-values">
+<h1>Automatic Input Values<a class="headerlink" href="#automatic-input-values" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="contour-evaluation">
+<h2>Contour Evaluation<a class="headerlink" href="#contour-evaluation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="qx-visualize-function-contours">
+<h3><strong>qX</strong> Visualize function contours<a class="headerlink" href="#qx-visualize-function-contours" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Complete the contour evaluation arguments</span>
+<span class="p">(</span>
+    <span class="c1"># NOTE: No need to edit this model</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s2">&quot;Contour Demo&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_vec_function</span><span class="p">(</span>
+        <span class="n">fun</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">f</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">g</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">],</span>
+        <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_bounds</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">),</span>
+        <span class="n">y</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">),</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># TASK: Complete the arguments for ev_contour()</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_contour</span><span class="p">(</span>
+
+        <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">],</span>
+        <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># NOTE: No need to edit; use to visualize</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_auto</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calling plot_contour....
+</pre></div>
+</div>
+<img alt="../_images/d12-e-grama03-eval-solution_33_1.png" src="../_images/d12-e-grama03-eval-solution_33_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8774453366718)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+</div>
+<div class="section" id="qx-find-specific-contour-levels">
+<h3><strong>qX</strong> Find specific contour levels<a class="headerlink" href="#qx-find-specific-contour-levels" title="Permalink to this headline">¶</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">gr.ev_contour()</span></code> to find the contour of <code class="docutils literal notranslate"><span class="pre">g</span></code> that is tangent to the contour where <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">==</span> <span class="pre">1</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Find the tangent contour of `g`</span>
+<span class="n">df_contour</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="c1"># NOTE: No need to edit this model</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s2">&quot;Contour Demo&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_vec_function</span><span class="p">(</span>
+        <span class="n">fun</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">f</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">g</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">],</span>
+        <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_bounds</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">),</span>
+        <span class="n">y</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">),</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># TASK: Use specific levels to find the tangent</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_contour</span><span class="p">(</span>
+        <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">],</span>
+        <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">],</span>
+
+        <span class="n">levels</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+            <span class="n">f</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="n">g</span><span class="o">=</span><span class="p">[</span><span class="mf">1.25</span><span class="p">,</span> <span class="mf">1.42</span><span class="p">,</span> <span class="mf">1.45</span><span class="p">],</span> <span class="c1"># g == 1.42 is approximately correct</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># NOTE: No need to edit; use to visualize</span>
+<span class="n">gr</span><span class="o">.</span><span class="n">plot_auto</span><span class="p">(</span><span class="n">df_contour</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calling plot_contour....
+</pre></div>
+</div>
+<img alt="../_images/d12-e-grama03-eval-solution_36_1.png" src="../_images/d12-e-grama03-eval-solution_36_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8774455680061)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="constrained-minimization">
+<h2>Constrained Minimization<a class="headerlink" href="#constrained-minimization" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
+<span class="n">df_opt</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="c1"># Set up a model</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s2">&quot;Contour Demo&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_vec_function</span><span class="p">(</span>
+        <span class="n">fun</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">f</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">g</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="mf">1.42</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">],</span>
+        <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_bounds</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">),</span>
+        <span class="n">y</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">),</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># Minimize the objective with a constraint</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_min</span><span class="p">(</span>
+        <span class="n">out_min</span><span class="o">=</span><span class="s2">&quot;f&quot;</span><span class="p">,</span>
+        <span class="n">out_geq</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;g&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df_opt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+      <th>x_0</th>
+      <th>y_0</th>
+      <th>g</th>
+      <th>f</th>
+      <th>success</th>
+      <th>message</th>
+      <th>n_iter</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.71</td>
+      <td>0.71</td>
+      <td>0.5</td>
+      <td>0.5</td>
+      <td>1.776357e-15</td>
+      <td>1.0082</td>
+      <td>True</td>
+      <td>Optimization terminated successfully</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; this visualizes the optimization results</span>
+<span class="c1"># in the context of the contour data</span>
+<span class="p">(</span>
+    <span class="n">df_contour</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_segment</span><span class="p">(</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+            <span class="n">xend</span><span class="o">=</span><span class="s2">&quot;x_end&quot;</span><span class="p">,</span> 
+            <span class="n">yend</span><span class="o">=</span><span class="s2">&quot;y_end&quot;</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="s2">&quot;level&quot;</span><span class="p">,</span>
+            <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;out&quot;</span><span class="p">,</span>
+          <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_opt</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d12-e-grama03-eval-solution_40_0.png" src="../_images/d12-e-grama03-eval-solution_40_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8774455984119)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="list-of-evaluation-routines">
+<h1>List of evaluation routines<a class="headerlink" href="#list-of-evaluation-routines" title="Permalink to this headline">¶</a></h1>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Verb</p></th>
+<th class="head"><p>Input values</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ev_df()</span></code></p></td>
+<td><p>Manual</p></td>
+<td><p>DataFrame evaluation</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tf_md()</span></code></p></td>
+<td><p>Manual</p></td>
+<td><p>Model as transformation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ev_nominal()</span></code></p></td>
+<td><p>Mixed</p></td>
+<td><p>Nominal values for random inputs</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ev_sample()</span></code></p></td>
+<td><p>Mixed</p></td>
+<td><p>Random values for random inputs</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ev_conservative()</span></code></p></td>
+<td><p>Mixed</p></td>
+<td><p>Conservative values for random inputs</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ev_contour()</span></code></p></td>
+<td><p>Auto</p></td>
+<td><p>Generate contour plot data</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ev_sinews()</span></code></p></td>
+<td><p>Auto</p></td>
+<td><p>Generate sinew plot data</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ev_min()</span></code></p></td>
+<td><p>Auto</p></td>
+<td><p>Constrained minimization</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./exercises_solution"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="d10-e-grama02-building-solution.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Grama Model Building</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="d18-e-grama04-ema-solution.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exploratory Model Analysis</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Zachary del Rosario<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
