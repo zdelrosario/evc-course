@@ -416,8 +416,8 @@
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#consequences-of-eliminating-erroneous-variability">
-       Consequences of eliminating erroneous variability
+      <a class="reference internal nav-link" href="#benefits-of-eliminating-erroneous-variability">
+       Benefits of eliminating erroneous variability
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
@@ -607,8 +607,8 @@
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#consequences-of-eliminating-erroneous-variability">
-       Consequences of eliminating erroneous variability
+      <a class="reference internal nav-link" href="#benefits-of-eliminating-erroneous-variability">
+       Benefits of eliminating erroneous variability
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
@@ -758,8 +758,8 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Make a histogram</span>
-<span class="c1"># NOTE: I additionally compute statistics about the</span>
-<span class="c1"># observed variability</span>
+<span class="c1"># NOTE: I additionally compute statistics about </span>
+<span class="c1"># the observed variability</span>
 <span class="nb">print</span><span class="p">(</span>
     <span class="n">df_shewhart</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
@@ -782,7 +782,7 @@
 </pre></div>
 </div>
 <img alt="../_images/d08-e-stat02-source-solution_8_1.png" src="../_images/d08-e-stat02-source-solution_8_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783465755097)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766684710437)&gt;
 </pre></div>
 </div>
 </div>
@@ -847,7 +847,7 @@ Image credit: Alana Huitric</p>
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d08-e-stat02-source-solution_16_0.png" src="../_images/d08-e-stat02-source-solution_16_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783465627603)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766684654641)&gt;
 </pre></div>
 </div>
 </div>
@@ -889,7 +889,7 @@ Image credit: Alana Huitric</p>
 </li>
 <li><p>Why?</p>
 <ul>
-<li><p>The properties of the component are essentially set at manufacturing time; if multiple measurements on the same part return different values, then the variability is most likely induced by the measurement process.</p></li>
+<li><p>The properties of the component are largely set at manufacturing time, and the tests are carried out under similar conditions. If multiple measurements on the same part (under similar conditions) return different values, then the variability is most likely induced by the measurement process—thus, erroneous variability.</p></li>
 </ul>
 </li>
 </ul>
@@ -1194,7 +1194,7 @@ Image credit: Alana Huitric</p>
 <li><p>note that these are per-sample, e.g. <code class="docutils literal notranslate"><span class="pre">i_meas</span> <span class="pre">==</span> <span class="pre">0</span></code> for <code class="docutils literal notranslate"><span class="pre">i_sample</span> <span class="pre">==</span> <span class="pre">0</span></code> is unrelated to <code class="docutils literal notranslate"><span class="pre">i_meas</span> <span class="pre">==</span> <span class="pre">0</span></code> for <code class="docutils literal notranslate"><span class="pre">i_sample</span> <span class="pre">==</span> <span class="pre">1</span></code>.</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">x_meas</span></code> is the measurement</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x_meas</span></code> is the measured value</p></li>
 </ul>
 <div class="section" id="q8-identify-real-and-erroneous-sources">
 <h3><strong>q8</strong> Identify real and erroneous sources<a class="headerlink" href="#q8-identify-real-and-erroneous-sources" title="Permalink to this headline">¶</a></h3>
@@ -1217,7 +1217,7 @@ Image credit: Alana Huitric</p>
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d08-e-stat02-source-solution_35_0.png" src="../_images/d08-e-stat02-source-solution_35_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783463817412)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766684287618)&gt;
 </pre></div>
 </div>
 </div>
@@ -1323,8 +1323,8 @@ Image credit: Alana Huitric</p>
 </li>
 </ul>
 </div>
-<div class="section" id="consequences-of-eliminating-erroneous-variability">
-<h3>Consequences of eliminating erroneous variability<a class="headerlink" href="#consequences-of-eliminating-erroneous-variability" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="benefits-of-eliminating-erroneous-variability">
+<h3>Benefits of eliminating erroneous variability<a class="headerlink" href="#benefits-of-eliminating-erroneous-variability" title="Permalink to this headline">¶</a></h3>
 <p>Remember that the mean heuristic helps us reduce erroneous variability; what are the advantages of this technique? Let’s compare the nested and summarized datasets:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1347,7 +1347,7 @@ Image credit: Alana Huitric</p>
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d08-e-stat02-source-solution_43_0.png" src="../_images/d08-e-stat02-source-solution_43_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783463850144)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766684562905)&gt;
 </pre></div>
 </div>
 </div>
