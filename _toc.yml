@@ -2,6 +2,7 @@ format: jb-article
 root: frontmatter/home
 sections:
 - file: frontmatter/setup
+- file: frontmatter/howto
 - file: frontmatter/exercises
   sections:
   - glob: exercises_solution/*solution
