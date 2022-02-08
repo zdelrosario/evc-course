@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -333,38 +335,19 @@
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-assess-avs">
+    <a class="reference internal nav-link" href="#qx-correlation-tile-plot">
      <strong>
       qX
      </strong>
-     Assess AVS
+     Correlation tile plot
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-understand-what-the-angle-column-means">
+    <a class="reference internal nav-link" href="#qx-detailed-scatterplots">
      <strong>
       qX
      </strong>
-     Understand what the
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       angle
-      </span>
-     </code>
-     column means
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-re-code-the-angle">
-     <strong>
-      qX
-     </strong>
-     Re-code the
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       angle
-      </span>
-     </code>
+     Detailed scatterplots
     </a>
    </li>
   </ul>
@@ -373,11 +356,32 @@
   <a class="reference internal nav-link" href="#model-setup">
    Model Setup
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ema-of-boat-performance">
-   EMA of Boat Performance
-  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-time-the-analysis">
+     <strong>
+      qX
+     </strong>
+     Time the analysis
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-define-the-input-order">
+     <strong>
+      qX
+     </strong>
+     Define the input order
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-assemble-the-model">
+     <strong>
+      qX
+     </strong>
+     Assemble the model
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -462,38 +466,19 @@
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-assess-avs">
+    <a class="reference internal nav-link" href="#qx-correlation-tile-plot">
      <strong>
       qX
      </strong>
-     Assess AVS
+     Correlation tile plot
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-understand-what-the-angle-column-means">
+    <a class="reference internal nav-link" href="#qx-detailed-scatterplots">
      <strong>
       qX
      </strong>
-     Understand what the
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       angle
-      </span>
-     </code>
-     column means
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-re-code-the-angle">
-     <strong>
-      qX
-     </strong>
-     Re-code the
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       angle
-      </span>
-     </code>
+     Detailed scatterplots
     </a>
    </li>
   </ul>
@@ -502,11 +487,32 @@
   <a class="reference internal nav-link" href="#model-setup">
    Model Setup
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ema-of-boat-performance">
-   EMA of Boat Performance
-  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-time-the-analysis">
+     <strong>
+      qX
+     </strong>
+     Time the analysis
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-define-the-input-order">
+     <strong>
+      qX
+     </strong>
+     Define the input order
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-assemble-the-model">
+     <strong>
+      qX
+     </strong>
+     Assemble the model
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -549,9 +555,8 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; this will analyze an example boat</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">v_design</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">]</span>
+<span class="n">v_design</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">]</span>
 <span class="n">df_example</span> <span class="o">=</span> <span class="n">boat</span><span class="o">.</span><span class="n">fun_moment</span><span class="p">(</span><span class="n">v_design</span><span class="p">)</span>
-<span class="n">avs_example</span> <span class="o">=</span> <span class="n">boat</span><span class="o">.</span><span class="n">fun_avs</span><span class="p">(</span><span class="n">v_design</span><span class="p">)</span>
 <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Execution time: </span><span class="si">{0:4.3f}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
@@ -561,11 +566,6 @@
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;angle * 180/3.14&quot;</span><span class="p">,</span> <span class="s2">&quot;M_net&quot;</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">()</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span>
-        <span class="n">data</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="n">avs_example</span><span class="p">,</span> <span class="n">M_net</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;AVS&quot;</span><span class="p">),</span>
-        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">),</span>
-        <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-    <span class="p">)</span>
     
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_color_discrete</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
@@ -583,26 +583,34 @@
 <li><p>The Boat Angle is the angle to which the boat hull is rotated (along its long axis).</p></li>
 <li><p>When the net moment is negative, a restoring torque acts to turn the boat back to upright.</p></li>
 <li><p>When the net moment is positive, an anti-restoring torque is applied.</p></li>
-<li><p>The point where the moment curve passes through the axis <code class="docutils literal notranslate"><span class="pre">M_net</span> <span class="pre">==</span> <span class="pre">0</span></code> with positive slope is called the <em>angle of vanishing stability</em> (AVS). Rotating the boat beyond this point will cause it to settle upside-down.</p></li>
+</ul>
+<!-- - The point where the moment curve passes through the axis `M_net == 0` with positive slope is called the *angle of vanishing stability* (AVS). Rotating the boat beyond this point will cause it to settle upside-down. -->
+<ul class="simple">
 <li><p>The boat analysis takes a non-trivial amount of time to run! Analyzing a large number of boat designs will take a fair amount of simulation time.</p></li>
 </ul>
-<p>Note that not all boats have a well-defined AVS. For instance, the following boat is <em>universally stable</em>. The boat will always rotate back to upright, regardless of the angle to which it is rolled.</p>
+<p>Note that upright stability is <em>not</em> guaranteed, even for a boat of identical geometry. The following boat has identical hull geometry but is lighter (smaller <code class="docutils literal notranslate"><span class="pre">d</span></code>) and has a higher center of mass (larger <code class="docutils literal notranslate"><span class="pre">f_com</span></code>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; this will analyze an example boat</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">v_design2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">]</span>
-<span class="n">df_example2</span> <span class="o">=</span> <span class="n">boat</span><span class="o">.</span><span class="n">fun_moment</span><span class="p">(</span><span class="n">v_design2</span><span class="p">)</span>
+<span class="n">v_light</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">]</span>
+<span class="n">df_light</span> <span class="o">=</span> <span class="n">boat</span><span class="o">.</span><span class="n">fun_moment</span><span class="p">(</span><span class="n">v_light</span><span class="p">)</span>
 <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Execution time: </span><span class="si">{0:4.3f}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
 <span class="p">(</span>
     <span class="c1"># Visualize the moment curve</span>
-    <span class="n">df_example2</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;angle * 180/3.14&quot;</span><span class="p">,</span> <span class="s2">&quot;M_net&quot;</span><span class="p">))</span>
+    <span class="n">df_light</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;Light loading&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span>
+        <span class="n">df_example</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;Baseline&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;angle * 180/3.14&quot;</span><span class="p">,</span> <span class="s2">&quot;M_net&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;source&quot;</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">()</span>
     
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_color_discrete</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
         <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Boat Angle (Degrees)&quot;</span><span class="p">,</span>
@@ -613,6 +621,8 @@
 </div>
 </div>
 </div>
+<p>Note that the loading conditions of the boat have destabilized it at upright; the slope of the moment curve at <span class="math notranslate nohighlight">\(0^{\circ}\)</span> is now positive.</p>
+<p>This phenomenon is dangerous for vessels that must operate in both heavily-loaded and lightly-loaded conditions: Imagine a large transport ship that has just unloaded cargo and is in-harbor in an unloaded configuration. The destabilizing phenomenon we see here would put the crew and dockworkers in considerable danger.</p>
 </div>
 </div>
 <div class="section" id="archival-data">
@@ -774,26 +784,18 @@
 <li><p>(Your response here)</p></li>
 </ul>
 </li>
-<li><p>How many boat designs in the dataset are upright-stable?</p>
-<ul>
-<li><p>There are <code class="docutils literal notranslate"><span class="pre">670</span></code> upright-stable boats.</p></li>
-</ul>
-</li>
-<li><p>How <em>fraction</em> of boat designs in the dataset are upright-stable?</p>
-<ul>
-<li><p>This is <code class="docutils literal notranslate"><span class="pre">67%</span></code> percent of the dataset.</p></li>
-</ul>
-</li>
 </ul>
 </div>
-<div class="section" id="qx-assess-avs">
-<h2><strong>qX</strong> Assess AVS<a class="headerlink" href="#qx-assess-avs" title="Permalink to this headline">¶</a></h2>
-<p>Visualize the distribution of the AVS (<code class="docutils literal notranslate"><span class="pre">angle</span></code>), and use an aesthetic to differentiate the upright-stable and upright-unstable boats.</p>
+<div class="section" id="qx-correlation-tile-plot">
+<h2><strong>qX</strong> Correlation tile plot<a class="headerlink" href="#qx-correlation-tile-plot" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
     <span class="n">df_archival</span>
+    <span class="c1">## Compute the input/output correlation data here</span>
 
+    <span class="c1">## NOTE: No need to edit; this will visualize your data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_auto</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -801,68 +803,148 @@
 </div>
 <p><em>Observations</em></p>
 <ul class="simple">
-<li><p>Describe the distribution of the <code class="docutils literal notranslate"><span class="pre">AVS</span></code>.</p>
+<li><p>Which inputs correlate strongly with the slope of the moment curve at upright (<code class="docutils literal notranslate"><span class="pre">dMdtheta_0</span></code>)?</p>
 <ul>
 <li><p>(Your response here)</p></li>
 </ul>
 </li>
-<li><p>How many designs have a well-defined <code class="docutils literal notranslate"><span class="pre">AVS</span></code>? Does this seem high or low?</p>
+<li><p>For each of the inputs you identified above, what is the sign of the correlation? (Positive or negative?) For each input, what kind of change (increase or decrease) is required to increase upright stability?</p>
 <ul>
-<li><p><em>Hint</em>: <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> should throw a helpful <code class="docutils literal notranslate"><span class="pre">Warning</span></code> related to this….</p></li>
 <li><p>(Your response here)</p></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="section" id="qx-understand-what-the-angle-column-means">
-<h2><strong>qX</strong> Understand what the <code class="docutils literal notranslate"><span class="pre">angle</span></code> column means<a class="headerlink" href="#qx-understand-what-the-angle-column-means" title="Permalink to this headline">¶</a></h2>
-<p>Count the number of cases where <code class="docutils literal notranslate"><span class="pre">angle</span></code> is finite and the design is upright-stable. Answer the questions under <em>observations</em> below.</p>
-<p><em>Hint</em>: The grama helper <code class="docutils literal notranslate"><span class="pre">gr.not_nan()</span></code> will help with this task.</p>
+<div class="section" id="qx-detailed-scatterplots">
+<h2><strong>qX</strong> Detailed scatterplots<a class="headerlink" href="#qx-detailed-scatterplots" title="Permalink to this headline">¶</a></h2>
+<p>Make scatterplots to study relationship between <code class="docutils literal notranslate"><span class="pre">dMdtheta_0</span></code> and the relevant inputs you identified above. Add a smooth trend to each scatterplot with <code class="docutils literal notranslate"><span class="pre">gr.geom_smooth()</span></code>.</p>
+<p><em>Hint</em>: While it is possible to construct all three plots in a single code cell, you should feel free to create additional cells as-necessary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-    <span class="n">df_archival</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_count</span><span class="p">(</span>
-
-    <span class="p">)</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: Create scatterplots</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p><em>Observations</em></p>
 <ul class="simple">
-<li><p>Are there any boats that are upright-<strong>un</strong>stable with a well-defined AVS? Why might this be?</p>
+<li><p>Is the observed variability real or erroneous?</p>
 <ul>
 <li><p>(Your response here)</p></li>
 </ul>
 </li>
-<li><p>Are there any boats that are upright-<strong>stable</strong> that do <em>not</em> have a well-defined AVS? Why might this be?</p>
+<li><p>Describe the effects of each input on the output <code class="docutils literal notranslate"><span class="pre">dMdtheta_0</span></code>.</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>For each input, describe the variability around the <code class="docutils literal notranslate"><span class="pre">gr.geom_smooth()</span></code> trend: Is it small or large at different values of the input?)</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>Do any of the inputs have a more <em>predictable</em> effect on <code class="docutils literal notranslate"><span class="pre">dMdtheta_0</span></code>?</p>
 <ul>
 <li><p>(Your response here)</p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="qx-re-code-the-angle">
-<h2><strong>qX</strong> Re-code the <code class="docutils literal notranslate"><span class="pre">angle</span></code><a class="headerlink" href="#qx-re-code-the-angle" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_recoded</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">df_archival</span>
-
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="model-setup">
 <h1>Model Setup<a class="headerlink" href="#model-setup" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_res</span> <span class="o">=</span> <span class="n">boat</span><span class="o">.</span><span class="n">fun_performance</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="ema-of-boat-performance">
-<h1>EMA of Boat Performance<a class="headerlink" href="#ema-of-boat-performance" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="qx-time-the-analysis">
+<h2><strong>qX</strong> Time the analysis<a class="headerlink" href="#qx-time-the-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_rep</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_rep</span><span class="p">):</span>
+
+<span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="n">t_exec</span> <span class="o">=</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_rep</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average execution time: </span><span class="si">{0:}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t_exec</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="qx-define-the-input-order">
+<h2><strong>qX</strong> Define the input order<a class="headerlink" href="#qx-define-the-input-order" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out_performance</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;mass&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;GM&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;angle&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dMdtheta_0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dMdtheta_avs&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;M_max&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;M_min&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;int_M_stable&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+
+<span class="c1">## NOTE: No need to edit; use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="nb">set</span><span class="p">(</span><span class="n">var_performance</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">boat</span><span class="o">.</span><span class="n">var_correct</span><span class="p">),</span> \
+    <span class="s2">&quot;Inputs not correct&quot;</span>
+<span class="k">assert</span> \
+    <span class="n">var_performance</span> <span class="o">==</span> <span class="n">boat</span><span class="o">.</span><span class="n">var_correct</span><span class="p">,</span> \
+    <span class="s2">&quot;Inputs are not in the correct order; check &quot;</span> <span class="o">+</span> \
+    <span class="s2">&quot;the documentation for boat.fun_performance().&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-why-does-order-matter admonition">
+<p class="admonition-title">Why does order matter?</p>
+<p>By default, Python functions interpret their inputs based on <strong>order</strong>. Grama takes care of variables based on <strong>name</strong>, but when working with a “regular” Python function, we have to be careful to give grama the correct order information. Imagine giving the value for boat height <code class="docutils literal notranslate"><span class="pre">H</span></code> as the shape factor <code class="docutils literal notranslate"><span class="pre">n</span></code>, or vice versa! If we are careful when defining a grama model, we can prevent these order issues later.</p>
+</div>
+</div>
+<div class="section" id="qx-assemble-the-model">
+<h2><strong>qX</strong> Assemble the model<a class="headerlink" href="#qx-assemble-the-model" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">md_performance</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s2">&quot;Boat performance&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_function</span><span class="p">(</span>
+        <span class="n">fun</span><span class="o">=</span><span class="n">boat</span><span class="o">.</span><span class="n">fun_performance</span><span class="p">,</span>
+        <span class="c1"># Add input and output names;</span>
+        <span class="c1"># runtime estimate</span>
+
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_bounds</span><span class="p">(</span>
+        <span class="c1"># Add input bounds</span>
+
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1">## NOTE: No need to edit; use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="n">md_performance</span><span class="o">.</span><span class="n">functions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">runtime</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> \
+    <span class="s2">&quot;Model has no runtime estimate&quot;</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">var_performance</span><span class="p">:</span>
+    <span class="k">assert</span> \
+        <span class="n">md_performance</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">df_archival</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> \
+        <span class="s2">&quot;Archival data for </span><span class="si">{}</span><span class="s2"> exceeds model lower bound&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="k">assert</span> \
+        <span class="n">df_archival</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">md_performance</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> \
+        <span class="s2">&quot;Archival data for </span><span class="si">{}</span><span class="s2"> exceeds model upper bound&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+<span class="n">md_performance</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">

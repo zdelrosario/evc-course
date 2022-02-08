@@ -379,6 +379,22 @@
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-correlation-tile-plot">
+     <strong>
+      qX
+     </strong>
+     Correlation tile plot
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-targeted-scatterplots">
+     <strong>
+      qX
+     </strong>
+     Targeted scatterplots
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#qx-sinew-plot">
      <strong>
       qX
@@ -515,6 +531,22 @@
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-correlation-tile-plot">
+     <strong>
+      qX
+     </strong>
+     Correlation tile plot
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-targeted-scatterplots">
+     <strong>
+      qX
+     </strong>
+     Targeted scatterplots
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#qx-sinew-plot">
      <strong>
       qX
@@ -569,16 +601,16 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: divide by zero encountered in double_scalars
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/Git/py_grama/grama/marginals.py:336: RuntimeWarning: divide by zero encountered in double_scalars
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: RLC with component tolerances
 
   inputs:
     var_det:
-      R: [0.001, 1.0]
-      C: [0.001, 100]
       L: [1e-09, 0.001]
+      C: [0.001, 100]
+      R: [0.001, 1.0]
 
     var_rand:
       dR: (+0) uniform, {&#39;mean&#39;: &#39;0.000e+00&#39;, &#39;s.d.&#39;: &#39;3.000e-02&#39;, &#39;COV&#39;: inf, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 1.8}
@@ -626,7 +658,7 @@ Design runtime estimates unavailable; model has no timing data.
 Calling plot_scattermat....
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Matplotlib is currently using module://matplotlib_inline.backend_inline, which is a non-GUI backend, so cannot show the figure.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/Git/py_grama/grama/plot_auto.py:232: UserWarning: Matplotlib is currently using module://matplotlib_inline.backend_inline, which is a non-GUI backend, so cannot show the figure.
 </pre></div>
 </div>
 <img alt="../_images/d18-e-grama04-ema-solution_12_2.png" src="../_images/d18-e-grama04-ema-solution_12_2.png" />
@@ -664,7 +696,7 @@ Calling plot_scattermat....
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d18-e-grama04-ema-solution_15_0.png" src="../_images/d18-e-grama04-ema-solution_15_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8768586418622)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782120050541)&gt;
 </pre></div>
 </div>
 </div>
@@ -692,12 +724,12 @@ Calling plot_scattermat....
 Calling plot_hists....
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: If you need more space for the x-axis tick text use ... + theme(subplots_adjust={&#39;wspace&#39;: 0.25}). Choose an appropriate value for &#39;wspace&#39;.
-Warning: If you need more space for the y-axis tick text use ... + theme(subplots_adjust={&#39;hspace&#39;: 0.25}). Choose an appropriate value for &#39;hspace&#39;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/uqbook/lib/python3.9/site-packages/plotnine/facets/facet.py:390: PlotnineWarning: If you need more space for the x-axis tick text use ... + theme(subplots_adjust={&#39;wspace&#39;: 0.25}). Choose an appropriate value for &#39;wspace&#39;.
+/Users/zach/opt/anaconda3/envs/uqbook/lib/python3.9/site-packages/plotnine/facets/facet.py:396: PlotnineWarning: If you need more space for the y-axis tick text use ... + theme(subplots_adjust={&#39;hspace&#39;: 0.25}). Choose an appropriate value for &#39;hspace&#39;
 </pre></div>
 </div>
 <img alt="../_images/d18-e-grama04-ema-solution_19_2.png" src="../_images/d18-e-grama04-ema-solution_19_2.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8768585470727)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782121188356)&gt;
 </pre></div>
 </div>
 </div>
@@ -740,7 +772,7 @@ Warning: If you need more space for the y-axis tick text use ... + theme(subplot
 </pre></div>
 </div>
 <img alt="../_images/d18-e-grama04-ema-solution_22_1.png" src="../_images/d18-e-grama04-ema-solution_22_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8768585673343)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782121129117)&gt;
 </pre></div>
 </div>
 </div>
@@ -766,7 +798,7 @@ Warning: If you need more space for the y-axis tick text use ... + theme(subplot
 </pre></div>
 </div>
 <img alt="../_images/d18-e-grama04-ema-solution_25_1.png" src="../_images/d18-e-grama04-ema-solution_25_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8768585551613)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782121011947)&gt;
 </pre></div>
 </div>
 </div>
@@ -806,7 +838,7 @@ Warning: If you need more space for the y-axis tick text use ... + theme(subplot
 </pre></div>
 </div>
 <img alt="../_images/d18-e-grama04-ema-solution_28_1.png" src="../_images/d18-e-grama04-ema-solution_28_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8768607507023)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782121165617)&gt;
 </pre></div>
 </div>
 </div>
@@ -834,6 +866,41 @@ Warning: If you need more space for the y-axis tick text use ... + theme(subplot
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="input-to-output-relationships">
 <h1>Input-to-output Relationships<a class="headerlink" href="#input-to-output-relationships" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="qx-correlation-tile-plot">
+<h2><strong>qX</strong> Correlation tile plot<a class="headerlink" href="#qx-correlation-tile-plot" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">md_circuit</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span>
+        <span class="n">n</span><span class="o">=</span><span class="mf">1e3</span><span class="p">,</span> 
+        <span class="n">df_det</span><span class="o">=</span><span class="s2">&quot;nom&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_iocorr</span><span class="p">()</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_auto</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eval_sample() is rounding n...
+Calling plot_corrtile....
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/uqbook/lib/python3.9/site-packages/scipy/stats/stats.py:4023: PearsonRConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+</pre></div>
+</div>
+<img alt="../_images/d18-e-grama04-ema-solution_32_2.png" src="../_images/d18-e-grama04-ema-solution_32_2.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782121188359)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+</div>
+<div class="section" id="qx-targeted-scatterplots">
+<h2><strong>qX</strong> Targeted scatterplots<a class="headerlink" href="#qx-targeted-scatterplots" title="Permalink to this headline">¶</a></h2>
+</div>
 <div class="section" id="qx-sinew-plot">
 <h2><strong>qX</strong> Sinew plot<a class="headerlink" href="#qx-sinew-plot" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -850,8 +917,8 @@ Warning: If you need more space for the y-axis tick text use ... + theme(subplot
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calling plot_sinew_outputs....
 </pre></div>
 </div>
-<img alt="../_images/d18-e-grama04-ema-solution_32_1.png" src="../_images/d18-e-grama04-ema-solution_32_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8768607006148)&gt;
+<img alt="../_images/d18-e-grama04-ema-solution_36_1.png" src="../_images/d18-e-grama04-ema-solution_36_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782120536730)&gt;
 </pre></div>
 </div>
 </div>
