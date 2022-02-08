@@ -11,6 +11,7 @@ __all__ = [
     "fun_avs",
     "fun_moment",
     "fun_performance",
+    "var_correct",
 ]
 
 from numpy import array, average, argmin, concatenate, linspace, meshgrid, sum, max, min, isfinite, trapz
@@ -23,6 +24,10 @@ from warnings import catch_warnings, simplefilter
 RHO_WATER = 0.03613 # Density of water (lb / in^3)
 RHO_0 = 0.04516 # Filament density (lb / in^3)
 G = 386 # Gravitational acceleration (in / s^2)
+
+## Reference stuff
+# --------------------------------------------------
+var_correct = ["H", "W", "n", "d", "f_com"]
 
 ## Boat generator
 # --------------------------------------------------
