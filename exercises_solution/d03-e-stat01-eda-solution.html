@@ -37,9 +37,12 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -729,7 +732,14 @@ patterns to support them.</p></li>
 </div></div></div>
 </div>
 <p><em>Observations</em></p>
-</div>
+<ul class="simple">
+<li><p>What variables does this dataset have?</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">carat</span></code>, <code class="docutils literal notranslate"><span class="pre">cut</span></code>, <code class="docutils literal notranslate"><span class="pre">color</span></code>, <code class="docutils literal notranslate"><span class="pre">clarity</span></code>, <code class="docutils literal notranslate"><span class="pre">depth</span></code>, <code class="docutils literal notranslate"><span class="pre">table</span></code>, <code class="docutils literal notranslate"><span class="pre">price</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code></p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
 <div class="section" id="q2-use-descriptive-statistics">
 <h2><strong>q2</strong> Use descriptive statistics<a class="headerlink" href="#q2-use-descriptive-statistics" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">gr.tf_describe()</span></code> function gives useful descriptive statistics on a dataset. Use these values to answer the questions under <em>observations</em> below.</p>
@@ -870,7 +880,7 @@ patterns to support them.</p></li>
 </li>
 <li><p>What is the largest diamond in the dataset? (According to <code class="docutils literal notranslate"><span class="pre">carat</span></code>.) What is the smallest?</p>
 <ul>
-<li><p>The largest carat is <code class="docutils literal notranslate"><span class="pre">0.2</span></code> and the smallest carat is <code class="docutils literal notranslate"><span class="pre">5.01</span></code>.</p></li>
+<li><p>The smallest carat is <code class="docutils literal notranslate"><span class="pre">0.2</span></code> and the largest carat is <code class="docutils literal notranslate"><span class="pre">5.01</span></code>.</p></li>
 </ul>
 </li>
 <li><p>You identified all the variables in the dataset in <strong>q1</strong> above. Do the results from <code class="docutils literal notranslate"><span class="pre">gr.tf_describe()</span></code> provide information on <strong>all</strong> of these variables?</p>
@@ -890,9 +900,7 @@ patterns to support them.</p></li>
 <span class="p">)</span>
 </pre></div>
 </div>
-<blockquote>
-<div><p><em>Aside</em>: A categorical variable is sometimes called a <em>factor</em>. The unique values of a categorical variable are called <em>levels</em>.</p>
-</div></blockquote>
+<p><em>Aside</em>: A categorical variable is sometimes called a <em>factor</em>. The unique values of a categorical variable are called <em>levels</em>.</p>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">gr.tf_distinct()</span></code> to figure out what values show up for a categorical variable.</p>
 <div class="section" id="q3-find-the-distinct-cut-values">
 <h3><strong>q3</strong> Find the distinct <code class="docutils literal notranslate"><span class="pre">cut</span></code> values<a class="headerlink" href="#q3-find-the-distinct-cut-values" title="Permalink to this headline">¶</a></h3>
@@ -1091,7 +1099,7 @@ patterns to support them.</p></li>
 <div class="tex2jax_ignore mathjax_ignore section" id="guided-eda">
 <h1>Guided EDA<a class="headerlink" href="#guided-eda" title="Permalink to this headline">¶</a></h1>
 <p>I’m going to walk you through a train of thought I had when studying the diamonds dataset.</p>
-<p>There are four standard “C’s” of <a class="reference external" href="https://en.wikipedia.org/wiki/Diamond_(gemstone)">judging</a> a diamond. These are <code class="docutils literal notranslate"><span class="pre">carat,</span> <span class="pre">cut,</span> <span class="pre">color</span></code> and <code class="docutils literal notranslate"><span class="pre">clarity</span></code>, all of which are in the <code class="docutils literal notranslate"><span class="pre">diamonds</span></code> dataset.</p>
+<p>There are four standard “C’s” of <a class="reference external" href="https://en.wikipedia.org/wiki/Diamond_(gemstone)">judging</a> a diamond. These are <code class="docutils literal notranslate"><span class="pre">carat,</span> <span class="pre">cut,</span> <span class="pre">color</span></code> and <code class="docutils literal notranslate"><span class="pre">clarity</span></code>, all of which are in the <code class="docutils literal notranslate"><span class="pre">df_diamonds</span></code> dataset.</p>
 <p><em>Note</em>: This remainder of this exercise will consist of interpreting pre-made graphs. You can run the whole notebook to generate all the figures at once. Just make sure to do all the exercises and write your observations!</p>
 <div class="section" id="hypothesis-1">
 <h2>Hypothesis 1<a class="headerlink" href="#hypothesis-1" title="Permalink to this headline">¶</a></h2>
@@ -1176,7 +1184,6 @@ or why not?</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; run and inspect</span>
 <span class="p">(</span>
     <span class="n">df_diamonds</span>
-    
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;cut&quot;</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_boxplot</span><span class="p">()</span>
 <span class="p">)</span>
