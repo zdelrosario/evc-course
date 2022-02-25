@@ -14,6 +14,9 @@ book: main
 pdf: main
 	jupyter-book build . --builder pdflatex
 
+test:
+	cd exercises; make test
+
 open:
 	open _build/html/index.html
 
