@@ -11,7 +11,7 @@ main:
 book: main
 	jb build .
 
-pdf:
+pdf: main
 	jupyter-book build . --builder pdflatex
 
 open:
@@ -27,3 +27,4 @@ clean:
 	cd exercises_assignment; make clean
 	cd exercises_solution; make clean
 	cd challenges; make clean
+	cd challenges_assignment; make clean
