@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Distributions" href="d19-e-stat04-distributions-solution.html" />
@@ -280,8 +282,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#core-idea-curiosity-and-skepticism">
+     Core Idea: Curiosity and Skepticism
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#setup">
      Setup
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-example-circuit-model">
+     Running Example: Circuit model
     </a>
    </li>
   </ul>
@@ -347,14 +359,6 @@ const thebe_selector_output = ".output, .cell_output"
       qX
      </strong>
      Overview of outputs
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-scatter-of-outputs">
-     <strong>
-      qX
-     </strong>
-     Scatter of outputs
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -432,8 +436,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#core-idea-curiosity-and-skepticism">
+     Core Idea: Curiosity and Skepticism
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#setup">
      Setup
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-example-circuit-model">
+     Running Example: Circuit model
     </a>
    </li>
   </ul>
@@ -502,14 +516,6 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-scatter-of-outputs">
-     <strong>
-      qX
-     </strong>
-     Scatter of outputs
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#qx-density-of-outputs">
      <strong>
       qX
@@ -570,6 +576,16 @@ const thebe_selector_output = ".output, .cell_output"
   <div class="tex2jax_ignore mathjax_ignore section" id="exploratory-model-analysis">
 <h1>Exploratory Model Analysis<a class="headerlink" href="#exploratory-model-analysis" title="Permalink to this headline">¶</a></h1>
 <p><em>Purpose</em>: <strong>TODO</strong>.</p>
+<div class="section" id="core-idea-curiosity-and-skepticism">
+<h2>Core Idea: Curiosity and Skepticism<a class="headerlink" href="#core-idea-curiosity-and-skepticism" title="Permalink to this headline">¶</a></h2>
+<p>Remember the core principles of EDA:</p>
+<ol class="simple">
+<li><p>Curiosity: Generate lots of ideas and hypotheses about your data.</p></li>
+<li><p>Skepticism: Remain unconvinced of those ideas, unless you can find credible patterns to support them.</p></li>
+</ol>
+<p>We can apply these same principles when studying a model; a process called <em>exploratory model analysis</em>. However, when studying a model, we have the means to more immediately test our hypotheses: We can <em>evaluate</em> the model to generate new data as we’re carrying out our exploration!</p>
+<p>These ideas can be a little abstract, so let’s illustrate them with a concrete example.</p>
+</div>
 <div class="section" id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -581,6 +597,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="running-example-circuit-model">
+<h2>Running Example: Circuit model<a class="headerlink" href="#running-example-circuit-model" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.models</span> <span class="kn">import</span> <span class="n">make_prlc_rand</span>
@@ -631,6 +650,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Compare the variability (measured by standard deviation) of the three random variables. Which is most variable?</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">dC</span></code> has the largest variability, with <code class="docutils literal notranslate"><span class="pre">sd</span> <span class="pre">=</span> <span class="pre">0.29</span></code>, as compared with <code class="docutils literal notranslate"><span class="pre">dR</span></code> (<code class="docutils literal notranslate"><span class="pre">sd</span> <span class="pre">=</span> <span class="pre">0.03</span></code>) and <code class="docutils literal notranslate"><span class="pre">dL</span></code> (<code class="docutils literal notranslate"><span class="pre">sd</span> <span class="pre">=</span> <span class="pre">0.06</span></code>).</p></li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="section" id="model-context">
 <h2>Model context<a class="headerlink" href="#model-context" title="Permalink to this headline">¶</a></h2>
@@ -660,21 +686,26 @@ Design runtime estimates unavailable; model has no timing data.
 Calling plot_scattermat....
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/Git/py_grama/grama/plot_auto.py:232: UserWarning: Matplotlib is currently using module://matplotlib_inline.backend_inline, which is a non-GUI backend, so cannot show the figure.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/Git/py_grama/grama/plot_auto.py:234: UserWarning: Matplotlib is currently using module://matplotlib_inline.backend_inline, which is a non-GUI backend, so cannot show the figure.
 </pre></div>
 </div>
-<img alt="../_images/d18-e-grama04-ema-solution_12_2.png" src="../_images/d18-e-grama04-ema-solution_12_2.png" />
+<img alt="../_images/d18-e-grama04-ema-solution_13_2.png" src="../_images/d18-e-grama04-ema-solution_13_2.png" />
 </div>
 </div>
 <p><em>Observations</em></p>
+<p>Here’s a hypothesis:</p>
+<blockquote>
+<div><p>Since the random perturbations <code class="docutils literal notranslate"><span class="pre">dL,</span> <span class="pre">dR,</span> <span class="pre">dC</span></code> are mutually independent, we should see the same variability regardless of the circuit component values.</p>
+</div></blockquote>
+<p>You’ll assess this hypothesis in the next task.</p>
 </div>
 <div class="section" id="qx-compare-designed-and-realized-values">
 <h3><strong>qX</strong> Compare designed and realized values<a class="headerlink" href="#qx-compare-designed-and-realized-values" title="Permalink to this headline">¶</a></h3>
-<p>The following plot shows the designed and realized capacitance values. Inspect the plot, then change to log scales for both the x and y axes. Answer the questions under <em>observations</em> below.</p>
+<p>The following plot shows the designed and realized capacitance values. Answer the questions under <em>observations</em> below.</p>
+<p><em>Hint</em>: Remember that you can add <code class="docutils literal notranslate"><span class="pre">gr.scale_x_log10()</span></code> and <code class="docutils literal notranslate"><span class="pre">gr.scale_y_log10()</span></code> to a ggplot to change to a log-log scale.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Inspect the following plot, change to a log scale</span>
-<span class="c1"># for both x and y</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Inspect the following plot</span>
 <span class="p">(</span>
     <span class="c1"># NOTE: No need to edit this part of the code</span>
     <span class="n">md_circuit</span>
@@ -689,7 +720,6 @@ Calling plot_scattermat....
     <span class="c1"># Visualize</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;Cr&quot;</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
-
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_x_log10</span><span class="p">()</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_y_log10</span><span class="p">()</span>
 <span class="p">)</span>
@@ -697,13 +727,20 @@ Calling plot_scattermat....
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d18-e-grama04-ema-solution_15_0.png" src="../_images/d18-e-grama04-ema-solution_15_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782120050541)&gt;
+<img alt="../_images/d18-e-grama04-ema-solution_17_0.png" src="../_images/d18-e-grama04-ema-solution_17_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785794962261)&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Consider the hypothesis <code class="docutils literal notranslate"><span class="pre">we</span> <span class="pre">should</span> <span class="pre">see</span> <span class="pre">the</span> <span class="pre">same</span> <span class="pre">variability</span> <span class="pre">regardless</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">circuit</span> <span class="pre">component</span> <span class="pre">values</span></code>. Is this hypothesis true?</p>
+<ul>
+<li><p>This really depends on how we define “same variability”; since the variability is proportional to the component values (defined in terms of <span class="math notranslate nohighlight">\(\pm\)</span> a fixed percentage), the variability  is greater for larger component values. However, the percentage variability is consistent regardless of the component value; this is easiest to see on a log-log scale.</p></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -726,12 +763,13 @@ Calling plot_scattermat....
 Calling plot_hists....
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/uqbook/lib/python3.9/site-packages/plotnine/facets/facet.py:390: PlotnineWarning: If you need more space for the x-axis tick text use ... + theme(subplots_adjust={&#39;wspace&#39;: 0.25}). Choose an appropriate value for &#39;wspace&#39;.
-/Users/zach/opt/anaconda3/envs/uqbook/lib/python3.9/site-packages/plotnine/facets/facet.py:396: PlotnineWarning: If you need more space for the y-axis tick text use ... + theme(subplots_adjust={&#39;hspace&#39;: 0.25}). Choose an appropriate value for &#39;hspace&#39;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/facets/facet.py:390: PlotnineWarning: If you need more space for the x-axis tick text use ... + theme(subplots_adjust={&#39;wspace&#39;: 0.25}). Choose an appropriate value for &#39;wspace&#39;.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/facets/facet.py:396: PlotnineWarning: If you need more space for the y-axis tick text use ... + theme(subplots_adjust={&#39;hspace&#39;: 0.25}). Choose an appropriate value for &#39;hspace&#39;
 </pre></div>
 </div>
-<img alt="../_images/d18-e-grama04-ema-solution_19_2.png" src="../_images/d18-e-grama04-ema-solution_19_2.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782121188356)&gt;
+<img alt="../_images/d18-e-grama04-ema-solution_21_2.png" src="../_images/d18-e-grama04-ema-solution_21_2.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785792463475)&gt;
 </pre></div>
 </div>
 </div>
@@ -756,31 +794,6 @@ Calling plot_hists....
 </li>
 </ul>
 </div>
-<div class="section" id="qx-scatter-of-outputs">
-<h2><strong>qX</strong> Scatter of outputs<a class="headerlink" href="#qx-scatter-of-outputs" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-    <span class="n">md_circuit</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">df_det</span><span class="o">=</span><span class="s2">&quot;nom&quot;</span><span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="s2">&quot;omega0&quot;</span><span class="p">))</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eval_sample() is rounding n...
-</pre></div>
-</div>
-<img alt="../_images/d18-e-grama04-ema-solution_22_1.png" src="../_images/d18-e-grama04-ema-solution_22_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782121129117)&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<p><em>Observations</em></p>
-</div>
 <div class="section" id="qx-density-of-outputs">
 <h2><strong>qX</strong> Density of outputs<a class="headerlink" href="#qx-density-of-outputs" title="Permalink to this headline">¶</a></h2>
 <p>Visualize <code class="docutils literal notranslate"><span class="pre">Q</span></code> and <code class="docutils literal notranslate"><span class="pre">omega0</span></code> with a 2d bin plot. Increase the sample size <code class="docutils literal notranslate"><span class="pre">n</span></code> to get a “full” plot.</p>
@@ -799,8 +812,8 @@ Calling plot_hists....
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eval_sample() is rounding n...
 </pre></div>
 </div>
-<img alt="../_images/d18-e-grama04-ema-solution_25_1.png" src="../_images/d18-e-grama04-ema-solution_25_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782121011947)&gt;
+<img alt="../_images/d18-e-grama04-ema-solution_24_1.png" src="../_images/d18-e-grama04-ema-solution_24_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785775758626)&gt;
 </pre></div>
 </div>
 </div>
@@ -839,8 +852,8 @@ Calling plot_hists....
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eval_sample() is rounding n...
 </pre></div>
 </div>
-<img alt="../_images/d18-e-grama04-ema-solution_28_1.png" src="../_images/d18-e-grama04-ema-solution_28_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782121165617)&gt;
+<img alt="../_images/d18-e-grama04-ema-solution_27_1.png" src="../_images/d18-e-grama04-ema-solution_27_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785792469697)&gt;
 </pre></div>
 </div>
 </div>
@@ -868,17 +881,23 @@ Calling plot_hists....
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="input-to-output-relationships">
 <h1>Input-to-output Relationships<a class="headerlink" href="#input-to-output-relationships" title="Permalink to this headline">¶</a></h1>
+<p>TODO</p>
 <div class="section" id="qx-correlation-tile-plot">
 <h2><strong>qX</strong> Correlation tile plot<a class="headerlink" href="#qx-correlation-tile-plot" title="Permalink to this headline">¶</a></h2>
+<p>Use the routine <code class="docutils literal notranslate"><span class="pre">tf_iocorr()</span></code> to transform the data from <code class="docutils literal notranslate"><span class="pre">ev_sample()</span></code> into input-to-output correlations. The <code class="docutils literal notranslate"><span class="pre">pt_auto()</span></code> routine will automatically plot those correlations as colors on a tile plot. Study the correlation tile plot, and answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="c1">## NOTE: No need to edit the call to ev_sample()</span>
     <span class="n">md_circuit</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span>
         <span class="n">n</span><span class="o">=</span><span class="mf">1e3</span><span class="p">,</span> 
         <span class="n">df_det</span><span class="o">=</span><span class="s2">&quot;nom&quot;</span><span class="p">,</span>
     <span class="p">)</span>
+
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_iocorr</span><span class="p">()</span>
+    <span class="c1">## NOTE: No need to edit; pt_auto will automatically</span>
+    <span class="c1">## adjust the plot to use the correlation data</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_auto</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
@@ -889,19 +908,51 @@ Calling plot_hists....
 Calling plot_corrtile....
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/uqbook/lib/python3.9/site-packages/scipy/stats/stats.py:4023: PearsonRConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/scipy/stats/_stats_py.py:4068: PearsonRConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/scipy/stats/_stats_py.py:4068: PearsonRConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/scipy/stats/_stats_py.py:4068: PearsonRConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/scipy/stats/_stats_py.py:4068: PearsonRConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/scipy/stats/_stats_py.py:4068: PearsonRConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/scipy/stats/_stats_py.py:4068: PearsonRConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/scipy/stats/_stats_py.py:4068: PearsonRConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/scipy/stats/_stats_py.py:4068: PearsonRConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/scipy/stats/_stats_py.py:4068: PearsonRConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/scipy/stats/_stats_py.py:4068: PearsonRConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/scipy/stats/_stats_py.py:4068: PearsonRConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/scipy/stats/_stats_py.py:4068: PearsonRConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/scipy/stats/_stats_py.py:4068: PearsonRConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/scipy/stats/_stats_py.py:4068: PearsonRConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/scipy/stats/_stats_py.py:4068: PearsonRConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
 </pre></div>
 </div>
-<img alt="../_images/d18-e-grama04-ema-solution_32_2.png" src="../_images/d18-e-grama04-ema-solution_32_2.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782121188359)&gt;
+<img alt="../_images/d18-e-grama04-ema-solution_31_2.png" src="../_images/d18-e-grama04-ema-solution_31_2.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785775272792)&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Do we have any information on how the outputs <code class="docutils literal notranslate"><span class="pre">omega0</span></code> and <code class="docutils literal notranslate"><span class="pre">Q</span></code> depend on the deterministic inputs <code class="docutils literal notranslate"><span class="pre">L,</span> <span class="pre">R,</span> <span class="pre">C</span></code>? Why do you think that is?</p>
+<ul>
+<li><p>No; the correlations between the outputs <code class="docutils literal notranslate"><span class="pre">omega0</span></code> and <code class="docutils literal notranslate"><span class="pre">Q</span></code> and inputs <code class="docutils literal notranslate"><span class="pre">L,</span> <span class="pre">R,</span> <span class="pre">C</span></code> are invalid. This is because we set <code class="docutils literal notranslate"><span class="pre">df_det=&quot;nom&quot;</span></code> in the sample above; there is no variability in the inputs <code class="docutils literal notranslate"><span class="pre">L,</span> <span class="pre">R,</span> <span class="pre">C</span></code> by which to judge correlation with the outputs.</p></li>
+</ul>
+</li>
+<li><p>Based on the available information: Which inputs does <code class="docutils literal notranslate"><span class="pre">omega0</span></code> depend on? How do those inputs affect <code class="docutils literal notranslate"><span class="pre">omega0</span></code>?</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">omega0</span></code> depends on <code class="docutils literal notranslate"><span class="pre">dC</span></code> and <code class="docutils literal notranslate"><span class="pre">dL</span></code>; from this we can guess that is also depends on <code class="docutils literal notranslate"><span class="pre">C</span></code> and <code class="docutils literal notranslate"><span class="pre">L</span></code>. <code class="docutils literal notranslate"><span class="pre">omega0</span></code> is strongly negatively correlated with <code class="docutils literal notranslate"><span class="pre">dC</span></code>, and weakly negatively correlated with <code class="docutils literal notranslate"><span class="pre">dL</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Based on the available information: Which inputs does <code class="docutils literal notranslate"><span class="pre">Q</span></code> depend on? How do those inputs affect <code class="docutils literal notranslate"><span class="pre">Q</span></code>?</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Q</span></code> depends on all of <code class="docutils literal notranslate"><span class="pre">dC</span></code>, <code class="docutils literal notranslate"><span class="pre">dL</span></code>, and <code class="docutils literal notranslate"><span class="pre">dR</span></code>; from this we can guess that it also depends on <code class="docutils literal notranslate"><span class="pre">C,</span> <span class="pre">L,</span> <span class="pre">R</span></code>. <code class="docutils literal notranslate"><span class="pre">Q</span></code> is strongly positively correlated with <code class="docutils literal notranslate"><span class="pre">dC</span></code>, weakly positively correlated with <code class="docutils literal notranslate"><span class="pre">dR</span></code>, and weakly negatively correlated with <code class="docutils literal notranslate"><span class="pre">dL</span></code>.</p></li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="section" id="qx-targeted-scatterplots">
 <h2><strong>qX</strong> Targeted scatterplots<a class="headerlink" href="#qx-targeted-scatterplots" title="Permalink to this headline">¶</a></h2>
+<p>(Use this to get more detailed view)</p>
 </div>
 <div class="section" id="qx-sinew-plot">
 <h2><strong>qX</strong> Sinew plot<a class="headerlink" href="#qx-sinew-plot" title="Permalink to this headline">¶</a></h2>
@@ -909,7 +960,7 @@ Calling plot_corrtile....
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
     <span class="n">md_circuit</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sinews</span><span class="p">(</span><span class="n">df_det</span><span class="o">=</span><span class="s2">&quot;swp&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sinews</span><span class="p">(</span><span class="n">df_det</span><span class="o">=</span><span class="s2">&quot;nom&quot;</span><span class="p">,</span> <span class="n">n_density</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_auto</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
@@ -919,8 +970,11 @@ Calling plot_corrtile....
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calling plot_sinew_outputs....
 </pre></div>
 </div>
-<img alt="../_images/d18-e-grama04-ema-solution_36_1.png" src="../_images/d18-e-grama04-ema-solution_36_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782120536730)&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+</pre></div>
+</div>
+<img alt="../_images/d18-e-grama04-ema-solution_35_2.png" src="../_images/d18-e-grama04-ema-solution_35_2.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785794959601)&gt;
 </pre></div>
 </div>
 </div>
