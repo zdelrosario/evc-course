@@ -671,6 +671,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="running-example-circuit-model">
 <h2>Running Example: Circuit model<a class="headerlink" href="#running-example-circuit-model" title="Permalink to this headline">¶</a></h2>
+<p>The following code initializes a model for a <a class="reference external" href="https://en.wikipedia.org/wiki/RLC_circuit#Parallel_circuit">parallel RLC circuit</a>. I’m not expecting you to know any circuit theory; in fact, I chose this model because you’re unlikely to know much about this system. We will use exploratory model analysis techniques to learn something about this model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.models</span> <span class="kn">import</span> <span class="n">make_prlc_rand</span>
@@ -683,8 +684,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="basic-facts">
 <h1>Basic Facts<a class="headerlink" href="#basic-facts" title="Permalink to this headline">¶</a></h1>
+<p>Before we start exploring a model, we should first understand the basic facts about that model. This is most easily done in grama by printing the model’s summary:</p>
 <div class="section" id="qx-model-summary">
 <h2><strong>qX</strong> Model summary<a class="headerlink" href="#qx-model-summary" title="Permalink to this headline">¶</a></h2>
+<p>Print the model summary for <code class="docutils literal notranslate"><span class="pre">md_circuit</span></code>. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">md_circuit</span> 
@@ -700,9 +703,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   inputs:
     var_det:
-      L: [1e-09, 0.001]
-      R: [0.001, 1.0]
       C: [0.001, 100]
+      R: [0.001, 1.0]
+      L: [1e-09, 0.001]
 
     var_rand:
       dR: (+0) uniform, {&#39;mean&#39;: &#39;0.000e+00&#39;, &#39;s.d.&#39;: &#39;3.000e-02&#39;, &#39;COV&#39;: inf, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 1.8}
@@ -731,8 +734,53 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="model-context">
 <h2>Model context<a class="headerlink" href="#model-context" title="Permalink to this headline">¶</a></h2>
-<p>The deterministic variables <code class="docutils literal notranslate"><span class="pre">L,</span> <span class="pre">R,</span> <span class="pre">C</span></code> are the <em>designed</em> component values.</p>
-<p>The random variables <code class="docutils literal notranslate"><span class="pre">dL,</span> <span class="pre">dR,</span> <span class="pre">dC</span></code> are <em>perturbations</em> to the designed component values.</p>
+<p>The symbols above don’t tell us anything about what the model quantities <em>mean</em>. Here are some basic facts on the quantities in the model</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>I/O</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">L</span></code></p></td>
+<td><p>Input</p></td>
+<td><p>Nominal inductance</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">R</span></code></p></td>
+<td><p>Input</p></td>
+<td><p>Nominal resistance</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">C</span></code></p></td>
+<td><p>Input</p></td>
+<td><p>Nominal capacitance</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dL</span></code></p></td>
+<td><p>Input</p></td>
+<td><p>Percent error on inductance</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dR</span></code></p></td>
+<td><p>Input</p></td>
+<td><p>Percent error on resistance</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dC</span></code></p></td>
+<td><p>Input</p></td>
+<td><p>Percent error on capacitance</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">omega0</span></code></p></td>
+<td><p>Output</p></td>
+<td><p>Natural frequency</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Q</span></code></p></td>
+<td><p>Output</p></td>
+<td><p>Quality factor</p></td>
+</tr>
+</tbody>
+</table>
+<p>The deterministic variables <code class="docutils literal notranslate"><span class="pre">L,</span> <span class="pre">R,</span> <span class="pre">C</span></code> are the <em>designed</em> component values; these are selected by a circuit designer to achieve a desired performance.</p>
+<p>The random variables <code class="docutils literal notranslate"><span class="pre">dL,</span> <span class="pre">dR,</span> <span class="pre">dC</span></code> are <em>perturbations</em> to the designed component values. These random perturbations model the variability we would see in production, as manufactured components exhibit real variability.</p>
+<p>The output <code class="docutils literal notranslate"><span class="pre">omega0</span></code> is the natural frequency; depending on the use-case, a designer would want to achieve a particular <code class="docutils literal notranslate"><span class="pre">omega0</span></code>. Thus having <code class="docutils literal notranslate"><span class="pre">omega0</span></code> lie close to some target value is desirable.</p>
+<p>The output <code class="docutils literal notranslate"><span class="pre">Q</span></code> is the quality factor; a larger <code class="docutils literal notranslate"><span class="pre">Q</span></code> corresponds to a more “selective” circuit. Put differently, a higher <code class="docutils literal notranslate"><span class="pre">Q</span></code> helps the circuit reject unwanted signals.</p>
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="inputs">
@@ -801,7 +849,7 @@ Calling plot_scattermat....
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d18-e-grama04-ema-solution_17_0.png" src="../_images/d18-e-grama04-ema-solution_17_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8733079483588)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8748697517171)&gt;
 </pre></div>
 </div>
 </div>
@@ -858,33 +906,33 @@ Calling plot_scattermat....
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>dC</th>
       <th>dR</th>
       <th>dL</th>
-      <th>dC</th>
-      <th>L</th>
-      <th>R</th>
       <th>C</th>
+      <th>R</th>
+      <th>L</th>
       <th>Lr</th>
-      <th>Cr</th>
       <th>omega0</th>
-      <th>Rr</th>
       <th>Q</th>
+      <th>Cr</th>
+      <th>Rr</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>0.3</td>
-      <td>0.0005</td>
-      <td>0.5005</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>50.0005</td>
-      <td>0.0005</td>
-      <td>65.00065</td>
-      <td>5.546971</td>
       <td>0.5005</td>
+      <td>0.0005</td>
+      <td>0.0005</td>
+      <td>5.546971</td>
       <td>180.458653</td>
+      <td>65.00065</td>
+      <td>0.5005</td>
     </tr>
   </tbody>
 </table>
@@ -914,7 +962,7 @@ Calling plot_hists....
 </pre></div>
 </div>
 <img alt="../_images/d18-e-grama04-ema-solution_23_2.png" src="../_images/d18-e-grama04-ema-solution_23_2.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8733080053721)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8748697804066)&gt;
 </pre></div>
 </div>
 </div>
@@ -967,7 +1015,7 @@ Calling plot_hists....
 </pre></div>
 </div>
 <img alt="../_images/d18-e-grama04-ema-solution_27_1.png" src="../_images/d18-e-grama04-ema-solution_27_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8733079836206)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8748698005902)&gt;
 </pre></div>
 </div>
 </div>
@@ -1001,7 +1049,7 @@ Calling plot_hists....
 </pre></div>
 </div>
 <img alt="../_images/d18-e-grama04-ema-solution_30_1.png" src="../_images/d18-e-grama04-ema-solution_30_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8733079877907)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8748697409247)&gt;
 </pre></div>
 </div>
 </div>
@@ -1040,7 +1088,7 @@ Calling plot_hists....
 </pre></div>
 </div>
 <img alt="../_images/d18-e-grama04-ema-solution_33_1.png" src="../_images/d18-e-grama04-ema-solution_33_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8733079876536)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8748696941834)&gt;
 </pre></div>
 </div>
 </div>
@@ -1115,7 +1163,7 @@ Calling plot_corrtile....
 </pre></div>
 </div>
 <img alt="../_images/d18-e-grama04-ema-solution_37_2.png" src="../_images/d18-e-grama04-ema-solution_37_2.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8733080146074)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8748697782800)&gt;
 </pre></div>
 </div>
 </div>
@@ -1151,7 +1199,7 @@ Calling plot_corrtile....
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
     <span class="n">md_circuit</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sinews</span><span class="p">(</span><span class="n">df_det</span><span class="o">=</span><span class="s2">&quot;swp&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sinews</span><span class="p">(</span><span class="n">df_det</span><span class="o">=</span><span class="s2">&quot;nom&quot;</span><span class="p">)</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_auto</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
@@ -1165,7 +1213,7 @@ Calling plot_corrtile....
 </pre></div>
 </div>
 <img alt="../_images/d18-e-grama04-ema-solution_40_2.png" src="../_images/d18-e-grama04-ema-solution_40_2.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8733079288790)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8748697761422)&gt;
 </pre></div>
 </div>
 </div>
@@ -1177,9 +1225,9 @@ Calling plot_corrtile....
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
     <span class="n">md_circuit</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sinews</span><span class="p">(</span><span class="n">df_det</span><span class="o">=</span><span class="s2">&quot;swp&quot;</span><span class="p">,</span> <span class="n">n_density</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sinews</span><span class="p">(</span><span class="n">df_det</span><span class="o">=</span><span class="s2">&quot;nom&quot;</span><span class="p">)</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_sinew_outputs</span><span class="p">(</span>
-        <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">],</span>
+        <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dL&quot;</span><span class="p">,</span> <span class="s2">&quot;dR&quot;</span><span class="p">,</span> <span class="s2">&quot;dC&quot;</span><span class="p">],</span>
         <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;omega0&quot;</span><span class="p">],</span>
     <span class="p">)</span>
 <span class="p">)</span>
@@ -1191,7 +1239,7 @@ Calling plot_corrtile....
 </pre></div>
 </div>
 <img alt="../_images/d18-e-grama04-ema-solution_42_1.png" src="../_images/d18-e-grama04-ema-solution_42_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8733075053120)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8748697290144)&gt;
 </pre></div>
 </div>
 </div>
