@@ -355,6 +355,24 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#consider-sources-of-variability">
    Consider Sources of Variability
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-estimate-the-real-variability">
+     <strong>
+      qX
+     </strong>
+     Estimate the real variability
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-estimate-the-measurement-variability">
+     <strong>
+      qX
+     </strong>
+     Estimate the measurement variability
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#model-variability">
@@ -516,6 +534,24 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#consider-sources-of-variability">
    Consider Sources of Variability
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-estimate-the-real-variability">
+     <strong>
+      qX
+     </strong>
+     Estimate the real variability
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-estimate-the-measurement-variability">
+     <strong>
+      qX
+     </strong>
+     Estimate the measurement variability
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#model-variability">
@@ -809,6 +845,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p><em>Observations</em></p>
 <ul class="simple">
+<li><p>Why is it important that we limit this analysis to <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">==</span> <span class="pre">0.25</span></code> plates?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
 <li><p>Is <code class="docutils literal notranslate"><span class="pre">E</span></code> under statistical control? Why or why not?</p>
 <ul>
 <li><p>(Your response here)</p></li>
@@ -871,9 +912,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="consider-sources-of-variability">
 <h1>Consider Sources of Variability<a class="headerlink" href="#consider-sources-of-variability" title="Permalink to this headline">¶</a></h1>
+<p>(TODO)</p>
+<p>For the rest of the exercise, we will consider the following subset of the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sub</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_sub</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">df_data</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span>
         <span class="n">DF</span><span class="o">.</span><span class="n">t</span> <span class="o">==</span> <span class="mf">0.250</span><span class="p">,</span>
@@ -885,45 +929,48 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<div class="section" id="qx-estimate-the-real-variability">
+<h2><strong>qX</strong> Estimate the real variability<a class="headerlink" href="#qx-estimate-the-real-variability" title="Permalink to this headline">¶</a></h2>
+<p>Identify the column in <code class="docutils literal notranslate"><span class="pre">df_sub</span></code> that groups together multiple measurements of the same quantity.</p>
+<p>The code below applies the <em>mean heuristic</em> (<a class="reference external" href="https://zdelrosario.github.io/evc-course/exercises_solution/d08-e-stat02-source-solution.html#heuristics">e-stat02-source</a>) to produce a more stable measurement, then compute the variance across these more stable measurements.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Apply the Mean Heuristic to group by the appropriate variable</span>
+<span class="n">df_var_mfg</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">df_sub</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span><span class="n">E_var_total</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E</span><span class="p">))</span>
+    <span class="c1">## TODO: Group by the appropriate variable</span>
+
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span><span class="n">E</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span><span class="n">E_var_mfg</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E</span><span class="p">))</span>
 <span class="p">)</span>
+
+<span class="c1">## NOTE: No need to edit; use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="nb">abs</span><span class="p">(</span><span class="n">df_var_mfg</span><span class="o">.</span><span class="n">E_var_mfg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">109670.635716</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-6</span><span class="p">,</span> \
+    <span class="s2">&quot;Incorrect variance; make sure you grouped by the correct variable&quot;</span>
+
+<span class="n">df_var_mfg</span>
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="qx-estimate-the-measurement-variability">
+<h2><strong>qX</strong> Estimate the measurement variability<a class="headerlink" href="#qx-estimate-the-measurement-variability" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_var_meas</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">df_sub</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">id_specimen</span><span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
-        <span class="n">E_var</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E</span><span class="p">),</span>
-    <span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span><span class="n">E_var_meas</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E_var</span><span class="p">))</span>
+
 <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-    <span class="n">df_sub</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">id_specimen</span><span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
-        <span class="n">mu</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">mu</span><span class="p">),</span>
-        <span class="n">E</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E</span><span class="p">),</span>
-    <span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
-        <span class="n">E_var_mfg</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E</span><span class="p">)</span>
-    <span class="p">)</span>
-<span class="p">)</span>
+
+<span class="c1">## NOTE: No need to edit; use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="nb">abs</span><span class="p">(</span><span class="n">df_var_meas</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">168382.91387</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-6</span><span class="p">,</span> \
+    <span class="s2">&quot;Incorrect variance; make sure you grouped by the correct variable&quot;</span>
+
+<span class="n">df_var_meas</span>
 </pre></div>
 </div>
 </div>
@@ -932,7 +979,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_real</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">df_sub</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">id_specimen</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">id_specimen</span><span class="p">)</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
         <span class="n">mu</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">mu</span><span class="p">),</span>
         <span class="n">E</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E</span><span class="p">),</span>
@@ -940,6 +987,7 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
