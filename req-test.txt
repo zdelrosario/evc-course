@@ -3,3 +3,4 @@ nbformat
 nbconvert
 unittest-xml-reporting
 ipykernel
+pre-commit
