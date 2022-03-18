@@ -11,5 +11,7 @@ e-grama03-eval,12
 e-grama04-ema,18
 e-stat04-distributions,19
 e-grama05-fit-function,20
-e-grama06-fit-univar,22
-e-grama07-fit-multivar,23
+e-stat05-CI,21
+e-stat06-spc,22
+e-grama06-fit-univar,23
+e-grama07-fit-multivar,24
