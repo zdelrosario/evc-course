@@ -1,0 +1,1504 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Statistical Process Control (SPC) Basics &#8212; Data Science for Engineers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Fitting Univariate Distributions" href="d23-e-grama06-fit-univar-solution.html" />
+    <link rel="prev" title="Confidence Intervals and the CLT" href="d21-e-stat05-CI-solution.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/home.html">
+   Data Science for Engineers
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/howto.html">
+   How To Use These Materials
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../frontmatter/exercises.html">
+   Exercise Solutions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
+     Introduction to Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
+     Data Visualization Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
+     Data Isolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
+     Introduction to Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
+     Grama Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
+     Bar Charts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d08-e-stat02-source-solution.html">
+     Sources of Variability: Real vs. Error
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d10-e-grama02-building-solution.html">
+     Grama Model Building
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d12-e-grama03-eval-solution.html">
+     Grama Model Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d18-e-grama04-ema-solution.html">
+     Exploratory Model Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d19-e-stat04-distributions-solution.html">
+     Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d20-e-grama05-fit-function-solution.html">
+     Fitting Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d21-e-stat05-CI-solution.html">
+     Confidence Intervals and the CLT
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Statistical Process Control (SPC) Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">
+     Fitting Univariate Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">
+     Fitting Multivariate Distributions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/exercises_solution/d22-e-stat06-spc-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d22-e-stat06-spc-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Statistical Process Control (SPC) Basics
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theory">
+   Theory
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#batch-averages">
+     Batch Averages
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#control-limits-confidence-intervals">
+     Control limits: Confidence Intervals
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grouping-observations">
+     Grouping observations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#natural-batches">
+       Natural batches
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-naive-consecutive-rows">
+       <strong>
+        qX
+       </strong>
+       Naive consecutive rows
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-batch-by-machine">
+       <strong>
+        qX
+       </strong>
+       Batch by machine
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#batches-in-time">
+       Batches in time
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       <strong>
+        qX
+       </strong>
+       Naive consecutive rows
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-batch-by-slices-of-time">
+       <strong>
+        qX
+       </strong>
+       Batch by slices of time
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#patterns-to-seek">
+   Patterns to seek
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#outside-control-limits">
+     Outside control limits
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variability-out-of-control">
+     Variability out-of-control
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#runs-above-center">
+     Runs above center
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#runs-below-center">
+     Runs below center
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#runs-increasing">
+     Runs increasing
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#runs-decreasing">
+     Runs decreasing
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#warnings">
+   Warnings
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#beware-spurious-patterns">
+     Beware spurious patterns!
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#beware-meaningless-order">
+     Beware meaningless order
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-cast-aluminum-dataset">
+   Example: Cast Aluminum Dataset
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-assess-the-density">
+     <strong>
+      qX
+     </strong>
+     Assess the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       density
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-assess-the-tensile-strength">
+     <strong>
+      qX
+     </strong>
+     Assess the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       tensile_strength
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Statistical Process Control (SPC) Basics</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Statistical Process Control (SPC) Basics
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theory">
+   Theory
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#batch-averages">
+     Batch Averages
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#control-limits-confidence-intervals">
+     Control limits: Confidence Intervals
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grouping-observations">
+     Grouping observations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#natural-batches">
+       Natural batches
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-naive-consecutive-rows">
+       <strong>
+        qX
+       </strong>
+       Naive consecutive rows
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-batch-by-machine">
+       <strong>
+        qX
+       </strong>
+       Batch by machine
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#batches-in-time">
+       Batches in time
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       <strong>
+        qX
+       </strong>
+       Naive consecutive rows
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-batch-by-slices-of-time">
+       <strong>
+        qX
+       </strong>
+       Batch by slices of time
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#patterns-to-seek">
+   Patterns to seek
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#outside-control-limits">
+     Outside control limits
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variability-out-of-control">
+     Variability out-of-control
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#runs-above-center">
+     Runs above center
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#runs-below-center">
+     Runs below center
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#runs-increasing">
+     Runs increasing
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#runs-decreasing">
+     Runs decreasing
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#warnings">
+   Warnings
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#beware-spurious-patterns">
+     Beware spurious patterns!
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#beware-meaningless-order">
+     Beware meaningless order
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-cast-aluminum-dataset">
+   Example: Cast Aluminum Dataset
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-assess-the-density">
+     <strong>
+      qX
+     </strong>
+     Assess the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       density
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-assess-the-tensile-strength">
+     <strong>
+      qX
+     </strong>
+     Assess the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       tensile_strength
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="statistical-process-control-spc-basics">
+<h1>Statistical Process Control (SPC) Basics<a class="headerlink" href="#statistical-process-control-spc-basics" title="Permalink to this headline">¶</a></h1>
+<p><em>Purpose</em>:</p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="theory">
+<h1>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h1>
+<p>(It’s difficult to tell by-inspection if data are random)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">102</span><span class="p">)</span>
+
+<span class="n">mg_normal</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df_random</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">mg_normal</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">idx</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">df_random</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;idx&quot;</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d22-e-stat06-spc-solution_5_0.png" src="../_images/d22-e-stat06-spc-solution_5_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742560364093)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Without some sense of <em>reasonable limits</em>, we can’t distinguish outliers from the normal highs and lows of randomness.</p></li>
+<li><p>Without some knowledge of the underlying random process, we cannot define reasonable limits.</p></li>
+</ul>
+<p>Rather than do concentrated staring at random patterns, we can make some <em>intelligent choices</em> about grouping observations, and use <em>batch averages</em> to set meaningful <em>control limits</em>. These ideas combine in a <em>control chart</em>; the following plot is our first example of a control chart.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
+<span class="c1">## NOTE: No need to edit</span>
+
+<span class="p">(</span>
+    <span class="n">df_random</span> 
+    <span class="c1">## Group observations into consecutive batches of 10</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">id_batch</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="c1">## Construct an Xbar and S (xbs) chart</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;id_batch&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d22-e-stat06-spc-solution_8_0.png" src="../_images/d22-e-stat06-spc-solution_8_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742560415190)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>From this chart, we see no outliers outside the lower control limit (LCL) or upper control limit (UCL). We also don’t see any special patterns in the data. Therefore, based on this control chart, we can declare that the process is likely under <em>statistical control</em>—that it can be modeled as random.</p>
+<div class="section" id="batch-averages">
+<h2>Batch Averages<a class="headerlink" href="#batch-averages" title="Permalink to this headline">¶</a></h2>
+<p>We saw before that the <em>sample mean</em> follows the central limit theorem, which tells us about the distribution of the sample mean. Thus taking the average of multiple observations <em>from the same process</em> gives us a way to make the underlying distribution more predictable.</p>
+<p>However, taking the average of <em>all</em> observations prevents us from determining <em>where</em> an outlier occurred: If the mean of all the data is high, was it the first observation that was large? The last one? Something in the middle?</p>
+<p>Taking <em>batch averages</em> gives us better resolution, while still giving the advantages of the central limit theorem.</p>
+</div>
+<div class="section" id="control-limits-confidence-intervals">
+<h2>Control limits: Confidence Intervals<a class="headerlink" href="#control-limits-confidence-intervals" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="grouping-observations">
+<h2>Grouping observations<a class="headerlink" href="#grouping-observations" title="Permalink to this headline">¶</a></h2>
+<p>(Should ideally be paired with data collection.)</p>
+<div class="section" id="natural-batches">
+<h3>Natural batches<a class="headerlink" href="#natural-batches" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
+
+<span class="n">df_base</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+    <span class="n">sd</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span>
+    <span class="n">ma</span><span class="o">=</span><span class="p">[</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span>  <span class="s2">&quot;B&quot;</span><span class="p">,</span>  <span class="s2">&quot;C&quot;</span><span class="p">,</span>  <span class="s2">&quot;D&quot;</span><span class="p">,</span>  <span class="s2">&quot;E&quot;</span><span class="p">,</span>  <span class="s2">&quot;F&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">mg</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df_machines</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_grid</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">df_base</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">df_machines</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df_machines</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span>
+            <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+                <span class="n">X</span><span class="o">=</span><span class="n">mg</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">*</span> <span class="n">df_base</span><span class="o">.</span><span class="n">sd</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">id_machine</span><span class="o">=</span><span class="n">df_base</span><span class="o">.</span><span class="n">ma</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="c1"># Randomly sort</span>
+<span class="n">df_machines</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_machines</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="qx-naive-consecutive-rows">
+<h3><strong>qX</strong> Naive consecutive rows<a class="headerlink" href="#qx-naive-consecutive-rows" title="Permalink to this headline">¶</a></h3>
+<p>Batch the observations in <code class="docutils literal notranslate"><span class="pre">df_machines</span></code> into groups of consecutive observations, and use that grouping to construct a control chart with <code class="docutils literal notranslate"><span class="pre">gr.pt_xbs()</span></code>. Answer the questions under <em>observations</em> below.</p>
+<p><em>Hint</em>: The data above are in a <em>random</em> order. Keep that in mind when answering the questions below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
+<span class="p">(</span>
+    <span class="n">df_machines</span>
+<span class="c1"># solution-begin    </span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">id_batch</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;id_batch&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="c1"># solution-end    </span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d22-e-stat06-spc-solution_16_0.png" src="../_images/d22-e-stat06-spc-solution_16_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742560264159)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Based on the batch size you chose, did you find any out-of-control patterns?</p>
+<ul>
+<li><p>At a batch size of <code class="docutils literal notranslate"><span class="pre">n=5</span></code> I did find one out-of-control pattern for the variability.</p></li>
+</ul>
+</li>
+<li><p>If you answered “yes” to the previous question, does your group variable give you a meaningful way to determine what may have cause the out-of-control pattern?</p>
+<ul>
+<li><p>No; the observations are in a random order, so consecutive groups have no particular meaning.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+<div class="section" id="qx-batch-by-machine">
+<h3><strong>qX</strong> Batch by machine<a class="headerlink" href="#qx-batch-by-machine" title="Permalink to this headline">¶</a></h3>
+<p>Construct a control chart using the machine identifier as the <code class="docutils literal notranslate"><span class="pre">group</span></code> variable. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
+<span class="c1">## TODO: Create a control chart grouped by machine</span>
+<span class="p">(</span>
+    <span class="n">df_machines</span>
+<span class="c1"># solution-begin    </span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;id_machine&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="c1"># solution-end    </span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d22-e-stat06-spc-solution_19_0.png" src="../_images/d22-e-stat06-spc-solution_19_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742749895259)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Based on the batch size you chose, did you find any out-of-control patterns?</p>
+<ul>
+<li><p>Yes, I see out-of-control variability for Machine B.</p></li>
+</ul>
+</li>
+<li><p>If you answered “yes” to the previous question, does your group variable give you a meaningful way to determine what may have cause the out-of-control pattern?</p>
+<ul>
+<li><p>Yes! Batching by machine gives us an obvious clue about where the out-of-control behavior occurred.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+<div class="section" id="batches-in-time">
+<h3>Batches in time<a class="headerlink" href="#batches-in-time" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>A rule of thumb is to use three time periods with 20 to 25 samples of size 50 to 100 units each.</p>
+</div></blockquote>
+<p>The following code simulates 45 samples, where each sample contains 50 observations. This results in <code class="docutils literal notranslate"><span class="pre">45</span> <span class="pre">*</span> <span class="pre">50</span> <span class="pre">=</span> <span class="pre">2250</span></code> observations total.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
+
+<span class="n">df_base</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+    <span class="n">mu</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">30</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">15</span><span class="p">)),</span>
+<span class="p">)</span>
+<span class="n">mg</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df_time</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_grid</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">df_base</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">df_time</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df_time</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span>
+            <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">mg</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="o">+</span> <span class="n">df_base</span><span class="o">.</span><span class="n">mu</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="c1"># Randomly sort</span>
+<span class="n">df_time</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_time</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span><span class="o">/</span><span class="n">gr</span><span class="o">.</span><span class="n">n</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3><strong>qX</strong> Naive consecutive rows<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Batch the observations in <code class="docutils literal notranslate"><span class="pre">df_time</span></code> into groups of consecutive observations, and use that grouping to construct a control chart with <code class="docutils literal notranslate"><span class="pre">gr.pt_xbs()</span></code>. <strong>Do not</strong> sort the data by time yet—you’ll do that in the next task.</p>
+<p>Make sure to <em>match</em> the group size used in data collection.</p>
+<p>Answer the questions under <em>observations</em> below.</p>
+<p><em>Hint</em>: The data above are in a <em>random</em> order. Keep that in mind when answering the questions below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
+<span class="c1">## TODO: Batch by consecutive rows, create a control chart</span>
+<span class="p">(</span>
+    <span class="n">df_time</span>
+<span class="c1"># solution-begin    </span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">id_batch</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;id_batch&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="c1"># solution-end    </span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d22-e-stat06-spc-solution_24_0.png" src="../_images/d22-e-stat06-spc-solution_24_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742559893110)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>What is the correct group size, based on how the data were generated?</p>
+<ul>
+<li><p>The correct batch size if <code class="docutils literal notranslate"><span class="pre">n=50</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Based on the batch size you chose, did you find any out-of-control patterns?</p>
+<ul>
+<li><p>At a batch size of <code class="docutils literal notranslate"><span class="pre">n=50</span></code> I did not find any out-of-control patterns.</p></li>
+</ul>
+</li>
+<li><p>If you answered “yes” to the previous question, does your group variable give you a meaningful way to determine what may have cause the out-of-control pattern?</p>
+<ul>
+<li><p>NA</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+<div class="section" id="qx-batch-by-slices-of-time">
+<h3><strong>qX</strong> Batch by slices of time<a class="headerlink" href="#qx-batch-by-slices-of-time" title="Permalink to this headline">¶</a></h3>
+<p>Sort the data by time <code class="docutils literal notranslate"><span class="pre">t</span></code>, then batch the observations into consecutive groups and construct a control chart.</p>
+<p>Make sure to <em>match</em> the group size used in data collection.</p>
+<p>Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
+<span class="c1">## TODO: Arrange the dataset by time `t`, then batch and plot</span>
+<span class="c1"># a control chart</span>
+<span class="p">(</span>
+    <span class="n">df_time</span>
+<span class="c1"># solution-begin    </span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_arrange</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">id_batch</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;id_batch&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="c1"># solution-end    </span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d22-e-stat06-spc-solution_27_0.png" src="../_images/d22-e-stat06-spc-solution_27_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742560480178)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Based on the batch size you chose, did you find any out-of-control patterns?</p>
+<ul>
+<li><p>Arranged by time and with a batch size of <code class="docutils literal notranslate"><span class="pre">n=50</span></code>, I find one case of excessive variability, one low mean, and a long string of high-mean .</p></li>
+</ul>
+</li>
+<li><p>If you answered “yes” to the previous question, does your group variable give you a meaningful way to determine what may have cause the out-of-control pattern?</p>
+<ul>
+<li><p>Yes; since the batches are arranged in time, we can see that the process was trending upward in time towards the end of the period.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="patterns-to-seek">
+<h1>Patterns to seek<a class="headerlink" href="#patterns-to-seek" title="Permalink to this headline">¶</a></h1>
+<p>Kenett and Zacks (2014) highlight several patterns that can signal an out-of-control manufacturing process:</p>
+<blockquote>
+<div><ol class="simple">
+<li><p>A single point outside the control limits.</p></li>
+<li><p>A run of nine or more points in a row above (or below) the centerline.</p></li>
+<li><p>Six consecutive points increasing (trend up) or decreasing (trend down).</p></li>
+</ol>
+</div></blockquote>
+<p>The following cells simulate data to illustrate each of these patterns.</p>
+<div class="section" id="outside-control-limits">
+<h2>Outside control limits<a class="headerlink" href="#outside-control-limits" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
+<span class="c1">## NOTE: No need to edit</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">15</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">1</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">15</span> 
+<span class="n">mg_standard</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">df_outlier</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_grid</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mu</span><span class="p">):</span>
+    <span class="n">df_outlier</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df_outlier</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">X</span><span class="o">=</span><span class="n">mg_standard</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">m</span>
+        <span class="p">))</span>
+    <span class="p">)</span>
+    
+<span class="p">(</span>
+    <span class="n">df_outlier</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">idx</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="n">n</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;idx&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d22-e-stat06-spc-solution_31_0.png" src="../_images/d22-e-stat06-spc-solution_31_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742551482877)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="variability-out-of-control">
+<h2>Variability out-of-control<a class="headerlink" href="#variability-out-of-control" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
+<span class="c1">## NOTE: No need to edit</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">30</span>
+<span class="n">mg_standard</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">df_outlier</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_grid</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mu</span><span class="p">):</span>
+    <span class="n">df_outlier</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df_outlier</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">X</span><span class="o">=</span><span class="n">mg_standard</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">20</span><span class="p">))</span> <span class="o">+</span> <span class="n">m</span>
+        <span class="p">))</span>
+    <span class="p">)</span>
+    
+<span class="p">(</span>
+    <span class="n">df_outlier</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">idx</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="n">n</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;idx&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d22-e-stat06-spc-solution_33_0.png" src="../_images/d22-e-stat06-spc-solution_33_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742551393922)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="runs-above-center">
+<h2>Runs above center<a class="headerlink" href="#runs-above-center" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
+<span class="c1">## NOTE: No need to edit</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">15</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">15</span> 
+<span class="n">mg_standard</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+
+<span class="n">df_above</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_grid</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mu</span><span class="p">):</span>
+    <span class="n">df_above</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df_above</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">X</span><span class="o">=</span><span class="n">mg_standard</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">m</span>
+        <span class="p">))</span>
+    <span class="p">)</span>
+    
+<span class="p">(</span>
+    <span class="n">df_above</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">idx</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="n">n</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;idx&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d22-e-stat06-spc-solution_35_0.png" src="../_images/d22-e-stat06-spc-solution_35_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742551411637)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that none of the observations exceed the upper control limit (UCL), but a “run” of many (9 or more) observations above the centerline is highly unlikely to be due to chance alone.</p>
+</div>
+<div class="section" id="runs-below-center">
+<h2>Runs below center<a class="headerlink" href="#runs-below-center" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
+<span class="c1">## NOTE: No need to edit</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">15</span> <span class="o">+</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">15</span> 
+<span class="n">mg_standard</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+
+<span class="n">df_below</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_grid</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mu</span><span class="p">):</span>
+    <span class="n">df_below</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df_below</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">X</span><span class="o">=</span><span class="n">mg_standard</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">m</span>
+        <span class="p">))</span>
+    <span class="p">)</span>
+    
+<span class="p">(</span>
+    <span class="n">df_below</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">idx</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="n">n</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;idx&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d22-e-stat06-spc-solution_38_0.png" src="../_images/d22-e-stat06-spc-solution_38_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742560248019)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="runs-increasing">
+<h2>Runs increasing<a class="headerlink" href="#runs-increasing" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
+<span class="c1">## NOTE: No need to edit</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="o">+</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span>
+<span class="n">mg_standard</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="n">df_increase</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_grid</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mu</span><span class="p">):</span>
+    <span class="n">df_increase</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df_increase</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">X</span><span class="o">=</span><span class="n">mg_standard</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">m</span>
+        <span class="p">))</span>
+    <span class="p">)</span>
+    
+<span class="p">(</span>
+    <span class="n">df_increase</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">idx</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="n">n</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;idx&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d22-e-stat06-spc-solution_40_0.png" src="../_images/d22-e-stat06-spc-solution_40_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742560018092)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="runs-decreasing">
+<h2>Runs decreasing<a class="headerlink" href="#runs-decreasing" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
+<span class="c1">## NOTE: No need to edit</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="o">+</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span>
+<span class="n">mg_standard</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="n">df_decrease</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_grid</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mu</span><span class="p">):</span>
+    <span class="n">df_decrease</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df_decrease</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">X</span><span class="o">=</span><span class="n">mg_standard</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">m</span>
+        <span class="p">))</span>
+    <span class="p">)</span>
+    
+<span class="p">(</span>
+    <span class="n">df_decrease</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">idx</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="n">n</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;idx&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d22-e-stat06-spc-solution_42_0.png" src="../_images/d22-e-stat06-spc-solution_42_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742560933955)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="warnings">
+<h1>Warnings<a class="headerlink" href="#warnings" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="beware-spurious-patterns">
+<h2>Beware spurious patterns!<a class="headerlink" href="#beware-spurious-patterns" title="Permalink to this headline">¶</a></h2>
+<p>Note that <em>false patterns</em> can still occur based on random events. These false patterns become more likely with smaller batch sizes. For instance, let’s take a look at the completely random dataset from above, batched into tiny subgroups:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
+<span class="c1">## NOTE: No need to edit</span>
+
+<span class="p">(</span>
+    <span class="n">df_random</span> 
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">id_batch</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;id_batch&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d22-e-stat06-spc-solution_45_0.png" src="../_images/d22-e-stat06-spc-solution_45_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742551064287)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that a variety of “patterns” are detected, but these cannot possibly be due to any assignable causes: The data are completely random by construction. Using a larger batch size helps to protect us against being mislead by random patterns, but keep in mind that false detections are always possible!</p>
+</div>
+<div class="section" id="beware-meaningless-order">
+<h2>Beware meaningless order<a class="headerlink" href="#beware-meaningless-order" title="Permalink to this headline">¶</a></h2>
+<p>Patterns based on order (such as high/low or increasing/decreasing runs) are meaningless when order of the group variable has no meaning. For instance, we can reorder the machine identifiers in <code class="docutils literal notranslate"><span class="pre">df_machines</span></code> to artificially create an increasing run:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_machines</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">id_machine</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">fct_reorder</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">id_machine</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">fun</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;id_machine&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/zach/Git/py_grama/grama/dfply/vector.py:122: FutureWarning: The &#39;lookup&#39; method is deprecated and will be removed in a future version. You can use DataFrame.melt and DataFrame.loc as a substitute.
+/home/zach/Git/py_grama/grama/dfply/vector.py:122: FutureWarning: The &#39;lookup&#39; method is deprecated and will be removed in a future version. You can use DataFrame.melt and DataFrame.loc as a substitute.
+/home/zach/Git/py_grama/grama/dfply/vector.py:122: FutureWarning: The &#39;lookup&#39; method is deprecated and will be removed in a future version. You can use DataFrame.melt and DataFrame.loc as a substitute.
+/home/zach/Git/py_grama/grama/dfply/vector.py:122: FutureWarning: The &#39;lookup&#39; method is deprecated and will be removed in a future version. You can use DataFrame.melt and DataFrame.loc as a substitute.
+/home/zach/.local/lib/python3.8/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+/home/zach/.local/lib/python3.8/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+/home/zach/.local/lib/python3.8/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+</pre></div>
+</div>
+<img alt="../_images/d22-e-stat06-spc-solution_48_1.png" src="../_images/d22-e-stat06-spc-solution_48_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742560148827)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="example-cast-aluminum-dataset">
+<h1>Example: Cast Aluminum Dataset<a class="headerlink" href="#example-cast-aluminum-dataset" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_shewhart</span>
+<span class="n">df_shewhart</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>specimen</th>
+      <th>tensile_strength</th>
+      <th>hardness</th>
+      <th>density</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>29314</td>
+      <td>53.0</td>
+      <td>2.666</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>34860</td>
+      <td>70.2</td>
+      <td>2.708</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>36818</td>
+      <td>84.3</td>
+      <td>2.865</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>30120</td>
+      <td>55.3</td>
+      <td>2.627</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>34020</td>
+      <td>78.5</td>
+      <td>2.581</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="section" id="qx-assess-the-density">
+<h2><strong>qX</strong> Assess the <code class="docutils literal notranslate"><span class="pre">density</span></code><a class="headerlink" href="#qx-assess-the-density" title="Permalink to this headline">¶</a></h2>
+<p>Assess the state of statistical control for the variable <code class="docutils literal notranslate"><span class="pre">density</span></code> using a control chart.</p>
+<p>Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
+<span class="c1">## TODO: Construct batches and make a control chart</span>
+<span class="p">(</span>
+    <span class="n">df_shewhart</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">idx</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;idx&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;density&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d22-e-stat06-spc-solution_52_0.png" src="../_images/d22-e-stat06-spc-solution_52_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742550997767)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>What <em>assumptions</em> did you have to make in order to construct rational batches?</p>
+<ul>
+<li><p>To group observations into consecutive batches, we need to assume that the data are reported in the order they were collected.</p></li>
+</ul>
+</li>
+<li><p>Based on the batch size you chose, did you find any out-of-control patterns? Did it occur in the <code class="docutils literal notranslate"><span class="pre">Variability</span></code> or batch <code class="docutils literal notranslate"><span class="pre">Mean</span></code>?</p>
+<ul>
+<li><p>No; I found no out-of-control patterns.</p></li>
+</ul>
+</li>
+<li><p>If you answered “yes” to the previous question: Based on the batch size you chose, are those patterns likely to be spurious?</p>
+<ul>
+<li><p>NA</p></li>
+</ul>
+</li>
+<li><p>Is the <code class="docutils literal notranslate"><span class="pre">density</span></code> likely to be under statistical control?</p>
+<ul>
+<li><p>Yes; I find no evidence of out-of-control behavior.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+<div class="section" id="qx-assess-the-tensile-strength">
+<h2><strong>qX</strong> Assess the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code><a class="headerlink" href="#qx-assess-the-tensile-strength" title="Permalink to this headline">¶</a></h2>
+<p>Assess the state of statistical control for the variable <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> using a control chart.</p>
+<p>Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
+<span class="c1">## TODO: Construct batches and make a control chart</span>
+<span class="p">(</span>
+    <span class="n">df_shewhart</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">idx</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;idx&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;tensile_strength&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d22-e-stat06-spc-solution_55_0.png" src="../_images/d22-e-stat06-spc-solution_55_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742550940715)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>What <em>assumptions</em> did you have to make in order to construct rational batches?</p>
+<ul>
+<li><p>To group observations into consecutive batches, we need to assume that the data are reported in the order they were collected.</p></li>
+</ul>
+</li>
+<li><p>Based on the batch size you chose, did you find any out-of-control patterns? Did it occur in the <code class="docutils literal notranslate"><span class="pre">Variability</span></code> or batch <code class="docutils literal notranslate"><span class="pre">Mean</span></code>?</p>
+<ul>
+<li><p>Yes; at a batch size of <code class="docutils literal notranslate"><span class="pre">n=5</span></code> I found the mean to violate the LCL.</p></li>
+</ul>
+</li>
+<li><p>If you answered “yes” to the previous question: Based on the batch size you chose, are those patterns likely to be spurious?</p>
+<ul>
+<li><p>Possibly; <code class="docutils literal notranslate"><span class="pre">n=5</span></code> is a very small batch size, so this could certainly be due to chance.</p></li>
+</ul>
+</li>
+<li><p>Is the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> likely to be under statistical control?</p>
+<ul>
+<li><p>Possibly; I find that the below LCL batch mean persists for batch sizes of <code class="docutils literal notranslate"><span class="pre">n=6,7,8,9</span></code>, which suggests the process may have been out of control for some of the earlier runs. However, the below LCL case disappears for <code class="docutils literal notranslate"><span class="pre">n=10</span></code>; it is possible that this pattern is spurious.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Kenett and Zacks, <em>Modern Industrial Statistics</em>, 2nd Edition (2014)</p></li>
+</ul>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./exercises_solution"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="d21-e-stat05-CI-solution.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Confidence Intervals and the CLT</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="d23-e-grama06-fit-univar-solution.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Fitting Univariate Distributions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Zachary del Rosario<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
