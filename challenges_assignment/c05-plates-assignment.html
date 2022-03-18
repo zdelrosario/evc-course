@@ -428,11 +428,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-fit-with-stabilized-observations">
+    <a class="reference internal nav-link" href="#qx-fit-with-averaged-observations">
      <strong>
       qX
      </strong>
-     Fit with stabilized observations
+     Fit with averaged observations
     </a>
    </li>
   </ul>
@@ -448,6 +448,14 @@ const thebe_selector_output = ".output, .cell_output"
       qX
      </strong>
      Assess a baseline design
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-adjust-the-design">
+     <strong>
+      qX
+     </strong>
+     Adjust the design
     </a>
    </li>
   </ul>
@@ -618,11 +626,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-fit-with-stabilized-observations">
+    <a class="reference internal nav-link" href="#qx-fit-with-averaged-observations">
      <strong>
       qX
      </strong>
-     Fit with stabilized observations
+     Fit with averaged observations
     </a>
    </li>
   </ul>
@@ -638,6 +646,14 @@ const thebe_selector_output = ".output, .cell_output"
       qX
      </strong>
      Assess a baseline design
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-adjust-the-design">
+     <strong>
+      qX
+     </strong>
+     Adjust the design
     </a>
    </li>
   </ul>
@@ -1076,8 +1092,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="qx-fit-with-stabilized-observations">
-<h2><strong>qX</strong> Fit with stabilized observations<a class="headerlink" href="#qx-fit-with-stabilized-observations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="qx-fit-with-averaged-observations">
+<h2><strong>qX</strong> Fit with averaged observations<a class="headerlink" href="#qx-fit-with-averaged-observations" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">md_real</span> <span class="o">=</span> <span class="p">(</span>
@@ -1093,22 +1109,32 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="design-under-uncertainty">
 <h1>Design Under Uncertainty<a class="headerlink" href="#design-under-uncertainty" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_baseline</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">12.0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">9.0</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="qx-assess-a-baseline-design">
 <h2><strong>qX</strong> Assess a baseline design<a class="headerlink" href="#qx-assess-a-baseline-design" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_baseline_total</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">md_total</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span>
-        <span class="n">n</span><span class="o">=</span><span class="mf">1e3</span><span class="p">,</span>
-        <span class="n">df_det</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">12.0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">9.0</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
-    <span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
-        <span class="n">pof_lo</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr_lo</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_buckle</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
-        <span class="n">pof</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_buckle</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
-        <span class="n">pof_up</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr_up</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_buckle</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
-    <span class="p">)</span>
+
 <span class="p">)</span>
+
+<span class="c1">## NOTE: Use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="nb">isinstance</span><span class="p">(</span><span class="n">df_baseline_total</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">),</span> \
+    <span class="s2">&quot;df_baseline_total is not a DataFrame; make sure to evaluate the model&quot;</span>
+<span class="k">assert</span> \
+    <span class="s2">&quot;pof_lo&quot;</span> <span class="ow">in</span> <span class="n">df_baseline_total</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;df_baseline_total does not have a pof_lo column; make sure to include a lower CI end&quot;</span>
+<span class="k">assert</span> \
+    <span class="s2">&quot;pof_up&quot;</span> <span class="ow">in</span> <span class="n">df_baseline_total</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;df_baseline_total does not have a pof_up column; make sure to include a lower CI end&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -1117,16 +1143,19 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_baseline_real</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">md_real</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span>
-        <span class="n">n</span><span class="o">=</span><span class="mf">1e3</span><span class="p">,</span>
-        <span class="n">df_det</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">12.0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">9.0</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
-    <span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
-        <span class="n">pof_lo</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr_lo</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_buckle</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
-        <span class="n">pof</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_buckle</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
-        <span class="n">pof_up</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr_up</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_buckle</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
-    <span class="p">)</span>
+
 <span class="p">)</span>
+
+<span class="c1">## NOTE: Use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="nb">isinstance</span><span class="p">(</span><span class="n">df_baseline_real</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">),</span> \
+    <span class="s2">&quot;df_baseline_real is not a DataFrame; make sure to evaluate the model&quot;</span>
+<span class="k">assert</span> \
+    <span class="s2">&quot;pof_lo&quot;</span> <span class="ow">in</span> <span class="n">df_baseline_real</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;df_baseline_real does not have a pof_lo column; make sure to include a lower CI end&quot;</span>
+<span class="k">assert</span> \
+    <span class="s2">&quot;pof_up&quot;</span> <span class="ow">in</span> <span class="n">df_baseline_real</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;df_baseline_real does not have a pof_up column; make sure to include a lower CI end&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -1135,11 +1164,138 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
     <span class="n">df_baseline_total</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;Total&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span>
+        <span class="n">df_baseline_real</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;Real&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="s2">&quot;pof&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_errorbar</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="s2">&quot;pof_lo&quot;</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s2">&quot;pof_up&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>According to the <code class="docutils literal notranslate"><span class="pre">Total</span></code> model, does the baseline design meet the desired criteria of <code class="docutils literal notranslate"><span class="pre">pof</span> <span class="pre">&lt;</span> <span class="pre">0.01</span></code> (dashed line)?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>According to the <code class="docutils literal notranslate"><span class="pre">Real</span></code> model, does the baseline design meet the desired criteria of <code class="docutils literal notranslate"><span class="pre">pof</span> <span class="pre">&lt;</span> <span class="pre">0.01</span></code> (dashed line)?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="qx-adjust-the-design">
+<h2><strong>qX</strong> Adjust the design<a class="headerlink" href="#qx-adjust-the-design" title="Permalink to this headline">¶</a></h2>
+<p>Adjust the thickness of the plate to <em>confidently</em> achieve <code class="docutils literal notranslate"><span class="pre">pof</span> <span class="pre">&lt;</span> <span class="pre">0.01</span></code>. Repeat this process for both the <code class="docutils literal notranslate"><span class="pre">Total</span></code> and <code class="docutils literal notranslate"><span class="pre">Real</span></code> models. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_revised_total</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+    <span class="c1">## TODO: Adjust the thickness to modify the design</span>
+    <span class="c1"># t=0.25,</span>
+
+    <span class="c1">## NOTE: Do not edit the following values</span>
+    <span class="n">a</span><span class="o">=</span><span class="mf">12.0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">9.0</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_revised_total</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">md_total</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span> <span class="n">df_det</span><span class="o">=</span><span class="n">df_revised_total</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">pof_lo</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr_lo</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_buckle</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">pof</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_buckle</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">pof_up</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr_up</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_buckle</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df_revised_total</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_revised_real</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+    <span class="c1">## TODO: Adjust the thickness to modify the design</span>
+    <span class="c1"># t=0.25,</span>
+
+    <span class="c1">## NOTE: Do not edit the following values</span>
+    <span class="n">a</span><span class="o">=</span><span class="mf">12.0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">9.0</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_revised_real</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">md_real</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span> <span class="n">df_det</span><span class="o">=</span><span class="n">df_revised_real</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">pof_lo</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr_lo</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_buckle</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">pof</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_buckle</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">pof_up</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr_up</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_buckle</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df_revised_real</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; the following visual will help you assess the results</span>
+<span class="p">(</span>
+    <span class="n">df_revised_total</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;Total&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span>
+        <span class="n">df_revised_real</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;Real&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="s2">&quot;pof&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_errorbar</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="s2">&quot;pof_lo&quot;</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s2">&quot;pof_up&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>What needs to be the case with your results to <em>confidently</em> conclude that <code class="docutils literal notranslate"><span class="pre">pof</span> <span class="pre">&lt;</span> <span class="pre">0.01</span></code>?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>What thickness is necessary to confidently achieve <code class="docutils literal notranslate"><span class="pre">pof</span> <span class="pre">&lt;</span> <span class="pre">0.01</span></code> with the <code class="docutils literal notranslate"><span class="pre">Total</span></code> model?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>What thickness is necessary to confidently achieve <code class="docutils literal notranslate"><span class="pre">pof</span> <span class="pre">&lt;</span> <span class="pre">0.01</span></code> with the <code class="docutils literal notranslate"><span class="pre">Real</span></code> model?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>Suppose the plate manufacturing process can only achieve tolerances to within <code class="docutils literal notranslate"><span class="pre">0.01</span></code> in of thickness. Does distinguishing between real and total variability have a large consequence in this case?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>Now suppose the plate manufacturing process can achieve tolerances to within <code class="docutils literal notranslate"><span class="pre">0.001</span></code> in of thickness, and weight is a major concern. Does distinguishing between real and total variability have a large consequence in this case?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 
