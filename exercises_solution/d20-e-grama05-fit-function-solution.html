@@ -708,7 +708,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d20-e-grama05-fit-function-solution_6_0.png" src="../_images/d20-e-grama05-fit-function-solution_6_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8790281862226)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761140095082)&gt;
 </pre></div>
 </div>
 </div>
@@ -732,10 +732,10 @@ const thebe_selector_output = ".output, .cell_output"
 
   inputs:
     var_det:
-      t: [0, 600]
+      tau: [0.05, inf]
       u0: [0.1, inf]
       v0: [0.1, inf]
-      tau: [0.05, inf]
+      t: [0, 600]
 
     var_rand:
 
@@ -780,8 +780,11 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calling plot_sinew_outputs....
 </pre></div>
 </div>
-<img alt="../_images/d20-e-grama05-fit-function-solution_13_1.png" src="../_images/d20-e-grama05-fit-function-solution_13_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8790283837425)&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+</pre></div>
+</div>
+<img alt="../_images/d20-e-grama05-fit-function-solution_13_2.png" src="../_images/d20-e-grama05-fit-function-solution_13_2.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761175321429)&gt;
 </pre></div>
 </div>
 </div>
@@ -817,9 +820,7 @@ const thebe_selector_output = ".output, .cell_output"
         <span class="n">df</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_grid</span><span class="p">(</span>
             <span class="n">u0</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
             <span class="n">v0</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-<span class="c1"># task-begin</span>
-            <span class="c1"># TASK: Complete the code to sweep tau and t</span>
-<span class="c1"># task-begin</span>
+
             <span class="n">tau</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>
             <span class="n">t</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
         <span class="p">)</span>
@@ -832,7 +833,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d20-e-grama05-fit-function-solution_16_0.png" src="../_images/d20-e-grama05-fit-function-solution_16_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8790282168089)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761154668650)&gt;
 </pre></div>
 </div>
 </div>
@@ -876,9 +877,9 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>... fit_nls setting out = [&#39;x&#39;, &#39;y&#39;]
 ... eval_nls setting out = [&#39;x&#39;, &#39;y&#39;]
 ... eval_nls setting var_fix = []
-... eval_nls setting var_feat = [&#39;t&#39;]
-          u0          v0   tau  u0_0  v0_0  tau_0  success  \
-0  425.16129  447.996665  0.05   0.1   0.1   0.05     True   
+... eval_nls setting var_feat = {&#39;t&#39;}
+    tau         u0          v0  tau_0  u0_0  v0_0  success  \
+0  0.05  425.16129  447.996665   0.05   0.1   0.1     True   
 
                                             message  n_iter       mse  
 0  CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL       3  25.49725  
@@ -896,8 +897,8 @@ const thebe_selector_output = ".output, .cell_output"
       None
 
   functions:
-      Fix variable levels: [&#39;t&#39;] -&gt; [&#39;u0&#39;, &#39;v0&#39;, &#39;tau&#39;]
-      Trajectory Model: [&#39;t&#39;, &#39;v0&#39;, &#39;u0&#39;, &#39;tau&#39;] -&gt; [&#39;x&#39;, &#39;y&#39;]
+      Fix variable levels: [&#39;t&#39;] -&gt; [&#39;tau&#39;, &#39;u0&#39;, &#39;v0&#39;]
+      Trajectory Model: [&#39;tau&#39;, &#39;t&#39;, &#39;u0&#39;, &#39;v0&#39;] -&gt; [&#39;x&#39;, &#39;y&#39;]
 </pre></div>
 </div>
 </div>
@@ -927,7 +928,7 @@ eval_df() is dropping {&#39;x&#39;, &#39;y&#39;}
 </pre></div>
 </div>
 <img alt="../_images/d20-e-grama05-fit-function-solution_24_1.png" src="../_images/d20-e-grama05-fit-function-solution_24_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8790282284487)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761175528804)&gt;
 </pre></div>
 </div>
 </div>
@@ -1086,18 +1087,18 @@ eval_df() is dropping {&#39;x&#39;, &#39;y&#39;}
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>... fit_nls setting out = [&#39;x&#39;, &#39;y&#39;]
 ... eval_nls setting out = [&#39;x&#39;, &#39;y&#39;]
 ... eval_nls setting var_fix = []
-... eval_nls setting var_feat = [&#39;t&#39;]
-          u0         v0      tau  u0_0  v0_0  tau_0  success  \
-0  18.792168  28.234802  2.80225    18    18     16     True   
+... eval_nls setting var_feat = {&#39;t&#39;}
+       tau         u0         v0  tau_0  u0_0  v0_0  success  \
+0  2.80225  18.792166  28.234799     16    18    18     True   
 
                                             message  n_iter       mse  
-0  CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL      26  0.093358  
+0  CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL      25  0.093358  
 ... provided columns intersect model output.
 eval_df() is dropping {&#39;x&#39;, &#39;y&#39;}
 </pre></div>
 </div>
 <img alt="../_images/d20-e-grama05-fit-function-solution_29_1.png" src="../_images/d20-e-grama05-fit-function-solution_29_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8790282002794)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761154713585)&gt;
 </pre></div>
 </div>
 </div>
@@ -1150,14 +1151,17 @@ eval_df() is dropping {&#39;x&#39;, &#39;y&#39;}
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>... fit_nls setting out = [&#39;x&#39;, &#39;y&#39;]
 ... eval_nls setting out = [&#39;x&#39;, &#39;y&#39;]
 ... eval_nls setting var_fix = []
-... eval_nls setting var_feat = [&#39;t&#39;]
-          u0         v0      tau  u0_0  v0_0  tau_0  success  \
-0  18.792168  28.234802  2.80225    18    18     16     True   
+... eval_nls setting var_feat = {&#39;t&#39;}
+       tau         u0         v0  tau_0  u0_0  v0_0  success  \
+0  2.80225  18.792166  28.234799     16    18    18     True   
 
                                             message  n_iter       mse  
-0  CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL      26  0.093358  
+0  CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL      25  0.093358  
 ... provided columns intersect model output.
 eval_df() is dropping {&#39;x&#39;, &#39;y&#39;}
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/Git/py_grama/grama/fit_synonyms.py:133: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: Trajectory Model (Fitted)
@@ -1167,19 +1171,19 @@ eval_df() is dropping {&#39;x&#39;, &#39;y&#39;}
       t: (unbounded)
 
     var_rand:
+      tau: (+0) norm, {&#39;mean&#39;: &#39;2.800e+00&#39;, &#39;s.d.&#39;: &#39;1.300e-01&#39;, &#39;COV&#39;: 0.05, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
       u0: (+0) norm, {&#39;mean&#39;: &#39;1.879e+01&#39;, &#39;s.d.&#39;: &#39;1.700e-01&#39;, &#39;COV&#39;: 0.01, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
       v0: (+0) norm, {&#39;mean&#39;: &#39;2.823e+01&#39;, &#39;s.d.&#39;: &#39;2.000e-01&#39;, &#39;COV&#39;: 0.01, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
-      tau: (+0) norm, {&#39;mean&#39;: &#39;2.800e+00&#39;, &#39;s.d.&#39;: &#39;1.300e-01&#39;, &#39;COV&#39;: 0.05, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
 
     copula:
       Gaussian copula with correlations:
   var1 var2      corr
-0   u0   v0  0.000000
-1   u0  tau -0.678971
-2   v0  tau -0.704770
+0  tau   u0 -0.678972
+1  tau   v0 -0.704770
+2   u0   v0  0.000000
 
   functions:
-      Trajectory Model: [&#39;t&#39;, &#39;v0&#39;, &#39;u0&#39;, &#39;tau&#39;] -&gt; [&#39;x&#39;, &#39;y&#39;]
+      Trajectory Model: [&#39;tau&#39;, &#39;t&#39;, &#39;u0&#39;, &#39;v0&#39;] -&gt; [&#39;x&#39;, &#39;y&#39;]
 </pre></div>
 </div>
 </div>
@@ -1203,7 +1207,7 @@ Design runtime estimates unavailable; model has no timing data.
 Calling plot_scattermat....
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Matplotlib is currently using module://matplotlib_inline.backend_inline, which is a non-GUI backend, so cannot show the figure.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/Git/py_grama/grama/plot_auto.py:234: UserWarning: Matplotlib is currently using module://matplotlib_inline.backend_inline, which is a non-GUI backend, so cannot show the figure.
 </pre></div>
 </div>
 <img alt="../_images/d20-e-grama05-fit-function-solution_35_2.png" src="../_images/d20-e-grama05-fit-function-solution_35_2.png" />
@@ -1236,7 +1240,7 @@ Calling plot_scattermat....
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d20-e-grama05-fit-function-solution_38_0.png" src="../_images/d20-e-grama05-fit-function-solution_38_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8790282434277)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761154856394)&gt;
 </pre></div>
 </div>
 </div>
@@ -1262,7 +1266,7 @@ Calling plot_scattermat....
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d20-e-grama05-fit-function-solution_42_0.png" src="../_images/d20-e-grama05-fit-function-solution_42_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8790283533216)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761140776665)&gt;
 </pre></div>
 </div>
 </div>
@@ -1291,7 +1295,7 @@ Calling plot_scattermat....
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d20-e-grama05-fit-function-solution_44_0.png" src="../_images/d20-e-grama05-fit-function-solution_44_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8790275943048)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761140563357)&gt;
 </pre></div>
 </div>
 </div>
