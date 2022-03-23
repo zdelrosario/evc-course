@@ -299,6 +299,44 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-fit-a-distribution">
+   Why fit a distribution?
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dangers-of-assuming-the-mean">
+     Dangers of assuming the mean
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-what-fraction-of-tensile-strength-is-below-the-mean">
+       <strong>
+        qX
+       </strong>
+       What fraction of
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         tensile_strength
+        </span>
+       </code>
+       is below the mean?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#random-variables">
+     Random variables
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-distribution-defines-a-random-variable">
+     A distribution defines a random variable
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-steps-to-fitting">
    The steps to fitting
   </a>
@@ -430,6 +468,23 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#use-the-model">
    Use the model
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#beyond-assuming-the-mean">
+     Beyond assuming the mean
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-todo">
+       <strong>
+        qX
+       </strong>
+       TODO
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -464,6 +519,44 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-fit-a-distribution">
+   Why fit a distribution?
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dangers-of-assuming-the-mean">
+     Dangers of assuming the mean
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-what-fraction-of-tensile-strength-is-below-the-mean">
+       <strong>
+        qX
+       </strong>
+       What fraction of
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         tensile_strength
+        </span>
+       </code>
+       is below the mean?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#random-variables">
+     Random variables
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-distribution-defines-a-random-variable">
+     A distribution defines a random variable
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-steps-to-fitting">
    The steps to fitting
   </a>
@@ -595,6 +688,23 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#use-the-model">
    Use the model
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#beyond-assuming-the-mean">
+     Beyond assuming the mean
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#qx-todo">
+       <strong>
+        qX
+       </strong>
+       TODO
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -629,6 +739,207 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<div class="tex2jax_ignore mathjax_ignore section" id="why-fit-a-distribution">
+<h1>Why fit a distribution?<a class="headerlink" href="#why-fit-a-distribution" title="Permalink to this headline">¶</a></h1>
+<p>(We fit a distribution to model variability)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_shewhart</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;tensile_strength&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d23-e-grama06-fit-univar-solution_6_0.png" src="../_images/d23-e-grama06-fit-univar-solution_6_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8771015432433)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dangers-of-assuming-the-mean">
+<h2>Dangers of assuming the mean<a class="headerlink" href="#dangers-of-assuming-the-mean" title="Permalink to this headline">¶</a></h2>
+<p>Why don’t we just take the mean of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> and use that for design? It turns out this approach is <em>very dangerous</em> when safety is a consideration. Let’s take a look at the tensile strength of an aluminum alloy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_shewhart</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;tensile_strength&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_vline</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df_shewhart</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span><span class="n">tensile_strength</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span><span class="p">)),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">xintercept</span><span class="o">=</span><span class="s2">&quot;tensile_strength&quot;</span><span class="p">),</span>
+        <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d23-e-grama06-fit-univar-solution_8_0.png" src="../_images/d23-e-grama06-fit-univar-solution_8_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8771015845208)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Clearly, values of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> tend to land both above and below the mean. But what ramifications does this have for engineering design?</p>
+<div class="section" id="qx-what-fraction-of-tensile-strength-is-below-the-mean">
+<h3><strong>qX</strong> What fraction of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> is below the mean?<a class="headerlink" href="#qx-what-fraction-of-tensile-strength-is-below-the-mean" title="Permalink to this headline">¶</a></h3>
+<p>Compute the fraction of observations in <code class="docutils literal notranslate"><span class="pre">df_shewhart</span></code> where <code class="docutils literal notranslate"><span class="pre">tensile_strength</span> <span class="pre">&lt;</span> <span class="pre">mean(tensile_strength)</span></code>. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_shewhart</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">frac</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span> <span class="o">&lt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span><span class="p">))</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>frac</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+<p>For these questions, assume the variability in <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> is real; that is, the variability is not simply due to measurement error.</p>
+<ul class="simple">
+<li><p>What fraction of observations have <code class="docutils literal notranslate"><span class="pre">tensile_strength</span> <span class="pre">&lt;</span> <span class="pre">mean(tensile_strength)</span></code>?</p>
+<ul>
+<li><p>I find that <code class="docutils literal notranslate"><span class="pre">frac</span> <span class="pre">==</span> <span class="pre">0.5</span></code> (i.e. 50%)</p></li>
+</ul>
+</li>
+<li><p>Suppose a design assumed <code class="docutils literal notranslate"><span class="pre">mean(tensile_strength)</span></code> as the design stress; that is, every part would be subject to a stress equal to <code class="docutils literal notranslate"><span class="pre">mean(tensile_strength)</span></code>. The fraction you computed above would be the fraction of parts that would fail. Would this failure rate be acceptable for any engineering system involving human safety?</p>
+<ul>
+<li><p>Absolutely not; a failure rate of 50% would be completely unacceptable for any application involving human safety.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="random-variables">
+<h2>Random variables<a class="headerlink" href="#random-variables" title="Permalink to this headline">¶</a></h2>
+<p>Clearly <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> does not take a single value; therefore, we should think of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> as a <em>random variable</em>. A random variable is a mathematical object that we can use to model an uncertain quantity. Unlike a <em>deterministic variable</em> that has one fixed value (say <span class="math notranslate nohighlight">\(x = 1\)</span>), a random variable can take a different value each time we <em>observe</em> it. For instance, if <span class="math notranslate nohighlight">\(X\)</span> were a random variable, and we used <span class="math notranslate nohighlight">\(X_i\)</span> to denote the value that occurs on the <span class="math notranslate nohighlight">\(i\)</span>-th observation, then we might see a sequence like</p>
+<div class="math notranslate nohighlight">
+\[X_1 = 1, X_2 = -3, X_3 = 1, X_4 = 5, \dots\]</div>
+<p>What counts as an <em>observation</em> depends on what we are using the random variable to model. Essentially, an observation is an occurrence that gives us the potential to “see” a new value.</p>
+<p>Let’s take a look at the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> example to get a better sense of these ideas.</p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>, we saw a sequence of different values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_shewhart</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>specimen</th>
+      <th>tensile_strength</th>
+      <th>hardness</th>
+      <th>density</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>29314</td>
+      <td>53.0</td>
+      <td>2.666</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>34860</td>
+      <td>70.2</td>
+      <td>2.708</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>36818</td>
+      <td>84.3</td>
+      <td>2.865</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>30120</td>
+      <td>55.3</td>
+      <td>2.627</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Every time we manufacture a new part, we perform a sequence of manufacturing steps that work together to “lock in” a particular value of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>. Those individual steps tend to go slightly differently each time we make a part (e.g. an operator calls in sick one day, we get a slightly more dense batch of raw material, it’s a particularly hot summer day, etc.), so we end up with different properties in each part.</p>
+<p>Given the complicated realities of manfacturing, it makes sense to think of an <em>observation</em> as being one complete run of the manufacturing process that generates a particular part with its own <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>. This is what the <code class="docutils literal notranslate"><span class="pre">specimen</span></code> column in <code class="docutils literal notranslate"><span class="pre">df_shewhart</span></code> refers to; a unique identifier tracking individual runs of the complete manufacturing process, resulting in a unique part.</p>
+<div class="admonition-nomenclature-a-realization-is-like-a-single-roll-of-a-die admonition">
+<p class="admonition-title">Nomenclature: A <em>realization</em> is like a single roll of a die</p>
+<p>Some nomenclature: When we talk about random quantities, we use the term <em>realization</em> (or <em>observation</em>) to refer to a single event that yields a random value, according to a particular distribution. For instance, a single manufactured part will have a realized strength value. If we take multiple realizations, we will tend to see different values. For instance, we saw a large amount of variability among the realized <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> values above.</p>
+<p>A single realization tells us very little about how the distribution tends to behave, but a set of realizations (a <em>sample</em>) will give us a sense of how the random values tend to behave <em>collectively</em>. A distribution is a way to model that collective behavior.</p>
+</div>
+</div>
+<div class="section" id="a-distribution-defines-a-random-variable">
+<h2>A distribution defines a random variable<a class="headerlink" href="#a-distribution-defines-a-random-variable" title="Permalink to this headline">¶</a></h2>
+<p>As we saw in <code class="docutils literal notranslate"><span class="pre">e-stat04-distributions</span></code>, we can use distributions to quantitatively describe an uncertain quantity. <strong>A distribution defines a random variable</strong>. We say that a random variable <span class="math notranslate nohighlight">\(X\)</span> is <em>distributed according to</em> a particular density <span class="math notranslate nohighlight">\(\rho\)</span>, and we express the same statement mathematically as</p>
+<div class="math notranslate nohighlight">
+\[X \sim \rho.\]</div>
+<p>We learned how to compute useful quantities using distributions in <code class="docutils literal notranslate"><span class="pre">e-stat04-distributions</span></code>; in the rest of this exercise, we’ll learn how to <em>fit</em> a distribution in order use information from a dataset to model observations from the physical world.</p>
+</div>
+</div>
 <div class="tex2jax_ignore mathjax_ignore section" id="the-steps-to-fitting">
 <h1>The steps to fitting<a class="headerlink" href="#the-steps-to-fitting" title="Permalink to this headline">¶</a></h1>
 <ol class="simple">
@@ -654,8 +965,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d23-e-grama06-fit-univar-solution_8_0.png" src="../_images/d23-e-grama06-fit-univar-solution_8_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8786499661692)&gt;
+<img alt="../_images/d23-e-grama06-fit-univar-solution_22_0.png" src="../_images/d23-e-grama06-fit-univar-solution_22_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8771015721229)&gt;
 </pre></div>
 </div>
 </div>
@@ -759,8 +1070,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d23-e-grama06-fit-univar-solution_19_0.png" src="../_images/d23-e-grama06-fit-univar-solution_19_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8786500782388)&gt;
+<img alt="../_images/d23-e-grama06-fit-univar-solution_33_0.png" src="../_images/d23-e-grama06-fit-univar-solution_33_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8771016186576)&gt;
 </pre></div>
 </div>
 </div>
@@ -891,8 +1202,8 @@ const thebe_selector_output = ".output, .cell_output"
 Name: tys_hi, dtype: float64
 </pre></div>
 </div>
-<img alt="../_images/d23-e-grama06-fit-univar-solution_24_1.png" src="../_images/d23-e-grama06-fit-univar-solution_24_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8786500490671)&gt;
+<img alt="../_images/d23-e-grama06-fit-univar-solution_38_1.png" src="../_images/d23-e-grama06-fit-univar-solution_38_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8771016033639)&gt;
 </pre></div>
 </div>
 </div>
@@ -941,8 +1252,8 @@ Name: tys_hi, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d23-e-grama06-fit-univar-solution_27_0.png" src="../_images/d23-e-grama06-fit-univar-solution_27_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8786500294575)&gt;
+<img alt="../_images/d23-e-grama06-fit-univar-solution_41_0.png" src="../_images/d23-e-grama06-fit-univar-solution_41_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8771015865179)&gt;
 </pre></div>
 </div>
 </div>
@@ -1020,8 +1331,8 @@ Name: tys_hi, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d23-e-grama06-fit-univar-solution_35_0.png" src="../_images/d23-e-grama06-fit-univar-solution_35_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8786500813403)&gt;
+<img alt="../_images/d23-e-grama06-fit-univar-solution_49_0.png" src="../_images/d23-e-grama06-fit-univar-solution_49_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8771015875789)&gt;
 </pre></div>
 </div>
 </div>
@@ -1069,14 +1380,8 @@ Name: tys_hi, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-</pre></div>
-</div>
-<img alt="../_images/d23-e-grama06-fit-univar-solution_38_1.png" src="../_images/d23-e-grama06-fit-univar-solution_38_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8786500068452)&gt;
+<img alt="../_images/d23-e-grama06-fit-univar-solution_52_0.png" src="../_images/d23-e-grama06-fit-univar-solution_52_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8771015615067)&gt;
 </pre></div>
 </div>
 </div>
@@ -1099,6 +1404,9 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="use-the-model">
 <h1>Use the model<a class="headerlink" href="#use-the-model" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="beyond-assuming-the-mean">
+<h2>Beyond assuming the mean<a class="headerlink" href="#beyond-assuming-the-mean" title="Permalink to this headline">¶</a></h2>
+<p>Above, we saw that simply using the mean of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> for design was dangerous for safety-critical applications. Let’s talk about a more principled way to address the variability in <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>.</p>
 <p>TODO</p>
 <div class="math notranslate nohighlight">
 \[g_{\text{tension}} = S - F/A\]</div>
@@ -1145,6 +1453,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 </div>
+<div class="section" id="qx-todo">
+<h3><strong>qX</strong> TODO<a class="headerlink" href="#qx-todo" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
@@ -1192,27 +1502,29 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
     <tr>
       <th>0</th>
       <td>2</td>
-      <td>0.920463</td>
-      <td>0.921</td>
-      <td>0.921533</td>
+      <td>0.925479</td>
+      <td>0.926</td>
+      <td>0.926517</td>
     </tr>
     <tr>
       <th>1</th>
       <td>3</td>
-      <td>0.131330</td>
-      <td>0.132</td>
-      <td>0.132673</td>
+      <td>0.130332</td>
+      <td>0.131</td>
+      <td>0.131671</td>
     </tr>
     <tr>
       <th>2</th>
       <td>4</td>
-      <td>0.001913</td>
-      <td>0.002</td>
-      <td>0.002091</td>
+      <td>0.002893</td>
+      <td>0.003</td>
+      <td>0.003110</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
+</div>
+</div>
 </div>
 </div>
 
