@@ -329,11 +329,6 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal nav-link" href="#random-variables">
      Random variables
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-distribution-defines-a-random-variable">
-     A distribution defines a random variable
-    </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#q1-define-a-distribution">
@@ -359,17 +354,40 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-compare-two-distributions">
+      <a class="reference internal nav-link" href="#q3-compare-different-means">
        <strong>
         q3
        </strong>
-       Compare two distributions
+       Compare different means
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-draw-random-values-from-your-distribution">
+      <a class="reference internal nav-link" href="#q4-compare-different-standard-deviations">
        <strong>
         q4
+       </strong>
+       Compare different standard deviations
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-compare-different-skewnesses">
+       <strong>
+        q5
+       </strong>
+       Compare different skewnesses
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simulating-values">
+     Simulating values
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q6-draw-random-values-from-your-distribution">
+       <strong>
+        q6
        </strong>
        <em>
         Draw
@@ -380,14 +398,14 @@ const thebe_selector_output = ".output, .cell_output"
     </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mean-aka-expectation">
-     Mean (aka Expectation)
+    <a class="reference internal nav-link" href="#estimating-the-mean">
+     Estimating the Mean
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-estimate-a-sample-mean">
+      <a class="reference internal nav-link" href="#q7-estimate-a-sample-mean">
        <strong>
-        qX
+        q7
        </strong>
        Estimate a (sample) mean
       </a>
@@ -400,25 +418,32 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-compute-an-indicator">
+      <a class="reference internal nav-link" href="#q8-compute-an-indicator">
        <strong>
-        qX
+        q8
        </strong>
        Compute an indicator
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-estimate-a-probability">
+      <a class="reference internal nav-link" href="#q9-estimate-a-probability">
        <strong>
-        qX
+        q9
        </strong>
        Estimate a probability
       </a>
      </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probability-of-failure">
+     Probability of Failure
+    </a>
+    <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-estimate-a-probability-of-failure">
+      <a class="reference internal nav-link" href="#q10-estimate-a-probability-of-failure">
        <strong>
-        qX
+        q10
        </strong>
        Estimate a probability of failure
       </a>
@@ -431,17 +456,24 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-compute-a-quantile">
+      <a class="reference internal nav-link" href="#q11-compute-a-quantile">
        <strong>
-        qX
+        q11
        </strong>
        Compute a quantile
       </a>
      </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conservative-values">
+     Conservative values
+    </a>
+    <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-estimate-a-conservative-strength">
+      <a class="reference internal nav-link" href="#q12-estimate-a-conservative-strength">
        <strong>
-        qX
+        q12
        </strong>
        Estimate a conservative strength
       </a>
@@ -513,11 +545,6 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal nav-link" href="#random-variables">
      Random variables
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-distribution-defines-a-random-variable">
-     A distribution defines a random variable
-    </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#q1-define-a-distribution">
@@ -543,17 +570,40 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-compare-two-distributions">
+      <a class="reference internal nav-link" href="#q3-compare-different-means">
        <strong>
         q3
        </strong>
-       Compare two distributions
+       Compare different means
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-draw-random-values-from-your-distribution">
+      <a class="reference internal nav-link" href="#q4-compare-different-standard-deviations">
        <strong>
         q4
+       </strong>
+       Compare different standard deviations
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-compare-different-skewnesses">
+       <strong>
+        q5
+       </strong>
+       Compare different skewnesses
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simulating-values">
+     Simulating values
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q6-draw-random-values-from-your-distribution">
+       <strong>
+        q6
        </strong>
        <em>
         Draw
@@ -564,14 +614,14 @@ const thebe_selector_output = ".output, .cell_output"
     </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mean-aka-expectation">
-     Mean (aka Expectation)
+    <a class="reference internal nav-link" href="#estimating-the-mean">
+     Estimating the Mean
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-estimate-a-sample-mean">
+      <a class="reference internal nav-link" href="#q7-estimate-a-sample-mean">
        <strong>
-        qX
+        q7
        </strong>
        Estimate a (sample) mean
       </a>
@@ -584,25 +634,32 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-compute-an-indicator">
+      <a class="reference internal nav-link" href="#q8-compute-an-indicator">
        <strong>
-        qX
+        q8
        </strong>
        Compute an indicator
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-estimate-a-probability">
+      <a class="reference internal nav-link" href="#q9-estimate-a-probability">
        <strong>
-        qX
+        q9
        </strong>
        Estimate a probability
       </a>
      </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probability-of-failure">
+     Probability of Failure
+    </a>
+    <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-estimate-a-probability-of-failure">
+      <a class="reference internal nav-link" href="#q10-estimate-a-probability-of-failure">
        <strong>
-        qX
+        q10
        </strong>
        Estimate a probability of failure
       </a>
@@ -615,17 +672,24 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-compute-a-quantile">
+      <a class="reference internal nav-link" href="#q11-compute-a-quantile">
        <strong>
-        qX
+        q11
        </strong>
        Compute a quantile
       </a>
      </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conservative-values">
+     Conservative values
+    </a>
+    <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-estimate-a-conservative-strength">
+      <a class="reference internal nav-link" href="#q12-estimate-a-conservative-strength">
        <strong>
-        qX
+        q12
        </strong>
        Estimate a conservative strength
       </a>
@@ -690,7 +754,7 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <img alt="../_images/d19-e-stat04-distributions-solution_6_1.png" src="../_images/d19-e-stat04-distributions-solution_6_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8787877462468)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761803370954)&gt;
 </pre></div>
 </div>
 </div>
@@ -738,7 +802,7 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <img alt="../_images/d19-e-stat04-distributions-solution_10_1.png" src="../_images/d19-e-stat04-distributions-solution_10_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8787855787876)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761786101977)&gt;
 </pre></div>
 </div>
 </div>
@@ -786,7 +850,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </pre></div>
 </div>
 <img alt="../_images/d19-e-stat04-distributions-solution_12_1.png" src="../_images/d19-e-stat04-distributions-solution_12_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8787838838306)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761786269633)&gt;
 </pre></div>
 </div>
 </div>
@@ -799,7 +863,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="section" id="what-a-distribution-represents">
 <h2>What a distribution represents<a class="headerlink" href="#what-a-distribution-represents" title="Permalink to this headline">¶</a></h2>
 <p><em>Fundamentally</em>, a distribution describes an uncertain value <em>in a quantitative fashion</em>. Rather than simply saying “I don’t know what value this is,” with a distribution we can express the fact that some values are more <em>likely</em> than others.</p>
-<p>Distributions are particularly useful because they free us from “just” picking a single number. With a distribution we can get a lot more nuanced in our description of uncertain quantities. This exercise is all about using concepts about distributions to represent uncertain quantities, <em>and to do useful work</em>.</p>
+<p>Distributions are particularly useful because they free us from “just” picking a single number. With a distribution we can get a lot more nuanced in our description of uncertain quantities. This exercise is all about using concepts about distributions to represent uncertain quantities.</p>
 </div>
 <div class="section" id="random-variables">
 <h2>Random variables<a class="headerlink" href="#random-variables" title="Permalink to this headline">¶</a></h2>
@@ -883,9 +947,6 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <p>Some nomenclature: When we talk about random quantities, we use the term <em>realization</em> (or <em>observation</em>) to refer to a single event that yields a random value, according to a particular distribution. For instance, a single manufactured part will have a realized strength value. If we take multiple realizations, we will tend to see different values. For instance, we saw a large amount of variability among the realized <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> values above.</p>
 <p>A single realization tells us very little about how the distribution tends to behave, but a set of realizations (a <em>sample</em>) will give us a sense of how the random values tend to behave <em>collectively</em>. A distribution is a way to model that collective behavior.</p>
 </div>
-</div>
-<div class="section" id="a-distribution-defines-a-random-variable">
-<h2>A distribution defines a random variable<a class="headerlink" href="#a-distribution-defines-a-random-variable" title="Permalink to this headline">¶</a></h2>
 <p><strong>A distribution defines a random variable</strong>. We say that a random variable <span class="math notranslate nohighlight">\(X\)</span> is <em>distributed according to</em> a particular density <span class="math notranslate nohighlight">\(\rho\)</span>, and we express the same statement mathematically as</p>
 <div class="math notranslate nohighlight">
 \[X \sim \rho.\]</div>
@@ -911,7 +972,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d19-e-stat04-distributions-solution_21_0.png" src="../_images/d19-e-stat04-distributions-solution_21_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8787878092023)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761803394747)&gt;
 </pre></div>
 </div>
 </div>
@@ -937,7 +998,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d19-e-stat04-distributions-solution_24_0.png" src="../_images/d19-e-stat04-distributions-solution_24_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8787877775439)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761803404620)&gt;
 </pre></div>
 </div>
 </div>
@@ -1005,13 +1066,128 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </tbody>
 </table>
 <p>Note that the distribution summary also reports the <em>coefficient of variation</em> (COV), which is a normalized version of the standard deviation (<code class="docutils literal notranslate"><span class="pre">COV</span> <span class="pre">=</span> <span class="pre">sd</span> <span class="pre">/</span> <span class="pre">mean</span></code>).</p>
-<div class="section" id="q3-compare-two-distributions">
-<h3><strong>q3</strong> Compare two distributions<a class="headerlink" href="#q3-compare-two-distributions" title="Permalink to this headline">¶</a></h3>
+<p>The next few exercises will help you recognize how different moment values affect a distribution.</p>
+<div class="section" id="q3-compare-different-means">
+<h3><strong>q3</strong> Compare different means<a class="headerlink" href="#q3-compare-different-means" title="Permalink to this headline">¶</a></h3>
+<p>Inspect the following distribution summaries and the plot. Answer the questions under <em>obervations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; this will plot and compare two distributions</span>
+<span class="n">mg_lo</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">mg_hi</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=+</span><span class="mi">1</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1">## Print the summaries</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mg_lo</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mg_hi</span><span class="p">)</span>
+
+<span class="c1">## Visualize the distributions</span>
+<span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+        <span class="n">d_lo</span><span class="o">=</span><span class="n">mg_lo</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">),</span>
+        <span class="n">d_hi</span><span class="o">=</span><span class="n">mg_hi</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_pivot_longer</span><span class="p">(</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;d_lo&quot;</span><span class="p">,</span> <span class="s2">&quot;d_hi&quot;</span><span class="p">],</span>
+        <span class="n">names_to</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;.value&quot;</span><span class="p">,</span> <span class="s2">&quot;distribution&quot;</span><span class="p">],</span>
+        <span class="n">names_sep</span><span class="o">=</span><span class="s2">&quot;_&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;distribution&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(+0) norm, {&#39;mean&#39;: &#39;-1.000e+00&#39;, &#39;s.d.&#39;: &#39;5.000e-01&#39;, &#39;COV&#39;: -0.5, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
+(+0) norm, {&#39;mean&#39;: &#39;1.000e+00&#39;, &#39;s.d.&#39;: &#39;5.000e-01&#39;, &#39;COV&#39;: 0.5, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/Git/py_grama/grama/tran_pivot.py:471: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+</pre></div>
+</div>
+<img alt="../_images/d19-e-stat04-distributions-solution_30_2.png" src="../_images/d19-e-stat04-distributions-solution_30_2.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761803703805)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="q4-compare-different-standard-deviations">
+<h3><strong>q4</strong> Compare different standard deviations<a class="headerlink" href="#q4-compare-different-standard-deviations" title="Permalink to this headline">¶</a></h3>
 <p>Inspect the following distribution summaries and the plot. Answer the questions under <em>obervations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; this will plot your distribution</span>
-<span class="n">mg_lognorm</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;lognorm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">mg_narrow</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">mg_wide</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1">## Print the summaries</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mg_narrow</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mg_wide</span><span class="p">)</span>
+
+<span class="c1">## Visualize the distributions</span>
+<span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+        <span class="n">d_narrow</span><span class="o">=</span><span class="n">mg_narrow</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">),</span>
+        <span class="n">d_wide</span><span class="o">=</span><span class="n">mg_wide</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_pivot_longer</span><span class="p">(</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;d_narrow&quot;</span><span class="p">,</span> <span class="s2">&quot;d_wide&quot;</span><span class="p">],</span>
+        <span class="n">names_to</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;.value&quot;</span><span class="p">,</span> <span class="s2">&quot;distribution&quot;</span><span class="p">],</span>
+        <span class="n">names_sep</span><span class="o">=</span><span class="s2">&quot;_&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;distribution&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/Git/py_grama/grama/marginals.py:336: RuntimeWarning: divide by zero encountered in double_scalars
+/Users/zach/Git/py_grama/grama/tran_pivot.py:471: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(+0) norm, {&#39;mean&#39;: &#39;0.000e+00&#39;, &#39;s.d.&#39;: &#39;5.000e-01&#39;, &#39;COV&#39;: inf, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
+(+0) norm, {&#39;mean&#39;: &#39;0.000e+00&#39;, &#39;s.d.&#39;: &#39;1.000e+00&#39;, &#39;COV&#39;: inf, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
+</pre></div>
+</div>
+<img alt="../_images/d19-e-stat04-distributions-solution_32_2.png" src="../_images/d19-e-stat04-distributions-solution_32_2.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761803633231)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>What is the standard deviation (<code class="docutils literal notranslate"><span class="pre">sd</span></code>) of the <code class="docutils literal notranslate"><span class="pre">narrow</span></code> distribution? How does that compare with the <code class="docutils literal notranslate"><span class="pre">sd</span></code> of the <code class="docutils literal notranslate"><span class="pre">wide</span></code> distribution?</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">narrow</span></code> distribution has <code class="docutils literal notranslate"><span class="pre">sd</span> <span class="pre">==</span> <span class="pre">0.5</span></code>, the <code class="docutils literal notranslate"><span class="pre">wide</span></code> distribution has <code class="docutils literal notranslate"><span class="pre">sd</span> <span class="pre">==</span> <span class="pre">1.0</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Standard deviation is a measure of “width” of a distribution: In your own words, how does the <code class="docutils literal notranslate"><span class="pre">wide</span></code> distribution compare with the <code class="docutils literal notranslate"><span class="pre">narrow</span></code> distribution?</p>
+<ul>
+<li><p>For the <code class="docutils literal notranslate"><span class="pre">wide</span></code> distribution, larger values (more-negative and more-positive) are more plausible (as measured by a larger density).</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+<div class="section" id="q5-compare-different-skewnesses">
+<h3><strong>q5</strong> Compare different skewnesses<a class="headerlink" href="#q5-compare-different-skewnesses" title="Permalink to this headline">¶</a></h3>
+<p>Inspect the following distribution summaries and the plot. Answer the questions under <em>obervations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; this will plot your distribution</span>
+<span class="n">mg_lognorm</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;lognorm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1">## Print the summaries</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mg_norm</span><span class="p">)</span>
@@ -1038,7 +1214,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(+0) norm, {&#39;mean&#39;: &#39;1.000e+00&#39;, &#39;s.d.&#39;: &#39;3.000e-01&#39;, &#39;COV&#39;: 0.3, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
-(+0) lognorm, {&#39;mean&#39;: &#39;1.000e+00&#39;, &#39;s.d.&#39;: &#39;3.000e-01&#39;, &#39;COV&#39;: 0.3, &#39;skew.&#39;: 0.93, &#39;kurt.&#39;: 4.57}
+(+0) lognorm, {&#39;mean&#39;: &#39;1.000e+00&#39;, &#39;s.d.&#39;: &#39;5.000e-01&#39;, &#39;COV&#39;: 0.5, &#39;skew.&#39;: 1.62, &#39;kurt.&#39;: 8.04}
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/Git/py_grama/grama/tran_pivot.py:471: SettingWithCopyWarning: 
@@ -1047,8 +1223,8 @@ A value is trying to be set on a copy of a slice from a DataFrame
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
 </pre></div>
 </div>
-<img alt="../_images/d19-e-stat04-distributions-solution_30_2.png" src="../_images/d19-e-stat04-distributions-solution_30_2.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8787877877941)&gt;
+<img alt="../_images/d19-e-stat04-distributions-solution_35_2.png" src="../_images/d19-e-stat04-distributions-solution_35_2.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761786467006)&gt;
 </pre></div>
 </div>
 </div>
@@ -1057,7 +1233,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <ul class="simple">
 <li><p>What is the <code class="docutils literal notranslate"><span class="pre">skew.</span></code> of the <code class="docutils literal notranslate"><span class="pre">norm</span></code> distribution? How does that compare with the <code class="docutils literal notranslate"><span class="pre">skew</span></code> of the <code class="docutils literal notranslate"><span class="pre">lognorm</span></code> distribution?</p>
 <ul>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">norm</span></code> distribution has <code class="docutils literal notranslate"><span class="pre">skew.</span> <span class="pre">==</span> <span class="pre">0</span></code>, while the <code class="docutils literal notranslate"><span class="pre">lognorm</span></code> distribution has <code class="docutils literal notranslate"><span class="pre">skew.</span> <span class="pre">==</span> <span class="pre">0.93</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">norm</span></code> distribution has <code class="docutils literal notranslate"><span class="pre">skew.</span> <span class="pre">==</span> <span class="pre">0</span></code>, while the <code class="docutils literal notranslate"><span class="pre">lognorm</span></code> distribution has <code class="docutils literal notranslate"><span class="pre">skew.</span> <span class="pre">==</span> <span class="pre">1.62</span></code>.</p></li>
 </ul>
 </li>
 <li><p>Skewness is related to asymmetry of a distribution: In your own words, how is the lognormal distribution above asymmetric?</p>
@@ -1067,8 +1243,12 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </li>
 </ul>
 <!-- solution-end --></div>
-<div class="section" id="q4-draw-random-values-from-your-distribution">
-<h3><strong>q4</strong> <em>Draw</em> random values from your distribution<a class="headerlink" href="#q4-draw-random-values-from-your-distribution" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="simulating-values">
+<h2>Simulating values<a class="headerlink" href="#simulating-values" title="Permalink to this headline">¶</a></h2>
+<p>With a distribution, we can draw realizations in to generate a synthetic dataset.</p>
+<div class="section" id="q6-draw-random-values-from-your-distribution">
+<h3><strong>q6</strong> <em>Draw</em> random values from your distribution<a class="headerlink" href="#q6-draw-random-values-from-your-distribution" title="Permalink to this headline">¶</a></h3>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">Marginal.r(n)</span></code> method to <em>draw</em> <code class="docutils literal notranslate"><span class="pre">1000</span></code> random values from your distribution. Play with the sample size <code class="docutils literal notranslate"><span class="pre">n</span></code>, and answer the questions under <em>observations</em> below.</p>
 <p><em>Hint</em>: A <em>method</em> is a function that you invoke using dot notation. If the marginal were named <code class="docutils literal notranslate"><span class="pre">mg</span></code>, then you could call the random value method via <code class="docutils literal notranslate"><span class="pre">mg.r(1000)</span></code>.</p>
 <div class="cell docutils container">
@@ -1091,8 +1271,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d19-e-stat04-distributions-solution_33_0.png" src="../_images/d19-e-stat04-distributions-solution_33_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8787890079585)&gt;
+<img alt="../_images/d19-e-stat04-distributions-solution_39_0.png" src="../_images/d19-e-stat04-distributions-solution_39_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761803678434)&gt;
 </pre></div>
 </div>
 </div>
@@ -1100,19 +1280,27 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <p><em>Observations</em></p>
 </div>
 </div>
-<div class="section" id="mean-aka-expectation">
-<h2>Mean (aka Expectation)<a class="headerlink" href="#mean-aka-expectation" title="Permalink to this headline">¶</a></h2>
-<p>The mean</p>
+<div class="section" id="estimating-the-mean">
+<h2>Estimating the Mean<a class="headerlink" href="#estimating-the-mean" title="Permalink to this headline">¶</a></h2>
+<p>The average of multiple realizations <span class="math notranslate nohighlight">\(X_i \sim \rho\)</span> is called the <em>sample mean</em></p>
 <div class="math notranslate nohighlight">
-\[\overline{X} = \frac{1}{n} \sum_{i=1}^n X_i\]</div>
+\[\overline{X} = \frac{1}{n} \sum_{i=1}^n X_i.\]</div>
+<p>The true mean of a distribution is called the <em>expectation</em> <span class="math notranslate nohighlight">\(\mathbb{E}[X]\)</span>. The sample mean will tend to converge to the true mean as the number of realizations <span class="math notranslate nohighlight">\(n\)</span> increases</p>
 <div class="math notranslate nohighlight">
-\[\mathbb{E}[X] = \lim_{n\to\infty} \frac{1}{n} \sum_{i=1}^n X_i\]</div>
-<div class="section" id="qx-estimate-a-sample-mean">
-<h3><strong>qX</strong> Estimate a (sample) mean<a class="headerlink" href="#qx-estimate-a-sample-mean" title="Permalink to this headline">¶</a></h3>
+\[\lim_{n\to\infty} \frac{1}{n} \sum_{i=1}^n X_i = \mathbb{E}[X].\]</div>
+<p>However, when <span class="math notranslate nohighlight">\(n &lt; \infty\)</span>, the sample mean will tend to be different from the true mean of the distribution.</p>
+<div class="section" id="q7-estimate-a-sample-mean">
+<h3><strong>q7</strong> Estimate a (sample) mean<a class="headerlink" href="#q7-estimate-a-sample-mean" title="Permalink to this headline">¶</a></h3>
+<p>Complete the following code to compute the sample mean. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Compute the sample mean</span>
+<span class="c1"># NOTE: No need to edit; this will report the true mean</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mg_norm</span><span class="p">)</span>
+
+<span class="p">(</span>
     <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">mg_norm</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
         <span class="n">x_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
     <span class="p">)</span>
@@ -1121,6 +1309,9 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(+0) norm, {&#39;mean&#39;: &#39;1.000e+00&#39;, &#39;s.d.&#39;: &#39;3.000e-01&#39;, &#39;COV&#39;: 0.3, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1145,7 +1336,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.952582</td>
+      <td>1.037186</td>
     </tr>
   </tbody>
 </table>
@@ -1173,10 +1364,11 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <div class="section" id="probability">
 <h2>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">¶</a></h2>
-<p>Probability is the area under the curve, within a set of interest. For instance, if we were interested in the probability that <span class="math notranslate nohighlight">\(0.5 &lt;= X &lt;= 0.7\)</span>, the following area would be the probability:</p>
+<p>Probability is the area under the density curve, within a set of interest. For instance, if we were interested in the probability that <span class="math notranslate nohighlight">\(0.5 &lt;= X &lt;= 0.7\)</span>, the following area would be the probability:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_tmp</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; run and inspect</span>
+<span class="n">df_tmp</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="n">mg_norm</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
 <span class="p">)</span>
@@ -1197,8 +1389,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d19-e-stat04-distributions-solution_40_0.png" src="../_images/d19-e-stat04-distributions-solution_40_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8787890139814)&gt;
+<img alt="../_images/d19-e-stat04-distributions-solution_46_0.png" src="../_images/d19-e-stat04-distributions-solution_46_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761803643275)&gt;
 </pre></div>
 </div>
 </div>
@@ -1206,7 +1398,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <p>Note that probability is associated with a <em>set</em>—a range of values—not just a single value. Note that the area under the curve for a single value would have zero width, hence zero probability!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_tmp</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; run and inspect</span>
+<span class="n">df_tmp</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">101</span><span class="p">))</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="n">mg_norm</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
 <span class="p">)</span>
@@ -1226,8 +1419,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d19-e-stat04-distributions-solution_42_0.png" src="../_images/d19-e-stat04-distributions-solution_42_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8787856019035)&gt;
+<img alt="../_images/d19-e-stat04-distributions-solution_48_0.png" src="../_images/d19-e-stat04-distributions-solution_48_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761803667339)&gt;
 </pre></div>
 </div>
 </div>
@@ -1239,11 +1432,12 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="math notranslate nohighlight">
 \[\begin{split}1(X \in A) = \left\{\begin{array}{cc} 1 &amp; \text{ if }X \in A \\ 0 &amp; \text{ otherwise}\end{array}\right.\end{split}\]</div>
 <p>This expectation definition is not just math for its own sake; this expectation of the indicator definition is <strong>easy to translate into computer code</strong>.</p>
-<div class="section" id="qx-compute-an-indicator">
-<h3><strong>qX</strong> Compute an indicator<a class="headerlink" href="#qx-compute-an-indicator" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="q8-compute-an-indicator">
+<h3><strong>q8</strong> Compute an indicator<a class="headerlink" href="#q8-compute-an-indicator" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_ind</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: </span>
+<span class="n">df_ind</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">mg_norm</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
 
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
@@ -1264,11 +1458,12 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 </div>
-<div class="section" id="qx-estimate-a-probability">
-<h3><strong>qX</strong> Estimate a probability<a class="headerlink" href="#qx-estimate-a-probability" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="q9-estimate-a-probability">
+<h3><strong>q9</strong> Estimate a probability<a class="headerlink" href="#q9-estimate-a-probability" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: </span>
+<span class="p">(</span>
     <span class="n">df_ind</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span><span class="n">pr</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">ind</span><span class="p">))</span>
 <span class="p">)</span>
@@ -1300,22 +1495,25 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.48</td>
+      <td>0.59</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
 </div>
-<div class="section" id="qx-estimate-a-probability-of-failure">
-<h3><strong>qX</strong> Estimate a probability of failure<a class="headerlink" href="#qx-estimate-a-probability-of-failure" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="probability-of-failure">
+<h2>Probability of Failure<a class="headerlink" href="#probability-of-failure" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="q10-estimate-a-probability-of-failure">
+<h3><strong>q10</strong> Estimate a probability of failure<a class="headerlink" href="#q10-estimate-a-probability-of-failure" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 <div class="section" id="quantiles">
 <h2>Quantiles<a class="headerlink" href="#quantiles" title="Permalink to this headline">¶</a></h2>
 <p>Quantiles “turn around” the idea of probability. With probability we start with a set <span class="math notranslate nohighlight">\(A\)</span> and arrive at a probability value <span class="math notranslate nohighlight">\(p\)</span>. With a <em>quantile</em> we start with a probability value <span class="math notranslate nohighlight">\(p\)</span> and arrive at a single value <span class="math notranslate nohighlight">\(q\)</span>.</p>
-<div class="section" id="qx-compute-a-quantile">
-<h3><strong>qX</strong> Compute a quantile<a class="headerlink" href="#qx-compute-a-quantile" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="q11-compute-a-quantile">
+<h3><strong>q11</strong> Compute a quantile<a class="headerlink" href="#q11-compute-a-quantile" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q_10</span> <span class="o">=</span> <span class="n">mg_norm</span><span class="o">.</span><span class="n">q</span><span class="p">(</span><span class="mf">0.10</span><span class="p">)</span>
@@ -1357,16 +1555,19 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.108</td>
-      <td>0.51</td>
+      <td>0.088</td>
+      <td>0.521</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
 </div>
-<div class="section" id="qx-estimate-a-conservative-strength">
-<h3><strong>qX</strong> Estimate a conservative strength<a class="headerlink" href="#qx-estimate-a-conservative-strength" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="conservative-values">
+<h2>Conservative values<a class="headerlink" href="#conservative-values" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="q12-estimate-a-conservative-strength">
+<h3><strong>q12</strong> Estimate a conservative strength<a class="headerlink" href="#q12-estimate-a-conservative-strength" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
