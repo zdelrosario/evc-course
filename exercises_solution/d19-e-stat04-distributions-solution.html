@@ -304,6 +304,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#to-model-variability">
+     To Model Variability
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#to-summarize-data">
      To Summarize Data
     </a>
@@ -456,11 +461,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q11-compute-a-quantile">
+      <a class="reference internal nav-link" href="#q11-compute-sample-quantiles">
        <strong>
         q11
        </strong>
-       Compute a quantile
+       Compute sample quantiles
       </a>
      </li>
     </ul>
@@ -520,6 +525,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#to-model-variability">
+     To Model Variability
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#to-summarize-data">
      To Summarize Data
     </a>
@@ -672,11 +682,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q11-compute-a-quantile">
+      <a class="reference internal nav-link" href="#q11-compute-sample-quantiles">
        <strong>
         q11
        </strong>
-       Compute a quantile
+       Compute sample quantiles
       </a>
      </li>
     </ul>
@@ -727,13 +737,13 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="tex2jax_ignore mathjax_ignore section" id="motivation-modeling-uncertainty">
 <h1>Motivation: Modeling Uncertainty<a class="headerlink" href="#motivation-modeling-uncertainty" title="Permalink to this headline">¶</a></h1>
 <p>Before we discuss distributions, let’s first talk about <em>why</em> distributions are necessary and useful.</p>
-<div class="section" id="to-summarize-data">
-<h2>To Summarize Data<a class="headerlink" href="#to-summarize-data" title="Permalink to this headline">¶</a></h2>
-<p>A distribution is one way to <em>summarize</em> a dataset. Rather than using a (potentially large) dataset to describe a variable quantity, we can use a distribution.</p>
-<p>Let’s look at a specific dataset of die cast aluminum material properties.</p>
+<div class="section" id="to-model-variability">
+<h2>To Model Variability<a class="headerlink" href="#to-model-variability" title="Permalink to this headline">¶</a></h2>
+<p>Many real physical quantities exhibit <em>variability</em>; that is, different instances of “the same” quantity take different numerical values. This includes things like part geometry (tolerances), a person’s height and weight, and even material properties. Let’s look at a specific dataset of die cast aluminum material properties.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_shewhart</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
+<span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_shewhart</span>
 </pre></div>
 </div>
 </div>
@@ -741,7 +751,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>If we inspect the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> values, we can see that they are quite variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
+<span class="p">(</span>
     <span class="n">df_shewhart</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;tensile_strength&quot;</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">()</span>
@@ -753,16 +764,22 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/stats/stat_bin.py:95: PlotnineWarning: &#39;stat_bin()&#39; using &#39;bins = 7&#39;. Pick better value with &#39;binwidth&#39;.
 </pre></div>
 </div>
-<img alt="../_images/d19-e-stat04-distributions-solution_6_1.png" src="../_images/d19-e-stat04-distributions-solution_6_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761803370954)&gt;
+<img alt="../_images/d19-e-stat04-distributions-solution_7_1.png" src="../_images/d19-e-stat04-distributions-solution_7_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779106334148)&gt;
 </pre></div>
 </div>
 </div>
 </div>
-<p>Fitting a lognormal distribution allows us to summarize this variability. The following code fits a lognormal distribution to the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> data.</p>
+<p>In order to design in the presence of this variability, we need a way to represent this variability in a quantitative fashion. Distributions offer one way to quantitatively describe variability.</p>
+</div>
+<div class="section" id="to-summarize-data">
+<h2>To Summarize Data<a class="headerlink" href="#to-summarize-data" title="Permalink to this headline">¶</a></h2>
+<p>A distribution is one way to <em>summarize</em> a dataset. Rather than using a (potentially large) dataset to describe a variable quantity, we can use a distribution.</p>
+<p>Fitting a lognormal distribution allows us to summarize the variability in <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>. The following code fits a lognormal distribution to the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit a lognormal distribution</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
+<span class="c1"># Fit a lognormal distribution</span>
 <span class="n">mg_tensile_strength</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_fit</span><span class="p">(</span>
     <span class="s2">&quot;lognorm&quot;</span><span class="p">,</span>
     <span class="n">df_shewhart</span><span class="o">.</span><span class="n">tensile_strength</span><span class="p">,</span>
@@ -783,7 +800,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>When we compare the fitted distribution against the data, we can see that the fitted distribution is in the same location and has the same width as the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize the density against the data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
+<span class="c1"># Visualize the density against the data</span>
 <span class="p">(</span>
     <span class="n">df_shewhart</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;tensile_strength&quot;</span><span class="p">))</span>
@@ -801,8 +819,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/stats/stat_bin.py:95: PlotnineWarning: &#39;stat_bin()&#39; using &#39;bins = 7&#39;. Pick better value with &#39;binwidth&#39;.
 </pre></div>
 </div>
-<img alt="../_images/d19-e-stat04-distributions-solution_10_1.png" src="../_images/d19-e-stat04-distributions-solution_10_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761786101977)&gt;
+<img alt="../_images/d19-e-stat04-distributions-solution_12_1.png" src="../_images/d19-e-stat04-distributions-solution_12_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779123879403)&gt;
 </pre></div>
 </div>
 </div>
@@ -814,7 +832,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>For example, a normal distribution can take all values between <span class="math notranslate nohighlight">\(-\infty\)</span> and <span class="math notranslate nohighlight">\(+\infty\)</span>, while a beta distribution has a finite width. The following visual compares the two distribution shapes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normal is unbounded</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
+<span class="c1"># Normal is unbounded</span>
 <span class="n">mg_norm</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="c1"># Beta is strictly bounded</span>
 <span class="n">mg_beta</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;beta&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">skew</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">kurt</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -849,8 +868,8 @@ A value is trying to be set on a copy of a slice from a DataFrame
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
 </pre></div>
 </div>
-<img alt="../_images/d19-e-stat04-distributions-solution_12_1.png" src="../_images/d19-e-stat04-distributions-solution_12_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761786269633)&gt;
+<img alt="../_images/d19-e-stat04-distributions-solution_14_1.png" src="../_images/d19-e-stat04-distributions-solution_14_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779145038065)&gt;
 </pre></div>
 </div>
 </div>
@@ -875,7 +894,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <p>For the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>, we saw a sequence of different values:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
+<span class="p">(</span>
     <span class="n">df_shewhart</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="p">)</span>
@@ -947,7 +967,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <p>Some nomenclature: When we talk about random quantities, we use the term <em>realization</em> (or <em>observation</em>) to refer to a single event that yields a random value, according to a particular distribution. For instance, a single manufactured part will have a realized strength value. If we take multiple realizations, we will tend to see different values. For instance, we saw a large amount of variability among the realized <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> values above.</p>
 <p>A single realization tells us very little about how the distribution tends to behave, but a set of realizations (a <em>sample</em>) will give us a sense of how the random values tend to behave <em>collectively</em>. A distribution is a way to model that collective behavior.</p>
 </div>
-<p><strong>A distribution defines a random variable</strong>. We say that a random variable <span class="math notranslate nohighlight">\(X\)</span> is <em>distributed according to</em> a particular density <span class="math notranslate nohighlight">\(\rho\)</span>, and we express the same statement mathematically as</p>
+<p><strong>A distribution defines a random variable</strong>. We say that a random variable <span class="math notranslate nohighlight">\(X\)</span> is <em>distributed according to</em> a particular distribution <span class="math notranslate nohighlight">\(\rho\)</span>, and we express the same statement mathematically as</p>
 <div class="math notranslate nohighlight">
 \[X \sim \rho.\]</div>
 <p>One way to represent a distribution is with a <em>density function</em>. The following plot displays the density for a normal distribution:</p>
@@ -971,13 +991,13 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d19-e-stat04-distributions-solution_21_0.png" src="../_images/d19-e-stat04-distributions-solution_21_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761803394747)&gt;
+<img alt="../_images/d19-e-stat04-distributions-solution_23_0.png" src="../_images/d19-e-stat04-distributions-solution_23_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779106618103)&gt;
 </pre></div>
 </div>
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">Value</span></code> pictured here corresponds to all of the potential values that the random variable can take, while the <code class="docutils literal notranslate"><span class="pre">Density</span></code> quantitatively describes how likely (or unlikely) each of those values are. Density functions tend to “fall off” towards zero as we move towards more extreme values; these lower regions of the density are called “tails” of the distribution. The smallest values are associated with the “lower” or “left” tail, while the largest values are associated with the “upper” or “right” tail.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Value</span></code> pictured here corresponds to all of the potential values that the random variable can take, while the <code class="docutils literal notranslate"><span class="pre">Density</span></code> quantitatively describes how likely (or unlikely) each of those values are. A value with a higher density will tend to occur more often. Density functions tend to “fall off” towards zero as we move towards more extreme values; these lower regions of the density are called “tails” of the distribution. The smallest values are associated with the “lower” or “left” tail, while the largest values are associated with the “upper” or “right” tail.</p>
 <div class="section" id="q1-define-a-distribution">
 <h3><strong>q1</strong> Define a distribution<a class="headerlink" href="#q1-define-a-distribution" title="Permalink to this headline">¶</a></h3>
 <p>Use the grama helper function <code class="docutils literal notranslate"><span class="pre">gr.marg_mom()</span></code> to define a distribution in terms of its <em>moments</em>. Fit a normal <code class="docutils literal notranslate"><span class="pre">&quot;norm&quot;</span></code> distribution with a mean of <code class="docutils literal notranslate"><span class="pre">1</span></code> and a standard deviation of <code class="docutils literal notranslate"><span class="pre">0.3</span></code>.</p>
@@ -997,8 +1017,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d19-e-stat04-distributions-solution_24_0.png" src="../_images/d19-e-stat04-distributions-solution_24_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761803404620)&gt;
+<img alt="../_images/d19-e-stat04-distributions-solution_26_0.png" src="../_images/d19-e-stat04-distributions-solution_26_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779106627301)&gt;
 </pre></div>
 </div>
 </div>
@@ -1110,19 +1130,32 @@ A value is trying to be set on a copy of a slice from a DataFrame
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
 </pre></div>
 </div>
-<img alt="../_images/d19-e-stat04-distributions-solution_30_2.png" src="../_images/d19-e-stat04-distributions-solution_30_2.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761803703805)&gt;
+<img alt="../_images/d19-e-stat04-distributions-solution_32_2.png" src="../_images/d19-e-stat04-distributions-solution_32_2.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779145236625)&gt;
 </pre></div>
 </div>
 </div>
 </div>
-</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>What is the mean (<code class="docutils literal notranslate"><span class="pre">mean</span></code>) of the <code class="docutils literal notranslate"><span class="pre">lo</span></code> distribution? How does that compare with the <code class="docutils literal notranslate"><span class="pre">mean</span></code> of the <code class="docutils literal notranslate"><span class="pre">hi</span></code> distribution?</p>
+<ul>
+<li><p>For <code class="docutils literal notranslate"><span class="pre">lo</span></code>: <code class="docutils literal notranslate"><span class="pre">mean</span> <span class="pre">==</span> <span class="pre">-1</span></code>, for <code class="docutils literal notranslate"><span class="pre">hi</span></code>: <code class="docutils literal notranslate"><span class="pre">mean</span> <span class="pre">==</span> <span class="pre">+1</span></code>.</p></li>
+</ul>
+</li>
+<li><p>The mean is a measure of the “location” of a distribution: In your own words, how does the <code class="docutils literal notranslate"><span class="pre">lo</span></code> distribution compare with the <code class="docutils literal notranslate"><span class="pre">hi</span></code> distribution?</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">lo</span></code> distribution is shifted to the left (towards more negative values) than the <code class="docutils literal notranslate"><span class="pre">hi</span></code> distribution. Both are identical in shape; they are simply located at different centers.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
 <div class="section" id="q4-compare-different-standard-deviations">
 <h3><strong>q4</strong> Compare different standard deviations<a class="headerlink" href="#q4-compare-different-standard-deviations" title="Permalink to this headline">¶</a></h3>
 <p>Inspect the following distribution summaries and the plot. Answer the questions under <em>obervations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; this will plot your distribution</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; this will plot and compare distributions</span>
 <span class="n">mg_narrow</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">mg_wide</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 
@@ -1161,8 +1194,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 (+0) norm, {&#39;mean&#39;: &#39;0.000e+00&#39;, &#39;s.d.&#39;: &#39;1.000e+00&#39;, &#39;COV&#39;: inf, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
 </pre></div>
 </div>
-<img alt="../_images/d19-e-stat04-distributions-solution_32_2.png" src="../_images/d19-e-stat04-distributions-solution_32_2.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761803633231)&gt;
+<img alt="../_images/d19-e-stat04-distributions-solution_35_2.png" src="../_images/d19-e-stat04-distributions-solution_35_2.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779124034265)&gt;
 </pre></div>
 </div>
 </div>
@@ -1186,7 +1219,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <p>Inspect the following distribution summaries and the plot. Answer the questions under <em>obervations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; this will plot your distribution</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; this will plot and compare distributions</span>
 <span class="n">mg_lognorm</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;lognorm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1">## Print the summaries</span>
@@ -1223,8 +1256,8 @@ A value is trying to be set on a copy of a slice from a DataFrame
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
 </pre></div>
 </div>
-<img alt="../_images/d19-e-stat04-distributions-solution_35_2.png" src="../_images/d19-e-stat04-distributions-solution_35_2.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761786467006)&gt;
+<img alt="../_images/d19-e-stat04-distributions-solution_38_2.png" src="../_images/d19-e-stat04-distributions-solution_38_2.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779124051023)&gt;
 </pre></div>
 </div>
 </div>
@@ -1271,8 +1304,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d19-e-stat04-distributions-solution_39_0.png" src="../_images/d19-e-stat04-distributions-solution_39_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761803678434)&gt;
+<img alt="../_images/d19-e-stat04-distributions-solution_42_0.png" src="../_images/d19-e-stat04-distributions-solution_42_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779124024191)&gt;
 </pre></div>
 </div>
 </div>
@@ -1336,7 +1369,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.037186</td>
+      <td>0.98557</td>
     </tr>
   </tbody>
 </table>
@@ -1360,11 +1393,17 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </ul>
 </li>
 </ul>
-<!-- solution-end --></div>
+<!-- solution-end --><div class="admonition-the-sample-mean-is-a-random-variable admonition">
+<p class="admonition-title">The sample mean is a random variable</p>
+<p>Noting that the sample mean will tend to be different from the true mean highlights the essence of estimation with limited data: The sample mean is itself a random quantity.</p>
+<p>Note that the sample mean (and other estimated quantities) tend to exhibit <em>erroneous variability</em>; there is some true fixed value for the mean, and we see variability only because we have collected a limited amount of data. Increasing our sample size will tend to reduce this variability. Since this uncertainty is due to sampling, it is also called <em>sampling uncertainty</em>.</p>
+</div>
+</div>
 </div>
 <div class="section" id="probability">
 <h2>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">¶</a></h2>
-<p>Probability is the area under the density curve, within a set of interest. For instance, if we were interested in the probability that <span class="math notranslate nohighlight">\(0.5 &lt;= X &lt;= 0.7\)</span>, the following area would be the probability:</p>
+<p>Probability is the area under the density curve, within a set that you specify. Thus probability is associated with both a set <span class="math notranslate nohighlight">\(A\)</span> and a random variable <span class="math notranslate nohighlight">\(X\)</span>. The set <span class="math notranslate nohighlight">\(A\)</span> is chosen to correspond to an <em>event</em> of interest.</p>
+<p>For instance, if we were interested in the probability of the event <span class="math notranslate nohighlight">\(A = \{0.5 &lt;= X &lt;= 0.7\}\)</span>, the following area would be the probability:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; run and inspect</span>
@@ -1389,13 +1428,14 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d19-e-stat04-distributions-solution_46_0.png" src="../_images/d19-e-stat04-distributions-solution_46_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761803643275)&gt;
+<img alt="../_images/d19-e-stat04-distributions-solution_50_0.png" src="../_images/d19-e-stat04-distributions-solution_50_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779145316340)&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <p>Note that probability is associated with a <em>set</em>—a range of values—not just a single value. Note that the area under the curve for a single value would have zero width, hence zero probability!</p>
+<p>The following pictures the case where <span class="math notranslate nohighlight">\(\{X = 1\}\)</span>, an event with just one value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; run and inspect</span>
@@ -1419,8 +1459,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d19-e-stat04-distributions-solution_48_0.png" src="../_images/d19-e-stat04-distributions-solution_48_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8761803667339)&gt;
+<img alt="../_images/d19-e-stat04-distributions-solution_52_0.png" src="../_images/d19-e-stat04-distributions-solution_52_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779124021221)&gt;
 </pre></div>
 </div>
 </div>
@@ -1428,19 +1468,24 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <p>A more mathematical definition for probability is in terms of the expectation</p>
 <div class="math notranslate nohighlight">
 \[\mathbb{P}[X \in A] = \mathbb{E}[1(X \in A)]\]</div>
-<p>where <span class="math notranslate nohighlight">\(1(X \in A)\)</span> is the <em>indicator function</em>, which is just a fancy way of tracking whether or not a point lands in the set <span class="math notranslate nohighlight">\(A\)</span>. The function takes values <span class="math notranslate nohighlight">\(1,0\)</span> depending on whether or not a value <span class="math notranslate nohighlight">\(X\)</span> lands inside the set <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(1(X \in A)\)</span> is the <em>indicator function</em>, which is just a compact way of tracking whether or not a point lands in the set <span class="math notranslate nohighlight">\(A\)</span>. The function takes values <span class="math notranslate nohighlight">\(1,0\)</span> depending on whether or not a value <span class="math notranslate nohighlight">\(X\)</span> lands inside the set <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}1(X \in A) = \left\{\begin{array}{cc} 1 &amp; \text{ if }X \in A \\ 0 &amp; \text{ otherwise}\end{array}\right.\end{split}\]</div>
-<p>This expectation definition is not just math for its own sake; this expectation of the indicator definition is <strong>easy to translate into computer code</strong>.</p>
+<p>This expectation definition is not just math for its own sake; this expectation of the indicator definition is <strong>easy to translate into computer code</strong>. We can use the sample mean of an indicator to estimate a probability</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[X \in A] \approx \frac{1}{n} \sum_{i=1}^n 1(X_i \in A).\]</div>
+<p>You will use this expression in the next tasks to approximate a probability.</p>
 <div class="section" id="q8-compute-an-indicator">
 <h3><strong>q8</strong> Compute an indicator<a class="headerlink" href="#q8-compute-an-indicator" title="Permalink to this headline">¶</a></h3>
+<p>Compute an indicator for the event <span class="math notranslate nohighlight">\(A = \{X \leq +1\}\)</span>.</p>
+<p><em>Hint</em>: Comparison operators like <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, and <code class="docutils literal notranslate"><span class="pre">==</span></code> return boolean values <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code>. However, python also treats these as numerical values, where <code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">==</span> <span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span> <span class="pre">==</span> <span class="pre">0</span></code>. This means you can use a simple comparison to compute an indicator value!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Compute an indicator for the event where x &lt;= 1</span>
 <span class="n">df_ind</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">mg_norm</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+
         <span class="n">ind</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">,</span>
     <span class="p">)</span>
 <span class="p">)</span>
@@ -1453,20 +1498,118 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <span class="k">assert</span> \
     <span class="p">(</span><span class="nb">all</span><span class="p">(</span><span class="n">df_ind</span><span class="o">.</span><span class="n">ind</span> <span class="o">==</span> <span class="p">(</span><span class="n">df_ind</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">))),</span> \
     <span class="s2">&quot;Your indicator column `ind` is incorrect.&quot;</span>
+
+<span class="n">df_ind</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>ind</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.110060</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.637335</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.473643</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.854875</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.531506</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>0.633529</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>1.215205</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>0.717967</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>0.548411</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>0.664019</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 2 columns</p>
+</div></div></div>
 </div>
 </div>
 <div class="section" id="q9-estimate-a-probability">
 <h3><strong>q9</strong> Estimate a probability<a class="headerlink" href="#q9-estimate-a-probability" title="Permalink to this headline">¶</a></h3>
+<p>Use the definition of probability along with your indicator value to approximate the probability that <span class="math notranslate nohighlight">\(X \leq 1\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: </span>
-<span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Estimate the probability; call that column `pr`</span>
+<span class="n">df_pr</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">df_ind</span>
+
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span><span class="n">pr</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">ind</span><span class="p">))</span>
 <span class="p">)</span>
+
+<span class="c1"># NOTE: No need to edit; use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="s2">&quot;pr&quot;</span> <span class="ow">in</span> <span class="n">df_pr</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;The result df_pr does not have the column `pr`&quot;</span>
+
+<span class="k">assert</span> \
+    <span class="n">df_pr</span><span class="o">.</span><span class="n">pr</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">df_ind</span><span class="o">.</span><span class="n">ind</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> \
+    <span class="s2">&quot;The value of df_pr.pr is incorrect&quot;</span>
+
+<span class="n">df_pr</span>
 </pre></div>
 </div>
 </div>
@@ -1495,7 +1638,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.59</td>
+      <td>0.51</td>
     </tr>
   </tbody>
 </table>
@@ -1505,20 +1648,173 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <div class="section" id="probability-of-failure">
 <h2>Probability of Failure<a class="headerlink" href="#probability-of-failure" title="Permalink to this headline">¶</a></h2>
+<p>Probability is useful as a quantitative measure of a design’s performance. For example, reliability engineers strive to produce designs that have a low <em>probability of failure</em>. This is important for safety-critical applications, such as in the design of buildings, bridges, or aircraft.</p>
+<p>To use probability to describe failure, we need to define an event <span class="math notranslate nohighlight">\(A\)</span> that corresponds to failure for the system we are studying. For example, with the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> of an alloy, we can say failure occurs when the applied stress is greater than the strength. Rendered mathematically, this is the event</p>
+<div class="math notranslate nohighlight">
+\[A_{\text{failure}} = \{\sigma_{\text{strength}} \leq \sigma_{\text{applied}}\}.\]</div>
+<p>The probability of failure is then</p>
+<div class="math notranslate nohighlight">
+\[\text{POF} = \mathbb{P}[A_{\text{failure}}].\]</div>
+<p>We can approximate the probability of failure of a part if we know the applied stress and have a dataset of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> values.</p>
 <div class="section" id="q10-estimate-a-probability-of-failure">
 <h3><strong>q10</strong> Estimate a probability of failure<a class="headerlink" href="#q10-estimate-a-probability-of-failure" title="Permalink to this headline">¶</a></h3>
+<p>Suppose the applied stress is <span class="math notranslate nohighlight">\(\sigma_{\text{applied}} = 25 \times 10^3\)</span> psi. Estimate the probability of failure of a part following the distribution of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> in the <code class="docutils literal notranslate"><span class="pre">df_shewhart</span></code> dataset. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Estimate the probability of failure associated with the applied stress above</span>
+<span class="c1">## provide this as the column `pof`</span>
+<span class="n">df_pof</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_shewhart</span>
+
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">pof</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span> <span class="o">&lt;=</span> <span class="mf">25e3</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># NOTE: No need to edit; use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="s2">&quot;pof&quot;</span> <span class="ow">in</span> <span class="n">df_pof</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;The result df_pof does not have the column `pof`&quot;</span>
+
+<span class="k">assert</span> \
+    <span class="nb">abs</span><span class="p">(</span><span class="n">df_pof</span><span class="o">.</span><span class="n">pof</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-3</span><span class="p">,</span> \
+    <span class="s2">&quot;The value of df_pof.pof is incorrect&quot;</span>
+
+<span class="n">df_pof</span>
+</pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pof</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.05</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>What probability of failure <code class="docutils literal notranslate"><span class="pre">pof</span></code> did you estimate?</p>
+<ul>
+<li><p>I estimate <code class="docutils literal notranslate"><span class="pre">pof</span> <span class="pre">==</span> <span class="pre">0.05</span></code></p></li>
+</ul>
+</li>
+<li><p>Is your value <code class="docutils literal notranslate"><span class="pre">pof</span></code> the <em>true</em> probability of failure? Why or why not?</p>
+<ul>
+<li><p>No; remember that any time we have a limited dataset there is sampling uncertainty. Like the sample mean we computed above, the estimated pof here is not exactly equal to the true pof.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
 </div>
 <div class="section" id="quantiles">
 <h2>Quantiles<a class="headerlink" href="#quantiles" title="Permalink to this headline">¶</a></h2>
-<p>Quantiles “turn around” the idea of probability. With probability we start with a set <span class="math notranslate nohighlight">\(A\)</span> and arrive at a probability value <span class="math notranslate nohighlight">\(p\)</span>. With a <em>quantile</em> we start with a probability value <span class="math notranslate nohighlight">\(p\)</span> and arrive at a single value <span class="math notranslate nohighlight">\(q\)</span>.</p>
-<div class="section" id="q11-compute-a-quantile">
-<h3><strong>q11</strong> Compute a quantile<a class="headerlink" href="#q11-compute-a-quantile" title="Permalink to this headline">¶</a></h3>
+<p>Quantiles “turn around” the idea of probability. With probability we start with a set <span class="math notranslate nohighlight">\(A\)</span> and arrive at a probability value <span class="math notranslate nohighlight">\(p\)</span>. With a <em>quantile</em> we start with a probability value <span class="math notranslate nohighlight">\(p\)</span> and arrive at a set <span class="math notranslate nohighlight">\(A\)</span> that is below a single value <span class="math notranslate nohighlight">\(q\)</span>; that is <span class="math notranslate nohighlight">\(A = \{X \leq q\}\)</span>.</p>
+<p>For instance, for a normal distribution the <code class="docutils literal notranslate"><span class="pre">0.50</span></code> quantile is the value <span class="math notranslate nohighlight">\(q\)</span> where 50% of the probability lies below that value; this will be the middle of the distribution, which happens to be the mean:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q_10</span> <span class="o">=</span> <span class="n">mg_norm</span><span class="o">.</span><span class="n">q</span><span class="p">(</span><span class="mf">0.10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; run and inspect</span>
+<span class="c1"># Compute the 0.50 quantile</span>
+<span class="n">q_mid</span> <span class="o">=</span> <span class="n">mg_norm</span><span class="o">.</span><span class="n">q</span><span class="p">(</span><span class="mf">0.50</span><span class="p">)</span>
+
+<span class="c1"># Visualize</span>
+<span class="n">df_tmp</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="n">mg_norm</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">df_tmp</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_ribbon</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df_tmp</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="mf">0.0</span> <span class="o">&lt;=</span> <span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">q_mid</span><span class="p">),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">),</span>
+        <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;salmon&quot;</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d19-e-stat04-distributions-solution_63_0.png" src="../_images/d19-e-stat04-distributions-solution_63_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779145316346)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, quantiles allow us to target values other than the mean. For instance, we could seek a moderately low value by targeting the <code class="docutils literal notranslate"><span class="pre">0.25</span></code> quantile, which will be the point where 25% of the probability is below the value <span class="math notranslate nohighlight">\(q\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; run and inspect</span>
+<span class="c1"># Compute the 0.25 quantile</span>
+<span class="n">q_lo</span> <span class="o">=</span> <span class="n">mg_norm</span><span class="o">.</span><span class="n">q</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+
+<span class="c1"># Visualize</span>
+<span class="n">df_tmp</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="n">mg_norm</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">df_tmp</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_ribbon</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df_tmp</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="mf">0.0</span> <span class="o">&lt;=</span> <span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">q_lo</span><span class="p">),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">),</span>
+        <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;salmon&quot;</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d19-e-stat04-distributions-solution_65_0.png" src="../_images/d19-e-stat04-distributions-solution_65_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779145337697)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>As with the sample mean and a sample probability, we can compute sample quantiles from a dataset.</p>
+<div class="section" id="q11-compute-sample-quantiles">
+<h3><strong>q11</strong> Compute sample quantiles<a class="headerlink" href="#q11-compute-sample-quantiles" title="Permalink to this headline">¶</a></h3>
+<p>Use the quantile method <code class="docutils literal notranslate"><span class="pre">q()</span></code> to compute the <code class="docutils literal notranslate"><span class="pre">0.10</span></code> and <code class="docutils literal notranslate"><span class="pre">0.50</span></code> quantiles of the <code class="docutils literal notranslate"><span class="pre">mg_norm</span></code> distribution. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Compute the exact 0.10 and 0.50 quantiles of mg_norm</span>
+
+<span class="n">q_10</span> <span class="o">=</span> <span class="n">mg_norm</span><span class="o">.</span><span class="n">q</span><span class="p">(</span><span class="mf">0.10</span><span class="p">)</span>
 <span class="n">q_50</span> <span class="o">=</span> <span class="n">mg_norm</span><span class="o">.</span><span class="n">q</span><span class="p">(</span><span class="mf">0.50</span><span class="p">)</span>
-<span class="c1"># NOTE: No need to edit; use this to check your work</span>
+<span class="c1">## NOTE: No need to edit; use this to check your work</span>
+<span class="c1"># This compute sample quantiles</span>
 <span class="p">(</span>
     <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">mg_norm</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
@@ -1555,59 +1851,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.088</td>
-      <td>0.521</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-</div>
-</div>
-<div class="section" id="conservative-values">
-<h2>Conservative values<a class="headerlink" href="#conservative-values" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="q12-estimate-a-conservative-strength">
-<h3><strong>q12</strong> Estimate a conservative strength<a class="headerlink" href="#q12-estimate-a-conservative-strength" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-    <span class="n">df_shewhart</span> 
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
-        <span class="n">lower</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">),</span>
-        <span class="n">mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span><span class="p">),</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>lower</th>
-      <th>mean</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>26395.0</td>
-      <td>31869.366667</td>
+      <td>0.116</td>
+      <td>0.537</td>
     </tr>
   </tbody>
 </table>
@@ -1615,6 +1860,90 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <p><em>Observations</em></p>
 <ul class="simple">
+<li><p>Are the <code class="docutils literal notranslate"><span class="pre">q_10</span></code> and <code class="docutils literal notranslate"><span class="pre">q_50</span></code> you computed above <em>sample</em> values or <em>true</em> values of <code class="docutils literal notranslate"><span class="pre">mg_norm</span></code>?</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">q_10</span></code> and <code class="docutils literal notranslate"><span class="pre">q_50</span></code> are the <em>true</em> quantiles of <code class="docutils literal notranslate"><span class="pre">mg_norm</span></code>.</p></li>
+</ul>
+</li>
+<li><p>What does the line of code <code class="docutils literal notranslate"><span class="pre">pr_10=gr.mean(DF.x</span> <span class="pre">&lt;=</span> <span class="pre">q_10)</span></code> compute?</p>
+<ul>
+<li><p>This compute the probability that <code class="docutils literal notranslate"><span class="pre">x</span></code> is below the value <code class="docutils literal notranslate"><span class="pre">q_10</span></code></p></li>
+</ul>
+</li>
+<li><p>Why are the values <code class="docutils literal notranslate"><span class="pre">pr_10</span></code> and <code class="docutils literal notranslate"><span class="pre">pr_50</span></code> not <em>exactly</em> equal to the probability values used to compute <code class="docutils literal notranslate"><span class="pre">q_10</span></code> and <code class="docutils literal notranslate"><span class="pre">q_50</span></code>?</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pr_10</span></code> and <code class="docutils literal notranslate"><span class="pre">pr_50</span></code> are sample probabilities, not true probabilities. Since there is sampling uncertainty, their values will be close to—but not exactly equal to—their true value.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+</div>
+<div class="section" id="conservative-values">
+<h2>Conservative values<a class="headerlink" href="#conservative-values" title="Permalink to this headline">¶</a></h2>
+<p>Quantiles are a useful way to define <em>conservative</em> values associated with a desired probability. Rather than simply “take the mean” of a set of values, we can pick a small or larger probability and compute an associated quantile.</p>
+<p>For instance, since failure under tensile loading occurs when <span class="math notranslate nohighlight">\(\sigma_{\text{strength}} \leq \sigma_{\text{applied}}\)</span>, taking a lower quantile of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> will provide a conservative value appropriate for design.</p>
+<div class="section" id="q12-estimate-a-conservative-strength">
+<h3><strong>q12</strong> Estimate a conservative strength<a class="headerlink" href="#q12-estimate-a-conservative-strength" title="Permalink to this headline">¶</a></h3>
+<p>Compute the empirical <code class="docutils literal notranslate"><span class="pre">0.10</span></code> quantile of the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> in <code class="docutils literal notranslate"><span class="pre">df_shewhart</span></code>; provide this as the column <code class="docutils literal notranslate"><span class="pre">lower</span></code>. Additionally, compute the sample mean of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>; provide this as the column <code class="docutils literal notranslate"><span class="pre">mean</span></code>. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Compute the lower 0.10 quantile and mean of `tensile_strength`</span>
+<span class="n">df_values</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_shewhart</span> 
+
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">lower</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">),</span>
+        <span class="n">mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># NOTE: No need to edit; use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="s2">&quot;lower&quot;</span> <span class="ow">in</span> <span class="n">df_values</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;The result df_values does not have the column `lower`&quot;</span>
+
+<span class="k">assert</span> \
+    <span class="s2">&quot;mean&quot;</span> <span class="ow">in</span> <span class="n">df_values</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;The result df_values does not have the column `mean`&quot;</span>
+
+<span class="k">assert</span> \
+    <span class="n">df_values</span><span class="o">.</span><span class="n">lower</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">df_shewhart</span><span class="o">.</span><span class="n">tensile_strength</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">),</span> \
+    <span class="s2">&quot;incorrect value of `lower`&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df_values</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">df_shewhart</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">pof_lower</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span> <span class="o">&lt;=</span> <span class="n">df_values</span><span class="o">.</span><span class="n">lower</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+        <span class="n">pof_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span> <span class="o">&lt;=</span> <span class="n">df_values</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     lower          mean
+0  26395.0  31869.366667
+
+   pof_lower  pof_mean
+0        0.1       0.5
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Are the <code class="docutils literal notranslate"><span class="pre">lower</span></code> and <code class="docutils literal notranslate"><span class="pre">mean</span></code> values that you computed <em>sample</em> values or <em>true</em> values?</p>
+<ul>
+<li><p>These are both <em>sample</em> values, as they are computed from a dataset.</p></li>
+</ul>
+</li>
+<li><p>What probability of failure <code class="docutils literal notranslate"><span class="pre">pof</span></code> is associated with the <code class="docutils literal notranslate"><span class="pre">lower</span></code> value? What probability of failure <code class="docutils literal notranslate"><span class="pre">pof</span></code> is associated with the <code class="docutils literal notranslate"><span class="pre">mean</span></code>?</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">lower</span></code> value is associated with <code class="docutils literal notranslate"><span class="pre">pof</span> <span class="pre">==</span> <span class="pre">0.1</span></code>; the <code class="docutils literal notranslate"><span class="pre">mean</span></code> value is associated with <code class="docutils literal notranslate"><span class="pre">pof</span> <span class="pre">==</span> <span class="pre">0.5</span></code>.</p></li>
+</ul>
+</li>
 <li><p>Suppose the observed variability in the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> is real. Which of <code class="docutils literal notranslate"><span class="pre">mean</span></code> or <code class="docutils literal notranslate"><span class="pre">lower</span></code> is safer to use for design purposes? Why?</p>
 <ul>
 <li><p>If the variability is real, then <code class="docutils literal notranslate"><span class="pre">lower</span></code> is definitely safer for design. Real variability means that parts can end up with a strength lower than the <code class="docutils literal notranslate"><span class="pre">mean</span></code>; thus if we design assuming the <code class="docutils literal notranslate"><span class="pre">mean</span></code> value, real parts may end up failing.</p></li>
