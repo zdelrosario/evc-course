@@ -1,0 +1,712 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>c01-titanic &#8212; Data Science for Engineers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/home.html">
+   Data Science for Engineers
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/howto.html">
+   How To Use These Materials
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../frontmatter/exercises.html">
+   Exercise Solutions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d01-e-data00-notebooks-solution.html">
+     Introduction to Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d01-e-vis00-basics-solution.html">
+     Data Visualization Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d02-e-data01-isolate-solution.html">
+     Data Isolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d03-e-stat01-eda-solution.html">
+     Introduction to Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d04-e-grama01-basics-solution.html">
+     Grama Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d05-e-vis01-bar-charts-solution.html">
+     Bar Charts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d08-e-stat02-source-solution.html">
+     Sources of Variability: Real vs. Error
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d10-e-grama02-building-solution.html">
+     Grama Model Building
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d12-e-grama03-eval-solution.html">
+     Grama Model Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d18-e-grama04-ema-solution.html">
+     Exploratory Model Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d19-e-stat04-distributions-solution.html">
+     Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d20-e-grama05-fit-function-solution.html">
+     Fitting Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d21-e-stat05-CI-solution.html">
+     Confidence Intervals and the CLT
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d22-e-stat06-spc-solution.html">
+     Statistical Process Control (SPC) Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d23-e-grama06-fit-univar-solution.html">
+     Fitting Univariate Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d24-e-grama07-fit-multivar-solution.html">
+     Fitting Multivariate Distributions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/challenges_assignment/c01-titanic-assignment.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/challenges_assignment/c01-titanic-assignment.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   c01-titanic
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#background">
+     Background
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initial-look">
+   Initial look
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q1-get-the-basic-facts">
+     <strong>
+      q1
+     </strong>
+     Get the basic facts
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q2-do-some-background-reading">
+     <strong>
+      q2
+     </strong>
+     Do some background reading
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q3-visualize-survivor-count">
+     <strong>
+      q3
+     </strong>
+     Visualize survivor count
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deeper-look">
+   Deeper look
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q4-visualize-proportions">
+     <strong>
+      q4
+     </strong>
+     Visualize proportions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q5-visualize-with-more-variables">
+     <strong>
+      q5
+     </strong>
+     Visualize with more variables
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notes">
+   Notes
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>c01-titanic</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   c01-titanic
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#background">
+     Background
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initial-look">
+   Initial look
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q1-get-the-basic-facts">
+     <strong>
+      q1
+     </strong>
+     Get the basic facts
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q2-do-some-background-reading">
+     <strong>
+      q2
+     </strong>
+     Do some background reading
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q3-visualize-survivor-count">
+     <strong>
+      q3
+     </strong>
+     Visualize survivor count
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deeper-look">
+   Deeper look
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q4-visualize-proportions">
+     <strong>
+      q4
+     </strong>
+     Visualize proportions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q5-visualize-with-more-variables">
+     <strong>
+      q5
+     </strong>
+     Visualize with more variables
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notes">
+   Notes
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="c01-titanic">
+<h1>c01-titanic<a class="headerlink" href="#c01-titanic" title="Permalink to this headline">¶</a></h1>
+<p><em>Purpose</em>: Most datasets have at least a few variables. Part of our task in analyzing a dataset is to understand trends as they vary across these different variables. Unless we’re careful and thorough, we can easily miss these patterns. In this challenge you’ll analyze a dataset with a small number of categorical variables and try to find differences among the groups.</p>
+<p><em>Reading</em>: (Optional) <a class="reference external" href="https://en.wikipedia.org/wiki/RMS_Titanic">Wikipedia article</a> on the RMS Titanic.</p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="c1"># For assertion</span>
+<span class="kn">from</span> <span class="nn">pandas.api.types</span> <span class="kn">import</span> <span class="n">is_numeric_dtype</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p><em>Background</em>: The RMS Titanic sank on its maiden voyage in 1912; about 67% of its passengers died. We will study a dataset summarizing how many passengers of different groups either survived or perished.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; this loads the data</span>
+<span class="n">df_titanic</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;./data/titanic.csv&quot;</span><span class="p">)</span>
+<span class="n">df_titanic</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="initial-look">
+<h1>Initial look<a class="headerlink" href="#initial-look" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="q1-get-the-basic-facts">
+<h2><strong>q1</strong> Get the basic facts<a class="headerlink" href="#q1-get-the-basic-facts" title="Permalink to this headline">¶</a></h2>
+<p>Inspect <code class="docutils literal notranslate"><span class="pre">df_titanic</span></code>. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Inspect df_titanic</span>
+<span class="p">(</span>
+    <span class="n">df_titanic</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="c1"># task-end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>What variables are in the dataset?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="q2-do-some-background-reading">
+<h2><strong>q2</strong> Do some background reading<a class="headerlink" href="#q2-do-some-background-reading" title="Permalink to this headline">¶</a></h2>
+<p>Skim the <a class="reference external" href="https://en.wikipedia.org/wiki/RMS_Titanic">Wikipedia article</a> on the RMS Titanic, and look for a total count of souls aboard. Compare against the total computed below. Are there any differences? Are those differences large or small? What might account for those differences?</p>
+<p>Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; we&#39;ll learn how to do this calculation later</span>
+<span class="p">(</span>
+    <span class="n">df_titanic</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">n</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Observations</strong>:</p>
+<ul class="simple">
+<li><p>Are there any differences between what you read and the <code class="docutils literal notranslate"><span class="pre">total</span></code> persons computed from our dataset?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>If yes, what might account for those differences?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="q3-visualize-survivor-count">
+<h2><strong>q3</strong> Visualize survivor count<a class="headerlink" href="#q3-visualize-survivor-count" title="Permalink to this headline">¶</a></h2>
+<p>Create a plot showing the count of persons who <em>did</em> survive, along with aesthetics for <code class="docutils literal notranslate"><span class="pre">Class</span></code> and <code class="docutils literal notranslate"><span class="pre">Sex</span></code>. Document your observations below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Visualize the count of survivors, along with `Class` and `Sex`</span>
+<span class="p">(</span>
+    <span class="n">df_titanic</span>
+
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Observations</strong>:</p>
+<ul class="simple">
+<li><p>Write your observations here</p>
+<ul>
+<li><p>(Your response here)</p></li>
+<li><p>(Your response here)</p></li>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="deeper-look">
+<h1>Deeper look<a class="headerlink" href="#deeper-look" title="Permalink to this headline">¶</a></h1>
+<p>Raw counts give us a sense of totals, but they are not as useful for understanding differences between groups. This is because the differences we see in counts could be due to either the relative size of the group OR differences in outcomes for those groups. To make comparisons between groups, we should also consider <em>proportions</em>.[1]</p>
+<p>The following code computes proportions within each <code class="docutils literal notranslate"><span class="pre">Class,</span> <span class="pre">Sex,</span> <span class="pre">Age</span></code> group.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_prop</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_titanic</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">Class</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">Sex</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">Age</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+        <span class="n">Total</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">n</span><span class="p">),</span>
+        <span class="n">Prop</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">n</span><span class="o">/</span><span class="n">gr</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">n</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="q4-visualize-proportions">
+<h2><strong>q4</strong> Visualize proportions<a class="headerlink" href="#q4-visualize-proportions" title="Permalink to this headline">¶</a></h2>
+<p>Replicate your visual from q3, but display <code class="docutils literal notranslate"><span class="pre">Prop</span></code> in place of <code class="docutils literal notranslate"><span class="pre">n</span></code>. Document your observations, and note any new/different observations you make in comparison with q3. Is there anything <em>fishy</em> in your plot?</p>
+<p>Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Visualize the count of survivors, along with `Class` and `Sex`</span>
+<span class="p">(</span>
+    <span class="n">df_prop</span>
+
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Write your observations here.</p>
+<ul>
+<li><p>(Your response here)</p></li>
+<li><p>(Your response here)</p></li>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>Is there anything <em>fishy</em> going on in your plot?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="q5-visualize-with-more-variables">
+<h2><strong>q5</strong> Visualize with more variables<a class="headerlink" href="#q5-visualize-with-more-variables" title="Permalink to this headline">¶</a></h2>
+<p>Visualize the proportion <code class="docutils literal notranslate"><span class="pre">Prop</span></code> data showing the group-proportion of occupants who <em>did</em> survive, along with aesthetics for <code class="docutils literal notranslate"><span class="pre">Class</span></code>, <code class="docutils literal notranslate"><span class="pre">Sex</span></code>, <em>and</em> <code class="docutils literal notranslate"><span class="pre">Age</span></code>. Make sure to show the proportions for <em>all</em> survivor groups. Document your observations below.</p>
+<p><em>Hint</em>: You may need to make multiple plots using different filters. Or you can look ahead to <code class="docutils literal notranslate"><span class="pre">e-vis05-multiples</span></code> to learn how to use <code class="docutils literal notranslate"><span class="pre">gr.facet_grid()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK:</span>
+<span class="p">(</span>
+    <span class="n">df_prop</span>
+
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<p>Document your observations below.</p>
+<ul class="simple">
+<li><p>(Your response here)</p></li>
+<li><p>(Your response here)</p></li>
+<li><p>(Your response here)</p></li>
+<li><p>If you saw something <em>fishy</em> in q4 above, use your new plot to explain the fishy-ness.</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="notes">
+<h1>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h1>
+<p>[1] This is basically the same idea as <a class="reference external" href="https://en.wikipedia.org/wiki/Dimensional_analysis">Dimensional Analysis</a>; computing proportions is akin to non-dimensionalizing a quantity.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./challenges_assignment"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Zachary del Rosario<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
