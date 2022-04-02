@@ -1,0 +1,2179 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Descriptive Statistics &#8212; Data Science for Engineers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data: Separating and Uniting Columns" href="d15-e-data04-separate-unite-solution.html" />
+    <link rel="prev" title="Grama Model Evaluation" href="d12-e-grama03-eval-solution.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/home.html">
+   Data Science for Engineers
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/howto.html">
+   How To Use These Materials
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../frontmatter/exercises.html">
+   Exercise Solutions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
+     Introduction to Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
+     Data Visualization Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
+     Data Isolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
+     Introduction to Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
+     Grama Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
+     Bar Charts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d08-e-stat02-source-solution.html">
+     Sources of Variability: Real vs. Error
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d10-e-grama02-building-solution.html">
+     Grama Model Building
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d12-e-grama03-eval-solution.html">
+     Grama Model Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Descriptive Statistics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d15-e-data04-separate-unite-solution.html">
+     Data: Separating and Uniting Columns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d16-e-data05-join-solution.html">
+     Data: Joining Datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d17-e-vis05-multiples-solution.html">
+     Small Multiples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d18-e-grama04-ema-solution.html">
+     Exploratory Model Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d19-e-stat04-distributions-solution.html">
+     Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d20-e-grama05-fit-function-solution.html">
+     Fitting Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d21-e-stat05-CI-solution.html">
+     Confidence Intervals and the CLT
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d22-e-stat06-spc-solution.html">
+     Statistical Process Control (SPC) Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">
+     Fitting Univariate Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">
+     Fitting Multivariate Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d25-e-grama08-duu-solution.html">
+     Design Under Uncertainty
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/exercises_solution/d14-e-stat03-descriptive-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d14-e-stat03-descriptive-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Descriptive Statistics
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistics">
+   Statistics
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#central-tendency">
+     Central Tendency
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q1-compare-conclusions-from-mean-and-median">
+       <strong>
+        q1
+       </strong>
+       Compare conclusions from mean and median
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aside-some-variable-names-are-tricky">
+     Aside: Some variable names are tricky…
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q2-fix-this-code">
+       <strong>
+        q2
+       </strong>
+       Fix this code
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multi-modality">
+     Multi-modality
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#quantiles">
+     Quantiles
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-compute-the-iqr">
+       <strong>
+        q3
+       </strong>
+       Compute the IQR
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spread">
+     Spread
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-compare-conclusions-from-sd-and-iqr">
+       <strong>
+        q4
+       </strong>
+       Compare conclusions from sd and IQR
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dependence">
+     Dependence
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-build-your-intuition-for-correlation">
+       <strong>
+        q5
+       </strong>
+       Build your intuition for correlation
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q6-make-a-prediction">
+       <strong>
+        q6
+       </strong>
+       Make a prediction
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#real-variability-vs-error">
+   Real Variability vs Error
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q7-reason-about-sources-of-variability">
+     <strong>
+      q7
+     </strong>
+     Reason about sources of variability
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q8-select-the-most-consistent-airline">
+     <strong>
+      q8
+     </strong>
+     Select the most consistent airline
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Descriptive Statistics</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Descriptive Statistics
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistics">
+   Statistics
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#central-tendency">
+     Central Tendency
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q1-compare-conclusions-from-mean-and-median">
+       <strong>
+        q1
+       </strong>
+       Compare conclusions from mean and median
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aside-some-variable-names-are-tricky">
+     Aside: Some variable names are tricky…
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q2-fix-this-code">
+       <strong>
+        q2
+       </strong>
+       Fix this code
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multi-modality">
+     Multi-modality
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#quantiles">
+     Quantiles
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-compute-the-iqr">
+       <strong>
+        q3
+       </strong>
+       Compute the IQR
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spread">
+     Spread
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-compare-conclusions-from-sd-and-iqr">
+       <strong>
+        q4
+       </strong>
+       Compare conclusions from sd and IQR
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dependence">
+     Dependence
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-build-your-intuition-for-correlation">
+       <strong>
+        q5
+       </strong>
+       Build your intuition for correlation
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q6-make-a-prediction">
+       <strong>
+        q6
+       </strong>
+       Make a prediction
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#real-variability-vs-error">
+   Real Variability vs Error
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q7-reason-about-sources-of-variability">
+     <strong>
+      q7
+     </strong>
+     Reason about sources of variability
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q8-select-the-most-consistent-airline">
+     <strong>
+      q8
+     </strong>
+     Select the most consistent airline
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="descriptive-statistics">
+<h1>Descriptive Statistics<a class="headerlink" href="#descriptive-statistics" title="Permalink to this headline">¶</a></h1>
+<p><em>Purpose</em>: We will use <em>descriptive statistics</em> to make quantitative summaries of a dataset. Descriptive statistics provide a much more compact description than a visualization, and are important when a data consumer wants “just one number”. However, there are many subtleties to working with descriptive statistics, which we’ll discuss in this exercise.</p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="statistics">
+<h1>Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline">¶</a></h1>
+<p>A <em>statistic</em> is a numerical summary of a sample. Statistics are useful because they provide a useful summary about our data. A histogram gives us a rich summary of a datset: for example the departure delay time in the NYC flight data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: Don&#39;t edit; run and inspect</span>
+<span class="kn">from</span> <span class="nn">nycflights13</span> <span class="kn">import</span> <span class="n">flights</span> <span class="k">as</span> <span class="n">df_flights</span>
+
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;dep_delay&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_x_log10</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/pandas/core/arraylike.py:397: RuntimeWarning: divide by zero encountered in log10
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/pandas/core/arraylike.py:397: RuntimeWarning: invalid value encountered in log10
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/layer.py:324: PlotnineWarning: stat_bin : Removed 208344 rows containing non-finite values.
+</pre></div>
+</div>
+<img alt="../_images/d14-e-stat03-descriptive-solution_4_1.png" src="../_images/d14-e-stat03-descriptive-solution_4_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776875450600)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, we might be interested in a few questions about these data:</p>
+<ul class="simple">
+<li><p>What is a <em>typical</em> value for the departure delay? (Location)</p></li>
+<li><p>How <em>variable</em> are departure delay times? (Spread)</p></li>
+<li><p>How much does departure delay <em>co-vary</em> with distance? (Dependence)</p></li>
+</ul>
+<p>We can give quantitative answers to all these questions using statistics!</p>
+<div class="section" id="central-tendency">
+<h2>Central Tendency<a class="headerlink" href="#central-tendency" title="Permalink to this headline">¶</a></h2>
+<p><em>Central tendency</em> is the idea of where data tend to be “located”—this concept is also called <em>location</em>. It is best thought of as the “center” of the data. The following graph illustrates central tendency, as operationalized by the <em>mean</em> and <em>median</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="c1"># Generate data</span>
+<span class="n">df_standard</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
+
+<span class="c1"># Visualize</span>
+<span class="p">(</span>
+    <span class="n">df_standard</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_density</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_vline</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df_standard</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+            <span class="n">z_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">z</span><span class="p">),</span>
+            <span class="n">z_median</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">z</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_pivot_longer</span><span class="p">(</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;z_mean&quot;</span><span class="p">,</span> <span class="s2">&quot;z_median&quot;</span><span class="p">],</span>
+            <span class="n">names_to</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;.value&quot;</span><span class="p">,</span> <span class="s2">&quot;stat&quot;</span><span class="p">],</span>
+            <span class="n">names_sep</span><span class="o">=</span><span class="s2">&quot;_&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">xintercept</span><span class="o">=</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;stat&quot;</span><span class="p">),</span>
+        <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_color_discrete</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Statistic&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d14-e-stat03-descriptive-solution_7_0.png" src="../_images/d14-e-stat03-descriptive-solution_7_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776909572106)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are two primary measures of central tendency; the <em>mean</em> and <em>median</em>. The mean is the simple <a class="reference external" href="https://en.wikipedia.org/wiki/Arithmetic_mean">arithmetic average</a>: the sum of all values divided by the total number of values. The mean is denoted by <span class="math notranslate nohighlight">\(\overline{x}\)</span> and defined by</p>
+<div class="math notranslate nohighlight">
+\[\overline{X} = \frac{1}{n} \sum_{i=1}^n X_i,\]</div>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> is the number of data points, and the <span class="math notranslate nohighlight">\(X_i\)</span> are the individual values.</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Median">median</a> is the value that separates half the data above and below. Weirdly, there’s no standard symbol for the median, so we’ll just denote it as <span class="math notranslate nohighlight">\(\text{Median}[X]\)</span> to denote the median of a quantity <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>The median is a <em>robust</em> statistic, which is best illustrated by example. Consider the following two samples <code class="docutils literal notranslate"><span class="pre">v_base</span></code> and <code class="docutils literal notranslate"><span class="pre">v_outlier</span></code>. The sample <code class="docutils literal notranslate"><span class="pre">v_outlier</span></code> has an <em>outlier</em>, a value very different from the other values. Observe what value the mean and median take for these different samples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to change this!</span>
+<span class="n">v_base</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">v_outlier</span> <span class="o">=</span> <span class="n">v_base</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">v_outlier</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1e3</span>
+
+<span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+  <span class="n">mean_base</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">v_base</span><span class="p">),</span>
+  <span class="n">median_base</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">v_base</span><span class="p">),</span>
+
+  <span class="n">mean_outlier</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">v_outlier</span><span class="p">),</span>
+  <span class="n">median_outlier</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">v_outlier</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean_base</th>
+      <th>median_base</th>
+      <th>mean_outlier</th>
+      <th>median_outlier</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>169.166667</td>
+      <td>3.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Note that for <code class="docutils literal notranslate"><span class="pre">v_outlier</span></code> the mean is greatly increased, but the median is only slightly changed. It is in this sense that the median is <em>robust</em>—it is robust to outliers. When one has a dataset with outliers, the median is usually a better measure of central tendency [1].</p>
+<p>It can be useful to recognize when the mean and median agree or disagree with each other. For instance, with the flights data we see strong disagreement between the <code class="docutils literal notranslate"><span class="pre">mean</span></code> and <code class="docutils literal notranslate"><span class="pre">median</span></code> of <code class="docutils literal notranslate"><span class="pre">dep_delay</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;dep_delay&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_vline</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df_flights</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+            <span class="n">dep_delayXmean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">),</span>
+            <span class="n">dep_delayXmedian</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_pivot_longer</span><span class="p">(</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dep_delayXmean&quot;</span><span class="p">,</span> <span class="s2">&quot;dep_delayXmedian&quot;</span><span class="p">],</span>
+            <span class="n">names_to</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;.value&quot;</span><span class="p">,</span> <span class="s2">&quot;stat&quot;</span><span class="p">],</span>
+            <span class="n">names_sep</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">xintercept</span><span class="o">=</span><span class="s2">&quot;dep_delay&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;stat&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_color_discrete</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Statistic&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d14-e-stat03-descriptive-solution_11_0.png" src="../_images/d14-e-stat03-descriptive-solution_11_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776893541714)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The median is in the bulk of the negative values, while the mean is pulled higher by the long right tail of the distribution.</p>
+<div class="section" id="q1-compare-conclusions-from-mean-and-median">
+<h3><strong>q1</strong> Compare conclusions from mean and median<a class="headerlink" href="#q1-compare-conclusions-from-mean-and-median" title="Permalink to this headline">¶</a></h3>
+<p>The following code computes the mean and median <code class="docutils literal notranslate"><span class="pre">dep_delay</span></code> for each carrier, and sorts based on mean. Duplicate the code, and sort by median instead. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; adapt this code to sort by median</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">carrier</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">),</span>
+        <span class="n">median</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_arrange</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">desc</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">]))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>mean</th>
+      <th>median</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>F9</td>
+      <td>20.215543</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>EV</td>
+      <td>19.955390</td>
+      <td>-1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>YV</td>
+      <td>18.996330</td>
+      <td>-2.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>FL</td>
+      <td>18.726075</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>WN</td>
+      <td>17.711744</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; adapt this code to sort by median</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">carrier</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">),</span>
+        <span class="n">median</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_arrange</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">desc</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;median&quot;</span><span class="p">]))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>mean</th>
+      <th>median</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>FL</td>
+      <td>18.726075</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>WN</td>
+      <td>17.711744</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>F9</td>
+      <td>20.215543</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>UA</td>
+      <td>12.106073</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>VX</td>
+      <td>12.869421</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Which carriers show up in the top 5 in both lists?</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">F9</span></code>, <code class="docutils literal notranslate"><span class="pre">FL</span></code>, <code class="docutils literal notranslate"><span class="pre">WN</span></code></p></li>
+</ul>
+</li>
+<li><p>Which carriers show up in the top 5 for only <em>one</em> of the lists?</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">EV</span></code> and <code class="docutils literal notranslate"><span class="pre">WN</span></code> (Mean); <code class="docutils literal notranslate"><span class="pre">UA</span></code> and <code class="docutils literal notranslate"><span class="pre">VX</span></code> (Median)</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+</div>
+<div class="section" id="aside-some-variable-names-are-tricky">
+<h2>Aside: Some variable names are tricky…<a class="headerlink" href="#aside-some-variable-names-are-tricky" title="Permalink to this headline">¶</a></h2>
+<p>There’s an issue we’ll start to run into as we start naming columns the same as builtin functions. For instance, the following code will throw an error:</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: This will throw a huge, scary error!</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="c1">## Here we assign a new column with the name `mean`</span>
+        <span class="n">mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+        <span class="c1">## Here we attempt to access that `mean` column, but it goes wrong....</span>
+        <span class="n">mean2x</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">mean</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="nn">Input In [8],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">## NOTE: This will throw a huge, scary error!</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="p">(</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">df_flights</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="c1">## Here we assign a new column with the name `mean`</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="n">mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>         <span class="c1">## Here we attempt to access that `mean` column, but it goes wrong....</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>         <span class="n">mean2x</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">mean</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="p">)</span>
+
+<span class="nn">File ~/Git/py_grama/grama/tools.py:293,</span> in <span class="ni">pipe.__rrshift__</span><span class="nt">(self, other)</span>
+<span class="g g-Whitespace">    </span><span class="mi">290</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">291</span>         <span class="n">other_copy</span> <span class="o">=</span> <span class="n">copy_meta</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">other_copy</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">293</span> <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">other_copy</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">295</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chained_pipes</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">296</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="fm">__rrshift__</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="nn">File ~/Git/py_grama/grama/tools.py:308,</span> in <span class="ni">pipe.__call__.&lt;locals&gt;.&lt;lambda&gt;</span><span class="nt">(x)</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">308</span>     <span class="k">return</span> <span class="n">pipe</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+
+<span class="nn">File ~/Git/py_grama/grama/dfply/base.py:393,</span> in <span class="ni">group_delegation.__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">391</span> <span class="n">grouped_by</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;_grouped_by&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">392</span> <span class="k">if</span> <span class="p">(</span><span class="n">grouped_by</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">([</span><span class="n">g</span> <span class="ow">in</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">grouped_by</span><span class="p">]):</span>
+<span class="ne">--&gt; </span><span class="mi">393</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">395</span> <span class="n">applied</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">397</span> <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+
+<span class="nn">File ~/Git/py_grama/grama/dfply/base.py:393,</span> in <span class="ni">group_delegation.__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">391</span> <span class="n">grouped_by</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;_grouped_by&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">392</span> <span class="k">if</span> <span class="p">(</span><span class="n">grouped_by</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">([</span><span class="n">g</span> <span class="ow">in</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">grouped_by</span><span class="p">]):</span>
+<span class="ne">--&gt; </span><span class="mi">393</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">395</span> <span class="n">applied</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">397</span> <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+
+<span class="nn">File ~/Git/py_grama/grama/dfply/base.py:339,</span> in <span class="ni">IntentionEvaluator.__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">336</span> <span class="n">df</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_recursive_arg_eval</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="ne">--&gt; </span><span class="mi">339</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_recursive_kwarg_eval</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">341</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/Git/py_grama/grama/dfply/base.py:308,</span> in <span class="ni">IntentionEvaluator._recursive_kwarg_eval</span><span class="nt">(self, df, kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span> <span class="n">eval_as_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_eval_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eval_as_label</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span> <span class="n">eval_as_selector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_eval_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eval_as_selector</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">308</span> <span class="k">return</span> <span class="p">{</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>     <span class="n">k</span><span class="p">:</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_symbolic_to_label</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">311</span>         <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">eval_as_label</span>
+<span class="g g-Whitespace">    </span><span class="mi">312</span>         <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_symbolic_to_selector</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">313</span>         <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">eval_as_selector</span>
+<span class="g g-Whitespace">    </span><span class="mi">314</span>         <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_symbolic_eval</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">315</span>         <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">eval_symbols</span>
+<span class="g g-Whitespace">    </span><span class="mi">316</span>         <span class="k">else</span> <span class="n">v</span>
+<span class="g g-Whitespace">    </span><span class="mi">317</span>     <span class="p">)</span>
+<span class="nn">    318     for k, v</span> in <span class="ni">kwargs.items</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">319</span> <span class="p">}</span>
+
+<span class="nn">File ~/Git/py_grama/grama/dfply/base.py:314,</span> in <span class="ni">&lt;dictcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span> <span class="n">eval_as_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_eval_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eval_as_label</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span> <span class="n">eval_as_selector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_eval_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eval_as_selector</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span> <span class="k">return</span> <span class="p">{</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>     <span class="n">k</span><span class="p">:</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_symbolic_to_label</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">311</span>         <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">eval_as_label</span>
+<span class="g g-Whitespace">    </span><span class="mi">312</span>         <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_symbolic_to_selector</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">313</span>         <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">eval_as_selector</span>
+<span class="ne">--&gt; </span><span class="mi">314</span>         <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_symbolic_eval</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">315</span>         <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">eval_symbols</span>
+<span class="g g-Whitespace">    </span><span class="mi">316</span>         <span class="k">else</span> <span class="n">v</span>
+<span class="g g-Whitespace">    </span><span class="mi">317</span>     <span class="p">)</span>
+<span class="nn">    318     for k, v</span> in <span class="ni">kwargs.items</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">319</span> <span class="p">}</span>
+
+<span class="nn">File ~/Git/py_grama/grama/dfply/base.py:279,</span> in <span class="ni">IntentionEvaluator._symbolic_eval</span><span class="nt">(self, df, arg)</span>
+<span class="g g-Whitespace">    </span><span class="mi">278</span> <span class="k">def</span> <span class="nf">_symbolic_eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">279</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_evaluator_loop</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">arg</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_evaluate</span><span class="p">)</span>
+
+<span class="nn">File ~/Git/py_grama/grama/dfply/base.py:276,</span> in <span class="ni">IntentionEvaluator._evaluator_loop</span><span class="nt">(self, df, arg, eval_func)</span>
+<span class="g g-Whitespace">    </span><span class="mi">274</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+<span class="g g-Whitespace">    </span><span class="mi">275</span>     <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_evaluator_loop</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">a_</span><span class="p">,</span> <span class="n">eval_func</span><span class="p">)</span> <span class="k">for</span> <span class="n">a_</span> <span class="ow">in</span> <span class="n">arg</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">276</span> <span class="k">return</span> <span class="n">eval_func</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+<span class="nn">File ~/Git/py_grama/grama/dfply/base.py:227,</span> in <span class="ni">IntentionEvaluator._evaluate</span><span class="nt">(self, df, arg)</span>
+<span class="g g-Whitespace">    </span><span class="mi">225</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">Intention</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">226</span>     <span class="n">negate</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="n">inverted</span>
+<span class="ne">--&gt; </span><span class="mi">227</span>     <span class="n">arg</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">228</span>     <span class="k">if</span> <span class="n">negate</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">229</span>         <span class="n">arg</span> <span class="o">=</span> <span class="o">~</span><span class="n">arg</span>
+
+<span class="nn">File ~/Git/py_grama/grama/dfply/base.py:85,</span> in <span class="ni">Intention.evaluate</span><span class="nt">(self, context)</span>
+<span class="g g-Whitespace">     </span><span class="mi">84</span> <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">85</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+
+<span class="nn">File ~/Git/py_grama/grama/dfply/base.py:190,</span> in <span class="ni">_set_magic_method.&lt;locals&gt;.magic_method.&lt;locals&gt;.&lt;lambda&gt;</span><span class="nt">(x)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span> <span class="k">def</span> <span class="nf">magic_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span>     <span class="k">return</span> <span class="n">Intention</span><span class="p">(</span>
+<span class="ne">--&gt; </span><span class="mi">190</span>         <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">name</span><span class="p">)(</span>
+<span class="g g-Whitespace">    </span><span class="mi">191</span>             <span class="o">*</span><span class="n">_context_args</span><span class="p">(</span><span class="n">args</span><span class="p">)(</span><span class="n">x</span><span class="p">),</span> <span class="o">**</span><span class="n">_context_kwargs</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">192</span>         <span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">193</span>         <span class="n">invert</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">inverted</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">194</span>     <span class="p">)</span>
+
+<span class="ne">AttributeError</span>: &#39;function&#39; object has no attribute &#39;__mul__&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The issue here is a bit technical, but it boils down to the fact that <code class="docutils literal notranslate"><span class="pre">mean</span></code> is now a column of the DataFrame, but also a <em>method</em> that we can call as a function <code class="docutils literal notranslate"><span class="pre">df.mean()</span></code>.</p>
+<p>There’s a way around this issue, which is to access the column through bracket notation <code class="docutils literal notranslate"><span class="pre">df[&quot;column&quot;]</span></code> rather than dot notation <code class="docutils literal notranslate"><span class="pre">df.column</span></code>. This will correctly access the column <code class="docutils literal notranslate"><span class="pre">mean</span></code> rather than the method <code class="docutils literal notranslate"><span class="pre">mean()</span></code>.</p>
+<div class="section" id="q2-fix-this-code">
+<h3><strong>q2</strong> Fix this code<a class="headerlink" href="#q2-fix-this-code" title="Permalink to this headline">¶</a></h3>
+<p>Use bracket <code class="docutils literal notranslate"><span class="pre">[]</span></code> notation to access the <code class="docutils literal notranslate"><span class="pre">&quot;mean&quot;</span></code> column and fix the code below.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Use bracket [] notation to fix the following code</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+
+        <span class="n">mean2x</span><span class="o">=</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean</th>
+      <th>mean2x</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>12.63907</td>
+      <td>25.278141</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="multi-modality">
+<h2>Multi-modality<a class="headerlink" href="#multi-modality" title="Permalink to this headline">¶</a></h2>
+<p>It may not seem like it, but we’re actually <em>making an assumption</em> when we use the mean (or median) as a typical value. Imagine we had the following data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_bimodal</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="mi">300</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=+</span><span class="mi">2</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="mi">300</span><span class="p">)))</span>
+<span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">df_bimodal</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_vline</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df_bimodal</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+            <span class="n">x_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">),</span>
+            <span class="n">x_median</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_pivot_longer</span><span class="p">(</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x_mean&quot;</span><span class="p">,</span> <span class="s2">&quot;x_median&quot;</span><span class="p">],</span>
+            <span class="n">names_to</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;.value&quot;</span><span class="p">,</span> <span class="s2">&quot;stat&quot;</span><span class="p">],</span>
+            <span class="n">names_sep</span><span class="o">=</span><span class="s2">&quot;_&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">xintercept</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;stat&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_color_discrete</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Statistic&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d14-e-stat03-descriptive-solution_23_0.png" src="../_images/d14-e-stat03-descriptive-solution_23_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776875597150)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here the mean and median are both close to zero, but <em>zero is an atypical number</em>! This is partly why we don’t <em>only</em> compute descriptive statistics, but also do a deeper dive into our data. Here, we should probably refuse to give a single typical value; instead, it seems there might really be two populations showing up in the same dataset, so we can give two typical numbers, say <code class="docutils literal notranslate"><span class="pre">-2,</span> <span class="pre">+2</span></code>.</p>
+</div>
+<div class="section" id="quantiles">
+<h2>Quantiles<a class="headerlink" href="#quantiles" title="Permalink to this headline">¶</a></h2>
+<p>Before we can talk about spread, we need to talk about <em>quantiles</em>. A <a class="reference external" href="https://en.wikipedia.org/wiki/Quantile">quantile</a> is a value that separates a user-specified fraction of data (or a distribution). For instance, the median is the <span class="math notranslate nohighlight">\(50\%\)</span> quantile; thus <span class="math notranslate nohighlight">\(\text{Median}[X] = Q_{0.5}[X]\)</span>. We can generalize this idea to talk about any quantile between <span class="math notranslate nohighlight">\(0\%\)</span> and <span class="math notranslate nohighlight">\(100\%\)</span>.</p>
+<p>The following graph visualizes the <span class="math notranslate nohighlight">\(25\%, 50\%, 75\%\)</span> quantiles of a standard normal. Since these are the quarter-quantiles (<span class="math notranslate nohighlight">\(1/4, 2/4, 3/4\)</span>), these are often called the <em>quartiles</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">mg_standard</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="n">mg_standard</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">z</span><span class="p">))</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_segment</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">])</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="n">mg_standard</span><span class="o">.</span><span class="n">q</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">p</span><span class="p">))</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="n">mg_standard</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">z</span><span class="p">)),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">xend</span><span class="o">=</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;factor(p)&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_color_discrete</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Quantiles&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d14-e-stat03-descriptive-solution_26_0.png" src="../_images/d14-e-stat03-descriptive-solution_26_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776931009633)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Note</em>: This code makes use of <em>distributions</em> such as <code class="docutils literal notranslate"><span class="pre">mg_standard</span></code>; we’ll learn more about that in a future exercise. For this exercise, we’re focused more on taking statistics of datasets.</p>
+<p>We’ll use the quartiles to define the <em>interquartile range</em>. First, the <code class="docutils literal notranslate"><span class="pre">quant()</span></code> function computes quantiles of a sample. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to change this! Run for an example</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">dep_delay_25</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">),</span>
+        <span class="n">dep_delay_50</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">),</span>
+        <span class="n">dep_delay_75</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dep_delay_25</th>
+      <th>dep_delay_50</th>
+      <th>dep_delay_75</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-5.0</td>
+      <td>-2.0</td>
+      <td>11.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We provide to <code class="docutils literal notranslate"><span class="pre">gr.quant()</span></code> a column to analyze and a probability level. Remember: a <em>probability</em> is a value between <span class="math notranslate nohighlight">\([0, 1]\)</span>, while a <em>quantile</em> is a value that probably has units, like minutes in the case of <code class="docutils literal notranslate"><span class="pre">dep_delay</span></code>.</p>
+<p>Now we can define the interquartile range:</p>
+<div class="math notranslate nohighlight">
+\[IQR[X] = Q_{0.75}[X] - Q_{0.25}[X],\]</div>
+<p>where <span class="math notranslate nohighlight">\(Q_{p}[X]\)</span> is the <span class="math notranslate nohighlight">\(p\)</span>-th quantile of a sample <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<div class="section" id="q3-compute-the-iqr">
+<h3><strong>q3</strong> Compute the IQR<a class="headerlink" href="#q3-compute-the-iqr" title="Permalink to this headline">¶</a></h3>
+<p>Using the function <code class="docutils literal notranslate"><span class="pre">quantile</span></code>, compute the <em>interquartile range</em>; this is the difference between the <span class="math notranslate nohighlight">\(75%\)</span> and <span class="math notranslate nohighlight">\(25%\)</span> quantiles. Provide this as a column called <code class="docutils literal notranslate"><span class="pre">iqr</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Compute the IQR</span>
+<span class="n">df_standard_iqr</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_standard</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+
+        <span class="n">iqr</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span> <span class="o">-</span> <span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1">## NOTE: Use this to check your work</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_standard_iqr</span><span class="p">)</span>
+
+<span class="k">assert</span> \
+    <span class="s2">&quot;iqr&quot;</span> <span class="ow">in</span> <span class="n">df_standard_iqr</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;df_standard_iqr does not have an `iqr` column&quot;</span>
+<span class="k">assert</span> \
+    <span class="nb">abs</span><span class="p">(</span><span class="n">df_standard_iqr</span><span class="o">.</span><span class="n">iqr</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">gr</span><span class="o">.</span><span class="n">IQR</span><span class="p">(</span><span class="n">df_standard</span><span class="o">.</span><span class="n">z</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mf">1e-3</span><span class="p">,</span> \
+    <span class="s2">&quot;Computed IQR is incorrect&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        iqr
+0  1.250094
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="spread">
+<h2>Spread<a class="headerlink" href="#spread" title="Permalink to this headline">¶</a></h2>
+<p><em>Spread</em> is the concept of how tightly or widely data are <em>spread out</em>. There are two primary measures of spread: the <em>standard deviation</em>, and the <em>interquartile range</em>.</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Standard_deviation">standard deviation</a> (SD) is denoted by <span class="math notranslate nohighlight">\(s\)</span> and defined by</p>
+<div class="math notranslate nohighlight">
+\[s = \sqrt{ \frac{1}{n-1} \sum_{i=1}^n (X_i - \overline{X})^2 },\]</div>
+<p>where <span class="math notranslate nohighlight">\(\overline{X}\)</span> is the mean of the data. Note the factor of <span class="math notranslate nohighlight">\(n-1\)</span> rather than <span class="math notranslate nohighlight">\(n\)</span>: This slippery idea is called <a class="reference external" href="https://en.wikipedia.org/wiki/Bessel%27s_correction">Bessel’s correction</a>. Note that <span class="math notranslate nohighlight">\(\sigma^2\)</span> is called the <em>variance</em>.</p>
+<p>By way of analogy, mean is to standard deviation as median is to IQR: The IQR is a robust measure of spread. Returning to our outlier example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to change this!</span>
+<span class="n">v_base</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">v_outlier</span> <span class="o">=</span> <span class="n">v_base</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">v_outlier</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1e3</span>
+
+<span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+  <span class="n">sd_base</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">sd</span><span class="p">(</span><span class="n">v_base</span><span class="p">),</span>
+  <span class="n">IQR_base</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">IQR</span><span class="p">(</span><span class="n">v_base</span><span class="p">),</span>
+
+  <span class="n">sd_outlier</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">sd</span><span class="p">(</span><span class="n">v_outlier</span><span class="p">),</span>
+  <span class="n">IQR_outlier</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">IQR</span><span class="p">(</span><span class="n">v_outlier</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sd_base</th>
+      <th>IQR_base</th>
+      <th>sd_outlier</th>
+      <th>IQR_outlier</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.581139</td>
+      <td>2.0</td>
+      <td>407.026002</td>
+      <td>2.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="section" id="q4-compare-conclusions-from-sd-and-iqr">
+<h3><strong>q4</strong> Compare conclusions from sd and IQR<a class="headerlink" href="#q4-compare-conclusions-from-sd-and-iqr" title="Permalink to this headline">¶</a></h3>
+<p>Using the code from q2 as a starting point, compute the standard deviation (<code class="docutils literal notranslate"><span class="pre">sd()</span></code>) and interquartile range (<code class="docutils literal notranslate"><span class="pre">IQR()</span></code>), and rank the top five carriers, this time by sd and IQR. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Find top 5 sd and IQR carriers</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">df_flights</span>
+<span class="c1"># task-begin</span>
+    <span class="c1">## TODO: Compute sd and IQR of dep_delay, take top 5 highest sd</span>
+<span class="c1"># task-begin</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">carrier</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">sd</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">sd</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">),</span>
+        <span class="n">IQR</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">IQR</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_arrange</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">desc</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;sd&quot;</span><span class="p">]))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">df_flights</span>
+<span class="c1"># task-begin</span>
+    <span class="c1">## TODO: Compute sd and IQR of dep_delay, take top 5 highest IQR</span>
+<span class="c1"># task-begin</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">carrier</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">sd</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">sd</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">),</span>
+        <span class="n">IQR</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">IQR</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_arrange</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">desc</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;IQR&quot;</span><span class="p">]))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  carrier         sd   IQR
+0      HA  74.109901   6.0
+1      F9  58.362648  22.0
+2      FL  52.661600  21.0
+3      YV  49.172266  30.0
+4      EV  46.552354  30.0
+  carrier         sd   IQR
+0      EV  46.552354  30.0
+1      YV  49.172266  30.0
+2      9E  45.906038  23.0
+3      F9  58.362648  22.0
+4      FL  52.661600  21.0
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Which carriers show up in the top 5 in both lists?</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">F9</span></code>, <code class="docutils literal notranslate"><span class="pre">FL</span></code>, <code class="docutils literal notranslate"><span class="pre">YV</span></code>, <code class="docutils literal notranslate"><span class="pre">EV</span></code></p></li>
+</ul>
+</li>
+<li><p>Which carriers show up in the top 5 for only <em>one</em> of the lists?</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">HA</span></code> (sd); <code class="docutils literal notranslate"><span class="pre">9E</span></code> (IQR)</p></li>
+</ul>
+</li>
+<li><p>Which carrier (among your top-ranked) has the largest difference between <code class="docutils literal notranslate"><span class="pre">sd</span></code> and <code class="docutils literal notranslate"><span class="pre">IQR</span></code>? What might this difference suggest?</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">HA</span></code> has a huge standard deviation, but a relatively small <code class="docutils literal notranslate"><span class="pre">IQR</span></code>. It may be that <code class="docutils literal notranslate"><span class="pre">HA</span></code> has some extreme outlier delays that skew the <code class="docutils literal notranslate"><span class="pre">sd</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+</div>
+<div class="section" id="dependence">
+<h2>Dependence<a class="headerlink" href="#dependence" title="Permalink to this headline">¶</a></h2>
+<p>So far, we’ve talked about descriptive statistics to consider one variable at a time. To conclude, we’ll talk about statistics to consider <em>dependence</em> between two variables in a dataset.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Correlation_and_dependence">Dependence</a>—like location or spread—is a general idea of relation between two variables. For instance, when it comes to flights we’d expect trips between more distant airports to take longer. If we plot <code class="docutils literal notranslate"><span class="pre">distance</span></code> vs <code class="docutils literal notranslate"><span class="pre">air_time</span></code> in a scatterplot, we indeed see this dependence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">0.10</span><span class="p">)</span> <span class="c1"># Subsample the rows for speed</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;air_time&quot;</span><span class="p">,</span> <span class="s2">&quot;distance&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_point : Removed 986 rows containing missing values.
+</pre></div>
+</div>
+<img alt="../_images/d14-e-stat03-descriptive-solution_38_1.png" src="../_images/d14-e-stat03-descriptive-solution_38_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776875660376)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Two flavors of correlation help us make this idea quantitative: the <em>Pearson correlation</em> and <em>Spearman correlation</em>. Unlike our previous quantities for location and spread, these correlations are <em>dimensionless</em> (they have no units), and they are bounded between <span class="math notranslate nohighlight">\([-1, +1]\)</span>.</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient">Pearson correlation</a> is often denoted by <span class="math notranslate nohighlight">\(r_{XY}\)</span>, and it specifies the variables being considered <span class="math notranslate nohighlight">\(X, Y\)</span>. It is defined by</p>
+<div class="math notranslate nohighlight">
+\[r_{XY} = \frac{\sum_{i=1}^n (X_i - \overline{X}) (Y_i - \overline{Y})}{s_X s_Y}.\]</div>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient">Spearman correlation</a> is often denoted by <span class="math notranslate nohighlight">\(\rho_{XY}\)</span>, and is actually defined in terms of the Pearson correlation <span class="math notranslate nohighlight">\(r_{XY}\)</span>, but with the ranks (<span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(n\)</span>) rather than the values <span class="math notranslate nohighlight">\(X_i, Y_i\)</span>.</p>
+<p>For example, we might expect a strong correlation between the <code class="docutils literal notranslate"><span class="pre">air_time</span></code> and the <code class="docutils literal notranslate"><span class="pre">distance</span></code> between airports. The function <code class="docutils literal notranslate"><span class="pre">gr.corr()</span></code> can compute both Pearson and Spearman correlation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">r</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">air_time</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">distance</span><span class="p">,</span> <span class="n">nan_drop</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="c1"># Default is pearson correlation</span>
+        <span class="n">rho</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">air_time</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">distance</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;spearman&quot;</span><span class="p">,</span> <span class="n">nan_drop</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>r</th>
+      <th>rho</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.99065</td>
+      <td>0.984445</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>As expected, we see a strong correlation between <code class="docutils literal notranslate"><span class="pre">air_time</span></code> and <code class="docutils literal notranslate"><span class="pre">distance</span></code> (according to both correlation metrics).</p>
+<p>However, we wouldn’t expect any relation between <code class="docutils literal notranslate"><span class="pre">air_time</span></code> and <code class="docutils literal notranslate"><span class="pre">month</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">r</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">air_time</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">nan_drop</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="c1"># Default is pearson correlation</span>
+        <span class="n">rho</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">air_time</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;spearman&quot;</span><span class="p">,</span> <span class="n">nan_drop</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>r</th>
+      <th>rho</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.010924</td>
+      <td>0.005213</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In the case of a <em>perfect linear relationships</em> the Pearson correlation takes the value <span class="math notranslate nohighlight">\(+1\)</span> (for a positive slope) or <span class="math notranslate nohighlight">\(-1\)</span> for a negative slope.</p>
+<div class="section" id="q5-build-your-intuition-for-correlation">
+<h3><strong>q5</strong> Build your intuition for correlation<a class="headerlink" href="#q5-build-your-intuition-for-correlation" title="Permalink to this headline">¶</a></h3>
+<p>Compute the Pearson correlation between <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code> below. Play with the <code class="docutils literal notranslate"><span class="pre">slope</span></code> and observe the change in the correlation. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Vary the slope and re-run the code below</span>
+<span class="n">slope</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="c1">## NOTE: No need to edit beyond here</span>
+<span class="n">df_line</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">slope</span> <span class="o">*</span> <span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">df_line</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">df_line</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     r
+0  1.0
+</pre></div>
+</div>
+<img alt="../_images/d14-e-stat03-descriptive-solution_45_1.png" src="../_images/d14-e-stat03-descriptive-solution_45_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776892715653)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Observations</strong>:</p>
+<ul class="simple">
+<li><p>For what values of <code class="docutils literal notranslate"><span class="pre">slope</span></code> is the correlation positive?</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">slope</span></code> values greater than 0 have a positive correlation</p></li>
+</ul>
+</li>
+<li><p>For what values of <code class="docutils literal notranslate"><span class="pre">slope</span></code> is the correlation negative?</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">slope</span></code> values less than 0 have a negative correlation</p></li>
+</ul>
+</li>
+<li><p>Is correlation a measure of the slope?</p>
+<ul>
+<li><p><strong>No</strong>; the correlation does not measure slope! Note that in this example, for any nonzero slope, we always find that <span class="math notranslate nohighlight">\(r = \pm 1\)</span>.</p></li>
+</ul>
+</li>
+</ul>
+<p>Note that this means <em>correlation is a measure of dependence</em>; it is <strong>not</strong> a measure of slope! It is better thought of as how <em>strong</em> the relationship between two variables is. A closer-to-zero correlation indicates a noisy relationship between variables, while a closer-to-one (in absolute value) indicates a more perfect, predictable relationship between the variables. For instance, the following code simulates data with different correlations, and facets the data based on the underlying correlation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="c1"># Generate data</span>
+<span class="n">df_correlated</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_grid</span><span class="p">()</span>
+<span class="n">v_corr</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.75</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.25</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.75</span><span class="p">,</span> <span class="o">+</span><span class="mf">1.0</span><span class="p">]</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">df_standard</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">v_corr</span><span class="p">:</span>
+    <span class="n">df_correlated</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df_correlated</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span>
+            <span class="n">df_standard</span>
+            <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+                <span class="c1"># Use the conditional gaussian formula to generate correlated observations</span>
+                <span class="n">w</span><span class="o">=</span><span class="n">r</span> <span class="o">*</span> <span class="n">DF</span><span class="o">.</span><span class="n">z</span> <span class="o">+</span> <span class="n">mg_standard</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="n">gr</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span>
+                <span class="n">r</span><span class="o">=</span><span class="n">r</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="c1"># Visualize</span>
+<span class="p">(</span>
+    <span class="n">df_correlated</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">facet_wrap</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+</pre></div>
+</div>
+<img alt="../_images/d14-e-stat03-descriptive-solution_48_1.png" src="../_images/d14-e-stat03-descriptive-solution_48_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776892708103)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>One of the primary differences between Pearson and Spearman is that Pearson is a <em>linear correlation</em>, while Spearman is a <em>nonlinear correlation</em>.</p>
+<p>For instance, the following data have a perfect <em>relationship</em>. However, the pearson correlation suggests the relationship is imperfect, while the spearman correlation correctly indicates a perfect relationship.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_monotone</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">3.14159</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">,</span> <span class="o">+</span><span class="mf">3.14159</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">df_monotone</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">r</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">y</span><span class="p">),</span>
+        <span class="n">rho</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;spearman&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">df_monotone</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          r  rho
+0  0.846169  1.0
+</pre></div>
+</div>
+<img alt="../_images/d14-e-stat03-descriptive-solution_50_1.png" src="../_images/d14-e-stat03-descriptive-solution_50_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776931057827)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>One more note about functional relationships: Neither Pearson nor Spearman can pick up on arbitrary dependencies.</p>
+</div>
+<div class="section" id="q6-make-a-prediction">
+<h3><strong>q6</strong> Make a prediction<a class="headerlink" href="#q6-make-a-prediction" title="Permalink to this headline">¶</a></h3>
+<p>Run the code chunk below and look at the visualization: Make a prediction about what you think the correlation will be. Then compute the Pearson correlation between <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: Don&#39;t edit; run and inspect</span>
+<span class="n">df_quad</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">51</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">df_quad</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d14-e-stat03-descriptive-solution_53_0.png" src="../_images/d14-e-stat03-descriptive-solution_53_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776931102522)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Compute the correlation between `x` and `y`</span>
+<span class="p">(</span>
+    <span class="n">df_quad</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">r</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">y</span><span class="p">),</span>
+        <span class="n">rho</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;spearman&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>r</th>
+      <th>rho</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.551115e-17</td>
+      <td>0.006699</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Both correlations are near-zero</p></li>
+</ul>
+<p>One last point about correlation: The mean is to Pearson correlation as the median is to Spearman correlation. The median and Spearman’s rho are robust to outliers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_corr_outliers</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">mg_standard</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.9</span> <span class="o">*</span> <span class="n">DF</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.9</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">mg_standard</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">10.1</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">10.1</span><span class="p">],</span>
+        <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">],</span>
+    <span class="p">))</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">df_corr_outliers</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">r</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">y</span><span class="p">),</span>
+        <span class="n">rho</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;spearman&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">df_corr_outliers</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          r       rho
+0  0.611855  0.921675
+</pre></div>
+</div>
+<img alt="../_images/d14-e-stat03-descriptive-solution_57_1.png" src="../_images/d14-e-stat03-descriptive-solution_57_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776893712285)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="real-variability-vs-error">
+<h1>Real Variability vs Error<a class="headerlink" href="#real-variability-vs-error" title="Permalink to this headline">¶</a></h1>
+<p>As we’ve seen in this exercise, we are making <strong>modeling assumptions</strong> even when we do simple things like compute and use the mean. We should use multiple analyses—such as multiple statistics and visual inspection—to fully make sense of a dataset.</p>
+<p>However, beyond simply treating the data as a set of numbers, we should also think critically about what the data <em>mean</em>, and what the sources of variability might be. Recall that sources of variability can be either <a class="reference external" href="https://zdelrosario.github.io/evc-course/exercises_solution/d08-e-stat02-source-solution.html">real or erroneous</a>; that is, the source either affect the physical system we are studying, or it can represent corrupted measurements. Most likely, the variability we see is a combination of both real and erroneous sources.</p>
+<p>To close out this exercise, let’s practice reasoning about sources of variability and choosing appropriate statistics for our analysis.</p>
+<div class="section" id="q7-reason-about-sources-of-variability">
+<h2><strong>q7</strong> Reason about sources of variability<a class="headerlink" href="#q7-reason-about-sources-of-variability" title="Permalink to this headline">¶</a></h2>
+<p>Choose a set of statistics to compute for the <code class="docutils literal notranslate"><span class="pre">dep_delay</span></code> column. Answer the questions under <em>observations</em> below. Note that you will need to compute multiple statistics <em>in response</em> to the questions below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Compute your statistics on `dep_delay`</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">dep_delay_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">),</span>
+        <span class="n">dep_delay_median</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">),</span>
+        <span class="n">pr_early</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dep_delay_mean</th>
+      <th>dep_delay_median</th>
+      <th>pr_early</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>12.63907</td>
+      <td>-2.0</td>
+      <td>0.545095</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Is the variability in <code class="docutils literal notranslate"><span class="pre">dep_delay</span></code> most likely real or erroneous?</p>
+<ul>
+<li><p>Aircraft departures are subject to all sorts of phenomena that could create delays, such as equipment failures, difficulties loading the plane, irate or uncooperative passengers, etc. I find it highly likely that a large fraction of the variability we see here is real.</p></li>
+</ul>
+</li>
+<li><p>Compute the mean of <code class="docutils literal notranslate"><span class="pre">dep_delay</span></code>. Does this summary <em>on its own</em> suggest that departures could occur early?</p>
+<ul>
+<li><p>No; the mean of <code class="docutils literal notranslate"><span class="pre">dep_delay</span></code> is positive (around <code class="docutils literal notranslate"><span class="pre">13</span></code> minutes), which on its own does not suggest that flights could ever depart early.</p></li>
+</ul>
+</li>
+<li><p>Is it ever the case that a plane departs early? How typical is that occurrence?</p>
+<ul>
+<li><p>Yes; the median delay is negative, which tells us that at least half the distribution is negative. In fact a little over half (<code class="docutils literal notranslate"><span class="pre">0.55</span></code>) the sample has a negative <code class="docutils literal notranslate"><span class="pre">dep_delay</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+<div class="section" id="q8-select-the-most-consistent-airline">
+<h2><strong>q8</strong> Select the most consistent airline<a class="headerlink" href="#q8-select-the-most-consistent-airline" title="Permalink to this headline">¶</a></h2>
+<p>Take a look at the questions under <em>observations</em> below; compute the statistics necessary to answer the following questions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Compute your statistics on `dep_delay`</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">carrier</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">dep_delay_iqr</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">IQR</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">),</span>
+        <span class="n">dep_delay_sd</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">sd</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">),</span>
+        <span class="n">dep_delay_median</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">),</span>
+        <span class="n">dep_delay_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">),</span>
+        <span class="n">n</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">n</span><span class="p">(),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_arrange</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay_iqr</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>dep_delay_iqr</th>
+      <th>dep_delay_sd</th>
+      <th>dep_delay_median</th>
+      <th>dep_delay_mean</th>
+      <th>n</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>HA</td>
+      <td>6.0</td>
+      <td>74.109901</td>
+      <td>-4.0</td>
+      <td>4.900585</td>
+      <td>342</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>US</td>
+      <td>7.0</td>
+      <td>28.056334</td>
+      <td>-4.0</td>
+      <td>3.782418</td>
+      <td>20536</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AA</td>
+      <td>10.0</td>
+      <td>37.354861</td>
+      <td>-3.0</td>
+      <td>8.586016</td>
+      <td>32729</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AS</td>
+      <td>10.0</td>
+      <td>31.363032</td>
+      <td>-3.0</td>
+      <td>5.804775</td>
+      <td>714</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>DL</td>
+      <td>10.0</td>
+      <td>39.735052</td>
+      <td>-2.0</td>
+      <td>9.264505</td>
+      <td>48110</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>VX</td>
+      <td>12.0</td>
+      <td>44.815099</td>
+      <td>0.0</td>
+      <td>12.869421</td>
+      <td>5162</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>OO</td>
+      <td>13.0</td>
+      <td>43.065994</td>
+      <td>-6.0</td>
+      <td>12.586207</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>UA</td>
+      <td>15.0</td>
+      <td>35.716597</td>
+      <td>0.0</td>
+      <td>12.106073</td>
+      <td>58665</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>MQ</td>
+      <td>16.0</td>
+      <td>39.184566</td>
+      <td>-3.0</td>
+      <td>10.552041</td>
+      <td>26397</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>B6</td>
+      <td>17.0</td>
+      <td>38.503368</td>
+      <td>-1.0</td>
+      <td>13.022522</td>
+      <td>54635</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>WN</td>
+      <td>19.0</td>
+      <td>43.344355</td>
+      <td>1.0</td>
+      <td>17.711744</td>
+      <td>12275</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>FL</td>
+      <td>21.0</td>
+      <td>52.661600</td>
+      <td>1.0</td>
+      <td>18.726075</td>
+      <td>3260</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>F9</td>
+      <td>22.0</td>
+      <td>58.362648</td>
+      <td>0.5</td>
+      <td>20.215543</td>
+      <td>685</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>9E</td>
+      <td>23.0</td>
+      <td>45.906038</td>
+      <td>-2.0</td>
+      <td>16.725769</td>
+      <td>18460</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>EV</td>
+      <td>30.0</td>
+      <td>46.552354</td>
+      <td>-1.0</td>
+      <td>19.955390</td>
+      <td>54173</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>YV</td>
+      <td>30.0</td>
+      <td>49.172266</td>
+      <td>-2.0</td>
+      <td>18.996330</td>
+      <td>601</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Which <code class="docutils literal notranslate"><span class="pre">carrier</span></code> is the most consistent, in terms of <code class="docutils literal notranslate"><span class="pre">dep_delay</span></code>?</p>
+<ul>
+<li><p>It’s a bit of a toss-up between <code class="docutils literal notranslate"><span class="pre">HA</span></code> (which has the smallest IQR) and <code class="docutils literal notranslate"><span class="pre">US</span></code> (which has the smallest standard deviation). However <code class="docutils literal notranslate"><span class="pre">HA</span></code> has relatively few observations in the dataset (<code class="docutils literal notranslate"><span class="pre">n=342</span></code> for <code class="docutils literal notranslate"><span class="pre">HA</span></code>, cf. <code class="docutils literal notranslate"><span class="pre">n=20536</span></code> for <code class="docutils literal notranslate"><span class="pre">US</span></code>), so it’s less impressive that they are more consistent.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./exercises_solution"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="d12-e-grama03-eval-solution.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Grama Model Evaluation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="d15-e-data04-separate-unite-solution.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data: Separating and Uniting Columns</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Zachary del Rosario<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

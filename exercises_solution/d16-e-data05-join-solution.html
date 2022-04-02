@@ -1,0 +1,2355 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data: Joining Datasets &#8212; Data Science for Engineers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Small Multiples" href="d17-e-vis05-multiples-solution.html" />
+    <link rel="prev" title="Data: Separating and Uniting Columns" href="d15-e-data04-separate-unite-solution.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/home.html">
+   Data Science for Engineers
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/howto.html">
+   How To Use These Materials
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../frontmatter/exercises.html">
+   Exercise Solutions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
+     Introduction to Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
+     Data Visualization Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
+     Data Isolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
+     Introduction to Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
+     Grama Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
+     Bar Charts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d08-e-stat02-source-solution.html">
+     Sources of Variability: Real vs. Error
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d10-e-grama02-building-solution.html">
+     Grama Model Building
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d12-e-grama03-eval-solution.html">
+     Grama Model Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d14-e-stat03-descriptive-solution.html">
+     Descriptive Statistics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d15-e-data04-separate-unite-solution.html">
+     Data: Separating and Uniting Columns
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Data: Joining Datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d17-e-vis05-multiples-solution.html">
+     Small Multiples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d18-e-grama04-ema-solution.html">
+     Exploratory Model Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d19-e-stat04-distributions-solution.html">
+     Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d20-e-grama05-fit-function-solution.html">
+     Fitting Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d21-e-stat05-CI-solution.html">
+     Confidence Intervals and the CLT
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d22-e-stat06-spc-solution.html">
+     Statistical Process Control (SPC) Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">
+     Fitting Univariate Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">
+     Fitting Multivariate Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d25-e-grama08-duu-solution.html">
+     Design Under Uncertainty
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/exercises_solution/d16-e-data05-join-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d16-e-data05-join-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Data: Joining Datasets
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#danger-naive-binding-of-data">
+   Danger! Naive “binding” of data
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q1-what-went-wrong-with-this-bind">
+     <strong>
+      q1
+     </strong>
+     What went wrong with this bind?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-safer-way-joining-datasets">
+   A safer way: “Joining” datasets
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q2-do-a-join">
+     <strong>
+      q2
+     </strong>
+     Do a join
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types-of-joins">
+   Types of joins
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mutating-joins">
+     Mutating joins
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-test-the-joins">
+       <strong>
+        q3
+       </strong>
+       Test the joins
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#visual-aid-types-of-joins">
+       Visual Aid: Types of Joins
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#danger-non-unique-keys">
+     Danger! Non-unique keys
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtering-joins">
+     Filtering joins
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-semi-join-with-multiple-keys">
+       <strong>
+        q4
+       </strong>
+       Semi-join with multiple keys
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#going-further-airports-dataset">
+   Going Further: Airports dataset
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q5-make-a-grid-of-filter-criteria">
+     <strong>
+      q5
+     </strong>
+     Make a “grid” of filter criteria
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q6-count-the-bay-area-carriers">
+     <strong>
+      q6
+     </strong>
+     Count the Bay area carriers
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q7-make-the-data-more-interpretable">
+     <strong>
+      q7
+     </strong>
+     Make the data more interpretable
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Data: Joining Datasets</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Data: Joining Datasets
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#danger-naive-binding-of-data">
+   Danger! Naive “binding” of data
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q1-what-went-wrong-with-this-bind">
+     <strong>
+      q1
+     </strong>
+     What went wrong with this bind?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-safer-way-joining-datasets">
+   A safer way: “Joining” datasets
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q2-do-a-join">
+     <strong>
+      q2
+     </strong>
+     Do a join
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types-of-joins">
+   Types of joins
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mutating-joins">
+     Mutating joins
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-test-the-joins">
+       <strong>
+        q3
+       </strong>
+       Test the joins
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#visual-aid-types-of-joins">
+       Visual Aid: Types of Joins
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#danger-non-unique-keys">
+     Danger! Non-unique keys
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtering-joins">
+     Filtering joins
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-semi-join-with-multiple-keys">
+       <strong>
+        q4
+       </strong>
+       Semi-join with multiple keys
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#going-further-airports-dataset">
+   Going Further: Airports dataset
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q5-make-a-grid-of-filter-criteria">
+     <strong>
+      q5
+     </strong>
+     Make a “grid” of filter criteria
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q6-count-the-bay-area-carriers">
+     <strong>
+      q6
+     </strong>
+     Count the Bay area carriers
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q7-make-the-data-more-interpretable">
+     <strong>
+      q7
+     </strong>
+     Make the data more interpretable
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="data-joining-datasets">
+<h1>Data: Joining Datasets<a class="headerlink" href="#data-joining-datasets" title="Permalink to this headline">¶</a></h1>
+<p><em>Purpose</em>: Often our data are scattered across multiple sets. In this case, we need to be able to <em>join</em> data.</p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="danger-naive-binding-of-data">
+<h1>Danger! Naive “binding” of data<a class="headerlink" href="#danger-naive-binding-of-data" title="Permalink to this headline">¶</a></h1>
+<p>The simplest means we have to combine two datasets is to <em>bind</em> them together. The verb <code class="docutils literal notranslate"><span class="pre">gr.tf_bind_rows()</span></code> binds together two datasets vertically (adds rows to rows), while <code class="docutils literal notranslate"><span class="pre">gr.tf_bind_cols()</span></code> binds two datasets horizontally (adds new columns to the dataset). These are very simple ways to combine datasets; for example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">numbers</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_cols</span><span class="p">(</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">letters</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">])</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>numbers</th>
+      <th>letters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>D</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Binding is appropriate when we have <em>strong knowledge</em> of how our data are structured; we blindly smash together rows or columns to make a new dataframe, so we’d better be sure those rows/columns are in the right order! Otherwise, we may get surprising (and wrong) results….</p>
+<div class="section" id="q1-what-went-wrong-with-this-bind">
+<h2><strong>q1</strong> What went wrong with this bind?<a class="headerlink" href="#q1-what-went-wrong-with-this-bind" title="Permalink to this headline">¶</a></h2>
+<p>Run the following code and answer the questions under <em>observations</em> below.</p>
+<p><em>Hint</em>: If you’re not a Beatles fan, it may be helpful to consult the relevant <a class="reference external" href="https://en.wikipedia.org/wiki/The_Beatles#Personnel">personnel</a> page on Wikipedia.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; run and inspect</span>
+<span class="c1"># Setup</span>
+<span class="n">df_beatles</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+    <span class="n">band</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Beatles&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Paul&quot;</span><span class="p">,</span> <span class="s2">&quot;George&quot;</span><span class="p">,</span> <span class="s2">&quot;Ringo&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">df_beatles_instruments</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+    <span class="n">surname</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;McCartney&quot;</span><span class="p">,</span> <span class="s2">&quot;Harrison&quot;</span><span class="p">,</span> <span class="s2">&quot;Starr&quot;</span><span class="p">,</span> <span class="s2">&quot;Lennon&quot;</span><span class="p">],</span>
+    <span class="n">instrument</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;bass&quot;</span><span class="p">,</span> <span class="s2">&quot;guitar&quot;</span><span class="p">,</span> <span class="s2">&quot;drums&quot;</span><span class="p">,</span> <span class="s2">&quot;guitar&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Attempt to combine the datasets... to disastrous results!</span>
+<span class="p">(</span>
+    <span class="n">df_beatles</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_cols</span><span class="p">(</span><span class="n">df_beatles_instruments</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>band</th>
+      <th>name</th>
+      <th>surname</th>
+      <th>instrument</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Beatles</td>
+      <td>John</td>
+      <td>McCartney</td>
+      <td>bass</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Beatles</td>
+      <td>Paul</td>
+      <td>Harrison</td>
+      <td>guitar</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Beatles</td>
+      <td>George</td>
+      <td>Starr</td>
+      <td>drums</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Beatles</td>
+      <td>Ringo</td>
+      <td>Lennon</td>
+      <td>guitar</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>What went wrong in binding <code class="docutils literal notranslate"><span class="pre">df_beatles</span></code> and <code class="docutils literal notranslate"><span class="pre">df_beatles_instruments</span></code>?</p>
+<ul>
+<li><p>The rows of <code class="docutils literal notranslate"><span class="pre">df_beatles</span></code> were not in the same order as the rows of <code class="docutils literal notranslate"><span class="pre">df_beatles_instruments</span></code>! Now we have absurd combinations such as <code class="docutils literal notranslate"><span class="pre">&quot;Ringo</span> <span class="pre">Lennon&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;George</span> <span class="pre">Starr&quot;</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="a-safer-way-joining-datasets">
+<h1>A safer way: “Joining” datasets<a class="headerlink" href="#a-safer-way-joining-datasets" title="Permalink to this headline">¶</a></h1>
+<p>A safer way to combine two datasets is to <em>not assume they are ordered correctly</em>. Instead, we can use <em>common</em> information to <em>join</em> two datasets. In order to do a join, we must have a set of “keys” by which to combine data from the two datasets. For instance, if we had a DataFrame with both <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">surname</span></code>, we could join to <code class="docutils literal notranslate"><span class="pre">df_beatles1</span></code> by the <code class="docutils literal notranslate"><span class="pre">name</span></code> column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_beatles_surnames</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Paul&quot;</span><span class="p">,</span> <span class="s2">&quot;George&quot;</span><span class="p">,</span> <span class="s2">&quot;Ringo&quot;</span><span class="p">],</span>
+    <span class="n">surname</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Lennon&quot;</span><span class="p">,</span> <span class="s2">&quot;McCartney&quot;</span><span class="p">,</span> <span class="s2">&quot;Harrison&quot;</span><span class="p">,</span> <span class="s2">&quot;Starr&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">df_beatles_names</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_beatles</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_left_join</span><span class="p">(</span><span class="n">df_beatles_surnames</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">df_beatles_names</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>band</th>
+      <th>name</th>
+      <th>surname</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Beatles</td>
+      <td>John</td>
+      <td>Lennon</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Beatles</td>
+      <td>Paul</td>
+      <td>McCartney</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Beatles</td>
+      <td>George</td>
+      <td>Harrison</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Beatles</td>
+      <td>Ringo</td>
+      <td>Starr</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Note that this correctly associates names with surnames.</p>
+<div class="section" id="q2-do-a-join">
+<h2><strong>q2</strong> Do a join<a class="headerlink" href="#q2-do-a-join" title="Permalink to this headline">¶</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">gr.tf_left_join()</span></code> to associate each <code class="docutils literal notranslate"><span class="pre">instrument</span></code> with the correct band member.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Join df_beatles2 correctly to add the `instrument` column</span>
+<span class="n">df_beatles_full</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_beatles_names</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_left_join</span><span class="p">(</span>
+        <span class="n">df_beatles_instruments</span><span class="p">,</span>
+        <span class="n">by</span><span class="o">=</span><span class="s2">&quot;surname&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1">## NOTE: Use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="s2">&quot;instrument&quot;</span> <span class="ow">in</span> <span class="n">df_beatles_full</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;df_beatles_full does not have an `instrument` column&quot;</span>
+
+<span class="k">assert</span> \
+    <span class="n">df_beatles_full</span><span class="p">[</span><span class="n">df_beatles_full</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Ringo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">instrument</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;drums&quot;</span><span class="p">,</span> \
+    <span class="s2">&quot;Ringo Starr played drums!&quot;</span>
+
+<span class="n">df_beatles_full</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>band</th>
+      <th>name</th>
+      <th>surname</th>
+      <th>instrument</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Beatles</td>
+      <td>John</td>
+      <td>Lennon</td>
+      <td>guitar</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Beatles</td>
+      <td>Paul</td>
+      <td>McCartney</td>
+      <td>bass</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Beatles</td>
+      <td>George</td>
+      <td>Harrison</td>
+      <td>guitar</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Beatles</td>
+      <td>Ringo</td>
+      <td>Starr</td>
+      <td>drums</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>There’s a <strong>very important lesson</strong> here: In general, don’t trust <code class="docutils literal notranslate"><span class="pre">gr.tf_bind_cols</span></code>. It’s easy in the example above to tell there’s a problem because the data are <em>small</em>; when working with larger datasets, the software will happily give you the wrong answer if you give it the wrong instructions. Whenever possible, use some form of join to combine datasets.</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="types-of-joins">
+<h1>Types of joins<a class="headerlink" href="#types-of-joins" title="Permalink to this headline">¶</a></h1>
+<p>There are several types of joins:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gr.tf_left_join()</span></code></p></td>
+<td><p>Mutating join</p></td>
+<td><p>Preserves rows in the left DataFrame being joined</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gr.tf_right_join()</span></code></p></td>
+<td><p>Mutating join</p></td>
+<td><p>Preserves rows in the right DataFrame being joined</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gr.tf_inner_join()</span></code></p></td>
+<td><p>Mutating join</p></td>
+<td><p>Preserves rows common to both DataFrames being joined</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gr.tf_outer_join()</span></code></p></td>
+<td><p>Mutating join</p></td>
+<td><p>Preserves all rows in both DataFrames being joined</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gr.tf_semi_join()</span></code></p></td>
+<td><p>Filtering join</p></td>
+<td><p>Returns all rows in left DataFrame that have a match in the right DataFrame</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gr.tf_anti_join()</span></code></p></td>
+<td><p>Filtering join</p></td>
+<td><p>Returns all rows in left DataFrame that have <em>no</em> match in the right DataFrame</p></td>
+</tr>
+</tbody>
+</table>
+<p>We’ll discuss (and use!) each of these below.</p>
+<div class="section" id="mutating-joins">
+<h2>Mutating joins<a class="headerlink" href="#mutating-joins" title="Permalink to this headline">¶</a></h2>
+<p>A <em>mutating join</em> is a join that also performs a mutation—it adds columns to the DataFrame. Like we saw above, we can use a mutating join to add information to a datset. However, there are four different types of mutating</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_beatles_names</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Paul&quot;</span><span class="p">,</span> <span class="s2">&quot;George&quot;</span><span class="p">,</span> <span class="s2">&quot;Ringo&quot;</span><span class="p">,</span> <span class="s2">&quot;George&quot;</span><span class="p">],</span>
+    <span class="n">surname</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Lennon&quot;</span><span class="p">,</span> <span class="s2">&quot;McCartney&quot;</span><span class="p">,</span> <span class="s2">&quot;Harrison&quot;</span><span class="p">,</span> <span class="s2">&quot;Starr&quot;</span><span class="p">,</span> <span class="s2">&quot;Martin&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">df_beatles_roles</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+    <span class="n">surname</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Lennon&quot;</span><span class="p">,</span> <span class="s2">&quot;McCartney&quot;</span><span class="p">,</span> <span class="s2">&quot;Harrison&quot;</span><span class="p">,</span> <span class="s2">&quot;Starr&quot;</span><span class="p">,</span> <span class="s2">&quot;Epstein&quot;</span><span class="p">],</span>
+    <span class="n">role</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Bandmate&quot;</span><span class="p">,</span> <span class="s2">&quot;Bandmate&quot;</span><span class="p">,</span> <span class="s2">&quot;Bandmate&quot;</span><span class="p">,</span> <span class="s2">&quot;Bandmate&quot;</span><span class="p">,</span> <span class="s2">&quot;Manager&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You’ll investigate how the various join types function in the next task:</p>
+<div class="section" id="q3-test-the-joins">
+<h3><strong>q3</strong> Test the joins<a class="headerlink" href="#q3-test-the-joins" title="Permalink to this headline">¶</a></h3>
+<p>Uncomment one line at a time and run the code below. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Uncomment one line at a time and run; document your findings</span>
+<span class="p">(</span>
+    <span class="n">df_beatles_names</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_left_join</span><span class="p">(</span><span class="n">df_beatles_roles</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;surname&quot;</span><span class="p">)</span>
+    <span class="c1"># &gt;&gt; gr.tf_right_join(df_beatles_roles, by=&quot;surname&quot;)</span>
+    <span class="c1"># &gt;&gt; gr.tf_inner_join(df_beatles_roles, by=&quot;surname&quot;)</span>
+    <span class="c1"># &gt;&gt; gr.tf_outer_join(df_beatles_roles, by=&quot;surname&quot;)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>surname</th>
+      <th>role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>John</td>
+      <td>Lennon</td>
+      <td>Bandmate</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Paul</td>
+      <td>McCartney</td>
+      <td>Bandmate</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>George</td>
+      <td>Harrison</td>
+      <td>Bandmate</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Ringo</td>
+      <td>Starr</td>
+      <td>Bandmate</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>George</td>
+      <td>Martin</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Which rows does <code class="docutils literal notranslate"><span class="pre">tf_left_join()</span></code> preserve?</p>
+<ul>
+<li><p>This preserves the rows in the left (first) DataFrame.</p></li>
+</ul>
+</li>
+<li><p>Which rows does <code class="docutils literal notranslate"><span class="pre">tf_right_join()</span></code> preserve?</p>
+<ul>
+<li><p>This preserves the rows in the right (second) DataFrame.</p></li>
+</ul>
+</li>
+<li><p>Which rows does <code class="docutils literal notranslate"><span class="pre">tf_inner_join()</span></code> preserve?</p>
+<ul>
+<li><p>This preserves the rows common to both DataFrames.</p></li>
+</ul>
+</li>
+<li><p>Which rows does <code class="docutils literal notranslate"><span class="pre">tf_outer_join()</span></code> preserve?</p>
+<ul>
+<li><p>This preserves all rows in both DataFrames.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+<div class="section" id="visual-aid-types-of-joins">
+<h3>Visual Aid: Types of Joins<a class="headerlink" href="#visual-aid-types-of-joins" title="Permalink to this headline">¶</a></h3>
+<p>The following visual may help you make sense of the four mutating joins; it depicts the four verbs as Venn diagrams for the left (<code class="docutils literal notranslate"><span class="pre">L</span></code>) and right (<code class="docutils literal notranslate"><span class="pre">R</span></code>) DataFrames in the join.</p>
+<p><img alt="Venn diagrams for four types of joins: left, right, inner, outer" src="../_images/joins.jpg" /></p>
+</div>
+</div>
+<div class="section" id="danger-non-unique-keys">
+<h2>Danger! Non-unique keys<a class="headerlink" href="#danger-non-unique-keys" title="Permalink to this headline">¶</a></h2>
+<p>Note that when we do any sort of join, we need <em>unique</em> keys. We’ll run into trouble if the provided keys do not uniquely identify each row. For example, Harrison and Martin share a given name:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_beatles_names</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>surname</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>John</td>
+      <td>Lennon</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Paul</td>
+      <td>McCartney</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>George</td>
+      <td>Harrison</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Ringo</td>
+      <td>Starr</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>George</td>
+      <td>Martin</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Look at what happens when we join on first <code class="docutils literal notranslate"><span class="pre">name</span></code> only:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; this gives incorrect results due to non-unique keys</span>
+<span class="p">(</span>
+    <span class="n">df_beatles_names</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_full_join</span><span class="p">(</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Paul&quot;</span><span class="p">,</span> <span class="s2">&quot;George&quot;</span><span class="p">,</span> <span class="s2">&quot;Ringo&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">],</span>
+            <span class="n">instrument</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;bass&quot;</span><span class="p">,</span> <span class="s2">&quot;guitar&quot;</span><span class="p">,</span> <span class="s2">&quot;drums&quot;</span><span class="p">,</span> <span class="s2">&quot;guitar&quot;</span><span class="p">]</span>
+        <span class="p">),</span>
+        <span class="n">by</span><span class="o">=</span><span class="s2">&quot;name&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>surname</th>
+      <th>instrument</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>John</td>
+      <td>Lennon</td>
+      <td>guitar</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Paul</td>
+      <td>McCartney</td>
+      <td>bass</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>George</td>
+      <td>Harrison</td>
+      <td>guitar</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>George</td>
+      <td>Martin</td>
+      <td>guitar</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ringo</td>
+      <td>Starr</td>
+      <td>drums</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>George Martin didn’t play the guitar in the Beatles! He was their producer.</p>
+<p>If a single key is not unique, we can use <em>multiple keys</em> for the join:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; using multiple keys corrects the issue</span>
+<span class="p">(</span>
+    <span class="n">df_beatles_names</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_full_join</span><span class="p">(</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Paul&quot;</span><span class="p">,</span> <span class="s2">&quot;George&quot;</span><span class="p">,</span> <span class="s2">&quot;Ringo&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">],</span>
+            <span class="n">surname</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;McCartney&quot;</span><span class="p">,</span> <span class="s2">&quot;Harrison&quot;</span><span class="p">,</span> <span class="s2">&quot;Starr&quot;</span><span class="p">,</span> <span class="s2">&quot;Lennon&quot;</span><span class="p">],</span>
+            <span class="n">instrument</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;bass&quot;</span><span class="p">,</span> <span class="s2">&quot;guitar&quot;</span><span class="p">,</span> <span class="s2">&quot;drums&quot;</span><span class="p">,</span> <span class="s2">&quot;guitar&quot;</span><span class="p">]</span>
+        <span class="p">),</span>
+        <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;surname&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>surname</th>
+      <th>instrument</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>John</td>
+      <td>Lennon</td>
+      <td>guitar</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Paul</td>
+      <td>McCartney</td>
+      <td>bass</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>George</td>
+      <td>Harrison</td>
+      <td>guitar</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Ringo</td>
+      <td>Starr</td>
+      <td>drums</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>George</td>
+      <td>Martin</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="filtering-joins">
+<h2>Filtering joins<a class="headerlink" href="#filtering-joins" title="Permalink to this headline">¶</a></h2>
+<p>Mutating joins add new columns, but <em>filtering joins</em> simply filter the DataFrame. A filter join is particularly helpful when a filter is difficult to express in <code class="docutils literal notranslate"><span class="pre">gr.tf_filter()</span></code>, but easy to express as a set of keys (perhaps with multiple key columns).</p>
+<p>As a first example, we can filter on all of the <code class="docutils literal notranslate"><span class="pre">&quot;George&quot;</span></code>’s with a <code class="docutils literal notranslate"><span class="pre">gr.tf_semi_join()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_beatles_names</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_semi_join</span><span class="p">(</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;George&quot;</span><span class="p">]),</span>
+        <span class="n">by</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>surname</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>George</td>
+      <td>Harrison</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>George</td>
+      <td>Martin</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>As we saw before, a single key will often not be enough to uniquely identify a row. For instance, the following will filter down to a numer of non-Beatle players:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+        <span class="n">surname</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Clapton&quot;</span><span class="p">,</span> <span class="s2">&quot;Harrison&quot;</span><span class="p">,</span> <span class="s2">&quot;Shankar&quot;</span><span class="p">,</span> <span class="s2">&quot;Wooten&quot;</span><span class="p">,</span> <span class="s2">&quot;McCartney&quot;</span><span class="p">],</span>
+        <span class="n">instrument</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;guitar&quot;</span><span class="p">,</span> <span class="s2">&quot;guitar&quot;</span><span class="p">,</span> <span class="s2">&quot;sitar&quot;</span><span class="p">,</span> <span class="s2">&quot;bass&quot;</span><span class="p">,</span> <span class="s2">&quot;bass&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_semi_join</span><span class="p">(</span>
+        <span class="n">df_beatles_instruments</span><span class="p">,</span>
+        <span class="n">by</span><span class="o">=</span><span class="s2">&quot;instrument&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>surname</th>
+      <th>instrument</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Clapton</td>
+      <td>guitar</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Harrison</td>
+      <td>guitar</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Wooten</td>
+      <td>bass</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>McCartney</td>
+      <td>bass</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="section" id="q4-semi-join-with-multiple-keys">
+<h3><strong>q4</strong> Semi-join with multiple keys<a class="headerlink" href="#q4-semi-join-with-multiple-keys" title="Permalink to this headline">¶</a></h3>
+<p>Construct the <code class="docutils literal notranslate"><span class="pre">by</span></code> argument for <code class="docutils literal notranslate"><span class="pre">gr.tf_semi_join()</span></code> below to filter to <em>only</em> persons who were in the Beatles.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Construct the `by` argument below to filter to *only* persons who were in the Beatles</span>
+<span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+        <span class="n">surname</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Clapton&quot;</span><span class="p">,</span> <span class="s2">&quot;Harrison&quot;</span><span class="p">,</span> <span class="s2">&quot;Shankar&quot;</span><span class="p">,</span> <span class="s2">&quot;Wooten&quot;</span><span class="p">,</span> <span class="s2">&quot;McCartney&quot;</span><span class="p">],</span>
+        <span class="n">instrument</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;guitar&quot;</span><span class="p">,</span> <span class="s2">&quot;guitar&quot;</span><span class="p">,</span> <span class="s2">&quot;sitar&quot;</span><span class="p">,</span> <span class="s2">&quot;bass&quot;</span><span class="p">,</span> <span class="s2">&quot;bass&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_semi_join</span><span class="p">(</span>
+        <span class="n">df_beatles_instruments</span><span class="p">,</span>
+
+        <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;instrument&quot;</span><span class="p">,</span> <span class="s2">&quot;surname&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>surname</th>
+      <th>instrument</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Harrison</td>
+      <td>guitar</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>McCartney</td>
+      <td>bass</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="going-further-airports-dataset">
+<h1>Going Further: Airports dataset<a class="headerlink" href="#going-further-airports-dataset" title="Permalink to this headline">¶</a></h1>
+<p>We’ll use the <code class="docutils literal notranslate"><span class="pre">nycflights13</span></code> package to demonstrate joins in a more realistic situation. This is a dataset of flights involving the New York City area during 2013.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nycflights13</span> <span class="kn">import</span> <span class="n">flights</span> <span class="k">as</span> <span class="n">df_flights</span>
+<span class="n">df_flights</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>517.0</td>
+      <td>515</td>
+      <td>2.0</td>
+      <td>830.0</td>
+      <td>819</td>
+      <td>11.0</td>
+      <td>UA</td>
+      <td>1545</td>
+      <td>N14228</td>
+      <td>EWR</td>
+      <td>IAH</td>
+      <td>227.0</td>
+      <td>1400</td>
+      <td>5</td>
+      <td>15</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>533.0</td>
+      <td>529</td>
+      <td>4.0</td>
+      <td>850.0</td>
+      <td>830</td>
+      <td>20.0</td>
+      <td>UA</td>
+      <td>1714</td>
+      <td>N24211</td>
+      <td>LGA</td>
+      <td>IAH</td>
+      <td>227.0</td>
+      <td>1416</td>
+      <td>5</td>
+      <td>29</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>542.0</td>
+      <td>540</td>
+      <td>2.0</td>
+      <td>923.0</td>
+      <td>850</td>
+      <td>33.0</td>
+      <td>AA</td>
+      <td>1141</td>
+      <td>N619AA</td>
+      <td>JFK</td>
+      <td>MIA</td>
+      <td>160.0</td>
+      <td>1089</td>
+      <td>5</td>
+      <td>40</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>544.0</td>
+      <td>545</td>
+      <td>-1.0</td>
+      <td>1004.0</td>
+      <td>1022</td>
+      <td>-18.0</td>
+      <td>B6</td>
+      <td>725</td>
+      <td>N804JB</td>
+      <td>JFK</td>
+      <td>BQN</td>
+      <td>183.0</td>
+      <td>1576</td>
+      <td>5</td>
+      <td>45</td>
+      <td>2013-01-01T10:00:00Z</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554.0</td>
+      <td>600</td>
+      <td>-6.0</td>
+      <td>812.0</td>
+      <td>837</td>
+      <td>-25.0</td>
+      <td>DL</td>
+      <td>461</td>
+      <td>N668DN</td>
+      <td>LGA</td>
+      <td>ATL</td>
+      <td>116.0</td>
+      <td>762</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01T11:00:00Z</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>336771</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>1455</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1634</td>
+      <td>NaN</td>
+      <td>9E</td>
+      <td>3393</td>
+      <td>NaN</td>
+      <td>JFK</td>
+      <td>DCA</td>
+      <td>NaN</td>
+      <td>213</td>
+      <td>14</td>
+      <td>55</td>
+      <td>2013-09-30T18:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336772</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>2200</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2312</td>
+      <td>NaN</td>
+      <td>9E</td>
+      <td>3525</td>
+      <td>NaN</td>
+      <td>LGA</td>
+      <td>SYR</td>
+      <td>NaN</td>
+      <td>198</td>
+      <td>22</td>
+      <td>0</td>
+      <td>2013-10-01T02:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336773</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>1210</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1330</td>
+      <td>NaN</td>
+      <td>MQ</td>
+      <td>3461</td>
+      <td>N535MQ</td>
+      <td>LGA</td>
+      <td>BNA</td>
+      <td>NaN</td>
+      <td>764</td>
+      <td>12</td>
+      <td>10</td>
+      <td>2013-09-30T16:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336774</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>1159</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1344</td>
+      <td>NaN</td>
+      <td>MQ</td>
+      <td>3572</td>
+      <td>N511MQ</td>
+      <td>LGA</td>
+      <td>CLE</td>
+      <td>NaN</td>
+      <td>419</td>
+      <td>11</td>
+      <td>59</td>
+      <td>2013-09-30T15:00:00Z</td>
+    </tr>
+    <tr>
+      <th>336775</th>
+      <td>2013</td>
+      <td>9</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>840</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1020</td>
+      <td>NaN</td>
+      <td>MQ</td>
+      <td>3531</td>
+      <td>N839MQ</td>
+      <td>LGA</td>
+      <td>RDU</td>
+      <td>NaN</td>
+      <td>431</td>
+      <td>8</td>
+      <td>40</td>
+      <td>2013-09-30T12:00:00Z</td>
+    </tr>
+  </tbody>
+</table>
+<p>336776 rows × 19 columns</p>
+</div></div></div>
+</div>
+<div class="section" id="q5-make-a-grid-of-filter-criteria">
+<h2><strong>q5</strong> Make a “grid” of filter criteria<a class="headerlink" href="#q5-make-a-grid-of-filter-criteria" title="Permalink to this headline">¶</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">gr.df_grid()</span></code> to make a DataFrame with the rows.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">month</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">dest</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>“SJC”</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>“SFO”</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>“OAK”</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>“SJC”</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>“SFO”</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>“OAK”</p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Note</em>: We’ll use this grid soon in a filtering join.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Use gr.df_grid() to make the DataFrame described above</span>
+
+<span class="n">df_criteria</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_grid</span><span class="p">(</span>
+    <span class="n">month</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+    <span class="n">dest</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SJC&quot;</span><span class="p">,</span> <span class="s2">&quot;SFO&quot;</span><span class="p">,</span> <span class="s2">&quot;OAK&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="c1">## NOTE: Use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="s2">&quot;month&quot;</span> <span class="ow">in</span> <span class="n">df_criteria</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;df_criteria does not have a &#39;month&#39; column&quot;</span>
+
+<span class="k">assert</span> \
+    <span class="s2">&quot;dest&quot;</span> <span class="ow">in</span> <span class="n">df_criteria</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;df_criteria does not have a &#39;dest&#39; column&quot;</span>
+
+<span class="k">assert</span> \
+    <span class="n">df_criteria</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">6</span><span class="p">,</span> \
+    <span class="s2">&quot;df_criteria has the wrong number of columns&quot;</span>
+
+<span class="n">df_criteria</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>month</th>
+      <th>dest</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8</td>
+      <td>SJC</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9</td>
+      <td>SJC</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>8</td>
+      <td>SFO</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>9</td>
+      <td>SFO</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8</td>
+      <td>OAK</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>9</td>
+      <td>OAK</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>There are <em>many</em> carriers in this dataset; let’s figure out which carriers are associated with flights in August (<code class="docutils literal notranslate"><span class="pre">month==8</span></code>) and September (<code class="docutils literal notranslate"><span class="pre">month==9</span></code>) to the San Francisco Bay Area (SJC, SFO, OAK).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_count</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">carrier</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>n</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>9E</td>
+      <td>18460</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AA</td>
+      <td>32729</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AS</td>
+      <td>714</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>B6</td>
+      <td>54635</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>DL</td>
+      <td>48110</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>EV</td>
+      <td>54173</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>F9</td>
+      <td>685</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>FL</td>
+      <td>3260</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>HA</td>
+      <td>342</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>MQ</td>
+      <td>26397</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>OO</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>UA</td>
+      <td>58665</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>US</td>
+      <td>20536</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>VX</td>
+      <td>5162</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>WN</td>
+      <td>12275</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>YV</td>
+      <td>601</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="q6-count-the-bay-area-carriers">
+<h2><strong>q6</strong> Count the Bay area carriers<a class="headerlink" href="#q6-count-the-bay-area-carriers" title="Permalink to this headline">¶</a></h2>
+<p>Perform a semi-join to filter <code class="docutils literal notranslate"><span class="pre">df_flights</span></code> using all the columns of <code class="docutils literal notranslate"><span class="pre">df_criteria</span></code>. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Semi-join with df_criteria</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_semi_join</span><span class="p">(</span><span class="n">df_criteria</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;month&quot;</span><span class="p">,</span> <span class="s2">&quot;dest&quot;</span><span class="p">])</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_count</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">carrier</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>n</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AA</td>
+      <td>239</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>B6</td>
+      <td>306</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>DL</td>
+      <td>324</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>UA</td>
+      <td>1305</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>VX</td>
+      <td>410</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>How many carriers provided flights to the SF Bay Area in the months considered?</p>
+<ul>
+<li><p>There are <code class="docutils literal notranslate"><span class="pre">5</span></code> such carriers</p></li>
+</ul>
+</li>
+<li><p>How does this number of carriers compare with the total number of carriers?</p>
+<ul>
+<li><p>This is considerably fewer carriers!</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --><p>Unless you work in the airline industry, it’s probably difficult to make sense of these carrier codes. Thankfully the <code class="docutils literal notranslate"><span class="pre">nycflights13</span></code> package comes with a dataset that helps disambiguate these codes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nycflights13</span> <span class="kn">import</span> <span class="n">airlines</span> <span class="k">as</span> <span class="n">df_airlines</span>
+<span class="n">df_airlines</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>9E</td>
+      <td>Endeavor Air Inc.</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AA</td>
+      <td>American Airlines Inc.</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AS</td>
+      <td>Alaska Airlines Inc.</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>B6</td>
+      <td>JetBlue Airways</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>DL</td>
+      <td>Delta Air Lines Inc.</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>EV</td>
+      <td>ExpressJet Airlines Inc.</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>F9</td>
+      <td>Frontier Airlines Inc.</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>FL</td>
+      <td>AirTran Airways Corporation</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>HA</td>
+      <td>Hawaiian Airlines Inc.</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>MQ</td>
+      <td>Envoy Air</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>OO</td>
+      <td>SkyWest Airlines Inc.</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>UA</td>
+      <td>United Air Lines Inc.</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>US</td>
+      <td>US Airways Inc.</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>VX</td>
+      <td>Virgin America</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>WN</td>
+      <td>Southwest Airlines Co.</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>YV</td>
+      <td>Mesa Airlines Inc.</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="q7-make-the-data-more-interpretable">
+<h2><strong>q7</strong> Make the data more interpretable<a class="headerlink" href="#q7-make-the-data-more-interpretable" title="Permalink to this headline">¶</a></h2>
+<p>Use the appropriate kind of join to add the <code class="docutils literal notranslate"><span class="pre">name</span></code> column to the results below. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Add the `name` column from `df_airlines`</span>
+<span class="p">(</span>
+    <span class="n">df_flights</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_semi_join</span><span class="p">(</span><span class="n">df_criteria</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;month&quot;</span><span class="p">,</span> <span class="s2">&quot;dest&quot;</span><span class="p">])</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_count</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">carrier</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_left_join</span><span class="p">(</span>
+        <span class="n">df_airlines</span><span class="p">,</span>
+        <span class="n">by</span><span class="o">=</span><span class="s2">&quot;carrier&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>n</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AA</td>
+      <td>239</td>
+      <td>American Airlines Inc.</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>B6</td>
+      <td>306</td>
+      <td>JetBlue Airways</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>DL</td>
+      <td>324</td>
+      <td>Delta Air Lines Inc.</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>UA</td>
+      <td>1305</td>
+      <td>United Air Lines Inc.</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>VX</td>
+      <td>410</td>
+      <td>Virgin America</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Which carrier had the most flights in subset considered?</p>
+<ul>
+<li><p>United Air Lines, by a sizeable fraction.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./exercises_solution"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="d15-e-data04-separate-unite-solution.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Data: Separating and Uniting Columns</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="d17-e-vis05-multiples-solution.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Small Multiples</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Zachary del Rosario<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

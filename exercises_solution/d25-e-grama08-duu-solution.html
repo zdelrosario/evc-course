@@ -1,0 +1,1616 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design Under Uncertainty &#8212; Data Science for Engineers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Fitting Multivariate Distributions" href="d24-e-grama07-fit-multivar-solution.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/home.html">
+   Data Science for Engineers
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/howto.html">
+   How To Use These Materials
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../frontmatter/exercises.html">
+   Exercise Solutions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
+     Introduction to Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
+     Data Visualization Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
+     Data Isolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
+     Introduction to Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
+     Grama Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
+     Bar Charts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d08-e-stat02-source-solution.html">
+     Sources of Variability: Real vs. Error
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d10-e-grama02-building-solution.html">
+     Grama Model Building
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d12-e-grama03-eval-solution.html">
+     Grama Model Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d14-e-stat03-descriptive-solution.html">
+     Descriptive Statistics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d15-e-data04-separate-unite-solution.html">
+     Data: Separating and Uniting Columns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d16-e-data05-join-solution.html">
+     Data: Joining Datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d17-e-vis05-multiples-solution.html">
+     Small Multiples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d18-e-grama04-ema-solution.html">
+     Exploratory Model Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d19-e-stat04-distributions-solution.html">
+     Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d20-e-grama05-fit-function-solution.html">
+     Fitting Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d21-e-stat05-CI-solution.html">
+     Confidence Intervals and the CLT
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d22-e-stat06-spc-solution.html">
+     Statistical Process Control (SPC) Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">
+     Fitting Univariate Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">
+     Fitting Multivariate Distributions
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Design Under Uncertainty
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/exercises_solution/d25-e-grama08-duu-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d25-e-grama08-duu-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Design Under Uncertainty
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uncertainty-in-engineering-systems">
+   Uncertainty in Engineering Systems
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perturbed-design-variables">
+     Perturbed Design Variables
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q1-interpret-the-following-density-plot">
+       <strong>
+        q1
+       </strong>
+       Interpret the following density plot
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q2-set-up-a-perturbation-model">
+       <strong>
+        q2
+       </strong>
+       Set up a perturbation model
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uncertainty-propagation">
+     Uncertainty Propagation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-do-a-sweep-with-propagated-uncertainty">
+       <strong>
+        q3
+       </strong>
+       Do a sweep with propagated uncertainty
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summarizing-variability">
+     Summarizing variability
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-summarize-variability-across-a-sweep">
+       <strong>
+        q4
+       </strong>
+       Summarize variability across a sweep
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#designing-for-uncertainty">
+   Designing for uncertainty
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#robustness">
+     Robustness
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-interpret-this-plot">
+       <strong>
+        q5
+       </strong>
+       Interpret this plot
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reliability">
+     Reliability
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q6-compare-the-reliability-of-designs">
+       <strong>
+        q6
+       </strong>
+       Compare the reliability of designs
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-tolerances">
+     Setting Tolerances
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q7-recommend-reasonable-tolerances">
+       <strong>
+        q7
+       </strong>
+       Recommend reasonable tolerances
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Design Under Uncertainty</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Design Under Uncertainty
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uncertainty-in-engineering-systems">
+   Uncertainty in Engineering Systems
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perturbed-design-variables">
+     Perturbed Design Variables
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q1-interpret-the-following-density-plot">
+       <strong>
+        q1
+       </strong>
+       Interpret the following density plot
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q2-set-up-a-perturbation-model">
+       <strong>
+        q2
+       </strong>
+       Set up a perturbation model
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uncertainty-propagation">
+     Uncertainty Propagation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-do-a-sweep-with-propagated-uncertainty">
+       <strong>
+        q3
+       </strong>
+       Do a sweep with propagated uncertainty
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summarizing-variability">
+     Summarizing variability
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-summarize-variability-across-a-sweep">
+       <strong>
+        q4
+       </strong>
+       Summarize variability across a sweep
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#designing-for-uncertainty">
+   Designing for uncertainty
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#robustness">
+     Robustness
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-interpret-this-plot">
+       <strong>
+        q5
+       </strong>
+       Interpret this plot
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reliability">
+     Reliability
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q6-compare-the-reliability-of-designs">
+       <strong>
+        q6
+       </strong>
+       Compare the reliability of designs
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-tolerances">
+     Setting Tolerances
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q7-recommend-reasonable-tolerances">
+       <strong>
+        q7
+       </strong>
+       Recommend reasonable tolerances
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="design-under-uncertainty">
+<h1>Design Under Uncertainty<a class="headerlink" href="#design-under-uncertainty" title="Permalink to this headline">¶</a></h1>
+<p><em>Purpose</em>: We don’t model uncertainty just for fun: Once we have a model for uncertainty we can use it to do useful work, such as informing design decisions. In this exercise you will model a particular kind of uncertainty in built systems (variability in part geometry) and use your models to make design decisions that are resilient against the effects of uncertainty.</p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="uncertainty-in-engineering-systems">
+<h1>Uncertainty in Engineering Systems<a class="headerlink" href="#uncertainty-in-engineering-systems" title="Permalink to this headline">¶</a></h1>
+<p>The previous exercises <code class="docutils literal notranslate"><span class="pre">e-grama06-fit-univar</span></code> and <code class="docutils literal notranslate"><span class="pre">e-grama07-fit-multivar</span></code> covered the “how” and “why” of modeling uncertainties with distributions. In this exercise we’ll study how uncertainty in the <em>inputs</em> of a model <em>propagates</em> to uncertainty in its outputs.</p>
+<div class="section" id="perturbed-design-variables">
+<h2>Perturbed Design Variables<a class="headerlink" href="#perturbed-design-variables" title="Permalink to this headline">¶</a></h2>
+<p>The realities of engineering manufacturing necessitate that built parts will be different from designed parts. In the previous exercise <code class="docutils literal notranslate"><span class="pre">e-grama07-fit-multivar</span></code> we saw a model for a circuit’s performance. That system exhibited variability in its <em>realized component values</em>; we could pick the nominal (designed) component values <code class="docutils literal notranslate"><span class="pre">R,</span> <span class="pre">L,</span> <span class="pre">C</span></code>, but manufacturing variability would give rise to different as-made component values <code class="docutils literal notranslate"><span class="pre">Rr,</span> <span class="pre">Lr,</span> <span class="pre">Cr</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.models</span> <span class="kn">import</span> <span class="n">make_prlc_rand</span>
+<span class="n">md_circuit</span> <span class="o">=</span> <span class="n">make_prlc_rand</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As a reminder, let’s take a look at designed <code class="docutils literal notranslate"><span class="pre">C</span></code> and realized <code class="docutils literal notranslate"><span class="pre">Cr</span></code> values of the circuit capacitance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">md_circuit</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">df_det</span><span class="o">=</span><span class="s2">&quot;nom&quot;</span><span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">C</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">C</span><span class="p">),</span>
+        <span class="n">Cr_lo</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">Cr</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">),</span>
+        <span class="n">Cr_mu</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">Cr</span><span class="p">),</span>
+        <span class="n">Cr_up</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">Cr</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.95</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eval_sample() is rounding n...
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>C</th>
+      <th>Cr_lo</th>
+      <th>Cr_mu</th>
+      <th>Cr_up</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>50.0005</td>
+      <td>42.887234</td>
+      <td>64.404955</td>
+      <td>87.447509</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The results above indicate that the designed capicitance was around <code class="docutils literal notranslate"><span class="pre">50</span></code>, but values as low as <code class="docutils literal notranslate"><span class="pre">42.2</span></code> and as high as <code class="docutils literal notranslate"><span class="pre">87.8</span></code> occur too.</p>
+<div class="section" id="q1-interpret-the-following-density-plot">
+<h3><strong>q1</strong> Interpret the following density plot<a class="headerlink" href="#q1-interpret-the-following-density-plot" title="Permalink to this headline">¶</a></h3>
+<p>The nominal value for <code class="docutils literal notranslate"><span class="pre">Design</span> <span class="pre">1</span></code> is <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">0.5</span></code>, while the nominal value for <code class="docutils literal notranslate"><span class="pre">Design</span> <span class="pre">2</span></code> is <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1.5</span></code>. However, parts manufactured according to both designs are subject to manufacturing variability, as depicted by the following densities. Answer the questions under <em>observations</em> below.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mg_1</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=+</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">mg_2</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=+</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+        <span class="n">y_1</span><span class="o">=</span><span class="n">mg_1</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">),</span>
+        <span class="n">y_2</span><span class="o">=</span><span class="n">mg_2</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">),</span>
+    <span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;segment&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=+</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">xend</span><span class="o">=+</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="mf">4.25</span><span class="p">,</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+        <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=+</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">4.5</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Design 1&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;segment&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=+</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">xend</span><span class="o">=+</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="mf">4.25</span><span class="p">,</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+        <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=+</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">4.5</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Design 2&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;y_1&quot;</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;salmon&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;y_2&quot;</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+    
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Realized Design Variable&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Density&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d25-e-grama08-duu-solution_10_0.png" src="../_images/d25-e-grama08-duu-solution_10_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8751230789843)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<p>For the following questions, assume that you can measure the Realized Design Variable <code class="docutils literal notranslate"><span class="pre">x</span></code> with <em>perfect</em> accuracy.</p>
+<ul class="simple">
+<li><p>Suppose you have a part with <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">0.61</span></code>. Which design specification was this most likely manufactured according to?</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Design</span> <span class="pre">1</span></code></p></li>
+</ul>
+</li>
+<li><p>Suppose you selected a random part of <code class="docutils literal notranslate"><span class="pre">Design</span> <span class="pre">2</span></code> off the manufacturing line and found that <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">1.40</span></code>. Would you be surprised by this?</p>
+<ul>
+<li><p>Unsurprising; we can see that <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">1.40</span></code> is well-within the distribution around the nominal <code class="docutils literal notranslate"><span class="pre">Design</span> <span class="pre">2</span></code> value.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+<div class="section" id="q2-set-up-a-perturbation-model">
+<h3><strong>q2</strong> Set up a perturbation model<a class="headerlink" href="#q2-set-up-a-perturbation-model" title="Permalink to this headline">¶</a></h3>
+<p>Implement a model for a perturbed design variable <span class="math notranslate nohighlight">\(x_r\)</span> following</p>
+<div class="math notranslate nohighlight">
+\[x_r = x + \Delta x\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta x\)</span> is normally distributed with mean <span class="math notranslate nohighlight">\(\mu = 0\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma = 0.1\)</span>.</p>
+<p><em>Hint 1</em>: To do this, you’ll need to add a function to the model that computes <span class="math notranslate nohighlight">\(x_r\)</span>, and a random variable for <span class="math notranslate nohighlight">\(\Delta x\)</span>.</p>
+<p><em>Hint 2</em>: The previous exercises <code class="docutils literal notranslate"><span class="pre">e-grama06-fit-univar</span></code> and <code class="docutils literal notranslate"><span class="pre">e-grama07-fit-multivar</span></code> cover how to model an uncertain quantity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Implement the model for x_r stated above</span>
+
+<span class="n">md_dx</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s2">&quot;Perturbation&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_vec_function</span><span class="p">(</span>
+
+        <span class="n">fun</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">x_r</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">dx</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;dx&quot;</span><span class="p">],</span>
+        <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x_r&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_bounds</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_marginals</span><span class="p">(</span>
+        <span class="n">dx</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_copula_independence</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="c1">## NOTE: Use this to check your work</span>
+<span class="n">gr</span><span class="o">.</span><span class="n">eval_sample</span><span class="p">(</span><span class="n">md_dx</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">df_det</span><span class="o">=</span><span class="s2">&quot;nom&quot;</span><span class="p">)</span>
+    
+<span class="k">assert</span> \
+    <span class="s1">&#39;dx&#39;</span> <span class="ow">in</span> <span class="n">md_dx</span><span class="o">.</span><span class="n">density</span><span class="o">.</span><span class="n">marginals</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> \
+    <span class="s1">&#39;No density for dx&#39;</span>
+<span class="k">assert</span> \
+    <span class="n">md_dx</span><span class="o">.</span><span class="n">density</span><span class="o">.</span><span class="n">marginals</span><span class="p">[</span><span class="s1">&#39;dx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">d_param</span><span class="p">[</span><span class="s1">&#39;loc&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.</span><span class="p">,</span> \
+    <span class="s2">&quot;Density for dx has wrong mean&quot;</span>
+<span class="k">assert</span> \
+    <span class="n">md_dx</span><span class="o">.</span><span class="n">density</span><span class="o">.</span><span class="n">marginals</span><span class="p">[</span><span class="s1">&#39;dx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">d_param</span><span class="p">[</span><span class="s1">&#39;scale&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.1</span><span class="p">,</span> \
+    <span class="s2">&quot;Density for dx has wrong standard deviation&quot;</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="uncertainty-propagation">
+<h2>Uncertainty Propagation<a class="headerlink" href="#uncertainty-propagation" title="Permalink to this headline">¶</a></h2>
+<p>Often, we model engineering outcomes <em>deterministically</em>; assuming certain inputs <span class="math notranslate nohighlight">\(x\)</span> are known exactly, we produce a predictable output value <span class="math notranslate nohighlight">\(y\)</span> based on a mathematical model <span class="math notranslate nohighlight">\(y = f(x)\)</span>.</p>
+<p>For example, we’ve previously looked at a model for the buckling strength of a rectangular plate</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{cr} = k_{cr} \frac{\pi^2 E}{12 (1 - \mu^2)} \left(\frac{t}{b}\right)^2.\]</div>
+<p>This is a <em>deterministic</em> model for the buckling strength <span class="math notranslate nohighlight">\(\sigma_{cr}\)</span> that depends on the plate geometry, such as the plate thickness <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>However, if the input values cannot be controlled exactly, it may be more appropriate to think of the model as having <em>perturbed</em> inputs <span class="math notranslate nohighlight">\(x_r = x + \Delta x\)</span>. With perturbed inputs, the output is no longer precisely known, but is now subject to <em>uncertainty propagation</em>. We can think of this mathematically as</p>
+<div class="math notranslate nohighlight">
+\[y(x) = f(x_r) = f(x + \Delta x).\]</div>
+<p>Where the input that the function “sees” is the perturbed input, rather than the deterministic input. This leads to uncertainty in the output <span class="math notranslate nohighlight">\(y\)</span>—the uncertainty <em>propagates</em> from the input to the output.</p>
+<p>Returning to the buckling strength example, if there were manufacturing variability in the plate thickness <span class="math notranslate nohighlight">\(t_r = t + \Delta t\)</span>, then there would be uncertainty in the buckling strength</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{cr} = k_{cr} \frac{\pi^2 E}{12 (1 - \mu^2)} \left(\frac{t + \Delta t}{b}\right)^2.\]</div>
+<p>The following images depict uncertainty propagation schematically. First, let’s look at a linear function <span class="math notranslate nohighlight">\(f(x)\)</span>.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; this illustrates uncertainty propagation</span>
+<span class="n">md_line</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">md_dx</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_vec_function</span><span class="p">(</span>
+        <span class="n">fun</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.5</span><span class="o">*</span><span class="n">df</span><span class="o">.</span><span class="n">x_r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x_r&quot;</span><span class="p">],</span>
+        <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">y_baseboard</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="p">(</span>
+    <span class="n">md_line</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span>
+        <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">df_det</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)),</span>
+        <span class="n">seed</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span>
+    <span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x_r&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="n">y_baseboard</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_abline</span><span class="p">(</span><span class="n">intercept</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">slope</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;salmon&quot;</span><span class="p">)</span>
+    
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_segment</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">xend</span><span class="o">=</span><span class="s2">&quot;x_r&quot;</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="n">y_baseboard</span><span class="p">),</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_segment</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">xend</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_baseboard</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="n">y_baseboard</span><span class="p">),</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_segment</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="n">y_baseboard</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">y_baseboard</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+        <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">y_baseboard</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Realized x&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_x_continuous</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Designed x&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Resulting output y&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d25-e-grama08-duu-solution_17_0.png" src="../_images/d25-e-grama08-duu-solution_17_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8751231254218)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we have designed values of <span class="math notranslate nohighlight">\(x\)</span> at <span class="math notranslate nohighlight">\(x = 0.5\)</span> and <span class="math notranslate nohighlight">\(x = 1.5\)</span>. However, perturbations lead to variability in the realized values <span class="math notranslate nohighlight">\(x_r\)</span>, which in turn lead to variability in the output <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>The variability in <span class="math notranslate nohighlight">\(y\)</span> is roughly the same at both designed values <span class="math notranslate nohighlight">\(x\)</span>. However, a different function can lead to quite different results.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; this illustrates uncertainty propagation</span>
+<span class="n">md_exp</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">md_dx</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_vec_function</span><span class="p">(</span>
+        <span class="n">fun</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x_r</span><span class="p">)),</span>
+        <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x_r&quot;</span><span class="p">],</span>
+        <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">y_baseboard</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="p">(</span>
+    <span class="n">md_exp</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span>
+        <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">df_det</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)),</span>
+        <span class="n">seed</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span>
+    <span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x_r&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="n">y_baseboard</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">md_exp</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_nominal</span><span class="p">(</span><span class="n">df_det</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="mi">100</span><span class="p">))),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;salmon&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_segment</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">xend</span><span class="o">=</span><span class="s2">&quot;x_r&quot;</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="n">y_baseboard</span><span class="p">),</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_segment</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">xend</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_baseboard</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="n">y_baseboard</span><span class="p">),</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_segment</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="n">y_baseboard</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">y_baseboard</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+        <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="mf">0.96</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">y_baseboard</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Realized x&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Designed x&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Resulting output y&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d25-e-grama08-duu-solution_19_0.png" src="../_images/d25-e-grama08-duu-solution_19_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8751230774492)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once again we see variability in the realized values. However, note that the variability in the realized output <code class="docutils literal notranslate"><span class="pre">y</span></code></p>
+<div class="section" id="q3-do-a-sweep-with-propagated-uncertainty">
+<h3><strong>q3</strong> Do a sweep with propagated uncertainty<a class="headerlink" href="#q3-do-a-sweep-with-propagated-uncertainty" title="Permalink to this headline">¶</a></h3>
+<p>Use your perturbation model <code class="docutils literal notranslate"><span class="pre">md_dx</span></code> to study how variability propagates through the function</p>
+<div class="math notranslate nohighlight">
+\[y(x) = f(x_r) = x_r^4.\]</div>
+<p>Sweep the design variable <span class="math notranslate nohighlight">\(x\)</span> from at least <span class="math notranslate nohighlight">\(0.1\)</span> to <span class="math notranslate nohighlight">\(1.0\)</span>, and make sure to use a sufficient number of observations in your random sample. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Evaluate a sweep with with propagated uncertainty</span>
+<span class="n">df_dx</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">md_dx</span>
+    <span class="c1"># NOTE: No need to edit; this composes the output function</span>
+    <span class="c1"># with the perturbation model you implemented above</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_vec_function</span><span class="p">(</span>
+        <span class="n">fun</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">x_r</span><span class="o">**</span><span class="mi">4</span><span class="p">),</span>
+        <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x_r&quot;</span><span class="p">],</span>
+        <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+    
+
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span>
+        <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+        <span class="n">df_det</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1">## NOTE: Use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="nb">isinstance</span><span class="p">(</span><span class="n">df_dx</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">),</span> \
+    <span class="s2">&quot;df_dx is not a DataFrame; make sure to evaluate md_dx&quot;</span>
+<span class="k">assert</span> \
+    <span class="n">df_dx</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mf">0.1</span><span class="p">,</span> \
+    <span class="s2">&quot;Make sure to sweep to a value as low as x == 0.1&quot;</span>
+<span class="k">assert</span> \
+    <span class="n">df_dx</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mf">1.0</span><span class="p">,</span> \
+    <span class="s2">&quot;Make sure to sweep to a value as high as x == 1.0&quot;</span>
+<span class="k">assert</span> \
+    <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">df_dx</span><span class="o">.</span><span class="n">x</span><span class="p">))</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">,</span> \
+    <span class="s2">&quot;Make sure to use a sufficient number of points in your sweep&quot;</span>
+<span class="k">assert</span> \
+    <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">df_dx</span><span class="o">.</span><span class="n">dx</span><span class="p">))</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">,</span> \
+    <span class="s2">&quot;Make sure to use a sufficient number of points in your sample&quot;</span>
+
+<span class="c1"># Visualize</span>
+<span class="p">(</span>
+    <span class="n">df_dx</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d25-e-grama08-duu-solution_22_0.png" src="../_images/d25-e-grama08-duu-solution_22_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8751231026707)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>What does the horizontal axis in the plot above represent: The designed value of <code class="docutils literal notranslate"><span class="pre">x</span></code> or the realized value of <code class="docutils literal notranslate"><span class="pre">x</span></code>?</p>
+<ul>
+<li><p>The horizontal axis in the plot above represents the designed value of <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Why is there variability in <code class="docutils literal notranslate"><span class="pre">y</span></code>?</p>
+<ul>
+<li><p>There is variability in <code class="docutils literal notranslate"><span class="pre">y</span></code> because we are visualizing the designed value of <code class="docutils literal notranslate"><span class="pre">x</span></code>, while the realized value <code class="docutils literal notranslate"><span class="pre">x_r</span></code></p></li>
+</ul>
+</li>
+<li><p>Where (along the horizontal axis) is the variability in <code class="docutils literal notranslate"><span class="pre">y</span></code> large? Where is it small?</p>
+<ul>
+<li><p>The variability is smallest at small values of <span class="math notranslate nohighlight">\(x\)</span>, and largest at large values of <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
+</ul>
+</li>
+<li><p>What about the underlying function <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">f(x)</span></code> explains the trends in variability you noted above?</p>
+<ul>
+<li><p>Since the function is <span class="math notranslate nohighlight">\(y = x_r^4\)</span>, variability in <span class="math notranslate nohighlight">\(x_r\)</span> is amplified by the function. A highly quantitative way to think of this is in terms of the derivative <span class="math notranslate nohighlight">\(\frac{dy}{dx_r} = 4 x_r^3 = 4 (x + \Delta x)^3\)</span>; note that larger values of the designed value lead to a larger slope in <span class="math notranslate nohighlight">\(y\)</span>. (I don’t necessarily expect you to come up with that argument on your own!)</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+</div>
+<div class="section" id="summarizing-variability">
+<h2>Summarizing variability<a class="headerlink" href="#summarizing-variability" title="Permalink to this headline">¶</a></h2>
+<p>Visualizing variability with a scatterplot is a good first-step, but there are more effective ways to <em>summarize</em> variability.</p>
+<div class="section" id="q4-summarize-variability-across-a-sweep">
+<h3><strong>q4</strong> Summarize variability across a sweep<a class="headerlink" href="#q4-summarize-variability-across-a-sweep" title="Permalink to this headline">¶</a></h3>
+<p>Summarize the variability in <span class="math notranslate nohighlight">\(y\)</span> at each value of <span class="math notranslate nohighlight">\(x\)</span> by computing the mean <code class="docutils literal notranslate"><span class="pre">y_mu</span></code>, the 5% quantile <code class="docutils literal notranslate"><span class="pre">y_lo</span></code>, and the 95% quantile <code class="docutils literal notranslate"><span class="pre">y_up</span></code>. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_dx_summary</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_dx</span>
+
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">y_lo</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">),</span>
+        <span class="n">y_mu</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">y</span><span class="p">),</span>
+        <span class="n">y_up</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.95</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="c1">## NOTE: Clean up the grouping</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="c1">## NOTE: No need to edit; use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="nb">set</span><span class="p">(</span><span class="n">df_dx</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">df_dx_summary</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> \
+    <span class="s2">&quot;Incorrect grouping for df_dx_summary&quot;</span>
+<span class="k">assert</span> \
+    <span class="s2">&quot;y_lo&quot;</span> <span class="ow">in</span> <span class="n">df_dx_summary</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;Make sure to compute a lower quantile y_lo&quot;</span>
+<span class="k">assert</span> \
+    <span class="s2">&quot;y_up&quot;</span> <span class="ow">in</span> <span class="n">df_dx_summary</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;Make sure to compute an upper quantile y_up&quot;</span>
+<span class="c1"># Check the quantiles</span>
+<span class="n">df_dx_check</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_dx</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_left_join</span><span class="p">(</span><span class="n">df_dx_summary</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="n">gr</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">p_lo</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="n">DF</span><span class="o">.</span><span class="n">y_lo</span><span class="p">),</span>
+        <span class="n">p_up</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="n">DF</span><span class="o">.</span><span class="n">y_up</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="k">assert</span> \
+    <span class="nb">abs</span><span class="p">(</span><span class="n">df_dx_check</span><span class="o">.</span><span class="n">p_lo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-3</span><span class="p">,</span> \
+    <span class="s2">&quot;Lower quantile value is incorrect&quot;</span>
+<span class="k">assert</span> \
+    <span class="nb">abs</span><span class="p">(</span><span class="n">df_dx_check</span><span class="o">.</span><span class="n">p_up</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.95</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-3</span><span class="p">,</span> \
+    <span class="s2">&quot;Upper quantile value is incorrect&quot;</span>
+
+<span class="p">(</span>
+    <span class="n">df_dx_summary</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_ribbon</span><span class="p">(</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="s2">&quot;y_lo&quot;</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s2">&quot;y_up&quot;</span><span class="p">),</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;y_mu&quot;</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d25-e-grama08-duu-solution_26_0.png" src="../_images/d25-e-grama08-duu-solution_26_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8751230919190)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<p><em>Note</em>: This plot uses <code class="docutils literal notranslate"><span class="pre">geom_ribbon()</span></code>, which takes the aesthetics <code class="docutils literal notranslate"><span class="pre">ymin</span></code> and <code class="docutils literal notranslate"><span class="pre">ymax</span></code>. A ribbon is a useful way to visualize a region bounded by lower and upper values, such as quantiles!</p>
+<ul class="simple">
+<li><p>Contrast this plot with the scatterplot from qX: What can you see in this ribbon plot that is harder to see in the scatterplot?</p>
+<ul>
+<li><p>Some examples: We can see the mean trend quite clearly, while the mean trend is harder to judge by eye in the scatterplot. We can also see particular quantiles; if we wanted to make decisions based on the middle 90% of the data, these would be ideal bounds to use. If we wanted to use a different fraction of the data (say, 99%) we could adjust the quantiles (say, <code class="docutils literal notranslate"><span class="pre">0.005</span></code> and <code class="docutils literal notranslate"><span class="pre">0.995</span></code>).</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="designing-for-uncertainty">
+<h1>Designing for uncertainty<a class="headerlink" href="#designing-for-uncertainty" title="Permalink to this headline">¶</a></h1>
+<p>We’ve seen that uncertainty can propagate through systems—what can we do about that? There are various ways we can design systems to mitigate the effects of uncertainty: We can seek <em>robust</em> designs, we can explicitly design for <em>reliability</em>, and we can <em>set tolerances</em> to achieve design targets.</p>
+<div class="section" id="robustness">
+<h2>Robustness<a class="headerlink" href="#robustness" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes, the best nominal performance does not result in the overall “best” design. Since uncertainty can propagate, a design that is highly sensitive to input variability can fail to live up to the promise of its best nominal performance. The following example will guide you through thinking about designs that are <em>robust</em>, in the sense that they are resistant to uncertainty.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; this sets up a model with</span>
+<span class="c1">## a perturbed input and a complex output function</span>
+<span class="n">md_poly</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s2">&quot;Polynomial&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_vec_function</span><span class="p">(</span>
+        <span class="n">fun</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">x_r</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">dx</span>
+        <span class="p">),</span>
+        <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;dx&quot;</span><span class="p">],</span>
+        <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x_r&quot;</span><span class="p">],</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Realized design&quot;</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_vec_function</span><span class="p">(</span>
+        <span class="n">fun</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">y</span><span class="o">=</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x_r</span> <span class="o">+</span> <span class="mf">0.6</span><span class="p">)</span> 
+             <span class="o">*</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x_r</span> <span class="o">+</span> <span class="mf">0.4</span><span class="p">)</span> 
+             <span class="o">*</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x_r</span> <span class="o">-</span> <span class="mf">0.65</span><span class="p">)</span>
+             <span class="o">*</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x_r</span> <span class="o">-</span> <span class="mf">0.55</span><span class="p">)</span>
+             <span class="o">*</span><span class="mf">13.5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">8.0</span> <span class="o">*</span> <span class="n">df</span><span class="o">.</span><span class="n">x_r</span><span class="p">))</span>
+        <span class="p">),</span>
+        <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x_r&quot;</span><span class="p">],</span>
+        <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Realized output&quot;</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_bounds</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_marginals</span><span class="p">(</span><span class="n">dx</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">0.03</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_copula_independence</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="q5-interpret-this-plot">
+<h3><strong>q5</strong> Interpret this plot<a class="headerlink" href="#q5-interpret-this-plot" title="Permalink to this headline">¶</a></h3>
+<p>Run the following code and inspect the plot. Answer the questions under <em>observations</em> below.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; run and inspect</span>
+<span class="c1"># Evaluate model without uncertainty</span>
+<span class="n">df_poly_nom</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">md_poly</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_nominal</span><span class="p">(</span>
+        <span class="n">df_det</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Evaluate with uncertainty, take quantiles</span>
+<span class="n">df_poly_mc</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">md_poly</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span>
+        <span class="n">df_det</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)),</span>
+        <span class="n">n</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">y_lo</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">),</span>
+        <span class="n">y_mu</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">y</span><span class="p">),</span>
+        <span class="n">y_up</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.95</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="c1"># Visualize</span>
+<span class="p">(</span>
+    <span class="n">df_poly_mc</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;Quantiles&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df_poly_nom</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;Nominal&quot;</span><span class="p">),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_ribbon</span><span class="p">(</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="s2">&quot;y_lo&quot;</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s2">&quot;y_up&quot;</span><span class="p">),</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span>
+    <span class="p">)</span>
+    
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_y_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="mi">5</span><span class="p">,</span> <span class="o">+</span><span class="mi">10</span><span class="p">,</span> <span class="o">+</span><span class="mi">15</span><span class="p">,</span> <span class="o">+</span><span class="mi">20</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">coord_cartesian</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">guides</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Designed input value x&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Realized output value y&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d25-e-grama08-duu-solution_32_0.png" src="../_images/d25-e-grama08-duu-solution_32_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8751230981578)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<p>For this example, <em>lower</em> values of <code class="docutils literal notranslate"><span class="pre">y</span></code> are better. The solid curve depicts the <code class="docutils literal notranslate"><span class="pre">Nominal</span></code> output value, while the shaded region visualizes the 5% to 95% quantiles.</p>
+<!-- solution-end --></div>
+</div>
+<div class="section" id="reliability">
+<h2>Reliability<a class="headerlink" href="#reliability" title="Permalink to this headline">¶</a></h2>
+<p>While <em>robustness</em> is about reducing variability, <em>reliability</em> is about avoiding unwanted failures. A <em>reliable</em> design is a design that has a low probability of failure. With a model for a system and its uncertainties, we can use uncertainty propagation to quantify the probability of failure, and use the model to test the reliability of different designs.</p>
+<p>For the remainder of this exercise, let’s use the cantilever beam model as an example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.models</span> <span class="kn">import</span> <span class="n">make_cantilever_beam</span>
+<span class="n">md_beam</span> <span class="o">=</span> <span class="n">make_cantilever_beam</span><span class="p">()</span>
+<span class="n">md_beam</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: Cantilever Beam
+
+  inputs:
+    var_det:
+      w: [2, 4]
+      t: [2, 4]
+
+    var_rand:
+      H: (+1) norm, {&#39;mean&#39;: &#39;5.000e+02&#39;, &#39;s.d.&#39;: &#39;1.000e+02&#39;, &#39;COV&#39;: 0.2, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
+      V: (+1) norm, {&#39;mean&#39;: &#39;1.000e+03&#39;, &#39;s.d.&#39;: &#39;1.000e+02&#39;, &#39;COV&#39;: 0.1, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
+      E: (+0) norm, {&#39;mean&#39;: &#39;2.900e+07&#39;, &#39;s.d.&#39;: &#39;1.450e+06&#39;, &#39;COV&#39;: 0.05, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
+      Y: (-1) norm, {&#39;mean&#39;: &#39;4.000e+04&#39;, &#39;s.d.&#39;: &#39;2.000e+03&#39;, &#39;COV&#39;: 0.05, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
+
+    copula:
+      Independence copula
+
+  functions:
+      cross-sectional area: [&#39;w&#39;, &#39;t&#39;] -&gt; [&#39;c_area&#39;]
+      limit state: stress: [&#39;w&#39;, &#39;t&#39;, &#39;H&#39;, &#39;V&#39;, &#39;E&#39;, &#39;Y&#39;] -&gt; [&#39;g_stress&#39;]
+      limit state: displacement: [&#39;w&#39;, &#39;t&#39;, &#39;H&#39;, &#39;V&#39;, &#39;E&#39;, &#39;Y&#39;] -&gt; [&#39;g_disp&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="q6-compare-the-reliability-of-designs">
+<h3><strong>q6</strong> Compare the reliability of designs<a class="headerlink" href="#q6-compare-the-reliability-of-designs" title="Permalink to this headline">¶</a></h3>
+<p>Estimate the probability of failure due to <code class="docutils literal notranslate"><span class="pre">stress</span></code> for the following cantilever beam designs. Make sure to compute lower and upper confidence interval bounds for your estimate, and choose a large enough sample size so that the CI for the designs do not overlap. Answer the questions under <em>observations</em> below.</p>
+<p><em>Hint</em>: Remember that we learned about estimating probabilities of failure (and related confidence intervals) in <code class="docutils literal notranslate"><span class="pre">e-stat05-CI</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Estimate the reliability for the following beam designs</span>
+
+<span class="c1"># NOTE: No need to edit; evaluate these designs</span>
+<span class="n">df_beam_designs</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+    <span class="n">design</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Wide&quot;</span><span class="p">,</span> <span class="s2">&quot;Tall&quot;</span><span class="p">,</span> <span class="s2">&quot;Square&quot;</span><span class="p">],</span>
+    <span class="n">w</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">8</span><span class="p">)],</span>
+    <span class="n">t</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">8</span><span class="p">)],</span>
+<span class="p">)</span>
+
+<span class="c1">## TASK: Complete the following code</span>
+<span class="n">df_beam_results</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">md_beam</span>
+
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span>
+        <span class="n">n</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span> 
+        <span class="n">df_det</span><span class="o">=</span><span class="n">df_beam_designs</span><span class="p">,</span> 
+        <span class="n">seed</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">design</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">pof_lo</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr_lo</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_stress</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">pof_mu</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_stress</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">pof_up</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr_up</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_stress</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df_beam_results</span><span class="p">)</span>
+
+<span class="c1">## NOTE: No need to edit below; use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="nb">isinstance</span><span class="p">(</span><span class="n">df_beam_results</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">),</span> \
+    <span class="s2">&quot;df_beam_results is not a DataFrame; make sure to evaluate and summarize&quot;</span>
+<span class="k">assert</span> \
+    <span class="p">{</span><span class="s2">&quot;Square&quot;</span><span class="p">,</span> <span class="s2">&quot;Tall&quot;</span><span class="p">,</span> <span class="s2">&quot;Wide&quot;</span><span class="p">}</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">df_beam_results</span><span class="o">.</span><span class="n">design</span><span class="p">),</span> \
+    <span class="s2">&quot;df_beam_results does not contain rows for each design; make sure to group appropriately&quot;</span>
+<span class="k">assert</span> \
+    <span class="s2">&quot;pof_lo&quot;</span> <span class="ow">in</span> <span class="n">df_beam_results</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;CI lower bound pof_lo not found in df_beam_results; make sure to compute a lower CI bound&quot;</span>
+<span class="k">assert</span> \
+    <span class="s2">&quot;pof_up&quot;</span> <span class="ow">in</span> <span class="n">df_beam_results</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;CI upper bound pof_up not found in df_beam_results; make sure to compute an upper CI bound&quot;</span>
+<span class="k">assert</span> \
+    <span class="n">df_beam_results</span><span class="p">[</span><span class="n">df_beam_results</span><span class="o">.</span><span class="n">design</span><span class="o">==</span><span class="s2">&quot;Tall&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">pof_up</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> \
+    <span class="n">df_beam_results</span><span class="p">[</span><span class="n">df_beam_results</span><span class="o">.</span><span class="n">design</span><span class="o">==</span><span class="s2">&quot;Square&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">pof_lo</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> \
+    <span class="s2">&quot;CI overlap; make sure to use a sufficiently large sample size&quot;</span>
+<span class="k">assert</span> \
+    <span class="n">df_beam_results</span><span class="p">[</span><span class="n">df_beam_results</span><span class="o">.</span><span class="n">design</span><span class="o">==</span><span class="s2">&quot;Square&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">pof_up</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> \
+    <span class="n">df_beam_results</span><span class="p">[</span><span class="n">df_beam_results</span><span class="o">.</span><span class="n">design</span><span class="o">==</span><span class="s2">&quot;Wide&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">pof_lo</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> \
+    <span class="s2">&quot;CI overlap; make sure to use a sufficiently large sample size&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eval_sample() is rounding n...
+   design    pof_lo  pof_mu    pof_up
+0  Square  0.473439  0.4863  0.499179
+1    Tall  0.282503  0.2941  0.305970
+2    Wide  0.928253  0.9349  0.940971
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Which design has the lowest probability of failure?</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Tall</span></code> design has the lowest probability of failure.</p></li>
+</ul>
+</li>
+<li><p>All of these designs have the same cross-sectional area; they vary from wide to square to tall in their rectangular cross-section shape. Based on the result above, does the <em>nominal</em> width or tallness of the cross-section seem to be more important for safe operation?</p>
+<ul>
+<li><p>Tallness seems to be most important, based on these results.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+</div>
+<div class="section" id="setting-tolerances">
+<h2>Setting Tolerances<a class="headerlink" href="#setting-tolerances" title="Permalink to this headline">¶</a></h2>
+<p>Once we represent uncertainty in a model, we can make modifications to that model to make quantitative statements about system performance. For instance, modeling the tolerances for a manufactured component will allow us to test different tolerance scenarios. This can help us decide whether to ask manufacturing to tighten specific tolerances.</p>
+<p>The following code adds a perturbation model for tolerances on the width and tallness of the cantilever beam. You’ll use this model below to test different tolerance scenarios.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: NO need to edit; this adds tolerances to the cantilever beam model</span>
+<span class="n">md_beam_tolerances</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_vec_function</span><span class="p">(</span>
+        <span class="n">fun</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">w</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">w0</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">dw</span><span class="p">,</span>
+            <span class="n">t</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">t0</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;w0&quot;</span><span class="p">,</span> <span class="s2">&quot;t0&quot;</span><span class="p">,</span> <span class="s2">&quot;dw&quot;</span><span class="p">,</span> <span class="s2">&quot;dt&quot;</span><span class="p">],</span>
+        <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="s2">&quot;t&quot;</span><span class="p">],</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Design perturbations&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1">## NOTE: gr.cp_md_det() is an advanced tool I&#39;m using to</span>
+    <span class="c1">## avoid re-defining the entire beam model. You could</span>
+    <span class="c1">## accomplish the same thing with gr.cp_vec_function()</span>
+    <span class="c1">## and the beam equations</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_md_det</span><span class="p">(</span><span class="n">md_beam</span><span class="p">)</span>
+    <span class="c1">## Define the input space</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_bounds</span><span class="p">(</span>
+        <span class="n">w0</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+        <span class="n">t0</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_marginals</span><span class="p">(</span>
+        <span class="c1"># Uncertainties from the original model</span>
+        <span class="n">H</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+        <span class="n">V</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+        <span class="n">E</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mf">2.9e7</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">1.45e6</span><span class="p">),</span>
+        <span class="n">Y</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">40000</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">2000</span><span class="p">),</span>
+        <span class="c1"># Variability in width and tallness</span>
+        <span class="n">dw</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">1e-1</span><span class="p">),</span>
+        <span class="n">dt</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">1e-1</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_copula_independence</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">md_beam_tolerances</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/zach/Git/py_grama/grama/marginals.py:336: RuntimeWarning: divide by zero encountered in double_scalars
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: None
+
+  inputs:
+    var_det:
+      t0: [2, 4]
+      w0: [2, 4]
+
+    var_rand:
+      H: (+0) norm, {&#39;mean&#39;: &#39;5.000e+02&#39;, &#39;s.d.&#39;: &#39;1.000e+02&#39;, &#39;COV&#39;: 0.2, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
+      V: (+0) norm, {&#39;mean&#39;: &#39;1.000e+03&#39;, &#39;s.d.&#39;: &#39;1.000e+02&#39;, &#39;COV&#39;: 0.1, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
+      E: (+0) norm, {&#39;mean&#39;: &#39;2.900e+07&#39;, &#39;s.d.&#39;: &#39;1.450e+06&#39;, &#39;COV&#39;: 0.05, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
+      Y: (+0) norm, {&#39;mean&#39;: &#39;4.000e+04&#39;, &#39;s.d.&#39;: &#39;2.000e+03&#39;, &#39;COV&#39;: 0.05, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
+      dw: (+0) uniform, {&#39;mean&#39;: &#39;0.000e+00&#39;, &#39;s.d.&#39;: &#39;1.000e-01&#39;, &#39;COV&#39;: inf, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 1.8}
+      dt: (+0) uniform, {&#39;mean&#39;: &#39;0.000e+00&#39;, &#39;s.d.&#39;: &#39;1.000e-01&#39;, &#39;COV&#39;: inf, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 1.8}
+
+    copula:
+      Independence copula
+
+  functions:
+      Design perturbations: [&#39;w0&#39;, &#39;t0&#39;, &#39;dw&#39;, &#39;dt&#39;] -&gt; [&#39;w&#39;, &#39;t&#39;]
+      Cantilever Beam: [&#39;w&#39;, &#39;Y&#39;, &#39;t&#39;, &#39;V&#39;, &#39;E&#39;, &#39;H&#39;] -&gt; [&#39;c_area&#39;, &#39;g_stress&#39;, &#39;g_disp&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>First, let’s evaluate the baseline tolerance model to assess the probability of failure for a few designs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; this estimates probabilities of failure</span>
+<span class="c1">## for the three designs</span>
+<span class="n">df_beam_baseline</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">md_beam_tolerances</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span>
+        <span class="n">n</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span> 
+        <span class="n">df_det</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">design</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Wide&quot;</span><span class="p">,</span> <span class="s2">&quot;Tall&quot;</span><span class="p">,</span> <span class="s2">&quot;Square&quot;</span><span class="p">],</span>
+            <span class="n">w0</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">8</span><span class="p">)],</span>
+            <span class="n">t0</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">8</span><span class="p">)],</span>
+        <span class="p">),</span> 
+        <span class="n">seed</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">design</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">pof_lo</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr_lo</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_stress</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">pof_mu</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_stress</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">pof_up</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr_up</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_stress</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;Baseline&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">df_beam_baseline</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eval_sample() is rounding n...
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>design</th>
+      <th>pof_lo</th>
+      <th>pof_mu</th>
+      <th>pof_up</th>
+      <th>model</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Square</td>
+      <td>0.479931</td>
+      <td>0.4928</td>
+      <td>0.505678</td>
+      <td>Baseline</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Tall</td>
+      <td>0.325530</td>
+      <td>0.3376</td>
+      <td>0.349885</td>
+      <td>Baseline</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Wide</td>
+      <td>0.868392</td>
+      <td>0.8771</td>
+      <td>0.885308</td>
+      <td>Baseline</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="section" id="q7-recommend-reasonable-tolerances">
+<h3><strong>q7</strong> Recommend reasonable tolerances<a class="headerlink" href="#q7-recommend-reasonable-tolerances" title="Permalink to this headline">¶</a></h3>
+<p>Adjust the manufacturing tolerances to find desirable manufacturing targets. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Tweak the tolerances</span>
+
+<span class="n">df_beam_tweaked</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">md_beam_tolerances</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_marginals</span><span class="p">(</span>
+
+        <span class="n">dw</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">),</span> <span class="c1"># Reduce width tolerance</span>
+<span class="c1">#         dt=gr.marg_mom(&quot;uniform&quot;, mean=0, sd=1e-3), # Reduce tallness tolerance</span>
+    <span class="p">)</span>
+    <span class="c1">## NOTE: No need to edit below; this analyzes your model</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span>
+        <span class="n">n</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span> 
+        <span class="n">df_det</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">design</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Wide&quot;</span><span class="p">,</span> <span class="s2">&quot;Tall&quot;</span><span class="p">,</span> <span class="s2">&quot;Square&quot;</span><span class="p">],</span>
+            <span class="n">w0</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">8</span><span class="p">)],</span>
+            <span class="n">t0</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">8</span><span class="p">)],</span>
+        <span class="p">),</span> 
+        <span class="n">seed</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">design</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">pof_lo</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr_lo</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_stress</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">pof_mu</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_stress</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">pof_up</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr_up</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_stress</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;Tweaked&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1">## NOTE: This will visualize your results with</span>
+<span class="c1">## a comparison against the baseline model</span>
+<span class="p">(</span>
+    <span class="n">df_beam_baseline</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span><span class="n">df_beam_tweaked</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;design&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_errorbar</span><span class="p">(</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="s2">&quot;pof_lo&quot;</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s2">&quot;pof_up&quot;</span><span class="p">),</span>
+        <span class="n">position</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">position_dodge</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;pof_mu&quot;</span><span class="p">),</span> 
+        <span class="n">position</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">position_dodge</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eval_sample() is rounding n...
+</pre></div>
+</div>
+<img alt="../_images/d25-e-grama08-duu-solution_44_1.png" src="../_images/d25-e-grama08-duu-solution_44_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8751231278427)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<p><em>Note</em>: It’s likely you’ll need to tweak and re-run the analysis above to answer these questions:</p>
+<ul class="simple">
+<li><p>Suppose you could reduce the standard deviation <code class="docutils literal notranslate"><span class="pre">sd</span></code> to <code class="docutils literal notranslate"><span class="pre">1e-3</span></code> for both the width <code class="docutils literal notranslate"><span class="pre">dw</span></code> and tallness <code class="docutils literal notranslate"><span class="pre">dt</span></code> tolerances. Which designs would this benefit?</p>
+<ul>
+<li><p>Reducing the tolerances for both <code class="docutils literal notranslate"><span class="pre">dw</span></code> and <code class="docutils literal notranslate"><span class="pre">dt</span></code> would benefit the <code class="docutils literal notranslate"><span class="pre">Tall</span></code> design; it would significantly reduce the probability of failure. The same move would not benefit the <code class="docutils literal notranslate"><span class="pre">Square</span></code> design at all (the CI’s overlap; no difference in their performance). Surprisingly, making the tolerances narrower would actually make the unsafe <code class="docutils literal notranslate"><span class="pre">Wide</span></code> design <em>even more likely to fail</em>.</p></li>
+</ul>
+</li>
+<li><p>Consider the <code class="docutils literal notranslate"><span class="pre">Tall</span></code> design. Suppose it were only economical to reduce <strong>one</strong> of the tolerances: either for <code class="docutils literal notranslate"><span class="pre">dw</span></code> or <code class="docutils literal notranslate"><span class="pre">dt</span></code>. Which would be the more valuable tolerance to reduce?</p>
+<ul>
+<li><p>Reducing the tolerance for <code class="docutils literal notranslate"><span class="pre">dw</span></code> is more valuable; in fact reducing the tolerance for <code class="docutils literal notranslate"><span class="pre">dt</span></code> does not result in a significant change for <code class="docutils literal notranslate"><span class="pre">pof_mu</span></code>.</p></li>
+</ul>
+</li>
+<li><p>In <em>q6 Compare the reliability of designs</em>, you answered the question “does the <em>nominal</em> width or tallness of the cross-section seem to be more important for safe operation?” How does your answer immediately above compare with your past answer?</p>
+<ul>
+<li><p>Surprisingly, the nominal thickness <code class="docutils literal notranslate"><span class="pre">t0</span></code> matters most for safe operation, but reducing the tolerance for <code class="docutils literal notranslate"><span class="pre">dw</span></code> most reduces the failure rate for the <code class="docutils literal notranslate"><span class="pre">Thick</span></code> design.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./exercises_solution"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="d24-e-grama07-fit-multivar-solution.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Fitting Multivariate Distributions</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Zachary del Rosario<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
