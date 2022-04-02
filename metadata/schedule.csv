@@ -8,6 +8,10 @@ e-vis01-bar-charts,5
 e-stat02-source,8
 e-grama02-building,10
 e-grama03-eval,12
+e-stat03-descriptive,14
+e-data04-separate-unite,15
+e-data05-join,16
+e-vis05-multiples,17
 e-grama04-ema,18
 e-stat04-distributions,19
 e-grama05-fit-function,20
@@ -15,3 +19,4 @@ e-stat05-CI,21
 e-stat06-spc,22
 e-grama06-fit-univar,23
 e-grama07-fit-multivar,24
+e-grama08-duu,25
