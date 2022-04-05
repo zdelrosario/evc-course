@@ -1321,120 +1321,26 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Above, I made a fuss about adding a unique id column to the dataset before we start pivoting. What happens if we don’t do that?</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: Run this cell to see the error</span>
-<span class="p">(</span>
-    <span class="n">df_alloys</span>
-    <span class="c1"># NOTE: I didn&#39;t add a UID here; let&#39;s see what happens....</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: Uncomment the code below and run this cell to see the error</span>
+<span class="c1"># (</span>
+<span class="c1">#     df_alloys</span>
+<span class="c1">#     # NOTE: I didn&#39;t add a UID here; let&#39;s see what happens....</span>
     
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_pivot_longer</span><span class="p">(</span>
-        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;E_00&quot;</span><span class="p">,</span> <span class="s2">&quot;E_45&quot;</span><span class="p">,</span> <span class="s2">&quot;mu_00&quot;</span><span class="p">,</span> <span class="s2">&quot;mu_45&quot;</span><span class="p">],</span>
-        <span class="n">names_to</span><span class="o">=</span><span class="s2">&quot;varang&quot;</span><span class="p">,</span>
-        <span class="n">values_to</span><span class="o">=</span><span class="s2">&quot;value&quot;</span>
-    <span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_separate</span><span class="p">(</span>
-        <span class="n">column</span><span class="o">=</span><span class="s2">&quot;varang&quot;</span><span class="p">,</span>
-        <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;_&quot;</span><span class="p">,</span>
-        <span class="n">into</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;var&quot;</span><span class="p">,</span> <span class="s2">&quot;ang&quot;</span><span class="p">],</span>
-    <span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_pivot_wider</span><span class="p">(</span>
-        <span class="n">names_from</span><span class="o">=</span><span class="s2">&quot;var&quot;</span><span class="p">,</span>
-        <span class="n">values_from</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">Input In [13],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># NOTE: Run this cell to see the error</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="p">(</span>
-<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">df_alloys</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="c1"># NOTE: I didn&#39;t add a UID here; let&#39;s see what happens....</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_pivot_longer</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;E_00&quot;</span><span class="p">,</span> <span class="s2">&quot;E_45&quot;</span><span class="p">,</span> <span class="s2">&quot;mu_00&quot;</span><span class="p">,</span> <span class="s2">&quot;mu_45&quot;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>         <span class="n">names_to</span><span class="o">=</span><span class="s2">&quot;varang&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>         <span class="n">values_to</span><span class="o">=</span><span class="s2">&quot;value&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_separate</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span>         <span class="n">column</span><span class="o">=</span><span class="s2">&quot;varang&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>         <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;_&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>         <span class="n">into</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;var&quot;</span><span class="p">,</span> <span class="s2">&quot;ang&quot;</span><span class="p">],</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_pivot_wider</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>         <span class="n">names_from</span><span class="o">=</span><span class="s2">&quot;var&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span>         <span class="n">values_from</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span>     <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="p">)</span>
-
-<span class="nn">File ~/Git/py_grama/grama/tools.py:293,</span> in <span class="ni">pipe.__rrshift__</span><span class="nt">(self, other)</span>
-<span class="g g-Whitespace">    </span><span class="mi">290</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">291</span>         <span class="n">other_copy</span> <span class="o">=</span> <span class="n">copy_meta</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">other_copy</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">293</span> <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">other_copy</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">295</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chained_pipes</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">296</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="fm">__rrshift__</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-
-<span class="nn">File ~/Git/py_grama/grama/tools.py:308,</span> in <span class="ni">pipe.__call__.&lt;locals&gt;.&lt;lambda&gt;</span><span class="nt">(x)</span>
-<span class="g g-Whitespace">    </span><span class="mi">307</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">308</span>     <span class="k">return</span> <span class="n">pipe</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
-
-<span class="nn">File ~/Git/py_grama/grama/tran_pivot.py:356,</span> in <span class="ni">tran_pivot_wider</span><span class="nt">(df, names_from, indexes_from, values_from)</span>
-<span class="g g-Whitespace">    </span><span class="mi">352</span>     <span class="n">data_index_clean</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">354</span> <span class="c1">### try pivot, if no repeats exist in data_index_clean values continue,</span>
-<span class="g g-Whitespace">    </span><span class="mi">355</span> <span class="c1">### else use pivot_table to handle repreated values</span>
-<span class="ne">--&gt; </span><span class="mi">356</span> <span class="n">wider</span> <span class="o">=</span> <span class="n">pivot</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">357</span>     <span class="n">df</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">358</span>     <span class="n">index</span><span class="o">=</span><span class="n">data_index_clean</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">359</span>     <span class="n">columns</span><span class="o">=</span><span class="n">names_from</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">360</span>     <span class="n">values</span><span class="o">=</span><span class="n">values_from</span>
-<span class="g g-Whitespace">    </span><span class="mi">361</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">362</span> <span class="c1">### Post cleaning of leftover column and index names</span>
-<span class="g g-Whitespace">    </span><span class="mi">363</span> <span class="n">wider</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/evc/lib/python3.9/site-packages/pandas/core/reshape/pivot.py:520,</span> in <span class="ni">pivot</span><span class="nt">(data, index, columns, values)</span>
-<span class="g g-Whitespace">    </span><span class="mi">518</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">519</span>         <span class="n">indexed</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">_constructor_sliced</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">values</span><span class="p">]</span><span class="o">.</span><span class="n">_values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">multiindex</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">520</span> <span class="k">return</span> <span class="n">indexed</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">columns_listlike</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/evc/lib/python3.9/site-packages/pandas/core/series.py:4157,</span> in <span class="ni">Series.unstack</span><span class="nt">(self, level, fill_value)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4114</span> <span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">4115</span><span class="sd"> Unstack, also known as pivot, Series with MultiIndex to produce DataFrame.</span>
-<span class="g g-Whitespace">   </span><span class="mi">4116</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4153</span><span class="sd"> b    2    4</span>
-<span class="g g-Whitespace">   </span><span class="mi">4154</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">4155</span> <span class="kn">from</span> <span class="nn">pandas.core.reshape.reshape</span> <span class="kn">import</span> <span class="n">unstack</span>
-<span class="ne">-&gt; </span><span class="mi">4157</span> <span class="k">return</span> <span class="n">unstack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">fill_value</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/evc/lib/python3.9/site-packages/pandas/core/reshape/reshape.py:491,</span> in <span class="ni">unstack</span><span class="nt">(obj, level, fill_value)</span>
-<span class="g g-Whitespace">    </span><span class="mi">489</span> <span class="k">if</span> <span class="n">is_1d_only_ea_dtype</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">dtype</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">490</span>     <span class="k">return</span> <span class="n">_unstack_extension_series</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">fill_value</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">491</span> <span class="n">unstacker</span> <span class="o">=</span> <span class="n">_Unstacker</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">492</span>     <span class="n">obj</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">,</span> <span class="n">constructor</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">_constructor_expanddim</span>
-<span class="g g-Whitespace">    </span><span class="mi">493</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">494</span> <span class="k">return</span> <span class="n">unstacker</span><span class="o">.</span><span class="n">get_result</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">495</span>     <span class="n">obj</span><span class="o">.</span><span class="n">_values</span><span class="p">,</span> <span class="n">value_columns</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="n">fill_value</span>
-<span class="g g-Whitespace">    </span><span class="mi">496</span> <span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/evc/lib/python3.9/site-packages/pandas/core/reshape/reshape.py:140,</span> in <span class="ni">_Unstacker.__init__</span><span class="nt">(self, index, level, constructor)</span>
-<span class="g g-Whitespace">    </span><span class="mi">133</span> <span class="k">if</span> <span class="n">num_cells</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">134</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">135</span>         <span class="sa">f</span><span class="s2">&quot;The following operation may generate </span><span class="si">{</span><span class="n">num_cells</span><span class="si">}</span><span class="s2"> cells &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">136</span>         <span class="sa">f</span><span class="s2">&quot;in the resulting pandas object.&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">137</span>         <span class="n">PerformanceWarning</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">138</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">140</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_selectors</span><span class="p">()</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/evc/lib/python3.9/site-packages/pandas/core/reshape/reshape.py:192,</span> in <span class="ni">_Unstacker._make_selectors</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">189</span> <span class="n">mask</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">selector</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">191</span> <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">192</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Index contains duplicate entries, cannot reshape&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">194</span> <span class="bp">self</span><span class="o">.</span><span class="n">group_index</span> <span class="o">=</span> <span class="n">comp_index</span>
-<span class="g g-Whitespace">    </span><span class="mi">195</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span>
-
-<span class="ne">ValueError</span>: Index contains duplicate entries, cannot reshape
+<span class="c1">#     &gt;&gt; gr.tf_pivot_longer(</span>
+<span class="c1">#         columns=[&quot;E_00&quot;, &quot;E_45&quot;, &quot;mu_00&quot;, &quot;mu_45&quot;],</span>
+<span class="c1">#         names_to=&quot;varang&quot;,</span>
+<span class="c1">#         values_to=&quot;value&quot;</span>
+<span class="c1">#     )</span>
+<span class="c1">#     &gt;&gt; gr.tf_separate(</span>
+<span class="c1">#         column=&quot;varang&quot;,</span>
+<span class="c1">#         sep=&quot;_&quot;,</span>
+<span class="c1">#         into=[&quot;var&quot;, &quot;ang&quot;],</span>
+<span class="c1">#     )</span>
+<span class="c1">#     &gt;&gt; gr.tf_pivot_wider(</span>
+<span class="c1">#         names_from=&quot;var&quot;,</span>
+<span class="c1">#         values_from=&quot;value&quot;,</span>
+<span class="c1">#     )</span>
+<span class="c1"># )</span>
 </pre></div>
 </div>
 </div>
