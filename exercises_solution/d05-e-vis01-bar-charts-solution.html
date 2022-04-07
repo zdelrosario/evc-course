@@ -575,7 +575,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
 <span class="p">(</span>
     <span class="n">df_mpg</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_bar</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
@@ -583,7 +583,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d05-e-vis01-bar-charts-solution_6_0.png" src="../_images/d05-e-vis01-bar-charts-solution_6_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783402740818)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779991415598)&gt;
 </pre></div>
 </div>
 </div>
@@ -606,7 +606,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d05-e-vis01-bar-charts-solution_9_0.png" src="../_images/d05-e-vis01-bar-charts-solution_9_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783407751319)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779991607101)&gt;
 </pre></div>
 </div>
 </div>
@@ -622,7 +622,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="p">(</span>
     <span class="n">df_mpg</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_count</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">trans</span><span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;trans&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;trans&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;n&quot;</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span>
 <span class="p">)</span>
 <span class="c1"># solution-end</span>
@@ -631,7 +631,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d05-e-vis01-bar-charts-solution_12_0.png" src="../_images/d05-e-vis01-bar-charts-solution_12_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783407757800)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779991641597)&gt;
 </pre></div>
 </div>
 </div>
@@ -659,7 +659,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d05-e-vis01-bar-charts-solution_16_0.png" src="../_images/d05-e-vis01-bar-charts-solution_16_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783407786725)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779991542541)&gt;
 </pre></div>
 </div>
 </div>
@@ -667,7 +667,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Instead, we can <em>flip</em> the entire plot using <code class="docutils literal notranslate"><span class="pre">coord_flip()</span></code>. We use this by adding it to the <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> object:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
     <span class="n">df_data</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">coord_flip</span><span class="p">()</span>
 <span class="p">)</span>
@@ -681,7 +681,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Flip the coordinates to fix the overlapping labels</span>
 <span class="p">(</span>
     <span class="n">df_mpg</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;trans&quot;</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;trans&quot;</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_bar</span><span class="p">()</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">coord_flip</span><span class="p">()</span>
 <span class="p">)</span>
@@ -690,7 +690,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d05-e-vis01-bar-charts-solution_19_0.png" src="../_images/d05-e-vis01-bar-charts-solution_19_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783407581154)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779953895057)&gt;
 </pre></div>
 </div>
 </div>
@@ -708,7 +708,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: No need to edit; run and inspect</span>
 <span class="p">(</span>
     <span class="n">df_mpg</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;cty&quot;</span><span class="p">,</span> <span class="s2">&quot;hwy&quot;</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;cty&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;hwy&quot;</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
@@ -716,7 +716,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d05-e-vis01-bar-charts-solution_22_0.png" src="../_images/d05-e-vis01-bar-charts-solution_22_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783407498942)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779971637158)&gt;
 </pre></div>
 </div>
 </div>
@@ -735,7 +735,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: No need to edit; run and inspect</span>
 <span class="p">(</span>
     <span class="n">df_mpg</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;cty&quot;</span><span class="p">,</span> <span class="s2">&quot;hwy&quot;</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;cty&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;hwy&quot;</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_col</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
@@ -743,7 +743,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d05-e-vis01-bar-charts-solution_25_0.png" src="../_images/d05-e-vis01-bar-charts-solution_25_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783408063242)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779954024795)&gt;
 </pre></div>
 </div>
 </div>
@@ -849,7 +849,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: No need to edit; run and inspect</span>
 <span class="p">(</span>
     <span class="n">df_mpg</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_bar</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
@@ -857,7 +857,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d05-e-vis01-bar-charts-solution_33_0.png" src="../_images/d05-e-vis01-bar-charts-solution_33_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783408700489)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779971572502)&gt;
 </pre></div>
 </div>
 </div>
@@ -876,7 +876,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: No need to edit; run and inspect</span>
 <span class="p">(</span>
     <span class="n">df_mpg</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;drv&quot;</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;drv&quot;</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_bar</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
@@ -884,7 +884,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d05-e-vis01-bar-charts-solution_35_0.png" src="../_images/d05-e-vis01-bar-charts-solution_35_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8783408743382)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779971790279)&gt;
 </pre></div>
 </div>
 </div>
