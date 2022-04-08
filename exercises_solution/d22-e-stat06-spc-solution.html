@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Statistical Process Control (SPC) Basics &#8212; Data Science for Engineers</title>
+    <title>Fundamentals of Statistical Process Monitoring &#8212; Data Science for Engineers</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Fitting Univariate Distributions" href="d23-e-grama06-fit-univar-solution.html" />
@@ -201,7 +203,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Statistical Process Control (SPC) Basics
+     Fundamentals of Statistical Process Monitoring
     </a>
    </li>
    <li class="toctree-l2">
@@ -311,7 +313,7 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Statistical Process Control (SPC) Basics
+   Fundamentals of Statistical Process Monitoring
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
@@ -326,6 +328,11 @@ const thebe_selector_output = ".output, .cell_output"
    Theory
   </a>
   <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x-bar-and-s-chart">
+     X-bar and S Chart
+    </a>
+   </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#batch-averages">
      Batch Averages
@@ -347,17 +354,9 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-naive-consecutive-rows">
+      <a class="reference internal nav-link" href="#q1-batch-by-machine">
        <strong>
-        qX
-       </strong>
-       Naive consecutive rows
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-batch-by-machine">
-       <strong>
-        qX
+        q1
        </strong>
        Batch by machine
       </a>
@@ -368,22 +367,27 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
+      <a class="reference internal nav-link" href="#q2-create-consecutive-groups">
        <strong>
-        qX
+        q2
        </strong>
-       Naive consecutive rows
+       Create consecutive groups
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-batch-by-slices-of-time">
+      <a class="reference internal nav-link" href="#q3-batch-by-slices-of-time">
        <strong>
-        qX
+        q3
        </strong>
        Batch by slices of time
       </a>
      </li>
     </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#naive-consecutive-rows">
+     Naive consecutive rows
+    </a>
    </li>
   </ul>
  </li>
@@ -447,9 +451,9 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-assess-the-density">
+    <a class="reference internal nav-link" href="#q4-assess-the-density">
      <strong>
-      qX
+      q4
      </strong>
      Assess the
      <code class="docutils literal notranslate">
@@ -460,9 +464,9 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-assess-the-tensile-strength">
+    <a class="reference internal nav-link" href="#q5-assess-the-tensile-strength">
      <strong>
-      qX
+      q5
      </strong>
      Assess the
      <code class="docutils literal notranslate">
@@ -489,7 +493,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Statistical Process Control (SPC) Basics</h1>
+                <h1>Fundamentals of Statistical Process Monitoring</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -501,7 +505,7 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Statistical Process Control (SPC) Basics
+   Fundamentals of Statistical Process Monitoring
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
@@ -516,6 +520,11 @@ const thebe_selector_output = ".output, .cell_output"
    Theory
   </a>
   <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x-bar-and-s-chart">
+     X-bar and S Chart
+    </a>
+   </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#batch-averages">
      Batch Averages
@@ -537,17 +546,9 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-naive-consecutive-rows">
+      <a class="reference internal nav-link" href="#q1-batch-by-machine">
        <strong>
-        qX
-       </strong>
-       Naive consecutive rows
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-batch-by-machine">
-       <strong>
-        qX
+        q1
        </strong>
        Batch by machine
       </a>
@@ -558,22 +559,27 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
+      <a class="reference internal nav-link" href="#q2-create-consecutive-groups">
        <strong>
-        qX
+        q2
        </strong>
-       Naive consecutive rows
+       Create consecutive groups
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-batch-by-slices-of-time">
+      <a class="reference internal nav-link" href="#q3-batch-by-slices-of-time">
        <strong>
-        qX
+        q3
        </strong>
        Batch by slices of time
       </a>
      </li>
     </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#naive-consecutive-rows">
+     Naive consecutive rows
+    </a>
    </li>
   </ul>
  </li>
@@ -637,9 +643,9 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-assess-the-density">
+    <a class="reference internal nav-link" href="#q4-assess-the-density">
      <strong>
-      qX
+      q4
      </strong>
      Assess the
      <code class="docutils literal notranslate">
@@ -650,9 +656,9 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-assess-the-tensile-strength">
+    <a class="reference internal nav-link" href="#q5-assess-the-tensile-strength">
      <strong>
-      qX
+      q5
      </strong>
      Assess the
      <code class="docutils literal notranslate">
@@ -678,9 +684,9 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="statistical-process-control-spc-basics">
-<h1>Statistical Process Control (SPC) Basics<a class="headerlink" href="#statistical-process-control-spc-basics" title="Permalink to this headline">¶</a></h1>
-<p><em>Purpose</em>:</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="fundamentals-of-statistical-process-monitoring">
+<h1>Fundamentals of Statistical Process Monitoring<a class="headerlink" href="#fundamentals-of-statistical-process-monitoring" title="Permalink to this headline">¶</a></h1>
+<p><em>Purpose</em>: In future exercises we’re going to learn how to model variable quantities as random, but before we do that, we need tools to help decide if a given quantity <em>should</em> be modeled as random. The tools of <em>statistical process monitoring</em> (sometimes called <em>statistical process control</em>) will help us find non-random patterns in data, which can be helpful for deciding whether or not a quantity can be reasonably modeled as random.</p>
 <div class="section" id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -697,10 +703,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="theory">
 <h1>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h1>
-<p>(It’s difficult to tell by-inspection if data are random)</p>
+<p>It’s difficult to tell by-inspection if data are random. For example, let’s look at a completely random dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">102</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; run and inspect</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">102</span><span class="p">)</span>
 
 <span class="n">mg_normal</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">df_random</span> <span class="o">=</span> <span class="p">(</span>
@@ -718,11 +725,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d22-e-stat06-spc-solution_5_0.png" src="../_images/d22-e-stat06-spc-solution_5_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742560364093)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8767803297711)&gt;
 </pre></div>
 </div>
 </div>
 </div>
+<p>Some observations:</p>
 <ul class="simple">
 <li><p>Without some sense of <em>reasonable limits</em>, we can’t distinguish outliers from the normal highs and lows of randomness.</p></li>
 <li><p>Without some knowledge of the underlying random process, we cannot define reasonable limits.</p></li>
@@ -745,26 +753,51 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d22-e-stat06-spc-solution_8_0.png" src="../_images/d22-e-stat06-spc-solution_8_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742560415190)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8767803564788)&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <p>From this chart, we see no outliers outside the lower control limit (LCL) or upper control limit (UCL). We also don’t see any special patterns in the data. Therefore, based on this control chart, we can declare that the process is likely under <em>statistical control</em>—that it can be modeled as random.</p>
+<div class="section" id="x-bar-and-s-chart">
+<h2>X-bar and S Chart<a class="headerlink" href="#x-bar-and-s-chart" title="Permalink to this headline">¶</a></h2>
+<p>The helper function <code class="docutils literal notranslate"><span class="pre">gr.pt_xbs()</span></code> constructs a particular kind of control chart: an X-bar and S chart. This shows both the <em>batch</em> sample standard deviation (S) and <em>batch</em> sample mean (X-bar), along with <em>control limits</em> for these quantities. This statistical tool helps us find suspicious patterns in a dataset.</p>
+<p>In order to understand X-bar and S charts, we need understand why we take <em>batch averages</em>, and how to construct meaningful <em>control limits</em> for X-bar and S.</p>
+</div>
 <div class="section" id="batch-averages">
 <h2>Batch Averages<a class="headerlink" href="#batch-averages" title="Permalink to this headline">¶</a></h2>
-<p>We saw before that the <em>sample mean</em> follows the central limit theorem, which tells us about the distribution of the sample mean. Thus taking the average of multiple observations <em>from the same process</em> gives us a way to make the underlying distribution more predictable.</p>
-<p>However, taking the average of <em>all</em> observations prevents us from determining <em>where</em> an outlier occurred: If the mean of all the data is high, was it the first observation that was large? The last one? Something in the middle?</p>
-<p>Taking <em>batch averages</em> gives us better resolution, while still giving the advantages of the central limit theorem.</p>
+<p>We saw before that the <em>sample mean</em> follows the central limit theorem, which tells us about the distribution of the sample mean if we were to observe multiple, independent datasets. Thus taking the average of multiple observations <em>from the same process</em> gives us a way to make the underlying distribution more predictable.</p>
+<p>However, taking the average of <em>all</em> observations <span class="math notranslate nohighlight">\(n_{\text{total}}\)</span> prevents us from determining <em>where</em> an outlier occurred: If the mean of all the data is high, was it the first observation that was large? The last one? Something in the middle?</p>
+<p>Therefore, we’ll split the data into batches of a much smaller size <span class="math notranslate nohighlight">\(n_{\text{batch}} &lt;&lt; n_{\text{total}}\)</span>. Taking <em>batch averages</em> gives us better resolution (allowing us to determine which batch is worth further investigation), while still giving the advantages of the central limit theorem.</p>
 </div>
 <div class="section" id="control-limits-confidence-intervals">
 <h2>Control limits: Confidence Intervals<a class="headerlink" href="#control-limits-confidence-intervals" title="Permalink to this headline">¶</a></h2>
+<p>Remember (from <a class="reference external" href="https://zdelrosario.github.io/evc-course/exercises_solution/d21-e-stat05-CI-solution.html">e-stat05-CI</a>) that the central limit theorem-based confidence interval for the sample mean is given by</p>
+<div class="math notranslate nohighlight">
+\[[\overline{X}_n - z_C \sigma/\sqrt{n}, \overline{X}_n + z_C \sigma/\sqrt{n}]\]</div>
+<p>where <span class="math notranslate nohighlight">\(z_C\)</span> is the relevant quantile of a standard normal distribution, and <span class="math notranslate nohighlight">\(n\)</span> is the number of observations in our sample. For control charts, it is standard to choose a very strict confidence level of <span class="math notranslate nohighlight">\(C = 1 - 1/1000\)</span>.</p>
+<p>To understand how we will <em>use</em> the idea of confidence intervals to look for non-random patterns, let’s remind ourselves of the <em>golden rule for interpreting confidence intervals</em>:</p>
+<div class="admonition-the-golden-rule-for-interpreting-confidence-intervals admonition">
+<p class="admonition-title">The “Golden Rule” for interpreting Confidence Intervals</p>
+<p>When interpreting a confidence interval, we should assume the true value could be anywhere inside the interval.</p>
+</div>
+<p>With a control chart, we want to be able to tell <em>when</em> a pattern in the data looked non-random. To that end, we’ll study the sample means of small <em>batches</em> of the data, and compare all of those batches to a single confidence interval. Since the confidence interval is a reasonable range for the true value, we will flag batch means that fall outside the confidence interval as potentially non-random, and worth of further investigation.</p>
+<p>When constructing a control chart, we use the <em>entire</em> dataset to estimate the mean <span class="math notranslate nohighlight">\(\overline{X}_{n_{\text{total}}}\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>, but construct the confidence interval based on the batch size <span class="math notranslate nohighlight">\(n_{\text{batch}}\)</span>. That looks like:</p>
+<div class="math notranslate nohighlight">
+\[[\overline{X}_{n_{\text{total}}} - z_C \sigma/\sqrt{n_{\text{batch}}}, \overline{X}_{n_{\text{total}}} + z_C \sigma/\sqrt{n_{\text{batch}}}]\]</div>
+<p>The helper function <code class="docutils literal notranslate"><span class="pre">gr.pt_xbs()</span></code> automates the approximation of these control limits. In the rest of this exercise, we’ll focus on grouping the observations into reasonable batches.</p>
+<div class="admonition-see-the-references-for-the-gory-statistical-details admonition">
+<p class="admonition-title">See the references for the gory statistical details</p>
+<p>When it comes to approximating the standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> for a control chart, there is actually a bit more work we have to do to <em>de-bias</em> the standard deviation. The control limits for the standard deviation also follow a different formula than the sample mean. For more details, see the references listed at the bottom of this exercise.</p>
+</div>
 </div>
 <div class="section" id="grouping-observations">
 <h2>Grouping observations<a class="headerlink" href="#grouping-observations" title="Permalink to this headline">¶</a></h2>
-<p>(Should ideally be paired with data collection.)</p>
+<p>Ideally, the selection of batches should be made during the <em>planning</em> of data collection. If we are studying archival data, we can sometimes make some reasonable assumptions about data collection in order to define batches.</p>
 <div class="section" id="natural-batches">
 <h3>Natural batches<a class="headerlink" href="#natural-batches" title="Permalink to this headline">¶</a></h3>
+<p>In cases when we can <em>plan</em> data collection, there are likely candidates for “natural” batches of data. For instance, if we have multiple machines that are used (separately) to make the same part, we could group observations based on which machine led to their manufacture.</p>
+<p>The next code chunk simulates data where multiple machines are used to manufacture the same part—one of the machines is malfunctioning. You’ll use a control chart to help determine which machine is causing problems.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
@@ -797,47 +830,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="qx-naive-consecutive-rows">
-<h3><strong>qX</strong> Naive consecutive rows<a class="headerlink" href="#qx-naive-consecutive-rows" title="Permalink to this headline">¶</a></h3>
-<p>Batch the observations in <code class="docutils literal notranslate"><span class="pre">df_machines</span></code> into groups of consecutive observations, and use that grouping to construct a control chart with <code class="docutils literal notranslate"><span class="pre">gr.pt_xbs()</span></code>. Answer the questions under <em>observations</em> below.</p>
-<p><em>Hint</em>: The data above are in a <em>random</em> order. Keep that in mind when answering the questions below.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
-<span class="p">(</span>
-    <span class="n">df_machines</span>
-<span class="c1"># solution-begin    </span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">id_batch</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="mi">5</span><span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;id_batch&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
-<span class="c1"># solution-end    </span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_16_0.png" src="../_images/d22-e-stat06-spc-solution_16_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742560264159)&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<p><em>Observations</em></p>
-<ul class="simple">
-<li><p>Based on the batch size you chose, did you find any out-of-control patterns?</p>
-<ul>
-<li><p>At a batch size of <code class="docutils literal notranslate"><span class="pre">n=5</span></code> I did find one out-of-control pattern for the variability.</p></li>
-</ul>
-</li>
-<li><p>If you answered “yes” to the previous question, does your group variable give you a meaningful way to determine what may have cause the out-of-control pattern?</p>
-<ul>
-<li><p>No; the observations are in a random order, so consecutive groups have no particular meaning.</p></li>
-</ul>
-</li>
-</ul>
-<!-- solution-end --></div>
-<div class="section" id="qx-batch-by-machine">
-<h3><strong>qX</strong> Batch by machine<a class="headerlink" href="#qx-batch-by-machine" title="Permalink to this headline">¶</a></h3>
-<p>Construct a control chart using the machine identifier as the <code class="docutils literal notranslate"><span class="pre">group</span></code> variable. Answer the questions under <em>observations</em> below.</p>
+<div class="section" id="q1-batch-by-machine">
+<h3><strong>q1</strong> Batch by machine<a class="headerlink" href="#q1-batch-by-machine" title="Permalink to this headline">¶</a></h3>
+<p>Construct a control chart using the machine identifier as the <code class="docutils literal notranslate"><span class="pre">group</span></code> variable. Look for patterns in the measured quantity <code class="docutils literal notranslate"><span class="pre">X</span></code>. Answer the questions under <em>observations</em> below.</p>
+<p><em>Hint</em>: Remember to read the documentation for an unfamiliar function to learn about its arguments.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
@@ -852,8 +848,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_19_0.png" src="../_images/d22-e-stat06-spc-solution_19_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742749895259)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_18_0.png" src="../_images/d22-e-stat06-spc-solution_18_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8767781667810)&gt;
 </pre></div>
 </div>
 </div>
@@ -874,10 +870,13 @@ const thebe_selector_output = ".output, .cell_output"
 <!-- solution-end --></div>
 <div class="section" id="batches-in-time">
 <h3>Batches in time<a class="headerlink" href="#batches-in-time" title="Permalink to this headline">¶</a></h3>
+<p>Natural batches—such as per-machine as above—are a fine way to choose the grouping for a control chart. However, there are other ways to batch the data.</p>
+<p>Another way to batch the data is by <em>consecutive periods of time</em>; this can be helpful for monitoring a single data-generating process to see if something happened at a particular point in time.</p>
+<p>When choosing consecutive observations, we should choose <em>reasonable</em> batch sizes <span class="math notranslate nohighlight">\(n_{\text{batch}}\)</span>. The following rule of thumb is helpful for picking a reasonable <span class="math notranslate nohighlight">\(n_{\text{batch}}\)</span>.</p>
 <blockquote>
-<div><p>A rule of thumb is to use three time periods with 20 to 25 samples of size 50 to 100 units each.</p>
+<div><p>A rule of thumb is to use three time periods with 20 to 25 samples of size <span class="math notranslate nohighlight">\(n_{\text{batch}} = 50\)</span> to <span class="math notranslate nohighlight">\(n_{\text{batch}} = 100\)</span> units each.</p>
 </div></blockquote>
-<p>The following code simulates 45 samples, where each sample contains 50 observations. This results in <code class="docutils literal notranslate"><span class="pre">45</span> <span class="pre">*</span> <span class="pre">50</span> <span class="pre">=</span> <span class="pre">2250</span></code> observations total.</p>
+<p>The following code simulates data from a process that varies over time. The data collection plans for 45 samples, each containing <span class="math notranslate nohighlight">\(n_{\text{batch}} = 50\)</span> observations. This results in <code class="docutils literal notranslate"><span class="pre">45</span> <span class="pre">*</span> <span class="pre">50</span> <span class="pre">=</span> <span class="pre">2250</span></code> observations total.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
@@ -907,85 +906,112 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="id1">
-<h3><strong>qX</strong> Naive consecutive rows<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>Batch the observations in <code class="docutils literal notranslate"><span class="pre">df_time</span></code> into groups of consecutive observations, and use that grouping to construct a control chart with <code class="docutils literal notranslate"><span class="pre">gr.pt_xbs()</span></code>. <strong>Do not</strong> sort the data by time yet—you’ll do that in the next task.</p>
-<p>Make sure to <em>match</em> the group size used in data collection.</p>
-<p>Answer the questions under <em>observations</em> below.</p>
-<p><em>Hint</em>: The data above are in a <em>random</em> order. Keep that in mind when answering the questions below.</p>
+<div class="section" id="q2-create-consecutive-groups">
+<h3><strong>q2</strong> Create consecutive groups<a class="headerlink" href="#q2-create-consecutive-groups" title="Permalink to this headline">¶</a></h3>
+<p>Use a mutate to create a column <code class="docutils literal notranslate"><span class="pre">id_seq</span></code> to group sequential observations.</p>
+<p><em>Hint 1</em>: Remember that floor division <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">//</span> <span class="pre">y</span></code> is one way to create sequential values.</p>
+<p><em>Hint 2</em>: Remember that <code class="docutils literal notranslate"><span class="pre">DF.index</span></code> allows you to access the index of each row in a DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
-<span class="c1">## TODO: Batch by consecutive rows, create a control chart</span>
-<span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Create a column `id_seq` to group sequential observations</span>
+<span class="n">df_seq</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">df_time</span>
-<span class="c1"># solution-begin    </span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">id_batch</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="mi">50</span><span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;id_batch&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">id_seq</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="mi">50</span><span class="p">)</span>
 <span class="c1"># solution-end    </span>
 <span class="p">)</span>
+
+<span class="c1">## NOTE: Use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="s2">&quot;id_seq&quot;</span> <span class="ow">in</span> <span class="n">df_seq</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;df_seq does not have a column `id_seq`&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot;You grouped the observations into </span><span class="si">{0:}</span><span class="s2"> samples of size n_batch = </span><span class="si">{1:}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">df_seq</span><span class="o">.</span><span class="n">id_seq</span><span class="p">)),</span>
+        <span class="nb">len</span><span class="p">(</span><span class="n">df_seq</span><span class="p">[</span><span class="n">df_seq</span><span class="o">.</span><span class="n">id_seq</span> <span class="o">==</span> <span class="n">df_seq</span><span class="o">.</span><span class="n">id_seq</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]]),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df_seq</span> <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_24_0.png" src="../_images/d22-e-stat06-spc-solution_24_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742559893110)&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>You grouped the observations into 45 samples of size n_batch = 50
+           X         t  id_seq
+0   2.605316  0.801333       0
+1  -0.234766  0.080444       0
+2  -0.950839  0.888889       0
+3  -1.340159  0.527556       0
+4   0.563586  0.999556       0
+5   0.372806  0.253778       0
+6   1.378403  0.080000       0
+7   1.031736  0.288000       0
+8   0.639372  0.916889       0
+9   1.186054  0.336000       0
+10  0.083397  0.545333       0
+11 -0.683701  0.935556       0
+12 -0.388190  0.505333       0
+13  0.139908  0.761333       0
+14  0.978535  0.296444       0
+15 -0.187721  0.272889       0
+16 -0.063713  0.812444       0
+17  0.759567  0.749778       0
+18  0.087531  0.587111       0
+19  0.150913  0.484889       0
 </pre></div>
 </div>
 </div>
 </div>
-<p><em>Observations</em></p>
-<ul class="simple">
-<li><p>What is the correct group size, based on how the data were generated?</p>
-<ul>
-<li><p>The correct batch size if <code class="docutils literal notranslate"><span class="pre">n=50</span></code>.</p></li>
-</ul>
-</li>
-<li><p>Based on the batch size you chose, did you find any out-of-control patterns?</p>
-<ul>
-<li><p>At a batch size of <code class="docutils literal notranslate"><span class="pre">n=50</span></code> I did not find any out-of-control patterns.</p></li>
-</ul>
-</li>
-<li><p>If you answered “yes” to the previous question, does your group variable give you a meaningful way to determine what may have cause the out-of-control pattern?</p>
-<ul>
-<li><p>NA</p></li>
-</ul>
-</li>
-</ul>
-<!-- solution-end --></div>
-<div class="section" id="qx-batch-by-slices-of-time">
-<h3><strong>qX</strong> Batch by slices of time<a class="headerlink" href="#qx-batch-by-slices-of-time" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="q3-batch-by-slices-of-time">
+<h3><strong>q3</strong> Batch by slices of time<a class="headerlink" href="#q3-batch-by-slices-of-time" title="Permalink to this headline">¶</a></h3>
 <p>Sort the data by time <code class="docutils literal notranslate"><span class="pre">t</span></code>, then batch the observations into consecutive groups and construct a control chart.</p>
-<p>Make sure to <em>match</em> the group size used in data collection.</p>
+<p>Make sure to <em>match</em> the batch size <span class="math notranslate nohighlight">\(n_{\text{batch}}\)</span> used in data collection.</p>
 <p>Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
-<span class="c1">## TODO: Arrange the dataset by time `t`, then batch and plot</span>
-<span class="c1"># a control chart</span>
-<span class="p">(</span>
+<span class="c1">## TODO: Arrange the dataset by time `t` and batch appropriately</span>
+<span class="n">df_timebatch</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">df_time</span>
 <span class="c1"># solution-begin    </span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_arrange</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">id_batch</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="mi">50</span><span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;id_batch&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">id_seq</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="mi">50</span><span class="p">)</span>
 <span class="c1"># solution-end    </span>
+<span class="p">)</span>
+
+<span class="c1">## NOTE: No need to edit; use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="s2">&quot;id_seq&quot;</span> <span class="ow">in</span> <span class="n">df_timebatch</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;df_timebatch does not have a column `id_seq`&quot;</span>
+
+<span class="k">assert</span> \
+    <span class="nb">len</span><span class="p">(</span><span class="n">df_timebatch</span><span class="p">[</span><span class="n">df_timebatch</span><span class="o">.</span><span class="n">id_seq</span> <span class="o">==</span> <span class="n">df_timebatch</span><span class="o">.</span><span class="n">id_seq</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span> <span class="o">==</span> <span class="mi">50</span><span class="p">,</span> \
+    <span class="s2">&quot;You did not choose a batch size n_batch that matches the data collection&quot;</span>
+    
+<span class="c1"># Visualize</span>
+<span class="p">(</span>
+    <span class="n">df_timebatch</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;id_seq&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_27_0.png" src="../_images/d22-e-stat06-spc-solution_27_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742560480178)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_25_0.png" src="../_images/d22-e-stat06-spc-solution_25_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8767816020839)&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <p><em>Observations</em></p>
+<p><em>Hint</em>: You will <em>not</em> see any patterns if you do not properly arrange the data.</p>
 <ul class="simple">
 <li><p>Based on the batch size you chose, did you find any out-of-control patterns?</p>
 <ul>
-<li><p>Arranged by time and with a batch size of <code class="docutils literal notranslate"><span class="pre">n=50</span></code>, I find one case of excessive variability, one low mean, and a long string of high-mean .</p></li>
+<li><p>Arranged by time and with a batch size of <code class="docutils literal notranslate"><span class="pre">n=50</span></code>, I see one low mean and a long string of high-mean batches.</p></li>
 </ul>
 </li>
 <li><p>If you answered “yes” to the previous question, does your group variable give you a meaningful way to determine what may have cause the out-of-control pattern?</p>
@@ -995,6 +1021,30 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 <!-- solution-end --></div>
+</div>
+<div class="section" id="naive-consecutive-rows">
+<h2>Naive consecutive rows<a class="headerlink" href="#naive-consecutive-rows" title="Permalink to this headline">¶</a></h2>
+<p>What happens if we do not correctly arrange the rows? Then we lose all information about the time history of the data. The following plot shows what happens if we construct a control chart without respecting the time ordering of the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
+<span class="c1">## NOTE: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_time</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">id_batch</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;id_batch&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d22-e-stat06-spc-solution_28_0.png" src="../_images/d22-e-stat06-spc-solution_28_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8767765421743)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that there are no patterns in this view of the data!</p>
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="patterns-to-seek">
@@ -1038,8 +1088,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_31_0.png" src="../_images/d22-e-stat06-spc-solution_31_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742551482877)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_32_0.png" src="../_images/d22-e-stat06-spc-solution_32_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8767781669777)&gt;
 </pre></div>
 </div>
 </div>
@@ -1075,8 +1125,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_33_0.png" src="../_images/d22-e-stat06-spc-solution_33_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742551393922)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_34_0.png" src="../_images/d22-e-stat06-spc-solution_34_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8767816294488)&gt;
 </pre></div>
 </div>
 </div>
@@ -1112,8 +1162,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_35_0.png" src="../_images/d22-e-stat06-spc-solution_35_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742551411637)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_36_0.png" src="../_images/d22-e-stat06-spc-solution_36_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8767804037063)&gt;
 </pre></div>
 </div>
 </div>
@@ -1150,8 +1200,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_38_0.png" src="../_images/d22-e-stat06-spc-solution_38_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742560248019)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_39_0.png" src="../_images/d22-e-stat06-spc-solution_39_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8767816335833)&gt;
 </pre></div>
 </div>
 </div>
@@ -1187,8 +1237,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_40_0.png" src="../_images/d22-e-stat06-spc-solution_40_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742560018092)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_41_0.png" src="../_images/d22-e-stat06-spc-solution_41_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8767804402354)&gt;
 </pre></div>
 </div>
 </div>
@@ -1224,8 +1274,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_42_0.png" src="../_images/d22-e-stat06-spc-solution_42_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742560933955)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_43_0.png" src="../_images/d22-e-stat06-spc-solution_43_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8767765530483)&gt;
 </pre></div>
 </div>
 </div>
@@ -1234,6 +1284,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="warnings">
 <h1>Warnings<a class="headerlink" href="#warnings" title="Permalink to this headline">¶</a></h1>
+<p>While we should be on the lookout for patterns in a control chart, we should balance this out with a healthy dose of skepticism. The following two examples demonstrate cases where we would see patterns in a control chart that have no real meaning.</p>
 <div class="section" id="beware-spurious-patterns">
 <h2>Beware spurious patterns!<a class="headerlink" href="#beware-spurious-patterns" title="Permalink to this headline">¶</a></h2>
 <p>Note that <em>false patterns</em> can still occur based on random events. These false patterns become more likely with smaller batch sizes. For instance, let’s take a look at the completely random dataset from above, batched into tiny subgroups:</p>
@@ -1251,8 +1302,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_45_0.png" src="../_images/d22-e-stat06-spc-solution_45_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742551064287)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_46_0.png" src="../_images/d22-e-stat06-spc-solution_46_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8767816337005)&gt;
 </pre></div>
 </div>
 </div>
@@ -1264,7 +1315,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Patterns based on order (such as high/low or increasing/decreasing runs) are meaningless when order of the group variable has no meaning. For instance, we can reorder the machine identifiers in <code class="docutils literal notranslate"><span class="pre">df_machines</span></code> to artificially create an increasing run:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
+<span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
     <span class="n">df_machines</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">id_machine</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">fct_reorder</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">id_machine</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">fun</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">))</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;id_machine&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
@@ -1273,25 +1326,18 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/zach/Git/py_grama/grama/dfply/vector.py:122: FutureWarning: The &#39;lookup&#39; method is deprecated and will be removed in a future version. You can use DataFrame.melt and DataFrame.loc as a substitute.
-/home/zach/Git/py_grama/grama/dfply/vector.py:122: FutureWarning: The &#39;lookup&#39; method is deprecated and will be removed in a future version. You can use DataFrame.melt and DataFrame.loc as a substitute.
-/home/zach/Git/py_grama/grama/dfply/vector.py:122: FutureWarning: The &#39;lookup&#39; method is deprecated and will be removed in a future version. You can use DataFrame.melt and DataFrame.loc as a substitute.
-/home/zach/Git/py_grama/grama/dfply/vector.py:122: FutureWarning: The &#39;lookup&#39; method is deprecated and will be removed in a future version. You can use DataFrame.melt and DataFrame.loc as a substitute.
-/home/zach/.local/lib/python3.8/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-/home/zach/.local/lib/python3.8/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-/home/zach/.local/lib/python3.8/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-</pre></div>
-</div>
-<img alt="../_images/d22-e-stat06-spc-solution_48_1.png" src="../_images/d22-e-stat06-spc-solution_48_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742560148827)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_49_0.png" src="../_images/d22-e-stat06-spc-solution_49_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8767781843709)&gt;
 </pre></div>
 </div>
 </div>
 </div>
+<p>Here the batch means are increasing, but that is only because we ordered the machines by their batch mean!</p>
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="example-cast-aluminum-dataset">
 <h1>Example: Cast Aluminum Dataset<a class="headerlink" href="#example-cast-aluminum-dataset" title="Permalink to this headline">¶</a></h1>
+<p>Let’s take a closer look at the cast aluminum dataset using our new lense of control charts.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_shewhart</span>
@@ -1364,8 +1410,9 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </div></div></div>
 </div>
-<div class="section" id="qx-assess-the-density">
-<h2><strong>qX</strong> Assess the <code class="docutils literal notranslate"><span class="pre">density</span></code><a class="headerlink" href="#qx-assess-the-density" title="Permalink to this headline">¶</a></h2>
+<p>We might want to use this data to model these material properties are random, but before that we should ask: Is the manufacturing process generating these properties under statistical control?</p>
+<div class="section" id="q4-assess-the-density">
+<h2><strong>q4</strong> Assess the <code class="docutils literal notranslate"><span class="pre">density</span></code><a class="headerlink" href="#q4-assess-the-density" title="Permalink to this headline">¶</a></h2>
 <p>Assess the state of statistical control for the variable <code class="docutils literal notranslate"><span class="pre">density</span></code> using a control chart.</p>
 <p>Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
@@ -1381,8 +1428,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_52_0.png" src="../_images/d22-e-stat06-spc-solution_52_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742550997767)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_55_0.png" src="../_images/d22-e-stat06-spc-solution_55_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8767803567897)&gt;
 </pre></div>
 </div>
 </div>
@@ -1411,8 +1458,8 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 <!-- solution-end --></div>
-<div class="section" id="qx-assess-the-tensile-strength">
-<h2><strong>qX</strong> Assess the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code><a class="headerlink" href="#qx-assess-the-tensile-strength" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="q5-assess-the-tensile-strength">
+<h2><strong>q5</strong> Assess the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code><a class="headerlink" href="#q5-assess-the-tensile-strength" title="Permalink to this headline">¶</a></h2>
 <p>Assess the state of statistical control for the variable <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> using a control chart.</p>
 <p>Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
@@ -1428,8 +1475,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_55_0.png" src="../_images/d22-e-stat06-spc-solution_55_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8742550940715)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_58_0.png" src="../_images/d22-e-stat06-spc-solution_58_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8767765329321)&gt;
 </pre></div>
 </div>
 </div>
