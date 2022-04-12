@@ -1,0 +1,1253 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scatterplots and Layers &#8212; Data Science for Engineers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Grama Model Building" href="d10-e-grama02-building-solution.html" />
+    <link rel="prev" title="Sources of Variability: Real vs. Error" href="d08-e-stat02-source-solution.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/home.html">
+   Data Science for Engineers
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/howto.html">
+   How To Use These Materials
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../frontmatter/exercises.html">
+   Exercise Solutions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
+     Introduction to Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
+     Data Visualization Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
+     Data Isolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d02-e-tips-solution.html">
+     Tips for This Course
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
+     Introduction to Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
+     Grama Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
+     Bar Charts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d08-e-stat02-source-solution.html">
+     Sources of Variability: Real vs. Error
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Scatterplots and Layers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d10-e-grama02-building-solution.html">
+     Grama Model Building
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d11-e-data03-pivot-solution.html">
+     Data: Pivoting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d12-e-grama03-eval-solution.html">
+     Grama Model Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d14-e-stat03-descriptive-solution.html">
+     Descriptive Statistics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d15-e-data04-separate-unite-solution.html">
+     Data: Separating and Uniting Columns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d16-e-data05-join-solution.html">
+     Data: Joining Datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d17-e-vis05-multiples-solution.html">
+     Small Multiples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d18-e-grama04-ema-solution.html">
+     Exploratory Model Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d19-e-stat04-distributions-solution.html">
+     Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d20-e-grama05-fit-function-solution.html">
+     Fitting Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d21-e-stat05-CI-solution.html">
+     Confidence Intervals and the CLT
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d22-e-stat06-spc-solution.html">
+     Fundamentals of Statistical Process Monitoring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">
+     Fitting Univariate Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">
+     Fitting Multivariate Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d25-e-grama08-duu-solution.html">
+     Design Under Uncertainty
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/exercises_solution/d09-e-vis03-scatterplot-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d09-e-vis03-scatterplot-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Scatterplots and Layers
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scatterplots">
+     Scatterplots
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q1-how-do-price-and-carat-relate">
+       <strong>
+        q1
+       </strong>
+       How do
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         price
+        </span>
+       </code>
+       and
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         carat
+        </span>
+       </code>
+       relate?
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#overplotting">
+       Overplotting
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q2-use-gr-geom-count">
+       <strong>
+        q2
+       </strong>
+       Use
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         gr.geom_count()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-use-the-alpha-option">
+       <strong>
+        q3
+       </strong>
+       Use the
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         alpha
+        </span>
+       </code>
+       option
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#layers-in-ggplot">
+     <em>
+      Layers
+     </em>
+     in ggplot
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#default-aesthetic-order">
+       Default aesthetic order
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-use-the-default-order">
+       <strong>
+        q4
+       </strong>
+       Use the default order
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#default-data">
+       Default data
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#layer-order">
+       Layer Order
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#scales">
+       Scales
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-apply-log10-scales-to-both-axes">
+       <strong>
+        q5
+       </strong>
+       Apply log10 scales to both axes
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q6-interpret-this-plot">
+     <strong>
+      q6
+     </strong>
+     Interpret this plot
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q7-interpret-this-plot">
+     <strong>
+      q7
+     </strong>
+     Interpret this plot
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Scatterplots and Layers</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Scatterplots and Layers
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scatterplots">
+     Scatterplots
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q1-how-do-price-and-carat-relate">
+       <strong>
+        q1
+       </strong>
+       How do
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         price
+        </span>
+       </code>
+       and
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         carat
+        </span>
+       </code>
+       relate?
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#overplotting">
+       Overplotting
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q2-use-gr-geom-count">
+       <strong>
+        q2
+       </strong>
+       Use
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         gr.geom_count()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-use-the-alpha-option">
+       <strong>
+        q3
+       </strong>
+       Use the
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         alpha
+        </span>
+       </code>
+       option
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#layers-in-ggplot">
+     <em>
+      Layers
+     </em>
+     in ggplot
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#default-aesthetic-order">
+       Default aesthetic order
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-use-the-default-order">
+       <strong>
+        q4
+       </strong>
+       Use the default order
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#default-data">
+       Default data
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#layer-order">
+       Layer Order
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#scales">
+       Scales
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-apply-log10-scales-to-both-axes">
+       <strong>
+        q5
+       </strong>
+       Apply log10 scales to both axes
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q6-interpret-this-plot">
+     <strong>
+      q6
+     </strong>
+     Interpret this plot
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q7-interpret-this-plot">
+     <strong>
+      q7
+     </strong>
+     Interpret this plot
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="scatterplots-and-layers">
+<h1>Scatterplots and Layers<a class="headerlink" href="#scatterplots-and-layers" title="Permalink to this headline">¶</a></h1>
+<p><em>Purpose</em>: <em>Scatterplots</em> are a key tool for EDA. Scatteplots help us inspect the relationship between two variables. To enhance our scatterplots, we’ll learn how to use <em>layers</em> in ggplot to add multiple pieces of information to our plots.</p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll use the diamonds and mpg datasets in this exercise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_diamonds</span>
+<span class="kn">from</span> <span class="nn">plotnine.data</span> <span class="kn">import</span> <span class="n">mpg</span> <span class="k">as</span> <span class="n">df_mpg</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="scatterplots">
+<h2>Scatterplots<a class="headerlink" href="#scatterplots" title="Permalink to this headline">¶</a></h2>
+<p>So far, we have focused on studying one variable at a time using bars/columns:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;carat&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/stats/stat_bin.py:95: PlotnineWarning: &#39;stat_bin()&#39; using &#39;bins = 142&#39;. Pick better value with &#39;binwidth&#39;.
+</pre></div>
+</div>
+<img alt="../_images/d09-e-vis03-scatterplot-solution_7_1.png" src="../_images/d09-e-vis03-scatterplot-solution_7_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776099688867)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>This gives us a sense of how a <em>single</em> variable is distributed in a dataset, but it gives us no sense for how <code class="docutils literal notranslate"><span class="pre">carat</span></code> relates to other variables.</p>
+<p>A scatterplot helps us to see relationships between two variables. A scatterplot shows two variables on the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> aesthetics, and visualizes observations using one point per observation. Thus, in ggplot, we use the geometry <code class="docutils literal notranslate"><span class="pre">gr.geom_point()</span></code> to construct a scatterplot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;carat&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;price&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d09-e-vis03-scatterplot-solution_9_0.png" src="../_images/d09-e-vis03-scatterplot-solution_9_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776129725630)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="q1-how-do-price-and-carat-relate">
+<h3><strong>q1</strong> How do <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">carat</span></code> relate?<a class="headerlink" href="#q1-how-do-price-and-carat-relate" title="Permalink to this headline">¶</a></h3>
+<p>Use the plot above to answer the questions under <em>Observations</em>.</p>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>How does <code class="docutils literal notranslate"><span class="pre">price</span></code> tend to change as <code class="docutils literal notranslate"><span class="pre">carat</span></code> increases? Is this trend linear or nonlinear?</p>
+<ul>
+<li><p>Generally, <code class="docutils literal notranslate"><span class="pre">price</span></code> increases with <code class="docutils literal notranslate"><span class="pre">carat</span></code>. This trend is certainly nonlinear; we see the increase in price grow faster at higher <code class="docutils literal notranslate"><span class="pre">carat</span></code> values.</p></li>
+</ul>
+</li>
+<li><p>Consider diamonds with <code class="docutils literal notranslate"><span class="pre">carat</span> <span class="pre">==</span> <span class="pre">2.0</span></code>. What range of <code class="docutils literal notranslate"><span class="pre">price</span></code> do you see for this kind of diamond? Is <code class="docutils literal notranslate"><span class="pre">carat</span></code> <em>alone</em> able to predict the <code class="docutils literal notranslate"><span class="pre">price</span></code> of a diamond?</p>
+<ul>
+<li><p>We see a range of about <code class="docutils literal notranslate"><span class="pre">5,000</span></code> to about <code class="docutils literal notranslate"><span class="pre">18,000</span></code>. Since we see such a wide range, it is clear that <code class="docutils literal notranslate"><span class="pre">carat</span></code> alone is not able to predict <code class="docutils literal notranslate"><span class="pre">price</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+<div class="section" id="overplotting">
+<h3>Overplotting<a class="headerlink" href="#overplotting" title="Permalink to this headline">¶</a></h3>
+<p>With larger datasets, it is possible for many observations to “land” in the same <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code> location on a scatterplot. For instance, with the following (silly) dataset, we get the false impression that there are only two points:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+        <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d09-e-vis03-scatterplot-solution_13_0.png" src="../_images/d09-e-vis03-scatterplot-solution_13_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776129768189)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are various ways to visually indicate the <em>number</em> of observations at each point; a simple way is to use size to denote count, as with <code class="docutils literal notranslate"><span class="pre">gr.geom_count()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+        <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_count</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d09-e-vis03-scatterplot-solution_15_0.png" src="../_images/d09-e-vis03-scatterplot-solution_15_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776099776802)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="q2-use-gr-geom-count">
+<h3><strong>q2</strong> Use <code class="docutils literal notranslate"><span class="pre">gr.geom_count()</span></code><a class="headerlink" href="#q2-use-gr-geom-count" title="Permalink to this headline">¶</a></h3>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">gr.geom_point()</span></code> with <code class="docutils literal notranslate"><span class="pre">gr.geom_count()</span></code> in the following plot. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Replace gr.geom_point() with gr.geom_count()</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;displ&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;hwy&quot;</span><span class="p">))</span>
+
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_count</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d09-e-vis03-scatterplot-solution_17_0.png" src="../_images/d09-e-vis03-scatterplot-solution_17_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776111791318)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>With <code class="docutils literal notranslate"><span class="pre">gr.geom_point()</span></code>, how evenly spread do the observations seem to be?</p>
+<ul>
+<li><p>The observations <em>appear</em> to be evenly spread across <code class="docutils literal notranslate"><span class="pre">displ</span></code>; there are a few fewer points at higher <code class="docutils literal notranslate"><span class="pre">displ</span></code> values, but not by much.</p></li>
+</ul>
+</li>
+<li><p>With <code class="docutils literal notranslate"><span class="pre">gr.geom_count()</span></code>, how evenly spread do the observations seem to be?</p>
+<ul>
+<li><p>The observations appear to concentrate in a “band” curving from around <code class="docutils literal notranslate"><span class="pre">displ</span> <span class="pre">==</span> <span class="pre">2</span></code> to <code class="docutils literal notranslate"><span class="pre">displ</span> <span class="pre">==</span> <span class="pre">6</span></code>. The points off of this band (around <code class="docutils literal notranslate"><span class="pre">displ</span> <span class="pre">==</span> <span class="pre">3.5,</span> <span class="pre">hwy</span> <span class="pre">==</span> <span class="pre">28</span></code> and <code class="docutils literal notranslate"><span class="pre">displ</span> <span class="pre">==</span> <span class="pre">6.0,</span> <span class="pre">hwy</span> <span class="pre">==</span> <span class="pre">25</span></code>) are far more sparse.</p></li>
+</ul>
+</li>
+<li><p>What does <code class="docutils literal notranslate"><span class="pre">gr.geom_point()</span></code> hide in this case?</p>
+<ul>
+<li><p>Visualizing with points (not counts) hides the multiple observations at each point; with points we cannot see the concentrated “band”.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --><p>To deal with overplotting, we can also make points <em>transparent</em>. Then overlapping points will tend to appear darker, giving us the means to see where there are more points.</p>
+</div>
+<div class="section" id="q3-use-the-alpha-option">
+<h3><strong>q3</strong> Use the <code class="docutils literal notranslate"><span class="pre">alpha</span></code> option<a class="headerlink" href="#q3-use-the-alpha-option" title="Permalink to this headline">¶</a></h3>
+<p>Adjust the <code class="docutils literal notranslate"><span class="pre">alpha</span></code> option in <code class="docutils literal notranslate"><span class="pre">gr.geom_point()</span></code> to better understand where observations concentrate. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;carat&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;price&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span>
+
+        <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d09-e-vis03-scatterplot-solution_21_0.png" src="../_images/d09-e-vis03-scatterplot-solution_21_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776077910291)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Do observations tend to concentrate at “special” values? If yes, do they concentrate at values in <code class="docutils literal notranslate"><span class="pre">carat</span></code>, in <code class="docutils literal notranslate"><span class="pre">price</span></code> or in both?</p>
+<ul>
+<li><p>Yes; observations tend to concentrate at “special” values of <code class="docutils literal notranslate"><span class="pre">carat</span></code>. We can see this by the vertical “streaks” of points, indicating that values tend to concentrate at special values in <code class="docutils literal notranslate"><span class="pre">carat</span></code>. We do not see the same kinds of patterns in <code class="docutils literal notranslate"><span class="pre">price</span></code>—we see more uniform variability in this variable..</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+</div>
+<div class="section" id="layers-in-ggplot">
+<h2><em>Layers</em> in ggplot<a class="headerlink" href="#layers-in-ggplot" title="Permalink to this headline">¶</a></h2>
+<p>Now is a great time to learn some of the more powerful features of ggplot. We’ll take advantage of the <em>layer</em> functionality to construct more informative plots.</p>
+<div class="section" id="default-aesthetic-order">
+<h3>Default aesthetic order<a class="headerlink" href="#default-aesthetic-order" title="Permalink to this headline">¶</a></h3>
+<p>So far, we have specified the aesthetic names explicitly in <code class="docutils literal notranslate"><span class="pre">gr.aes()</span></code> with calls like <code class="docutils literal notranslate"><span class="pre">gr.aes(x=&quot;carat&quot;,</span> <span class="pre">y=&quot;price&quot;)</span></code>. However, we can save ourselves a bit of typing by using the <em>order</em> of the arguments. The default order of arguments in <code class="docutils literal notranslate"><span class="pre">gr.aes()</span></code> is <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code>.</p>
+<p>Thus, we can re-write the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;var1&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;var2&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>With slightly shorter code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_data</span>
+    <span class="c1">## NOTE: The `x=` and `y=` are dropped</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;var1&quot;</span><span class="p">,</span> <span class="s2">&quot;var2&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="q4-use-the-default-order">
+<h3><strong>q4</strong> Use the default order<a class="headerlink" href="#q4-use-the-default-order" title="Permalink to this headline">¶</a></h3>
+<p>Re-write the following code to use the default <code class="docutils literal notranslate"><span class="pre">x,y</span></code> order in <code class="docutils literal notranslate"><span class="pre">gr.aes()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Re-write this code to use the default order</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+
+        <span class="s2">&quot;carat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;price&quot;</span><span class="p">,</span>
+    <span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d09-e-vis03-scatterplot-solution_26_0.png" src="../_images/d09-e-vis03-scatterplot-solution_26_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776078426832)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="default-data">
+<h3>Default data<a class="headerlink" href="#default-data" title="Permalink to this headline">¶</a></h3>
+<p>Every geometry in a ggplot object also takes a <code class="docutils literal notranslate"><span class="pre">data</span></code> argument. By default all geometries visualize the same dataset, but we can override that default with the <code class="docutils literal notranslate"><span class="pre">data</span></code> argument. This is helpful if we want to highlight particular observations; for instance, the code below highlights all diamonds that have <code class="docutils literal notranslate"><span class="pre">carat</span> <span class="pre">==</span> <span class="pre">1.0</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;carat&quot;</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span>
+        <span class="c1">## NOTE: This overrides the data to plot</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df_diamonds</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">carat</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d09-e-vis03-scatterplot-solution_28_0.png" src="../_images/d09-e-vis03-scatterplot-solution_28_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776078416782)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is made even more flexible when we combine data operations such as a summary; the following plot shows highway fuel economy against engine displacement for a variety of car classes, but also shows the <em>mean</em> performance within each group as a larger dot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;displ&quot;</span><span class="p">,</span> <span class="s2">&quot;hwy&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df_mpg</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">)</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span><span class="n">displ</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">displ</span><span class="p">),</span> <span class="n">hwy</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">hwy</span><span class="p">)),</span>
+        <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d09-e-vis03-scatterplot-solution_30_0.png" src="../_images/d09-e-vis03-scatterplot-solution_30_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776133149678)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Such a plot helps us to compare both typical (mean) behavior and variation in the same plot.</p>
+</div>
+<div class="section" id="layer-order">
+<h3>Layer Order<a class="headerlink" href="#layer-order" title="Permalink to this headline">¶</a></h3>
+<p>The order in which you add geometries to a ggplot is the order in which they are drawn. You can use this to “stack” visual elements in a desirable order.</p>
+<p>For instance; here’s the same diamonds plot from above with <code class="docutils literal notranslate"><span class="pre">carat</span> <span class="pre">==</span> <span class="pre">1.0</span></code> highlighted, but with the order of the layers reverse.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;carat&quot;</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df_diamonds</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">carat</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1">## NOTE: The full dataset comes last</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d09-e-vis03-scatterplot-solution_33_0.png" src="../_images/d09-e-vis03-scatterplot-solution_33_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776133143775)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that we cannot see the additional layer at all! Overplotting is preventing us from seeing the lower layer. As before, we could use <code class="docutils literal notranslate"><span class="pre">alpha</span></code> to make more of the plot visible.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;carat&quot;</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df_diamonds</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">carat</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1">## NOTE: The full dataset comes last</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">20</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d09-e-vis03-scatterplot-solution_35_0.png" src="../_images/d09-e-vis03-scatterplot-solution_35_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776130955255)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>An even more effective use of this functionality is to use layers to <em>highlight</em> particular observations; for instance, some of the more extreme cases in the dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;carat&quot;</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df_diamonds</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">carat</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+        <span class="n">size</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1">## NOTE: The full dataset comes last</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d09-e-vis03-scatterplot-solution_37_0.png" src="../_images/d09-e-vis03-scatterplot-solution_37_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776129905924)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>By slightly oversizing the lower-layer, we effectively add a “highlight” to our selected points.</p>
+</div>
+<div class="section" id="scales">
+<h3>Scales<a class="headerlink" href="#scales" title="Permalink to this headline">¶</a></h3>
+<p>One more layer option; by default ggplot maps the <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code> scales to values <em>linearly</em>, but we can apply <em>transforms</em> to the scales to aid in visualization. For instance, we can transform the horizontal axis to use a <code class="docutils literal notranslate"><span class="pre">log10()</span></code> transform using <code class="docutils literal notranslate"><span class="pre">gr.scale_x_log10()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;carat&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_x_log10</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/scales/scale.py:102: PlotnineWarning: scale_x_log10 could not recognise parameter `bins`
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/stats/stat_bin.py:95: PlotnineWarning: &#39;stat_bin()&#39; using &#39;bins = 64&#39;. Pick better value with &#39;binwidth&#39;.
+</pre></div>
+</div>
+<img alt="../_images/d09-e-vis03-scatterplot-solution_40_1.png" src="../_images/d09-e-vis03-scatterplot-solution_40_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776036675178)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the linear scaling led to bars being “squished” at lower values; a log transformation better “spreads out” the data.</p>
+<div class="admonition-rule-of-thumb-use-a-log-scale-when-values-vary-over-multiple-order-of-magnitude admonition">
+<p class="admonition-title">Rule of thumb: Use a log-scale when values vary over multiple order-of-magnitude</p>
+<p>There is a bit of artistry to deciding when to log transform (or not). A good rule-of-thumb is to log-transform a variable when it varies over multiple order of magnitude.</p>
+<p>However, it’s also a good idea to simply “play” with different visuals to see what works for your dataset.</p>
+</div>
+</div>
+<div class="section" id="q5-apply-log10-scales-to-both-axes">
+<h3><strong>q5</strong> Apply log10 scales to both axes<a class="headerlink" href="#q5-apply-log10-scales-to-both-axes" title="Permalink to this headline">¶</a></h3>
+<p>Apply a <code class="docutils literal notranslate"><span class="pre">log10()</span></code> transform to <em>both</em> the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> axes.</p>
+<p><em>Hint</em>: If <code class="docutils literal notranslate"><span class="pre">gr.scale_x_log10()</span></code> transforms the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis, what might transform the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;carat&quot;</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_x_log10</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_y_log10</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d09-e-vis03-scatterplot-solution_43_0.png" src="../_images/d09-e-vis03-scatterplot-solution_43_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776036696715)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="exercises">
+<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="q6-interpret-this-plot">
+<h2><strong>q6</strong> Interpret this plot<a class="headerlink" href="#q6-interpret-this-plot" title="Permalink to this headline">¶</a></h2>
+<p>Inspect the following plot, and answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: No need to edit; run and inspect this plot</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_pivot_longer</span><span class="p">(</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cty&quot;</span><span class="p">,</span> <span class="s2">&quot;hwy&quot;</span><span class="p">],</span>
+        <span class="n">names_to</span><span class="o">=</span><span class="s2">&quot;type&quot;</span><span class="p">,</span>
+        <span class="n">values_to</span><span class="o">=</span><span class="s2">&quot;economy&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;displ&quot;</span><span class="p">,</span> <span class="s2">&quot;economy&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;type&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_count</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d09-e-vis03-scatterplot-solution_46_0.png" src="../_images/d09-e-vis03-scatterplot-solution_46_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776116031368)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Which <code class="docutils literal notranslate"><span class="pre">displ</span></code> values tend to have a higher fuel <code class="docutils literal notranslate"><span class="pre">economy</span></code>?</p>
+<ul>
+<li><p>Lower <code class="docutils literal notranslate"><span class="pre">displ</span></code> values tend to yield higher fuel <code class="docutils literal notranslate"><span class="pre">economy</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Which tends to be higher: <code class="docutils literal notranslate"><span class="pre">cty</span></code> or <code class="docutils literal notranslate"><span class="pre">hwy</span></code> fuel <code class="docutils literal notranslate"><span class="pre">economy</span></code>?</p>
+<ul>
+<li><p>Generally <code class="docutils literal notranslate"><span class="pre">cty</span></code> tends to be higher than <code class="docutils literal notranslate"><span class="pre">hwy</span></code>; this is not <em>always</em> true, though.</p></li>
+</ul>
+</li>
+<li><p>Are there any vehicles that get a <code class="docutils literal notranslate"><span class="pre">cty</span></code> fuel <code class="docutils literal notranslate"><span class="pre">economy</span></code> that is higher than another vehicle’s <code class="docutils literal notranslate"><span class="pre">hwy</span></code> fuel <code class="docutils literal notranslate"><span class="pre">economy</span></code>?</p>
+<ul>
+<li><p>Yes; in cases where we see a red dot above a blue dot, this indicates that one vehicle’s <code class="docutils literal notranslate"><span class="pre">cty</span></code> is higher than another vehicle’s <code class="docutils literal notranslate"><span class="pre">hwy</span></code>.</p></li>
+</ul>
+</li>
+<li><p>From this plot, can we tell whether any <em>single</em> vehicle has its <code class="docutils literal notranslate"><span class="pre">cty</span></code> value higher than its <code class="docutils literal notranslate"><span class="pre">hwy</span></code> value?</p>
+<ul>
+<li><p>We cannot! Note that this visual does not give any indication of which <em>pairs</em> of dots are associated. While we expect that <code class="docutils literal notranslate"><span class="pre">cty</span> <span class="pre">&lt;=</span> <span class="pre">hwy</span></code> for all vehicles, this visual does not give us a means to test that hypothesis.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="q7-interpret-this-plot">
+<h2><strong>q7</strong> Interpret this plot<a class="headerlink" href="#q7-interpret-this-plot" title="Permalink to this headline">¶</a></h2>
+<p>Inspect the following plot, and answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: No need to edit; run and inspect this plot</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;cty&quot;</span><span class="p">,</span> <span class="s2">&quot;hwy&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_abline</span><span class="p">(</span><span class="n">intercept</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">slope</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_count</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d09-e-vis03-scatterplot-solution_49_0.png" src="../_images/d09-e-vis03-scatterplot-solution_49_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776081186958)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<p><em>Note</em>: The dashed line above shows the line of <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">==</span> <span class="pre">x</span></code>.</p>
+<ul class="simple">
+<li><p>From this plot, can we tell whether any <em>single</em> vehicle has its <code class="docutils literal notranslate"><span class="pre">cty</span></code> value higher than its <code class="docutils literal notranslate"><span class="pre">hwy</span></code> value?</p>
+<ul>
+<li><p>Yes! Here every point associates the <code class="docutils literal notranslate"><span class="pre">cty</span></code> and <code class="docutils literal notranslate"><span class="pre">hwy</span></code> values for a single vehicle. Therefore, we can check whether <code class="docutils literal notranslate"><span class="pre">cty</span> <span class="pre">&lt;</span> <span class="pre">hwy</span></code> simply by checking whether the point falls above the line <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">==</span> <span class="pre">x</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./exercises_solution"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="d08-e-stat02-source-solution.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Sources of Variability: Real vs. Error</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="d10-e-grama02-building-solution.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Grama Model Building</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Zachary del Rosario<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
