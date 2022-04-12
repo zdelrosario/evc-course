@@ -1,12 +1,15 @@
 name,day
 e-data00-notebooks,1
 e-vis00-basics,1
+e-tips,2
 e-data01-isolate,2
 e-stat01-eda,3
 e-grama01-basics,4
 e-vis01-bar-charts,5
 e-stat02-source,8
+e-vis03-scatterplot,9
 e-grama02-building,10
+e-data03-pivot,11
 e-grama03-eval,12
 e-stat03-descriptive,14
 e-data04-separate-unite,15
