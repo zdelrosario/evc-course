@@ -665,13 +665,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/pandas/core/arraylike.py:397: RuntimeWarning: divide by zero encountered in log10
-/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/pandas/core/arraylike.py:397: RuntimeWarning: invalid value encountered in log10
-/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/layer.py:324: PlotnineWarning: stat_bin : Removed 208344 rows containing non-finite values.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/zach/Bin/anaconda3/envs/evc/lib/python3.9/site-packages/pandas/core/arraylike.py:397: RuntimeWarning: divide by zero encountered in log10
+/home/zach/Bin/anaconda3/envs/evc/lib/python3.9/site-packages/pandas/core/arraylike.py:397: RuntimeWarning: invalid value encountered in log10
+/home/zach/Bin/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/layer.py:324: PlotnineWarning: stat_bin : Removed 208344 rows containing non-finite values.
 </pre></div>
 </div>
 <img alt="../_images/d14-e-stat03-descriptive-solution_4_1.png" src="../_images/d14-e-stat03-descriptive-solution_4_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776875450600)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8778848254630)&gt;
 </pre></div>
 </div>
 </div>
@@ -718,7 +718,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d14-e-stat03-descriptive-solution_7_0.png" src="../_images/d14-e-stat03-descriptive-solution_7_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776909572106)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8778845719712)&gt;
 </pre></div>
 </div>
 </div>
@@ -812,7 +812,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d14-e-stat03-descriptive-solution_11_0.png" src="../_images/d14-e-stat03-descriptive-solution_11_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776893541714)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8778845680541)&gt;
 </pre></div>
 </div>
 </div>
@@ -993,131 +993,19 @@ const thebe_selector_output = ".output, .cell_output"
 <p>There’s an issue we’ll start to run into as we start naming columns the same as builtin functions. For instance, the following code will throw an error:</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: This will throw a huge, scary error!</span>
-<span class="p">(</span>
-    <span class="n">df_flights</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
-        <span class="c1">## Here we assign a new column with the name `mean`</span>
-        <span class="n">mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">)</span>
-    <span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
-        <span class="c1">## Here we attempt to access that `mean` column, but it goes wrong....</span>
-        <span class="n">mean2x</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">mean</span> <span class="o">*</span> <span class="mi">2</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">Input In [8],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">## NOTE: This will throw a huge, scary error!</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="p">(</span>
-<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">df_flights</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="c1">## Here we assign a new column with the name `mean`</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="n">mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dep_delay</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>         <span class="c1">## Here we attempt to access that `mean` column, but it goes wrong....</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>         <span class="n">mean2x</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">mean</span> <span class="o">*</span> <span class="mi">2</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="p">)</span>
-
-<span class="nn">File ~/Git/py_grama/grama/tools.py:293,</span> in <span class="ni">pipe.__rrshift__</span><span class="nt">(self, other)</span>
-<span class="g g-Whitespace">    </span><span class="mi">290</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">291</span>         <span class="n">other_copy</span> <span class="o">=</span> <span class="n">copy_meta</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">other_copy</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">293</span> <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">other_copy</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">295</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chained_pipes</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">296</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="fm">__rrshift__</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-
-<span class="nn">File ~/Git/py_grama/grama/tools.py:308,</span> in <span class="ni">pipe.__call__.&lt;locals&gt;.&lt;lambda&gt;</span><span class="nt">(x)</span>
-<span class="g g-Whitespace">    </span><span class="mi">307</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">308</span>     <span class="k">return</span> <span class="n">pipe</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
-
-<span class="nn">File ~/Git/py_grama/grama/dfply/base.py:393,</span> in <span class="ni">group_delegation.__call__</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">391</span> <span class="n">grouped_by</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;_grouped_by&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">392</span> <span class="k">if</span> <span class="p">(</span><span class="n">grouped_by</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">([</span><span class="n">g</span> <span class="ow">in</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">grouped_by</span><span class="p">]):</span>
-<span class="ne">--&gt; </span><span class="mi">393</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">395</span> <span class="n">applied</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">397</span> <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
-
-<span class="nn">File ~/Git/py_grama/grama/dfply/base.py:393,</span> in <span class="ni">group_delegation.__call__</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">391</span> <span class="n">grouped_by</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;_grouped_by&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">392</span> <span class="k">if</span> <span class="p">(</span><span class="n">grouped_by</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">([</span><span class="n">g</span> <span class="ow">in</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">grouped_by</span><span class="p">]):</span>
-<span class="ne">--&gt; </span><span class="mi">393</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">395</span> <span class="n">applied</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">397</span> <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
-
-<span class="nn">File ~/Git/py_grama/grama/dfply/base.py:339,</span> in <span class="ni">IntentionEvaluator.__call__</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">336</span> <span class="n">df</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_recursive_arg_eval</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
-<span class="ne">--&gt; </span><span class="mi">339</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_recursive_kwarg_eval</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">341</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~/Git/py_grama/grama/dfply/base.py:308,</span> in <span class="ni">IntentionEvaluator._recursive_kwarg_eval</span><span class="nt">(self, df, kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">305</span> <span class="n">eval_as_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_eval_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eval_as_label</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">306</span> <span class="n">eval_as_selector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_eval_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eval_as_selector</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">308</span> <span class="k">return</span> <span class="p">{</span>
-<span class="g g-Whitespace">    </span><span class="mi">309</span>     <span class="n">k</span><span class="p">:</span> <span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">310</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_symbolic_to_label</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">311</span>         <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">eval_as_label</span>
-<span class="g g-Whitespace">    </span><span class="mi">312</span>         <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_symbolic_to_selector</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">313</span>         <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">eval_as_selector</span>
-<span class="g g-Whitespace">    </span><span class="mi">314</span>         <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_symbolic_eval</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">315</span>         <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">eval_symbols</span>
-<span class="g g-Whitespace">    </span><span class="mi">316</span>         <span class="k">else</span> <span class="n">v</span>
-<span class="g g-Whitespace">    </span><span class="mi">317</span>     <span class="p">)</span>
-<span class="nn">    318     for k, v</span> in <span class="ni">kwargs.items</span><span class="nt">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">319</span> <span class="p">}</span>
-
-<span class="nn">File ~/Git/py_grama/grama/dfply/base.py:314,</span> in <span class="ni">&lt;dictcomp&gt;</span><span class="nt">(.0)</span>
-<span class="g g-Whitespace">    </span><span class="mi">305</span> <span class="n">eval_as_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_eval_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eval_as_label</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">306</span> <span class="n">eval_as_selector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_eval_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eval_as_selector</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">308</span> <span class="k">return</span> <span class="p">{</span>
-<span class="g g-Whitespace">    </span><span class="mi">309</span>     <span class="n">k</span><span class="p">:</span> <span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">310</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_symbolic_to_label</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">311</span>         <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">eval_as_label</span>
-<span class="g g-Whitespace">    </span><span class="mi">312</span>         <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_symbolic_to_selector</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">313</span>         <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">eval_as_selector</span>
-<span class="ne">--&gt; </span><span class="mi">314</span>         <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_symbolic_eval</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">315</span>         <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">eval_symbols</span>
-<span class="g g-Whitespace">    </span><span class="mi">316</span>         <span class="k">else</span> <span class="n">v</span>
-<span class="g g-Whitespace">    </span><span class="mi">317</span>     <span class="p">)</span>
-<span class="nn">    318     for k, v</span> in <span class="ni">kwargs.items</span><span class="nt">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">319</span> <span class="p">}</span>
-
-<span class="nn">File ~/Git/py_grama/grama/dfply/base.py:279,</span> in <span class="ni">IntentionEvaluator._symbolic_eval</span><span class="nt">(self, df, arg)</span>
-<span class="g g-Whitespace">    </span><span class="mi">278</span> <span class="k">def</span> <span class="nf">_symbolic_eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">279</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_evaluator_loop</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">arg</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_evaluate</span><span class="p">)</span>
-
-<span class="nn">File ~/Git/py_grama/grama/dfply/base.py:276,</span> in <span class="ni">IntentionEvaluator._evaluator_loop</span><span class="nt">(self, df, arg, eval_func)</span>
-<span class="g g-Whitespace">    </span><span class="mi">274</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
-<span class="g g-Whitespace">    </span><span class="mi">275</span>     <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_evaluator_loop</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">a_</span><span class="p">,</span> <span class="n">eval_func</span><span class="p">)</span> <span class="k">for</span> <span class="n">a_</span> <span class="ow">in</span> <span class="n">arg</span><span class="p">]</span>
-<span class="ne">--&gt; </span><span class="mi">276</span> <span class="k">return</span> <span class="n">eval_func</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
-
-<span class="nn">File ~/Git/py_grama/grama/dfply/base.py:227,</span> in <span class="ni">IntentionEvaluator._evaluate</span><span class="nt">(self, df, arg)</span>
-<span class="g g-Whitespace">    </span><span class="mi">225</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">Intention</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">226</span>     <span class="n">negate</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="n">inverted</span>
-<span class="ne">--&gt; </span><span class="mi">227</span>     <span class="n">arg</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">228</span>     <span class="k">if</span> <span class="n">negate</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">229</span>         <span class="n">arg</span> <span class="o">=</span> <span class="o">~</span><span class="n">arg</span>
-
-<span class="nn">File ~/Git/py_grama/grama/dfply/base.py:85,</span> in <span class="ni">Intention.evaluate</span><span class="nt">(self, context)</span>
-<span class="g g-Whitespace">     </span><span class="mi">84</span> <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">85</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
-
-<span class="nn">File ~/Git/py_grama/grama/dfply/base.py:190,</span> in <span class="ni">_set_magic_method.&lt;locals&gt;.magic_method.&lt;locals&gt;.&lt;lambda&gt;</span><span class="nt">(x)</span>
-<span class="g g-Whitespace">    </span><span class="mi">188</span> <span class="k">def</span> <span class="nf">magic_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">189</span>     <span class="k">return</span> <span class="n">Intention</span><span class="p">(</span>
-<span class="ne">--&gt; </span><span class="mi">190</span>         <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">name</span><span class="p">)(</span>
-<span class="g g-Whitespace">    </span><span class="mi">191</span>             <span class="o">*</span><span class="n">_context_args</span><span class="p">(</span><span class="n">args</span><span class="p">)(</span><span class="n">x</span><span class="p">),</span> <span class="o">**</span><span class="n">_context_kwargs</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">192</span>         <span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">193</span>         <span class="n">invert</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">inverted</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">194</span>     <span class="p">)</span>
-
-<span class="ne">AttributeError</span>: &#39;function&#39; object has no attribute &#39;__mul__&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TODO: Uncomment the code below and run</span>
+<span class="c1">## NOTE: This will throw a huge, scary error!</span>
+<span class="c1"># (</span>
+<span class="c1">#     df_flights</span>
+<span class="c1">#     &gt;&gt; gr.tf_summarize(</span>
+<span class="c1">#         ## Here we assign a new column with the name `mean`</span>
+<span class="c1">#         mean=gr.mean(DF.dep_delay)</span>
+<span class="c1">#     )</span>
+<span class="c1">#     &gt;&gt; gr.tf_mutate(</span>
+<span class="c1">#         ## Here we attempt to access that `mean` column, but it goes wrong....</span>
+<span class="c1">#         mean2x=DF.mean * 2</span>
+<span class="c1">#     )</span>
+<span class="c1"># )</span>
 </pre></div>
 </div>
 </div>
@@ -1211,7 +1099,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d14-e-stat03-descriptive-solution_23_0.png" src="../_images/d14-e-stat03-descriptive-solution_23_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776875597150)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8778845469248)&gt;
 </pre></div>
 </div>
 </div>
@@ -1246,7 +1134,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d14-e-stat03-descriptive-solution_26_0.png" src="../_images/d14-e-stat03-descriptive-solution_26_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776931009633)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8778845413684)&gt;
 </pre></div>
 </div>
 </div>
@@ -1334,8 +1222,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        iqr
-0  1.250094
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       iqr
+0  1.42456
 </pre></div>
 </div>
 </div>
@@ -1497,11 +1385,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_point : Removed 986 rows containing missing values.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/zach/Bin/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_point : Removed 965 rows containing missing values.
 </pre></div>
 </div>
 <img alt="../_images/d14-e-stat03-descriptive-solution_38_1.png" src="../_images/d14-e-stat03-descriptive-solution_38_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776875660376)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8778845357258)&gt;
 </pre></div>
 </div>
 </div>
@@ -1640,7 +1528,7 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <img alt="../_images/d14-e-stat03-descriptive-solution_45_1.png" src="../_images/d14-e-stat03-descriptive-solution_45_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776892715653)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8778845214684)&gt;
 </pre></div>
 </div>
 </div>
@@ -1694,11 +1582,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/zach/Bin/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
 </pre></div>
 </div>
 <img alt="../_images/d14-e-stat03-descriptive-solution_48_1.png" src="../_images/d14-e-stat03-descriptive-solution_48_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776892708103)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8778845421011)&gt;
 </pre></div>
 </div>
 </div>
@@ -1735,7 +1623,7 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <img alt="../_images/d14-e-stat03-descriptive-solution_50_1.png" src="../_images/d14-e-stat03-descriptive-solution_50_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776931057827)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8778844664769)&gt;
 </pre></div>
 </div>
 </div>
@@ -1763,7 +1651,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d14-e-stat03-descriptive-solution_53_0.png" src="../_images/d14-e-stat03-descriptive-solution_53_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776931102522)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8778845465040)&gt;
 </pre></div>
 </div>
 </div>
@@ -1807,7 +1695,7 @@ const thebe_selector_output = ".output, .cell_output"
   <tbody>
     <tr>
       <th>0</th>
-      <td>5.551115e-17</td>
+      <td>8.326673e-17</td>
       <td>0.006699</td>
     </tr>
   </tbody>
@@ -1849,11 +1737,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          r       rho
-0  0.611855  0.921675
+0  0.586301  0.884236
 </pre></div>
 </div>
 <img alt="../_images/d14-e-stat03-descriptive-solution_57_1.png" src="../_images/d14-e-stat03-descriptive-solution_57_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776893712285)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8778842996944)&gt;
 </pre></div>
 </div>
 </div>
