@@ -1489,10 +1489,10 @@ max        0.022647
 <h2>Grouping by variables<a class="headerlink" href="#grouping-by-variables" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">gr.tf_summarize()</span></code> verb is helpful for getting “basic facts” about a dataset, but it is even more powerful when combined with <code class="docutils literal notranslate"><span class="pre">gr.tf_group_by()</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">gr.tf_group_by()</span></code> verb takes a DataFrame and “groups” it by one (or more) columns. This causes other verbs (such as <code class="docutils literal notranslate"><span class="pre">gr.tf_summarize()</span></code>) to treat the data as though it were <em>multiple</em> DataFrames; these sub-DataFrames exactly correspond to the groups determined by <code class="docutils literal notranslate"><span class="pre">gr.tf_group_by()</span></code>.</p>
-<p><img alt="The  verb modifies the behavior of a DataFrame to treat it as a collection of multiple datasets, defined by the grouping variable(s)." src="exercises_solution/images/group-by.png" /></p>
+<p><img alt="The  verb modifies the behavior of a DataFrame to treat it as a collection of multiple datasets, defined by the grouping variable(s)." src="../_images/group-by.png" /></p>
 <p>Image: Zimmerman et al.</p>
 <p>When the input DataFrame is grouped, the <code class="docutils literal notranslate"><span class="pre">gr.tf_summarize()</span></code> verb will calculate the summary functions in a group-wise manner.</p>
-<p><img alt="Grouped summarize" src="exercises_solution/images/grouped-summarize.png" /></p>
+<p><img alt="Grouped summarize" src="../_images/grouped-summarize.png" /></p>
 <p>Image: Zimmerman et al.</p>
 <p>Returning to the diamonds example: Let’s see what adding a <code class="docutils literal notranslate"><span class="pre">gr.tf_group_by(DF.cut)</span></code> before the price and carat mean calculation does to our results.</p>
 <div class="cell docutils container">
