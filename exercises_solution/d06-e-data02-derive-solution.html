@@ -1,0 +1,2136 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data: Deriving Quantities &#8212; Data Science for Engineers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Histograms" href="d07-e-vis02-histograms-solution.html" />
+    <link rel="prev" title="Bar Charts" href="d05-e-vis01-bar-charts-solution.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/home.html">
+   Data Science for Engineers
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/howto.html">
+   How To Use These Materials
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../frontmatter/exercises.html">
+   Exercise Solutions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
+     Introduction to Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
+     Data Visualization Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
+     Data Isolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d02-e-tips-solution.html">
+     Tips for This Course
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
+     Introduction to Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
+     Grama Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
+     Bar Charts
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Data: Deriving Quantities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d07-e-vis02-histograms-solution.html">
+     Histograms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d08-e-stat02-source-solution.html">
+     Sources of Variability: Real vs. Error
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d09-e-vis03-scatterplot-solution.html">
+     Scatterplots and Layers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d10-e-grama02-building-solution.html">
+     Grama Model Building
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d11-e-data03-pivot-solution.html">
+     Data: Pivoting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d12-e-grama03-eval-solution.html">
+     Grama Model Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d13-e-vis04-lines-solution.html">
+     Lines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d14-e-stat03-descriptive-solution.html">
+     Descriptive Statistics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d15-e-data04-separate-unite-solution.html">
+     Data: Separating and Uniting Columns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d16-e-data05-join-solution.html">
+     Data: Joining Datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d17-e-vis05-multiples-solution.html">
+     Small Multiples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d18-e-grama04-ema-solution.html">
+     Exploratory Model Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d19-e-stat04-distributions-solution.html">
+     Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d20-e-grama05-fit-function-solution.html">
+     Fitting Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d21-e-stat05-CI-solution.html">
+     Confidence Intervals and the CLT
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d22-e-stat06-spc-solution.html">
+     Fundamentals of Statistical Process Monitoring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">
+     Fitting Univariate Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">
+     Fitting Multivariate Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d25-e-grama08-duu-solution.html">
+     Design Under Uncertainty
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/exercises_solution/d06-e-data02-derive-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d06-e-data02-derive-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Data: Deriving Quantities
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mutating-dataframes">
+   Mutating DataFrames
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q1-compute-a-mass-density">
+     <strong>
+      q1
+     </strong>
+     Compute a mass density
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vectorized-functions">
+     Vectorized Functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q2-do-a-type-conversion">
+       <strong>
+        q2
+       </strong>
+       Do a type conversion
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-sanity-check-the-data">
+       <strong>
+        q3
+       </strong>
+       Sanity-check the data
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#control-functions">
+     Control Functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-use-an-if-else-statement">
+       <strong>
+        q4
+       </strong>
+       Use an if/else statement
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summarizing-data-frames">
+   Summarizing Data Frames
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary-functions">
+     Summary functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-count-the-ideal-rows">
+       <strong>
+        q5
+       </strong>
+       Count the Ideal rows
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grouping-by-variables">
+     Grouping by variables
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q6-try-out-a-two-variable-grouping">
+       <strong>
+        q6
+       </strong>
+       Try out a two-variable grouping
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q7-study-the-color">
+       <strong>
+        q7
+       </strong>
+       Study the color
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Data: Deriving Quantities</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Data: Deriving Quantities
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mutating-dataframes">
+   Mutating DataFrames
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q1-compute-a-mass-density">
+     <strong>
+      q1
+     </strong>
+     Compute a mass density
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vectorized-functions">
+     Vectorized Functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q2-do-a-type-conversion">
+       <strong>
+        q2
+       </strong>
+       Do a type conversion
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-sanity-check-the-data">
+       <strong>
+        q3
+       </strong>
+       Sanity-check the data
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#control-functions">
+     Control Functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-use-an-if-else-statement">
+       <strong>
+        q4
+       </strong>
+       Use an if/else statement
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summarizing-data-frames">
+   Summarizing Data Frames
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary-functions">
+     Summary functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q5-count-the-ideal-rows">
+       <strong>
+        q5
+       </strong>
+       Count the Ideal rows
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grouping-by-variables">
+     Grouping by variables
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q6-try-out-a-two-variable-grouping">
+       <strong>
+        q6
+       </strong>
+       Try out a two-variable grouping
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q7-study-the-color">
+       <strong>
+        q7
+       </strong>
+       Study the color
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="data-deriving-quantities">
+<h1>Data: Deriving Quantities<a class="headerlink" href="#data-deriving-quantities" title="Permalink to this headline">¶</a></h1>
+<p><em>Purpose</em>: Often our data will not tell us <em>directly</em> what we want to know; in
+these cases we need to <em>derive</em> new quantities from our data. In this exercise,
+we’ll work with <code class="docutils literal notranslate"><span class="pre">tf_mutate()</span></code> to create new columns by operating on existing
+variables, and use <code class="docutils literal notranslate"><span class="pre">tf_group_by()</span></code> with <code class="docutils literal notranslate"><span class="pre">tf_summarize()</span></code> to compute aggregate
+statistics (summaries!) of our data.</p>
+<p>Aside: The data-summary verbs in grama are heavily inspired by the <a class="reference external" href="https://dplyr.tidyverse.org/">dplyr</a> package in the R programming langauge.</p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="c1"># For assertion</span>
+<span class="kn">from</span> <span class="nn">pandas.api.types</span> <span class="kn">import</span> <span class="n">is_numeric_dtype</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll be using the <code class="docutils literal notranslate"><span class="pre">diamonds</span></code> as seen in <code class="docutils literal notranslate"><span class="pre">e-vis00-basics</span></code> earlier.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_diamonds</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="mutating-dataframes">
+<h1>Mutating DataFrames<a class="headerlink" href="#mutating-dataframes" title="Permalink to this headline">¶</a></h1>
+<p>A <em>mutation</em> transformation allows us to make new columns (or edit old ones) by <em>combining</em> column values.</p>
+<p>For example, let’s remember the diamonds dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carat</th>
+      <th>cut</th>
+      <th>color</th>
+      <th>clarity</th>
+      <th>depth</th>
+      <th>table</th>
+      <th>price</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.23</td>
+      <td>Ideal</td>
+      <td>E</td>
+      <td>SI2</td>
+      <td>61.5</td>
+      <td>55.0</td>
+      <td>326</td>
+      <td>3.95</td>
+      <td>3.98</td>
+      <td>2.43</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.21</td>
+      <td>Premium</td>
+      <td>E</td>
+      <td>SI1</td>
+      <td>59.8</td>
+      <td>61.0</td>
+      <td>326</td>
+      <td>3.89</td>
+      <td>3.84</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.23</td>
+      <td>Good</td>
+      <td>E</td>
+      <td>VS1</td>
+      <td>56.9</td>
+      <td>65.0</td>
+      <td>327</td>
+      <td>4.05</td>
+      <td>4.07</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.29</td>
+      <td>Premium</td>
+      <td>I</td>
+      <td>VS2</td>
+      <td>62.4</td>
+      <td>58.0</td>
+      <td>334</td>
+      <td>4.20</td>
+      <td>4.23</td>
+      <td>2.63</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.31</td>
+      <td>Good</td>
+      <td>J</td>
+      <td>SI2</td>
+      <td>63.3</td>
+      <td>58.0</td>
+      <td>335</td>
+      <td>4.34</td>
+      <td>4.35</td>
+      <td>2.75</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>If we wanted to approximate the volume of every diamond, we could do this by multiplying their <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, and <code class="docutils literal notranslate"><span class="pre">z</span></code> dimensions. We could create a new column with this value via <code class="docutils literal notranslate"><span class="pre">gr.tf_mutate()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">volume</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">DF</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">DF</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carat</th>
+      <th>cut</th>
+      <th>color</th>
+      <th>clarity</th>
+      <th>depth</th>
+      <th>table</th>
+      <th>price</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+      <th>volume</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.23</td>
+      <td>Ideal</td>
+      <td>E</td>
+      <td>SI2</td>
+      <td>61.5</td>
+      <td>55.0</td>
+      <td>326</td>
+      <td>3.95</td>
+      <td>3.98</td>
+      <td>2.43</td>
+      <td>38.202030</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.21</td>
+      <td>Premium</td>
+      <td>E</td>
+      <td>SI1</td>
+      <td>59.8</td>
+      <td>61.0</td>
+      <td>326</td>
+      <td>3.89</td>
+      <td>3.84</td>
+      <td>2.31</td>
+      <td>34.505856</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.23</td>
+      <td>Good</td>
+      <td>E</td>
+      <td>VS1</td>
+      <td>56.9</td>
+      <td>65.0</td>
+      <td>327</td>
+      <td>4.05</td>
+      <td>4.07</td>
+      <td>2.31</td>
+      <td>38.076885</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.29</td>
+      <td>Premium</td>
+      <td>I</td>
+      <td>VS2</td>
+      <td>62.4</td>
+      <td>58.0</td>
+      <td>334</td>
+      <td>4.20</td>
+      <td>4.23</td>
+      <td>2.63</td>
+      <td>46.724580</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.31</td>
+      <td>Good</td>
+      <td>J</td>
+      <td>SI2</td>
+      <td>63.3</td>
+      <td>58.0</td>
+      <td>335</td>
+      <td>4.34</td>
+      <td>4.35</td>
+      <td>2.75</td>
+      <td>51.917250</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Aside</em>: Note that we can use dot <code class="docutils literal notranslate"><span class="pre">.</span></code> notation to access columns, rather than bracket <code class="docutils literal notranslate"><span class="pre">[]</span></code> notation. This works only when the column names are valid variable names (i.e. do not contain spaces, do not contain special characters, etc.).</p>
+<div class="section" id="q1-compute-a-mass-density">
+<h2><strong>q1</strong> Compute a mass density<a class="headerlink" href="#q1-compute-a-mass-density" title="Permalink to this headline">¶</a></h2>
+<p>Approximate the density of the diamonds using the expression</p>
+<div class="math notranslate nohighlight">
+\[\rho = \frac{\text{carat}}{xyz}.\]</div>
+<p>Name the new column <code class="docutils literal notranslate"><span class="pre">rho</span></code>. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Provide the approximate density as the column `rho`</span>
+<span class="n">df_rho</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">rho</span><span class="o">=</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;carat&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;z&quot;</span><span class="p">])</span>
+<span class="p">)</span>
+
+<span class="c1">## NOTE: Use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="s2">&quot;rho&quot;</span> <span class="ow">in</span> <span class="n">df_rho</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;df_rho does not have a `rho` column&quot;</span>
+
+<span class="k">assert</span> \
+    <span class="nb">abs</span><span class="p">(</span><span class="n">df_rho</span><span class="o">.</span><span class="n">rho</span><span class="o">.</span><span class="n">median</span><span class="p">()</span> <span class="o">-</span> <span class="mf">6.117055e-03</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-6</span><span class="p">,</span> \
+    <span class="s2">&quot;The values of df_rho.rho are incorrect; check your calculation&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">df_rho</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">rho</span> <span class="o">&lt;</span> <span class="mf">1e6</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;rho&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_describe</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                rho
+count  53920.000000
+mean       0.006127
+std        0.000178
+min        0.000521
+25%        0.006048
+50%        0.006117
+75%        0.006190
+max        0.022647
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<!-- solution-end --></div>
+<div class="section" id="vectorized-functions">
+<h2>Vectorized Functions<a class="headerlink" href="#vectorized-functions" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">gr.tf_mutate()</span></code> verb carries out <em>vector</em> operations; these operations take in one or more columns, and return an entire column. For operations such as addition, this results in <em>elementwise</em> addition, as illustrated below:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">y</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>-1</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">gr.tf_mutate()</span></code> verb accepts a wide variety of <em>vectorized</em> functions; the following table organizes these into various types of operations.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Functions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Arithmetic ops.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DF.x</span> <span class="pre">+</span> <span class="pre">1,</span> <span class="pre">DF.y</span> <span class="pre">-</span> <span class="pre">DF.x,</span> <span class="pre">DF.x</span> <span class="pre">*</span> <span class="pre">DF.y,</span> <span class="pre">DF.x</span> <span class="pre">/</span> <span class="pre">DF.y,</span> <span class="pre">DF.x^DF.a</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Modular arith.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DF.x</span> <span class="pre">//</span> <span class="pre">DF.y</span></code> (Floor division) <code class="docutils literal notranslate"><span class="pre">DF.x</span> <span class="pre">%</span> <span class="pre">DF.y</span></code> (Remainder)</p></td>
+</tr>
+<tr class="row-even"><td><p>Logical comp.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;,</span> <span class="pre">&lt;=,</span> <span class="pre">&gt;,</span> <span class="pre">&gt;=,</span> <span class="pre">!=,</span> <span class="pre">==</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Logarithms</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gr.log(DF.x)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Offsets</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gr.lead(DF.x),</span> <span class="pre">gr.lag(DF.x)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Cumulants</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gr.cumsum(DF.x),</span> <span class="pre">gr.cumprod(DF.x),</span> <span class="pre">gr.cummin(DF.x),</span> <span class="pre">gr.cummaDF.x(DF.x),</span> <span class="pre">gr.cummean(DF.x)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Ranking</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gr.min_rank(DF.x),</span> <span class="pre">gr.row_number(DF.x),</span> <span class="pre">gr.dense_rank(DF.x),</span> <span class="pre">gr.percent_rank(DF.x)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Data conversion</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gr.as_numeric(DF.x)</span></code>, <code class="docutils literal notranslate"><span class="pre">gr.as_str(DF.x)</span></code>, <code class="docutils literal notranslate"><span class="pre">gr.as_factor(DF.x)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Control</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gr.if_else()</span></code>, <code class="docutils literal notranslate"><span class="pre">gr.case_when()</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="q2-do-a-type-conversion">
+<h3><strong>q2</strong> Do a type conversion<a class="headerlink" href="#q2-do-a-type-conversion" title="Permalink to this headline">¶</a></h3>
+<p>Convert the column <code class="docutils literal notranslate"><span class="pre">y</span></code> below into a numeric type.</p>
+<p><em>Hint</em>: Use the table above to find an appropriate data conversion function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Convert the `y` column to a numeric type</span>
+<span class="n">df_converted</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+        <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">as_numeric</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="c1">## NOTE: Use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="n">is_numeric_dtype</span><span class="p">(</span><span class="n">df_converted</span><span class="o">.</span><span class="n">y</span><span class="p">),</span> \
+    <span class="s2">&quot;df_converted.y is not numeric; make sure to do a conversion&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Success!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Success!
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="q3-sanity-check-the-data">
+<h3><strong>q3</strong> Sanity-check the data<a class="headerlink" href="#q3-sanity-check-the-data" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">depth</span></code> variable in <code class="docutils literal notranslate"><span class="pre">df_diamonds</span></code> is <em>supposedly</em> computed via <code class="docutils literal notranslate"><span class="pre">depth_computed</span> <span class="pre">=</span> <span class="pre">100</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">DF[&quot;z&quot;]</span> <span class="pre">/</span> <span class="pre">(DF[&quot;x&quot;]</span> <span class="pre">+</span> <span class="pre">DF[&quot;y&quot;])</span></code>. Compute <code class="docutils literal notranslate"><span class="pre">diff</span> <span class="pre">=</span> <span class="pre">DF[&quot;depth&quot;]</span> <span class="pre">-</span> <span class="pre">DF[&quot;depth_computed&quot;]</span></code>: This is a measure of discrepancy between the given and computed depth. Answer the questions under <em>observations</em> below.</p>
+<p><em>Hint</em>: If you want to compute <code class="docutils literal notranslate"><span class="pre">depth_computed</span></code> and use it to compute <code class="docutils literal notranslate"><span class="pre">diff</span></code>, you’ll need to use two calls of <code class="docutils literal notranslate"><span class="pre">gr.tf_mutate()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Compute `depth_computed` and `diff`, as described above</span>
+<span class="n">df_depth</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_diamonds</span> 
+
+<span class="c1"># solution-begin    </span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">depth_computed</span><span class="o">=</span><span class="mi">100</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;z&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">diff</span> <span class="o">=</span> <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;depth&quot;</span><span class="p">]</span><span class="o">-</span> <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;depth_computed&quot;</span><span class="p">])</span>
+<span class="p">)</span>
+
+<span class="c1">## NOTE: Use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="nb">abs</span><span class="p">(</span><span class="n">df_depth</span><span class="p">[</span><span class="s2">&quot;diff&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span> <span class="o">&lt;</span> <span class="mf">1e-14</span><span class="p">,</span> \
+    <span class="s2">&quot;df_depth.diff has the wrong values; check your calculation&quot;</span>
+<span class="k">assert</span> \
+    <span class="nb">abs</span><span class="p">(</span><span class="n">df_depth</span><span class="p">[</span><span class="s2">&quot;diff&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="mf">5.284249e-03</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-6</span><span class="p">,</span> \
+    <span class="s2">&quot;df_depth.diff has the wrong values; check your calculation&quot;</span>
+
+<span class="c1"># Show the data</span>
+<span class="p">(</span>
+    <span class="n">df_depth</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;diff&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_describe</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>diff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>5.393300e+04</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>5.284249e-03</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>2.629223e+00</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-5.574795e+02</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>-2.660550e-02</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>-7.105427e-15</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>2.665245e-02</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>6.400000e+01</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Observation</strong></p>
+<ul class="simple">
+<li><p>What is the mean of <code class="docutils literal notranslate"><span class="pre">diff</span></code>? What is the median of <code class="docutils literal notranslate"><span class="pre">diff</span></code>?</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">mean(diff)</span> <span class="pre">==</span> <span class="pre">5.284249e-03</span></code>; <code class="docutils literal notranslate"><span class="pre">median(diff)</span> <span class="pre">~=</span> <span class="pre">0.0</span></code></p></li>
+</ul>
+</li>
+<li><p>What are the min and max of <code class="docutils literal notranslate"><span class="pre">diff</span></code>?</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">min(diff)</span> <span class="pre">==</span> <span class="pre">-5.574795e+02</span></code>, <code class="docutils literal notranslate"><span class="pre">max(diff)</span> <span class="pre">==</span> <span class="pre">64</span></code></p></li>
+</ul>
+</li>
+<li><p>Remember that <code class="docutils literal notranslate"><span class="pre">diff</span></code> measures the agreement between <code class="docutils literal notranslate"><span class="pre">depth</span></code> and <code class="docutils literal notranslate"><span class="pre">depth_computed</span></code>; how well do these two quantities match?</p>
+<ul>
+<li><p>Generally, the agreement between <code class="docutils literal notranslate"><span class="pre">depth</span></code> and <code class="docutils literal notranslate"><span class="pre">depth_computed</span></code> is very good (the mean is close to zero, the 25% and 75% quantiles are quite small). However, there are some extreme cases of disagreement; perhaps there are data errors in these particular values?</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="control-functions">
+<h2>Control Functions<a class="headerlink" href="#control-functions" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">gr.if_else()</span></code> and <code class="docutils literal notranslate"><span class="pre">gr.case_when()</span></code> functions are <em>special</em> vectorized functions—they allow us to use more programming-like constructs to control the output. The <code class="docutils literal notranslate"><span class="pre">gr.if_else()</span></code> helper is a simple “yes-no” function, while <code class="docutils literal notranslate"><span class="pre">gr.case_when()</span></code> is a vectorized <a class="reference external" href="https://en.wikipedia.org/wiki/Switch_statement">switch statement</a>. If you are trying to do more complicated data operations, you might want to give these functions a look.</p>
+<div class="section" id="q4-use-an-if-else-statement">
+<h3><strong>q4</strong> Use an if/else statement<a class="headerlink" href="#q4-use-an-if-else-statement" title="Permalink to this headline">¶</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">gr.if_else()</span></code> to flag diamonds as <code class="docutils literal notranslate"><span class="pre">&quot;Big&quot;</span></code> if they have <code class="docutils literal notranslate"><span class="pre">carat</span> <span class="pre">&gt;=</span> <span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;Small&quot;</span></code> otherwise.</p>
+<p><em>Hint</em>: Remember to read the documentation for an unfamiliar function to learn how to call it; in particular, try looking at the <em>Examples</em> section of the documentation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TODO: Compute the `size` using `gr.if_else()`</span>
+<span class="n">df_size</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+        
+        <span class="n">size</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">if_else</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">carat</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Big&quot;</span><span class="p">,</span> <span class="s2">&quot;Small&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1">## NOTE: Use this to check you work</span>
+<span class="k">assert</span> \
+    <span class="s2">&quot;size&quot;</span> <span class="ow">in</span> <span class="n">df_size</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;df_size does not have a `size` column&quot;</span>
+
+<span class="k">assert</span> \
+    <span class="nb">all</span><span class="p">(</span><span class="n">df_size</span><span class="p">[</span><span class="n">df_size</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Big&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">carat</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">),</span> \
+    <span class="s2">&quot;Size calculation is incorrect&quot;</span>
+
+<span class="n">df_size</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carat</th>
+      <th>cut</th>
+      <th>color</th>
+      <th>clarity</th>
+      <th>depth</th>
+      <th>table</th>
+      <th>price</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+      <th>size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.23</td>
+      <td>Ideal</td>
+      <td>E</td>
+      <td>SI2</td>
+      <td>61.5</td>
+      <td>55.0</td>
+      <td>326</td>
+      <td>3.95</td>
+      <td>3.98</td>
+      <td>2.43</td>
+      <td>Small</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.21</td>
+      <td>Premium</td>
+      <td>E</td>
+      <td>SI1</td>
+      <td>59.8</td>
+      <td>61.0</td>
+      <td>326</td>
+      <td>3.89</td>
+      <td>3.84</td>
+      <td>2.31</td>
+      <td>Small</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.23</td>
+      <td>Good</td>
+      <td>E</td>
+      <td>VS1</td>
+      <td>56.9</td>
+      <td>65.0</td>
+      <td>327</td>
+      <td>4.05</td>
+      <td>4.07</td>
+      <td>2.31</td>
+      <td>Small</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.29</td>
+      <td>Premium</td>
+      <td>I</td>
+      <td>VS2</td>
+      <td>62.4</td>
+      <td>58.0</td>
+      <td>334</td>
+      <td>4.20</td>
+      <td>4.23</td>
+      <td>2.63</td>
+      <td>Small</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.31</td>
+      <td>Good</td>
+      <td>J</td>
+      <td>SI2</td>
+      <td>63.3</td>
+      <td>58.0</td>
+      <td>335</td>
+      <td>4.34</td>
+      <td>4.35</td>
+      <td>2.75</td>
+      <td>Small</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>53935</th>
+      <td>0.72</td>
+      <td>Ideal</td>
+      <td>D</td>
+      <td>SI1</td>
+      <td>60.8</td>
+      <td>57.0</td>
+      <td>2757</td>
+      <td>5.75</td>
+      <td>5.76</td>
+      <td>3.50</td>
+      <td>Small</td>
+    </tr>
+    <tr>
+      <th>53936</th>
+      <td>0.72</td>
+      <td>Good</td>
+      <td>D</td>
+      <td>SI1</td>
+      <td>63.1</td>
+      <td>55.0</td>
+      <td>2757</td>
+      <td>5.69</td>
+      <td>5.75</td>
+      <td>3.61</td>
+      <td>Small</td>
+    </tr>
+    <tr>
+      <th>53937</th>
+      <td>0.70</td>
+      <td>Very Good</td>
+      <td>D</td>
+      <td>SI1</td>
+      <td>62.8</td>
+      <td>60.0</td>
+      <td>2757</td>
+      <td>5.66</td>
+      <td>5.68</td>
+      <td>3.56</td>
+      <td>Small</td>
+    </tr>
+    <tr>
+      <th>53938</th>
+      <td>0.86</td>
+      <td>Premium</td>
+      <td>H</td>
+      <td>SI2</td>
+      <td>61.0</td>
+      <td>58.0</td>
+      <td>2757</td>
+      <td>6.15</td>
+      <td>6.12</td>
+      <td>3.74</td>
+      <td>Small</td>
+    </tr>
+    <tr>
+      <th>53939</th>
+      <td>0.75</td>
+      <td>Ideal</td>
+      <td>D</td>
+      <td>SI2</td>
+      <td>62.2</td>
+      <td>55.0</td>
+      <td>2757</td>
+      <td>5.83</td>
+      <td>5.87</td>
+      <td>3.64</td>
+      <td>Small</td>
+    </tr>
+  </tbody>
+</table>
+<p>53940 rows × 11 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="summarizing-data-frames">
+<h1>Summarizing Data Frames<a class="headerlink" href="#summarizing-data-frames" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">gr.tf_summarize()</span></code> verb is used to <em>reduce</em> a DataFrame down to fewer rows using summary functions. For instance, we can compute the mean <code class="docutils literal notranslate"><span class="pre">carat</span></code> and <code class="docutils literal notranslate"><span class="pre">price</span></code> across the whole dataset of diamonds:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">carat_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">carat</span><span class="p">),</span>
+        <span class="n">price_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">price</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carat_mean</th>
+      <th>price_mean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.79794</td>
+      <td>3932.799722</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Notice that we went from having around <code class="docutils literal notranslate"><span class="pre">54,000</span></code> rows down to just one row; in this sense we have <em>summarized</em> the dataset.</p>
+<div class="section" id="summary-functions">
+<h2>Summary functions<a class="headerlink" href="#summary-functions" title="Permalink to this headline">¶</a></h2>
+<p>Summarize accepts a large number of <em>summary functions</em>; the table below lists and categorizes some of the most common summary functions.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Functions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Location</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gr.mean(DF.x),</span> <span class="pre">gr.median(DF.x),</span> <span class="pre">gr.min(DF.x),</span> <span class="pre">gr.max(DF.x)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Spread</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gr.sd(DF.x),</span> <span class="pre">gr.var(DF.x),</span> <span class="pre">gr.IQR(DF.x)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Order</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gr.first(DF.x),</span> <span class="pre">gr.nth(DF.x,</span> <span class="pre">n),</span> <span class="pre">gr.last(DF.x)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Counts</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gr.n_distinct(DF.x)</span></code>, <code class="docutils literal notranslate"><span class="pre">gr.n()</span></code> (Total count)</p></td>
+</tr>
+<tr class="row-even"><td><p>Logical</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gr.sum(DF.x</span> <span class="pre">==</span> <span class="pre">0)</span></code> (Count cases where <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">0</span></code>) <code class="docutils literal notranslate"><span class="pre">gr.pr(DF.g</span> <span class="pre">&gt;</span> <span class="pre">0)</span></code> (Probability helper)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="q5-count-the-ideal-rows">
+<h3><strong>q5</strong> Count the Ideal rows<a class="headerlink" href="#q5-count-the-ideal-rows" title="Permalink to this headline">¶</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">gr.tf_summarize()</span></code> to count the number of rows where <code class="docutils literal notranslate"><span class="pre">cut</span> <span class="pre">==</span> <span class="pre">&quot;Ideal&quot;</span></code>. Provide this as the column <code class="docutils literal notranslate"><span class="pre">n_ideal</span></code>.</p>
+<p><em>Hint</em>: The <code class="docutils literal notranslate"><span class="pre">Summary</span> <span class="pre">functions</span></code> table above provides a recipe for counting the number of cases where some condition is met.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Find the number of rows with cut == &quot;Ideal&quot;</span>
+<span class="n">df_nideal</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+
+<span class="c1"># solution-start</span>
+        <span class="n">n_ideal</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">cut</span> <span class="o">==</span> <span class="s2">&quot;Ideal&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1">## NOTE: Use this to check your work</span>
+<span class="k">assert</span> \
+    <span class="s2">&quot;n_ideal&quot;</span> <span class="ow">in</span> <span class="n">df_nideal</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
+    <span class="s2">&quot;df_nideal does not have a `n_ideal` column&quot;</span>
+
+<span class="k">assert</span> \
+    <span class="n">df_nideal</span><span class="p">[</span><span class="s2">&quot;n_ideal&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">23</span><span class="o">==</span><span class="mi">937</span><span class="p">,</span>\
+    <span class="s2">&quot;The count is incorrect&quot;</span>
+
+<span class="n">df_nideal</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>n_ideal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>21551</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="grouping-by-variables">
+<h2>Grouping by variables<a class="headerlink" href="#grouping-by-variables" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">gr.tf_summarize()</span></code> verb is helpful for getting “basic facts” about a dataset, but it is even more powerful when combined with <code class="docutils literal notranslate"><span class="pre">gr.tf_group_by()</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">gr.tf_group_by()</span></code> verb takes a DataFrame and “groups” it by one (or more) columns. This causes other verbs (such as <code class="docutils literal notranslate"><span class="pre">gr.tf_summarize()</span></code>) to treat the data as though it were <em>multiple</em> DataFrames; these sub-DataFrames exactly correspond to the groups determined by <code class="docutils literal notranslate"><span class="pre">gr.tf_group_by()</span></code>.</p>
+<p><img alt="The  verb modifies the behavior of a DataFrame to treat it as a collection of multiple datasets, defined by the grouping variable(s)." src="exercises_solution/images/group-by.png" /></p>
+<p>Image: Zimmerman et al.</p>
+<p>When the input DataFrame is grouped, the <code class="docutils literal notranslate"><span class="pre">gr.tf_summarize()</span></code> verb will calculate the summary functions in a group-wise manner.</p>
+<p><img alt="Grouped summarize" src="exercises_solution/images/grouped-summarize.png" /></p>
+<p>Image: Zimmerman et al.</p>
+<p>Returning to the diamonds example: Let’s see what adding a <code class="docutils literal notranslate"><span class="pre">gr.tf_group_by(DF.cut)</span></code> before the price and carat mean calculation does to our results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">cut</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">carat_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">carat</span><span class="p">),</span>
+        <span class="n">price_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">price</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cut</th>
+      <th>carat_mean</th>
+      <th>price_mean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Fair</td>
+      <td>1.046137</td>
+      <td>4358.757764</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Good</td>
+      <td>0.849185</td>
+      <td>3928.864452</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Ideal</td>
+      <td>0.702837</td>
+      <td>3457.541970</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Premium</td>
+      <td>0.891955</td>
+      <td>4584.257704</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Very Good</td>
+      <td>0.806381</td>
+      <td>3981.759891</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now we can compare the mean <code class="docutils literal notranslate"><span class="pre">carat</span></code> and mean <code class="docutils literal notranslate"><span class="pre">price</span></code> across different <code class="docutils literal notranslate"><span class="pre">cut</span></code> levels. Personally, I was surprised to see that the <code class="docutils literal notranslate"><span class="pre">Fair</span></code> cut diamonds have a higher mean <code class="docutils literal notranslate"><span class="pre">price</span></code> than the <code class="docutils literal notranslate"><span class="pre">Ideal</span></code> diamonds!</p>
+<div class="section" id="q6-try-out-a-two-variable-grouping">
+<h3><strong>q6</strong> Try out a two-variable grouping<a class="headerlink" href="#q6-try-out-a-two-variable-grouping" title="Permalink to this headline">¶</a></h3>
+<p>The code below groups by two variables. Uncomment the <code class="docutils literal notranslate"><span class="pre">tf_group_by()</span></code> line below, and describe how the result changes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#TASK: Uncomment the tf_group_by() below, and describe how the result changes</span>
+<span class="n">df_q2</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_diamonds</span>
+
+   <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">],</span> <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;clarity&quot;</span><span class="p">])</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span><span class="n">diamonds_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]))</span>
+<span class="p">)</span>
+
+<span class="n">df_q2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>clarity</th>
+      <th>color</th>
+      <th>diamonds_mean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>I1</td>
+      <td>D</td>
+      <td>3863.023810</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>IF</td>
+      <td>D</td>
+      <td>8307.369863</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>SI1</td>
+      <td>D</td>
+      <td>2976.146423</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>SI2</td>
+      <td>D</td>
+      <td>3931.101460</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>VS1</td>
+      <td>D</td>
+      <td>3030.158865</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>VS2</td>
+      <td>D</td>
+      <td>2587.225692</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>VVS1</td>
+      <td>D</td>
+      <td>2947.912698</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>VVS2</td>
+      <td>D</td>
+      <td>3351.128391</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>I1</td>
+      <td>E</td>
+      <td>3488.421569</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>IF</td>
+      <td>E</td>
+      <td>3668.506329</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>SI1</td>
+      <td>E</td>
+      <td>3161.838005</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>SI2</td>
+      <td>E</td>
+      <td>4173.826036</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>VS1</td>
+      <td>E</td>
+      <td>2856.294301</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>VS2</td>
+      <td>E</td>
+      <td>2750.941700</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>VVS1</td>
+      <td>E</td>
+      <td>2219.820122</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>VVS2</td>
+      <td>E</td>
+      <td>2499.674067</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>I1</td>
+      <td>F</td>
+      <td>3342.181818</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>IF</td>
+      <td>F</td>
+      <td>2750.836364</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>SI1</td>
+      <td>F</td>
+      <td>3714.225716</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>SI2</td>
+      <td>F</td>
+      <td>4472.625233</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>VS1</td>
+      <td>F</td>
+      <td>3796.717742</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>VS2</td>
+      <td>F</td>
+      <td>3756.795093</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>VVS1</td>
+      <td>F</td>
+      <td>2804.276567</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>VVS2</td>
+      <td>F</td>
+      <td>3475.512821</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>I1</td>
+      <td>G</td>
+      <td>3545.693333</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>IF</td>
+      <td>G</td>
+      <td>2558.033774</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>SI1</td>
+      <td>G</td>
+      <td>3774.787449</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>SI2</td>
+      <td>G</td>
+      <td>5021.684109</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>VS1</td>
+      <td>G</td>
+      <td>4131.362197</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>VS2</td>
+      <td>G</td>
+      <td>4416.256498</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>VVS1</td>
+      <td>G</td>
+      <td>2866.820821</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>VVS2</td>
+      <td>G</td>
+      <td>3845.283437</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>I1</td>
+      <td>H</td>
+      <td>4453.413580</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>IF</td>
+      <td>H</td>
+      <td>2287.869565</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>SI1</td>
+      <td>H</td>
+      <td>5032.414945</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>SI2</td>
+      <td>H</td>
+      <td>6099.895074</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>VS1</td>
+      <td>H</td>
+      <td>3780.688623</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>VS2</td>
+      <td>H</td>
+      <td>4722.414486</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>VVS1</td>
+      <td>H</td>
+      <td>1845.658120</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>VVS2</td>
+      <td>H</td>
+      <td>2649.067434</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>I1</td>
+      <td>I</td>
+      <td>4302.184783</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>IF</td>
+      <td>I</td>
+      <td>1994.937063</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>SI1</td>
+      <td>I</td>
+      <td>5355.019663</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>SI2</td>
+      <td>I</td>
+      <td>7002.649123</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>VS1</td>
+      <td>I</td>
+      <td>4633.183992</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>VS2</td>
+      <td>I</td>
+      <td>5690.505560</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>VVS1</td>
+      <td>I</td>
+      <td>2034.861972</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>VVS2</td>
+      <td>I</td>
+      <td>2968.232877</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>I1</td>
+      <td>J</td>
+      <td>5254.060000</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>IF</td>
+      <td>J</td>
+      <td>3363.882353</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>SI1</td>
+      <td>J</td>
+      <td>5186.048000</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>SI2</td>
+      <td>J</td>
+      <td>6520.958246</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>VS1</td>
+      <td>J</td>
+      <td>4884.461255</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>VS2</td>
+      <td>J</td>
+      <td>5311.058824</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>VVS1</td>
+      <td>J</td>
+      <td>4034.175676</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>VVS2</td>
+      <td>J</td>
+      <td>5142.396947</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>How many rows does the commented version (no grouping) return?</p>
+<ul>
+<li><p>Just one row</p></li>
+</ul>
+</li>
+<li><p>How many rows (roughly) does the uncommented version (with grouping) return?</p>
+<ul>
+<li><p>Many rows! One row for every unique combination of <code class="docutils literal notranslate"><span class="pre">clarity</span></code> and <code class="docutils literal notranslate"><span class="pre">color</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+<div class="section" id="q7-study-the-color">
+<h3><strong>q7</strong> Study the color<a class="headerlink" href="#q7-study-the-color" title="Permalink to this headline">¶</a></h3>
+<p>Compute the mean <code class="docutils literal notranslate"><span class="pre">price</span></code> grouped by <code class="docutils literal notranslate"><span class="pre">color</span></code>. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Compute the mean price, grouped by color</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+
+<span class="c1"># solution-begin    </span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">])</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">price_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]),</span>
+    <span class="p">)</span>
+    
+    <span class="c1">## NOTE: We need to &quot;ungroup&quot; in order to re-arrange the data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_arrange</span><span class="p">(</span><span class="s2">&quot;price_mean&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>color</th>
+      <th>price_mean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>E</td>
+      <td>3076.752475</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>D</td>
+      <td>3169.954096</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>F</td>
+      <td>3724.886397</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>G</td>
+      <td>3999.135671</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>H</td>
+      <td>4486.669196</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>I</td>
+      <td>5091.874954</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>J</td>
+      <td>5323.818020</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>Which tends to be the most valuable color? Which is the least valuable?</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">color</span> <span class="pre">==</span> <span class="pre">&quot;J&quot;</span></code> tends to be the most valuable, while <code class="docutils literal notranslate"><span class="pre">color</span> <span class="pre">==</span> <span class="pre">&quot;E&quot;</span></code> tends to be least valuable.</p></li>
+</ul>
+</li>
+<li><p>The code above orders the colors according to their average price; are they in alphabetical order?</p>
+<ul>
+<li><p>Surprisingly, no! <code class="docutils literal notranslate"><span class="pre">&quot;D&quot;</span></code> would be the first letter, but <code class="docutils literal notranslate"><span class="pre">color</span> <span class="pre">==</span> <span class="pre">&quot;E&quot;</span></code> has the lowest mean price.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Naupaka Zimmerman, Greg Wilson, Raniere Silva, Scott Ritchie, François Michonneau, Jeffrey Oliver, … Yuka Takemon. (2019, July). swcarpentry/r-novice-gapminder: Software Carpentry: R for Reproducible Scientific Analysis, June 2019 (Version v2019.06.1). Zenodo. <a class="reference external" href="http://doi.org/10.5281/zenodo.3265164">http://doi.org/10.5281/zenodo.3265164</a></p></li>
+</ul>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./exercises_solution"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="d05-e-vis01-bar-charts-solution.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Bar Charts</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="d07-e-vis02-histograms-solution.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Histograms</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Zachary del Rosario<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

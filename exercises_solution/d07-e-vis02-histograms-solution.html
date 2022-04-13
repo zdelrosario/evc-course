@@ -1,0 +1,1507 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Histograms &#8212; Data Science for Engineers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sources of Variability: Real vs. Error" href="d08-e-stat02-source-solution.html" />
+    <link rel="prev" title="Data: Deriving Quantities" href="d06-e-data02-derive-solution.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/home.html">
+   Data Science for Engineers
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/howto.html">
+   How To Use These Materials
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../frontmatter/exercises.html">
+   Exercise Solutions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
+     Introduction to Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
+     Data Visualization Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
+     Data Isolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d02-e-tips-solution.html">
+     Tips for This Course
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
+     Introduction to Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
+     Grama Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
+     Bar Charts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d06-e-data02-derive-solution.html">
+     Data: Deriving Quantities
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Histograms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d08-e-stat02-source-solution.html">
+     Sources of Variability: Real vs. Error
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d09-e-vis03-scatterplot-solution.html">
+     Scatterplots and Layers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d10-e-grama02-building-solution.html">
+     Grama Model Building
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d11-e-data03-pivot-solution.html">
+     Data: Pivoting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d12-e-grama03-eval-solution.html">
+     Grama Model Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d13-e-vis04-lines-solution.html">
+     Lines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d14-e-stat03-descriptive-solution.html">
+     Descriptive Statistics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d15-e-data04-separate-unite-solution.html">
+     Data: Separating and Uniting Columns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d16-e-data05-join-solution.html">
+     Data: Joining Datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d17-e-vis05-multiples-solution.html">
+     Small Multiples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d18-e-grama04-ema-solution.html">
+     Exploratory Model Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d19-e-stat04-distributions-solution.html">
+     Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d20-e-grama05-fit-function-solution.html">
+     Fitting Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d21-e-stat05-CI-solution.html">
+     Confidence Intervals and the CLT
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d22-e-stat06-spc-solution.html">
+     Fundamentals of Statistical Process Monitoring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">
+     Fitting Univariate Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">
+     Fitting Multivariate Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="d25-e-grama08-duu-solution.html">
+     Design Under Uncertainty
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/exercises_solution/d07-e-vis02-histograms-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d07-e-vis02-histograms-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Histograms
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-a-histogram">
+     What is a Histogram?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#enter-gr-geom-histogram">
+     Enter
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       gr.geom_histogram()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-do-histograms-tell-us">
+     What do Histograms tell us?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rule-1-of-histograms">
+     Rule #1 of Histograms
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q1-change-the-bin-size">
+       <strong>
+        q1
+       </strong>
+       Change the bin size
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#histogram-variant-frequency-polygons">
+     Histogram Variant: Frequency Polygons
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#case-study-diamonds">
+   Case Study: Diamonds
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q2-study-the-carat-distribution">
+     <strong>
+      q2
+     </strong>
+     Study the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       carat
+      </span>
+     </code>
+     distribution
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q3-study-the-carat-distribution-closer-look">
+     <strong>
+      q3
+     </strong>
+     Study the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       carat
+      </span>
+     </code>
+     distribution, closer look
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q4-bring-in-the-cut">
+     <strong>
+      q4
+     </strong>
+     Bring in the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       cut
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Histograms</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Histograms
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-a-histogram">
+     What is a Histogram?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#enter-gr-geom-histogram">
+     Enter
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       gr.geom_histogram()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-do-histograms-tell-us">
+     What do Histograms tell us?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rule-1-of-histograms">
+     Rule #1 of Histograms
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q1-change-the-bin-size">
+       <strong>
+        q1
+       </strong>
+       Change the bin size
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#histogram-variant-frequency-polygons">
+     Histogram Variant: Frequency Polygons
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#case-study-diamonds">
+   Case Study: Diamonds
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q2-study-the-carat-distribution">
+     <strong>
+      q2
+     </strong>
+     Study the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       carat
+      </span>
+     </code>
+     distribution
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q3-study-the-carat-distribution-closer-look">
+     <strong>
+      q3
+     </strong>
+     Study the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       carat
+      </span>
+     </code>
+     distribution, closer look
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q4-bring-in-the-cut">
+     <strong>
+      q4
+     </strong>
+     Bring in the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       cut
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="histograms">
+<h1>Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">¶</a></h1>
+<p><em>Purpose</em>: <em>Histograms</em> are a key tool for EDA, as they are a powerful lense to help us understand how a single variable is “distributed” in a dataset. In this exercise we’ll introduce and interpret histograms and some variants (frequency polygons).</p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll use the <code class="docutils literal notranslate"><span class="pre">mpg</span></code> dataset from <code class="docutils literal notranslate"><span class="pre">plotnine</span></code>: This is a dataset describing different automobiles, including their mileage (hence mpg).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plotnine.data</span> <span class="kn">import</span> <span class="n">mpg</span> <span class="k">as</span> <span class="n">df_mpg</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-a-histogram">
+<h2>What is a Histogram?<a class="headerlink" href="#what-is-a-histogram" title="Permalink to this headline">¶</a></h2>
+<p>As we saw in the previous exercise, a bar plot shows the count of observations within various categories:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_bar</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d07-e-vis02-histograms-solution_6_0.png" src="../_images/d07-e-vis02-histograms-solution_6_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8792286165800)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, if we try to visualize a <em>continuous</em> variable with a bar chart, we’re likely to run into issues. It happens that the <em>exact same</em> values do occur multiple times in the <code class="docutils literal notranslate"><span class="pre">df_mpg</span></code> dataset, but that is due to rounding:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;displ&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_bar</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d07-e-vis02-histograms-solution_8_0.png" src="../_images/d07-e-vis02-histograms-solution_8_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8792339961366)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we didn’t have rounding, it would be harder to visualize the data with a bar chart:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+        <span class="c1">## Simulate a lack of rounding by &quot;jittering&quot; the displ values</span>
+        <span class="n">displ</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">displ</span> <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="n">df_mpg</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;displ&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_bar</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d07-e-vis02-histograms-solution_10_0.png" src="../_images/d07-e-vis02-histograms-solution_10_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8792286287445)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rather than <em>assuming</em> repetitions of continuous values, we can instead <em>bin</em> the values into groups. For instance, the following bins the <code class="docutils literal notranslate"><span class="pre">displ</span></code> values to the nearest integer:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">displ_group</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">displ</span> <span class="o">//</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">displ</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">displ_group</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">everything</span><span class="p">())</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>displ</th>
+      <th>displ_group</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>year</th>
+      <th>cyl</th>
+      <th>trans</th>
+      <th>drv</th>
+      <th>cty</th>
+      <th>hwy</th>
+      <th>fl</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.8</td>
+      <td>1.0</td>
+      <td>audi</td>
+      <td>a4</td>
+      <td>1999</td>
+      <td>4</td>
+      <td>auto(l5)</td>
+      <td>f</td>
+      <td>18</td>
+      <td>29</td>
+      <td>p</td>
+      <td>compact</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.8</td>
+      <td>1.0</td>
+      <td>audi</td>
+      <td>a4</td>
+      <td>1999</td>
+      <td>4</td>
+      <td>manual(m5)</td>
+      <td>f</td>
+      <td>21</td>
+      <td>29</td>
+      <td>p</td>
+      <td>compact</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>audi</td>
+      <td>a4</td>
+      <td>2008</td>
+      <td>4</td>
+      <td>manual(m6)</td>
+      <td>f</td>
+      <td>20</td>
+      <td>31</td>
+      <td>p</td>
+      <td>compact</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>audi</td>
+      <td>a4</td>
+      <td>2008</td>
+      <td>4</td>
+      <td>auto(av)</td>
+      <td>f</td>
+      <td>21</td>
+      <td>30</td>
+      <td>p</td>
+      <td>compact</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.8</td>
+      <td>2.0</td>
+      <td>audi</td>
+      <td>a4</td>
+      <td>1999</td>
+      <td>6</td>
+      <td>auto(l5)</td>
+      <td>f</td>
+      <td>16</td>
+      <td>26</td>
+      <td>p</td>
+      <td>compact</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>229</th>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>volkswagen</td>
+      <td>passat</td>
+      <td>2008</td>
+      <td>4</td>
+      <td>auto(s6)</td>
+      <td>f</td>
+      <td>19</td>
+      <td>28</td>
+      <td>p</td>
+      <td>midsize</td>
+    </tr>
+    <tr>
+      <th>230</th>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>volkswagen</td>
+      <td>passat</td>
+      <td>2008</td>
+      <td>4</td>
+      <td>manual(m6)</td>
+      <td>f</td>
+      <td>21</td>
+      <td>29</td>
+      <td>p</td>
+      <td>midsize</td>
+    </tr>
+    <tr>
+      <th>231</th>
+      <td>2.8</td>
+      <td>2.0</td>
+      <td>volkswagen</td>
+      <td>passat</td>
+      <td>1999</td>
+      <td>6</td>
+      <td>auto(l5)</td>
+      <td>f</td>
+      <td>16</td>
+      <td>26</td>
+      <td>p</td>
+      <td>midsize</td>
+    </tr>
+    <tr>
+      <th>232</th>
+      <td>2.8</td>
+      <td>2.0</td>
+      <td>volkswagen</td>
+      <td>passat</td>
+      <td>1999</td>
+      <td>6</td>
+      <td>manual(m5)</td>
+      <td>f</td>
+      <td>18</td>
+      <td>26</td>
+      <td>p</td>
+      <td>midsize</td>
+    </tr>
+    <tr>
+      <th>233</th>
+      <td>3.6</td>
+      <td>3.0</td>
+      <td>volkswagen</td>
+      <td>passat</td>
+      <td>2008</td>
+      <td>6</td>
+      <td>auto(s6)</td>
+      <td>f</td>
+      <td>17</td>
+      <td>26</td>
+      <td>p</td>
+      <td>midsize</td>
+    </tr>
+  </tbody>
+</table>
+<p>234 rows × 12 columns</p>
+</div></div></div>
+</div>
+<p>We can use the binned <code class="docutils literal notranslate"><span class="pre">displ</span></code> to create groups and compute counts within each group.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">displ_group</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">displ</span> <span class="o">//</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_count</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">displ_group</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>displ_group</th>
+      <th>n</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.0</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.0</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6.0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7.0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now we can visualize those counts <code class="docutils literal notranslate"><span class="pre">n</span></code> with a column chart:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">displ_group</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">displ</span> <span class="o">//</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_count</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">displ_group</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;displ_group&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;n&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d07-e-vis02-histograms-solution_16_0.png" src="../_images/d07-e-vis02-histograms-solution_16_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8792318387026)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="enter-gr-geom-histogram">
+<h2>Enter <code class="docutils literal notranslate"><span class="pre">gr.geom_histogram()</span></code><a class="headerlink" href="#enter-gr-geom-histogram" title="Permalink to this headline">¶</a></h2>
+<p>Rather than do all of that grouping manually, the geometry <code class="docutils literal notranslate"><span class="pre">gr.geom_histogram()</span></code> does this automatically. This geometry accepts a <code class="docutils literal notranslate"><span class="pre">bins</span></code> argument that allows us to change the <strong>number</strong> of groups; ggplot then figures out the bin widths automatically.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;displ&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d07-e-vis02-histograms-solution_18_0.png" src="../_images/d07-e-vis02-histograms-solution_18_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8792318416818)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="what-do-histograms-tell-us">
+<h2>What do Histograms tell us?<a class="headerlink" href="#what-do-histograms-tell-us" title="Permalink to this headline">¶</a></h2>
+<p>Histograms give us a visual sense of <em>frequency of values</em> in a dataset. This provides an <em>extremely</em> useful window into “what is going on” in any given continuous variable. From a histogram, we can tell:</p>
+<ul class="simple">
+<li><p>Which are more common values?</p></li>
+<li><p>Which are less common values?</p></li>
+<li><p>Do observations tend to cluster at particular values?</p>
+<ul>
+<li><p><em>Note</em>: A “bump” or “cluster” of points is sometimes called a <em>mode</em>. A dataset with multiple bumps is then called <em>multi-modal</em>.</p></li>
+</ul>
+</li>
+<li><p>What range of values occur?</p></li>
+</ul>
+<p>And so much more.</p>
+<p>For example, let’s interpret the <code class="docutils literal notranslate"><span class="pre">displ</span></code> histogram from above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;displ&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d07-e-vis02-histograms-solution_20_0.png" src="../_images/d07-e-vis02-histograms-solution_20_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8792318419065)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Here are my observations</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">displ</span></code> ranges between a little under <code class="docutils literal notranslate"><span class="pre">2</span></code> and a bit above <code class="docutils literal notranslate"><span class="pre">6</span></code>.</p></li>
+<li><p>Smaller values (around <code class="docutils literal notranslate"><span class="pre">2</span></code>) are more common.</p></li>
+<li><p>There is an additional “bump” around <code class="docutils literal notranslate"><span class="pre">displ</span> <span class="pre">==</span> <span class="pre">5</span></code>.</p></li>
+<li><p>Values of <code class="docutils literal notranslate"><span class="pre">displ</span> <span class="pre">==</span> <span class="pre">6</span></code> and above are quite rare.</p></li>
+</ul>
+<p>Part of the value of such a plot is that it can help us to frame other questions, such as “Which vehicles <em>do</em> have a <code class="docutils literal notranslate"><span class="pre">displ</span> <span class="pre">&gt;=</span> <span class="pre">6</span></code>?</p>
+</div>
+<div class="section" id="rule-1-of-histograms">
+<h2>Rule #1 of Histograms<a class="headerlink" href="#rule-1-of-histograms" title="Permalink to this headline">¶</a></h2>
+<p>Note that we have to select a number of <code class="docutils literal notranslate"><span class="pre">bins</span></code> when we construct a histogram. This is an important parameter that makes a big difference. Therefore, we have <code class="docutils literal notranslate"><span class="pre">Rule</span> <span class="pre">#1</span> <span class="pre">of</span> <span class="pre">Histograms</span></code>:</p>
+<div class="admonition-rule-1-of-histograms admonition">
+<p class="admonition-title">Rule #1 of Histograms</p>
+<p>Experiment with different numbers of <code class="docutils literal notranslate"><span class="pre">bins</span></code> when plotting a histogram.</p>
+</div>
+<p>Different bin counts will enable different observations. For instance, still with the <code class="docutils literal notranslate"><span class="pre">df_mpg</span></code> dataset. You’ll practice this below.</p>
+<div class="section" id="q1-change-the-bin-size">
+<h3><strong>q1</strong> Change the bin size<a class="headerlink" href="#q1-change-the-bin-size" title="Permalink to this headline">¶</a></h3>
+<p>Re-construct the histogram of <code class="docutils literal notranslate"><span class="pre">displ</span></code> in <code class="docutils literal notranslate"><span class="pre">df_mpg</span></code>, and experiment with different bin sizes. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Create a histogram of `displ`, experiment with the number of bins</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;displ&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d07-e-vis02-histograms-solution_24_0.png" src="../_images/d07-e-vis02-histograms-solution_24_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8792318413114)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>What <em>additional</em> observations can you make, based on varying the <code class="docutils literal notranslate"><span class="pre">bins</span></code> argument?</p>
+<ul>
+<li><p>With the larger number of <code class="docutils literal notranslate"><span class="pre">bins=2</span></code>, we can see that there may actually be three “bumps” in values, with a concentration of values around <code class="docutils literal notranslate"><span class="pre">displ</span> <span class="pre">==</span> <span class="pre">2</span></code>, one around <code class="docutils literal notranslate"><span class="pre">displ</span> <span class="pre">~=</span> <span class="pre">3.5</span></code>, and a third around <code class="docutils literal notranslate"><span class="pre">displ</span> <span class="pre">==</span> <span class="pre">5</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="histogram-variant-frequency-polygons">
+<h2>Histogram Variant: Frequency Polygons<a class="headerlink" href="#histogram-variant-frequency-polygons" title="Permalink to this headline">¶</a></h2>
+<p>A useful variant of the histogram is the <em>frequency polygon</em>. This simply visualizes the counts as a line rather than with bars:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;displ&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_freqpoly</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d07-e-vis02-histograms-solution_27_0.png" src="../_images/d07-e-vis02-histograms-solution_27_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8792318427935)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>This may seem like a silly distinction to make, but it is actually <em>extremely useful</em> when we start comparing multiple histograms on the same plot. While we would have to dodge (or stack—yuck) bars with multiple groups, lines can sit on top of one another:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_mpg</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;displ&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_freqpoly</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d07-e-vis02-histograms-solution_29_0.png" src="../_images/d07-e-vis02-histograms-solution_29_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8792339925101)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>From this frequency polygon plot, we can now see all manner of new insights! For instance:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">2seater</span></code> class tends to have much higher <code class="docutils literal notranslate"><span class="pre">displ</span></code></p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">suv</span></code> class tends to have higher <code class="docutils literal notranslate"><span class="pre">displ</span></code>, but some are near the low end</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">midsize</span></code> class tends to have much lower <code class="docutils literal notranslate"><span class="pre">displ</span></code></p></li>
+</ul>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="case-study-diamonds">
+<h1>Case Study: Diamonds<a class="headerlink" href="#case-study-diamonds" title="Permalink to this headline">¶</a></h1>
+<p>Now let’s practice using histograms with the diamonds dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_diamonds</span>
+<span class="n">df_diamonds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carat</th>
+      <th>cut</th>
+      <th>color</th>
+      <th>clarity</th>
+      <th>depth</th>
+      <th>table</th>
+      <th>price</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.23</td>
+      <td>Ideal</td>
+      <td>E</td>
+      <td>SI2</td>
+      <td>61.5</td>
+      <td>55.0</td>
+      <td>326</td>
+      <td>3.95</td>
+      <td>3.98</td>
+      <td>2.43</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.21</td>
+      <td>Premium</td>
+      <td>E</td>
+      <td>SI1</td>
+      <td>59.8</td>
+      <td>61.0</td>
+      <td>326</td>
+      <td>3.89</td>
+      <td>3.84</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.23</td>
+      <td>Good</td>
+      <td>E</td>
+      <td>VS1</td>
+      <td>56.9</td>
+      <td>65.0</td>
+      <td>327</td>
+      <td>4.05</td>
+      <td>4.07</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.29</td>
+      <td>Premium</td>
+      <td>I</td>
+      <td>VS2</td>
+      <td>62.4</td>
+      <td>58.0</td>
+      <td>334</td>
+      <td>4.20</td>
+      <td>4.23</td>
+      <td>2.63</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.31</td>
+      <td>Good</td>
+      <td>J</td>
+      <td>SI2</td>
+      <td>63.3</td>
+      <td>58.0</td>
+      <td>335</td>
+      <td>4.34</td>
+      <td>4.35</td>
+      <td>2.75</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>53935</th>
+      <td>0.72</td>
+      <td>Ideal</td>
+      <td>D</td>
+      <td>SI1</td>
+      <td>60.8</td>
+      <td>57.0</td>
+      <td>2757</td>
+      <td>5.75</td>
+      <td>5.76</td>
+      <td>3.50</td>
+    </tr>
+    <tr>
+      <th>53936</th>
+      <td>0.72</td>
+      <td>Good</td>
+      <td>D</td>
+      <td>SI1</td>
+      <td>63.1</td>
+      <td>55.0</td>
+      <td>2757</td>
+      <td>5.69</td>
+      <td>5.75</td>
+      <td>3.61</td>
+    </tr>
+    <tr>
+      <th>53937</th>
+      <td>0.70</td>
+      <td>Very Good</td>
+      <td>D</td>
+      <td>SI1</td>
+      <td>62.8</td>
+      <td>60.0</td>
+      <td>2757</td>
+      <td>5.66</td>
+      <td>5.68</td>
+      <td>3.56</td>
+    </tr>
+    <tr>
+      <th>53938</th>
+      <td>0.86</td>
+      <td>Premium</td>
+      <td>H</td>
+      <td>SI2</td>
+      <td>61.0</td>
+      <td>58.0</td>
+      <td>2757</td>
+      <td>6.15</td>
+      <td>6.12</td>
+      <td>3.74</td>
+    </tr>
+    <tr>
+      <th>53939</th>
+      <td>0.75</td>
+      <td>Ideal</td>
+      <td>D</td>
+      <td>SI2</td>
+      <td>62.2</td>
+      <td>55.0</td>
+      <td>2757</td>
+      <td>5.83</td>
+      <td>5.87</td>
+      <td>3.64</td>
+    </tr>
+  </tbody>
+</table>
+<p>53940 rows × 10 columns</p>
+</div></div></div>
+</div>
+<p>This is a dataset of nearly 54,000 diamonds, including their sale price and characteristics (carat, cut, color, clarity) and geometry.</p>
+<div class="section" id="q2-study-the-carat-distribution">
+<h2><strong>q2</strong> Study the <code class="docutils literal notranslate"><span class="pre">carat</span></code> distribution<a class="headerlink" href="#q2-study-the-carat-distribution" title="Permalink to this headline">¶</a></h2>
+<p>Create a histogram of the <code class="docutils literal notranslate"><span class="pre">carat</span></code>. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Create a histogram of `carat`</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;carat&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/stats/stat_bin.py:95: PlotnineWarning: &#39;stat_bin()&#39; using &#39;bins = 142&#39;. Pick better value with &#39;binwidth&#39;.
+</pre></div>
+</div>
+<img alt="../_images/d07-e-vis02-histograms-solution_35_1.png" src="../_images/d07-e-vis02-histograms-solution_35_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8792318390149)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>What range of <code class="docutils literal notranslate"><span class="pre">carat</span></code> values occur in the dataset?</p>
+<ul>
+<li><p>We see <code class="docutils literal notranslate"><span class="pre">carat</span></code> values from around <code class="docutils literal notranslate"><span class="pre">0.25</span></code> up to around <code class="docutils literal notranslate"><span class="pre">5</span></code>.</p></li>
+</ul>
+</li>
+<li><p>What values tend to be more common?</p>
+<ul>
+<li><p>This is a highly multi-modal distribution of values (many bumps), but broadly we see more values between <code class="docutils literal notranslate"><span class="pre">0.25</span> <span class="pre">&lt;</span> <span class="pre">carat</span> <span class="pre">&lt;</span> <span class="pre">2.0</span></code>.</p></li>
+</ul>
+</li>
+<li><p>What values tend to be less common?</p>
+<ul>
+<li><p>Values of <code class="docutils literal notranslate"><span class="pre">carat</span></code> above 3 are very rare, and we see a lot of “space” between the multiple-modes below <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+<div class="section" id="q3-study-the-carat-distribution-closer-look">
+<h2><strong>q3</strong> Study the <code class="docutils literal notranslate"><span class="pre">carat</span></code> distribution, closer look<a class="headerlink" href="#q3-study-the-carat-distribution-closer-look" title="Permalink to this headline">¶</a></h2>
+<p>Inspect the following plot. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: No need to edit; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">carat</span> <span class="o">&lt;</span> <span class="mf">2.0</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;carat&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="o">=</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d07-e-vis02-histograms-solution_38_0.png" src="../_images/d07-e-vis02-histograms-solution_38_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8792339928308)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>What do you notice about the most-common values of <code class="docutils literal notranslate"><span class="pre">carat</span></code>?</p>
+<ul>
+<li><p>We see <em>very</em> sharp concentrations around “special” values, such as <code class="docutils literal notranslate"><span class="pre">carat</span> <span class="pre">==</span> <span class="pre">1.0</span></code>. We also see that values tend to land at values larger than these “special” values, but not below. Put differently, the modes around each special value are asymmetric—they skew towards larger values.</p></li>
+</ul>
+</li>
+<li><p>Note that <code class="docutils literal notranslate"><span class="pre">carat</span></code> is a quality that a jeweler can control, to some extent. When cutting a diamond, a jeweler can choose to take off less material in order to preserve <code class="docutils literal notranslate"><span class="pre">carat</span></code>, possibly at the loss of not getting as high quality a <code class="docutils literal notranslate"><span class="pre">cut</span></code>. What does the histogram above suggest about jeweler behavior?</p>
+<ul>
+<li><p>The concentration around “special” values probably relates to what purchasers of diamonds want: It could be that the “special” values are desirable values of <code class="docutils literal notranslate"><span class="pre">carat</span></code>. This may also explain the skew we see around each special value; people may like a <code class="docutils literal notranslate"><span class="pre">carat</span> <span class="pre">==</span> <span class="pre">1.01</span></code> diamond, but a <code class="docutils literal notranslate"><span class="pre">carat</span> <span class="pre">==</span> <span class="pre">0.99</span></code> might make you look like a cheapskate. Particularly since diamonds are used in engagement rings, there is likely social pressure around these numbers!</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+<div class="section" id="q4-bring-in-the-cut">
+<h2><strong>q4</strong> Bring in the <code class="docutils literal notranslate"><span class="pre">cut</span></code><a class="headerlink" href="#q4-bring-in-the-cut" title="Permalink to this headline">¶</a></h2>
+<p>Re-create the plot from <strong>q3</strong>, but visualize the <code class="docutils literal notranslate"><span class="pre">cut</span></code> as well. Answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Re-create the plot from q3, but visualize the `cut` as well</span>
+<span class="p">(</span>
+    <span class="n">df_diamonds</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">carat</span> <span class="o">&lt;</span> <span class="mf">2.0</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;carat&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;cut&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_freqpoly</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d07-e-vis02-histograms-solution_41_0.png" src="../_images/d07-e-vis02-histograms-solution_41_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8792340497851)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>What is the most numerous <code class="docutils literal notranslate"><span class="pre">cut</span></code> at lower <code class="docutils literal notranslate"><span class="pre">carat</span></code> values? (Say <code class="docutils literal notranslate"><span class="pre">carat</span> <span class="pre">&lt;=</span> <span class="pre">0.5</span></code>)</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>What is the most numerous cut around <code class="docutils literal notranslate"><span class="pre">carat</span> <span class="pre">==</span> <span class="pre">1.0</span></code>?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./exercises_solution"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="d06-e-data02-derive-solution.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Data: Deriving Quantities</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="d08-e-stat02-source-solution.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Sources of Variability: Real vs. Error</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Zachary del Rosario<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
