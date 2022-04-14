@@ -369,9 +369,9 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-what-fraction-of-tensile-strength-is-below-the-mean">
+      <a class="reference internal nav-link" href="#q1-what-fraction-of-tensile-strength-is-below-the-mean">
        <strong>
-        qX
+        q1
        </strong>
        What fraction of
        <code class="docutils literal notranslate">
@@ -410,59 +410,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-make-a-histogram-of-the-tensile-strength">
+    <a class="reference internal nav-link" href="#q2-assess-statistical-control">
      <strong>
-      qX
+      q2
      </strong>
-     Make a histogram of the
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       tensile_strength
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#control-charts">
-     Control charts
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-add-a-group-identifier">
-       <strong>
-        qX
-       </strong>
-       Add a group identifier
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-compute-the-batch-means">
-       <strong>
-        qX
-       </strong>
-       Compute the batch means
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#control-limits">
-     Control limits
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-compute-the-control-limits">
-       <strong>
-        qX
-       </strong>
-       Compute the control limits
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vary-the-batch-size">
-     Vary the batch size
+     Assess statistical control
     </a>
    </li>
   </ul>
@@ -609,9 +561,9 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-what-fraction-of-tensile-strength-is-below-the-mean">
+      <a class="reference internal nav-link" href="#q1-what-fraction-of-tensile-strength-is-below-the-mean">
        <strong>
-        qX
+        q1
        </strong>
        What fraction of
        <code class="docutils literal notranslate">
@@ -650,59 +602,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-make-a-histogram-of-the-tensile-strength">
+    <a class="reference internal nav-link" href="#q2-assess-statistical-control">
      <strong>
-      qX
+      q2
      </strong>
-     Make a histogram of the
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       tensile_strength
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#control-charts">
-     Control charts
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-add-a-group-identifier">
-       <strong>
-        qX
-       </strong>
-       Add a group identifier
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-compute-the-batch-means">
-       <strong>
-        qX
-       </strong>
-       Compute the batch means
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#control-limits">
-     Control limits
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-compute-the-control-limits">
-       <strong>
-        qX
-       </strong>
-       Compute the control limits
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vary-the-batch-size">
-     Vary the batch size
+     Assess statistical control
     </a>
    </li>
   </ul>
@@ -833,7 +737,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>For this exercise, we’ll study a dataset of observations on die cast aluminum parts.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_shewhart</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_shewhart</span>
 </pre></div>
 </div>
 </div>
@@ -842,7 +747,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="why-fit-a-distribution">
 <h1>Why fit a distribution?<a class="headerlink" href="#why-fit-a-distribution" title="Permalink to this headline">¶</a></h1>
-<p>(We fit a distribution to model variability)</p>
+<p>Before we start fitting distributions: <em>Why</em> would we ever want to fit a distribution?</p>
+<p>As we’ve seen from studying a large number of datasets, most engineering data exhibit <a class="reference external" href="https://zdelrosario.github.io/evc-course/exercises_solution/d08-e-stat02-source-solution.html">variability</a>. If the variability is real, it can have real impacts on the engineering systems we design.</p>
+<p>For instance, here’s a dataset of realized aluminum tensile strength values:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; run and inspect</span>
@@ -856,11 +763,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d23-e-grama06-fit-univar-solution_6_0.png" src="../_images/d23-e-grama06-fit-univar-solution_6_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8762646263754)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782550378201)&gt;
 </pre></div>
 </div>
 </div>
 </div>
+<p>Clearly, these data exhibit variability—they do not take a single value.</p>
 <div class="section" id="dangers-of-assuming-the-mean">
 <h2>Dangers of assuming the mean<a class="headerlink" href="#dangers-of-assuming-the-mean" title="Permalink to this headline">¶</a></h2>
 <p>Why don’t we just take the mean of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> and use that for design? It turns out this approach is <em>very dangerous</em> when safety is a consideration. Let’s take a look at the tensile strength of an aluminum alloy.</p>
@@ -882,19 +790,20 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d23-e-grama06-fit-univar-solution_8_0.png" src="../_images/d23-e-grama06-fit-univar-solution_8_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8762646512460)&gt;
+<img alt="../_images/d23-e-grama06-fit-univar-solution_9_0.png" src="../_images/d23-e-grama06-fit-univar-solution_9_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782563451486)&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <p>Clearly, values of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> tend to land both above and below the mean. But what ramifications does this have for engineering design?</p>
-<div class="section" id="qx-what-fraction-of-tensile-strength-is-below-the-mean">
-<h3><strong>qX</strong> What fraction of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> is below the mean?<a class="headerlink" href="#qx-what-fraction-of-tensile-strength-is-below-the-mean" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="q1-what-fraction-of-tensile-strength-is-below-the-mean">
+<h3><strong>q1</strong> What fraction of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> is below the mean?<a class="headerlink" href="#q1-what-fraction-of-tensile-strength-is-below-the-mean" title="Permalink to this headline">¶</a></h3>
 <p>Compute the fraction of observations in <code class="docutils literal notranslate"><span class="pre">df_shewhart</span></code> where <code class="docutils literal notranslate"><span class="pre">tensile_strength</span> <span class="pre">&lt;</span> <span class="pre">mean(tensile_strength)</span></code>. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Compute the fraction of values where tensile_strength &lt; mean(tensile_strength)</span>
+<span class="p">(</span>
     <span class="n">df_shewhart</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
         <span class="n">frac</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span> <span class="o">&lt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span><span class="p">))</span>
@@ -948,6 +857,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
+<p>Rather than just assume a fixed value for <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>, we can model it as uncertain and design around that uncertainty. We’ll learn how to make these kinds of engineering decisions in a future exercise; for now, let’s</p>
 </div>
 </div>
 <div class="section" id="random-variables">
@@ -960,7 +870,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>For the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>, we saw a sequence of different values:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
     <span class="n">df_shewhart</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="p">)</span>
@@ -1051,315 +962,55 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="check-for-statistical-control">
 <h1>Check for <em>statistical control</em><a class="headerlink" href="#check-for-statistical-control" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="qx-make-a-histogram-of-the-tensile-strength">
-<h2><strong>qX</strong> Make a histogram of the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code><a class="headerlink" href="#qx-make-a-histogram-of-the-tensile-strength" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes the variability we see in a dataset can be <em>explained</em>; in this case, we shouldn’t just model it as random—we should work to understand <em>why</em> we saw that variability, and try to eliminate that source of variation. As we saw in <a class="reference external" href="https://zdelrosario.github.io/evc-course/exercises_solution/d22-e-stat06-spc-solution.html"><code class="docutils literal notranslate"><span class="pre">e-stat06-spc</span></code></a>, we can use <em>control charts</em> to hunt for explainable sources of variability.</p>
+<blockquote>
+<div><p>If we find no explainable sources of variability in a dataset, we can <em>provisionally</em> declare that the data are under <em>statistical control</em>, and model the variability as random.</p>
+</div></blockquote>
+<div class="section" id="q2-assess-statistical-control">
+<h2><strong>q2</strong> Assess statistical control<a class="headerlink" href="#q2-assess-statistical-control" title="Permalink to this headline">¶</a></h2>
+<p>Assess the state of statistical control of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> using an X-bar and S chart. Answer the questions under <em>observations</em> below.</p>
+<p><em>Hint</em>: You did this at the end of <a class="reference external" href="https://zdelrosario.github.io/evc-course/exercises_solution/d22-e-stat06-spc-solution.html">e-stat06-spc</a>; see that exercise for a refresher if you need it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK:</span>
 <span class="p">(</span>
     <span class="n">df_shewhart</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;tensile_strength&quot;</span><span class="p">))</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">idx</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;idx&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;tensile_strength&quot;</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="c1"># solution-end</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d23-e-grama06-fit-univar-solution_22_0.png" src="../_images/d23-e-grama06-fit-univar-solution_22_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8762646489266)&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/Git/py_grama/grama/tran_pivot.py:471: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+</pre></div>
+</div>
+<img alt="../_images/d23-e-grama06-fit-univar-solution_24_1.png" src="../_images/d23-e-grama06-fit-univar-solution_24_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782563276069)&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <p><em>Observations</em></p>
-<p><em>Note</em>: To help with the next task, it will be helpful to know about the <em>integer division</em> operator <code class="docutils literal notranslate"><span class="pre">//</span></code>. This divides by a desired value, but rounds down to the nearest integer.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1 // 4 = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span> <span class="o">//</span> <span class="mi">4</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2 // 4 = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">2</span> <span class="o">//</span> <span class="mi">4</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3 // 4 = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">3</span> <span class="o">//</span> <span class="mi">4</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4 // 4 = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">4</span> <span class="o">//</span> <span class="mi">4</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5 // 4 = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">5</span> <span class="o">//</span> <span class="mi">4</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 // 4 = 0
-2 // 4 = 0
-3 // 4 = 0
-4 // 4 = 1
-5 // 4 = 1
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="control-charts">
-<h2>Control charts<a class="headerlink" href="#control-charts" title="Permalink to this headline">¶</a></h2>
-<p>TODO</p>
 <ul class="simple">
-<li><p>By taking <em>batch means</em>, we can use the central limit theorem to make quantitative, statistical statements about the observations.</p></li>
-<li><p>By taking <em>small</em> batches, we can attribute strange patterns to a small number of observations. This gives us somewhere to look if we detect strange behavior.</p></li>
+<li><p>What assumptions did you need to make to construct a control chart?</p>
+<ul>
+<li><p>I had to assume that the observations were reported in their run-order. I also chose to group in batches of <code class="docutils literal notranslate"><span class="pre">n_batch</span> <span class="pre">=</span> <span class="pre">10</span></code> to help ensure the batch means follow the CLT.</p></li>
 </ul>
-<p>The following is an example of a control chart: The points are batch means, the solid horizontal line is the mean of all observations, and the dashed lines are the <em>control limits</em> (discussed below). With this chart, we can look for various kinds of patterns:</p>
-<p><img alt="Example control chart demonstrating two kinds of patters: a batch mean that exceeds the control limits, and a &quot;run&quot; of batch means that lies to one side of the grand mean." src="../_images/control-chart.png" /></p>
-<p>Some patterns illustrated above:</p>
-<ul class="simple">
-<li><p>Outliers: The control limits (dashed lines) are constructed such that about one batch mean in a thousand should lie outside the limits. Batch means that exceed the limits are therefore suspicious, and worth investigating further.</p></li>
-<li><p>Off-center runs: Batch means should be distributed roughly equally above and below the grand mean (solid line). A sequence (a “run”) of batch means that lie all above (or all below) the grand mean are therefore suspicious, and worth investigating further.</p></li>
+</li>
+<li><p>Does <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> seem to be under statistical control?</p>
+<ul>
+<li><p>According to a batch size of <code class="docutils literal notranslate"><span class="pre">n_batch</span> <span class="pre">=</span> <span class="pre">10</span></code>, yes.</p></li>
 </ul>
-<p>If you detect suspicious patterns using a control chart, then there is evidence that the process being studied is <em>not</em> under statistical control. The batches associated with suspicious behavior should then be investigated in further detail, in order to hunt down and eliminate any assignable cause(s) of variability.</p>
-<p>If you <em>do not</em> detect suspicious patterns, then you can <em>provisionally</em> state that the process is under statistical control. A quantity under statistical control can be treated as random, which will endorse modeling that quantity with a distribution.</p>
-<div class="section" id="qx-add-a-group-identifier">
-<h3><strong>qX</strong> Add a group identifier<a class="headerlink" href="#qx-add-a-group-identifier" title="Permalink to this headline">¶</a></h3>
-<p>Create a group identifier column <code class="docutils literal notranslate"><span class="pre">id_group</span></code> that assigns observations to consecutive groups of four. Make sure the first group identifier is <code class="docutils literal notranslate"><span class="pre">0</span></code>, and use sequential integers.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TODO: Create a group identifier column to make</span>
-<span class="c1"># batches of 4 consecutive values</span>
-<span class="n">n_grp</span> <span class="o">=</span> <span class="mi">4</span>
-
-<span class="n">df_rolling</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">df_shewhart</span>
-
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">id_group</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="n">n_grp</span><span class="p">)</span>
-<span class="p">)</span>
-
-<span class="c1">## NOTE: Don&#39;t edit the following; use this to check your work</span>
-<span class="k">assert</span> \
-    <span class="s2">&quot;id_group&quot;</span> <span class="ow">in</span> <span class="n">df_rolling</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> \
-    <span class="s2">&quot;df_rolling missing the id_group column&quot;</span>
-
-<span class="k">assert</span> \
-    <span class="nb">all</span><span class="p">(</span><span class="n">df_rolling</span><span class="o">.</span><span class="n">id_group</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">4</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">4</span><span class="p">),</span> \
-    <span class="s2">&quot;The id_group column is incorrect; &quot;</span> <span class="o">+</span> \
-    <span class="s2">&quot;the first 8 values should be 0, 0, 0, 0, 1, 1, 1, 1&quot;</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="qx-compute-the-batch-means">
-<h3><strong>qX</strong> Compute the batch means<a class="headerlink" href="#qx-compute-the-batch-means" title="Permalink to this headline">¶</a></h3>
-<p>Compute the mean within each consecutive “batch” of observations.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Compute the `batch_mean` within </span>
-<span class="c1"># each group of observations</span>
-<span class="n">df_batches</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">df_rolling</span>
-
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">id_group</span><span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
-        <span class="n">batch_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span><span class="p">)</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-
-<span class="c1">## NOTE: Don&#39;t edit the following; use this to check your work</span>
-<span class="k">assert</span> \
-    <span class="n">df_batches</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="n">df_shewhart</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">n_grp</span><span class="p">),</span> \
-    <span class="s2">&quot;Size of df_batches is incorrect; &quot;</span> <span class="o">+</span> \
-    <span class="s2">&quot;make sure you grouped properly.&quot;</span>
-
-<span class="p">(</span>
-    <span class="n">df_batches</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;id_group&quot;</span><span class="p">,</span> <span class="s2">&quot;batch_mean&quot;</span><span class="p">))</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/d23-e-grama06-fit-univar-solution_33_0.png" src="../_images/d23-e-grama06-fit-univar-solution_33_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8762646969314)&gt;
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="control-limits">
-<h2>Control limits<a class="headerlink" href="#control-limits" title="Permalink to this headline">¶</a></h2>
-<p>Remember from the Monte Carlo exercise that a confidence interval for the mean can be approximated using the central limit theorem via</p>
-<div class="math notranslate nohighlight">
-\[[\hat{\mu} - q \hat{\sigma} / \sqrt{n}, \hat{\mu} + q \hat{\sigma} / \sqrt{n}],\]</div>
-<p>where <span class="math notranslate nohighlight">\(\hat{\mu}\)</span> is the sample mean, <span class="math notranslate nohighlight">\(\hat{\sigma}\)</span> is the sample standard deviation, and <span class="math notranslate nohighlight">\(n\)</span> is the number of samples used to compute <span class="math notranslate nohighlight">\(\hat{\mu}\)</span>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; this computes the probability of</span>
-<span class="c1"># finding a batch mean outside the control limits</span>
-<span class="n">mg_norm</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">mg_norm</span><span class="o">.</span><span class="n">p</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0026997960632601866
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
-<span class="n">df_stats</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">df_shewhart</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
-        <span class="n">tys_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span><span class="p">),</span>
-        <span class="n">tys_sd</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">sd</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span><span class="p">),</span>
-        <span class="n">n</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">n</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span><span class="p">),</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-<span class="n">df_stats</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>tys_mean</th>
-      <th>tys_sd</th>
-      <th>n</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>31869.366667</td>
-      <td>3996.380795</td>
-      <td>60</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="section" id="qx-compute-the-control-limits">
-<h3><strong>qX</strong> Compute the control limits<a class="headerlink" href="#qx-compute-the-control-limits" title="Permalink to this headline">¶</a></h3>
-<p>Compute the control limits for the batch means. Use a multiplier of <span class="math notranslate nohighlight">\(q = 3\)</span>. Answer the questions under <em>observations</em> below.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_limits</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">df_stats</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
-        <span class="n">tys_lo</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">tys_mean</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">DF</span><span class="o">.</span><span class="n">tys_sd</span> <span class="o">/</span> <span class="n">gr</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n_grp</span><span class="p">),</span>
-        <span class="n">tys_hi</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">tys_mean</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">DF</span><span class="o">.</span><span class="n">tys_sd</span> <span class="o">/</span> <span class="n">gr</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n_grp</span><span class="p">),</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-
-<span class="c1">## NOTE: Don&#39;t edit the following; use this to check your work</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_limits</span><span class="o">.</span><span class="n">tys_hi</span><span class="p">)</span>
-<span class="k">assert</span> \
-    <span class="nb">all</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">df_limits</span><span class="o">.</span><span class="n">tys_lo</span> <span class="o">-</span> <span class="mf">25874.795475</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-2</span><span class="p">),</span> \
-    <span class="s2">&quot;Lower control limit is incorrect; &quot;</span> <span class="o">+</span> \
-    <span class="s2">&quot;did you use the same sample size used to compute &quot;</span> <span class="o">+</span> \
-    <span class="s2">&quot;the batch means?&quot;</span>
-<span class="k">assert</span> \
-    <span class="nb">all</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">df_limits</span><span class="o">.</span><span class="n">tys_hi</span> <span class="o">-</span> <span class="mf">37863.937859</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-2</span><span class="p">),</span> \
-    <span class="s2">&quot;Upper control limit is incorrect; &quot;</span> <span class="o">+</span> \
-    <span class="s2">&quot;did you use the same sample size used to compute &quot;</span> <span class="o">+</span> \
-    <span class="s2">&quot;the batch means?&quot;</span>
-
-<span class="p">(</span>
-    <span class="n">df_batches</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;id_group&quot;</span><span class="p">,</span> <span class="s2">&quot;batch_mean&quot;</span><span class="p">))</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span>
-        <span class="n">data</span><span class="o">=</span><span class="n">df_limits</span><span class="p">,</span>
-        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="s2">&quot;tys_lo&quot;</span><span class="p">),</span>
-        <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span>
-        <span class="n">data</span><span class="o">=</span><span class="n">df_limits</span><span class="p">,</span>
-        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="s2">&quot;tys_hi&quot;</span><span class="p">),</span>
-        <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span>
-        <span class="n">data</span><span class="o">=</span><span class="n">df_limits</span><span class="p">,</span>
-        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="s2">&quot;tys_mean&quot;</span><span class="p">),</span>
-    <span class="p">)</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    37863.937859
-Name: tys_hi, dtype: float64
-</pre></div>
-</div>
-<img alt="../_images/d23-e-grama06-fit-univar-solution_38_1.png" src="../_images/d23-e-grama06-fit-univar-solution_38_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8762646972895)&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<p><em>Observations</em></p>
-</div>
-</div>
-<div class="section" id="vary-the-batch-size">
-<h2>Vary the batch size<a class="headerlink" href="#vary-the-batch-size" title="Permalink to this headline">¶</a></h2>
-<p>As with adjusting the bin size of a histogram, it is also important to test different batch sizes with a control chart. The following re-constructs the control chart, but with a slightly smaller batch size:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit this</span>
-<span class="n">n_temp</span> <span class="o">=</span> <span class="mi">3</span>
-
-<span class="p">(</span>
-    <span class="n">df_shewhart</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">id_group</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="n">n_temp</span><span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">id_group</span><span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span><span class="n">batch_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span><span class="p">))</span>
-    
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;id_group&quot;</span><span class="p">,</span> <span class="s2">&quot;batch_mean&quot;</span><span class="p">))</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span>
-        <span class="n">df_stats</span>
-        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
-            <span class="n">y</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">tys_mean</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">DF</span><span class="o">.</span><span class="n">tys_sd</span> <span class="o">/</span> <span class="n">gr</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n_temp</span><span class="p">)</span>
-        <span class="p">),</span>
-        <span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">),</span>
-        <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span>
-        <span class="n">df_stats</span>
-        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
-            <span class="n">y</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">tys_mean</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">DF</span><span class="o">.</span><span class="n">tys_sd</span> <span class="o">/</span> <span class="n">gr</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n_temp</span><span class="p">)</span>
-        <span class="p">),</span>
-        <span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">),</span>
-        <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span>
-        <span class="n">data</span><span class="o">=</span><span class="n">df_stats</span><span class="p">,</span>
-        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="s2">&quot;tys_mean&quot;</span><span class="p">),</span>
-    <span class="p">)</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/d23-e-grama06-fit-univar-solution_41_0.png" src="../_images/d23-e-grama06-fit-univar-solution_41_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8762646205471)&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<p>Here we see reasonably similar behavior with no violations of the control limits and no suspicious patterns. The data from this process appear to be under statistical control. Thus, we can proceed with modeling the <code class="docutils literal notranslate"><span class="pre">tensile_strengh</span></code> as a random quantity.</p>
+</li>
+</ul>
+<p>If the data seem to be under statistical control, then we can model the measured value as random. For this exercise, we’ll assume that <code class="docutils literal notranslate"><span class="pre">tensile_strengh</span></code> is under statistical control and proceed with modeling.</p>
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="select-candidate-distributions">
@@ -1450,12 +1101,6 @@ Name: tys_hi, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(+0) norm, {&#39;mean&#39;: &#39;3.187e+04&#39;, &#39;s.d.&#39;: &#39;3.996e+03&#39;, &#39;COV&#39;: 0.13, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
-(+0) norm, {&#39;mean&#39;: &#39;3.187e+04&#39;, &#39;s.d.&#39;: &#39;3.963e+03&#39;, &#39;COV&#39;: 0.12, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -1485,12 +1130,6 @@ Name: tys_hi, dtype: float64
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Reference Quantiles&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Observed Quantiles&quot;</span><span class="p">)</span>
 <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/d23-e-grama06-fit-univar-solution_52_0.png" src="../_images/d23-e-grama06-fit-univar-solution_52_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8762646346650)&gt;
 </pre></div>
 </div>
 </div>
@@ -1535,12 +1174,6 @@ Name: tys_hi, dtype: float64
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Reference Quantiles&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Observed Quantiles&quot;</span><span class="p">)</span>
 <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/d23-e-grama06-fit-univar-solution_55_0.png" src="../_images/d23-e-grama06-fit-univar-solution_55_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8762646392314)&gt;
 </pre></div>
 </div>
 </div>
@@ -1592,25 +1225,6 @@ Name: tys_hi, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: Uniaxial tension member
-
-  inputs:
-    var_det:
-      A: [1.0, 5.0]
-
-    var_rand:
-      S: (+0) lognorm, {&#39;mean&#39;: &#39;3.187e+04&#39;, &#39;s.d.&#39;: &#39;4.019e+03&#39;, &#39;COV&#39;: 0.13, &#39;skew.&#39;: 0.38, &#39;kurt.&#39;: 3.26}
-      F: (+0) lognorm, {&#39;mean&#39;: &#39;8.000e+04&#39;, &#39;s.d.&#39;: &#39;8.000e+03&#39;, &#39;COV&#39;: 0.1, &#39;skew.&#39;: 0.3, &#39;kurt.&#39;: 3.16}
-
-    copula:
-      Independence copula
-
-  functions:
-      f0: [&#39;S&#39;, &#39;F&#39;, &#39;A&#39;] -&gt; [&#39;g_tension&#39;]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="section" id="qx-todo">
 <h3><strong>qX</strong> TODO<a class="headerlink" href="#qx-todo" title="Permalink to this headline">¶</a></h3>
@@ -1629,59 +1243,6 @@ Name: tys_hi, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eval_sample() is rounding n...
-</pre></div>
-</div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>A</th>
-      <th>pof_lo</th>
-      <th>pof_mu</th>
-      <th>pof_up</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2</td>
-      <td>0.928489</td>
-      <td>0.929</td>
-      <td>0.929508</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>3</td>
-      <td>0.145301</td>
-      <td>0.146</td>
-      <td>0.146702</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>4</td>
-      <td>0.000000</td>
-      <td>0.000</td>
-      <td>0.000004</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </div>
 </div>
