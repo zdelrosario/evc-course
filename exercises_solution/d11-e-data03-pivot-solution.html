@@ -1741,7 +1741,7 @@ Artwork by &#64;allison_horst</p>
 <div class="section" id="q5-simplify-with-selection-helpers">
 <h3><strong>q5</strong> Simplify with selection helpers<a class="headerlink" href="#q5-simplify-with-selection-helpers" title="Permalink to this headline">¶</a></h3>
 <p>Use a single <a class="reference external" href="https://zdelrosario.github.io/evc-course/exercises_solution/d02-e-data01-isolate-solution.html#selection-helpers">selection helper</a> to simplify the <code class="docutils literal notranslate"><span class="pre">columns</span></code> argument to <code class="docutils literal notranslate"><span class="pre">gr.tf_pivot_longer()</span></code>.</p>
-<p><em>Hint</em>: There are multiple ways to do this: The string <code class="docutils literal notranslate"><span class="pre">&quot;E|mu&quot;</span></code> means <code class="docutils literal notranslate"><span class="pre">&quot;E&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;mu&quot;</span></code>. The string <code class="docutils literal notranslate"><span class="pre">&quot;\\d+&quot;</span></code> means <em>any string of consecutive digits</em>.</p>
+<p><em>Hint</em>: There are multiple ways to do this: The string <code class="docutils literal notranslate"><span class="pre">&quot;E|mu&quot;</span></code> will <code class="docutils literal notranslate"><span class="pre">match</span></code> the strings <code class="docutils literal notranslate"><span class="pre">&quot;E&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;mu&quot;</span></code>. The string <code class="docutils literal notranslate"><span class="pre">&quot;\\d+&quot;</span></code> will <code class="docutils literal notranslate"><span class="pre">match</span></code> <em>any string of consecutive digits</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Replace the `columns` argument with a selection helper</span>
@@ -1749,7 +1749,7 @@ Artwork by &#64;allison_horst</p>
     <span class="n">df_alloys1</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_pivot_longer</span><span class="p">(</span>
 
-        <span class="c1"># columns=gr.contains(&quot;E|mu&quot;), # For soon-to-be-released functionality....</span>
+        <span class="n">columns</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">matches</span><span class="p">(</span><span class="s2">&quot;E|mu&quot;</span><span class="p">),</span> 
         <span class="n">names_to</span><span class="o">=</span><span class="s2">&quot;variable&quot;</span><span class="p">,</span>
         <span class="n">values_to</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span>
     <span class="p">)</span>
