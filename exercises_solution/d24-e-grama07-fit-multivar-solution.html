@@ -384,17 +384,17 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-check-for-statistical-control">
+      <a class="reference internal nav-link" href="#q1-check-for-statistical-control">
        <strong>
-        qX
+        q1
        </strong>
        Check for statistical control
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-fit-a-marginal-for-omega0">
+      <a class="reference internal nav-link" href="#q2-fit-a-marginal-for-omega0">
        <strong>
-        qX
+        q2
        </strong>
        Fit a marginal for
        <code class="docutils literal notranslate">
@@ -405,9 +405,9 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-fit-a-marginal-for-q">
+      <a class="reference internal nav-link" href="#q3-fit-a-marginal-for-q">
        <strong>
-        qX
+        q3
        </strong>
        Fit a marginal for
        <code class="docutils literal notranslate">
@@ -425,17 +425,17 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-fit-a-gaussian-copula">
+      <a class="reference internal nav-link" href="#q4-fit-a-gaussian-copula">
        <strong>
-        qX
+        q4
        </strong>
        Fit a gaussian copula
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-compare-the-models">
+      <a class="reference internal nav-link" href="#q5-compare-the-models">
        <strong>
-        qX
+        q5
        </strong>
        Compare the models
       </a>
@@ -504,17 +504,17 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-check-for-statistical-control">
+      <a class="reference internal nav-link" href="#q1-check-for-statistical-control">
        <strong>
-        qX
+        q1
        </strong>
        Check for statistical control
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-fit-a-marginal-for-omega0">
+      <a class="reference internal nav-link" href="#q2-fit-a-marginal-for-omega0">
        <strong>
-        qX
+        q2
        </strong>
        Fit a marginal for
        <code class="docutils literal notranslate">
@@ -525,9 +525,9 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-fit-a-marginal-for-q">
+      <a class="reference internal nav-link" href="#q3-fit-a-marginal-for-q">
        <strong>
-        qX
+        q3
        </strong>
        Fit a marginal for
        <code class="docutils literal notranslate">
@@ -545,17 +545,17 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-fit-a-gaussian-copula">
+      <a class="reference internal nav-link" href="#q4-fit-a-gaussian-copula">
        <strong>
-        qX
+        q4
        </strong>
        Fit a gaussian copula
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#qx-compare-the-models">
+      <a class="reference internal nav-link" href="#q5-compare-the-models">
        <strong>
-        qX
+        q5
        </strong>
        Compare the models
       </a>
@@ -600,10 +600,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="dependency-in-the-wild">
 <h1>Dependency in the wild<a class="headerlink" href="#dependency-in-the-wild" title="Permalink to this headline">¶</a></h1>
-<p>TODO</p>
+<p>We’ve seen lots of examples of dependency in datasets so far! Any case where we see “patterns” in a scatterplot are examples of some relationship (or dependency) between variables.</p>
+<p>As a concrete example, let’s take a look at the measured <code class="docutils literal notranslate"><span class="pre">density</span></code> and <code class="docutils literal notranslate"><span class="pre">hardness</span></code> values from the cast aluminum dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
     <span class="n">df_shewhart</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;density&quot;</span><span class="p">,</span> <span class="s2">&quot;hardness&quot;</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
@@ -612,13 +614,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d24-e-grama07-fit-multivar-solution_7_0.png" src="../_images/d24-e-grama07-fit-multivar-solution_7_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8768352164244)&gt;
+<img alt="../_images/d24-e-grama07-fit-multivar-solution_6_0.png" src="../_images/d24-e-grama07-fit-multivar-solution_6_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8744243135091)&gt;
 </pre></div>
 </div>
 </div>
 </div>
-<p>A normal distribution does a <em>reasonable</em> job representing both <code class="docutils literal notranslate"><span class="pre">density</span></code> and <code class="docutils literal notranslate"><span class="pre">hardness</span></code>.</p>
+<p>We can see a positive correlation between the two variables. If we wanted to model the <code class="docutils literal notranslate"><span class="pre">density</span></code> and <code class="docutils literal notranslate"><span class="pre">hardness</span></code> simultaneously, we would need to respect this dependency.</p>
+<p>A normal distribution does a <em>reasonable</em> job representing both <code class="docutils literal notranslate"><span class="pre">density</span></code> and <code class="docutils literal notranslate"><span class="pre">hardness</span></code> separately.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
@@ -648,20 +651,23 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/Git/py_grama/grama/tran_pivot.py:471: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/zach/Git/py_grama/grama/tran_pivot.py:570: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-/Users/zach/opt/anaconda3/envs/uqbook/lib/python3.9/site-packages/plotnine/facets/facet.py:390: PlotnineWarning: If you need more space for the x-axis tick text use ... + theme(subplots_adjust={&#39;wspace&#39;: 0.25}). Choose an appropriate value for &#39;wspace&#39;.
+/home/zach/Bin/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/facets/facet.py:487: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+/home/zach/Bin/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+/home/zach/Bin/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+/home/zach/Bin/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/facets/facet.py:390: PlotnineWarning: If you need more space for the x-axis tick text use ... + theme(subplots_adjust={&#39;wspace&#39;: 0.25}). Choose an appropriate value for &#39;wspace&#39;.
 </pre></div>
 </div>
-<img alt="../_images/d24-e-grama07-fit-multivar-solution_9_1.png" src="../_images/d24-e-grama07-fit-multivar-solution_9_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8768352511374)&gt;
+<img alt="../_images/d24-e-grama07-fit-multivar-solution_8_1.png" src="../_images/d24-e-grama07-fit-multivar-solution_8_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8744240703419)&gt;
 </pre></div>
 </div>
 </div>
 </div>
-<p>However,</p>
+<p>However, if we fit a normal for <code class="docutils literal notranslate"><span class="pre">hardness</span></code> and <code class="docutils literal notranslate"><span class="pre">density</span></code> separately, <em>and ignore the dependency</em>, we will end up with a model that does not respect the correlation we saw above:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
@@ -672,6 +678,9 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
         <span class="n">density</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">marg_fit</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">df_shewhart</span><span class="o">.</span><span class="n">density</span><span class="p">),</span>
         <span class="n">hardness</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">marg_fit</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">df_shewhart</span><span class="o">.</span><span class="n">hardness</span><span class="p">),</span>
     <span class="p">)</span>
+    <span class="c1">## NOTE: This line is where things go wrong!</span>
+    <span class="c1"># We can&#39;t just assume variables are independent</span>
+    <span class="c1"># unless we have a good reason to do so.</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_copula_independence</span><span class="p">()</span>
 <span class="p">)</span>
 
@@ -697,20 +706,17 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 Design runtime estimates unavailable; model has no timing data.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/uqbook/lib/python3.9/site-packages/plotnine/ggplot.py:719: PlotnineWarning: Saving 6.4 x 4.8 in image.
-/Users/zach/opt/anaconda3/envs/uqbook/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: ./images/shewhart-biv-indep.png
-</pre></div>
-</div>
-<img alt="../_images/d24-e-grama07-fit-multivar-solution_11_2.png" src="../_images/d24-e-grama07-fit-multivar-solution_11_2.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8768323923752)&gt;
+<img alt="../_images/d24-e-grama07-fit-multivar-solution_10_1.png" src="../_images/d24-e-grama07-fit-multivar-solution_10_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8744240565745)&gt;
 </pre></div>
 </div>
 </div>
 </div>
-<p>This model does not respect the correlation we observe in the data.</p>
+<p>Notice that this model does not respect the correlation we observe in the data. How can we fix this?</p>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="marginal-copula-approach">
 <h1>Marginal-Copula Approach<a class="headerlink" href="#marginal-copula-approach" title="Permalink to this headline">¶</a></h1>
+<p>It turns out there is a drop-in solution for representing dependency; a <a class="reference external" href="https://en.wikipedia.org/wiki/Copula_(probability_theory)"><em>copula</em></a> is a mathematical tool to represent dependency between two (or more) random variables. We can fit a gaussian copula to represent the correlation we see between <code class="docutils literal notranslate"><span class="pre">hardness</span></code> and <code class="docutils literal notranslate"><span class="pre">density</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
@@ -747,18 +753,16 @@ Design runtime estimates unavailable; model has no timing data.
 Design runtime estimates unavailable; model has no timing data.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/uqbook/lib/python3.9/site-packages/plotnine/ggplot.py:719: PlotnineWarning: Saving 6.4 x 4.8 in image.
-/Users/zach/opt/anaconda3/envs/uqbook/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: ./images/shewhart-biv-gauss.png
-</pre></div>
-</div>
-<img alt="../_images/d24-e-grama07-fit-multivar-solution_14_2.png" src="../_images/d24-e-grama07-fit-multivar-solution_14_2.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8768352469321)&gt;
+<img alt="../_images/d24-e-grama07-fit-multivar-solution_13_1.png" src="../_images/d24-e-grama07-fit-multivar-solution_13_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8744240524791)&gt;
 </pre></div>
 </div>
 </div>
 </div>
+<p>Note that this version of the model respects the correlation in the data!</p>
 <div class="section" id="steps">
 <h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<p>When fitting a density for <em>multiple</em> uncertainties, we should follow an extended process:</p>
 <ol class="simple">
 <li><p>Fit a marginal for each uncertain quantity</p>
 <ul class="simple">
@@ -772,16 +776,18 @@ Design runtime estimates unavailable; model has no timing data.
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="case-study-circuit-performance">
 <h1>Case Study: Circuit Performance<a class="headerlink" href="#case-study-circuit-performance" title="Permalink to this headline">¶</a></h1>
+<p>To illustrate the full distribution-fitting process, we’ll work through a case study of circuit performance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.models</span> <span class="kn">import</span> <span class="n">make_prlc_rand</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="kn">from</span> <span class="nn">grama.models</span> <span class="kn">import</span> <span class="n">make_prlc_rand</span>
 <span class="n">md_circuit</span> <span class="o">=</span> <span class="n">make_prlc_rand</span><span class="p">()</span>
 <span class="n">md_circuit</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/Git/py_grama/grama/marginals.py:336: RuntimeWarning: divide by zero encountered in double_scalars
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/zach/Git/py_grama/grama/marginals.py:336: RuntimeWarning: divide by zero encountered in double_scalars
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: RLC with component tolerances
@@ -789,8 +795,8 @@ Design runtime estimates unavailable; model has no timing data.
   inputs:
     var_det:
       L: [1e-09, 0.001]
-      R: [0.001, 1.0]
       C: [0.001, 100]
+      R: [0.001, 1.0]
 
     var_rand:
       dR: (+0) uniform, {&#39;mean&#39;: &#39;0.000e+00&#39;, &#39;s.d.&#39;: &#39;3.000e-02&#39;, &#39;COV&#39;: inf, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 1.8}
@@ -808,9 +814,11 @@ Design runtime estimates unavailable; model has no timing data.
 </div>
 </div>
 </div>
+<p>This circuit model has variability in its performance due to manufacturing variability. If we inspect its two outputs <code class="docutils literal notranslate"><span class="pre">Q</span></code> and <code class="docutils literal notranslate"><span class="pre">omega0</span></code>, we can see that they are quite variable, and exhibit a strong negative correlation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_circuit</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_circuit</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">md_circuit</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span> <span class="n">df_det</span><span class="o">=</span><span class="s2">&quot;nom&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
 <span class="p">)</span>
@@ -828,78 +836,49 @@ Design runtime estimates unavailable; model has no timing data.
 </pre></div>
 </div>
 <img alt="../_images/d24-e-grama07-fit-multivar-solution_19_1.png" src="../_images/d24-e-grama07-fit-multivar-solution_19_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8768351515673)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8744240704705)&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="marginals">
 <h2>Marginals<a class="headerlink" href="#marginals" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="qx-check-for-statistical-control">
-<h3><strong>qX</strong> Check for statistical control<a class="headerlink" href="#qx-check-for-statistical-control" title="Permalink to this headline">¶</a></h3>
-<p>Check for statistical control of the output <code class="docutils literal notranslate"><span class="pre">omega0</span></code>. Use a control chart to make this determination.</p>
-<p><em>Hint</em>: You <em>do not</em> need to write all this code from scratch! Try copying code from the previous exercise <code class="docutils literal notranslate"><span class="pre">e-grama-06-fit-univar</span></code>.</p>
+<p>First, let’s fit distributions for the two quantities <code class="docutils literal notranslate"><span class="pre">Q</span></code> and <code class="docutils literal notranslate"><span class="pre">omega0</span></code> separately.</p>
+<div class="section" id="q1-check-for-statistical-control">
+<h3><strong>q1</strong> Check for statistical control<a class="headerlink" href="#q1-check-for-statistical-control" title="Permalink to this headline">¶</a></h3>
+<p>Check for statistical control of the output <code class="docutils literal notranslate"><span class="pre">omega0</span></code>. Use a large batch size. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Make a control chart of batch size n_batch = 10</span>
-<span class="n">n_batch</span> <span class="o">=</span> <span class="mi">10</span>
-
-<span class="n">df_stats</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">df_circuit</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
-        <span class="n">omega0_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">omega0</span><span class="p">),</span>
-        <span class="n">omega0_sd</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">sd</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">omega0</span><span class="p">),</span>
-    <span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
-        <span class="n">omega0_lo</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">omega0_mean</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">DF</span><span class="o">.</span><span class="n">omega0_sd</span> <span class="o">/</span> <span class="n">gr</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n_batch</span><span class="p">),</span>
-        <span class="n">omega0_up</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">omega0_mean</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">DF</span><span class="o">.</span><span class="n">omega0_sd</span> <span class="o">/</span> <span class="n">gr</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n_batch</span><span class="p">),</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-
 <span class="p">(</span>
     <span class="n">df_circuit</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">id_group</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="n">n_batch</span><span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">id_group</span><span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span><span class="n">batch_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">omega0</span><span class="p">))</span>
-    
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;id_group&quot;</span><span class="p">,</span> <span class="s2">&quot;batch_mean&quot;</span><span class="p">))</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span>
-        <span class="n">df_stats</span><span class="p">,</span>
-        <span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="s2">&quot;omega0_lo&quot;</span><span class="p">),</span>
-        <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span>
-        <span class="n">df_stats</span><span class="p">,</span>
-        <span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="s2">&quot;omega0_up&quot;</span><span class="p">),</span>
-        <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span>
-        <span class="n">data</span><span class="o">=</span><span class="n">df_stats</span><span class="p">,</span>
-        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="s2">&quot;omega0_mean&quot;</span><span class="p">),</span>
-    <span class="p">)</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">idx</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_xbs</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;idx&quot;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;omega0&quot;</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="c1"># solution-end</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d24-e-grama07-fit-multivar-solution_22_0.png" src="../_images/d24-e-grama07-fit-multivar-solution_22_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8768351783060)&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/zach/Git/py_grama/grama/tran_pivot.py:570: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+/home/zach/Bin/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+/home/zach/Bin/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+/home/zach/Bin/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+</pre></div>
+</div>
+<img alt="../_images/d24-e-grama07-fit-multivar-solution_22_1.png" src="../_images/d24-e-grama07-fit-multivar-solution_22_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8744243109816)&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <p><em>Observations</em></p>
 <ul class="simple">
-<li><p>How many batches <em>total</em> are there?</p>
+<li><p>What batch size did you choose?</p>
 <ul>
-<li><p>With a batch size of <code class="docutils literal notranslate"><span class="pre">n_batch</span> <span class="pre">=</span> <span class="pre">10</span></code> there are <code class="docutils literal notranslate"><span class="pre">1000</span></code> batches.</p></li>
-</ul>
-</li>
-<li><p>How many batches fall outside the control limits? Is that significantly more than we would expect?</p>
-<ul>
-<li><p>I see three batches outside the control limits (though this will vary—the code output is random). This is not significantly more than the ~1 per thousand batches we would expect to exceed the limits.</p></li>
+<li><p>I chose a batch size of <code class="docutils literal notranslate"><span class="pre">n_batch</span> <span class="pre">=</span> <span class="pre">100</span></code>.</p></li>
 </ul>
 </li>
 <li><p>Does this process seem to be under statistical control?</p>
@@ -907,10 +886,16 @@ Design runtime estimates unavailable; model has no timing data.
 <li><p>Yes; there are not too many outlier batches, and there are no other suspicious patterns.</p></li>
 </ul>
 </li>
+<li><p>Remind me: Is this quantity random? How do you know?</p>
+<ul>
+<li><p>Yes! We generated these data as a random sample; they are random by-construction.</p></li>
+</ul>
+</li>
 </ul>
 </div>
-<div class="section" id="qx-fit-a-marginal-for-omega0">
-<h3><strong>qX</strong> Fit a marginal for <code class="docutils literal notranslate"><span class="pre">omega0</span></code><a class="headerlink" href="#qx-fit-a-marginal-for-omega0" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="q2-fit-a-marginal-for-omega0">
+<h3><strong>q2</strong> Fit a marginal for <code class="docutils literal notranslate"><span class="pre">omega0</span></code><a class="headerlink" href="#q2-fit-a-marginal-for-omega0" title="Permalink to this headline">¶</a></h3>
+<p>Select a reasonable distribution for <code class="docutils literal notranslate"><span class="pre">omega0</span></code> and fit it using the data <code class="docutils literal notranslate"><span class="pre">df_circuit.omega0</span></code>. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Fit a marginal for `omega0`</span>
@@ -928,11 +913,8 @@ Design runtime estimates unavailable; model has no timing data.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/uqbook/lib/python3.9/site-packages/scipy/stats/_continuous_distns.py:624: RuntimeWarning: overflow encountered in _beta_ppf
-</pre></div>
-</div>
-<img alt="../_images/d24-e-grama07-fit-multivar-solution_25_1.png" src="../_images/d24-e-grama07-fit-multivar-solution_25_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8768351655858)&gt;
+<img alt="../_images/d24-e-grama07-fit-multivar-solution_25_0.png" src="../_images/d24-e-grama07-fit-multivar-solution_25_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8744240478284)&gt;
 </pre></div>
 </div>
 </div>
@@ -946,8 +928,9 @@ Design runtime estimates unavailable; model has no timing data.
 </li>
 </ul>
 </div>
-<div class="section" id="qx-fit-a-marginal-for-q">
-<h3><strong>qX</strong> Fit a marginal for <code class="docutils literal notranslate"><span class="pre">Q</span></code><a class="headerlink" href="#qx-fit-a-marginal-for-q" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="q3-fit-a-marginal-for-q">
+<h3><strong>q3</strong> Fit a marginal for <code class="docutils literal notranslate"><span class="pre">Q</span></code><a class="headerlink" href="#q3-fit-a-marginal-for-q" title="Permalink to this headline">¶</a></h3>
+<p>Select a reasonable distribution for <code class="docutils literal notranslate"><span class="pre">Q</span></code> and fit it using the data <code class="docutils literal notranslate"><span class="pre">df_circuit.Q</span></code>. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Fit a marginal for `Q`</span>
@@ -968,7 +951,7 @@ Design runtime estimates unavailable; model has no timing data.
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d24-e-grama07-fit-multivar-solution_28_0.png" src="../_images/d24-e-grama07-fit-multivar-solution_28_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8768351446062)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8744240496150)&gt;
 </pre></div>
 </div>
 </div>
@@ -985,6 +968,8 @@ Design runtime estimates unavailable; model has no timing data.
 </div>
 <div class="section" id="copula">
 <h2>Copula<a class="headerlink" href="#copula" title="Permalink to this headline">¶</a></h2>
+<p>Now that we’ve fit marginals for <code class="docutils literal notranslate"><span class="pre">Q</span></code> and <code class="docutils literal notranslate"><span class="pre">omega0</span></code>, we can work on representing their dependency.</p>
+<p>The following code fits a model that neglects the dependency between <code class="docutils literal notranslate"><span class="pre">Q</span></code> and <code class="docutils literal notranslate"><span class="pre">omega0</span></code>. You will fit a gaussian copula and compare against this baseline model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
@@ -1019,8 +1004,9 @@ Design runtime estimates unavailable; model has no timing data.
 </div>
 </div>
 </div>
-<div class="section" id="qx-fit-a-gaussian-copula">
-<h3><strong>qX</strong> Fit a gaussian copula<a class="headerlink" href="#qx-fit-a-gaussian-copula" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="q4-fit-a-gaussian-copula">
+<h3><strong>q4</strong> Fit a gaussian copula<a class="headerlink" href="#q4-fit-a-gaussian-copula" title="Permalink to this headline">¶</a></h3>
+<p>Add a gaussian copula to the model <code class="docutils literal notranslate"><span class="pre">md_out_copula</span></code>.</p>
 <p><em>Hint</em>: The code above demonstrates how to add a gaussian copula to a grama model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1064,8 +1050,8 @@ Design runtime estimates unavailable; model has no timing data.
 </div>
 </div>
 </div>
-<div class="section" id="qx-compare-the-models">
-<h3><strong>qX</strong> Compare the models<a class="headerlink" href="#qx-compare-the-models" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="q5-compare-the-models">
+<h3><strong>q5</strong> Compare the models<a class="headerlink" href="#q5-compare-the-models" title="Permalink to this headline">¶</a></h3>
 <p>Use the following code to compare the multivariate models; answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1098,12 +1084,11 @@ eval_sample() is rounding n...
 Design runtime estimates unavailable; model has no timing data.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/uqbook/lib/python3.9/site-packages/scipy/stats/_continuous_distns.py:624: RuntimeWarning: overflow encountered in _beta_ppf
-/Users/zach/opt/anaconda3/envs/uqbook/lib/python3.9/site-packages/scipy/stats/_continuous_distns.py:624: RuntimeWarning: overflow encountered in _beta_ppf
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/zach/Bin/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
 </pre></div>
 </div>
 <img alt="../_images/d24-e-grama07-fit-multivar-solution_35_2.png" src="../_images/d24-e-grama07-fit-multivar-solution_35_2.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8768352349778)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8744240495821)&gt;
 </pre></div>
 </div>
 </div>
