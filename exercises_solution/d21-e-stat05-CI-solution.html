@@ -673,7 +673,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.19581334536126285
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.22333252837807988
 </pre></div>
 </div>
 </div>
@@ -728,7 +728,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d21-e-stat05-CI-solution_10_0.png" src="../_images/d21-e-stat05-CI-solution_10_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785175445342)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8769996389419)&gt;
 </pre></div>
 </div>
 </div>
@@ -838,9 +838,9 @@ const thebe_selector_output = ".output, .cell_output"
   <tbody>
     <tr>
       <th>0</th>
-      <td>-1.298667</td>
-      <td>-0.786715</td>
-      <td>-0.274763</td>
+      <td>-0.952991</td>
+      <td>-0.044586</td>
+      <td>0.86382</td>
     </tr>
   </tbody>
 </table>
@@ -884,7 +884,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d21-e-stat05-CI-solution_18_0.png" src="../_images/d21-e-stat05-CI-solution_18_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785221745496)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8769996724146)&gt;
 </pre></div>
 </div>
 </div>
@@ -948,7 +948,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d21-e-stat05-CI-solution_22_0.png" src="../_images/d21-e-stat05-CI-solution_22_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785206545628)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8770013144188)&gt;
 </pre></div>
 </div>
 </div>
@@ -996,8 +996,8 @@ const thebe_selector_output = ".output, .cell_output"
 
   inputs:
     var_det:
-      t: [2, 4]
       w: [2, 4]
+      t: [2, 4]
 
     var_rand:
       H: (+1) norm, {&#39;mean&#39;: &#39;5.000e+02&#39;, &#39;s.d.&#39;: &#39;1.000e+02&#39;, &#39;COV&#39;: 0.2, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
@@ -1057,8 +1057,8 @@ const thebe_selector_output = ".output, .cell_output"
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.03</td>
-      <td>0.0</td>
+      <td>0.05</td>
+      <td>0.04</td>
     </tr>
   </tbody>
 </table>
@@ -1110,9 +1110,9 @@ const thebe_selector_output = ".output, .cell_output"
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.001175</td>
-      <td>0.01</td>
-      <td>0.079801</td>
+      <td>0.025636</td>
+      <td>0.07</td>
+      <td>0.177178</td>
     </tr>
   </tbody>
 </table>
@@ -1178,9 +1178,9 @@ const thebe_selector_output = ".output, .cell_output"
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.032944</td>
-      <td>0.035</td>
-      <td>0.037179</td>
+      <td>0.03354</td>
+      <td>0.0358</td>
+      <td>0.038206</td>
     </tr>
   </tbody>
 </table>
@@ -1197,13 +1197,13 @@ const thebe_selector_output = ".output, .cell_output"
 <!-- solution-end --></div>
 <div class="section" id="q6-design-for-small-failure-rate">
 <h2><strong>q6</strong> Design for small failure rate<a class="headerlink" href="#q6-design-for-small-failure-rate" title="Permalink to this headline">¶</a></h2>
-<p>Adjust the deterministic variables <code class="docutils literal notranslate"><span class="pre">w</span></code> and <code class="docutils literal notranslate"><span class="pre">t</span></code> in order to achieve a probability of failure due to stress less than <code class="docutils literal notranslate"><span class="pre">0.001</span></code>.</p>
+<p>Adjust the deterministic variables <code class="docutils literal notranslate"><span class="pre">w</span></code> and <code class="docutils literal notranslate"><span class="pre">t</span></code> in order to <em>confidently</em> achieve a probability of failure due to stress less than <code class="docutils literal notranslate"><span class="pre">0.001</span></code>.</p>
 <p><em>Hint</em>: You adjusted the sample size <code class="docutils literal notranslate"><span class="pre">n</span></code> in the previous exercise. Make sure to use that learning when tackling this exercise.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TODO: Adjust the deterministic variables `w, t` to achieve a probability</span>
 <span class="c1">## of failure less than 0.001</span>
-<span class="p">(</span>
+<span class="n">df_pof_small</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">md_beam</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span>
 
@@ -1216,46 +1216,23 @@ const thebe_selector_output = ".output, .cell_output"
         <span class="n">pof_up</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr_up</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_stress</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span> <span class="c1"># pof_up must be &lt; 0.001</span>
     <span class="p">)</span>
 <span class="p">)</span>
+
+<span class="c1">## NOTE: Use this to check your work</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_pof_small</span><span class="p">)</span>
+
+<span class="k">assert</span> \
+    <span class="n">df_pof_small</span><span class="o">.</span><span class="n">pof_up</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.001</span><span class="p">,</span> \
+    <span class="s2">&quot;The upper CI bound for the POF is not less than 0.001&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eval_sample() is rounding n...
+         pof_lo  pof    pof_up
+0  5.421011e-20  0.0  0.000787
 </pre></div>
 </div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>pof_lo</th>
-      <th>pof</th>
-      <th>pof_up</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>-5.421011e-20</td>
-      <td>0.0</td>
-      <td>0.000663</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+</div>
 </div>
 </div>
 </div>
@@ -1320,12 +1297,12 @@ const thebe_selector_output = ".output, .cell_output"
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.163842</td>
-      <td>0.165998</td>
-      <td>0.168154</td>
-      <td>0.031688</td>
-      <td>0.0362</td>
-      <td>0.041327</td>
+      <td>0.164701</td>
+      <td>0.167109</td>
+      <td>0.169518</td>
+      <td>0.031125</td>
+      <td>0.036</td>
+      <td>0.041605</td>
     </tr>
   </tbody>
 </table>
