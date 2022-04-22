@@ -1,3 +1,4 @@
+(schedule)=
 # Course Topics and Schedule
 
 ## Topics

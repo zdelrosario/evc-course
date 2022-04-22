@@ -12,9 +12,7 @@ help you set up your environment.
 # Exercises Files
 <!-- ------------------------- -->
 
-We will work through a number of programming exercises in this course. We have
-consolidated the exercise notebooks and installation files in a single zip;
-download the following and unzip.
+We will work through a number of programming exercises in this course. We have consolidated the exercise notebooks and installation files in a single zip; download the following and unzip.
 
 - [Course materials](https://github.com/zdelrosario/evc-course/archive/refs/heads/build.zip)
 
@@ -123,25 +121,11 @@ run the following jupyter notebook.
 ```{admonition} Test your installation
 Download and run [check_install.ipynb](https://github.com/zdelrosario/evc-course/blob/main/check_install.ipynb). This is also included in the [course materials](https://github.com/zdelrosario/evc-course/archive/refs/heads/build.zip) file noted above.
 
-Navigate to the folder where you downloaded `check_install.ipynb`,
-execute the command `jupyter lab`, open `check_install.ipynb`,
-and click on `Run > Run all cells`. If you can successfully run the
-notebook (without errors), then you are ready for the course!
+Navigate to the folder where you downloaded `check_install.ipynb`, execute the command `jupyter lab`, open `check_install.ipynb`, and click on `Run > Run all cells`. If you can successfully run thenotebook (without errors), then you are ready for the course!
 ```
-
 # Progression
 <!-- -------------------------------------------------- -->
 
-The `exercises_assignment/` folder contains the take-home exercises that will
-introduce you to the concepts and skills covered in the class. Each of these
-exercises is labeled with a prefix (e.g. `d01-` for the first day), so the
-exercises should appear in your folder in-order. You should try these exercises
-on your own, but if you get stuck, keep in mind that the
-[solutions](https://zdelrosario.github.io/evc-course/frontmatter/exercises.html)
-are available online!
+The `exercises_assignment/` folder contains the take-home exercises that will introduce you to the concepts and skills covered in the class. Each of these exercises is labeled with a prefix (e.g. `d01-` for the first day), so the exercises should appear in your folder in-order. You should try these exercises on your own, but if you get stuck, keep in mind that the [solutions](https://zdelrosario.github.io/evc-course/frontmatter/exercises.html) are available online!
 
-The `challenges_assignment/` folder contains the homeworks for the course. These
-are provided without solutions, so try to complete these to the best of your
-ability.
-
-**TODO** (Add schedule for exercises and challenges...)
+The `challenges_assignment/` folder contains the homeworks for the course. These are provided without solutions, so try to complete these to the best of your ability. See [this page](schedule) for the exercise schedule.
