@@ -490,9 +490,9 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-fit-a-distribution-with-averaged-observations">
+    <a class="reference internal nav-link" href="#q11-fit-a-distribution-with-averaged-observations">
      <strong>
-      qX
+      q11
      </strong>
      Fit a distribution with averaged observations
     </a>
@@ -505,17 +505,17 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-assess-a-baseline-design">
+    <a class="reference internal nav-link" href="#q12-assess-a-baseline-design">
      <strong>
-      qX
+      q12
      </strong>
      Assess a baseline design
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-adjust-the-design">
+    <a class="reference internal nav-link" href="#q13-adjust-the-design">
      <strong>
-      qX
+      q13
      </strong>
      Adjust the design
     </a>
@@ -688,9 +688,9 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-fit-a-distribution-with-averaged-observations">
+    <a class="reference internal nav-link" href="#q11-fit-a-distribution-with-averaged-observations">
      <strong>
-      qX
+      q11
      </strong>
      Fit a distribution with averaged observations
     </a>
@@ -703,17 +703,17 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-assess-a-baseline-design">
+    <a class="reference internal nav-link" href="#q12-assess-a-baseline-design">
      <strong>
-      qX
+      q12
      </strong>
      Assess a baseline design
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx-adjust-the-design">
+    <a class="reference internal nav-link" href="#q13-adjust-the-design">
      <strong>
-      qX
+      q13
      </strong>
      Adjust the design
     </a>
@@ -834,15 +834,15 @@ const thebe_selector_output = ".output, .cell_output"
 <td><p>Geometric property</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">id_machine</span></code></p></td>
-<td><p>Unique machine identifier</p></td>
+<td><p>Machine identifier</p></td>
 <td><p>Manufacturing variable</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id_specimen</span></code></p></td>
-<td><p>Unique specimen identifier</p></td>
+<td><p>Specimen identifier</p></td>
 <td><p>Manufacturing variable</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">id_measurement</span></code></p></td>
-<td><p>Unique measurement (operator) identifier</p></td>
+<td><p>Measurement (operator) identifier</p></td>
 <td><p>Manufacturing variable</p></td>
 </tr>
 </tbody>
@@ -1126,7 +1126,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Now you will construct a model for the variability in <code class="docutils literal notranslate"><span class="pre">E</span></code> and <code class="docutils literal notranslate"><span class="pre">mu</span></code>. You’ll use this to assess the structural safety of a plate subject to compressive (buckling) loads.</p>
 <div class="section" id="q9-assess-dependency-of-e-and-mu">
 <h2><strong>q9</strong> Assess dependency of <code class="docutils literal notranslate"><span class="pre">E</span></code> and <code class="docutils literal notranslate"><span class="pre">mu</span></code><a class="headerlink" href="#q9-assess-dependency-of-e-and-mu" title="Permalink to this headline">¶</a></h2>
-<p>Assess the dependency between <code class="docutils literal notranslate"><span class="pre">E</span></code> and <code class="docutils literal notranslate"><span class="pre">mu</span></code>.</p>
+<p>Assess the dependency between <code class="docutils literal notranslate"><span class="pre">E</span></code> and <code class="docutils literal notranslate"><span class="pre">mu</span></code>. Answer the questions under <em>observations</em> below.</p>
 <p><em>Hint</em>: There are many ways to do this!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1139,6 +1139,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>What—if any—dependency do <code class="docutils literal notranslate"><span class="pre">E</span></code> and <code class="docutils literal notranslate"><span class="pre">mu</span></code> exhibit?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+</ul>
 <p>The following code implements the buckling plate model; you wrote code like this in c03-stang.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1202,12 +1210,13 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 </div>
-<div class="section" id="qx-fit-a-distribution-with-averaged-observations">
-<h2><strong>qX</strong> Fit a distribution with averaged observations<a class="headerlink" href="#qx-fit-a-distribution-with-averaged-observations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="q11-fit-a-distribution-with-averaged-observations">
+<h2><strong>q11</strong> Fit a distribution with averaged observations<a class="headerlink" href="#q11-fit-a-distribution-with-averaged-observations" title="Permalink to this headline">¶</a></h2>
 <p>Re-fit the same model you defined above, but use the averaged observations <code class="docutils literal notranslate"><span class="pre">df_real</span></code> instead.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">md_real</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Add your distribution model to `md_real`, using `df_real` in the fit</span>
+<span class="n">md_real</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">md_plate</span>
 
 <span class="p">)</span>
@@ -1229,8 +1238,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="qx-assess-a-baseline-design">
-<h2><strong>qX</strong> Assess a baseline design<a class="headerlink" href="#qx-assess-a-baseline-design" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="q12-assess-a-baseline-design">
+<h2><strong>q12</strong> Assess a baseline design<a class="headerlink" href="#q12-assess-a-baseline-design" title="Permalink to this headline">¶</a></h2>
 <p>Assess the probability of failure <span class="math notranslate nohighlight">\(\text{pof} = \mathbb{P}[g \leq 0]\)</span> according to both <code class="docutils literal notranslate"><span class="pre">md_total</span></code> and <code class="docutils literal notranslate"><span class="pre">md_baseline</span></code>. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1310,8 +1319,8 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 </div>
-<div class="section" id="qx-adjust-the-design">
-<h2><strong>qX</strong> Adjust the design<a class="headerlink" href="#qx-adjust-the-design" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="q13-adjust-the-design">
+<h2><strong>q13</strong> Adjust the design<a class="headerlink" href="#q13-adjust-the-design" title="Permalink to this headline">¶</a></h2>
 <p>Adjust the thickness of the plate to <em>confidently</em> achieve <code class="docutils literal notranslate"><span class="pre">pof</span> <span class="pre">&lt;</span> <span class="pre">0.01</span></code>. Repeat this process for both the <code class="docutils literal notranslate"><span class="pre">Total</span></code> and <code class="docutils literal notranslate"><span class="pre">Real</span></code> models. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
