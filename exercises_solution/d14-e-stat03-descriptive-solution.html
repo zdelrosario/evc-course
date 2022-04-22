@@ -665,6 +665,9 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;dep_delay&quot;</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_x_log10</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Departure Delay Time (Minutes)&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -676,11 +679,12 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <img alt="../_images/d14-e-stat03-descriptive-solution_4_1.png" src="../_images/d14-e-stat03-descriptive-solution_4_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775452324106)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775467204497)&gt;
 </pre></div>
 </div>
 </div>
 </div>
+<p>This shows the departure delay time, in minutes.</p>
 <p>However, we might be interested in a few questions about these data:</p>
 <ul class="simple">
 <li><p>What is a <em>typical</em> value for the departure delay? (Location)</p></li>
@@ -723,7 +727,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d14-e-stat03-descriptive-solution_7_0.png" src="../_images/d14-e-stat03-descriptive-solution_7_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775417409326)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775487522440)&gt;
 </pre></div>
 </div>
 </div>
@@ -817,7 +821,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d14-e-stat03-descriptive-solution_11_0.png" src="../_images/d14-e-stat03-descriptive-solution_11_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775417357821)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775487466066)&gt;
 </pre></div>
 </div>
 </div>
@@ -1104,7 +1108,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d14-e-stat03-descriptive-solution_23_0.png" src="../_images/d14-e-stat03-descriptive-solution_23_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775390275503)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775467343668)&gt;
 </pre></div>
 </div>
 </div>
@@ -1139,7 +1143,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d14-e-stat03-descriptive-solution_26_0.png" src="../_images/d14-e-stat03-descriptive-solution_26_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775466069327)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775466883880)&gt;
 </pre></div>
 </div>
 </div>
@@ -1227,8 +1231,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        iqr
-0  1.350169
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       iqr
+0  1.34706
 </pre></div>
 </div>
 </div>
@@ -1390,11 +1394,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_point : Removed 957 rows containing missing values.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_point : Removed 924 rows containing missing values.
 </pre></div>
 </div>
 <img alt="../_images/d14-e-stat03-descriptive-solution_38_1.png" src="../_images/d14-e-stat03-descriptive-solution_38_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775390425194)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775500150848)&gt;
 </pre></div>
 </div>
 </div>
@@ -1533,7 +1537,7 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <img alt="../_images/d14-e-stat03-descriptive-solution_45_1.png" src="../_images/d14-e-stat03-descriptive-solution_45_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775391518338)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775533187178)&gt;
 </pre></div>
 </div>
 </div>
@@ -1591,7 +1595,7 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <img alt="../_images/d14-e-stat03-descriptive-solution_48_1.png" src="../_images/d14-e-stat03-descriptive-solution_48_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775391493569)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775466857692)&gt;
 </pre></div>
 </div>
 </div>
@@ -1628,7 +1632,7 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <img alt="../_images/d14-e-stat03-descriptive-solution_50_1.png" src="../_images/d14-e-stat03-descriptive-solution_50_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775418424938)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775487671824)&gt;
 </pre></div>
 </div>
 </div>
@@ -1656,7 +1660,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d14-e-stat03-descriptive-solution_53_0.png" src="../_images/d14-e-stat03-descriptive-solution_53_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775418430175)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775465522568)&gt;
 </pre></div>
 </div>
 </div>
@@ -1741,12 +1745,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          r       rho
-0  0.604174  0.938916
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          r     rho
+0  0.676332  0.8133
 </pre></div>
 </div>
 <img alt="../_images/d14-e-stat03-descriptive-solution_57_1.png" src="../_images/d14-e-stat03-descriptive-solution_57_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775390381448)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8775486321695)&gt;
 </pre></div>
 </div>
 </div>
