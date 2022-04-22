@@ -493,7 +493,7 @@ download the following and unzip.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/zdelrosario/evc-course/archive/refs/heads/build.zip">Course materials</a></p></li>
 </ul>
-<p>Save this to a stable location on your computer; for instance, your Documents folder.</p>
+<p>This will download a file called <code class="docutils literal notranslate"><span class="pre">evc-course-build.zip</span></code>. Save this to a stable location on your computer; for instance, your Documents folder.</p>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="python-and-jupyter-installation">
 <h1>Python and Jupyter Installation<a class="headerlink" href="#python-and-jupyter-installation" title="Permalink to this headline">¶</a></h1>
@@ -504,13 +504,7 @@ provide <em>almost</em> everything you need. Make sure to install python version
 <div class="section" id="windows-installation">
 <h2>Windows Installation<a class="headerlink" href="#windows-installation" title="Permalink to this headline">¶</a></h2>
 <!-- ------------------------- -->
-<p>If you are on Windows, you may need to install <a class="reference external" href="https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019">Visual C++ Build
-Tools</a>.
-You will need to download the file under <code class="docutils literal notranslate"><span class="pre">Tools</span> <span class="pre">for</span> <span class="pre">Visual</span> <span class="pre">Studio</span> <span class="pre">2019</span> <span class="pre">&gt;</span> <span class="pre">Build</span> <span class="pre">Tools</span> <span class="pre">for</span> <span class="pre">Visual</span> <span class="pre">Studio</span> <span class="pre">2019</span></code>: This <a class="reference external" href="https://stackoverflow.com/questions/40504552/how-to-install-visual-c-build-tools">Stack Overflow
-post</a>
-gives more details; note that Microsoft continually “updates” these links. If
-the build tools link above does not work for you, try Googling <code class="docutils literal notranslate"><span class="pre">&quot;microsoft</span> <span class="pre">visual</span> <span class="pre">c++</span> <span class="pre">build</span> <span class="pre">tools&quot;</span></code>: This is (honestly!) the best way to find a working
-link.</p>
+<p>If you are on Windows, you may need to install <a class="reference external" href="https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019">Visual C++ Build Tools</a>. You will need to download the file under <code class="docutils literal notranslate"><span class="pre">Tools</span> <span class="pre">for</span> <span class="pre">Visual</span> <span class="pre">Studio</span> <span class="pre">2019</span> <span class="pre">&gt;</span> <span class="pre">Build</span> <span class="pre">Tools</span> <span class="pre">for</span> <span class="pre">Visual</span> <span class="pre">Studio</span> <span class="pre">2019</span></code>: This <a class="reference external" href="https://stackoverflow.com/questions/40504552/how-to-install-visual-c-build-tools">Stack Overflow post</a> gives more details; note that Microsoft continually “updates” these links. If the build tools link above does not work for you, try Googling <code class="docutils literal notranslate"><span class="pre">&quot;microsoft</span> <span class="pre">visual</span> <span class="pre">c++</span> <span class="pre">build</span> <span class="pre">tools&quot;</span></code>: This is (honestly!) the best way to find a working link.</p>
 <div class="admonition-make-sure-to-select-the-build-tools admonition">
 <p class="admonition-title">Make sure to select the build tools</p>
 <p>When installing Visual C++, you may see the following interface. If yes, do not click launch; instead, first click <code class="docutils literal notranslate"><span class="pre">Modify</span></code>.</p>
@@ -524,11 +518,7 @@ link.</p>
 <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-using-a-terminal">
 <h1>Tutorial: Using a Terminal<a class="headerlink" href="#tutorial-using-a-terminal" title="Permalink to this headline">¶</a></h1>
 <!-- -------------------------------------------------- -->
-<p>Many software tools are most easily accessed through a programmatic interface
-called a <em>terminal</em>. This section is a brief tutorial on using a terminal. We
-will make minimal use of the terminal in this course, but it will be
-absolutely essential for setting up your computer for the course. Please ask a
-TA if you have any issues using a terminal.</p>
+<p>Many software tools are most easily accessed through a programmatic interface called a <em>terminal</em>. This section is a brief tutorial on using a terminal. We will make minimal use of the terminal in this course, but it will be absolutely essential for setting up your computer for the course. Please ask a TA if you have any issues using a terminal.</p>
 <div class="section" id="opening-a-terminal">
 <h2>Opening a terminal<a class="headerlink" href="#opening-a-terminal" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -539,58 +529,41 @@ search (Command + Spacebar).</p></li>
 <li><p>Linux: If you’re on Linux, you probably already use a terminal regularly. On
 Ubuntu the shortcut to open a terminal is <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Alt</span> <span class="pre">+</span> <span class="pre">T</span></code>.</p></li>
 </ul>
-<p>After opening your terminal, you should see a window that looks something like
-the following.</p>
-<p><img alt="terminal example" src="../_images/terminal_example.png" /></p>
+<p>After opening your terminal, you should see a window that looks something like the following.</p>
+<p><img alt="terminal example" src="../_images/terminal-base.png" /></p>
 <p>To use the terminal, you manually type commands, then press Enter to execute.</p>
 </div>
 <div class="section" id="changing-directory">
 <h2>Changing directory<a class="headerlink" href="#changing-directory" title="Permalink to this headline">¶</a></h2>
-<p>When looking for files (Mac: Finder, Windows: Explorer, Linux: e.g. Nautilus),
-we use a program to look at <em>directories</em>. Your terminal does something similar
-– at any point it is <em>located</em> in a particular <em>directory</em>. The following
-screenshot illustrates <code class="docutils literal notranslate"><span class="pre">c</span></code>hanging <code class="docutils literal notranslate"><span class="pre">d</span></code>irectories (<code class="docutils literal notranslate"><span class="pre">cd</span></code>) to my <code class="docutils literal notranslate"><span class="pre">Downloads</span></code> folder,
-then <code class="docutils literal notranslate"><span class="pre">l</span></code>i<code class="docutils literal notranslate"><span class="pre">s</span></code>ting (<code class="docutils literal notranslate"><span class="pre">ls</span></code>) the contents of said directory. This is where I placed
-the <code class="docutils literal notranslate"><span class="pre">exercises.zip</span></code> archive for the course. (Note: On Windows, you must use
-the command <code class="docutils literal notranslate"><span class="pre">dir</span></code>, rather than <code class="docutils literal notranslate"><span class="pre">ls</span></code>.)</p>
-<p><img alt="terminal change directories" src="../_images/terminal_cd.png" /></p>
-<p>I unzip the archive <code class="docutils literal notranslate"><span class="pre">exercises.zip</span></code> from within terminal with the command <code class="docutils literal notranslate"><span class="pre">unzip</span> <span class="pre">exercises.zip</span> <span class="pre">-d</span> <span class="pre">exercises</span></code>, which results in the following:</p>
-<p><img alt="terminal unzip" src="../_images/terminal_unzip.png" /></p>
+<p>When looking for files (Mac: Finder, Windows: Explorer, Linux: e.g. Nautilus), we use a program to look at <em>directories</em>. Your terminal does something similar—at any point it is <em>located</em> in a particular <em>directory</em>. The following screenshot illustrates <code class="docutils literal notranslate"><span class="pre">c</span></code>hanging <code class="docutils literal notranslate"><span class="pre">d</span></code>irectories (<code class="docutils literal notranslate"><span class="pre">cd</span></code>) to my <code class="docutils literal notranslate"><span class="pre">Downloads</span></code> folder, then <code class="docutils literal notranslate"><span class="pre">l</span></code>i<code class="docutils literal notranslate"><span class="pre">s</span></code>ting (<code class="docutils literal notranslate"><span class="pre">ls</span></code>) the contents of said directory. This is where I placed the <code class="docutils literal notranslate"><span class="pre">evc-course-build.zip</span></code> archive for the course. (Note: On Windows, you must use the command <code class="docutils literal notranslate"><span class="pre">dir</span></code>, rather than <code class="docutils literal notranslate"><span class="pre">ls</span></code>.)</p>
+<p><img alt="terminal change directories" src="../_images/terminal-cd-ls.png" /></p>
+<p>I unzip the archive <code class="docutils literal notranslate"><span class="pre">evc-course-build.zip</span></code> from within terminal with the command <code class="docutils literal notranslate"><span class="pre">unzip</span> <span class="pre">evc-course-build.zip</span></code>, which results in the following:</p>
+<p><img alt="terminal unzip results" src="../_images/terminal-unzip-result.png" /></p>
 <p><em>Note</em>: On Windows, instead of <code class="docutils literal notranslate"><span class="pre">unzip</span></code>, you will need to run <code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">-xf</span> <span class="pre">exercises.zip</span></code>.</p>
-<p>I can then <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the unzipped folder and install the required Python
-packages with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code>. However, I can only do this
-after I’ve installed Anaconda!</p>
+<p>I can then <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the unzipped folder <code class="docutils literal notranslate"><span class="pre">evc-course-build</span></code> and install the required Python packages with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code>. However, I can only do this after I’ve installed Anaconda!</p>
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="python-module-installation">
 <h1>Python Module Installation<a class="headerlink" href="#python-module-installation" title="Permalink to this headline">¶</a></h1>
 <!-- ------------------------- -->
-<p>Once you have installed python, you will need to install a handful of python
-modules to complete all the course exercises. Anaconda provides a package
-installer called <code class="docutils literal notranslate"><span class="pre">pip</span></code>; from the command line, you can simply execute the
-following commands.</p>
-<p>In your terminal, change directory to where you unzipped the exercises,
-and execute the command:</p>
+<p>Once you have installed python, you will need to install a handful of python modules to complete all the course exercises. Anaconda provides a package installer called <code class="docutils literal notranslate"><span class="pre">pip</span></code>; from the command line, you can simply execute the following commands.</p>
+<p>In your terminal, change directory to where you unzipped the exercises, and execute the command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 <p>This will install the requirements for the course.</p>
-<p><img alt="terminal pip" src="frontmatter/images/terminal_pip.png" /></p>
+<p><img alt="terminal pip" src="../_images/terminal-pip.png" /></p>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="opening-jupyter-notebooks">
 <span id="open-jupyter"></span><h1>Opening Jupyter Notebooks<a class="headerlink" href="#opening-jupyter-notebooks" title="Permalink to this headline">¶</a></h1>
 <!-- ------------------------- -->
-<p>Jupyter notebooks are a particular way of working with Python code. They are
-designated with the file extension <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>. Unfortunately, you cannot simply
-double-click on a Jupyter notebook to open it. Instead, you must launch the
-Jupyter client from your terminal. Navigate to the directory where you want
-Jupyter to launch (for the course, this is where you unzipped the contents of
-<code class="docutils literal notranslate"><span class="pre">exercises.zip</span></code>), and execute the command <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code>.</p>
-<p><img alt="terminal launch jupyter" src="../_images/terminal_jupyter.png" /></p>
-<p>This will open a webpage in your browser with a file explorer-like view; you can
-then click on the notebooks in that directory to open them. Go ahead and open
-<code class="docutils literal notranslate"><span class="pre">check_install.ipynb</span></code>, which you will run at the end of installation to check if
-everything is set up correctly.</p>
+<p>Jupyter notebooks are a particular way of working with Python code. They are designated with the file extension <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>. Unfortunately, you cannot simply double-click on a Jupyter notebook to open it. Instead, you must launch the Jupyter client from your terminal. Navigate to the directory where you want Jupyter to launch (for the course, this is where you unzipped the contents of <code class="docutils literal notranslate"><span class="pre">evc-course-build.zip</span></code>), and execute the command <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span></code>.</p>
+<p><img alt="terminal launch jupyter" src="../_images/jupyter-launch.png" /></p>
+<p>This will open a webpage in your browser with a file explorer-like view; you can then click on the notebooks in that directory to open them. You can find files using the Folder tab, pictured below.</p>
+<p><img alt="folder tab" src="../_images/jupyter-files.png" /></p>
+<p>Go ahead and open <code class="docutils literal notranslate"><span class="pre">check_install.ipynb</span></code>, which you will run at the end of installation to check if everything is set up correctly.</p>
+<p>Once you have verified your install, you can access all the Exercises and Challenges from the appropriate folder. For instance, I opened the first exercise in the following image.</p>
+<p><img alt="open jupyter notebook" src="../_images/jupyter-open.png" /></p>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="final-check">
 <h1>Final Check<a class="headerlink" href="#final-check" title="Permalink to this headline">¶</a></h1>
