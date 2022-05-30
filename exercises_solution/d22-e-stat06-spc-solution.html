@@ -389,6 +389,14 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q0-conceptual-questions">
+       <strong>
+        q0
+       </strong>
+       Conceptual questions
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#q1-batch-by-machine">
        <strong>
         q1
@@ -581,6 +589,14 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q0-conceptual-questions">
+       <strong>
+        q0
+       </strong>
+       Conceptual questions
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#q1-batch-by-machine">
        <strong>
         q1
@@ -760,7 +776,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d22-e-stat06-spc-solution_5_0.png" src="../_images/d22-e-stat06-spc-solution_5_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8791188154170)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763723758912)&gt;
 </pre></div>
 </div>
 </div>
@@ -788,7 +804,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/d22-e-stat06-spc-solution_8_0.png" src="../_images/d22-e-stat06-spc-solution_8_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8791188419892)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763723979319)&gt;
 </pre></div>
 </div>
 </div>
@@ -865,6 +881,101 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<div class="section" id="q0-conceptual-questions">
+<h3><strong>q0</strong> Conceptual questions<a class="headerlink" href="#q0-conceptual-questions" title="Permalink to this headline">¶</a></h3>
+<p>Before we start constructing control charts, let’s check your understanding with some conceptual questions. Run the code below, and answer the questions under <em>observations</em> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TODO: No need to edit this code; run and inspect</span>
+<span class="p">(</span>
+    <span class="n">df_machines</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_count</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">id_machine</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span>
+        <span class="n">df_machines</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">n</span><span class="p">())</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">id_machine</span><span class="o">=</span><span class="s2">&quot;(Total)&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id_machine</th>
+      <th>n</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>B</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>C</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>D</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>E</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>F</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>(Total)</td>
+      <td>90</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+<ul class="simple">
+<li><p>If we set the grouping according to the column <code class="docutils literal notranslate"><span class="pre">id_machine</span></code>, what value of <code class="docutils literal notranslate"><span class="pre">n</span></code> should we use to compute the <em>control limits</em>? (That is, the factor of <span class="math notranslate nohighlight">\(1/\sqrt{n}\)</span>.)</p>
+<ul>
+<li><p>Since there are <code class="docutils literal notranslate"><span class="pre">n=15</span></code> values in each group, we should set <code class="docutils literal notranslate"><span class="pre">n_batch</span> <span class="pre">==</span> <span class="pre">15</span></code>.</p></li>
+</ul>
+</li>
+<li><p>To construct a control chart, we need to compute <em>control limits</em> based on the variance of the data. What number of observations is used to compute the variance?</p>
+<ul>
+<li><p>The variance should be estimated based on the entire dataset, which has <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">==</span> <span class="pre">90</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end --></div>
 <div class="section" id="q1-batch-by-machine">
 <h3><strong>q1</strong> Batch by machine<a class="headerlink" href="#q1-batch-by-machine" title="Permalink to this headline">¶</a></h3>
 <p>Construct a control chart using the machine identifier as the <code class="docutils literal notranslate"><span class="pre">group</span></code> variable. Look for patterns in the measured quantity <code class="docutils literal notranslate"><span class="pre">X</span></code>. Answer the questions under <em>observations</em> below.</p>
@@ -883,8 +994,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_18_0.png" src="../_images/d22-e-stat06-spc-solution_18_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8791188582650)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_21_0.png" src="../_images/d22-e-stat06-spc-solution_21_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763671329196)&gt;
 </pre></div>
 </div>
 </div>
@@ -1035,8 +1146,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_25_0.png" src="../_images/d22-e-stat06-spc-solution_25_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8791188622583)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_28_0.png" src="../_images/d22-e-stat06-spc-solution_28_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763708800699)&gt;
 </pre></div>
 </div>
 </div>
@@ -1073,8 +1184,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_28_0.png" src="../_images/d22-e-stat06-spc-solution_28_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8791205816215)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_31_0.png" src="../_images/d22-e-stat06-spc-solution_31_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763708846577)&gt;
 </pre></div>
 </div>
 </div>
@@ -1123,8 +1234,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_32_0.png" src="../_images/d22-e-stat06-spc-solution_32_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8791205620947)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_35_0.png" src="../_images/d22-e-stat06-spc-solution_35_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763671402325)&gt;
 </pre></div>
 </div>
 </div>
@@ -1160,8 +1271,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_34_0.png" src="../_images/d22-e-stat06-spc-solution_34_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8791170260619)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_37_0.png" src="../_images/d22-e-stat06-spc-solution_37_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763708668823)&gt;
 </pre></div>
 </div>
 </div>
@@ -1197,8 +1308,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_36_0.png" src="../_images/d22-e-stat06-spc-solution_36_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8791188680608)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_39_0.png" src="../_images/d22-e-stat06-spc-solution_39_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763708698067)&gt;
 </pre></div>
 </div>
 </div>
@@ -1235,8 +1346,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_39_0.png" src="../_images/d22-e-stat06-spc-solution_39_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8791135868838)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_42_0.png" src="../_images/d22-e-stat06-spc-solution_42_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763709073960)&gt;
 </pre></div>
 </div>
 </div>
@@ -1272,8 +1383,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_41_0.png" src="../_images/d22-e-stat06-spc-solution_41_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8791135873416)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_44_0.png" src="../_images/d22-e-stat06-spc-solution_44_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763724211703)&gt;
 </pre></div>
 </div>
 </div>
@@ -1309,8 +1420,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_43_0.png" src="../_images/d22-e-stat06-spc-solution_43_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8791170338708)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_46_0.png" src="../_images/d22-e-stat06-spc-solution_46_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763688709133)&gt;
 </pre></div>
 </div>
 </div>
@@ -1337,8 +1448,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_46_0.png" src="../_images/d22-e-stat06-spc-solution_46_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8791135879696)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_49_0.png" src="../_images/d22-e-stat06-spc-solution_49_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763688516666)&gt;
 </pre></div>
 </div>
 </div>
@@ -1361,8 +1472,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_49_0.png" src="../_images/d22-e-stat06-spc-solution_49_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8791188628679)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_52_0.png" src="../_images/d22-e-stat06-spc-solution_52_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763671402316)&gt;
 </pre></div>
 </div>
 </div>
@@ -1463,8 +1574,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_55_0.png" src="../_images/d22-e-stat06-spc-solution_55_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8791188422382)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_58_0.png" src="../_images/d22-e-stat06-spc-solution_58_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763671331271)&gt;
 </pre></div>
 </div>
 </div>
@@ -1511,8 +1622,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d22-e-stat06-spc-solution_58_0.png" src="../_images/d22-e-stat06-spc-solution_58_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8791205696392)&gt;
+<img alt="../_images/d22-e-stat06-spc-solution_61_0.png" src="../_images/d22-e-stat06-spc-solution_61_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763708832208)&gt;
 </pre></div>
 </div>
 </div>
