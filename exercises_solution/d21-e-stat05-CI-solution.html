@@ -364,13 +364,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#motivation-limited-data-leads-to-error">
-     Motivation: Limited data leads to error
+    <a class="reference internal nav-link" href="#motivation-we-might-have-seen-other-data">
+     Motivation: We might have seen other data
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#central-limit-theorem">
-     Central Limit Theorem
+    <a class="reference internal nav-link" href="#sampling-distribution">
+     Sampling Distribution
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#central-limit-theorem-clt">
+     Central Limit Theorem (CLT)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
@@ -506,13 +511,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#motivation-limited-data-leads-to-error">
-     Motivation: Limited data leads to error
+    <a class="reference internal nav-link" href="#motivation-we-might-have-seen-other-data">
+     Motivation: We might have seen other data
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#central-limit-theorem">
-     Central Limit Theorem
+    <a class="reference internal nav-link" href="#sampling-distribution">
+     Sampling Distribution
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#central-limit-theorem-clt">
+     Central Limit Theorem (CLT)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
@@ -621,7 +631,7 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="stats-confidence-intervals-and-the-clt">
 <h1>Stats: Confidence Intervals and the CLT<a class="headerlink" href="#stats-confidence-intervals-and-the-clt" title="Permalink to this headline">¶</a></h1>
-<p><em>Purpose</em>: When studying sampled data, we need a principled way to report our results with their uncertainties. Confidence intervals (CI) are an excellent way to summarize results, and the central limit theorem (CLT) helps us to construct these intervals.</p>
+<p><em>Purpose</em>: When studying a limited dataset, we need a principled way to report our results with their uncertainties. Confidence intervals (CI) are an excellent way to summarize results, and the central limit theorem (CLT) helps us to construct these intervals. Eventually, we will use the same ideas underlying CI’s to detect patterns using <em>statistical process monitoring</em>.</p>
 <div class="section" id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -638,9 +648,33 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="tex2jax_ignore mathjax_ignore section" id="theory-fundamentals">
 <h1>Theory Fundamentals<a class="headerlink" href="#theory-fundamentals" title="Permalink to this headline">¶</a></h1>
 <p>To make sense of confidence intervals, we will need a bit of background information. First up: Why are we studying confidence intervals?</p>
-<div class="section" id="motivation-limited-data-leads-to-error">
-<h2>Motivation: Limited data leads to error<a class="headerlink" href="#motivation-limited-data-leads-to-error" title="Permalink to this headline">¶</a></h2>
-<p>A very general phenomenon is that <em>limited data leads to error</em>. We can see this with a simple example: Estimating the mean of a known distribution:</p>
+<div class="section" id="motivation-we-might-have-seen-other-data">
+<h2>Motivation: We might have seen other data<a class="headerlink" href="#motivation-we-might-have-seen-other-data" title="Permalink to this headline">¶</a></h2>
+<p>Anytime we have a <em>particular</em> dataset, we should keep in mind that <em>we might have seen other data</em>.</p>
+<p>As a real example, let’s take a real dataset and split it in two. The following code loads a datset of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> values and splits the full dataset into two smaller datasets. We could have seen either of these two datasets, had we gathered half as many values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_shewhart</span>
+
+<span class="p">(</span>
+    <span class="n">df_shewhart</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;tensile_strength&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_freqpoly</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;factor(dataset)&quot;</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_linetype_discrete</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;dataset&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d21-e-stat05-CI-solution_5_0.png" src="../_images/d21-e-stat05-CI-solution_5_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782076094004)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We would draw different conclusions from these two different datasets. Dataset 1 has several observations with values over <code class="docutils literal notranslate"><span class="pre">~37,500</span></code> psi. However, Dataset 2 has no observations with values this large. In practice, we would have access to just one dataset; if we happened to have Dataset 2, we might assume that values of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> greater than <code class="docutils literal notranslate"><span class="pre">37,500</span></code> psi do not occur. Part of thinking statistically is keeping in mind possibilities like the one we see above: <em>we might have seen other data</em>.</p>
+<p>To underscore this idea of limited data, let’s look at a simulated example. The following code defines a distribution with a specified mean.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; run and inspect</span>
@@ -668,28 +702,202 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; run and inspect</span>
+<span class="c1"># The true mean == 0; let&#39;s see what a limited sample gives</span>
 <span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mg_test</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.22333252837807988
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.20323196014235362
 </pre></div>
 </div>
 </div>
 </div>
 <p>Limited data leads to a form of error called <em>sampling error</em>. In practice we <em>almost always</em> have limited data, so sampling error is an unavoidable reality.</p>
-<p>Since sampling error is unavoidable, we would like to know <em>how much</em> sampling error there is in a given quantity. The central limit theorem (CLT) helps us quantify sampling error.</p>
 </div>
-<div class="section" id="central-limit-theorem">
-<h2>Central Limit Theorem<a class="headerlink" href="#central-limit-theorem" title="Permalink to this headline">¶</a></h2>
-<p>Let <span class="math notranslate nohighlight">\(X \sim \rho\)</span> be a random quantity with finite mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. The sample mean is denoted <span class="math notranslate nohighlight">\(\overline{X}_n\)</span> and is defined as</p>
+<div class="section" id="sampling-distribution">
+<h2>Sampling Distribution<a class="headerlink" href="#sampling-distribution" title="Permalink to this headline">¶</a></h2>
+<p>Let’s imagine for a moment that we <em>did</em> carry out data collection multiple times. Let’s illustrate this by splitting the tensile strength dataset into six separate subsets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute a set of estimates</span>
+<span class="p">(</span>
+    <span class="n">df_shewhart</span>
+    <span class="c1"># Split into 6 groups</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">specimen</span> <span class="o">%</span> <span class="mi">6</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># Compute the mean and variance over each sample</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">tys_mu</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">tensile_strength</span><span class="p">),</span>
+        <span class="n">n</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">n</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dataset</th>
+      <th>tys_mu</th>
+      <th>n</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>31936.6</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>30784.4</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>32413.4</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>35654.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>28975.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>31452.8</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Note that the mean <code class="docutils literal notranslate"><span class="pre">tys_mu</span></code> is <em>different</em> for each of the datasets. This is an example of <em>sampling error</em> (also called <em>sampling variability</em>). Statisticians quantify sampling error by defining a <em>population</em> from which a smaller dataset is drawn. This smaller dataset is called a <em>sample</em>. In the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> case, the population is the <em>infinite</em> number of parts that could be manufactured according to the same process. Any time we make a finite number of parts (any real batch of parts!), we have a limited sample from the manufacturing process.</p>
+<div class="admonition-sample-vs-population admonition">
+<p class="admonition-title">Sample vs Population</p>
+<p>A <em>population</em> is the full set of values we are interested in. A <em>sample</em> is a small subset from that population. Since the sample is not the population, it has less information than the full population. A mismatch between information in the population and information in the sample (e.g., the population mean vs sample mean) is called <em>sampling error</em>.</p>
+</div>
+<p>The <em>sampling distribution</em> is a conceptual tool used to quantify sampling variability in a chosen summary. Imagine that we repeatedly draw <strong>random</strong> samples (small datasets) of the same size from the target population. We then compute our chosen summary.</p>
+<p>The following code defines a population <code class="docutils literal notranslate"><span class="pre">mg_uniform</span></code>, draws samples of size <code class="docutils literal notranslate"><span class="pre">n=10</span></code>, and computes the sample mean. The true mean is <code class="docutils literal notranslate"><span class="pre">mean</span> <span class="pre">==</span> <span class="pre">0</span></code>; the variability we see around this value is sampling variability.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a uniform distribution</span>
+<span class="c1"># NOTE: The true mean is set here: `mean=0`</span>
+<span class="n">mg_uniform</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Simulated example</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>   <span class="c1"># Sample size</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># Number of samples</span>
+
+<span class="p">(</span>
+    <span class="c1"># Generate m=1000 samples of size n=10</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">mg_uniform</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">m</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">%</span> <span class="n">m</span><span class="p">)</span>
+    <span class="c1"># Compute mean according to each sample</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">group</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span><span class="n">x_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
+    <span class="c1"># Visualize</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x_mean&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Sample Mean&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Count&quot;</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Histogram of the Sample Mean&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d21-e-stat05-CI-solution_16_0.png" src="../_images/d21-e-stat05-CI-solution_16_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782076781294)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sampling distributions are not limited to the mean! The following code defines the same population <code class="docutils literal notranslate"><span class="pre">mg_uniform</span></code>, the same sample size <code class="docutils literal notranslate"><span class="pre">n=10</span></code>, but computes the probability that <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code> rather than the mean. Note that the resulting sampling distribution looks quite different than the previous example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a uniform distribution</span>
+<span class="c1"># NOTE: The true mean is set here: `mean=0`</span>
+<span class="n">mg_uniform</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Simulated example</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>   <span class="c1"># Sample size</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># Number of samples</span>
+
+<span class="p">(</span>
+    <span class="c1"># Generate m=1000 samples of size n=10</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">mg_uniform</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">m</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">index</span> <span class="o">%</span> <span class="n">m</span><span class="p">)</span>
+    <span class="c1"># Compute mean according to each sample</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">group</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span><span class="n">pr_lo</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
+    <span class="c1"># Visualize</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;pr_lo&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Sample Probability&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Count&quot;</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Histogram of the Sample Pr[X &lt;= 0]&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d21-e-stat05-CI-solution_18_0.png" src="../_images/d21-e-stat05-CI-solution_18_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782076769856)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-the-sampling-distribution-is-based-on-population-sample-size-and-summary admonition">
+<p class="admonition-title">The Sampling Distribution is based on Population, Sample Size, and Summary</p>
+<p>The sampling distribution is a result of three ingredients: 1. The target population, 2. The chosen sample size, and 3. The chosen summary. The sampling distribution also assumes that each sample is drawn randomly from the population.</p>
+</div>
+<p>The sampling distribution is what we would observe under <em>repeated</em> data collection. However, gathering multiple datasets of the same size and computing independent summaries would be a highly inefficient way to use data! Instead, we can use the <em>central limit theorem</em> as a means to approximate a sampling distribution using <em>just one dataset</em>.</p>
+</div>
+<div class="section" id="central-limit-theorem-clt">
+<h2>Central Limit Theorem (CLT)<a class="headerlink" href="#central-limit-theorem-clt" title="Permalink to this headline">¶</a></h2>
+<p>The central limit theorem (CLT) is most easily stated in terms of the sample mean. Let <span class="math notranslate nohighlight">\(X \sim \rho\)</span> be a random draw from a population with finite mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. The sample mean is denoted <span class="math notranslate nohighlight">\(\overline{X}_n\)</span> and is defined as</p>
 <div class="math notranslate nohighlight">
 \[\overline{X}_n = \frac{1}{n} \sum_{i=1}^n X_i.\]</div>
 <p>Under independent, repeated observations from the same distribution <span class="math notranslate nohighlight">\(X_i \sim \rho\)</span>, the central limit theorem states that <span class="math notranslate nohighlight">\(\overline{X}_n\)</span> becomes increasingly normal in its distribution as <span class="math notranslate nohighlight">\(n\)</span> is increased, regardless of the original distribution <span class="math notranslate nohighlight">\(\rho\)</span>. That is</p>
 <div class="math notranslate nohighlight">
-\[\overline{X}_n \stackrel{d}{\to} N(\mu, \sigma^2/n)\]</div>
-<p>The CLT is useful because it gives us a way to quantify sampling error: Since the CLT holds regardless of where the data came from <span class="math notranslate nohighlight">\(X \sim \rho\)</span>—so long as <span class="math notranslate nohighlight">\(|\mu| &lt; \infty, \sigma &lt; \infty\)</span>—then we can characterize the sampling error in the sample mean <span class="math notranslate nohighlight">\(\overline{X}_n\)</span>.</p>
+\[\overline{X}_n \stackrel{d}{\to} N(\mu, \sigma^2/n),\]</div>
+<p>where <span class="math notranslate nohighlight">\(\stackrel{d}{\to}\)</span> means “convergence in distribution.” The CLT is useful because it gives us a way to quantify sampling error: Since the CLT holds regardless of where the data came from <span class="math notranslate nohighlight">\(X \sim \rho\)</span>—so long as <span class="math notranslate nohighlight">\(|\mu| &lt; \infty, \sigma &lt; \infty\)</span>—then we can characterize the sampling error in the sample mean <span class="math notranslate nohighlight">\(\overline{X}_n\)</span>.</p>
 <div class="section" id="q1-study-clt-convergence-behavior">
 <h3><strong>q1</strong> Study CLT convergence behavior<a class="headerlink" href="#q1-study-clt-convergence-behavior" title="Permalink to this headline">¶</a></h3>
 <p>Adjust the sample size <code class="docutils literal notranslate"><span class="pre">n</span></code> below, run the code to inspect the results each time, then answer the questions under <em>observations</em> below.</p>
@@ -727,8 +935,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d21-e-stat05-CI-solution_10_0.png" src="../_images/d21-e-stat05-CI-solution_10_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8769996389419)&gt;
+<img alt="../_images/d21-e-stat05-CI-solution_23_0.png" src="../_images/d21-e-stat05-CI-solution_23_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782085134111)&gt;
 </pre></div>
 </div>
 </div>
@@ -761,7 +969,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit, this compute the relevant</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit, this computes the relevant z_C value</span>
 <span class="n">C</span> <span class="o">=</span> <span class="mf">0.99</span> <span class="c1"># 99% confidence level</span>
 <span class="n">mg_standard</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_mom</span><span class="p">(</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">z_C</span> <span class="o">=</span> <span class="n">mg_standard</span><span class="o">.</span><span class="n">q</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">C</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
@@ -838,9 +1046,9 @@ const thebe_selector_output = ".output, .cell_output"
   <tbody>
     <tr>
       <th>0</th>
-      <td>-0.952991</td>
-      <td>-0.044586</td>
-      <td>0.86382</td>
+      <td>-0.540023</td>
+      <td>0.210576</td>
+      <td>0.961175</td>
     </tr>
   </tbody>
 </table>
@@ -883,8 +1091,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d21-e-stat05-CI-solution_18_0.png" src="../_images/d21-e-stat05-CI-solution_18_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8769996724146)&gt;
+<img alt="../_images/d21-e-stat05-CI-solution_31_0.png" src="../_images/d21-e-stat05-CI-solution_31_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782085128695)&gt;
 </pre></div>
 </div>
 </div>
@@ -947,8 +1155,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d21-e-stat05-CI-solution_22_0.png" src="../_images/d21-e-stat05-CI-solution_22_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8770013144188)&gt;
+<img alt="../_images/d21-e-stat05-CI-solution_35_0.png" src="../_images/d21-e-stat05-CI-solution_35_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8782105817853)&gt;
 </pre></div>
 </div>
 </div>
@@ -996,8 +1204,8 @@ const thebe_selector_output = ".output, .cell_output"
 
   inputs:
     var_det:
-      w: [2, 4]
       t: [2, 4]
+      w: [2, 4]
 
     var_rand:
       H: (+1) norm, {&#39;mean&#39;: &#39;5.000e+02&#39;, &#39;s.d.&#39;: &#39;1.000e+02&#39;, &#39;COV&#39;: 0.2, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
@@ -1057,8 +1265,8 @@ const thebe_selector_output = ".output, .cell_output"
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.05</td>
-      <td>0.04</td>
+      <td>0.06</td>
+      <td>0.06</td>
     </tr>
   </tbody>
 </table>
@@ -1071,9 +1279,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; run and inspect</span>
+<span class="p">(</span>
     <span class="n">md_beam</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">df_det</span><span class="o">=</span><span class="s2">&quot;nom&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">df_det</span><span class="o">=</span><span class="s2">&quot;nom&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
         <span class="n">pof_lo</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr_lo</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_stress</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
         <span class="n">pof</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">pr</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">g_stress</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">),</span>
@@ -1110,15 +1319,15 @@ const thebe_selector_output = ".output, .cell_output"
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.025636</td>
-      <td>0.07</td>
-      <td>0.177178</td>
+      <td>0.003477</td>
+      <td>0.02</td>
+      <td>0.106641</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>This is an <em>extremely</em> wide confidence interval for the probability of failure; I get a value of <code class="docutils literal notranslate"><span class="pre">pof</span></code> anywhere between <code class="docutils literal notranslate"><span class="pre">0.005</span></code> and <code class="docutils literal notranslate"><span class="pre">0.30</span></code>!</p>
+<p>This is an <em>extremely</em> wide confidence interval for the probability of failure; I get a value of <code class="docutils literal notranslate"><span class="pre">pof</span></code> anywhere between <code class="docutils literal notranslate"><span class="pre">0.003</span></code> and <code class="docutils literal notranslate"><span class="pre">0.11</span></code>!</p>
 <div class="section" id="q5-adjust-the-sample-size">
 <h2><strong>q5</strong> Adjust the sample size<a class="headerlink" href="#q5-adjust-the-sample-size" title="Permalink to this headline">¶</a></h2>
 <p>Adjust the sample size <code class="docutils literal notranslate"><span class="pre">n</span></code> to achieve a CI width less than <code class="docutils literal notranslate"><span class="pre">0.1</span></code>.  Answer the questions under <em>observations</em> below.</p>
@@ -1178,9 +1387,9 @@ const thebe_selector_output = ".output, .cell_output"
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.03354</td>
-      <td>0.0358</td>
-      <td>0.038206</td>
+      <td>0.033094</td>
+      <td>0.03534</td>
+      <td>0.037732</td>
     </tr>
   </tbody>
 </table>
@@ -1297,12 +1506,12 @@ const thebe_selector_output = ".output, .cell_output"
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.164701</td>
-      <td>0.167109</td>
-      <td>0.169518</td>
-      <td>0.031125</td>
-      <td>0.036</td>
-      <td>0.041605</td>
+      <td>0.165897</td>
+      <td>0.168285</td>
+      <td>0.170674</td>
+      <td>0.032335</td>
+      <td>0.0373</td>
+      <td>0.042994</td>
     </tr>
   </tbody>
 </table>
