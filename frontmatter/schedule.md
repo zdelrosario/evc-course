@@ -7,7 +7,7 @@ The following is a top-level description of the topics covered in this course. F
 
 - *Data*: Data-management is an often-neglected part of a data science education; in this course you will learn a variety of tools and techniques to make your data *useful*.
 - *Visualization*: Data visualization is an extraordinarly powerful tool for making sense of a dataset. You will learn the *grammar of graphics*: a flexible and expressive language for constructing data visualizations. You will also get *a lot* of practice constructing graphs of different types, and using those graphs to make sense of data.
-- *Statistics*: A dataset is a lense to help understand the world, but that lense is necessarily limited. We will learn the fundamentals of statistical thinking to help protect ourselves against making erroneous conclusions. We will also learn powerful tools for detecting patterns in a dataset that would otherwise remain hidden.
+- *Statistics*: A dataset is a lens to help understand the world, but that lense is necessarily limited. We will learn the fundamentals of statistical thinking to help protect ourselves against making erroneous conclusions. We will also learn powerful tools for detecting patterns in a dataset that would otherwise remain hidden.
 - *Grama*: We will learn the python software package [grama](https://github.com/zdelrosario/py_grama); a grammar of model analysis. This toolkit will help us implement and study engineering models so we can make sense of physical scenarios.
 
 ## Calendar Schedule
