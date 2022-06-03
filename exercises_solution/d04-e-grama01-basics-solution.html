@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Grama: Basics &#8212; Data Science for Engineers</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -39,12 +37,13 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -62,7 +61,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,9 +84,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
       
@@ -86,14 +100,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/home.html">
-   Data Science for Engineers
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../frontmatter/home.html">
+                    Data Science for Engineers
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../frontmatter/setup.html">
    Software Setup
@@ -259,91 +274,164 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/exercises_solution/d04-e-grama01-basics-solution.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d04-e-grama01-basics-solution.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d04-e-grama01-basics-solution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/exercises_solution/d04-e-grama01-basics-solution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Grama: Basics
@@ -486,12 +574,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Grama: Basics</h1>
@@ -650,14 +737,15 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="grama-basics">
-<h1>Grama: Basics<a class="headerlink" href="#grama-basics" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="grama-basics">
+<h1>Grama: Basics<a class="headerlink" href="#grama-basics" title="Permalink to this headline">#</a></h1>
 <p><em>Purpose</em>: We will make use of the grama package to work with <em>models</em>, which will give us a powerful toolkit to explore and make sense of physical scenarios. To that end, in this exercise we’ll go through a brief introduction to the grama package.</p>
-<div class="section" id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
@@ -667,10 +755,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="grama-verbs">
-<h1>Grama Verbs<a class="headerlink" href="#grama-verbs" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="grama-verbs">
+<h1>Grama Verbs<a class="headerlink" href="#grama-verbs" title="Permalink to this headline">#</a></h1>
 <p>Grama is organized around two object classes and four verb classes: The objects are</p>
 <ul class="simple">
 <li><p>Data (<code class="docutils literal notranslate"><span class="pre">df</span></code>), as represented by a <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>: Represents observations from physical experiments, simulations from models, and so on.</p></li>
@@ -678,8 +766,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p>The four verb classes allow us to move between the two object types, as summarized in the image below:</p>
 <p><img alt="Grama verb class diagram" src="../_images/verb-classes.png" /></p>
-<div class="section" id="verb-classes">
-<h2>Verb Classes<a class="headerlink" href="#verb-classes" title="Permalink to this headline">¶</a></h2>
+<section id="verb-classes">
+<h2>Verb Classes<a class="headerlink" href="#verb-classes" title="Permalink to this headline">#</a></h2>
 <p>Functions in grama are best thought of as “verbs”: functions that perform a specified action. The verb classes map between data and models. Every grama verb starts with a two-letter prefix, which gives us a hint as to how the verbs should be used. We’ve already seen a variety of transformation <code class="docutils literal notranslate"><span class="pre">tf_*</span></code> verbs for working with data. There are four primary verb classes, with an additional class for plotting.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -717,10 +805,10 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="working-with-grama-models">
-<h1>Working with (Grama) models<a class="headerlink" href="#working-with-grama-models" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="working-with-grama-models">
+<h1>Working with (Grama) models<a class="headerlink" href="#working-with-grama-models" title="Permalink to this headline">#</a></h1>
 <p>Grama is best-explained by way of a simple example. The following code initializes a grama model for a <a class="reference external" href="https://en.wikipedia.org/wiki/Cantilever">cantilever beam</a>. There is a large amount of mathematical theory about cantilever beams, but we will ignore most of that theory for the moment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -730,11 +818,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="model-summary">
-<h2>Model summary<a class="headerlink" href="#model-summary" title="Permalink to this headline">¶</a></h2>
+<section id="model-summary">
+<h2>Model summary<a class="headerlink" href="#model-summary" title="Permalink to this headline">#</a></h2>
 <p>Grama models contain a large amount of mathematical structure. Evaluation <code class="docutils literal notranslate"><span class="pre">ev_*</span></code> verbs help us make use of that structure to generate data that we can mine for insights. However, before we can start evaluating a model, we need to know some basic facts about it. To that end, let’s take a look at a <em>summary</em> of the example beam model.</p>
-<div class="section" id="q1-inspect-a-model-summary">
-<h3><strong>q1</strong> Inspect a model summary<a class="headerlink" href="#q1-inspect-a-model-summary" title="Permalink to this headline">¶</a></h3>
+<section id="q1-inspect-a-model-summary">
+<h3><strong>q1</strong> Inspect a model summary<a class="headerlink" href="#q1-inspect-a-model-summary" title="Permalink to this headline">#</a></h3>
 <p>Printing the model gives a high-level summary of the model. Run the code below, and answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -796,10 +884,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-<!-- solution-end --></div>
-</div>
-<div class="section" id="importance-of-context">
-<h2>Importance of context<a class="headerlink" href="#importance-of-context" title="Permalink to this headline">¶</a></h2>
+<!-- solution-end --></section>
+</section>
+<section id="importance-of-context">
+<h2>Importance of context<a class="headerlink" href="#importance-of-context" title="Permalink to this headline">#</a></h2>
 <p>Models are much more than <em>just</em> mathematical statements; they are used in a particular context. Grama has no way to store the infinite complexities of context in something as rigid as computer code. Thus, when interpreting the results from a model, it is important for the analyst to keep track of this context.</p>
 <p>One basic way to record context is to tabulate facts about the inputs and outputs of a model. While this is a small <em>subset</em> of the full model context, it is an important subset.</p>
 <table class="colwidths-auto table">
@@ -876,9 +964,9 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 <p>It is also important to note that the failure criteria are formulated such that <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> corresponds to success, and <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code> corresponds to failure.</p>
 <p>With this bit of context, we can make more sense of results from the model.</p>
-</div>
-<div class="section" id="generate-data-from-a-model">
-<h2>Generate data from a model<a class="headerlink" href="#generate-data-from-a-model" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="generate-data-from-a-model">
+<h2>Generate data from a model<a class="headerlink" href="#generate-data-from-a-model" title="Permalink to this headline">#</a></h2>
 <p>The philosophy behind grama is to generate data from a model and study that data to gain insights about the model. We’ll practice this data generation in the next few tasks. First, let’s print the model summary again to help with the next task:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -912,8 +1000,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="q2-dataframe-evaluation">
-<h3><strong>q2</strong> DataFrame evaluation<a class="headerlink" href="#q2-dataframe-evaluation" title="Permalink to this headline">¶</a></h3>
+<section id="q2-dataframe-evaluation">
+<h3><strong>q2</strong> DataFrame evaluation<a class="headerlink" href="#q2-dataframe-evaluation" title="Permalink to this headline">#</a></h3>
 <p>The following code attempts to evaluate the model at specified input values. However, the code has errors. Fix the code below by specifying values for the missing inputs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -983,9 +1071,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div></div></div>
 </div>
 <p>The verb <code class="docutils literal notranslate"><span class="pre">gr.ev_df()</span></code> is a very basic evaluation where we have to specify values for every input. However, there are other evaluation verbs that make intelligent choices for us.</p>
-</div>
-<div class="section" id="q3-sinew-evaluation">
-<h3><strong>q3</strong> Sinew evaluation<a class="headerlink" href="#q3-sinew-evaluation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="q3-sinew-evaluation">
+<h3><strong>q3</strong> Sinew evaluation<a class="headerlink" href="#q3-sinew-evaluation" title="Permalink to this headline">#</a></h3>
 <p>Use the verb <code class="docutils literal notranslate"><span class="pre">gr.ev_sinews()</span></code> to generate “sweep” data from the beam model at <strong>nominal</strong> levels for the deterministic inputs. You will need to specify one short keyword argument to complete this task.</p>
 <p><em>Hint</em>: Remember that you can put your cursor inside a function’s arguments in a code cell and press <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Tab</span></code> to bring up the documentation. Use this to determine how to set nominal levels for the deterministic variables.</p>
 <div class="cell docutils container">
@@ -1212,13 +1300,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>Note that for each sweep (identified by <code class="docutils literal notranslate"><span class="pre">sweep_ind</span></code>) we see a “cross” emanating from a single point outwards, parallel to both coordinate axes. This process is repeated for every input variable in order to generate the data.</p>
-</div>
-</div>
-<div class="section" id="visualize-data-from-a-model">
-<h2>Visualize data from a model<a class="headerlink" href="#visualize-data-from-a-model" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="visualize-data-from-a-model">
+<h2>Visualize data from a model<a class="headerlink" href="#visualize-data-from-a-model" title="Permalink to this headline">#</a></h2>
 <p>Generating data is only part of working with a model; we must also <em>study</em> the data to make sense of it. One of the best ways to study data is to visualize it. We can make manual plots with <code class="docutils literal notranslate"><span class="pre">ggplot()</span></code>, but grama provides a much quicker way: Many evaluation verbs work with the special verb <code class="docutils literal notranslate"><span class="pre">gr.pt_auto()</span></code> to generate a sensible default visualization.</p>
-<div class="section" id="q4-visualize-sinew-evaluation-data">
-<h3><strong>q4</strong> Visualize sinew evaluation data<a class="headerlink" href="#q4-visualize-sinew-evaluation-data" title="Permalink to this headline">¶</a></h3>
+<section id="q4-visualize-sinew-evaluation-data">
+<h3><strong>q4</strong> Visualize sinew evaluation data<a class="headerlink" href="#q4-visualize-sinew-evaluation-data" title="Permalink to this headline">#</a></h3>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">gr.pt_auto()</span></code> routine to visualize the outputs from the sinew evaluation. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1259,29 +1347,29 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-<!-- solution-end --></div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="where-this-course-is-going">
-<h1>Where this course is going<a class="headerlink" href="#where-this-course-is-going" title="Permalink to this headline">¶</a></h1>
+<!-- solution-end --></section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="where-this-course-is-going">
+<h1>Where this course is going<a class="headerlink" href="#where-this-course-is-going" title="Permalink to this headline">#</a></h1>
 <p>This was just a <em>brief</em> introduction to how grama works and what it can do. The rest of this course is about learning tools to make full use of the grama toolkit. The exercises in this course are organized into four different categories (<code class="docutils literal notranslate"><span class="pre">grama</span></code>, <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">vis</span></code>, and <code class="docutils literal notranslate"><span class="pre">stat</span></code>) that represent four broad areas of working with grama:</p>
-<div class="section" id="build-evaluate-and-understand-a-model-with-grama-grama">
-<h2>Build, evaluate, and understand a model with grama (<code class="docutils literal notranslate"><span class="pre">grama</span></code>)<a class="headerlink" href="#build-evaluate-and-understand-a-model-with-grama-grama" title="Permalink to this headline">¶</a></h2>
+<section id="build-evaluate-and-understand-a-model-with-grama-grama">
+<h2>Build, evaluate, and understand a model with grama (<code class="docutils literal notranslate"><span class="pre">grama</span></code>)<a class="headerlink" href="#build-evaluate-and-understand-a-model-with-grama-grama" title="Permalink to this headline">#</a></h2>
 <p>We will learn tools to build and sanity-check models using grama. This will involve more evaluation and visualization tools to make sense of models, but also probabilistic tools to build models that encode our uncertainties about a scenario.</p>
-</div>
-<div class="section" id="wrangle-data-data">
-<h2>Wrangle data (<code class="docutils literal notranslate"><span class="pre">data</span></code>)<a class="headerlink" href="#wrangle-data-data" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="wrangle-data-data">
+<h2>Wrangle data (<code class="docutils literal notranslate"><span class="pre">data</span></code>)<a class="headerlink" href="#wrangle-data-data" title="Permalink to this headline">#</a></h2>
 <p>To manage the data outputs from grama models, we will learn a variety of general-purpose wrangling tools. These will help us work with grama models, but the same tools are useful for <strong>any</strong> dataset.</p>
-</div>
-<div class="section" id="visualize-data-to-gain-insights-vis">
-<h2>Visualize data to gain insights (<code class="docutils literal notranslate"><span class="pre">vis</span></code>)<a class="headerlink" href="#visualize-data-to-gain-insights-vis" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="visualize-data-to-gain-insights-vis">
+<h2>Visualize data to gain insights (<code class="docutils literal notranslate"><span class="pre">vis</span></code>)<a class="headerlink" href="#visualize-data-to-gain-insights-vis" title="Permalink to this headline">#</a></h2>
 <p>To make sense of data, we will learn a variety of visualization techniques. These will help us gain insights into grama models, but the same techniques are useful for <strong>any</strong> dataset.</p>
-</div>
-<div class="section" id="use-statistics-to-quantify-uncertainty-stat">
-<h2>Use statistics to quantify uncertainty (<code class="docutils literal notranslate"><span class="pre">stat</span></code>)<a class="headerlink" href="#use-statistics-to-quantify-uncertainty-stat" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="use-statistics-to-quantify-uncertainty-stat">
+<h2>Use statistics to quantify uncertainty (<code class="docutils literal notranslate"><span class="pre">stat</span></code>)<a class="headerlink" href="#use-statistics-to-quantify-uncertainty-stat" title="Permalink to this headline">#</a></h2>
 <p>Datasets are always limited and models inherently include uncertainties. Statistics will allow us to <em>quantify</em> these uncertainties and make informed decisions using data and models.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1305,9 +1393,11 @@ const thebe_selector_output = ".output, .cell_output"
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="d03-e-stat01-eda-solution.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1323,24 +1413,28 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Zachary del Rosario<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Zachary del Rosario<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

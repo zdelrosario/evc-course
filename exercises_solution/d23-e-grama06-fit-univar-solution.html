@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Grama: Fitting Univariate Distributions &#8212; Data Science for Engineers</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -39,12 +37,13 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -64,7 +63,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -73,9 +86,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
       
@@ -88,14 +102,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/home.html">
-   Data Science for Engineers
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../frontmatter/home.html">
+                    Data Science for Engineers
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../frontmatter/setup.html">
    Software Setup
@@ -261,91 +276,164 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/exercises_solution/d23-e-grama06-fit-univar-solution.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d23-e-grama06-fit-univar-solution.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d23-e-grama06-fit-univar-solution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/exercises_solution/d23-e-grama06-fit-univar-solution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Grama: Fitting Univariate Distributions
@@ -520,12 +608,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Grama: Fitting Univariate Distributions</h1>
@@ -716,15 +803,16 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="grama-fitting-univariate-distributions">
-<h1>Grama: Fitting Univariate Distributions<a class="headerlink" href="#grama-fitting-univariate-distributions" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="grama-fitting-univariate-distributions">
+<h1>Grama: Fitting Univariate Distributions<a class="headerlink" href="#grama-fitting-univariate-distributions" title="Permalink to this headline">#</a></h1>
 <p><em>Purpose</em>: As we’ve seen through studying a lot of datasets, many physical systems exhibit variability and other forms of uncertainty. Thus, it is beneficial to be able to <em>model</em> uncertainty using distributions. In this two-part exercise, we’ll first learn how to fit a distribution for a <em>single</em> quantity, then learn how to deal with <em>multiple</em> related quantities.</p>
 <p>In the final exercise <code class="docutils literal notranslate"><span class="pre">e-grama08-duu</span></code> we’ll see how to use a distribution model to do useful engineering work.</p>
-<div class="section" id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
@@ -743,10 +831,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="why-fit-a-distribution">
-<h1>Why fit a distribution?<a class="headerlink" href="#why-fit-a-distribution" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="why-fit-a-distribution">
+<h1>Why fit a distribution?<a class="headerlink" href="#why-fit-a-distribution" title="Permalink to this headline">#</a></h1>
 <p>Before we start fitting distributions: <em>Why</em> would we ever want to fit a distribution?</p>
 <p>As we’ve seen from studying a large number of datasets, most engineering data exhibit <a class="reference external" href="https://zdelrosario.github.io/evc-course/exercises_solution/d08-e-stat02-source-solution.html">variability</a>. If the variability is real, it can have real impacts on the engineering systems we design.</p>
 <p>For instance, here’s a dataset of realized aluminum tensile strength values:</p>
@@ -769,8 +857,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>Clearly, these data exhibit variability—they do not take a single value.</p>
-<div class="section" id="dangers-of-assuming-the-mean">
-<h2>Dangers of assuming the mean<a class="headerlink" href="#dangers-of-assuming-the-mean" title="Permalink to this headline">¶</a></h2>
+<section id="dangers-of-assuming-the-mean">
+<h2>Dangers of assuming the mean<a class="headerlink" href="#dangers-of-assuming-the-mean" title="Permalink to this headline">#</a></h2>
 <p>Why don’t we just take the mean of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> and use that for design? It turns out this approach is <em>very dangerous</em> when safety is a consideration. Let’s take a look at the tensile strength of an aluminum alloy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -797,8 +885,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>Clearly, values of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> tend to land both above and below the mean. But what ramifications does this have for engineering design?</p>
-<div class="section" id="q1-what-fraction-of-tensile-strength-is-below-the-mean">
-<h3><strong>q1</strong> What fraction of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> is below the mean?<a class="headerlink" href="#q1-what-fraction-of-tensile-strength-is-below-the-mean" title="Permalink to this headline">¶</a></h3>
+<section id="q1-what-fraction-of-tensile-strength-is-below-the-mean">
+<h3><strong>q1</strong> What fraction of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> is below the mean?<a class="headerlink" href="#q1-what-fraction-of-tensile-strength-is-below-the-mean" title="Permalink to this headline">#</a></h3>
 <p>Compute the fraction of observations in <code class="docutils literal notranslate"><span class="pre">df_shewhart</span></code> where <code class="docutils literal notranslate"><span class="pre">tensile_strength</span> <span class="pre">&lt;</span> <span class="pre">mean(tensile_strength)</span></code>. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -858,10 +946,10 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 <p>Rather than just assume a fixed value for <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>, we can model it as uncertain and design around that uncertainty. We’ll learn how to make these kinds of engineering decisions in a future exercise; for now, let’s</p>
-</div>
-</div>
-<div class="section" id="random-variables">
-<h2>Random variables<a class="headerlink" href="#random-variables" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="random-variables">
+<h2>Random variables<a class="headerlink" href="#random-variables" title="Permalink to this headline">#</a></h2>
 <p>Clearly <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> does not take a single value; therefore, we should think of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> as a <em>random variable</em>. A random variable is a mathematical object that we can use to model an uncertain quantity. Unlike a <em>deterministic variable</em> that has one fixed value (say <span class="math notranslate nohighlight">\(x = 1\)</span>), a random variable can take a different value each time we <em>observe</em> it. For instance, if <span class="math notranslate nohighlight">\(X\)</span> were a random variable, and we used <span class="math notranslate nohighlight">\(X_i\)</span> to denote the value that occurs on the <span class="math notranslate nohighlight">\(i\)</span>-th observation, then we might see a sequence like</p>
 <div class="math notranslate nohighlight">
 \[X_1 = 1, X_2 = -3, X_3 = 1, X_4 = 5, \dots\]</div>
@@ -943,31 +1031,31 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Some nomenclature: When we talk about random quantities, we use the term <em>realization</em> (or <em>observation</em>) to refer to a single event that yields a random value, according to a particular distribution. For instance, a single manufactured part will have a realized strength value. If we take multiple realizations, we will tend to see different values. For instance, we saw a large amount of variability among the realized <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> values above.</p>
 <p>A single realization tells us very little about how the distribution tends to behave, but a set of realizations (a <em>sample</em>) will give us a sense of how the random values tend to behave <em>collectively</em>. A distribution is a way to model that collective behavior.</p>
 </div>
-</div>
-<div class="section" id="a-distribution-defines-a-random-variable">
-<h2>A distribution defines a random variable<a class="headerlink" href="#a-distribution-defines-a-random-variable" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="a-distribution-defines-a-random-variable">
+<h2>A distribution defines a random variable<a class="headerlink" href="#a-distribution-defines-a-random-variable" title="Permalink to this headline">#</a></h2>
 <p>As we saw in <code class="docutils literal notranslate"><span class="pre">e-stat04-distributions</span></code>, we can use distributions to quantitatively describe an uncertain quantity. <strong>A distribution defines a random variable</strong>. We say that a random variable <span class="math notranslate nohighlight">\(X\)</span> is <em>distributed according to</em> a particular density <span class="math notranslate nohighlight">\(\rho\)</span>, and we express the same statement mathematically as</p>
 <div class="math notranslate nohighlight">
 \[X \sim \rho.\]</div>
 <p>We learned how to compute useful quantities using distributions in <code class="docutils literal notranslate"><span class="pre">e-stat04-distributions</span></code>; in the rest of this exercise, we’ll learn how to <em>fit</em> a distribution in order use information from a dataset to model observations from the physical world.</p>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="the-steps-to-fitting">
-<h1>The steps to fitting<a class="headerlink" href="#the-steps-to-fitting" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="the-steps-to-fitting">
+<h1>The steps to fitting<a class="headerlink" href="#the-steps-to-fitting" title="Permalink to this headline">#</a></h1>
 <ol class="simple">
 <li><p>Check for <em>statistical control</em></p></li>
 <li><p>Select candidate distributions</p></li>
 <li><p>Fit and assess</p></li>
 </ol>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="check-for-statistical-control">
-<h1>1. Check for <em>statistical control</em><a class="headerlink" href="#check-for-statistical-control" title="Permalink to this headline">¶</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="check-for-statistical-control">
+<h1>1. Check for <em>statistical control</em><a class="headerlink" href="#check-for-statistical-control" title="Permalink to this headline">#</a></h1>
 <p>Sometimes the variability we see in a dataset can be <em>explained</em>; in this case, we shouldn’t just model it as random—we should work to understand <em>why</em> we saw that variability, and try to eliminate that source of variation. As we saw in <a class="reference external" href="https://zdelrosario.github.io/evc-course/exercises_solution/d22-e-stat06-spc-solution.html"><code class="docutils literal notranslate"><span class="pre">e-stat06-spc</span></code></a>, we can use <em>control charts</em> to hunt for explainable sources of variability.</p>
 <blockquote>
 <div><p>If we find no explainable sources of variability in a dataset, we can <em>provisionally</em> declare that the data are under <em>statistical control</em>, and model the variability as random.</p>
 </div></blockquote>
-<div class="section" id="q2-assess-statistical-control">
-<h2><strong>q2</strong> Assess statistical control<a class="headerlink" href="#q2-assess-statistical-control" title="Permalink to this headline">¶</a></h2>
+<section id="q2-assess-statistical-control">
+<h2><strong>q2</strong> Assess statistical control<a class="headerlink" href="#q2-assess-statistical-control" title="Permalink to this headline">#</a></h2>
 <p>Assess the state of statistical control of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> using an X-bar and S chart. Answer the questions under <em>observations</em> below.</p>
 <p><em>Hint</em>: You did this at the end of <a class="reference external" href="https://zdelrosario.github.io/evc-course/exercises_solution/d22-e-stat06-spc-solution.html">e-stat06-spc</a>; see that exercise for a refresher if you need it.</p>
 <div class="cell docutils container">
@@ -1011,13 +1099,13 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </li>
 </ul>
 <p>If the data seem to be under statistical control, then we can model the measured value as random. For this exercise, we’ll assume that <code class="docutils literal notranslate"><span class="pre">tensile_strengh</span></code> is under statistical control and proceed with modeling.</p>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="select-candidate-distributions">
-<h1>2. Select candidate distributions<a class="headerlink" href="#select-candidate-distributions" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="select-candidate-distributions">
+<h1>2. Select candidate distributions<a class="headerlink" href="#select-candidate-distributions" title="Permalink to this headline">#</a></h1>
 <p>Once we’ve decided to proceed modeling a quantity as random, we next need to select candidate distributions to represent the quantity. This is a process that should involve critical thinking about the physical quantity.</p>
-<div class="section" id="short-list-of-distributions">
-<h2>(Short) list of distributions<a class="headerlink" href="#short-list-of-distributions" title="Permalink to this headline">¶</a></h2>
+<section id="short-list-of-distributions">
+<h2>(Short) list of distributions<a class="headerlink" href="#short-list-of-distributions" title="Permalink to this headline">#</a></h2>
 <p>The following is a short list of distributions, along with a short description for each. The description information is helpful for choosing candidate distributions.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -1050,22 +1138,22 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </tbody>
 </table>
 <p>For a longer list of supported distributions, see the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/stats.html">scipy documentation</a> for continuous distributions.</p>
-<div class="section" id="q3-select-reasonable-distributions-for-tensile-strength">
-<h3><strong>q3</strong> Select reasonable distributions for <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code><a class="headerlink" href="#q3-select-reasonable-distributions-for-tensile-strength" title="Permalink to this headline">¶</a></h3>
+<section id="q3-select-reasonable-distributions-for-tensile-strength">
+<h3><strong>q3</strong> Select reasonable distributions for <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code><a class="headerlink" href="#q3-select-reasonable-distributions-for-tensile-strength" title="Permalink to this headline">#</a></h3>
 <p>From the list above, select a few <em>reasonable</em> distributions that could describe the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>.</p>
 <p>List the distributions below:</p>
 <ul class="simple">
 <li><p>Lognormal - strength is non-negative</p></li>
 <li><p>Weibull - strength is non-negative</p></li>
 </ul>
-</div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="fit-and-assess">
-<h1>3. Fit and assess<a class="headerlink" href="#fit-and-assess" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="fit-and-assess">
+<h1>3. Fit and assess<a class="headerlink" href="#fit-and-assess" title="Permalink to this headline">#</a></h1>
 <p>Now that we’ve selected reasonable distributions for our quantity, we can fit and assess the distributions.</p>
-<div class="section" id="grama-tools-for-fitting">
-<h2>Grama tools for fitting<a class="headerlink" href="#grama-tools-for-fitting" title="Permalink to this headline">¶</a></h2>
+<section id="grama-tools-for-fitting">
+<h2>Grama tools for fitting<a class="headerlink" href="#grama-tools-for-fitting" title="Permalink to this headline">#</a></h2>
 <p>Grama provides two ways to fit a distribution:</p>
 <table class="colwidths-auto table">
 <thead>
@@ -1083,8 +1171,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </tbody>
 </table>
 <p>Let’s learn how to use both!</p>
-<div class="section" id="q4-fit-a-normal-distribution">
-<h3><strong>q4</strong> Fit a normal distribution<a class="headerlink" href="#q4-fit-a-normal-distribution" title="Permalink to this headline">¶</a></h3>
+<section id="q4-fit-a-normal-distribution">
+<h3><strong>q4</strong> Fit a normal distribution<a class="headerlink" href="#q4-fit-a-normal-distribution" title="Permalink to this headline">#</a></h3>
 <p>Complete the arguments for both <code class="docutils literal notranslate"><span class="pre">gr.marg_mom()</span></code> and <code class="docutils literal notranslate"><span class="pre">gr.marg_fit()</span></code> below to fit a normal distribution for the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>.</p>
 <p><em>Hint 1</em>: Remember the table above (<code class="docutils literal notranslate"><span class="pre">Short</span> <span class="pre">list</span> <span class="pre">of</span> <span class="pre">distributions</span></code>) lists the string names for a set of distributions.</p>
 <p><em>Hint 2</em>: Remember to use the documentation to learn how to call a new function!</p>
@@ -1117,14 +1205,14 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="qq-plots">
-<h2>QQ plots<a class="headerlink" href="#qq-plots" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="qq-plots">
+<h2>QQ plots<a class="headerlink" href="#qq-plots" title="Permalink to this headline">#</a></h2>
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot">QQ plot</a> is a statistical tool for assessing the quality of a distribution fit. A QQ plot visualizes the <a class="reference external" href="https://zdelrosario.github.io/evc-course/exercises_solution/d19-e-stat04-distributions-solution.html#quantiles">quantiles</a> of the dataset against the quantiles of the fitted distribution: A perfect fit will have all points fall along the line <span class="math notranslate nohighlight">\(y = x\)</span>.</p>
 <p>The grama helper <code class="docutils literal notranslate"><span class="pre">gr.qqvals()</span></code> is used within a call to <code class="docutils literal notranslate"><span class="pre">gr.tf_mutate()</span></code>; we use <code class="docutils literal notranslate"><span class="pre">gr.qqvals()</span></code> to compute the theoretical quantiles for a QQ plot.</p>
-<div class="section" id="q5-inspect-a-perfect-qq-plot">
-<h3><strong>q5</strong> Inspect a “perfect” QQ plot<a class="headerlink" href="#q5-inspect-a-perfect-qq-plot" title="Permalink to this headline">¶</a></h3>
+<section id="q5-inspect-a-perfect-qq-plot">
+<h3><strong>q5</strong> Inspect a “perfect” QQ plot<a class="headerlink" href="#q5-inspect-a-perfect-qq-plot" title="Permalink to this headline">#</a></h3>
 <p>The following code draws a sample from a normal distribution, then assesses a normal fit of that dataset using a QQ plot. Run the code, inspect the plot, then answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1165,9 +1253,9 @@ Keep in mind that this is what a <em>perfectly chosen</em> distribution will loo
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="q6-fit-a-distribution-for-the-tensile-strength">
-<h3><strong>q6</strong> Fit a distribution for the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code><a class="headerlink" href="#q6-fit-a-distribution-for-the-tensile-strength" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="q6-fit-a-distribution-for-the-tensile-strength">
+<h3><strong>q6</strong> Fit a distribution for the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code><a class="headerlink" href="#q6-fit-a-distribution-for-the-tensile-strength" title="Permalink to this headline">#</a></h3>
 <p>Pick a distribution from the list of “reasonable” distributions you generated in <code class="docutils literal notranslate"><span class="pre">__q3__</span> <span class="pre">Select</span> <span class="pre">reasonable</span> <span class="pre">distributions</span></code>, and fit a distribution for <code class="docutils literal notranslate"><span class="pre">df_shewhart.tensile_strength</span></code>. Answer the questions under <em>observations</em> below.</p>
 <p><em>Hint</em>: If you choose to fit a <code class="docutils literal notranslate"><span class="pre">&quot;lognorm&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;weibull_min&quot;</span></code>, you may find it helpful to set the keyword argument <code class="docutils literal notranslate"><span class="pre">floc=0</span></code> to use the 2-parameter version of the distribution. Anecdotally, I find the 2-parameter version to be more stable for small datasets.</p>
 <div class="cell docutils container">
@@ -1233,14 +1321,14 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </ul>
 </li>
 </ul>
-<!-- solution-end --></div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="use-the-model">
-<h1>Use the model<a class="headerlink" href="#use-the-model" title="Permalink to this headline">¶</a></h1>
+<!-- solution-end --></section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="use-the-model">
+<h1>Use the model<a class="headerlink" href="#use-the-model" title="Permalink to this headline">#</a></h1>
 <p>Once we’ve fit a distribution, we can use it to do useful work! We’ll discuss this further in a future exercise, but we’ll do a quick tour below.</p>
-<div class="section" id="beyond-assuming-the-mean">
-<h2>Beyond assuming the mean<a class="headerlink" href="#beyond-assuming-the-mean" title="Permalink to this headline">¶</a></h2>
+<section id="beyond-assuming-the-mean">
+<h2>Beyond assuming the mean<a class="headerlink" href="#beyond-assuming-the-mean" title="Permalink to this headline">#</a></h2>
 <p>Above, we saw that simply using the mean of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> for design was dangerous for safety-critical applications. Let’s talk about a more principled way to address the variability in <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>.</p>
 <p>For a simple structural member subject to uniaxial tension, we can define its *limit state function <span class="math notranslate nohighlight">\(g\)</span> via</p>
 <div class="math notranslate nohighlight">
@@ -1290,8 +1378,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <p>We can use this model to assess the probability of failure of several values of <span class="math notranslate nohighlight">\(A\)</span>, to help inform a design decision.</p>
-<div class="section" id="q7-evaluate-the-model">
-<h3><strong>q7</strong> Evaluate the model<a class="headerlink" href="#q7-evaluate-the-model" title="Permalink to this headline">¶</a></h3>
+<section id="q7-evaluate-the-model">
+<h3><strong>q7</strong> Evaluate the model<a class="headerlink" href="#q7-evaluate-the-model" title="Permalink to this headline">#</a></h3>
 <p>Draw a random sample from <code class="docutils literal notranslate"><span class="pre">md_structure</span></code> at different values of the cross-sectional area <code class="docutils literal notranslate"><span class="pre">A</span></code>. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1374,9 +1462,9 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </ul>
 </li>
 </ul>
-<!-- solution-end --></div>
-</div>
-</div>
+<!-- solution-end --></section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1400,9 +1488,11 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="d22-e-stat06-spc-solution.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1418,24 +1508,28 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Zachary del Rosario<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Zachary del Rosario<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

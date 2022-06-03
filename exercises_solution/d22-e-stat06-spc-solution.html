@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Stats: Fundamentals of Statistical Process Monitoring &#8212; Data Science for Engineers</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -39,12 +37,13 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -64,7 +63,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -73,9 +86,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
       
@@ -88,14 +102,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/home.html">
-   Data Science for Engineers
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../frontmatter/home.html">
+                    Data Science for Engineers
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../frontmatter/setup.html">
    Software Setup
@@ -261,91 +276,164 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/exercises_solution/d22-e-stat06-spc-solution.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d22-e-stat06-spc-solution.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d22-e-stat06-spc-solution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/exercises_solution/d22-e-stat06-spc-solution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Stats: Fundamentals of Statistical Process Monitoring
@@ -528,12 +616,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Stats: Fundamentals of Statistical Process Monitoring</h1>
@@ -732,14 +819,15 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="stats-fundamentals-of-statistical-process-monitoring">
-<h1>Stats: Fundamentals of Statistical Process Monitoring<a class="headerlink" href="#stats-fundamentals-of-statistical-process-monitoring" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="stats-fundamentals-of-statistical-process-monitoring">
+<h1>Stats: Fundamentals of Statistical Process Monitoring<a class="headerlink" href="#stats-fundamentals-of-statistical-process-monitoring" title="Permalink to this headline">#</a></h1>
 <p><em>Purpose</em>: In future exercises we’re going to learn how to model variable quantities as random, but before we do that, we need tools to help decide if a given quantity <em>should</em> be modeled as random. The tools of <em>statistical process monitoring</em> (sometimes called <em>statistical process control</em>) will help us find non-random patterns in data, which can be helpful for deciding whether or not a quantity can be reasonably modeled as random.</p>
-<div class="section" id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
@@ -750,10 +838,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="theory">
-<h1>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="theory">
+<h1>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">#</a></h1>
 <p>It’s difficult to tell by-inspection if data are random. For example, let’s look at a completely random dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -810,19 +898,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>From this chart, we see no outliers outside the lower control limit (LCL) or upper control limit (UCL). We also don’t see any special patterns in the data. Therefore, based on this control chart, we can declare that the process is likely under <em>statistical control</em>—that it can be modeled as random.</p>
-<div class="section" id="x-bar-and-s-chart">
-<h2>X-bar and S Chart<a class="headerlink" href="#x-bar-and-s-chart" title="Permalink to this headline">¶</a></h2>
+<section id="x-bar-and-s-chart">
+<h2>X-bar and S Chart<a class="headerlink" href="#x-bar-and-s-chart" title="Permalink to this headline">#</a></h2>
 <p>The helper function <code class="docutils literal notranslate"><span class="pre">gr.pt_xbs()</span></code> constructs a particular kind of control chart: an X-bar and S chart. This shows both the <em>batch</em> sample standard deviation (S) and <em>batch</em> sample mean (X-bar), along with <em>control limits</em> for these quantities. This statistical tool helps us find suspicious patterns in a dataset.</p>
 <p>In order to understand X-bar and S charts, we need understand why we take <em>batch averages</em>, and how to construct meaningful <em>control limits</em> for X-bar and S.</p>
-</div>
-<div class="section" id="batch-averages">
-<h2>Batch Averages<a class="headerlink" href="#batch-averages" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="batch-averages">
+<h2>Batch Averages<a class="headerlink" href="#batch-averages" title="Permalink to this headline">#</a></h2>
 <p>We saw before that the <em>sample mean</em> follows the central limit theorem, which tells us about the distribution of the sample mean if we were to observe multiple, independent datasets. Thus taking the average of multiple observations <em>from the same process</em> gives us a way to make the underlying distribution more predictable.</p>
 <p>However, taking the average of <em>all</em> observations <span class="math notranslate nohighlight">\(n_{\text{total}}\)</span> prevents us from determining <em>where</em> an outlier occurred: If the mean of all the data is high, was it the first observation that was large? The last one? Something in the middle?</p>
 <p>Therefore, we’ll split the data into batches of a much smaller size <span class="math notranslate nohighlight">\(n_{\text{batch}} &lt;&lt; n_{\text{total}}\)</span>. Taking <em>batch averages</em> gives us better resolution (allowing us to determine which batch is worth further investigation), while still giving the advantages of the central limit theorem.</p>
-</div>
-<div class="section" id="control-limits-confidence-intervals">
-<h2>Control limits: Confidence Intervals<a class="headerlink" href="#control-limits-confidence-intervals" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="control-limits-confidence-intervals">
+<h2>Control limits: Confidence Intervals<a class="headerlink" href="#control-limits-confidence-intervals" title="Permalink to this headline">#</a></h2>
 <p>Remember (from <a class="reference external" href="https://zdelrosario.github.io/evc-course/exercises_solution/d21-e-stat05-CI-solution.html">e-stat05-CI</a>) that the central limit theorem-based confidence interval for the sample mean is given by</p>
 <div class="math notranslate nohighlight">
 \[[\overline{X}_n - z_C \sigma/\sqrt{n}, \overline{X}_n + z_C \sigma/\sqrt{n}]\]</div>
@@ -841,12 +929,12 @@ const thebe_selector_output = ".output, .cell_output"
 <p class="admonition-title">See the references for the gory statistical details</p>
 <p>When it comes to approximating the standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> for a control chart, there is actually a bit more work we have to do to <em>de-bias</em> the standard deviation. The control limits for the standard deviation also follow a different formula than the sample mean. For more details, see the references listed at the bottom of this exercise.</p>
 </div>
-</div>
-<div class="section" id="grouping-observations">
-<h2>Grouping observations<a class="headerlink" href="#grouping-observations" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="grouping-observations">
+<h2>Grouping observations<a class="headerlink" href="#grouping-observations" title="Permalink to this headline">#</a></h2>
 <p>Ideally, the selection of batches should be made during the <em>planning</em> of data collection. If we are studying archival data, we can sometimes make some reasonable assumptions about data collection in order to define batches.</p>
-<div class="section" id="natural-batches">
-<h3>Natural batches<a class="headerlink" href="#natural-batches" title="Permalink to this headline">¶</a></h3>
+<section id="natural-batches">
+<h3>Natural batches<a class="headerlink" href="#natural-batches" title="Permalink to this headline">#</a></h3>
 <p>In cases when we can <em>plan</em> data collection, there are likely candidates for “natural” batches of data. For instance, if we have multiple machines that are used (separately) to make the same part, we could group observations based on which machine led to their manufacture.</p>
 <p>The next code chunk simulates data where multiple machines are used to manufacture the same part—one of the machines is malfunctioning. You’ll use a control chart to help determine which machine is causing problems.</p>
 <div class="cell docutils container">
@@ -880,9 +968,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="q0-conceptual-questions">
-<h3><strong>q0</strong> Conceptual questions<a class="headerlink" href="#q0-conceptual-questions" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="q0-conceptual-questions">
+<h3><strong>q0</strong> Conceptual questions<a class="headerlink" href="#q0-conceptual-questions" title="Permalink to this headline">#</a></h3>
 <p>Before we start constructing control charts, let’s check your understanding with some conceptual questions. Run the code below, and answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -975,9 +1063,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-<!-- solution-end --></div>
-<div class="section" id="q1-batch-by-machine">
-<h3><strong>q1</strong> Batch by machine<a class="headerlink" href="#q1-batch-by-machine" title="Permalink to this headline">¶</a></h3>
+<!-- solution-end --></section>
+<section id="q1-batch-by-machine">
+<h3><strong>q1</strong> Batch by machine<a class="headerlink" href="#q1-batch-by-machine" title="Permalink to this headline">#</a></h3>
 <p>Construct a control chart using the machine identifier as the <code class="docutils literal notranslate"><span class="pre">group</span></code> variable. Look for patterns in the measured quantity <code class="docutils literal notranslate"><span class="pre">X</span></code>. Answer the questions under <em>observations</em> below.</p>
 <p><em>Hint</em>: Remember to read the documentation for an unfamiliar function to learn about its arguments.</p>
 <div class="cell docutils container">
@@ -1013,9 +1101,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-<!-- solution-end --></div>
-<div class="section" id="batches-in-time">
-<h3>Batches in time<a class="headerlink" href="#batches-in-time" title="Permalink to this headline">¶</a></h3>
+<!-- solution-end --></section>
+<section id="batches-in-time">
+<h3>Batches in time<a class="headerlink" href="#batches-in-time" title="Permalink to this headline">#</a></h3>
 <p>Natural batches—such as per-machine as above—are a fine way to choose the grouping for a control chart. However, there are other ways to batch the data.</p>
 <p>Another way to batch the data is by <em>consecutive periods of time</em>; this can be helpful for monitoring a single data-generating process to see if something happened at a particular point in time.</p>
 <p>When choosing consecutive observations, we should choose <em>reasonable</em> batch sizes <span class="math notranslate nohighlight">\(n_{\text{batch}}\)</span>. The following rule of thumb is helpful for picking a reasonable <span class="math notranslate nohighlight">\(n_{\text{batch}}\)</span>.</p>
@@ -1051,9 +1139,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="q2-create-consecutive-groups">
-<h3><strong>q2</strong> Create consecutive groups<a class="headerlink" href="#q2-create-consecutive-groups" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="q2-create-consecutive-groups">
+<h3><strong>q2</strong> Create consecutive groups<a class="headerlink" href="#q2-create-consecutive-groups" title="Permalink to this headline">#</a></h3>
 <p>Use a mutate to create a column <code class="docutils literal notranslate"><span class="pre">id_seq</span></code> to group sequential observations.</p>
 <p><em>Hint 1</em>: Remember that floor division <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">//</span> <span class="pre">y</span></code> is one way to create sequential values.</p>
 <p><em>Hint 2</em>: Remember that <code class="docutils literal notranslate"><span class="pre">DF.index</span></code> allows you to access the index of each row in a DataFrame.</p>
@@ -1110,9 +1198,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="q3-batch-by-slices-of-time">
-<h3><strong>q3</strong> Batch by slices of time<a class="headerlink" href="#q3-batch-by-slices-of-time" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="q3-batch-by-slices-of-time">
+<h3><strong>q3</strong> Batch by slices of time<a class="headerlink" href="#q3-batch-by-slices-of-time" title="Permalink to this headline">#</a></h3>
 <p>Sort the data by time <code class="docutils literal notranslate"><span class="pre">t</span></code>, then batch the observations into consecutive groups and construct a control chart.</p>
 <p>Make sure to <em>match</em> the batch size <span class="math notranslate nohighlight">\(n_{\text{batch}}\)</span> used in data collection.</p>
 <p>Answer the questions under <em>observations</em> below.</p>
@@ -1166,10 +1254,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-<!-- solution-end --></div>
-</div>
-<div class="section" id="naive-consecutive-rows">
-<h2>Naive consecutive rows<a class="headerlink" href="#naive-consecutive-rows" title="Permalink to this headline">¶</a></h2>
+<!-- solution-end --></section>
+</section>
+<section id="naive-consecutive-rows">
+<h2>Naive consecutive rows<a class="headerlink" href="#naive-consecutive-rows" title="Permalink to this headline">#</a></h2>
 <p>What happens if we do not correctly arrange the rows? Then we lose all information about the time history of the data. The following plot shows what happens if we construct a control chart without respecting the time ordering of the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1191,10 +1279,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>Note that there are no patterns in this view of the data!</p>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="patterns-to-seek">
-<h1>Patterns to seek<a class="headerlink" href="#patterns-to-seek" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="patterns-to-seek">
+<h1>Patterns to seek<a class="headerlink" href="#patterns-to-seek" title="Permalink to this headline">#</a></h1>
 <p>Kenett and Zacks (2014) highlight several patterns that can signal an out-of-control manufacturing process:</p>
 <blockquote>
 <div><ol class="simple">
@@ -1204,8 +1292,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ol>
 </div></blockquote>
 <p>The following cells simulate data to illustrate each of these patterns.</p>
-<div class="section" id="outside-control-limits">
-<h2>Outside control limits<a class="headerlink" href="#outside-control-limits" title="Permalink to this headline">¶</a></h2>
+<section id="outside-control-limits">
+<h2>Outside control limits<a class="headerlink" href="#outside-control-limits" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
@@ -1240,9 +1328,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="variability-out-of-control">
-<h2>Variability out-of-control<a class="headerlink" href="#variability-out-of-control" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="variability-out-of-control">
+<h2>Variability out-of-control<a class="headerlink" href="#variability-out-of-control" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
@@ -1277,9 +1365,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="runs-above-center">
-<h2>Runs above center<a class="headerlink" href="#runs-above-center" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="runs-above-center">
+<h2>Runs above center<a class="headerlink" href="#runs-above-center" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
@@ -1315,9 +1403,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>Note that none of the observations exceed the upper control limit (UCL), but a “run” of many (9 or more) observations above the centerline is highly unlikely to be due to chance alone.</p>
-</div>
-<div class="section" id="runs-below-center">
-<h2>Runs below center<a class="headerlink" href="#runs-below-center" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="runs-below-center">
+<h2>Runs below center<a class="headerlink" href="#runs-below-center" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
@@ -1352,9 +1440,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="runs-increasing">
-<h2>Runs increasing<a class="headerlink" href="#runs-increasing" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="runs-increasing">
+<h2>Runs increasing<a class="headerlink" href="#runs-increasing" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
@@ -1389,9 +1477,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="runs-decreasing">
-<h2>Runs decreasing<a class="headerlink" href="#runs-decreasing" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="runs-decreasing">
+<h2>Runs decreasing<a class="headerlink" href="#runs-decreasing" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display
@@ -1426,13 +1514,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="warnings">
-<h1>Warnings<a class="headerlink" href="#warnings" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="warnings">
+<h1>Warnings<a class="headerlink" href="#warnings" title="Permalink to this headline">#</a></h1>
 <p>While we should be on the lookout for patterns in a control chart, we should balance this out with a healthy dose of skepticism. The following two examples demonstrate cases where we would see patterns in a control chart that have no real meaning.</p>
-<div class="section" id="beware-spurious-patterns">
-<h2>Beware spurious patterns!<a class="headerlink" href="#beware-spurious-patterns" title="Permalink to this headline">¶</a></h2>
+<section id="beware-spurious-patterns">
+<h2>Beware spurious patterns!<a class="headerlink" href="#beware-spurious-patterns" title="Permalink to this headline">#</a></h2>
 <p>Note that <em>false patterns</em> can still occur based on random events. These false patterns become more likely with smaller batch sizes. For instance, let’s take a look at the completely random dataset from above, batched into tiny subgroups:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1455,9 +1543,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>Note that a variety of “patterns” are detected, but these cannot possibly be due to any assignable causes: The data are completely random by construction. Using a larger batch size helps to protect us against being mislead by random patterns, but keep in mind that false detections are always possible!</p>
-</div>
-<div class="section" id="beware-meaningless-order">
-<h2>Beware meaningless order<a class="headerlink" href="#beware-meaningless-order" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="beware-meaningless-order">
+<h2>Beware meaningless order<a class="headerlink" href="#beware-meaningless-order" title="Permalink to this headline">#</a></h2>
 <p>Patterns based on order (such as high/low or increasing/decreasing runs) are meaningless when order of the group variable has no meaning. For instance, we can reorder the machine identifiers in <code class="docutils literal notranslate"><span class="pre">df_machines</span></code> to artificially create an increasing run:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1479,10 +1567,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>Here the batch means are increasing, but that is only because we ordered the machines by their batch mean!</p>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="example-cast-aluminum-dataset">
-<h1>Example: Cast Aluminum Dataset<a class="headerlink" href="#example-cast-aluminum-dataset" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="example-cast-aluminum-dataset">
+<h1>Example: Cast Aluminum Dataset<a class="headerlink" href="#example-cast-aluminum-dataset" title="Permalink to this headline">#</a></h1>
 <p>Let’s take a closer look at the cast aluminum dataset using our new lense of control charts.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1557,8 +1645,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div></div></div>
 </div>
 <p>We might want to use this data to model these material properties are random, but before that we should ask: Is the manufacturing process generating these properties under statistical control?</p>
-<div class="section" id="q4-assess-the-density">
-<h2><strong>q4</strong> Assess the <code class="docutils literal notranslate"><span class="pre">density</span></code><a class="headerlink" href="#q4-assess-the-density" title="Permalink to this headline">¶</a></h2>
+<section id="q4-assess-the-density">
+<h2><strong>q4</strong> Assess the <code class="docutils literal notranslate"><span class="pre">density</span></code><a class="headerlink" href="#q4-assess-the-density" title="Permalink to this headline">#</a></h2>
 <p>Assess the state of statistical control for the variable <code class="docutils literal notranslate"><span class="pre">density</span></code> using a control chart.</p>
 <p>Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
@@ -1604,9 +1692,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-<!-- solution-end --></div>
-<div class="section" id="q5-assess-the-tensile-strength">
-<h2><strong>q5</strong> Assess the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code><a class="headerlink" href="#q5-assess-the-tensile-strength" title="Permalink to this headline">¶</a></h2>
+<!-- solution-end --></section>
+<section id="q5-assess-the-tensile-strength">
+<h2><strong>q5</strong> Assess the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code><a class="headerlink" href="#q5-assess-the-tensile-strength" title="Permalink to this headline">#</a></h2>
 <p>Assess the state of statistical control for the variable <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> using a control chart.</p>
 <p>Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
@@ -1651,14 +1739,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-<!-- solution-end --></div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="references">
-<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<!-- solution-end --></section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p>Kenett and Zacks, <em>Modern Industrial Statistics</em>, 2nd Edition (2014)</p></li>
 </ul>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1682,9 +1770,11 @@ const thebe_selector_output = ".output, .cell_output"
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="d21-e-stat05-CI-solution.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1700,24 +1790,28 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Zachary del Rosario<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Zachary del Rosario<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

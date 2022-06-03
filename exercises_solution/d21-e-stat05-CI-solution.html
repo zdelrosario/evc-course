@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Stats: Confidence Intervals and the CLT &#8212; Data Science for Engineers</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -39,12 +37,13 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -64,7 +63,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -73,9 +86,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
       
@@ -88,14 +102,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/home.html">
-   Data Science for Engineers
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../frontmatter/home.html">
+                    Data Science for Engineers
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../frontmatter/setup.html">
    Software Setup
@@ -261,91 +276,164 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/exercises_solution/d21-e-stat05-CI-solution.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d21-e-stat05-CI-solution.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d21-e-stat05-CI-solution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/exercises_solution/d21-e-stat05-CI-solution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Stats: Confidence Intervals and the CLT
@@ -475,12 +563,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Stats: Confidence Intervals and the CLT</h1>
@@ -626,14 +713,15 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="stats-confidence-intervals-and-the-clt">
-<h1>Stats: Confidence Intervals and the CLT<a class="headerlink" href="#stats-confidence-intervals-and-the-clt" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="stats-confidence-intervals-and-the-clt">
+<h1>Stats: Confidence Intervals and the CLT<a class="headerlink" href="#stats-confidence-intervals-and-the-clt" title="Permalink to this headline">#</a></h1>
 <p><em>Purpose</em>: When studying a limited dataset, we need a principled way to report our results with their uncertainties. Confidence intervals (CI) are an excellent way to summarize results, and the central limit theorem (CLT) helps us to construct these intervals. Eventually, we will use the same ideas underlying CI’s to detect patterns using <em>statistical process monitoring</em>.</p>
-<div class="section" id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
@@ -643,13 +731,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="theory-fundamentals">
-<h1>Theory Fundamentals<a class="headerlink" href="#theory-fundamentals" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="theory-fundamentals">
+<h1>Theory Fundamentals<a class="headerlink" href="#theory-fundamentals" title="Permalink to this headline">#</a></h1>
 <p>To make sense of confidence intervals, we will need a bit of background information. First up: Why are we studying confidence intervals?</p>
-<div class="section" id="motivation-we-might-have-seen-other-data">
-<h2>Motivation: We might have seen other data<a class="headerlink" href="#motivation-we-might-have-seen-other-data" title="Permalink to this headline">¶</a></h2>
+<section id="motivation-we-might-have-seen-other-data">
+<h2>Motivation: We might have seen other data<a class="headerlink" href="#motivation-we-might-have-seen-other-data" title="Permalink to this headline">#</a></h2>
 <p>Anytime we have a <em>particular</em> dataset, we should keep in mind that <em>we might have seen other data</em>.</p>
 <p>As a real example, let’s take a real dataset and split it in two. The following code loads a datset of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> values and splits the full dataset into two smaller datasets. We could have seen either of these two datasets, had we gathered half as many values.</p>
 <div class="cell docutils container">
@@ -714,9 +802,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>Limited data leads to a form of error called <em>sampling error</em>. In practice we <em>almost always</em> have limited data, so sampling error is an unavoidable reality.</p>
-</div>
-<div class="section" id="sampling-distribution">
-<h2>Sampling Distribution<a class="headerlink" href="#sampling-distribution" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="sampling-distribution">
+<h2>Sampling Distribution<a class="headerlink" href="#sampling-distribution" title="Permalink to this headline">#</a></h2>
 <p>Let’s imagine for a moment that we <em>did</em> carry out data collection multiple times. Let’s illustrate this by splitting the tensile strength dataset into six separate subsets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -888,9 +976,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p>The sampling distribution is a result of three ingredients: 1. The target population, 2. The chosen sample size, and 3. The chosen summary. The sampling distribution also assumes that each sample is drawn randomly from the population.</p>
 </div>
 <p>The sampling distribution is what we would observe under <em>repeated</em> data collection. However, gathering multiple datasets of the same size and computing independent summaries would be a highly inefficient way to use data! Instead, we can use the <em>central limit theorem</em> as a means to approximate a sampling distribution using <em>just one dataset</em>.</p>
-</div>
-<div class="section" id="central-limit-theorem-clt">
-<h2>Central Limit Theorem (CLT)<a class="headerlink" href="#central-limit-theorem-clt" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="central-limit-theorem-clt">
+<h2>Central Limit Theorem (CLT)<a class="headerlink" href="#central-limit-theorem-clt" title="Permalink to this headline">#</a></h2>
 <p>The central limit theorem (CLT) is most easily stated in terms of the sample mean. Let <span class="math notranslate nohighlight">\(X \sim \rho\)</span> be a random draw from a population with finite mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. The sample mean is denoted <span class="math notranslate nohighlight">\(\overline{X}_n\)</span> and is defined as</p>
 <div class="math notranslate nohighlight">
 \[\overline{X}_n = \frac{1}{n} \sum_{i=1}^n X_i.\]</div>
@@ -898,8 +986,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="math notranslate nohighlight">
 \[\overline{X}_n \stackrel{d}{\to} N(\mu, \sigma^2/n),\]</div>
 <p>where <span class="math notranslate nohighlight">\(\stackrel{d}{\to}\)</span> means “convergence in distribution.” The CLT is useful because it gives us a way to quantify sampling error: Since the CLT holds regardless of where the data came from <span class="math notranslate nohighlight">\(X \sim \rho\)</span>—so long as <span class="math notranslate nohighlight">\(|\mu| &lt; \infty, \sigma &lt; \infty\)</span>—then we can characterize the sampling error in the sample mean <span class="math notranslate nohighlight">\(\overline{X}_n\)</span>.</p>
-<div class="section" id="q1-study-clt-convergence-behavior">
-<h3><strong>q1</strong> Study CLT convergence behavior<a class="headerlink" href="#q1-study-clt-convergence-behavior" title="Permalink to this headline">¶</a></h3>
+<section id="q1-study-clt-convergence-behavior">
+<h3><strong>q1</strong> Study CLT convergence behavior<a class="headerlink" href="#q1-study-clt-convergence-behavior" title="Permalink to this headline">#</a></h3>
 <p>Adjust the sample size <code class="docutils literal notranslate"><span class="pre">n</span></code> below, run the code to inspect the results each time, then answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -954,10 +1042,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="confidence-intervals-ci">
-<h2>Confidence Intervals (CI)<a class="headerlink" href="#confidence-intervals-ci" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="confidence-intervals-ci">
+<h2>Confidence Intervals (CI)<a class="headerlink" href="#confidence-intervals-ci" title="Permalink to this headline">#</a></h2>
 <p>Since any estimated quantity has sampling error, it is common to report estimated values along with a <em>confidence interval</em>. A confidence interval (CI) is an expression of <em>uncertainty</em>; it will tend to be wider when the sampling error is larger. For the moment, let’s talk about how to <em>compute</em> a confidence interval; we’ll discuss how to <em>interpret</em> a confidence interval in a bit.</p>
 <p>The CLT-based confidence interval for the mean is given by</p>
 <div class="math notranslate nohighlight">
@@ -984,8 +1072,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>You can compute these CI bounds manually. However, the helper functions <code class="docutils literal notranslate"><span class="pre">gr.mean_lo()</span></code> and <code class="docutils literal notranslate"><span class="pre">gr.mean_up()</span></code> automate these calculations. For both functions, you can adjust the confidence level <code class="docutils literal notranslate"><span class="pre">C</span></code> with the <code class="docutils literal notranslate"><span class="pre">alpha</span></code> parameter.</p>
-<div class="section" id="q2-compute-a-confidence-interval">
-<h3><strong>q2</strong> Compute a confidence interval<a class="headerlink" href="#q2-compute-a-confidence-interval" title="Permalink to this headline">¶</a></h3>
+<section id="q2-compute-a-confidence-interval">
+<h3><strong>q2</strong> Compute a confidence interval<a class="headerlink" href="#q2-compute-a-confidence-interval" title="Permalink to this headline">#</a></h3>
 <p>Use the helper functions <code class="docutils literal notranslate"><span class="pre">gr.mean_lo()</span></code> and <code class="docutils literal notranslate"><span class="pre">gr.mean_up()</span></code> to compute confidence limits for the mean.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1054,9 +1142,9 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="q3-study-the-ci-width">
-<h3><strong>q3</strong> Study the CI width<a class="headerlink" href="#q3-study-the-ci-width" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="q3-study-the-ci-width">
+<h3><strong>q3</strong> Study the CI width<a class="headerlink" href="#q3-study-the-ci-width" title="Permalink to this headline">#</a></h3>
 <p>The following code creates confidence intervals for samples of different sizes <span class="math notranslate nohighlight">\(n\)</span>. Run the following code, inspect the results, and answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1110,14 +1198,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-<!-- solution-end --></div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="interpreting-confidence-intervals">
-<h1>Interpreting Confidence Intervals<a class="headerlink" href="#interpreting-confidence-intervals" title="Permalink to this headline">¶</a></h1>
+<!-- solution-end --></section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="interpreting-confidence-intervals">
+<h1>Interpreting Confidence Intervals<a class="headerlink" href="#interpreting-confidence-intervals" title="Permalink to this headline">#</a></h1>
 <p>Confidence intervals are constructed in a way that seeks to <em>include</em> the true value that we seek to estimate. However, the nature of uncertainty means we need to exercise care when interpreting a confidence interval.</p>
-<div class="section" id="golden-rule-of-confidence-intervals">
-<h2>Golden Rule of Confidence Intervals<a class="headerlink" href="#golden-rule-of-confidence-intervals" title="Permalink to this headline">¶</a></h2>
+<section id="golden-rule-of-confidence-intervals">
+<h2>Golden Rule of Confidence Intervals<a class="headerlink" href="#golden-rule-of-confidence-intervals" title="Permalink to this headline">#</a></h2>
 <div class="admonition-the-golden-rule-for-interpreting-confidence-intervals admonition">
 <p class="admonition-title">The “Golden Rule” for interpreting Confidence Intervals</p>
 <p>When interpreting a confidence interval, we should assume the true value could be anywhere inside the interval.</p>
@@ -1128,8 +1216,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p class="admonition-title">Confidence in <em>procedure</em>, not in the interval</p>
 <p>A subtle point about confidence intervals is that our confidence is in the long-run properties of constructing <em>many</em> intervals, not in any <em>single</em> interval. Any individual interval either does or does not include its true value: the “probability” for a single interval is either <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
 </div>
-<div class="section" id="q4-interpret-these-intervals">
-<h3><strong>q4</strong> Interpret these intervals<a class="headerlink" href="#q4-interpret-these-intervals" title="Permalink to this headline">¶</a></h3>
+<section id="q4-interpret-these-intervals">
+<h3><strong>q4</strong> Interpret these intervals<a class="headerlink" href="#q4-interpret-these-intervals" title="Permalink to this headline">#</a></h3>
 <p>Study the following intervals, answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1184,11 +1272,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-<!-- solution-end --></div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="probability-estimation">
-<h1>Probability Estimation<a class="headerlink" href="#probability-estimation" title="Permalink to this headline">¶</a></h1>
+<!-- solution-end --></section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="probability-estimation">
+<h1>Probability Estimation<a class="headerlink" href="#probability-estimation" title="Permalink to this headline">#</a></h1>
 <p>Remember that we learned in the previous exercise <a class="reference external" href="https://zdelrosario.github.io/evc-course/exercises_solution/d19-e-stat04-distributions-solution.html#probability">stat04-distributions</a> that probability can be expressed as a mean (expectation). Thus, we can apply the same ideas about confidence intervals when estimating probabilities.</p>
 <p>To demonstrate, let’s study a simple structural model.</p>
 <div class="cell docutils container">
@@ -1328,8 +1416,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div></div></div>
 </div>
 <p>This is an <em>extremely</em> wide confidence interval for the probability of failure; I get a value of <code class="docutils literal notranslate"><span class="pre">pof</span></code> anywhere between <code class="docutils literal notranslate"><span class="pre">0.003</span></code> and <code class="docutils literal notranslate"><span class="pre">0.11</span></code>!</p>
-<div class="section" id="q5-adjust-the-sample-size">
-<h2><strong>q5</strong> Adjust the sample size<a class="headerlink" href="#q5-adjust-the-sample-size" title="Permalink to this headline">¶</a></h2>
+<section id="q5-adjust-the-sample-size">
+<h2><strong>q5</strong> Adjust the sample size<a class="headerlink" href="#q5-adjust-the-sample-size" title="Permalink to this headline">#</a></h2>
 <p>Adjust the sample size <code class="docutils literal notranslate"><span class="pre">n</span></code> to achieve a CI width less than <code class="docutils literal notranslate"><span class="pre">0.1</span></code>.  Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1403,9 +1491,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-<!-- solution-end --></div>
-<div class="section" id="q6-design-for-small-failure-rate">
-<h2><strong>q6</strong> Design for small failure rate<a class="headerlink" href="#q6-design-for-small-failure-rate" title="Permalink to this headline">¶</a></h2>
+<!-- solution-end --></section>
+<section id="q6-design-for-small-failure-rate">
+<h2><strong>q6</strong> Design for small failure rate<a class="headerlink" href="#q6-design-for-small-failure-rate" title="Permalink to this headline">#</a></h2>
 <p>Adjust the deterministic variables <code class="docutils literal notranslate"><span class="pre">w</span></code> and <code class="docutils literal notranslate"><span class="pre">t</span></code> in order to <em>confidently</em> achieve a probability of failure due to stress less than <code class="docutils literal notranslate"><span class="pre">0.001</span></code>.</p>
 <p><em>Hint</em>: You adjusted the sample size <code class="docutils literal notranslate"><span class="pre">n</span></code> in the previous exercise. Make sure to use that learning when tackling this exercise.</p>
 <div class="cell docutils container">
@@ -1443,13 +1531,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="real-vs-error">
-<h1>Real vs Error<a class="headerlink" href="#real-vs-error" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="real-vs-error">
+<h1>Real vs Error<a class="headerlink" href="#real-vs-error" title="Permalink to this headline">#</a></h1>
 <p>In <a class="reference external" href="https://zdelrosario.github.io/evc-course/exercises_solution/d08-e-stat02-source-solution.html">stat02-source</a> we learned that we should treat real and erroneous sources of variability differently. Let’s apply that thinking to the beam example.</p>
-<div class="section" id="q7-selecting-the-proper-statistical-technique">
-<h2><strong>q7</strong> Selecting the proper statistical technique<a class="headerlink" href="#q7-selecting-the-proper-statistical-technique" title="Permalink to this headline">¶</a></h2>
+<section id="q7-selecting-the-proper-statistical-technique">
+<h2><strong>q7</strong> Selecting the proper statistical technique<a class="headerlink" href="#q7-selecting-the-proper-statistical-technique" title="Permalink to this headline">#</a></h2>
 <p>Suppose the variability exhibited by the model <code class="docutils literal notranslate"><span class="pre">md_beam</span></code> is real. Study the results from the simulation below, and answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1540,8 +1628,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-<!-- solution-end --></div>
-</div>
+<!-- solution-end --></section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1565,9 +1653,11 @@ const thebe_selector_output = ".output, .cell_output"
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="d20-e-grama05-fit-function-solution.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1583,24 +1673,28 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Zachary del Rosario<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Zachary del Rosario<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Introduction to Jupyter Notebooks &#8212; Data Science for Engineers</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -39,12 +37,13 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -64,7 +63,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -73,9 +86,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
       
@@ -88,14 +102,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/home.html">
-   Data Science for Engineers
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../frontmatter/home.html">
+                    Data Science for Engineers
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../frontmatter/setup.html">
    Software Setup
@@ -261,91 +276,164 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/exercises_solution/d01-e-data00-notebooks-solution.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d01-e-data00-notebooks-solution.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d01-e-data00-notebooks-solution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/exercises_solution/d01-e-data00-notebooks-solution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Introduction to Jupyter Notebooks
@@ -563,12 +651,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Introduction to Jupyter Notebooks</h1>
@@ -802,22 +889,23 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-jupyter-notebooks">
-<h1>Introduction to Jupyter Notebooks<a class="headerlink" href="#introduction-to-jupyter-notebooks" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-jupyter-notebooks">
+<h1>Introduction to Jupyter Notebooks<a class="headerlink" href="#introduction-to-jupyter-notebooks" title="Permalink to this headline">#</a></h1>
 <p><em>Original Authors: Enze Chen, Malcolm Davidson, Zach del Rosario</em></p>
 <p><em>Purpose</em>: We’re going to use programming tools throughout this workshop. There are many benefits to using programming to do data science, but to reap these benefits you will need to know some basics about coding in Python, and working in Jupyter notebooks.</p>
-<div class="section" id="highest-level-view">
-<h2>Highest-level View<a class="headerlink" href="#highest-level-view" title="Permalink to this headline">¶</a></h2>
+<section id="highest-level-view">
+<h2>Highest-level View<a class="headerlink" href="#highest-level-view" title="Permalink to this headline">#</a></h2>
 <p>Throughout this day of the workshop, we will be writing computer software. Before diving into the details, it is beneficial to understand what tools we’ll be using, and why.</p>
-<div class="section" id="python">
-<h3>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
+<section id="python">
+<h3>Python<a class="headerlink" href="#python" title="Permalink to this headline">#</a></h3>
 <p>Python is a <a class="reference external" href="https://www.python.org"><em>programming language</em></a>, and an extremely popular one at that. Python is praised for its readability, is consistently ranked as a top programming language, and is used by both top <a class="reference external" href="https://en.wikipedia.org/wiki/Python_(programming_language)#Uses">software companies</a> and scientists doing computation. All of this is to say that knowing how to write Python code is a valuable skill.</p>
-</div>
-<div class="section" id="jupyter">
-<h3>Jupyter<a class="headerlink" href="#jupyter" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="jupyter">
+<h3>Jupyter<a class="headerlink" href="#jupyter" title="Permalink to this headline">#</a></h3>
 <p>Jupyter is a <a class="reference external" href="https://jupyter.org"><em>programming environment</em></a>, often used for writing and sharing Python code. Just as one could choose to write English on stone tablets or on paper, one could choose to write Python code in simple files or in <em>jupyter notebooks</em>. These notebooks are useful for a number of reasons:</p>
 <ol class="simple">
 <li><p>Multimedia: This document you’re reading now is a jupyter notebook – it is a combination of (executable) Python code and (formatted) plain text. By allowing the juxtaposition of different media (code and natural language, to name a couple options), one can provide human-readable context next to executable software.</p></li>
@@ -825,53 +913,53 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Reproducible: <a class="reference external" href="https://en.wikipedia.org/wiki/Reproducibility">Reproducibility</a> is a critical issue in science – results cannot be considered scientifically valid unless they can be reproduced under similar conditions. The same principles apply to computational experiments; all too often software is written under time pressure, resulting in scattered documentation and analysis. Consolidating documentation and analysis within a single notebook facilitates scientific reproducibility.</p></li>
 </ol>
 <p>Jupyter notebooks are not <em>always</em> the best media for writing code; for instance, python <em>packages</em> are not written in jupyter notebooks. However, for our purposes, jupyter is a good solution.</p>
-</div>
-</div>
+</section>
+</section>
 <hr class="docutils" />
-<div class="section" id="how-to-use-this-notebook">
-<h2>How to use this Notebook<a class="headerlink" href="#how-to-use-this-notebook" title="Permalink to this headline">¶</a></h2>
+<section id="how-to-use-this-notebook">
+<h2>How to use this Notebook<a class="headerlink" href="#how-to-use-this-notebook" title="Permalink to this headline">#</a></h2>
 <p>This jupyter notebook is an <em>interactive exercise</em> – it contains some reading, but the focus is on fill-in-the-blank sections that are meant to test your understanding and spark further learning. Pedagogy research shows that so-called <em>active learning</em> – learning by doing – is far more effective than lecture alone. Thus, you will get the most out of this workshop if you do the work! Try – to the best of your ability – to complete the exercises in these notebooks, and please feel free to ask the instructors questions if you get stuck. (It’s what we’re here for.)</p>
 <div class="warning admonition">
 <p class="admonition-title">Run this notebook locally!</p>
 <p>If you’re reading this on the workshop website—and <em>not</em> in your local jupyter reader—then it is <em>necessary</em> that you download this notebook locally and open it in jupyter. Look for the download bar in the top-right of this page, as pictured below.</p>
-<p><strong>TODO UPDATE SETUP INSTRUCTIONS</strong></p>
+<p><img alt="The download button is in the top-right of the page" src="../_images/intro-download-button.png" /></p>
 </div>
 <p>Exercise portions of the notebook will be marked with a “q” subheading, like the following:</p>
-<div class="section" id="q0-an-example-question">
-<h3><strong>q0</strong>: An example question<a class="headerlink" href="#q0-an-example-question" title="Permalink to this headline">¶</a></h3>
+<section id="q0-an-example-question">
+<h3><strong>q0</strong>: An example question<a class="headerlink" href="#q0-an-example-question" title="Permalink to this headline">#</a></h3>
 <p>Here’s an example of an exercise prompt. Follow the directions here to start the exercise.</p>
-</div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="jupyter-introduction">
-<h1>Jupyter Introduction<a class="headerlink" href="#jupyter-introduction" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="cells">
-<h2>Cells<a class="headerlink" href="#cells" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="jupyter-introduction">
+<h1>Jupyter Introduction<a class="headerlink" href="#jupyter-introduction" title="Permalink to this headline">#</a></h1>
+<section id="cells">
+<h2>Cells<a class="headerlink" href="#cells" title="Permalink to this headline">#</a></h2>
 <p>A Jupyter notebook is organized as a sequence of different <strong>cells</strong>. Cells contain chunks of information and allow you to switch between text and code.</p>
 <p><strong>Current cell</strong>: The currently-selected cell will have a color bar appear on the far left. Use your cursor or arrow keys to select different cells.</p>
 <p><strong>Create new cell</strong>: To create a new cell, click the “<strong>+</strong>” icon at the top. This will create a cell below the currently selected cell.</p>
 <p><strong>Delete a cell</strong>: To delete the currently-selected cell, click the “<strong>scissors</strong>” icon at the top.</p>
-<div class="section" id="q1-create-a-new-cell">
-<h3><strong>q1</strong> Create a new cell<a class="headerlink" href="#q1-create-a-new-cell" title="Permalink to this headline">¶</a></h3>
+<section id="q1-create-a-new-cell">
+<h3><strong>q1</strong> Create a new cell<a class="headerlink" href="#q1-create-a-new-cell" title="Permalink to this headline">#</a></h3>
 <p><strong>Create a new cell below this one.</strong> Note that it has a different background color! This is because cells have different <em>types</em>.</p>
-</div>
-<div class="section" id="types-of-cells">
-<h3>Types of cells<a class="headerlink" href="#types-of-cells" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="types-of-cells">
+<h3>Types of cells<a class="headerlink" href="#types-of-cells" title="Permalink to this headline">#</a></h3>
 <p>There are two types of cells we will discuss here: <code class="docutils literal notranslate"><span class="pre">Markdown</span></code> and <code class="docutils literal notranslate"><span class="pre">Code</span></code>. A single cell can only have 1 type.</p>
 <p><strong>Markdown</strong>: These are text cells that use the Markdown language for formatting. You can put instructions, headings, links, images, and much more; even <span class="math notranslate nohighlight">\(\LaTeX\)</span> (<a class="reference external" href="https://www.latex-project.org">a language for typesetting mathematics</a>). Here is a <a class="reference external" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">cheatsheet</a> for Markdown syntax.</p>
 <p><strong>Code</strong>: These are cells where you can type Python code, just as you would in a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file. They will have a label <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[</span> <span class="pre">]:</span></code> to their left.</p>
 <p>To switch the type of cell, you can use the dropdown menu at the top of the cell. (Note: While you’re moused-over this cell, the dropdown menu should read <code class="docutils literal notranslate"><span class="pre">Markdown</span></code>.)</p>
-</div>
-<div class="section" id="edit-and-format-execute-cells">
-<h3>Edit and format / execute cells<a class="headerlink" href="#edit-and-format-execute-cells" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="edit-and-format-execute-cells">
+<h3>Edit and format / execute cells<a class="headerlink" href="#edit-and-format-execute-cells" title="Permalink to this headline">#</a></h3>
 <p>To edit a Markdown cell, <strong>triple-click</strong> within the cell if you currently see a blue bar. The color bar on the left will turn green. Then type and edit as normal.</p>
 <p>To format (“execute”) a Markdown cell, press <strong>Ctrl+Enter</strong> when in “edit” mode. The color bar on the left will turn blue and the cursor will disappear. Your formatting will also take effect.</p>
 <hr class="docutils" />
 <p>To edit a Code cell, click within the cell. The color bar on the left will turn green. Then type and edit as normal.</p>
 <p>To execute a Code cell, press <strong>Ctrl+Enter</strong> while it is selected. The color bar on the left will turn blue and the cursor will disappear.</p>
-</div>
-<div class="section" id="code-cells">
-<h3>Code cells<a class="headerlink" href="#code-cells" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="code-cells">
+<h3>Code cells<a class="headerlink" href="#code-cells" title="Permalink to this headline">#</a></h3>
 <p>So far we’ve only seen Markdown cells. Let’s see what we can do with Code cells! Try selecting the code cell below this one and executing it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -887,13 +975,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>Note that code cells are visually distinct from markdown cells – they have a grey background and the <code class="docutils literal notranslate"><span class="pre">[-]:</span></code> prefix.</p>
-</div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="python-introduction">
-<h1>Python Introduction<a class="headerlink" href="#python-introduction" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="simple-operations">
-<h2>Simple operations<a class="headerlink" href="#simple-operations" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="python-introduction">
+<h1>Python Introduction<a class="headerlink" href="#python-introduction" title="Permalink to this headline">#</a></h1>
+<section id="simple-operations">
+<h2>Simple operations<a class="headerlink" href="#simple-operations" title="Permalink to this headline">#</a></h2>
 <p>We can use python like a calculator to carry out simple operations. Some of these include:</p>
 <ul class="simple">
 <li><p>Simple math operators <code class="docutils literal notranslate"><span class="pre">(+,</span> <span class="pre">-,</span> <span class="pre">*,</span> <span class="pre">/)</span></code></p></li>
@@ -901,8 +989,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Parentheses <code class="docutils literal notranslate"><span class="pre">(,</span> <span class="pre">)</span></code> for grouping operations</p></li>
 <li><p>Python functions; console output <code class="docutils literal notranslate"><span class="pre">print(&quot;Hello&quot;)</span></code></p></li>
 </ul>
-<div class="section" id="q2-average-some-values">
-<h3><strong>q2</strong> Average some values<a class="headerlink" href="#q2-average-some-values" title="Permalink to this headline">¶</a></h3>
+<section id="q2-average-some-values">
+<h3><strong>q2</strong> Average some values<a class="headerlink" href="#q2-average-some-values" title="Permalink to this headline">#</a></h3>
 <p>Use basic python operations to average the following numbers: <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">4,</span> <span class="pre">6,</span> <span class="pre">8]</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -922,10 +1010,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="variables">
-<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">#</a></h2>
 <p>Jupyter notebooks will save variables across different cells. We can assign values with the <code class="docutils literal notranslate"><span class="pre">=</span></code> operator. Furthermore, typing just the variable on the last line of a code cell will typically display the variable’s values/attributes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -936,8 +1024,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="q3-display-a-variable">
-<h3><strong>q3</strong> Display a variable<a class="headerlink" href="#q3-display-a-variable" title="Permalink to this headline">¶</a></h3>
+<section id="q3-display-a-variable">
+<h3><strong>q3</strong> Display a variable<a class="headerlink" href="#q3-display-a-variable" title="Permalink to this headline">#</a></h3>
 <p>Display the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> in the chunk below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -963,10 +1051,10 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <p>You can also see that Code cells with output will have an associated <code class="docutils literal notranslate"><span class="pre">Out</span> <span class="pre">[#]</span></code> right below. Notice what happens to the cell below when the code is running.</p>
-</div>
-</div>
-<div class="section" id="lists">
-<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="lists">
+<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">#</a></h2>
 <p>A <em>list</em> is a Python <a class="reference external" href="https://en.wikipedia.org/wiki/Data_structure">data structure</a>. We’ll use lists (and other <em>iterable</em> data structures) quite a bit when doing data analysis – generally we have many observations (elements) to consider.</p>
 <p>Lists (i.e. arrays) in Python are created with square brackets. The entries of a list are called <em>elements</em>.</p>
 <div class="cell docutils container">
@@ -1006,8 +1094,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>Note that I <em>did not need</em> to write an additional line to print the result. This is because the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator <em>returns</em> a list as a result, which is printed by jupyter.</p>
-<div class="section" id="q4-working-with-lists">
-<h3><strong>q4</strong> Working with lists<a class="headerlink" href="#q4-working-with-lists" title="Permalink to this headline">¶</a></h3>
+<section id="q4-working-with-lists">
+<h3><strong>q4</strong> Working with lists<a class="headerlink" href="#q4-working-with-lists" title="Permalink to this headline">#</a></h3>
 <p>Test your understanding of lists; make a prediction about what the following code will display:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">list_a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">list_b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
@@ -1016,10 +1104,10 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <p><em>After</em> you’ve made a prediction, <strong>make a new cell and test your prediction</strong>.</p>
-</div>
-</div>
-<div class="section" id="indexing-and-slicing">
-<h2>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="indexing-and-slicing">
+<h2>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">#</a></h2>
 <p>We can access specific elements of a list (and other <em>iterables</em>) by <em>indexing</em>. Python is uses zero-based indexing, meaning the first element of an iterable is <code class="docutils literal notranslate"><span class="pre">0</span></code>, the second is <code class="docutils literal notranslate"><span class="pre">1</span></code>, and so on.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Index</span>    <span class="mi">0</span>    <span class="mi">1</span>    <span class="mi">2</span>    <span class="mi">3</span>    <span class="mi">4</span>
 <span class="n">List</span>  <span class="p">[</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span> <span class="p">]</span>
@@ -1081,8 +1169,8 @@ Everything before the second TO LAST element: [0, 1, 2, 3]
 </div>
 </div>
 </div>
-<div class="section" id="q5-take-the-middle">
-<h3><strong>q5</strong> Take the middle<a class="headerlink" href="#q5-take-the-middle" title="Permalink to this headline">¶</a></h3>
+<section id="q5-take-the-middle">
+<h3><strong>q5</strong> Take the middle<a class="headerlink" href="#q5-take-the-middle" title="Permalink to this headline">#</a></h3>
 <p>Using your understanding of python indexing &amp; slicing, select the <em>middle three elements</em> of the following list.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1103,10 +1191,10 @@ Everything before the second TO LAST element: [0, 1, 2, 3]
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="modules">
-<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">#</a></h2>
 <p>By default, python provides a relatively small set of functionality. To carry out more specialized operations, we can <em>import module</em>. A module is a set of tools that help us carry out some tasks. For instance, the following module will help us control the execution of python code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1156,8 +1244,8 @@ Everything before the second TO LAST element: [0, 1, 2, 3]
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="section" id="q6-do-the-math">
-<h3><strong>q6</strong> Do the math<a class="headerlink" href="#q6-do-the-math" title="Permalink to this headline">¶</a></h3>
+<section id="q6-do-the-math">
+<h3><strong>q6</strong> Do the math<a class="headerlink" href="#q6-do-the-math" title="Permalink to this headline">#</a></h3>
 <p>Import the functions <code class="docutils literal notranslate"><span class="pre">sin,</span> <span class="pre">cos</span></code> and the constant <code class="docutils literal notranslate"><span class="pre">pi</span></code> from the <code class="docutils literal notranslate"><span class="pre">math</span></code> module, and use them to complete the following code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1187,10 +1275,10 @@ Everything before the second TO LAST element: [0, 1, 2, 3]
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="conditionals-and-logic">
-<h2>Conditionals and logic<a class="headerlink" href="#conditionals-and-logic" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="conditionals-and-logic">
+<h2>Conditionals and logic<a class="headerlink" href="#conditionals-and-logic" title="Permalink to this headline">#</a></h2>
 <p>Conditionals and logic allow us to adapt a program to the data.  Python conditional statements are <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code>, and <code class="docutils literal notranslate"><span class="pre">else</span></code>, and they follow a particular syntax:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1243,9 +1331,9 @@ Everything before the second TO LAST element: [0, 1, 2, 3]
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h2>
 <p>Functions are defined in Python using the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword. We specify the arguments by putting variable names in the parentheses <code class="docutils literal notranslate"><span class="pre">()</span></code>. We can specify a value to provide as output by using the <code class="docutils literal notranslate"><span class="pre">return</span></code> keyword, as demonstrated below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fcn_example</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
@@ -1266,8 +1354,8 @@ Everything before the second TO LAST element: [0, 1, 2, 3]
 </pre></div>
 </div>
 <p>The inputs <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are called <em>arguments</em>. Arguments without default values must be provided (such as <code class="docutils literal notranslate"><span class="pre">x</span></code>), while arguments with default values are called <em>keyword arguments</em> and do not need to be specified when calling the function (such as <code class="docutils literal notranslate"><span class="pre">y</span></code>). Providing a keyword argument (<code class="docutils literal notranslate"><span class="pre">fcn_example(1,</span> <span class="pre">y=2)</span></code>) allows us to override the default value.</p>
-<div class="section" id="q7-define-a-function">
-<h3><strong>q7</strong> Define a function<a class="headerlink" href="#q7-define-a-function" title="Permalink to this headline">¶</a></h3>
+<section id="q7-define-a-function">
+<h3><strong>q7</strong> Define a function<a class="headerlink" href="#q7-define-a-function" title="Permalink to this headline">#</a></h3>
 <p>Define a function named <code class="docutils literal notranslate"><span class="pre">fcn_q7</span></code> that takes a single input, adds <code class="docutils literal notranslate"><span class="pre">2</span></code>, and returns the result.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1284,10 +1372,10 @@ Everything before the second TO LAST element: [0, 1, 2, 3]
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="getting-help">
-<h2>Getting help<a class="headerlink" href="#getting-help" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="getting-help">
+<h2>Getting help<a class="headerlink" href="#getting-help" title="Permalink to this headline">#</a></h2>
 <p>If there is a python function that is mysterious to you, you can always consult the <em>documentation</em>. You can call the python built-in <code class="docutils literal notranslate"><span class="pre">help()</span></code> function on an object to display its documentation. The following documentation for <code class="docutils literal notranslate"><span class="pre">list</span></code> points to a number of functions that operate on lists that we did not cover; for instance, the <code class="docutils literal notranslate"><span class="pre">list.sort()</span></code> method is <em>extremely useful</em> for data science.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1317,8 +1405,8 @@ sort(self, /, *, key=None, reverse=False)
 <p class="admonition-title">Jupyter help shortcut</p>
 <p>Note that in Jupyter, there’s another way to access documentation on a function. If you move your cursor over a function, click there, and press <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Tab</span></code>, this will open a documentation panel for easy reference!</p>
 </div>
-<div class="section" id="q8-consult-the-documentation">
-<h3><strong>q8</strong> Consult the documentation<a class="headerlink" href="#q8-consult-the-documentation" title="Permalink to this headline">¶</a></h3>
+<section id="q8-consult-the-documentation">
+<h3><strong>q8</strong> Consult the documentation<a class="headerlink" href="#q8-consult-the-documentation" title="Permalink to this headline">#</a></h3>
 <p>Consult the documentation for <code class="docutils literal notranslate"><span class="pre">list.sort()</span></code> to reverse-sort the following list.</p>
 <p><em>Hint</em>: You will need to set a certain keyword argument to complete this task.</p>
 <div class="cell docutils container">
@@ -1338,28 +1426,28 @@ sort(self, /, *, key=None, reverse=False)
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="end-notes">
-<h1>End Notes<a class="headerlink" href="#end-notes" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="end-notes">
+<h1>End Notes<a class="headerlink" href="#end-notes" title="Permalink to this headline">#</a></h1>
 <p>The following notes are not required, but you may find these additional Jupyter tips helpsul.</p>
-<div class="section" id="save-close-quit-and-re-open-this-notebook">
-<h2>Save, close, quit, and re-open this notebook<a class="headerlink" href="#save-close-quit-and-re-open-this-notebook" title="Permalink to this headline">¶</a></h2>
+<section id="save-close-quit-and-re-open-this-notebook">
+<h2>Save, close, quit, and re-open this notebook<a class="headerlink" href="#save-close-quit-and-re-open-this-notebook" title="Permalink to this headline">#</a></h2>
 <p>You can save by clicking the floppy-disk icon in the top-left of this notebook pane, and can close the notebook by clicking the “X” of its tab. Re-open by double-clicking on <code class="docutils literal notranslate"><span class="pre">e-data00-notebooks-assignment.ipynb</span></code> in the left-hand navigation pane.</p>
 <p>You should find that everything is exactly as you had left it! You will have to re-run the cells to load variables, but having the output saved can be helpful, particularly since Jupyter saves figures.</p>
-</div>
-<div class="section" id="additional-notebook-tips">
-<h2>Additional notebook tips<a class="headerlink" href="#additional-notebook-tips" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="additional-notebook-tips">
+<h2>Additional notebook tips<a class="headerlink" href="#additional-notebook-tips" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Save your notebooks frequently! Use the “<strong>Save</strong>” icon at the top or the <strong>Ctrl+S</strong>/<strong>Cmd+S</strong> shortcut.</p></li>
 <li><p>Use <strong>Shift+Enter</strong> to run a cell and move on to the next cell. This allows you to sequentially execute all the cells in your notebook.</p></li>
 <li><p><strong>Restart &amp; Clear Output</strong>. This option is found under the <em>Kernel</em> menu. It is extremely helpful to reset all code cell executions, stale package imports, and variable values.</p></li>
 <li><p>Take the time to explore other menu options and tinker around. There’s a ton of <a class="reference external" href="https://www.cheatography.com/weidadeyue/cheat-sheets/jupyter-notebook/pdf_bw/">keyboard shortcuts</a> and <a class="reference external" href="https://towardsdatascience.com/how-to-effortlessly-optimize-jupyter-notebooks-e864162a06ee">nifty customizations</a> you can do with notebooks.</p></li>
 </ul>
-</div>
-<div class="section" id="jupyter-magic-functions">
-<h2>Jupyter magic functions<a class="headerlink" href="#jupyter-magic-functions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="jupyter-magic-functions">
+<h2>Jupyter magic functions<a class="headerlink" href="#jupyter-magic-functions" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://ipython.readthedocs.io/en/stable/interactive/magics.html">Magic functions</a> are a set of commands exclusively for Jupyter notebooks that are part of what makes notebooks so powerful. All magic commands start with a <code class="docutils literal notranslate"><span class="pre">%</span></code> sign, and we give examples of some below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1467,8 +1555,8 @@ time	 var
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1492,9 +1580,11 @@ time	 var
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../frontmatter/exercises.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1510,24 +1600,28 @@ time	 var
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Zachary del Rosario<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Zachary del Rosario<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

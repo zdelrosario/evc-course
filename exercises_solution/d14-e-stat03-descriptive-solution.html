@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Stats: Descriptive Statistics &#8212; Data Science for Engineers</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -39,12 +37,13 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -64,7 +63,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -73,9 +86,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
       
@@ -88,14 +102,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/home.html">
-   Data Science for Engineers
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../frontmatter/home.html">
+                    Data Science for Engineers
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../frontmatter/setup.html">
    Software Setup
@@ -261,91 +276,164 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/exercises_solution/d14-e-stat03-descriptive-solution.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d14-e-stat03-descriptive-solution.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d14-e-stat03-descriptive-solution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/exercises_solution/d14-e-stat03-descriptive-solution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Stats: Descriptive Statistics
@@ -478,12 +566,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Stats: Descriptive Statistics</h1>
@@ -632,14 +719,15 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="stats-descriptive-statistics">
-<h1>Stats: Descriptive Statistics<a class="headerlink" href="#stats-descriptive-statistics" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="stats-descriptive-statistics">
+<h1>Stats: Descriptive Statistics<a class="headerlink" href="#stats-descriptive-statistics" title="Permalink to this headline">#</a></h1>
 <p><em>Purpose</em>: We will use <em>descriptive statistics</em> to make quantitative summaries of a dataset. Descriptive statistics provide a much more compact description than a visualization, and are important when a data consumer wants “just one number”. However, there are many subtleties to working with descriptive statistics, which we’ll discuss in this exercise.</p>
-<div class="section" id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
@@ -650,10 +738,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="statistics">
-<h1>Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="statistics">
+<h1>Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline">#</a></h1>
 <p>A <em>statistic</em> is a numerical summary of a sample. Statistics are useful because they provide a useful summary about our data. A histogram gives us a rich summary of a datset: for example the departure delay time in the NYC flight data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -692,8 +780,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>How much does departure delay <em>co-vary</em> with distance? (Dependence)</p></li>
 </ul>
 <p>We can give quantitative answers to all these questions using statistics!</p>
-<div class="section" id="central-tendency">
-<h2>Central Tendency<a class="headerlink" href="#central-tendency" title="Permalink to this headline">¶</a></h2>
+<section id="central-tendency">
+<h2>Central Tendency<a class="headerlink" href="#central-tendency" title="Permalink to this headline">#</a></h2>
 <p><em>Central tendency</em> is the idea of where data tend to be “located”—this concept is also called <em>location</em>. It is best thought of as the “center” of the data. The following graph illustrates central tendency, as operationalized by the <em>mean</em> and <em>median</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -827,8 +915,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>The median is in the bulk of the negative values, while the mean is pulled higher by the long right tail of the distribution.</p>
-<div class="section" id="q1-compare-conclusions-from-mean-and-median">
-<h3><strong>q1</strong> Compare conclusions from mean and median<a class="headerlink" href="#q1-compare-conclusions-from-mean-and-median" title="Permalink to this headline">¶</a></h3>
+<section id="q1-compare-conclusions-from-mean-and-median">
+<h3><strong>q1</strong> Compare conclusions from mean and median<a class="headerlink" href="#q1-compare-conclusions-from-mean-and-median" title="Permalink to this headline">#</a></h3>
 <p>The following code computes the mean and median <code class="docutils literal notranslate"><span class="pre">dep_delay</span></code> for each carrier, and sorts based on mean. Duplicate the code, and sort by median instead. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -995,10 +1083,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-<!-- solution-end --></div>
-</div>
-<div class="section" id="aside-some-variable-names-are-tricky">
-<h2>Aside: Some variable names are tricky…<a class="headerlink" href="#aside-some-variable-names-are-tricky" title="Permalink to this headline">¶</a></h2>
+<!-- solution-end --></section>
+</section>
+<section id="aside-some-variable-names-are-tricky">
+<h2>Aside: Some variable names are tricky…<a class="headerlink" href="#aside-some-variable-names-are-tricky" title="Permalink to this headline">#</a></h2>
 <p>There’s an issue we’ll start to run into as we start naming columns the same as builtin functions. For instance, the following code will throw an error:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1021,8 +1109,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>The issue here is a bit technical, but it boils down to the fact that <code class="docutils literal notranslate"><span class="pre">mean</span></code> is now a column of the DataFrame, but also a <em>method</em> that we can call as a function <code class="docutils literal notranslate"><span class="pre">df.mean()</span></code>.</p>
 <p>There’s a way around this issue, which is to access the column through bracket notation <code class="docutils literal notranslate"><span class="pre">df[&quot;column&quot;]</span></code> rather than dot notation <code class="docutils literal notranslate"><span class="pre">df.column</span></code>. This will correctly access the column <code class="docutils literal notranslate"><span class="pre">mean</span></code> rather than the method <code class="docutils literal notranslate"><span class="pre">mean()</span></code>.</p>
-<div class="section" id="q2-fix-this-code">
-<h3><strong>q2</strong> Fix this code<a class="headerlink" href="#q2-fix-this-code" title="Permalink to this headline">¶</a></h3>
+<section id="q2-fix-this-code">
+<h3><strong>q2</strong> Fix this code<a class="headerlink" href="#q2-fix-this-code" title="Permalink to this headline">#</a></h3>
 <p>Use bracket <code class="docutils literal notranslate"><span class="pre">[]</span></code> notation to access the <code class="docutils literal notranslate"><span class="pre">&quot;mean&quot;</span></code> column and fix the code below.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
@@ -1071,10 +1159,10 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </div></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="multi-modality">
-<h2>Multi-modality<a class="headerlink" href="#multi-modality" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="multi-modality">
+<h2>Multi-modality<a class="headerlink" href="#multi-modality" title="Permalink to this headline">#</a></h2>
 <p>It may not seem like it, but we’re actually <em>making an assumption</em> when we use the mean (or median) as a typical value. Imagine we had the following data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1114,9 +1202,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>Here the mean and median are both close to zero, but <em>zero is an atypical number</em>! This is partly why we don’t <em>only</em> compute descriptive statistics, but also do a deeper dive into our data. Here, we should probably refuse to give a single typical value; instead, it seems there might really be two populations showing up in the same dataset, so we can give two typical numbers, say <code class="docutils literal notranslate"><span class="pre">-2,</span> <span class="pre">+2</span></code>.</p>
-</div>
-<div class="section" id="quantiles">
-<h2>Quantiles<a class="headerlink" href="#quantiles" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="quantiles">
+<h2>Quantiles<a class="headerlink" href="#quantiles" title="Permalink to this headline">#</a></h2>
 <p>Before we can talk about spread, we need to talk about <em>quantiles</em>. A <a class="reference external" href="https://en.wikipedia.org/wiki/Quantile">quantile</a> is a value that separates a user-specified fraction of data (or a distribution). For instance, the median is the <span class="math notranslate nohighlight">\(50\%\)</span> quantile; thus <span class="math notranslate nohighlight">\(\text{Median}[X] = Q_{0.5}[X]\)</span>. We can generalize this idea to talk about any quantile between <span class="math notranslate nohighlight">\(0\%\)</span> and <span class="math notranslate nohighlight">\(100\%\)</span>.</p>
 <p>The following graph visualizes the <span class="math notranslate nohighlight">\(25\%, 50\%, 75\%\)</span> quantiles of a standard normal. Since these are the quarter-quantiles (<span class="math notranslate nohighlight">\(1/4, 2/4, 3/4\)</span>), these are often called the <em>quartiles</em>.</p>
 <div class="cell docutils container">
@@ -1204,8 +1292,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="math notranslate nohighlight">
 \[IQR[X] = Q_{0.75}[X] - Q_{0.25}[X],\]</div>
 <p>where <span class="math notranslate nohighlight">\(Q_{p}[X]\)</span> is the <span class="math notranslate nohighlight">\(p\)</span>-th quantile of a sample <span class="math notranslate nohighlight">\(X\)</span>.</p>
-<div class="section" id="q3-compute-the-iqr">
-<h3><strong>q3</strong> Compute the IQR<a class="headerlink" href="#q3-compute-the-iqr" title="Permalink to this headline">¶</a></h3>
+<section id="q3-compute-the-iqr">
+<h3><strong>q3</strong> Compute the IQR<a class="headerlink" href="#q3-compute-the-iqr" title="Permalink to this headline">#</a></h3>
 <p>Using the function <code class="docutils literal notranslate"><span class="pre">quantile</span></code>, compute the <em>interquartile range</em>; this is the difference between the <span class="math notranslate nohighlight">\(75%\)</span> and <span class="math notranslate nohighlight">\(25%\)</span> quantiles. Provide this as a column called <code class="docutils literal notranslate"><span class="pre">iqr</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1237,10 +1325,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="spread">
-<h2>Spread<a class="headerlink" href="#spread" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="spread">
+<h2>Spread<a class="headerlink" href="#spread" title="Permalink to this headline">#</a></h2>
 <p><em>Spread</em> is the concept of how tightly or widely data are <em>spread out</em>. There are two primary measures of spread: the <em>standard deviation</em>, and the <em>interquartile range</em>.</p>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Standard_deviation">standard deviation</a> (SD) is denoted by <span class="math notranslate nohighlight">\(s\)</span> and defined by</p>
 <div class="math notranslate nohighlight">
@@ -1301,8 +1389,8 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </div></div></div>
 </div>
-<div class="section" id="q4-compare-conclusions-from-sd-and-iqr">
-<h3><strong>q4</strong> Compare conclusions from sd and IQR<a class="headerlink" href="#q4-compare-conclusions-from-sd-and-iqr" title="Permalink to this headline">¶</a></h3>
+<section id="q4-compare-conclusions-from-sd-and-iqr">
+<h3><strong>q4</strong> Compare conclusions from sd and IQR<a class="headerlink" href="#q4-compare-conclusions-from-sd-and-iqr" title="Permalink to this headline">#</a></h3>
 <p>Using the code from q2 as a starting point, compute the standard deviation (<code class="docutils literal notranslate"><span class="pre">sd()</span></code>) and interquartile range (<code class="docutils literal notranslate"><span class="pre">IQR()</span></code>), and rank the top five carriers, this time by sd and IQR. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1374,10 +1462,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-<!-- solution-end --></div>
-</div>
-<div class="section" id="dependence">
-<h2>Dependence<a class="headerlink" href="#dependence" title="Permalink to this headline">¶</a></h2>
+<!-- solution-end --></section>
+</section>
+<section id="dependence">
+<h2>Dependence<a class="headerlink" href="#dependence" title="Permalink to this headline">#</a></h2>
 <p>So far, we’ve talked about descriptive statistics to consider one variable at a time. To conclude, we’ll talk about statistics to consider <em>dependence</em> between two variables in a dataset.</p>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Correlation_and_dependence">Dependence</a>—like location or spread—is a general idea of relation between two variables. For instance, when it comes to flights we’d expect trips between more distant airports to take longer. If we plot <code class="docutils literal notranslate"><span class="pre">distance</span></code> vs <code class="docutils literal notranslate"><span class="pre">air_time</span></code> in a scatterplot, we indeed see this dependence.</p>
 <div class="cell docutils container">
@@ -1504,8 +1592,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div></div></div>
 </div>
 <p>In the case of a <em>perfect linear relationships</em> the Pearson correlation takes the value <span class="math notranslate nohighlight">\(+1\)</span> (for a positive slope) or <span class="math notranslate nohighlight">\(-1\)</span> for a negative slope.</p>
-<div class="section" id="q5-build-your-intuition-for-correlation">
-<h3><strong>q5</strong> Build your intuition for correlation<a class="headerlink" href="#q5-build-your-intuition-for-correlation" title="Permalink to this headline">¶</a></h3>
+<section id="q5-build-your-intuition-for-correlation">
+<h3><strong>q5</strong> Build your intuition for correlation<a class="headerlink" href="#q5-build-your-intuition-for-correlation" title="Permalink to this headline">#</a></h3>
 <p>Compute the Pearson correlation between <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code> below. Play with the <code class="docutils literal notranslate"><span class="pre">slope</span></code> and observe the change in the correlation. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1638,9 +1726,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>One more note about functional relationships: Neither Pearson nor Spearman can pick up on arbitrary dependencies.</p>
-</div>
-<div class="section" id="q6-make-a-prediction">
-<h3><strong>q6</strong> Make a prediction<a class="headerlink" href="#q6-make-a-prediction" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="q6-make-a-prediction">
+<h3><strong>q6</strong> Make a prediction<a class="headerlink" href="#q6-make-a-prediction" title="Permalink to this headline">#</a></h3>
 <p>Run the code chunk below and look at the visualization: Make a prediction about what you think the correlation will be. Then compute the Pearson correlation between <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1755,16 +1843,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="real-variability-vs-error">
-<h1>Real Variability vs Error<a class="headerlink" href="#real-variability-vs-error" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="real-variability-vs-error">
+<h1>Real Variability vs Error<a class="headerlink" href="#real-variability-vs-error" title="Permalink to this headline">#</a></h1>
 <p>As we’ve seen in this exercise, we are making <strong>modeling assumptions</strong> even when we do simple things like compute and use the mean. We should use multiple analyses—such as multiple statistics and visual inspection—to fully make sense of a dataset.</p>
 <p>However, beyond simply treating the data as a set of numbers, we should also think critically about what the data <em>mean</em>, and what the sources of variability might be. Recall that sources of variability can be either <a class="reference external" href="https://zdelrosario.github.io/evc-course/exercises_solution/d08-e-stat02-source-solution.html">real or erroneous</a>; that is, the source either affect the physical system we are studying, or it can represent corrupted measurements. Most likely, the variability we see is a combination of both real and erroneous sources.</p>
 <p>To close out this exercise, let’s practice reasoning about sources of variability and choosing appropriate statistics for our analysis.</p>
-<div class="section" id="q7-reason-about-sources-of-variability">
-<h2><strong>q7</strong> Reason about sources of variability<a class="headerlink" href="#q7-reason-about-sources-of-variability" title="Permalink to this headline">¶</a></h2>
+<section id="q7-reason-about-sources-of-variability">
+<h2><strong>q7</strong> Reason about sources of variability<a class="headerlink" href="#q7-reason-about-sources-of-variability" title="Permalink to this headline">#</a></h2>
 <p>Choose a set of statistics to compute for the <code class="docutils literal notranslate"><span class="pre">dep_delay</span></code> column. Answer the questions under <em>observations</em> below. Note that you will need to compute multiple statistics <em>in response</em> to the questions below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1833,9 +1921,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-<!-- solution-end --></div>
-<div class="section" id="q8-select-the-most-consistent-airline">
-<h2><strong>q8</strong> Select the most consistent airline<a class="headerlink" href="#q8-select-the-most-consistent-airline" title="Permalink to this headline">¶</a></h2>
+<!-- solution-end --></section>
+<section id="q8-select-the-most-consistent-airline">
+<h2><strong>q8</strong> Select the most consistent airline<a class="headerlink" href="#q8-select-the-most-consistent-airline" title="Permalink to this headline">#</a></h2>
 <p>Take a look at the questions under <em>observations</em> below; compute the statistics necessary to answer the following questions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2040,8 +2128,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-<!-- solution-end --></div>
-</div>
+<!-- solution-end --></section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2065,9 +2153,11 @@ const thebe_selector_output = ".output, .cell_output"
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="d13-e-vis04-lines-solution.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -2083,24 +2173,28 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Zachary del Rosario<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Zachary del Rosario<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
