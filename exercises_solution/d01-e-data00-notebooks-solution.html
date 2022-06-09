@@ -946,17 +946,18 @@ title="Print to PDF"
 <section id="types-of-cells">
 <h3>Types of cells<a class="headerlink" href="#types-of-cells" title="Permalink to this headline">#</a></h3>
 <p>There are two types of cells we will discuss here: <code class="docutils literal notranslate"><span class="pre">Markdown</span></code> and <code class="docutils literal notranslate"><span class="pre">Code</span></code>. A single cell can only have 1 type.</p>
-<p><strong>Markdown</strong>: These are text cells that use the Markdown language for formatting. You can put instructions, headings, links, images, and much more; even <span class="math notranslate nohighlight">\(\LaTeX\)</span> (<a class="reference external" href="https://www.latex-project.org">a language for typesetting mathematics</a>). Here is a <a class="reference external" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">cheatsheet</a> for Markdown syntax.</p>
-<p><strong>Code</strong>: These are cells where you can type Python code, just as you would in a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file. They will have a label <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[</span> <span class="pre">]:</span></code> to their left.</p>
-<p>To switch the type of cell, you can use the dropdown menu at the top of the cell. (Note: While you’re moused-over this cell, the dropdown menu should read <code class="docutils literal notranslate"><span class="pre">Markdown</span></code>.)</p>
+<p><strong>Markdown</strong>: These are text cells that use the <a class="reference external" href="https://en.wikipedia.org/wiki/Markdown">Markdown language</a> for formatting. You can put instructions, headings, links, images, and much more; even <span class="math notranslate nohighlight">\(\LaTeX\)</span> (<a class="reference external" href="https://www.latex-project.org">a language for typesetting mathematics</a>). Here is a <a class="reference external" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">cheatsheet</a> for Markdown syntax.</p>
+<p><strong>Code</strong>: These are cells where you can type Python code, just as you would in a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file. They will have a label <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[</span> <span class="pre">]:</span></code> to their left, or just <code class="docutils literal notranslate"><span class="pre">[]</span></code> if you are using “jupyter lab”.</p>
+<p>To switch the type of cell, you can use the dropdown menu at the top of the top of the page. (Note: While you have this cell selected, the dropdown menu should read <code class="docutils literal notranslate"><span class="pre">Markdown</span></code>.)</p>
 </section>
 <section id="edit-and-format-execute-cells">
 <h3>Edit and format / execute cells<a class="headerlink" href="#edit-and-format-execute-cells" title="Permalink to this headline">#</a></h3>
-<p>To edit a Markdown cell, <strong>triple-click</strong> within the cell if you currently see a blue bar. The color bar on the left will turn green. Then type and edit as normal.</p>
-<p>To format (“execute”) a Markdown cell, press <strong>Ctrl+Enter</strong> when in “edit” mode. The color bar on the left will turn blue and the cursor will disappear. Your formatting will also take effect.</p>
+<p>To edit a Markdown cell, <strong>triple-click</strong> within the cell if you currently see a blue bar. Then type and edit as normal.</p>
+<p>To format (“execute”) a Markdown cell, press <strong>Ctrl+Enter</strong> when in “edit” mode. The cursor will disappear. Your formatting will also take effect.</p>
 <hr class="docutils" />
-<p>To edit a Code cell, click within the cell. The color bar on the left will turn green. Then type and edit as normal.</p>
-<p>To execute a Code cell, press <strong>Ctrl+Enter</strong> while it is selected. The color bar on the left will turn blue and the cursor will disappear.</p>
+<p>To edit a Code cell, click within the cell. Then type and edit as normal.</p>
+<p>To execute a Code cell, press <strong>Ctrl+Enter</strong> while it is selected. The cursor will disappear.</p>
+<p><em>Cells can also be executed using the Run symbol (play button) at the top of the page.</em></p>
 </section>
 <section id="code-cells">
 <h3>Code cells<a class="headerlink" href="#code-cells" title="Permalink to this headline">#</a></h3>
@@ -1146,7 +1147,7 @@ l[-2] = b
 </div>
 </div>
 </div>
-<p>In Python, it’s easy to take subsets of lists and strings (i.e. substrings) using <strong>slicing</strong>. Given a list (string) named <code class="docutils literal notranslate"><span class="pre">var</span></code>, we can take a subset of elements (characters) ranging from <code class="docutils literal notranslate"><span class="pre">low</span></code> to <code class="docutils literal notranslate"><span class="pre">high-1</span></code> with the syntax <code class="docutils literal notranslate"><span class="pre">var[low:high]</span></code>. Run the following code and observe what happens.</p>
+<p>In Python, it’s easy to take subsets of lists and strings (i.e. substrings) using <strong>slicing</strong>. Given a list (string) named <code class="docutils literal notranslate"><span class="pre">var</span></code>, we can take a subset of elements (characters) ranging from <code class="docutils literal notranslate"><span class="pre">low</span></code> to <code class="docutils literal notranslate"><span class="pre">high-1</span></code> with the syntax <code class="docutils literal notranslate"><span class="pre">var[low:high]</span></code>. It can be helpful to remember that the <code class="docutils literal notranslate"><span class="pre">high</span></code> value represents the first value that is not in the selected slice. Run the following code and observe what happens.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
@@ -1368,6 +1369,7 @@ Everything before the second TO LAST element: [0, 1, 2, 3]
 <span class="k">assert</span> \
     <span class="n">fcn_q7</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">,</span> \
     <span class="s2">&quot;Incorrect value&quot;</span>
+<span class="s2">&quot;Correct value&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -1431,7 +1433,7 @@ sort(self, /, *, key=None, reverse=False)
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="end-notes">
 <h1>End Notes<a class="headerlink" href="#end-notes" title="Permalink to this headline">#</a></h1>
-<p>The following notes are not required, but you may find these additional Jupyter tips helpsul.</p>
+<p>The following notes are not required, but you may find these additional Jupyter tips helpful.</p>
 <section id="save-close-quit-and-re-open-this-notebook">
 <h2>Save, close, quit, and re-open this notebook<a class="headerlink" href="#save-close-quit-and-re-open-this-notebook" title="Permalink to this headline">#</a></h2>
 <p>You can save by clicking the floppy-disk icon in the top-left of this notebook pane, and can close the notebook by clicking the “X” of its tab. Re-open by double-clicking on <code class="docutils literal notranslate"><span class="pre">e-data00-notebooks-assignment.ipynb</span></code> in the left-hand navigation pane.</p>

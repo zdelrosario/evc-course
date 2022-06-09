@@ -740,7 +740,7 @@ title="Print to PDF"
 <p>Recreate the following plot using <code class="docutils literal notranslate"><span class="pre">geom_col()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Convert this plot to use geom_cols()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Convert this plot to use geom_col()</span>
 
 <span class="p">(</span>
     <span class="n">df_mpg</span>
@@ -997,9 +997,11 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: No need to edit; run and inspect</span>
+<span class="c1"># NOTE: the &quot;drv&quot; variable represent the &quot;drivetrain&quot; for each vehicle entry</span>
+<span class="c1"># where r is rear, f is front, and 4 is 4-wheel/all wheel drive</span>
 <span class="p">(</span>
     <span class="n">df_mpg</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;drv&quot;</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;drv&quot;</span><span class="p">))</span> 
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_bar</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
