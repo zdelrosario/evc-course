@@ -1950,7 +1950,7 @@ title="Print to PDF"
 <span class="p">)</span>
 </pre></div>
 </div>
-<p><em>Aside</em>: Most of the grama functions we’ll use in this exercise start with the <code class="docutils literal notranslate"><span class="pre">tf_</span></code> prefix; this means they take in a DataFrame and return a DataFrame (they <code class="docutils literal notranslate"><span class="pre">tr</span></code>ansform data).</p>
+<p><em>Aside</em>: Most of the grama functions we’ll use in this exercise start with the <code class="docutils literal notranslate"><span class="pre">tf_</span></code> prefix; this means they take in a DataFrame and return a DataFrame (they <code class="docutils literal notranslate"><span class="pre">t</span></code>rans<code class="docutils literal notranslate"><span class="pre">f</span></code>orm data).</p>
 <section id="q2-convert-to-piped-code">
 <h2><strong>q2</strong> Convert to piped code<a class="headerlink" href="#q2-convert-to-piped-code" title="Permalink to this headline">#</a></h2>
 <p>Convert the following code to a pipe-enabled version.</p>
@@ -2237,7 +2237,7 @@ title="Print to PDF"
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="column-selection">
 <h1>Column Selection<a class="headerlink" href="#column-selection" title="Permalink to this headline">#</a></h1>
-<p>The grama function <code class="docutils literal notranslate"><span class="pre">gr.tf_select()</span></code> allows us to select particular columns, which is helpful for getting a more “focused” view of a datset.</p>
+<p>The grama function <code class="docutils literal notranslate"><span class="pre">gr.tf_select()</span></code> allows us to select particular columns, which is helpful for getting a more “focused” view of a dataset.</p>
 <section id="q3-select-particular-columns">
 <h2><strong>q3</strong> Select particular columns<a class="headerlink" href="#q3-select-particular-columns" title="Permalink to this headline">#</a></h2>
 <p>Select the columns “month”, “day”, “origin”, and “dest”.</p>
@@ -3253,7 +3253,7 @@ Name: origin, Length: 336776, dtype: object
 </div>
 </div>
 </div>
-<p>Note that returns a different datatype: a Pandas <em>series</em>.</p>
+<p>Note that this returns a different datatype: a Pandas <em>series</em>.</p>
 </section>
 <section id="making-a-comparison">
 <h2>Making a comparison<a class="headerlink" href="#making-a-comparison" title="Permalink to this headline">#</a></h2>
@@ -5157,6 +5157,7 @@ Name: origin, Length: 336776, dtype: bool
 <section id="q9-what-are-these-data-for">
 <h2><strong>q9</strong> What are these data for?<a class="headerlink" href="#q9-what-are-these-data-for" title="Permalink to this headline">#</a></h2>
 <p>What are these data for? In particular, in what way are they “focused on the NYC area”? Complete the following tasks, and answer the questions under <em>observations</em> below.</p>
+<p><em>Hint</em>: You might find it helpful to use the <code class="docutils literal notranslate"><span class="pre">or</span></code> operator using the symbol <code class="docutils literal notranslate"><span class="pre">|</span></code>. The <code class="docutils literal notranslate"><span class="pre">or</span></code> keyword does not work inside a <code class="docutils literal notranslate"><span class="pre">gr.tf_filter()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK: Filter to only those cases where the destination airport</span>
