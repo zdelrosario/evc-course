@@ -4,6 +4,7 @@ sections:
 - file: frontmatter/setup
 - file: frontmatter/howto
 - file: frontmatter/schedule
+- file: frontmatter/submission
 - file: frontmatter/exercises
   sections:
   - glob: exercises_solution/*solution
