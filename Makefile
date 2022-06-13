@@ -6,6 +6,7 @@ main:
 	cp -rf exercises/images exercises_solution/.
 	cd challenges; make
 	cp challenges/*assignment.ipynb challenges_assignment/.
+	cp challenges/boat_utils.py challenges_assignment/.
 	cp -fr challenges/data challenges_assignment/.
 	cp -rf challenges/images challenges_assignment/.
 
