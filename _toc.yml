@@ -6,6 +6,9 @@ sections:
 - file: frontmatter/schedule
 - file: frontmatter/submission
 - file: frontmatter/recordings
+- file: frontmatter/demos
+  sections:
+  - file: demos/demo2022-06-20-1
 - file: frontmatter/hours
 - file: frontmatter/exercises
   sections:
