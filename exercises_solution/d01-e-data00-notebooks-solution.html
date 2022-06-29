@@ -655,6 +655,11 @@ title="Print to PDF"
        Consult the documentation
       </a>
      </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q9-use-tab-completion">
+       q9 Use tab completion
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
@@ -887,6 +892,11 @@ title="Print to PDF"
         q8
        </strong>
        Consult the documentation
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q9-use-tab-completion">
+       q9 Use tab completion
       </a>
      </li>
     </ul>
@@ -1405,6 +1415,11 @@ Everything before the second TO LAST element: [0, 1, 2, 3]
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Correct value&#39;
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1460,6 +1475,32 @@ sort(self, /, *, key=None, reverse=False)
 </div>
 </div>
 </div>
+<p>Pressing <code class="docutils literal notranslate"><span class="pre">Tab</span></code> (<em>without</em> holding <code class="docutils literal notranslate"><span class="pre">Shift</span></code>) will perform <em>tab completion</em>. This is useful to both save yourself some typing, and to help you remember variable and function names while you’re working. If there are multiple variables or functions with similar names, you’ll see a menu of selections. You can use the arrow keys to select, and press <code class="docutils literal notranslate"><span class="pre">Enter</span></code> to make your selection.</p>
+<p><img alt="If there are multiple options, tab completion will show you all possibilities." src="../_images/data00-tab-completion.png" /></p>
+<p>Practice using tab completion below.</p>
+</section>
+<section id="q9-use-tab-completion">
+<h3>q9 Use tab completion<a class="headerlink" href="#q9-use-tab-completion" title="Permalink to this headline">#</a></h3>
+<p>Uncomment the lines below and use tab completion to complete the variable names.</p>
+<p><em>Hint</em>: Make sure your cursor is at the <strong>end</strong> of the line when you press <code class="docutils literal notranslate"><span class="pre">Tab</span></code>; otherwise you’ll indent the line!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Uncomment the following code, </span>
+<span class="c1">#  use `Tab` (without Shift!) to complete</span>
+<span class="c1">#  the variable name</span>
+
+<span class="n">l_rev</span>
+
+<span class="n">my_cosine</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9659258262890683
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -1493,11 +1534,11 @@ sort(self, /, *, key=None, reverse=False)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 174 µs, sys: 27 µs, total: 201 µs
-Wall time: 206 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 85 µs, sys: 35 µs, total: 120 µs
+Wall time: 124 µs
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.442
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.487
 </pre></div>
 </div>
 </div>
@@ -1544,47 +1585,79 @@ time	 var
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;TERM_PROGRAM&#39;: &#39;Apple_Terminal&#39;,
- &#39;SHELL&#39;: &#39;/bin/zsh&#39;,
- &#39;TERM&#39;: &#39;xterm-color&#39;,
- &#39;TMPDIR&#39;: &#39;/var/folders/xv/k5cp232j1cn3y8kym53_nnkc0000gn/T/&#39;,
- &#39;TERM_PROGRAM_VERSION&#39;: &#39;433&#39;,
- &#39;TERM_SESSION_ID&#39;: &#39;01564885-A099-4817-BABF-CA2FF06726FF&#39;,
- &#39;USER&#39;: &#39;zach&#39;,
- &#39;SSH_AUTH_SOCK&#39;: &#39;/private/tmp/com.apple.launchd.579xXmwCdD/Listeners&#39;,
- &#39;PATH&#39;: &#39;/Users/zach/opt/anaconda3/bin:/Users/zach/opt/anaconda3/condabin:/Users/zach/Git/pyutil/pyutil/tex:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin&#39;,
- &#39;LaunchInstanceID&#39;: &#39;D8670BB0-CDD5-4DD6-B831-89F4FCCA4381&#39;,
- &#39;PWD&#39;: &#39;/Users/zach/Git/Olin/evc-course&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;GJS_DEBUG_TOPICS&#39;: &#39;JS ERROR;JS LOG&#39;,
+ &#39;SSH_AUTH_SOCK&#39;: &#39;/run/user/1000/keyring/ssh&#39;,
+ &#39;SESSION_MANAGER&#39;: &#39;local/squire:@/tmp/.ICE-unix/1806,unix/squire:/tmp/.ICE-unix/1806&#39;,
+ &#39;GNOME_TERMINAL_SCREEN&#39;: &#39;/org/gnome/Terminal/screen/f283b854_2e83_4cde_89a9_d45ecf7b811d&#39;,
+ &#39;SSH_AGENT_PID&#39;: &#39;1769&#39;,
+ &#39;XDG_CURRENT_DESKTOP&#39;: &#39;ubuntu:GNOME&#39;,
  &#39;LANG&#39;: &#39;en_US.UTF-8&#39;,
- &#39;XPC_FLAGS&#39;: &#39;0x0&#39;,
- &#39;XPC_SERVICE_NAME&#39;: &#39;0&#39;,
- &#39;SHLVL&#39;: &#39;1&#39;,
- &#39;HOME&#39;: &#39;/Users/zach&#39;,
+ &#39;DEFAULTS_PATH&#39;: &#39;/usr/share/gconf/ubuntu.default.path&#39;,
+ &#39;IM_CONFIG_PHASE&#39;: &#39;1&#39;,
+ &#39;COLORTERM&#39;: &#39;truecolor&#39;,
+ &#39;QT_IM_MODULE&#39;: &#39;ibus&#39;,
+ &#39;GPG_AGENT_INFO&#39;: &#39;/run/user/1000/gnupg/S.gpg-agent:0:1&#39;,
+ &#39;DESKTOP_SESSION&#39;: &#39;ubuntu&#39;,
+ &#39;USER&#39;: &#39;zach&#39;,
+ &#39;XDG_MENU_PREFIX&#39;: &#39;gnome-&#39;,
+ &#39;HOME&#39;: &#39;/home/zach&#39;,
+ &#39;GJS_DEBUG_OUTPUT&#39;: &#39;stderr&#39;,
+ &#39;DBUS_SESSION_BUS_ADDRESS&#39;: &#39;unix:path=/run/user/1000/bus&#39;,
+ &#39;PWD&#39;: &#39;/home/zach/Git/Olin/evc-course&#39;,
+ &#39;GTK_MODULES&#39;: &#39;gail:atk-bridge&#39;,
+ &#39;XDG_CONFIG_DIRS&#39;: &#39;/etc/xdg/xdg-ubuntu:/etc/xdg&#39;,
+ &#39;WINDOWPATH&#39;: &#39;2&#39;,
+ &#39;XDG_SESSION_DESKTOP&#39;: &#39;ubuntu&#39;,
+ &#39;JOURNAL_STREAM&#39;: &#39;8:42691&#39;,
+ &#39;QT_ACCESSIBILITY&#39;: &#39;1&#39;,
+ &#39;_&#39;: &#39;/home/zach/Bin/anaconda3/envs/evc/bin/jupyter&#39;,
+ &#39;MANAGERPID&#39;: &#39;1567&#39;,
+ &#39;MANDATORY_PATH&#39;: &#39;/usr/share/gconf/ubuntu.mandatory.path&#39;,
+ &#39;GNOME_DESKTOP_SESSION_ID&#39;: &#39;this-is-deprecated&#39;,
  &#39;LOGNAME&#39;: &#39;zach&#39;,
- &#39;SECURITYSESSIONID&#39;: &#39;186a6&#39;,
- &#39;OLDPWD&#39;: &#39;/Users/zach/Git/Olin/evc-course/challenges&#39;,
- &#39;PYTHONPATH&#39;: &#39;/Users/zach/Git/smlb:/Users/zach/Git/pyutil:/Users/zach/Git/py_grama:&#39;,
+ &#39;GNOME_TERMINAL_SERVICE&#39;: &#39;:1.651&#39;,
+ &#39;VTE_VERSION&#39;: &#39;6003&#39;,
+ &#39;GNOME_SHELL_SESSION_MODE&#39;: &#39;ubuntu&#39;,
+ &#39;PATH&#39;: &#39;/home/zach/Bin/anaconda3/envs/evc/bin:/home/zach/Bin/anaconda3/condabin:/home/zach/Bin/webplotdigitizer:/home/zach/Bin/p4merge/bin:/home/zach/Bin/matlab/bin:/home/zach/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin&#39;,
+ &#39;XMODIFIERS&#39;: &#39;@im=ibus&#39;,
+ &#39;SHELL&#39;: &#39;/usr/bin/zsh&#39;,
+ &#39;XDG_RUNTIME_DIR&#39;: &#39;/run/user/1000&#39;,
+ &#39;XDG_SESSION_TYPE&#39;: &#39;x11&#39;,
+ &#39;USERNAME&#39;: &#39;zach&#39;,
+ &#39;INVOCATION_ID&#39;: &#39;40e1f0789fe448579dbcf89ae9fde03a&#39;,
+ &#39;SHLVL&#39;: &#39;1&#39;,
+ &#39;XAUTHORITY&#39;: &#39;/run/user/1000/gdm/Xauthority&#39;,
+ &#39;XDG_DATA_DIRS&#39;: &#39;/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop&#39;,
+ &#39;XDG_SESSION_CLASS&#39;: &#39;user&#39;,
+ &#39;TERM&#39;: &#39;xterm-color&#39;,
+ &#39;GDMSESSION&#39;: &#39;ubuntu&#39;,
+ &#39;DISPLAY&#39;: &#39;:1&#39;,
+ &#39;OLDPWD&#39;: &#39;/home/zach/Git/py_grama&#39;,
+ &#39;PYTHONPATH&#39;: &#39;/home/zach/Git/pybuck:/home/zach/Git/py_grama:&#39;,
  &#39;CITRINATION_API_KEY&#39;: &#39;&lt;hidden&gt;&#39;,
- &#39;SL_RESULTS&#39;: &#39;/Users/zach/Documents/sl-results/&#39;,
- &#39;ZSH&#39;: &#39;/Users/zach/.oh-my-zsh&#39;,
+ &#39;SL_RESULTS&#39;: &#39;/home/zach/Documents/sl-results/&#39;,
+ &#39;ZSH&#39;: &#39;/home/zach/.oh-my-zsh&#39;,
  &#39;PAGER&#39;: &#39;cat&#39;,
  &#39;LESS&#39;: &#39;-R&#39;,
  &#39;LSCOLORS&#39;: &#39;Gxfxcxdxbxegedabagacad&#39;,
- &#39;CONDA_EXE&#39;: &#39;/Users/zach/opt/anaconda3/bin/conda&#39;,
+ &#39;LS_COLORS&#39;: &#39;rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:&#39;,
+ &#39;CONDA_EXE&#39;: &#39;/home/zach/Bin/anaconda3/bin/conda&#39;,
  &#39;_CE_M&#39;: &#39;&#39;,
  &#39;_CE_CONDA&#39;: &#39;&#39;,
- &#39;CONDA_PYTHON_EXE&#39;: &#39;/Users/zach/opt/anaconda3/bin/python&#39;,
- &#39;CONDA_SHLVL&#39;: &#39;1&#39;,
- &#39;CONDA_PREFIX&#39;: &#39;/Users/zach/opt/anaconda3&#39;,
- &#39;CONDA_DEFAULT_ENV&#39;: &#39;base&#39;,
- &#39;CONDA_PROMPT_MODIFIER&#39;: &#39;(base) &#39;,
+ &#39;CONDA_PYTHON_EXE&#39;: &#39;/home/zach/Bin/anaconda3/bin/python&#39;,
+ &#39;CONDA_SHLVL&#39;: &#39;2&#39;,
+ &#39;CONDA_PREFIX&#39;: &#39;/home/zach/Bin/anaconda3/envs/evc&#39;,
+ &#39;CONDA_DEFAULT_ENV&#39;: &#39;evc&#39;,
+ &#39;CONDA_PROMPT_MODIFIER&#39;: &#39;(evc) &#39;,
  &#39;RSTUDIO_PASS&#39;: &#39;temporarylocalkeyphrase&#39;,
- &#39;_&#39;: &#39;/Users/zach/opt/anaconda3/bin/jupyter&#39;,
- &#39;GIT_PYTHON_REFRESH&#39;: &#39;quiet&#39;,
- &#39;JPY_PARENT_PID&#39;: &#39;68060&#39;,
+ &#39;VISUAL&#39;: &#39;vim&#39;,
+ &#39;EDITOR&#39;: &#39;vim&#39;,
+ &#39;CONDA_PREFIX_1&#39;: &#39;/home/zach/Bin/anaconda3&#39;,
+ &#39;PYDEVD_USE_FRAME_EVAL&#39;: &#39;NO&#39;,
+ &#39;JPY_PARENT_PID&#39;: &#39;1648777&#39;,
  &#39;CLICOLOR&#39;: &#39;1&#39;,
  &#39;GIT_PAGER&#39;: &#39;cat&#39;,
- &#39;MPLBACKEND&#39;: &#39;module://ipykernel.pylab.backend_inline&#39;}
+ &#39;MPLBACKEND&#39;: &#39;module://matplotlib_inline.backend_inline&#39;}
 </pre></div>
 </div>
 </div>
