@@ -1107,9 +1107,9 @@ title="Print to PDF"
     <span class="c1"># Compute summaries</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
-        <span class="n">sigma_cr_min</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">colmin</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+        <span class="n">sigma_cr_min</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
         <span class="n">sigma_cr_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
-        <span class="n">sigma_cr_max</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">colmax</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+        <span class="n">sigma_cr_max</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
     <span class="p">)</span>
     
     <span class="c1"># Visualize the results</span>
@@ -1185,9 +1185,9 @@ title="Print to PDF"
     <span class="c1"># Compute summaries</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
-        <span class="n">sigma_cr_min</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">colmin</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+        <span class="n">sigma_cr_min</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
         <span class="n">sigma_cr_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
-        <span class="n">sigma_cr_max</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">colmax</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+        <span class="n">sigma_cr_max</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
     <span class="p">)</span>
     
     <span class="c1"># Visualize</span>
