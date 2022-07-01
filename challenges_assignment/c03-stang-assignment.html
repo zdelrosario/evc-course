@@ -1123,7 +1123,7 @@ title="Print to PDF"
     <span class="p">)</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;sigma_cr_mean&quot;</span><span class="p">))</span>
     
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_y_continuous</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_y_continuous</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1200</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_color_discrete</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Wavenumber&quot;</span><span class="p">)</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
@@ -1194,21 +1194,21 @@ title="Print to PDF"
     
     <span class="c1"># Visualize</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">))</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_segment</span><span class="p">(</span>
         <span class="n">data</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
-            <span class="n">t</span><span class="o">=</span><span class="mf">0.0333</span><span class="p">,</span>
-            <span class="n">y</span><span class="o">=</span><span class="mi">1000</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span>
-            <span class="n">yend</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+            <span class="n">t</span><span class="o">=</span><span class="mf">0.0323</span><span class="p">,</span>
+            <span class="n">y</span><span class="o">=</span><span class="mi">300</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span>
+            <span class="n">yend</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
         <span class="p">),</span>
         <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="s2">&quot;yend&quot;</span><span class="p">),</span>
         <span class="n">color</span><span class="o">=</span><span class="s2">&quot;salmon&quot;</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_segment</span><span class="p">(</span>
         <span class="n">data</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
-            <span class="n">y</span><span class="o">=</span><span class="mi">1000</span> <span class="o">*</span> <span class="mf">1.25</span><span class="p">,</span>
+            <span class="n">y</span><span class="o">=</span><span class="mi">300</span> <span class="o">*</span> <span class="mf">1.25</span><span class="p">,</span>
             <span class="n">t</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span>
-            <span class="n">tend</span><span class="o">=</span><span class="mf">0.0372</span><span class="p">,</span>
+            <span class="n">tend</span><span class="o">=</span><span class="mf">0.0361</span><span class="p">,</span>
         <span class="p">),</span>
         <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="s2">&quot;tend&quot;</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">),</span>
         <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
@@ -1228,14 +1228,14 @@ title="Print to PDF"
 </div>
 </div>
 <p><em>Observations</em></p>
-<p>Suppose the plate will be subjected to a compressive stress of <code class="docutils literal notranslate"><span class="pre">1000</span></code> psi, and your goal is to pick the minimum-thickness possible while ensuring the plate will not buckle.</p>
+<p>Suppose the plate will be subjected to a compressive stress of <code class="docutils literal notranslate"><span class="pre">300</span></code> psi, and your goal is to pick the minimum-thickness possible while ensuring the plate will not buckle.</p>
 <ul class="simple">
-<li><p>Would a plate of thickness <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">==</span> <span class="pre">0.0333</span></code> in be safe? (Shown by salmon-colored line.) Why or why not?</p>
+<li><p>Would a plate of thickness <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">==</span> <span class="pre">0.0323</span></code> in be safe? (This thickness is shown by the salmon-colored vertical line.) Why or why not?</p>
 <ul>
 <li><p>(Your response here)</p></li>
 </ul>
 </li>
-<li><p>A colleague suggests using a factor of safety of <code class="docutils literal notranslate"><span class="pre">1.25</span></code> to increase the critical buckling stress in order to deal with the material variability. Compared to the variability observed, is this margin too small, too large, or just right?</p>
+<li><p>A colleague suggests using a factor of safety of <code class="docutils literal notranslate"><span class="pre">1.25</span></code> to increase the applied stress in order to deal with the material variability. (This new applied stress is shown by the horizontal blue line.) Compared to the variability observed, is this margin too small, too large, or just right?</p>
 <ul>
 <li><p>(Your response here)</p></li>
 </ul>
