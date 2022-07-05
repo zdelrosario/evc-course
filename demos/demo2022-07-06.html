@@ -1261,7 +1261,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </pre></div>
 </div>
 <img alt="../_images/demo2022-07-06_9_1.png" src="../_images/demo2022-07-06_9_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785817994987)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766095560424)&gt;
 </pre></div>
 </div>
 </div>
@@ -1294,7 +1294,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </pre></div>
 </div>
 <img alt="../_images/demo2022-07-06_11_1.png" src="../_images/demo2022-07-06_11_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785839043895)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766079044100)&gt;
 </pre></div>
 </div>
 </div>
@@ -1302,6 +1302,37 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </section>
 <section id="explanatory-patterns">
 <h2>Explanatory Patterns<a class="headerlink" href="#explanatory-patterns" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_stang</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;thick&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme</span><span class="p">(</span>
+        <span class="n">aspect_ratio</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Thickness (in)&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Elasticity (ksi)&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;stang-cf.png&quot;</span><span class="p">)</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:719: PlotnineWarning: Saving 6.4 x 4.8 in image.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: stang-cf.png
+</pre></div>
+</div>
+<img alt="../_images/demo2022-07-06_13_1.png" src="../_images/demo2022-07-06_13_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766133993735)&gt;
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span>
@@ -1330,18 +1361,18 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
         <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Elasticity (ksi)&quot;</span><span class="p">,</span>
     <span class="p">)</span>
 <span class="p">)</span>
-<span class="n">p</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;stang-cf.png&quot;</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;stang-cf-lm.png&quot;</span><span class="p">)</span>
 <span class="n">p</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:719: PlotnineWarning: Saving 6.4 x 4.8 in image.
-/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: stang-cf.png
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: stang-cf-lm.png
 </pre></div>
 </div>
-<img alt="../_images/demo2022-07-06_13_1.png" src="../_images/demo2022-07-06_13_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785818185894)&gt;
+<img alt="../_images/demo2022-07-06_14_1.png" src="../_images/demo2022-07-06_14_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766079043079)&gt;
 </pre></div>
 </div>
 </div>
@@ -1379,12 +1410,12 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 
   inputs:
     var_det:
-      E: (unbounded)
-      mu: (unbounded)
-      a: (unbounded)
-      m: (unbounded)
       b: (unbounded)
+      a: (unbounded)
       t: (unbounded)
+      mu: (unbounded)
+      m: (unbounded)
+      E: (unbounded)
 
     var_rand:
 
@@ -1452,8 +1483,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 /Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: stang-q7.png
 </pre></div>
 </div>
-<img alt="../_images/demo2022-07-06_16_1.png" src="../_images/demo2022-07-06_16_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785839033555)&gt;
+<img alt="../_images/demo2022-07-06_17_1.png" src="../_images/demo2022-07-06_17_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766079085629)&gt;
 </pre></div>
 </div>
 </div>
@@ -1517,8 +1548,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 /Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: stang-q7-zoom.png
 </pre></div>
 </div>
-<img alt="../_images/demo2022-07-06_18_1.png" src="../_images/demo2022-07-06_18_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785839365048)&gt;
+<img alt="../_images/demo2022-07-06_19_1.png" src="../_images/demo2022-07-06_19_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766095694734)&gt;
 </pre></div>
 </div>
 </div>
@@ -1594,8 +1625,87 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 /Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: stang-q8.png
 </pre></div>
 </div>
-<img alt="../_images/demo2022-07-06_20_1.png" src="../_images/demo2022-07-06_20_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785801251771)&gt;
+<img alt="../_images/demo2022-07-06_21_1.png" src="../_images/demo2022-07-06_21_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766113690871)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_stang</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">thick</span> <span class="o">==</span> <span class="mf">0.032</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_drop</span><span class="p">(</span><span class="s2">&quot;thick&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Sweep over thicknesses</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_outer</span><span class="p">(</span>
+        <span class="n">df_outer</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_grid</span><span class="p">(</span>
+            <span class="n">t</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.030</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span>
+            <span class="n">a</span><span class="o">=</span><span class="mi">12</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">,</span>
+            <span class="n">b</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+            <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># Use model as a transform</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_md</span><span class="p">(</span><span class="n">md_plate</span><span class="p">)</span>
+    
+    <span class="c1"># Compute summaries</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">sigma_cr_min</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+        <span class="n">sigma_cr_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+        <span class="n">sigma_cr_max</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># Visualize</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_segment</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">t</span><span class="o">=</span><span class="mf">0.0323</span><span class="p">,</span>
+            <span class="n">y</span><span class="o">=</span><span class="mi">300</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span>
+            <span class="n">yend</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="s2">&quot;yend&quot;</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;salmon&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_segment</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">y</span><span class="o">=</span><span class="mi">300</span> <span class="o">*</span> <span class="mf">1.25</span><span class="p">,</span>
+            <span class="n">t</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span>
+            <span class="n">tend</span><span class="o">=</span><span class="mf">0.0361</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="s2">&quot;tend&quot;</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;sigma_cr_min&quot;</span><span class="p">),</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;sigma_cr_mean&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;sigma_cr_max&quot;</span><span class="p">),</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+    
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">coord_cartesian</span><span class="p">(</span>
+        <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mf">0.032</span><span class="p">,</span> <span class="mf">0.033</span><span class="p">),</span>
+        <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">275</span><span class="p">,</span> <span class="mi">325</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Plate Thickness (in)&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Critical Buckling Stress (psi)&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;stang-q8-zoom.png&quot;</span><span class="p">)</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:719: PlotnineWarning: Saving 6.4 x 4.8 in image.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: stang-q8-zoom.png
+</pre></div>
+</div>
+<img alt="../_images/demo2022-07-06_23_1.png" src="../_images/demo2022-07-06_23_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766079311192)&gt;
 </pre></div>
 </div>
 </div>
