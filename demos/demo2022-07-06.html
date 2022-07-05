@@ -472,6 +472,16 @@ title="Print to PDF"
    Wrangling Data
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explanatory-patterns">
+   Explanatory Patterns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#considering-variability">
+   Considering Variability
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -501,6 +511,16 @@ title="Print to PDF"
    Wrangling Data
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explanatory-patterns">
+   Explanatory Patterns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#considering-variability">
+   Considering Variability
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -521,6 +541,7 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -693,7 +714,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/zach/Git/py_grama/grama/tran_pivot.py:570: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/Git/py_grama/grama/tran_pivot.py:570: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
@@ -960,7 +981,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/zach/Git/py_grama/grama/tran_pivot.py:570: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/Git/py_grama/grama/tran_pivot.py:570: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
@@ -1216,28 +1237,36 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; run and inspect</span>
-<span class="p">(</span>
+<span class="n">p</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">df_stang_invalid</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;mu&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;factor(thick)&quot;</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
     
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_color_discrete</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Thickness (in)&quot;</span><span class="p">)</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme</span><span class="p">(</span><span class="n">aspect_ratio</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
         <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Elasticity (ksi)&quot;</span><span class="p">,</span>
         <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Poisson&#39;s Ratio (-)&quot;</span><span class="p">,</span>
     <span class="p">)</span>
 <span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;stang-E-mu-incorrect.png&quot;</span><span class="p">)</span>
+<span class="n">p</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/demo2022-07-06_9_0.png" src="../_images/demo2022-07-06_9_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8749808140171)&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:719: PlotnineWarning: Saving 6.4 x 4.8 in image.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: stang-E-mu-incorrect.png
+</pre></div>
+</div>
+<img alt="../_images/demo2022-07-06_9_1.png" src="../_images/demo2022-07-06_9_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785817994987)&gt;
 </pre></div>
 </div>
 </div>
 </div>
+<p>Note that the invalid value heavily skews the plot, making it difficult to see trends in the dataset. This does help us detect that one of the values is incorrect, though!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; run and inspect</span>
@@ -1260,12 +1289,313 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/zach/Bin/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:719: PlotnineWarning: Saving 6.4 x 4.8 in image.
-/home/zach/Bin/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: stang-E-mu.png
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:719: PlotnineWarning: Saving 6.4 x 4.8 in image.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: stang-E-mu.png
 </pre></div>
 </div>
 <img alt="../_images/demo2022-07-06_11_1.png" src="../_images/demo2022-07-06_11_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8749805949904)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785839043895)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="explanatory-patterns">
+<h2>Explanatory Patterns<a class="headerlink" href="#explanatory-patterns" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_stang</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;thick&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_smooth</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df_stang</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;All&quot;</span><span class="p">),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;source&quot;</span><span class="p">),</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;lm&quot;</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_smooth</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df_stang</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">thick</span> <span class="o">&lt;=</span> <span class="mf">0.08</span><span class="p">)</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;t&lt;0.08&quot;</span><span class="p">),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;source&quot;</span><span class="p">),</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;lm&quot;</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme</span><span class="p">(</span>
+        <span class="n">aspect_ratio</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Thickness (in)&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Elasticity (ksi)&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;stang-cf.png&quot;</span><span class="p">)</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:719: PlotnineWarning: Saving 6.4 x 4.8 in image.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: stang-cf.png
+</pre></div>
+</div>
+<img alt="../_images/demo2022-07-06_13_1.png" src="../_images/demo2022-07-06_13_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785818185894)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="considering-variability">
+<h2>Considering Variability<a class="headerlink" href="#considering-variability" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">md_plate</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s2">&quot;Plate critical buckling stress&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_vec_function</span><span class="p">(</span>
+        <span class="n">fun</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">k_cr</span><span class="o">=</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">m</span> <span class="o">*</span> <span class="n">df</span><span class="o">.</span><span class="n">b</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">a</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">m</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+        <span class="p">),</span>
+        <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">],</span>
+        <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;k_cr&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">cp_vec_function</span><span class="p">(</span>
+        <span class="n">fun</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">sigma_cr</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">k_cr</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span> <span class="o">*</span> <span class="n">df</span><span class="o">.</span><span class="n">E</span><span class="o">*</span><span class="mf">1e3</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">mu</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+                    <span class="o">*</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">t</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+        <span class="p">),</span>
+        <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;k_cr&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;mu&quot;</span><span class="p">,</span> <span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span>
+        <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;sigma_cr&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">md_plate</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: Plate critical buckling stress
+
+  inputs:
+    var_det:
+      E: (unbounded)
+      mu: (unbounded)
+      a: (unbounded)
+      m: (unbounded)
+      b: (unbounded)
+      t: (unbounded)
+
+    var_rand:
+
+    copula:
+      None
+
+  functions:
+      f0: [&#39;a&#39;, &#39;b&#39;, &#39;m&#39;] -&gt; [&#39;k_cr&#39;]
+      f1: [&#39;k_cr&#39;, &#39;E&#39;, &#39;mu&#39;, &#39;t&#39;, &#39;b&#39;] -&gt; [&#39;sigma_cr&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_stang</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">thick</span> <span class="o">==</span> <span class="mf">0.032</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_rename</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="s2">&quot;thick&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Sweep over additional variables</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_outer</span><span class="p">(</span>
+        <span class="n">df_outer</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_grid</span><span class="p">(</span>
+            <span class="n">m</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+            <span class="n">a</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span>
+            <span class="n">b</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="c1"># Use the model as a transformation (evaluation synonym)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_md</span><span class="p">(</span><span class="n">md_plate</span><span class="p">)</span>
+    
+    <span class="c1"># Compute summaries</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">sigma_cr_min</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+        <span class="n">sigma_cr_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+        <span class="n">sigma_cr_max</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># Visualize the results</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;a / b&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;factor(m)&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_ribbon</span><span class="p">(</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="s2">&quot;sigma_cr_min&quot;</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s2">&quot;sigma_cr_max&quot;</span><span class="p">),</span>
+        <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
+        <span class="n">fill</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;sigma_cr_mean&quot;</span><span class="p">))</span>
+    
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_y_continuous</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1200</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_color_discrete</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Wavenumber&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Aspect Ratio (-)&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Critical Buckling Stress (psi)&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;stang-q7.png&quot;</span><span class="p">)</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:719: PlotnineWarning: Saving 6.4 x 4.8 in image.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: stang-q7.png
+</pre></div>
+</div>
+<img alt="../_images/demo2022-07-06_16_1.png" src="../_images/demo2022-07-06_16_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785839033555)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can make a more targeted figure to focus on the relevant comparison (<code class="docutils literal notranslate"><span class="pre">AR</span> <span class="pre">==</span> <span class="pre">1.0</span></code> vs <code class="docutils literal notranslate"><span class="pre">AR</span> <span class="pre">==</span> <span class="pre">1.5</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_stang</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">thick</span> <span class="o">==</span> <span class="mf">0.032</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_rename</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="s2">&quot;thick&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Sweep over additional variables</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_outer</span><span class="p">(</span>
+        <span class="n">df_outer</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_grid</span><span class="p">(</span>
+            <span class="n">m</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+            <span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span> <span class="o">*</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">],</span>
+            <span class="n">b</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="c1"># Use the model as a transformation (evaluation synonym)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_md</span><span class="p">(</span><span class="n">md_plate</span><span class="p">)</span>
+    
+    <span class="c1"># Compute summaries</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">sigma_cr_min</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+        <span class="n">sigma_cr_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+        <span class="n">sigma_cr_max</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># Visualize the results</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;a / b&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;factor(m)&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_errorbar</span><span class="p">(</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="s2">&quot;sigma_cr_min&quot;</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s2">&quot;sigma_cr_max&quot;</span><span class="p">),</span>
+        <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
+        <span class="c1"># fill=None,</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;sigma_cr_mean&quot;</span><span class="p">))</span>
+    
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_y_continuous</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1200</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">coord_cartesian</span><span class="p">(</span>
+        <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span>
+        <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">scale_color_discrete</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Wavenumber&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Aspect Ratio (-)&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Critical Buckling Stress (psi)&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;stang-q7-zoom.png&quot;</span><span class="p">)</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:719: PlotnineWarning: Saving 6.4 x 4.8 in image.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: stang-q7-zoom.png
+</pre></div>
+</div>
+<img alt="../_images/demo2022-07-06_18_1.png" src="../_images/demo2022-07-06_18_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785839365048)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The case <code class="docutils literal notranslate"><span class="pre">AR</span> <span class="pre">==</span> <span class="pre">1</span></code> clearly has a lower buckling stress than the lowest <code class="docutils literal notranslate"><span class="pre">AR</span> <span class="pre">==</span> <span class="pre">1.5</span></code> case; independent of the material variability, we can determine that <code class="docutils literal notranslate"><span class="pre">AR</span> <span class="pre">==</span> <span class="pre">1.5</span></code> is a better choice for our application.</p>
+<p><em>In this sense</em>, the material variability does not matter <em>for the purposes of choosing between <code class="docutils literal notranslate"><span class="pre">AR</span> <span class="pre">==</span> <span class="pre">1.0</span></code> and <code class="docutils literal notranslate"><span class="pre">AR</span> <span class="pre">==</span> <span class="pre">1.5</span></code></em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_stang</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">thick</span> <span class="o">==</span> <span class="mf">0.032</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_drop</span><span class="p">(</span><span class="s2">&quot;thick&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Sweep over thicknesses</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_outer</span><span class="p">(</span>
+        <span class="n">df_outer</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_grid</span><span class="p">(</span>
+            <span class="n">t</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.030</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span>
+            <span class="n">a</span><span class="o">=</span><span class="mi">12</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">,</span>
+            <span class="n">b</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+            <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># Use model as a transform</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_md</span><span class="p">(</span><span class="n">md_plate</span><span class="p">)</span>
+    
+    <span class="c1"># Compute summaries</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">sigma_cr_min</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+        <span class="n">sigma_cr_mean</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+        <span class="n">sigma_cr_max</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_cr</span><span class="p">),</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># Visualize</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_segment</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">t</span><span class="o">=</span><span class="mf">0.0323</span><span class="p">,</span>
+            <span class="n">y</span><span class="o">=</span><span class="mi">300</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span>
+            <span class="n">yend</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="s2">&quot;yend&quot;</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;salmon&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_segment</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+            <span class="n">y</span><span class="o">=</span><span class="mi">300</span> <span class="o">*</span> <span class="mf">1.25</span><span class="p">,</span>
+            <span class="n">t</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span>
+            <span class="n">tend</span><span class="o">=</span><span class="mf">0.0361</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="s2">&quot;tend&quot;</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;sigma_cr_min&quot;</span><span class="p">),</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;sigma_cr_mean&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;sigma_cr_max&quot;</span><span class="p">),</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+    
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Plate Thickness (in)&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Critical Buckling Stress (psi)&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;stang-q8.png&quot;</span><span class="p">)</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:719: PlotnineWarning: Saving 6.4 x 4.8 in image.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: stang-q8.png
+</pre></div>
+</div>
+<img alt="../_images/demo2022-07-06_20_1.png" src="../_images/demo2022-07-06_20_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8785801251771)&gt;
 </pre></div>
 </div>
 </div>
