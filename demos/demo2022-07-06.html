@@ -52,6 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Office Hours Schedule" href="../frontmatter/hours.html" />
+    <link rel="prev" title="Demo Notebook 2022-06-27" href="demo2022-06-27.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -106,7 +108,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../frontmatter/setup.html">
    Software Setup
@@ -132,19 +134,29 @@ const thebe_selector_output = ".output, .cell_output"
    Class Recordings
   </a>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../frontmatter/demos.html">
    Demo Notebooks
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="demo2022-06-20-1.html">
      Demo Notebook 2022-06-20
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="demo2022-06-27.html">
+     Demo Notebook 2022-06-27
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Demo Notebook 2022-07-06
     </a>
    </li>
   </ul>
@@ -1302,6 +1314,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </section>
 <section id="explanatory-patterns">
 <h2>Explanatory Patterns<a class="headerlink" href="#explanatory-patterns" title="Permalink to this headline">#</a></h2>
+<p>Plotting <code class="docutils literal notranslate"><span class="pre">E</span></code> against <code class="docutils literal notranslate"><span class="pre">t</span></code> directly helps us assess the supposed pattern.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span>
@@ -1333,6 +1346,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 </div>
+<p>Already, this pattern doesn’t look very convincing; the intermediate thickness plates (<code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">~=</span> <span class="pre">0.06</span></code>) do not follow the downward trend in <code class="docutils literal notranslate"><span class="pre">E</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span>
@@ -1371,15 +1385,17 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 /Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: stang-cf-lm.png
 </pre></div>
 </div>
-<img alt="../_images/demo2022-07-06_14_1.png" src="../_images/demo2022-07-06_14_1.png" />
+<img alt="../_images/demo2022-07-06_15_1.png" src="../_images/demo2022-07-06_15_1.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766079043079)&gt;
 </pre></div>
 </div>
 </div>
 </div>
+<p>A more formal way to test the supposed trend is to fit a pair of lines, one with and one without the thickest plates. Here we can see that the line fitted without the thickest plates does not have a significantly downward slope.</p>
 </section>
 <section id="considering-variability">
 <h2>Considering Variability<a class="headerlink" href="#considering-variability" title="Permalink to this headline">#</a></h2>
+<p>The following code shows how to make the “targeted” figures I showed in the presentation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">md_plate</span> <span class="o">=</span> <span class="p">(</span>
@@ -1483,7 +1499,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 /Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: stang-q7.png
 </pre></div>
 </div>
-<img alt="../_images/demo2022-07-06_17_1.png" src="../_images/demo2022-07-06_17_1.png" />
+<img alt="../_images/demo2022-07-06_19_1.png" src="../_images/demo2022-07-06_19_1.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766079085629)&gt;
 </pre></div>
 </div>
@@ -1548,7 +1564,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 /Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: stang-q7-zoom.png
 </pre></div>
 </div>
-<img alt="../_images/demo2022-07-06_19_1.png" src="../_images/demo2022-07-06_19_1.png" />
+<img alt="../_images/demo2022-07-06_21_1.png" src="../_images/demo2022-07-06_21_1.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766095694734)&gt;
 </pre></div>
 </div>
@@ -1625,7 +1641,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 /Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: stang-q8.png
 </pre></div>
 </div>
-<img alt="../_images/demo2022-07-06_21_1.png" src="../_images/demo2022-07-06_21_1.png" />
+<img alt="../_images/demo2022-07-06_23_1.png" src="../_images/demo2022-07-06_23_1.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766113690871)&gt;
 </pre></div>
 </div>
@@ -1704,7 +1720,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 /Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: stang-q8-zoom.png
 </pre></div>
 </div>
-<img alt="../_images/demo2022-07-06_23_1.png" src="../_images/demo2022-07-06_23_1.png" />
+<img alt="../_images/demo2022-07-06_25_1.png" src="../_images/demo2022-07-06_25_1.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766079311192)&gt;
 </pre></div>
 </div>
@@ -1740,6 +1756,20 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="demo2022-06-27.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Demo Notebook 2022-06-27</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../frontmatter/hours.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Office Hours Schedule</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
