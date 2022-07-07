@@ -9,6 +9,8 @@ sections:
 - file: frontmatter/demos
   sections:
   - file: demos/demo2022-06-20-1
+  - file: demos/demo2022-06-27
+  - file: demos/demo2022-07-06
 - file: frontmatter/hours
 - file: frontmatter/exercises
   sections:
