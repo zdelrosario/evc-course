@@ -1168,7 +1168,7 @@ title="Print to PDF"
 <p>We will use this function to compute performance metrics (such as <code class="docutils literal notranslate"><span class="pre">dMdtheta_0</span></code>) for various boat designs. However, before we do so, we should quantify how long it takes to run the performance function. Doing so will help us <em>plan</em> our EMA evaluations, so that we don’t try to execute a study that will take too long.</p>
 <section id="q5-time-the-analysis">
 <h2><strong>q5</strong> Time the analysis<a class="headerlink" href="#q5-time-the-analysis" title="Permalink to this headline">#</a></h2>
-<p>Evaluate the boat performance function <em>inside</em> the loop below in order to complete the timing study.</p>
+<p>Evaluate the boat performance function <em>inside</em> the loop below in order to complete the timing study. You’ll use this number later in <code class="docutils literal notranslate"><span class="pre">gr.cp_function()</span></code> (in q7).</p>
 <p><em>Hint</em>: Remember that <code class="docutils literal notranslate"><span class="pre">v_design</span></code> was assigned above in an example chunk. You can use that as the argument to <code class="docutils literal notranslate"><span class="pre">fun_performance()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1231,7 +1231,7 @@ title="Print to PDF"
 </section>
 <section id="q7-assemble-the-model">
 <h2><strong>q7</strong> Assemble the model<a class="headerlink" href="#q7-assemble-the-model" title="Permalink to this headline">#</a></h2>
-<p>Complete the code below to assemple the boat performance model. Use the values assigned above as arguments to <code class="docutils literal notranslate"><span class="pre">gr.cp_function()</span></code>, including the variable names, output names, and runtime estimate. Make sure to add bounds for the inputs that “enclose” the observed archival data.</p>
+<p>Complete the code below to assemple the boat performance model. Use the values assigned above as arguments to <code class="docutils literal notranslate"><span class="pre">gr.cp_function()</span></code>, including the variable names, output names, and runtime estimate (value from <strong>q5</strong>). Make sure to add bounds for the inputs that “enclose” the observed archival data.</p>
 <p>```{admonition} Why not <code class="docutils literal notranslate"><span class="pre">gr.cp_vec_function()</span></code>?
 Here we use <code class="docutils literal notranslate"><span class="pre">gr.cp_function()</span></code> rather than <code class="docutils literal notranslate"><span class="pre">gr.cp_vec_function()</span></code>. This is because the boat performance function is not <em>vectorized</em>; it cannot take a DataFrame as its input. Generally we use <code class="docutils literal notranslate"><span class="pre">gr.cp_function()</span></code> with more “expensive” to evaluate functions.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
@@ -1353,6 +1353,19 @@ Here we use <code class="docutils literal notranslate"><span class="pre">gr.cp_f
 </ul>
 </li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_sinews</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_sinew_outputs</span><span class="p">(</span>
+        <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;W&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;f_com&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">],</span>
+        <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dMdtheta_0&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
