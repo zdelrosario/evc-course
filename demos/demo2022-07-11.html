@@ -1,0 +1,946 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Demo Notebook 2022-07-11 &#8212; Data Science for Engineers</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../frontmatter/home.html">
+                    Data Science for Engineers
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/howto.html">
+   How To Use These Materials
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/schedule.html">
+   Course Topics and Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/submission.html">
+   Challenge Submission Instructions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/recordings.html">
+   Class Recordings
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../frontmatter/demos.html">
+   Demo Notebooks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="demo2022-06-20-1.html">
+     Demo Notebook 2022-06-20
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="demo2022-06-27.html">
+     Demo Notebook 2022-06-27
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="demo2022-07-06.html">
+     Demo Notebook 2022-07-06
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter/hours.html">
+   Office Hours Schedule
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../frontmatter/exercises.html">
+   Exercise Solutions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d01-e-data00-notebooks-solution.html">
+     Introduction to Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d01-e-vis00-basics-solution.html">
+     Vis: Data Visualization Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d02-e-data01-isolate-solution.html">
+     Data: Isolating Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d02-e-tips-solution.html">
+     Tips for This Course
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d03-e-stat01-eda-solution.html">
+     Stats: Introduction to Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d04-e-grama01-basics-solution.html">
+     Grama: Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d05-e-vis01-bar-charts-solution.html">
+     Vis: Bar Charts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d06-e-data02-derive-solution.html">
+     Data: Deriving Quantities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d07-e-vis02-histograms-solution.html">
+     Vis: Histograms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d08-e-stat02-source-solution.html">
+     Stats: Real and Erroneous Sources of Variability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d09-e-vis03-scatterplot-solution.html">
+     Vis: Scatterplots and Layers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d10-e-grama02-building-solution.html">
+     Grama: Model Building
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d11-e-data03-pivot-solution.html">
+     Data: Pivoting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d12-e-grama03-eval-solution.html">
+     Grama: Model Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d13-e-vis04-lines-solution.html">
+     Vis: Lines and Related Geometries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d14-e-stat03-descriptive-solution.html">
+     Stats: Descriptive Statistics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d15-e-data04-separate-unite-solution.html">
+     Data: Separating and Uniting Columns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d16-e-data05-join-solution.html">
+     Data: Joining Datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d17-e-vis05-multiples-solution.html">
+     Vis: Small Multiples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d18-e-grama04-ema-solution.html">
+     Grama: Exploratory Model Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d19-e-stat04-distributions-solution.html">
+     Stats: Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d20-e-grama05-fit-function-solution.html">
+     Grama: Fitting Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d21-e-stat05-CI-solution.html">
+     Stats: Confidence Intervals and the CLT
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d22-e-stat06-spc-solution.html">
+     Stats: Fundamentals of Statistical Process Monitoring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d23-e-grama06-fit-univar-solution.html">
+     Grama: Fitting Univariate Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d24-e-grama07-fit-multivar-solution.html">
+     Grama: Fitting Multivariate Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises_solution/d25-e-grama08-duu-solution.html">
+     Grama: Design Under Uncertainty
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/demos/demo2022-07-11.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/demos/demo2022-07-11.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#correlation-tile-plot">
+   Correlation tile plot
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#detailed-scatterplot">
+   Detailed Scatterplot
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#targeted-sinew-plot">
+   Targeted Sinew Plot
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Demo Notebook 2022-07-11</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#correlation-tile-plot">
+   Correlation tile plot
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#detailed-scatterplot">
+   Detailed Scatterplot
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#targeted-sinew-plot">
+   Targeted Sinew Plot
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="demo-notebook-2022-07-11">
+<span id="demo2022-07-11"></span><h1>Demo Notebook 2022-07-11<a class="headerlink" href="#demo-notebook-2022-07-11" title="Permalink to this headline">#</a></h1>
+<p>Demos from the live sessions on 2022-07-11.</p>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit; load the archival data</span>
+<span class="n">filename_archival</span> <span class="o">=</span> <span class="s2">&quot;../challenges/data/doe-wide.csv&quot;</span>
+<span class="n">df_archival</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename_archival</span><span class="p">)</span>
+<span class="n">df_archival</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>d</th>
+      <th>n</th>
+      <th>f_com</th>
+      <th>H</th>
+      <th>W</th>
+      <th>M_max</th>
+      <th>mass</th>
+      <th>dMdtheta_avs</th>
+      <th>dMdtheta_0</th>
+      <th>M_min</th>
+      <th>BM</th>
+      <th>angle</th>
+      <th>int_M_stable</th>
+      <th>GM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.414694</td>
+      <td>0.969522</td>
+      <td>0.384112</td>
+      <td>1.931260</td>
+      <td>1.390651</td>
+      <td>5.004726e-16</td>
+      <td>0.019592</td>
+      <td>NaN</td>
+      <td>-1.459991</td>
+      <td>-4.952630</td>
+      <td>0.108234</td>
+      <td>NaN</td>
+      <td>-8.019885</td>
+      <td>0.193949</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.242507</td>
+      <td>1.195436</td>
+      <td>0.656740</td>
+      <td>2.713299</td>
+      <td>3.580954</td>
+      <td>7.277457e+00</td>
+      <td>0.046730</td>
+      <td>NaN</td>
+      <td>9.916728</td>
+      <td>-5.402567</td>
+      <td>0.425216</td>
+      <td>NaN</td>
+      <td>3.675911</td>
+      <td>-0.557773</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.441223</td>
+      <td>0.936345</td>
+      <td>0.672138</td>
+      <td>1.446188</td>
+      <td>3.744617</td>
+      <td>6.550768e+00</td>
+      <td>0.040910</td>
+      <td>8.237037</td>
+      <td>-11.668754</td>
+      <td>-5.879390</td>
+      <td>1.073773</td>
+      <td>1.617128</td>
+      <td>-5.681558</td>
+      <td>0.768485</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.689483</td>
+      <td>0.882652</td>
+      <td>0.648739</td>
+      <td>1.210221</td>
+      <td>2.530339</td>
+      <td>1.149756e+00</td>
+      <td>0.034526</td>
+      <td>2.380926</td>
+      <td>-8.409095</td>
+      <td>-2.228434</td>
+      <td>0.764303</td>
+      <td>1.509121</td>
+      <td>-2.070254</td>
+      <td>0.652657</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.497305</td>
+      <td>0.780804</td>
+      <td>0.235978</td>
+      <td>2.502149</td>
+      <td>1.505777</td>
+      <td>7.886234e-16</td>
+      <td>0.029039</td>
+      <td>NaN</td>
+      <td>-8.644337</td>
+      <td>-14.019720</td>
+      <td>0.103794</td>
+      <td>NaN</td>
+      <td>-25.533024</td>
+      <td>0.796536</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="correlation-tile-plot">
+<h2>Correlation tile plot<a class="headerlink" href="#correlation-tile-plot" title="Permalink to this headline">#</a></h2>
+<p>Since there are <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values in our dataset <code class="docutils literal notranslate"><span class="pre">df_archival</span></code>, we need to handle them somehow. We can use the <code class="docutils literal notranslate"><span class="pre">nan_drop=True</span></code> option in <code class="docutils literal notranslate"><span class="pre">gr.tf_iocorr()</span></code> to simply drop the <code class="docutils literal notranslate"><span class="pre">NaN</span></code>’s when computing correlations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="s2">&quot;f_com&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">]</span>
+<span class="n">out</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;M_max&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;M_min&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;mass&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;dMdtheta_avs&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;dMdtheta_0&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;BM&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;GM&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;angle&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;int_M_stable&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="p">(</span>
+    <span class="n">df_archival</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_iocorr</span><span class="p">(</span>
+        <span class="n">var</span><span class="o">=</span><span class="n">var</span><span class="p">,</span> 
+        <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> 
+        <span class="n">nan_drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_auto</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calling plot_corrtile....
+</pre></div>
+</div>
+<img alt="../_images/demo2022-07-11_6_1.png" src="../_images/demo2022-07-11_6_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8765253131843)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>From this plot, we can see that the correlation between <code class="docutils literal notranslate"><span class="pre">H</span></code> and <code class="docutils literal notranslate"><span class="pre">dMdtheta_0</span></code> is small, as is the correlation between <code class="docutils literal notranslate"><span class="pre">n</span></code> and <code class="docutils literal notranslate"><span class="pre">dMdtheta_0</span></code>. This suggests that the <em>linear</em> relationship between the two is quite small. But keep in mind that a nonlinear relationship could also exist.</p>
+<p>We can also trim the <code class="docutils literal notranslate"><span class="pre">out</span></code> argument to produce a more focused plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_archival</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_iocorr</span><span class="p">(</span>
+        <span class="n">var</span><span class="o">=</span><span class="n">var</span><span class="p">,</span> 
+        <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dMdtheta_0&quot;</span><span class="p">],</span>
+        <span class="n">nan_drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_auto</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calling plot_corrtile....
+</pre></div>
+</div>
+<img alt="../_images/demo2022-07-11_8_1.png" src="../_images/demo2022-07-11_8_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8765253520493)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>A plot like this looks somewhat strange. Really, we only have five numbers, so we might as well just look at the table of values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_archival</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_iocorr</span><span class="p">(</span>
+        <span class="n">var</span><span class="o">=</span><span class="n">var</span><span class="p">,</span> 
+        <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dMdtheta_0&quot;</span><span class="p">],</span>
+        <span class="n">nan_drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_arrange</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">rho</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rho</th>
+      <th>var</th>
+      <th>out</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.424045</td>
+      <td>W</td>
+      <td>dMdtheta_0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.336092</td>
+      <td>d</td>
+      <td>dMdtheta_0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.074710</td>
+      <td>n</td>
+      <td>dMdtheta_0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.089236</td>
+      <td>H</td>
+      <td>dMdtheta_0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.611931</td>
+      <td>f_com</td>
+      <td>dMdtheta_0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="detailed-scatterplot">
+<h2>Detailed Scatterplot<a class="headerlink" href="#detailed-scatterplot" title="Permalink to this headline">#</a></h2>
+<p>Here’s how I incorporate multiple scatterplots into a single figure. Pivoting the data allows me to use faceting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_archival</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span>
+        <span class="s2">&quot;dMdtheta_0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;W&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;d&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;f_com&quot;</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_pivot_longer</span><span class="p">(</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;W&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;f_com&quot;</span><span class="p">],</span>
+        <span class="n">names_to</span><span class="o">=</span><span class="s2">&quot;var&quot;</span><span class="p">,</span>
+        <span class="n">values_to</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="s2">&quot;dMdtheta_0&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_smooth</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">facet_grid</span><span class="p">(</span><span class="s2">&quot;~var&quot;</span><span class="p">,</span> <span class="n">scales</span><span class="o">=</span><span class="s2">&quot;free_x&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/facets/facet.py:487: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+</pre></div>
+</div>
+<img alt="../_images/demo2022-07-11_12_1.png" src="../_images/demo2022-07-11_12_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8765253252596)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="targeted-sinew-plot">
+<h2>Targeted Sinew Plot<a class="headerlink" href="#targeted-sinew-plot" title="Permalink to this headline">#</a></h2>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">gr.pt_auto()</span></code> calls other plotting functions with default arguments. We can call the same function with different arguments to tweak a visual. For instance, we can plot a smaller number of outputs for a more focused plot:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_sinews</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_sinew_outputs</span><span class="p">(</span>
+        <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;W&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;f_com&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">],</span>
+        <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dMdtheta_0&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./demos"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Zachary del Rosario<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
