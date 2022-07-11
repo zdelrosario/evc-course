@@ -488,6 +488,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-quantiles">
+   Plotting quantiles
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#targeted-sinew-plot">
    Targeted Sinew Plot
   </a>
@@ -524,6 +529,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#detailed-scatterplot">
    Detailed Scatterplot
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-quantiles">
+   Plotting quantiles
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -727,7 +737,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 <img alt="../_images/demo2022-07-11_6_1.png" src="../_images/demo2022-07-11_6_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8765253131843)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8760894671336)&gt;
 </pre></div>
 </div>
 </div>
@@ -753,7 +763,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 <img alt="../_images/demo2022-07-11_8_1.png" src="../_images/demo2022-07-11_8_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8765253520493)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8760914488950)&gt;
 </pre></div>
 </div>
 </div>
@@ -863,14 +873,43 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/facets/facet.py:487: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
-/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+<img alt="../_images/demo2022-07-11_12_0.png" src="../_images/demo2022-07-11_12_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8760835732209)&gt;
 </pre></div>
 </div>
-<img alt="../_images/demo2022-07-11_12_1.png" src="../_images/demo2022-07-11_12_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8765253252596)&gt;
+</div>
+</div>
+</section>
+<section id="plotting-quantiles">
+<h2>Plotting quantiles<a class="headerlink" href="#plotting-quantiles" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factor</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+<span class="p">(</span>
+    <span class="n">df_archival</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;W&quot;</span><span class="p">,</span> <span class="s2">&quot;dMdtheta_0&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_ribbon</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df_archival</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">W_bin</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">W</span><span class="o">*</span><span class="n">factor</span><span class="p">,</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">factor</span><span class="p">)</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">W_bin</span><span class="p">)</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+            <span class="n">ymin</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dMdtheta_0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">),</span>
+            <span class="n">dMdtheta_0</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dMdtheta_0</span><span class="p">),</span>
+            <span class="n">ymax</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">dMdtheta_0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">),</span>
+        <span class="p">),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;W_bin&quot;</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="s2">&quot;ymin&quot;</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s2">&quot;ymax&quot;</span><span class="p">),</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mi">2</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/demo2022-07-11_14_0.png" src="../_images/demo2022-07-11_14_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8760881143866)&gt;
 </pre></div>
 </div>
 </div>
@@ -879,13 +918,33 @@ title="Print to PDF"
 <section id="targeted-sinew-plot">
 <h2>Targeted Sinew Plot<a class="headerlink" href="#targeted-sinew-plot" title="Permalink to this headline">#</a></h2>
 <p>Note that <code class="docutils literal notranslate"><span class="pre">gr.pt_auto()</span></code> calls other plotting functions with default arguments. We can call the same function with different arguments to tweak a visual. For instance, we can plot a smaller number of outputs for a more focused plot:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## Targeting a single output</span>
+<span class="p">(</span>
     <span class="n">df_sinews</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_sinew_outputs</span><span class="p">(</span>
         <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;W&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;f_com&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">],</span>
         <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dMdtheta_0&quot;</span><span class="p">],</span>
     <span class="p">)</span>
 <span class="p">)</span>
+
+<span class="c1">## Targeting a couple inputs</span>
+<span class="p">(</span>
+    <span class="n">df_sinews</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">pt_sinew_outputs</span><span class="p">(</span>
+        <span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;f_com&quot;</span><span class="p">],</span>
+        <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dMdtheta_0&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1">## Manually constructing a single sweep (over W)</span>
+<span class="p">(</span>
+    <span class="n">df_sinews</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sweep_var</span> <span class="o">==</span> <span class="s2">&quot;W&quot;</span><span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;W&quot;</span><span class="p">,</span> <span class="s2">&quot;dMdtheta_0&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;factor(sweep_ind)&quot;</span><span class="p">))</span>
+<span class="p">)</span>
+
 </pre></div>
 </div>
 </section>
