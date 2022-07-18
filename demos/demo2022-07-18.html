@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>EDA Demo &#8212; Data Science for Engineers</title>
+    <title>Demo Notebook 2022-07-18 &#8212; Data Science for Engineers</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -375,7 +375,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/demos/demo-eda.ipynb"
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/demos/demo2022-07-18.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -418,7 +418,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/demos/demo-eda.ipynb"
+        <a href="../_sources/demos/demo2022-07-18.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -477,55 +477,34 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   EDA Demo
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#setup">
    Setup
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simple-checks">
-   Simple checks
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-the-challenge-data">
+   Load the challenge data
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualize">
-   Visualize
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compare-across-thicknesses">
+   Compare across thicknesses
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#d-eda">
-     1d EDA
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#carat">
-       Carat
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     2d EDA
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#price-v-carat">
-       Price v Carat
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ending">
-   Ending
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fitting-a-lognorm">
+   Fitting a lognorm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#real-variability">
+   Real variability?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-reading">
+   Further reading
   </a>
  </li>
 </ul>
@@ -537,7 +516,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>EDA Demo</h1>
+                <h1>Demo Notebook 2022-07-18</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -547,55 +526,34 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   EDA Demo
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#setup">
    Setup
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simple-checks">
-   Simple checks
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-the-challenge-data">
+   Load the challenge data
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualize">
-   Visualize
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compare-across-thicknesses">
+   Compare across thicknesses
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#d-eda">
-     1d EDA
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#carat">
-       Carat
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     2d EDA
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#price-v-carat">
-       Price v Carat
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ending">
-   Ending
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fitting-a-lognorm">
+   Fitting a lognorm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#real-variability">
+   Real variability?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-reading">
+   Further reading
   </a>
  </li>
 </ul>
@@ -608,44 +566,29 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="eda-demo">
-<h1>EDA Demo<a class="headerlink" href="#eda-demo" title="Permalink to this headline">#</a></h1>
-<ul class="simple">
-<li><p><em>ZDR, 2022</em></p></li>
-</ul>
-<p>This is a live demo notebook that I use in presentations.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="setup">
-<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="demo-notebook-2022-07-18">
+<span id="demo2022-07-18"></span><h1>Demo Notebook 2022-07-18<a class="headerlink" href="#demo-notebook-2022-07-18" title="Permalink to this headline">#</a></h1>
+<p>Demos from the live sessions on 2022-07-18.</p>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Main package import</span>
-<span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>  
-<span class="c1"># 2. Set up grama</span>
-<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span> 
-<span class="c1"># 3. Show figures correctly</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
 </div>
-<p>Load a dataset</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_diamonds</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="simple-checks">
-<h1>Simple checks<a class="headerlink" href="#simple-checks" title="Permalink to this headline">#</a></h1>
+<section id="load-the-challenge-data">
+<h2>Load the challenge data<a class="headerlink" href="#load-the-challenge-data" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-    <span class="n">df_diamonds</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">()</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../challenges/data/c05-data.csv&quot;</span><span class="p">)</span>
+<span class="n">df_data</span>
 </pre></div>
 </div>
 </div>
@@ -668,94 +611,164 @@ title="Print to PDF"
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>carat</th>
-      <th>cut</th>
-      <th>color</th>
-      <th>clarity</th>
-      <th>depth</th>
-      <th>table</th>
-      <th>price</th>
-      <th>x</th>
-      <th>y</th>
-      <th>z</th>
+      <th>E</th>
+      <th>mu</th>
+      <th>t</th>
+      <th>id_machine</th>
+      <th>id_specimen</th>
+      <th>id_measurement</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.23</td>
-      <td>Ideal</td>
-      <td>E</td>
-      <td>SI2</td>
-      <td>61.5</td>
-      <td>55.0</td>
-      <td>326</td>
-      <td>3.95</td>
-      <td>3.98</td>
-      <td>2.43</td>
+      <td>10113.457096</td>
+      <td>0.319442</td>
+      <td>0.250</td>
+      <td>A</td>
+      <td>0</td>
+      <td>g</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.21</td>
-      <td>Premium</td>
-      <td>E</td>
-      <td>SI1</td>
-      <td>59.8</td>
-      <td>61.0</td>
-      <td>326</td>
-      <td>3.89</td>
-      <td>3.84</td>
-      <td>2.31</td>
+      <td>9432.148720</td>
+      <td>0.308230</td>
+      <td>0.250</td>
+      <td>A</td>
+      <td>1</td>
+      <td>g</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.23</td>
-      <td>Good</td>
-      <td>E</td>
-      <td>VS1</td>
-      <td>56.9</td>
-      <td>65.0</td>
-      <td>327</td>
-      <td>4.05</td>
-      <td>4.07</td>
-      <td>2.31</td>
+      <td>10468.172283</td>
+      <td>0.328422</td>
+      <td>0.250</td>
+      <td>A</td>
+      <td>2</td>
+      <td>g</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.29</td>
-      <td>Premium</td>
-      <td>I</td>
-      <td>VS2</td>
-      <td>62.4</td>
-      <td>58.0</td>
-      <td>334</td>
-      <td>4.20</td>
-      <td>4.23</td>
-      <td>2.63</td>
+      <td>9474.697920</td>
+      <td>0.333919</td>
+      <td>0.250</td>
+      <td>A</td>
+      <td>3</td>
+      <td>g</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.31</td>
-      <td>Good</td>
-      <td>J</td>
-      <td>SI2</td>
-      <td>63.3</td>
-      <td>58.0</td>
-      <td>335</td>
-      <td>4.34</td>
-      <td>4.35</td>
-      <td>2.75</td>
+      <td>10010.402837</td>
+      <td>0.310751</td>
+      <td>0.250</td>
+      <td>A</td>
+      <td>4</td>
+      <td>g</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>715</th>
+      <td>11935.167126</td>
+      <td>0.319328</td>
+      <td>0.125</td>
+      <td>F</td>
+      <td>115</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>716</th>
+      <td>11552.946124</td>
+      <td>0.317546</td>
+      <td>0.125</td>
+      <td>F</td>
+      <td>116</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>717</th>
+      <td>11985.579932</td>
+      <td>0.332173</td>
+      <td>0.125</td>
+      <td>F</td>
+      <td>117</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>718</th>
+      <td>12092.949690</td>
+      <td>0.317655</td>
+      <td>0.125</td>
+      <td>F</td>
+      <td>118</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>719</th>
+      <td>12170.319166</td>
+      <td>0.335891</td>
+      <td>0.125</td>
+      <td>F</td>
+      <td>119</td>
+      <td>l</td>
     </tr>
   </tbody>
 </table>
+<p>720 rows × 6 columns</p>
 </div></div></div>
+</div>
+</section>
+<section id="compare-across-thicknesses">
+<h2>Compare across thicknesses<a class="headerlink" href="#compare-across-thicknesses" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TODO: Compare elasticity across thicknesses</span>
+<span class="c1">## NOTE: There are many ways to do this!</span>
+<span class="p">(</span>
+    <span class="n">df_data</span>
+<span class="c1"># solution-begin</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_boxplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">),</span> <span class="n">notch</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># solution-end</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/demo2022-07-18_6_0.png" src="../_images/demo2022-07-18_6_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8726504687951)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="fitting-a-lognorm">
+<h2>Fitting a lognorm<a class="headerlink" href="#fitting-a-lognorm" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_sub</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span>
+        <span class="n">DF</span><span class="o">.</span><span class="n">t</span> <span class="o">==</span> <span class="mf">0.250</span><span class="p">,</span>
+        <span class="n">DF</span><span class="o">.</span><span class="n">id_machine</span> <span class="o">!=</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span>
+        <span class="n">DF</span><span class="o">.</span><span class="n">id_measurement</span> <span class="o">!=</span> <span class="s2">&quot;h&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-    <span class="n">df_diamonds</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_describe</span><span class="p">()</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sub</span>
 </pre></div>
 </div>
 </div>
@@ -778,218 +791,245 @@ title="Print to PDF"
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>carat</th>
-      <th>depth</th>
-      <th>table</th>
-      <th>price</th>
-      <th>x</th>
-      <th>y</th>
-      <th>z</th>
+      <th>E</th>
+      <th>mu</th>
+      <th>t</th>
+      <th>id_machine</th>
+      <th>id_specimen</th>
+      <th>id_measurement</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>count</th>
-      <td>53940.000000</td>
-      <td>53940.000000</td>
-      <td>53940.000000</td>
-      <td>53940.000000</td>
-      <td>53940.000000</td>
-      <td>53940.000000</td>
-      <td>53940.000000</td>
+      <th>0</th>
+      <td>10113.457096</td>
+      <td>0.319442</td>
+      <td>0.25</td>
+      <td>A</td>
+      <td>0</td>
+      <td>g</td>
     </tr>
     <tr>
-      <th>mean</th>
-      <td>0.797940</td>
-      <td>61.749405</td>
-      <td>57.457184</td>
-      <td>3932.799722</td>
-      <td>5.731157</td>
-      <td>5.734526</td>
-      <td>3.538734</td>
+      <th>1</th>
+      <td>9432.148720</td>
+      <td>0.308230</td>
+      <td>0.25</td>
+      <td>A</td>
+      <td>1</td>
+      <td>g</td>
     </tr>
     <tr>
-      <th>std</th>
-      <td>0.474011</td>
-      <td>1.432621</td>
-      <td>2.234491</td>
-      <td>3989.439738</td>
-      <td>1.121761</td>
-      <td>1.142135</td>
-      <td>0.705699</td>
+      <th>2</th>
+      <td>10468.172283</td>
+      <td>0.328422</td>
+      <td>0.25</td>
+      <td>A</td>
+      <td>2</td>
+      <td>g</td>
     </tr>
     <tr>
-      <th>min</th>
-      <td>0.200000</td>
-      <td>43.000000</td>
-      <td>43.000000</td>
-      <td>326.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
+      <th>3</th>
+      <td>9474.697920</td>
+      <td>0.333919</td>
+      <td>0.25</td>
+      <td>A</td>
+      <td>3</td>
+      <td>g</td>
     </tr>
     <tr>
-      <th>25%</th>
-      <td>0.400000</td>
-      <td>61.000000</td>
-      <td>56.000000</td>
-      <td>950.000000</td>
-      <td>4.710000</td>
-      <td>4.720000</td>
-      <td>2.910000</td>
+      <th>4</th>
+      <td>10010.402837</td>
+      <td>0.310751</td>
+      <td>0.25</td>
+      <td>A</td>
+      <td>4</td>
+      <td>g</td>
     </tr>
     <tr>
-      <th>50%</th>
-      <td>0.700000</td>
-      <td>61.800000</td>
-      <td>57.000000</td>
-      <td>2401.000000</td>
-      <td>5.700000</td>
-      <td>5.710000</td>
-      <td>3.530000</td>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
-      <th>75%</th>
-      <td>1.040000</td>
-      <td>62.500000</td>
-      <td>59.000000</td>
-      <td>5324.250000</td>
-      <td>6.540000</td>
-      <td>6.540000</td>
-      <td>4.040000</td>
+      <th>245</th>
+      <td>11308.345649</td>
+      <td>0.327115</td>
+      <td>0.25</td>
+      <td>F</td>
+      <td>105</td>
+      <td>l</td>
     </tr>
     <tr>
-      <th>max</th>
-      <td>5.010000</td>
-      <td>79.000000</td>
-      <td>95.000000</td>
-      <td>18823.000000</td>
-      <td>10.740000</td>
-      <td>58.900000</td>
-      <td>31.800000</td>
+      <th>246</th>
+      <td>10068.336113</td>
+      <td>0.322171</td>
+      <td>0.25</td>
+      <td>F</td>
+      <td>106</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>247</th>
+      <td>9509.337183</td>
+      <td>0.321234</td>
+      <td>0.25</td>
+      <td>F</td>
+      <td>107</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>248</th>
+      <td>9174.206339</td>
+      <td>0.318443</td>
+      <td>0.25</td>
+      <td>F</td>
+      <td>108</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <th>249</th>
+      <td>9895.380257</td>
+      <td>0.322483</td>
+      <td>0.25</td>
+      <td>F</td>
+      <td>109</td>
+      <td>l</td>
     </tr>
   </tbody>
 </table>
+<p>250 rows × 6 columns</p>
 </div></div></div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="visualize">
-<h1>Visualize<a class="headerlink" href="#visualize" title="Permalink to this headline">#</a></h1>
-<section id="d-eda">
-<h2>1d EDA<a class="headerlink" href="#d-eda" title="Permalink to this headline">#</a></h2>
-<section id="carat">
-<h3>Carat<a class="headerlink" href="#carat" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-    <span class="n">df_diamonds</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;carat&quot;</span><span class="p">))</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">()</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span><span class="o">/</span><span class="mi">250</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/stats/stat_bin.py:95: PlotnineWarning: &#39;stat_bin()&#39; using &#39;bins = 142&#39;. Pick better value with &#39;binwidth&#39;.
-</pre></div>
-</div>
-<img alt="../_images/demo-eda_12_1.png" src="../_images/demo-eda_12_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8784852778427)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.04
 </pre></div>
 </div>
 </div>
 </div>
-<p>Focus on a range of <code class="docutils literal notranslate"><span class="pre">carat</span></code> values</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-    <span class="n">df_diamonds</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">carat</span> <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;carat&quot;</span><span class="p">))</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution-begin</span>
+<span class="n">mg_E</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_fit</span><span class="p">(</span>
+    <span class="s2">&quot;lognorm&quot;</span><span class="p">,</span> 
+    <span class="n">df_sub</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> 
+    <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/stats/stat_bin.py:95: PlotnineWarning: &#39;stat_bin()&#39; using &#39;bins = 35&#39;. Pick better value with &#39;binwidth&#39;.
-</pre></div>
-</div>
-<img alt="../_images/demo-eda_14_1.png" src="../_images/demo-eda_14_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8784905510870)&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<p>Refine the bin count to better show patterns</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-    <span class="n">df_diamonds</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">carat</span> <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;carat&quot;</span><span class="p">))</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+
+<span class="n">mg_E_bad</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_fit</span><span class="p">(</span>
+    <span class="s2">&quot;lognorm&quot;</span><span class="p">,</span> 
+    <span class="n">df_sub</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> 
+    <span class="c1"># floc=0, # Don&#39;t set the location parameter to zero</span>
 <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/demo-eda_16_0.png" src="../_images/demo-eda_16_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8784852787369)&gt;
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="id1">
-<h2>2d EDA<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
-<section id="price-v-carat">
-<h3>Price v Carat<a class="headerlink" href="#price-v-carat" title="Permalink to this headline">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-    <span class="n">df_diamonds</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;carat&quot;</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">))</span>
+
+<span class="p">(</span>
+    <span class="n">df_sub</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+        <span class="n">q_E</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">qqvals</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> <span class="n">marg</span><span class="o">=</span><span class="n">mg_E</span><span class="p">),</span>
+        <span class="n">q_E_bad</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">qqvals</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> <span class="n">marg</span><span class="o">=</span><span class="n">mg_E_bad</span><span class="p">),</span>
+    <span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;q_E&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_abline</span><span class="p">(</span><span class="n">intercept</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">slope</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
 <span class="p">)</span>
+<span class="c1"># solution-end</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/demo-eda_19_0.png" src="../_images/demo-eda_19_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8784869332384)&gt;
+<img alt="../_images/demo2022-07-18_11_0.png" src="../_images/demo2022-07-18_11_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8726504642211)&gt;
 </pre></div>
 </div>
 </div>
 </div>
-<p>Modify the dots to illustrate patterns</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-    <span class="n">df_diamonds</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;carat&quot;</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">))</span>
-    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mg_E</span><span class="p">)</span>     <span class="c1"># floc == 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mg_E_bad</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(+0) lognorm, {&#39;mean&#39;: &#39;9.965e+03&#39;, &#39;s.d.&#39;: &#39;4.977e+02&#39;, &#39;COV&#39;: 0.05, &#39;skew.&#39;: 0.15, &#39;kurt.&#39;: 3.04}
+(+0) lognorm, {&#39;mean&#39;: &#39;2.409e+13&#39;, &#39;s.d.&#39;: &#39;3.298e+26&#39;, &#39;COV&#39;: 13691416095072.72, &#39;skew.&#39;: 2.5665226910475562e+39, &#39;kurt.&#39;: 1.2347725193581465e+105}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="real-variability">
+<h2>Real variability?<a class="headerlink" href="#real-variability" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_real</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_sub</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">id_specimen</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">mu</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">mu</span><span class="p">),</span>
+        <span class="n">E</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_ungroup</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution-begin</span>
+<span class="n">mg_E</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_fit</span><span class="p">(</span>
+    <span class="s2">&quot;lognorm&quot;</span><span class="p">,</span> 
+    <span class="n">df_real</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> 
+    <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">mg_E_bad</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_fit</span><span class="p">(</span>
+    <span class="s2">&quot;lognorm&quot;</span><span class="p">,</span> 
+    <span class="n">df_real</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> 
+    <span class="c1"># floc=0, # Don&#39;t set the location parameter to zero</span>
+<span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">df_real</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+        <span class="n">q_E</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">qqvals</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> <span class="n">marg</span><span class="o">=</span><span class="n">mg_E</span><span class="p">),</span>
+        <span class="n">q_E_bad</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">qqvals</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> <span class="n">marg</span><span class="o">=</span><span class="n">mg_E_bad</span><span class="p">),</span>
+    <span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;q_E&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_abline</span><span class="p">(</span><span class="n">intercept</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">slope</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="c1"># solution-end</span>
+</pre></div>
+</div>
+</div>
 <div class="cell_output docutils container">
-<img alt="../_images/demo-eda_21_0.png" src="../_images/demo-eda_21_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8784889743153)&gt;
+<img alt="../_images/demo2022-07-18_15_0.png" src="../_images/demo2022-07-18_15_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8726502482327)&gt;
 </pre></div>
 </div>
 </div>
 </div>
 </section>
+<section id="further-reading">
+<h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arc.aiaa.org/doi/full/10.2514/1.J059578">When are allowables conservative?</a></p></li>
+</ul>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="ending">
-<h1>Ending<a class="headerlink" href="#ending" title="Permalink to this headline">#</a></h1>
-<blockquote>
-<div><p>EDA helps us find patterns in a dataset.</p>
-</div></blockquote>
-<p>Later, we’ll learn how to use these findings to do useful engineering work!</p>
 </section>
 
     <script type="text/x-thebe-config">
