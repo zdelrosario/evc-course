@@ -727,6 +727,8 @@ title="Print to PDF"
 </section>
 <section id="compare-across-thicknesses">
 <h2>Compare across thicknesses<a class="headerlink" href="#compare-across-thicknesses" title="Permalink to this headline">#</a></h2>
+<p>I chose to make this comparison using boxplots. These are a simple (and underrated!) way to make comparisons across groups.</p>
+<p>A particularly helpful tip is to use <code class="docutils literal notranslate"><span class="pre">notch=True</span></code> with boxplots. This visualizes a confidence interval on the median (the middle line), which is helpful for assessing the statistical signifance of differences. As we can see from the boxplots below, the two notches are highly separated, suggesting that the difference is statistically significant (not likely to be due to chance alone).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TODO: Compare elasticity across thicknesses</span>
@@ -743,7 +745,7 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/demo2022-07-18_6_0.png" src="../_images/demo2022-07-18_6_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8726504687951)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8769249496507)&gt;
 </pre></div>
 </div>
 </div>
@@ -751,6 +753,7 @@ title="Print to PDF"
 </section>
 <section id="fitting-a-lognorm">
 <h2>Fitting a lognorm<a class="headerlink" href="#fitting-a-lognorm" title="Permalink to this headline">#</a></h2>
+<p>First, let’s set up the data as it was in the challenge. We seek to model the variability of <code class="docutils literal notranslate"><span class="pre">E</span></code> as observed in <code class="docutils literal notranslate"><span class="pre">df_sub</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
@@ -766,197 +769,63 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p>The following code fits a lognormal distribution to the observations on <code class="docutils literal notranslate"><span class="pre">E</span></code>.</p>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">&quot;lognorm&quot;</span></code> distribution in grama uses the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.lognorm.html">scipy implementation</a>. As noted in that documentation, the <code class="docutils literal notranslate"><span class="pre">loc</span></code> and <code class="docutils literal notranslate"><span class="pre">scale</span></code> parameters are used to modify the input variable <code class="docutils literal notranslate"><span class="pre">(x</span> <span class="pre">-</span> <span class="pre">loc)</span> <span class="pre">/</span> <span class="pre">scale</span></code>. However, we can <em>freeze</em> the location parameter of the distribution by setting <code class="docutils literal notranslate"><span class="pre">floc=0</span></code>. This is useful when fitting a lognormal distribution becomes unstable. The following code demonstrates this phenomenon:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sub</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>E</th>
-      <th>mu</th>
-      <th>t</th>
-      <th>id_machine</th>
-      <th>id_specimen</th>
-      <th>id_measurement</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>10113.457096</td>
-      <td>0.319442</td>
-      <td>0.25</td>
-      <td>A</td>
-      <td>0</td>
-      <td>g</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>9432.148720</td>
-      <td>0.308230</td>
-      <td>0.25</td>
-      <td>A</td>
-      <td>1</td>
-      <td>g</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>10468.172283</td>
-      <td>0.328422</td>
-      <td>0.25</td>
-      <td>A</td>
-      <td>2</td>
-      <td>g</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>9474.697920</td>
-      <td>0.333919</td>
-      <td>0.25</td>
-      <td>A</td>
-      <td>3</td>
-      <td>g</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>10010.402837</td>
-      <td>0.310751</td>
-      <td>0.25</td>
-      <td>A</td>
-      <td>4</td>
-      <td>g</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>245</th>
-      <td>11308.345649</td>
-      <td>0.327115</td>
-      <td>0.25</td>
-      <td>F</td>
-      <td>105</td>
-      <td>l</td>
-    </tr>
-    <tr>
-      <th>246</th>
-      <td>10068.336113</td>
-      <td>0.322171</td>
-      <td>0.25</td>
-      <td>F</td>
-      <td>106</td>
-      <td>l</td>
-    </tr>
-    <tr>
-      <th>247</th>
-      <td>9509.337183</td>
-      <td>0.321234</td>
-      <td>0.25</td>
-      <td>F</td>
-      <td>107</td>
-      <td>l</td>
-    </tr>
-    <tr>
-      <th>248</th>
-      <td>9174.206339</td>
-      <td>0.318443</td>
-      <td>0.25</td>
-      <td>F</td>
-      <td>108</td>
-      <td>l</td>
-    </tr>
-    <tr>
-      <th>249</th>
-      <td>9895.380257</td>
-      <td>0.322483</td>
-      <td>0.25</td>
-      <td>F</td>
-      <td>109</td>
-      <td>l</td>
-    </tr>
-  </tbody>
-</table>
-<p>250 rows × 6 columns</p>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span><span class="o">/</span><span class="mi">250</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.04
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution-begin</span>
-<span class="n">mg_E</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_fit</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Fit with loc == 0</span>
+<span class="n">mg_fixed</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_fit</span><span class="p">(</span>
     <span class="s2">&quot;lognorm&quot;</span><span class="p">,</span> 
     <span class="n">df_sub</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> 
     <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="n">mg_E_bad</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_fit</span><span class="p">(</span>
+<span class="c1">## Fit with loc able to move</span>
+<span class="n">mg_free</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_fit</span><span class="p">(</span>
     <span class="s2">&quot;lognorm&quot;</span><span class="p">,</span> 
     <span class="n">df_sub</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> 
     <span class="c1"># floc=0, # Don&#39;t set the location parameter to zero</span>
 <span class="p">)</span>
 
+<span class="c1">## Use QQ plot to asses</span>
 <span class="p">(</span>
     <span class="n">df_sub</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
-        <span class="n">q_E</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">qqvals</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> <span class="n">marg</span><span class="o">=</span><span class="n">mg_E</span><span class="p">),</span>
-        <span class="n">q_E_bad</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">qqvals</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> <span class="n">marg</span><span class="o">=</span><span class="n">mg_E_bad</span><span class="p">),</span>
+        <span class="n">fixed</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">qqvals</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> <span class="n">marg</span><span class="o">=</span><span class="n">mg_fixed</span><span class="p">),</span>
+        <span class="n">free</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">qqvals</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> <span class="n">marg</span><span class="o">=</span><span class="n">mg_free</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_pivot_longer</span><span class="p">(</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;fixed&quot;</span><span class="p">,</span> <span class="s2">&quot;free&quot;</span><span class="p">],</span>
+        <span class="n">names_to</span><span class="o">=</span><span class="s2">&quot;location&quot;</span><span class="p">,</span>
+        <span class="n">values_to</span><span class="o">=</span><span class="s2">&quot;q_E&quot;</span><span class="p">,</span>
     <span class="p">)</span>
     
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;q_E&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_abline</span><span class="p">(</span><span class="n">intercept</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">slope</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
     <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">facet_grid</span><span class="p">(</span><span class="s2">&quot;~location&quot;</span><span class="p">,</span> <span class="n">scales</span><span class="o">=</span><span class="s2">&quot;free_x&quot;</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="c1"># solution-end</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/demo2022-07-18_11_0.png" src="../_images/demo2022-07-18_11_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8726504642211)&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/facets/facet.py:487: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+</pre></div>
+</div>
+<img alt="../_images/demo2022-07-18_10_1.png" src="../_images/demo2022-07-18_10_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8769300923706)&gt;
 </pre></div>
 </div>
 </div>
 </div>
+<p>Clearly the <code class="docutils literal notranslate"><span class="pre">free</span></code> option has resulted in a terrible fit!</p>
+<p>We can also see that the fitted parameter values for the <code class="docutils literal notranslate"><span class="pre">free</span></code> version have ended up being enormous (and implausible).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mg_E</span><span class="p">)</span>     <span class="c1"># floc == 0</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mg_E_bad</span><span class="p">)</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mg_fixed</span><span class="p">)</span>  <span class="c1"># floc == 0 (fixed)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mg_free</span><span class="p">)</span>   <span class="c1"># floc free</span>
 </pre></div>
 </div>
 </div>
@@ -970,6 +839,31 @@ title="Print to PDF"
 </section>
 <section id="real-variability">
 <h2>Real variability?<a class="headerlink" href="#real-variability" title="Permalink to this headline">#</a></h2>
+<p>Note that the tails of the fitted distribution seem to exhibit some mismatch:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_sub</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+        <span class="n">q_E</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">qqvals</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> <span class="n">marg</span><span class="o">=</span><span class="n">mg_fixed</span><span class="p">),</span>
+    <span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;q_E&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_abline</span><span class="p">(</span><span class="n">intercept</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">slope</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/demo2022-07-18_14_0.png" src="../_images/demo2022-07-18_14_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8769300926805)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is a problem for us, as we’re aiming to assess probabilities that lie in the tails (around the 1% level).</p>
+<p>Part of the issue here is that the real and erroneous variability mingle to create a complicated, non-standard distribution. We can improve the situation by applying the mean heuristic to the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
@@ -986,6 +880,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p>Now re-fit the marginal distribution on the reduced dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution-begin</span>
@@ -995,17 +890,10 @@ title="Print to PDF"
     <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="n">mg_E_bad</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">marg_fit</span><span class="p">(</span>
-    <span class="s2">&quot;lognorm&quot;</span><span class="p">,</span> 
-    <span class="n">df_real</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> 
-    <span class="c1"># floc=0, # Don&#39;t set the location parameter to zero</span>
-<span class="p">)</span>
-
 <span class="p">(</span>
     <span class="n">df_real</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
         <span class="n">q_E</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">qqvals</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> <span class="n">marg</span><span class="o">=</span><span class="n">mg_E</span><span class="p">),</span>
-        <span class="n">q_E_bad</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">qqvals</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> <span class="n">marg</span><span class="o">=</span><span class="n">mg_E_bad</span><span class="p">),</span>
     <span class="p">)</span>
     
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;q_E&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">))</span>
@@ -1017,17 +905,24 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/demo2022-07-18_15_0.png" src="../_images/demo2022-07-18_15_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8726502482327)&gt;
+<img alt="../_images/demo2022-07-18_18_0.png" src="../_images/demo2022-07-18_18_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8769288398324)&gt;
 </pre></div>
 </div>
 </div>
 </div>
+<p>As discussed in the morning session, this fit is still not perfect. However, we can see that the points generally lie closer to the line than before.</p>
+<p>Since the real variability <em>actually</em> was generated from a lognormal distribution, the remaining mismatch here is due to erroneous (sampling) variability. Dealing with this remaining uncertainty is outside the scope of this course, but you can take a look at the Further Reading below for more information!</p>
 </section>
 <section id="further-reading">
 <h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arc.aiaa.org/doi/full/10.2514/1.J059578">When are allowables conservative?</a></p></li>
+<li><p><a class="reference external" href="https://arc.aiaa.org/doi/full/10.2514/1.J059578">When are allowables conservative?</a></p>
+<ul>
+<li><p>Discusses basis values, which are used in aerospace engineering to account for both real and erroneous (sampling) sources of variability simultaneously.</p></li>
+<li><p>Also discusses the limitations of allowable (single) values for engineering analysis purposes.</p></li>
+</ul>
+</li>
 </ul>
 </section>
 </section>
