@@ -493,6 +493,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explore-the-experimental-design">
+   Explore the experimental design
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fitting-a-lognorm">
    Fitting a lognorm
   </a>
@@ -539,6 +544,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#compare-across-thicknesses">
    Compare across thicknesses
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explore-the-experimental-design">
+   Explore the experimental design
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -745,11 +755,274 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/demo2022-07-18_6_0.png" src="../_images/demo2022-07-18_6_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8769249496507)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8770214991553)&gt;
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="explore-the-experimental-design">
+<h2>Explore the experimental design<a class="headerlink" href="#explore-the-experimental-design" title="Permalink to this headline">#</a></h2>
+<p>(The following is the solution code from the <strong>q2</strong> task.)</p>
+<p>Answer the following questions to better understand the experimental design. Note that the same questions are posed within each cell and under <em>observations</em> below.</p>
+<p><em>Hint</em>: The verbs <code class="docutils literal notranslate"><span class="pre">tf_count()</span></code> and <code class="docutils literal notranslate"><span class="pre">tf_distinct()</span></code> will be very useful for answering some of these questions!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Q: What thicknesses were tested?</span>
+<span class="c1"># solution-begin</span>
+<span class="p">(</span>
+    <span class="n">df_data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_count</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="c1"># solution-end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>t</th>
+      <th>n</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.125</td>
+      <td>360</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.250</td>
+      <td>360</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Q: How many unique specimens were manufactured?</span>
+<span class="c1"># solution-begin</span>
+<span class="p">(</span>
+    <span class="n">df_data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span><span class="n">spec_max</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">id_specimen</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="c1"># solution-end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>spec_max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>120</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Q: How many specimens were made on each machine?</span>
+<span class="c1"># solution-begin</span>
+<span class="p">(</span>
+    <span class="n">df_data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_distinct</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">id_specimen</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">id_machine</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_count</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">id_machine</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="c1"># solution-end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id_machine</th>
+      <th>n</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>B</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>C</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>D</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>E</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>F</td>
+      <td>20</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Q: How many times did each operator measure each specimen?</span>
+<span class="c1"># solution-begin</span>
+<span class="p">(</span>
+    <span class="n">df_data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_count</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">id_specimen</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">id_measurement</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span><span class="n">n_max</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">n</span><span class="p">))</span>
+<span class="p">)</span>
+<span class="c1"># solution-end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>n_max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><em>Observations</em></p>
+<!-- task-begin -->
+<ul class="simple">
+<li><p>What thicknesses were tested?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>How many unique specimens were manufactured?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>How many specimens were made on each machine?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+<li><p>How many times did each operator measure each specimen?</p>
+<ul>
+<li><p>(Your response here)</p></li>
+</ul>
+</li>
+</ul>
+<!-- task-end -->
+<!-- solution-begin -->
+<ul class="simple">
+<li><p>What thicknesses were tested?</p>
+<ul>
+<li><p>0.125 and 0.250 inches</p></li>
+</ul>
+</li>
+<li><p>How many unique specimens were manufactured?</p>
+<ul>
+<li><p>120</p></li>
+</ul>
+</li>
+<li><p>How many specimens were made on each machine?</p>
+<ul>
+<li><p>20 specimens each</p></li>
+</ul>
+</li>
+<li><p>How many times did each operator measure each specimen?</p>
+<ul>
+<li><p>Just once</p></li>
+</ul>
+</li>
+</ul>
+<!-- solution-end -->
 </section>
 <section id="fitting-a-lognorm">
 <h2>Fitting a lognorm<a class="headerlink" href="#fitting-a-lognorm" title="Permalink to this headline">#</a></h2>
@@ -814,8 +1087,8 @@ title="Print to PDF"
 /Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
 </pre></div>
 </div>
-<img alt="../_images/demo2022-07-18_10_1.png" src="../_images/demo2022-07-18_10_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8769300923706)&gt;
+<img alt="../_images/demo2022-07-18_16_1.png" src="../_images/demo2022-07-18_16_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8770231222013)&gt;
 </pre></div>
 </div>
 </div>
@@ -856,8 +1129,8 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/demo2022-07-18_14_0.png" src="../_images/demo2022-07-18_14_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8769300926805)&gt;
+<img alt="../_images/demo2022-07-18_20_0.png" src="../_images/demo2022-07-18_20_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8770214991071)&gt;
 </pre></div>
 </div>
 </div>
@@ -905,8 +1178,8 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/demo2022-07-18_18_0.png" src="../_images/demo2022-07-18_18_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8769288398324)&gt;
+<img alt="../_images/demo2022-07-18_24_0.png" src="../_images/demo2022-07-18_24_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8770215282339)&gt;
 </pre></div>
 </div>
 </div>
