@@ -1160,7 +1160,7 @@ title="Print to PDF"
 </li>
 <li><p>Why is there variability in <code class="docutils literal notranslate"><span class="pre">y</span></code>?</p>
 <ul>
-<li><p>There is variability in <code class="docutils literal notranslate"><span class="pre">y</span></code> because we are visualizing the designed value of <code class="docutils literal notranslate"><span class="pre">x</span></code>, while the realized value <code class="docutils literal notranslate"><span class="pre">x_r</span></code></p></li>
+<li><p>There is variability in <code class="docutils literal notranslate"><span class="pre">y</span></code> because we are visualizing the designed value of <code class="docutils literal notranslate"><span class="pre">x</span></code>, while the realized value <code class="docutils literal notranslate"><span class="pre">x_r</span></code> varies randomly.</p></li>
 </ul>
 </li>
 <li><p>Where (along the horizontal axis) is the variability in <code class="docutils literal notranslate"><span class="pre">y</span></code> large? Where is it small?</p>
@@ -1246,7 +1246,7 @@ title="Print to PDF"
 <p><em>Observations</em></p>
 <p><em>Note</em>: This plot uses <code class="docutils literal notranslate"><span class="pre">geom_ribbon()</span></code>, which takes the aesthetics <code class="docutils literal notranslate"><span class="pre">ymin</span></code> and <code class="docutils literal notranslate"><span class="pre">ymax</span></code>. A ribbon is a useful way to visualize a region bounded by lower and upper values, such as quantiles!</p>
 <ul class="simple">
-<li><p>Contrast this plot with the scatterplot from qX: What can you see in this ribbon plot that is harder to see in the scatterplot?</p>
+<li><p>Contrast this plot with the scatterplot from q3: What can you see in this ribbon plot that is harder to see in the scatterplot?</p>
 <ul>
 <li><p>Some examples: We can see the mean trend quite clearly, while the mean trend is harder to judge by eye in the scatterplot. We can also see particular quantiles; if we wanted to make decisions based on the middle 90% of the data, these would be ideal bounds to use. If we wanted to use a different fraction of the data (say, 99%) we could adjust the quantiles (say, <code class="docutils literal notranslate"><span class="pre">0.005</span></code> and <code class="docutils literal notranslate"><span class="pre">0.995</span></code>).</p></li>
 </ul>
@@ -1362,6 +1362,38 @@ title="Print to PDF"
 </div>
 <p><em>Observations</em></p>
 <p>For this example, <em>lower</em> values of <code class="docutils literal notranslate"><span class="pre">y</span></code> are better. The solid curve depicts the <code class="docutils literal notranslate"><span class="pre">Nominal</span></code> output value, while the shaded region visualizes the 5% to 95% quantiles.</p>
+<ul class="simple">
+<li><p><em>Approximately</em>, what is the lowest value <code class="docutils literal notranslate"><span class="pre">y</span></code> value the <code class="docutils literal notranslate"><span class="pre">Nominal</span></code> curve (solid curve) achieves across the values of <code class="docutils literal notranslate"><span class="pre">x</span></code> depicted above?</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(y_{\min} \approx -5\)</span></p></li>
+</ul>
+</li>
+<li><p><em>Approimately</em>, what is the value of <code class="docutils literal notranslate"><span class="pre">y</span></code> for the <code class="docutils literal notranslate"><span class="pre">Nominal</span></code> curve at <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-0.5</span></code>?</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(y(x = -0.5) \approx 0\)</span></p></li>
+</ul>
+</li>
+<li><p>Note the spread between the <code class="docutils literal notranslate"><span class="pre">Quantiles</span></code> at <span class="math notranslate nohighlight">\(x \approx 0.6\)</span>. <em>Approximately</em> what range of <code class="docutils literal notranslate"><span class="pre">y</span></code> values would you expect to result from releated manufacturing at <span class="math notranslate nohighlight">\(x \approx 0.6\)</span>?</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(y \in [-5, 1]\)</span></p></li>
+</ul>
+</li>
+<li><p>Note the spread between the <code class="docutils literal notranslate"><span class="pre">Quantiles</span></code> at <span class="math notranslate nohighlight">\(x \approx -0.5\)</span>. <em>Approximately</em> what range of <code class="docutils literal notranslate"><span class="pre">y</span></code> values would you expect to result from releated manufacturing at <span class="math notranslate nohighlight">\(x \approx -0.5\)</span>?</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(y \in [0, 0]\)</span></p></li>
+</ul>
+</li>
+<li><p>Suppose you plan to manufacture many parts according to this process, test all specimens, and choose the best 5%. Which design (value of <code class="docutils literal notranslate"><span class="pre">x</span></code>) would you pick, and why?</p>
+<ul>
+<li><p>I would choose <span class="math notranslate nohighlight">\(x = 0.6\)</span> for the design, as we would likely see a large number of highly negative (desirable) values. Post-manufacturing selection would allow us to collect a subset of highly-performing specimens.</p></li>
+</ul>
+</li>
+<li><p>Suppose you plan to manufacture many parts according to this process, all of which must work at an acceptable level. Which design (value of <code class="docutils literal notranslate"><span class="pre">x</span></code>) would you pick, and why?</p>
+<ul>
+<li><p>I would choose <span class="math notranslate nohighlight">\(x = -0.5\)</span> for the design, as we need the performance of the parts to be consistent.</p></li>
+</ul>
+</li>
+</ul>
 <!-- solution-end --></section>
 </section>
 <section id="reliability">
