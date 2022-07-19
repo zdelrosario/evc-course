@@ -12,6 +12,7 @@ sections:
   - file: demos/demo2022-06-27
   - file: demos/demo2022-07-06
   - file: demos/demo2022-07-11
+  - file: demos/demo2022-07-18
 - file: frontmatter/hours
 - file: frontmatter/exercises
   sections:
