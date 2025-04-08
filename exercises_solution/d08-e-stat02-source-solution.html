@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Stats: Real and Erroneous Sources of Variability &#8212; Data Science for Engineers</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,56 +64,98 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises_solution/d08-e-stat02-source-solution';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Vis: Scatterplots and Layers" href="d09-e-vis03-scatterplot-solution.html" />
     <link rel="prev" title="Vis: Histograms" href="d07-e-vis02-histograms-solution.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="../frontmatter/home.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Data Science for Engineers</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -111,761 +165,353 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/setup.html">
-   Software Setup
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/howto.html">
-   How To Use These Materials
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/schedule.html">
-   Course Topics and Schedule
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/submission.html">
-   Challenge Submission Instructions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/recordings.html">
-   Class Recordings
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../frontmatter/demos.html">
-   Demo Notebooks
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-20-1.html">
-     Demo Notebook 2022-06-20
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-27.html">
-     Demo Notebook 2022-06-27
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-06.html">
-     Demo Notebook 2022-07-06
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-11.html">
-     Demo Notebook 2022-07-11
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-18.html">
-     Demo Notebook 2022-07-18
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/hours.html">
-   Office Hours Schedule
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../frontmatter/exercises.html">
-   Exercise Solutions
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
-     Introduction to Jupyter Notebooks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
-     Vis: Data Visualization Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
-     Data: Isolating Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d02-e-tips-solution.html">
-     Tips for This Course
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
-     Stats: Introduction to Exploratory Data Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
-     Grama: Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
-     Vis: Bar Charts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d06-e-data02-derive-solution.html">
-     Data: Deriving Quantities
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d07-e-vis02-histograms-solution.html">
-     Vis: Histograms
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Stats: Real and Erroneous Sources of Variability
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d09-e-vis03-scatterplot-solution.html">
-     Vis: Scatterplots and Layers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d10-e-grama02-building-solution.html">
-     Grama: Model Building
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d11-e-data03-pivot-solution.html">
-     Data: Pivoting Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d12-e-grama03-eval-solution.html">
-     Grama: Model Evaluation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d13-e-vis04-lines-solution.html">
-     Vis: Lines and Related Geometries
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d14-e-stat03-descriptive-solution.html">
-     Stats: Descriptive Statistics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d15-e-data04-separate-unite-solution.html">
-     Data: Separating and Uniting Columns
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d16-e-data05-join-solution.html">
-     Data: Joining Datasets
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d17-e-vis05-multiples-solution.html">
-     Vis: Small Multiples
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d18-e-grama04-ema-solution.html">
-     Grama: Exploratory Model Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d19-e-stat04-distributions-solution.html">
-     Stats: Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d20-e-grama05-fit-function-solution.html">
-     Grama: Fitting Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d21-e-stat05-CI-solution.html">
-     Stats: Confidence Intervals and the CLT
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d22-e-stat06-spc-solution.html">
-     Stats: Fundamentals of Statistical Process Monitoring
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">
-     Grama: Fitting Univariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">
-     Grama: Fitting Multivariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d25-e-grama08-duu-solution.html">
-     Grama: Design Under Uncertainty
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/setup.html">Software Setup</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/howto.html">How To Use These Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/schedule.html">Course Topics and Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/submission.html">Challenge Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/recordings.html">Class Recordings</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../frontmatter/demos.html">Demo Notebooks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-20-1.html">Demo Notebook 2022-06-20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-27.html">Demo Notebook 2022-06-27</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-06.html">Demo Notebook 2022-07-06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-11.html">Demo Notebook 2022-07-11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-18.html">Demo Notebook 2022-07-18</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/hours.html">Office Hours Schedule</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../frontmatter/exercises.html">Exercise Solutions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="d01-e-data00-notebooks-solution.html">Introduction to Jupyter Notebooks</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d01-e-vis00-basics-solution.html">Vis: Data Visualization Basics</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="d02-e-data01-isolate-solution.html">Data: Isolating Data</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d02-e-tips-solution.html">Tips for This Course</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d03-e-stat01-eda-solution.html">Stats: Introduction to Exploratory Data Analysis</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d04-e-grama01-basics-solution.html">Grama: Basics</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">Vis: Bar Charts</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d06-e-data02-derive-solution.html">Data: Deriving Quantities</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d07-e-vis02-histograms-solution.html">Vis: Histograms</a></li>
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Stats: Real and Erroneous Sources of Variability</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d09-e-vis03-scatterplot-solution.html">Vis: Scatterplots and Layers</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d10-e-grama02-building-solution.html">Grama: Model Building</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d11-e-data03-pivot-solution.html">Data: Pivoting Data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d12-e-grama03-eval-solution.html">Grama: Model Evaluation</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d13-e-vis04-lines-solution.html">Vis: Lines and Related Geometries</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d14-e-stat03-descriptive-solution.html">Stats: Descriptive Statistics</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d15-e-data04-separate-unite-solution.html">Data: Separating and Uniting Columns</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d16-e-data05-join-solution.html">Data: Joining Datasets</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d17-e-vis05-multiples-solution.html">Vis: Small Multiples</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d18-e-grama04-ema-solution.html">Grama: Exploratory Model Analysis</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d19-e-stat04-distributions-solution.html">Stats: Distributions</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d20-e-grama05-fit-function-solution.html">Grama: Fitting Functions</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d21-e-stat05-CI-solution.html">Stats: Confidence Intervals and the CLT</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d22-e-stat06-spc-solution.html">Stats: Fundamentals of Statistical Process Monitoring</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">Grama: Fitting Univariate Distributions</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">Grama: Fitting Multivariate Distributions</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d25-e-grama08-duu-solution.html">Grama: Design Under Uncertainty</a></li>
+
+
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d08-e-stat02-source-solution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/exercises_solution/d08-e-stat02-source-solution.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/exercises_solution/d08-e-stat02-source-solution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Stats: Real and Erroneous Sources of Variability
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#concepts">
-   Concepts
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#variability">
-     Variability
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q1-make-a-histogram">
-       <strong>
-        q1
-       </strong>
-       Make a histogram
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#real-vs-erroneous-variability">
-     Real vs Erroneous Variability
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#example-manufacturing-of-metals">
-       Example: Manufacturing of Metals
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q2-consequences-of-variability">
-       <strong>
-        q2
-       </strong>
-       Consequences of variability
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#scenarios">
-     Scenarios
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-multiple-measurements-same-part">
-       <strong>
-        q3
-       </strong>
-       Multiple measurements, same part
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-multiple-measurements-multiple-parts">
-       <strong>
-        q4
-       </strong>
-       Multiple measurements, multiple parts
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q5-single-measurements-multiple-parts">
-       <strong>
-        q5
-       </strong>
-       Single measurements, multiple parts
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#heuristics">
-   Heuristics
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pure-error-take-the-mean">
-     Pure Error: Take the mean
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q6-take-the-mean-strength">
-       <strong>
-        q6
-       </strong>
-       Take the mean strength
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#purely-real-use-quantiles">
-     Purely Real: Use quantiles
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q7-compute-a-quantile-of-strength">
-       <strong>
-        q7
-       </strong>
-       Compute a quantile of strength
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mixed-real-and-error-nested-data">
-     Mixed Real and Error: Nested data
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q8-identify-real-and-erroneous-sources">
-       <strong>
-        q8
-       </strong>
-       Identify real and erroneous sources
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q9-apply-the-mean-heuristic">
-       <strong>
-        q9
-       </strong>
-       Apply the mean heuristic
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#benefits-of-eliminating-erroneous-variability">
-       Benefits of eliminating erroneous variability
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q10-apply-the-quantile-heuristic">
-       <strong>
-        q10
-       </strong>
-       Apply the quantile heuristic
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q11-importance-of-structured-data-collection">
-       <strong>
-        q11
-       </strong>
-       Importance of structured data collection
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#closing-punchline">
-   Closing punchline
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Stats: Real and Erroneous Sources of Variability</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Stats: Real and Erroneous Sources of Variability
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#concepts">
-   Concepts
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#variability">
-     Variability
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q1-make-a-histogram">
-       <strong>
-        q1
-       </strong>
-       Make a histogram
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#real-vs-erroneous-variability">
-     Real vs Erroneous Variability
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#example-manufacturing-of-metals">
-       Example: Manufacturing of Metals
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q2-consequences-of-variability">
-       <strong>
-        q2
-       </strong>
-       Consequences of variability
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#scenarios">
-     Scenarios
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-multiple-measurements-same-part">
-       <strong>
-        q3
-       </strong>
-       Multiple measurements, same part
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-multiple-measurements-multiple-parts">
-       <strong>
-        q4
-       </strong>
-       Multiple measurements, multiple parts
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q5-single-measurements-multiple-parts">
-       <strong>
-        q5
-       </strong>
-       Single measurements, multiple parts
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#heuristics">
-   Heuristics
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pure-error-take-the-mean">
-     Pure Error: Take the mean
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q6-take-the-mean-strength">
-       <strong>
-        q6
-       </strong>
-       Take the mean strength
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#purely-real-use-quantiles">
-     Purely Real: Use quantiles
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q7-compute-a-quantile-of-strength">
-       <strong>
-        q7
-       </strong>
-       Compute a quantile of strength
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mixed-real-and-error-nested-data">
-     Mixed Real and Error: Nested data
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q8-identify-real-and-erroneous-sources">
-       <strong>
-        q8
-       </strong>
-       Identify real and erroneous sources
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q9-apply-the-mean-heuristic">
-       <strong>
-        q9
-       </strong>
-       Apply the mean heuristic
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#benefits-of-eliminating-erroneous-variability">
-       Benefits of eliminating erroneous variability
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q10-apply-the-quantile-heuristic">
-       <strong>
-        q10
-       </strong>
-       Apply the quantile heuristic
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q11-importance-of-structured-data-collection">
-       <strong>
-        q11
-       </strong>
-       Importance of structured data collection
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#closing-punchline">
-   Closing punchline
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Stats: Real and Erroneous Sources of Variability</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Stats: Real and Erroneous Sources of Variability</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#concepts">Concepts</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variability">Variability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-make-a-histogram"><strong>q1</strong> Make a histogram</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#real-vs-erroneous-variability">Real vs Erroneous Variability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-manufacturing-of-metals">Example: Manufacturing of Metals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-consequences-of-variability"><strong>q2</strong> Consequences of variability</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenarios">Scenarios</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-multiple-measurements-same-part"><strong>q3</strong> Multiple measurements, same part</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-multiple-measurements-multiple-parts"><strong>q4</strong> Multiple measurements, multiple parts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-single-measurements-multiple-parts"><strong>q5</strong> Single measurements, multiple parts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#heuristics">Heuristics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pure-error-take-the-mean">Pure Error: Take the mean</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-take-the-mean-strength"><strong>q6</strong> Take the mean strength</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purely-real-use-quantiles">Purely Real: Use quantiles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-compute-a-quantile-of-strength"><strong>q7</strong> Compute a quantile of strength</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-real-and-error-nested-data">Mixed Real and Error: Nested data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8-identify-real-and-erroneous-sources"><strong>q8</strong> Identify real and erroneous sources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q9-apply-the-mean-heuristic"><strong>q9</strong> Apply the mean heuristic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits-of-eliminating-erroneous-variability">Benefits of eliminating erroneous variability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q10-apply-the-quantile-heuristic"><strong>q10</strong> Apply the quantile heuristic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q11-importance-of-structured-data-collection"><strong>q11</strong> Importance of structured data collection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#closing-punchline">Closing punchline</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="stats-real-and-erroneous-sources-of-variability">
-<h1>Stats: Real and Erroneous Sources of Variability<a class="headerlink" href="#stats-real-and-erroneous-sources-of-variability" title="Permalink to this headline">#</a></h1>
+<h1>Stats: Real and Erroneous Sources of Variability<a class="headerlink" href="#stats-real-and-erroneous-sources-of-variability" title="Permalink to this heading">#</a></h1>
 <p><em>Purpose</em>: Variability is an unavoidable reality of engineering: Physical systems do not behave in identical ways, even under similar circumstances. It is important to draw a distinction between sources of variability that corrupt measurements, and other sources of variability that can genuinely change physical outcomes: real vs erroneous variability. Therefore, we should analyze real and erroneous sources of variability differently—this can lead to more accurate data analysis and more efficient engineering designs.</p>
 <section id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">grama</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -875,10 +521,10 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="concepts">
-<h1>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">#</a></h1>
+<h1>Concepts<a class="headerlink" href="#concepts" title="Permalink to this heading">#</a></h1>
 <p>Let’s go over some fundamental concepts.</p>
 <section id="variability">
-<h2>Variability<a class="headerlink" href="#variability" title="Permalink to this headline">#</a></h2>
+<h2>Variability<a class="headerlink" href="#variability" title="Permalink to this heading">#</a></h2>
 <blockquote>
 <div><p><em>Variability</em> is a form of uncertainty that occurs when repeated measurements from a single chosen scenario exhibit different outcomes.</p>
 </div></blockquote>
@@ -893,7 +539,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dataset of die cast aluminum specimens</span>
-<span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_shewhart</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">grama.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">df_shewhart</span>
 <span class="n">df_shewhart</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -965,7 +611,7 @@ title="Print to PDF"
 </div>
 <p>This is a dataset of measured physical properties for individual specimens of a die cast aluminum. You’ll investigate this dataset below.</p>
 <section id="q1-make-a-histogram">
-<h3><strong>q1</strong> Make a histogram<a class="headerlink" href="#q1-make-a-histogram" title="Permalink to this headline">#</a></h3>
+<h3><strong>q1</strong> Make a histogram<a class="headerlink" href="#q1-make-a-histogram" title="Permalink to this heading">#</a></h3>
 <p>Make a histogram of the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> in <code class="docutils literal notranslate"><span class="pre">df_shewhart</span></code>. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -993,7 +639,7 @@ title="Print to PDF"
 0  31869.366667  3996.380795  0.125399
 </pre></div>
 </div>
-<img alt="../_images/d08-e-stat02-source-solution_8_1.png" src="../_images/d08-e-stat02-source-solution_8_1.png" />
+<img alt="../_images/fa5852cee4bdf13bb8ea1097068ec5988939bd302596f03493952f28420d64b1.png" src="../_images/fa5852cee4bdf13bb8ea1097068ec5988939bd302596f03493952f28420d64b1.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766684710437)&gt;
 </pre></div>
 </div>
@@ -1015,7 +661,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="real-vs-erroneous-variability">
-<h2>Real vs Erroneous Variability<a class="headerlink" href="#real-vs-erroneous-variability" title="Permalink to this headline">#</a></h2>
+<h2>Real vs Erroneous Variability<a class="headerlink" href="#real-vs-erroneous-variability" title="Permalink to this heading">#</a></h2>
 <p>Variability in engineering applications falls into one of two broad categories:</p>
 <blockquote>
 <div><p><em>Real variability</em> is any source of variability that can affect a physical outcome.</p>
@@ -1026,12 +672,12 @@ title="Print to PDF"
 <p>Note that errors cannot <em>directly</em> affect physical outcomes. A corrupted measurement does not reflect actual changes in the physical quantity one is trying to measure. <em>However</em>, making an engineering decision based on corrupted information will lead to a corrupted decision. Errors can only affect the physical world through actions taken based on those errors.</p>
 <p>Real and erroneous sources of variability can only be named in a specific context; to that end, let’s look at a specific example.</p>
 <section id="example-manufacturing-of-metals">
-<h3>Example: Manufacturing of Metals<a class="headerlink" href="#example-manufacturing-of-metals" title="Permalink to this headline">#</a></h3>
+<h3>Example: Manufacturing of Metals<a class="headerlink" href="#example-manufacturing-of-metals" title="Permalink to this heading">#</a></h3>
 <p>The following image schematically depicts the manufacture and characterization of metallic materials.</p>
 <p><img alt="Manufacturing example" src="../_images/manufacturing-examples-numbered.png" />
 Image credit: Alana Huitric</p>
 <p>Variability can enter metals manufacturing at different stages and in different ways:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>(Real variability) Mistakes during the formulation stage of metals manufacturing can lead to an off-target composition. This will lead to explainable differences in the realized material properties, and will cause the material to not behave as desired.</p></li>
 <li><p>(Real variability) The presence of nicks and cracks in manufactured parts is an unavoidable reality. It is practically impossible to completely eliminate these imperfections. The presence and size of these imperfections will affect the fatigue life of a component. Thus, manufactured parts will tend to exhibit random variability in their fatigue properties.</p></li>
 <li><p>(Error) Material properties are characterized by physical tests, such as tensile tests. Mistakes during testing can occur, such as slippage of the part within the mechanical grips. Such mistakes will lead to explainable differences in the <em>measured</em> properties, but cannot directly lead to differences in physical outcomes.</p></li>
@@ -1040,7 +686,7 @@ Image credit: Alana Huitric</p>
 <p>Variability will have different consequences if it is real or erroneous. You will get some practice reasoning through these consequences in the next task.</p>
 </section>
 <section id="q2-consequences-of-variability">
-<h3><strong>q2</strong> Consequences of variability<a class="headerlink" href="#q2-consequences-of-variability" title="Permalink to this headline">#</a></h3>
+<h3><strong>q2</strong> Consequences of variability<a class="headerlink" href="#q2-consequences-of-variability" title="Permalink to this heading">#</a></h3>
 <p>The following depicts the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> measurements, but with an additional vertical line depicting the applied stress from a loading scenario. Imagine that multiple parts will be constructed using the same manufacturing process characterized by the dataset. Answer the questions under <em>observations</em> below.</p>
 <p><em>Note</em>: Remember that a part fails if its tensile strength is less than an applied stress.</p>
 <div class="cell docutils container">
@@ -1058,7 +704,7 @@ Image credit: Alana Huitric</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d08-e-stat02-source-solution_16_0.png" src="../_images/d08-e-stat02-source-solution_16_0.png" />
+<img alt="../_images/8460c2f3f797f7e5fc24c84cfbbaa70a03465c4f10ef08c3ba88f293d6ded140.png" src="../_images/8460c2f3f797f7e5fc24c84cfbbaa70a03465c4f10ef08c3ba88f293d6ded140.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766684654641)&gt;
 </pre></div>
 </div>
@@ -1086,11 +732,11 @@ Image credit: Alana Huitric</p>
 </section>
 </section>
 <section id="scenarios">
-<h2>Scenarios<a class="headerlink" href="#scenarios" title="Permalink to this headline">#</a></h2>
+<h2>Scenarios<a class="headerlink" href="#scenarios" title="Permalink to this heading">#</a></h2>
 <p>Let’s get some practice reasoning with real and erroneous variability. To do so, let’s consider the following context:</p>
 <p><em>The Context</em>: A manufacturer is producing steel parts for a landing gear. The part in question takes a heavy load, and if it fails it will disable the aircraft on the ground. These parts will be manufactured in bulk; approximately 500 will be made and installed in commercial aircraft that will operate for decades.</p>
 <section id="q3-multiple-measurements-same-part">
-<h3><strong>q3</strong> Multiple measurements, same part<a class="headerlink" href="#q3-multiple-measurements-same-part" title="Permalink to this headline">#</a></h3>
+<h3><strong>q3</strong> Multiple measurements, same part<a class="headerlink" href="#q3-multiple-measurements-same-part" title="Permalink to this heading">#</a></h3>
 <p>Imagine the manufacturer selects one part and performs multiple non-destructive tensile tests on that single part, under similar conditions. The measured elasticity from each test is slightly different. Is this variability real or erroneous?</p>
 <p><em>Questions</em></p>
 <ul class="simple">
@@ -1107,7 +753,7 @@ Image credit: Alana Huitric</p>
 </ul>
 </section>
 <section id="q4-multiple-measurements-multiple-parts">
-<h3><strong>q4</strong> Multiple measurements, multiple parts<a class="headerlink" href="#q4-multiple-measurements-multiple-parts" title="Permalink to this headline">#</a></h3>
+<h3><strong>q4</strong> Multiple measurements, multiple parts<a class="headerlink" href="#q4-multiple-measurements-multiple-parts" title="Permalink to this heading">#</a></h3>
 <p>Imagine the manufacturer selects multiple parts and—for each part—performs multiple non-destructive tensile tests, all under similar conditions. The measured elasticity values for each part are averaged to provide a more reliable estimate for each part. Upon comparing the parts, each averaged value is fairly different. Is this variability real or erroneous?</p>
 <p><em>Questions</em></p>
 <ul class="simple">
@@ -1124,7 +770,7 @@ Image credit: Alana Huitric</p>
 </ul>
 </section>
 <section id="q5-single-measurements-multiple-parts">
-<h3><strong>q5</strong> Single measurements, multiple parts<a class="headerlink" href="#q5-single-measurements-multiple-parts" title="Permalink to this headline">#</a></h3>
+<h3><strong>q5</strong> Single measurements, multiple parts<a class="headerlink" href="#q5-single-measurements-multiple-parts" title="Permalink to this heading">#</a></h3>
 <p>Now the manufacturer selects multiple parts and performs a destructive tensile test to characterize the strength of each part, with tests carried out under similar conditions. The measured strength values exhibit a fair amount of variability. Is this variability real or erroneous?</p>
 <p><em>Questions</em></p>
 <ul class="simple">
@@ -1143,10 +789,10 @@ Image credit: Alana Huitric</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="heuristics">
-<h1>Heuristics<a class="headerlink" href="#heuristics" title="Permalink to this headline">#</a></h1>
+<h1>Heuristics<a class="headerlink" href="#heuristics" title="Permalink to this heading">#</a></h1>
 <p>Recognizing whether variability is real or erroneous is important for making data analysis choices. The following two heuristics (rules of thumb) will help you make such choices.</p>
 <section id="pure-error-take-the-mean">
-<h2>Pure Error: Take the mean<a class="headerlink" href="#pure-error-take-the-mean" title="Permalink to this headline">#</a></h2>
+<h2>Pure Error: Take the mean<a class="headerlink" href="#pure-error-take-the-mean" title="Permalink to this heading">#</a></h2>
 <p>The following is a statistical rule-of-thumb when dealing with variability that is <em>purely</em> error:</p>
 <blockquote>
 <div><p>(Mean Heuristic) If the observed variability is purely error, then taking the mean of the data will tend to reduce the variability due to error.</p>
@@ -1156,7 +802,7 @@ Image credit: Alana Huitric</p>
 <p>Of course, if the errors are not actually random but insted exhibit <em>bias</em>, then taking the mean will not remove these systematic errors. One way to help combat bias is to take truly <em>independent</em> measurements; for instance, have different operators take the same measurement, or use two different measurement techniques on the same specimen.</p>
 </div>
 <section id="q6-take-the-mean-strength">
-<h3><strong>q6</strong> Take the mean strength<a class="headerlink" href="#q6-take-the-mean-strength" title="Permalink to this headline">#</a></h3>
+<h3><strong>q6</strong> Take the mean strength<a class="headerlink" href="#q6-take-the-mean-strength" title="Permalink to this heading">#</a></h3>
 <p>Compute the mean <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1218,13 +864,13 @@ Image credit: Alana Huitric</p>
 </section>
 </section>
 <section id="purely-real-use-quantiles">
-<h2>Purely Real: Use quantiles<a class="headerlink" href="#purely-real-use-quantiles" title="Permalink to this headline">#</a></h2>
+<h2>Purely Real: Use quantiles<a class="headerlink" href="#purely-real-use-quantiles" title="Permalink to this heading">#</a></h2>
 <p>The following is a statistical rule-of-thumb when dealing with purely real variability:</p>
 <blockquote>
 <div><p>(Quantile Heuristic) If the observed variability is purely real, then taking a lower or upper quantile of the data is a reasonable summary.</p>
 </div></blockquote>
 <section id="q7-compute-a-quantile-of-strength">
-<h3><strong>q7</strong> Compute a quantile of strength<a class="headerlink" href="#q7-compute-a-quantile-of-strength" title="Permalink to this headline">#</a></h3>
+<h3><strong>q7</strong> Compute a quantile of strength<a class="headerlink" href="#q7-compute-a-quantile-of-strength" title="Permalink to this heading">#</a></h3>
 <p>Compute the <code class="docutils literal notranslate"><span class="pre">0.05</span></code> quantile of the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1291,7 +937,7 @@ Image credit: Alana Huitric</p>
 </section>
 </section>
 <section id="mixed-real-and-error-nested-data">
-<h2>Mixed Real and Error: Nested data<a class="headerlink" href="#mixed-real-and-error-nested-data" title="Permalink to this headline">#</a></h2>
+<h2>Mixed Real and Error: Nested data<a class="headerlink" href="#mixed-real-and-error-nested-data" title="Permalink to this heading">#</a></h2>
 <p>In most practical situations, variability is not purely real or purely error; rather, it is mixed. This is a challenging situation, but we can still use the mean and quantile heuristics to guide choices about data analysis.</p>
 <p>The following code sets up data collected according to a <em>nested</em> collection scheme: Multiple independent measurements are taken on each of multiple specimens.</p>
 <div class="cell docutils container">
@@ -1409,7 +1055,7 @@ Image credit: Alana Huitric</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">x_meas</span></code> is the measured value</p></li>
 </ul>
 <section id="q8-identify-real-and-erroneous-sources">
-<h3><strong>q8</strong> Identify real and erroneous sources<a class="headerlink" href="#q8-identify-real-and-erroneous-sources" title="Permalink to this headline">#</a></h3>
+<h3><strong>q8</strong> Identify real and erroneous sources<a class="headerlink" href="#q8-identify-real-and-erroneous-sources" title="Permalink to this heading">#</a></h3>
 <p>Inspect the figure below; answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1428,7 +1074,7 @@ Image credit: Alana Huitric</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d08-e-stat02-source-solution_35_0.png" src="../_images/d08-e-stat02-source-solution_35_0.png" />
+<img alt="../_images/4e5c018fcdb72ccc972dc6695cc33346c089edc6aa31076220fd236def0127a0.png" src="../_images/4e5c018fcdb72ccc972dc6695cc33346c089edc6aa31076220fd236def0127a0.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766684287618)&gt;
 </pre></div>
 </div>
@@ -1454,7 +1100,7 @@ Image credit: Alana Huitric</p>
 </ul>
 </section>
 <section id="q9-apply-the-mean-heuristic">
-<h3><strong>q9</strong> Apply the mean heuristic<a class="headerlink" href="#q9-apply-the-mean-heuristic" title="Permalink to this headline">#</a></h3>
+<h3><strong>q9</strong> Apply the mean heuristic<a class="headerlink" href="#q9-apply-the-mean-heuristic" title="Permalink to this heading">#</a></h3>
 <p>Use the <em>mean heuristic</em> to construct a more stable measurement for each sample.</p>
 <p><em>Hint</em>: To do this, you will need to <code class="docutils literal notranslate"><span class="pre">group_by()</span></code> an appropriate variable in the data and <code class="docutils literal notranslate"><span class="pre">summarize()</span></code>.</p>
 <div class="cell docutils container">
@@ -1536,7 +1182,7 @@ Image credit: Alana Huitric</p>
 </ul>
 </section>
 <section id="benefits-of-eliminating-erroneous-variability">
-<h3>Benefits of eliminating erroneous variability<a class="headerlink" href="#benefits-of-eliminating-erroneous-variability" title="Permalink to this headline">#</a></h3>
+<h3>Benefits of eliminating erroneous variability<a class="headerlink" href="#benefits-of-eliminating-erroneous-variability" title="Permalink to this heading">#</a></h3>
 <p>Remember that the mean heuristic helps us reduce erroneous variability; what are the advantages of this technique? Let’s compare the nested and summarized datasets:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1558,7 +1204,7 @@ Image credit: Alana Huitric</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d08-e-stat02-source-solution_43_0.png" src="../_images/d08-e-stat02-source-solution_43_0.png" />
+<img alt="../_images/382a6541f210e63c059bf3372354da283be2f6abd452a1c1d41aeadb6cdc0827.png" src="../_images/382a6541f210e63c059bf3372354da283be2f6abd452a1c1d41aeadb6cdc0827.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766684562905)&gt;
 </pre></div>
 </div>
@@ -1567,7 +1213,7 @@ Image credit: Alana Huitric</p>
 <p>As we might expect, the summarized data appears to be narrower, which would make sense if we had reduced the erroneous variability. This can have useful implications for designs based on our data analysis.</p>
 </section>
 <section id="q10-apply-the-quantile-heuristic">
-<h3><strong>q10</strong> Apply the quantile heuristic<a class="headerlink" href="#q10-apply-the-quantile-heuristic" title="Permalink to this headline">#</a></h3>
+<h3><strong>q10</strong> Apply the quantile heuristic<a class="headerlink" href="#q10-apply-the-quantile-heuristic" title="Permalink to this heading">#</a></h3>
 <p>Apply the quantile heuristic to the summarized data. Use the same quantiles <code class="docutils literal notranslate"><span class="pre">0.10,</span> <span class="pre">0.90</span></code> computed on the original data. Answer the questions under <em>observations</em> below.</p>
 <p><em>Hint</em>: Do you need to group again to apply the quantile heuristic?</p>
 <div class="cell docutils container">
@@ -1632,7 +1278,7 @@ Quantiles of summarized data
 <p>Note that this kind of analysis is <strong>only</strong> possible when the data have this kind of nested structure; when we have multiple measurements of each specimen. The next task highlights this important fact.</p>
 </section>
 <section id="q11-importance-of-structured-data-collection">
-<h3><strong>q11</strong> Importance of structured data collection<a class="headerlink" href="#q11-importance-of-structured-data-collection" title="Permalink to this headline">#</a></h3>
+<h3><strong>q11</strong> Importance of structured data collection<a class="headerlink" href="#q11-importance-of-structured-data-collection" title="Permalink to this heading">#</a></h3>
 <p>Inspect the data, and answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1716,7 +1362,7 @@ Quantiles of summarized data
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="closing-punchline">
-<h1>Closing punchline<a class="headerlink" href="#closing-punchline" title="Permalink to this headline">#</a></h1>
+<h1>Closing punchline<a class="headerlink" href="#closing-punchline" title="Permalink to this heading">#</a></h1>
 <p>Variability can come in different forms: Real variability affects the outcomes we are interested in, while erroneous variability corrupts measurements and inflates the variability we observe. A careful combination of planned data collection (nested data) and data analysis can help us reduce erroneous variability, which can enable more efficient designs.</p>
 </section>
 
@@ -1732,7 +1378,7 @@ Quantiles of summarized data
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./exercises_solution"
         },
         predefinedOutput: true
@@ -1740,50 +1386,144 @@ Quantiles of summarized data
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="d07-e-vis02-histograms-solution.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Vis: Histograms</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="d07-e-vis02-histograms-solution.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Vis: Histograms</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="d09-e-vis03-scatterplot-solution.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="d09-e-vis03-scatterplot-solution.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Vis: Scatterplots and Layers</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Stats: Real and Erroneous Sources of Variability</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#concepts">Concepts</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variability">Variability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-make-a-histogram"><strong>q1</strong> Make a histogram</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#real-vs-erroneous-variability">Real vs Erroneous Variability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-manufacturing-of-metals">Example: Manufacturing of Metals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-consequences-of-variability"><strong>q2</strong> Consequences of variability</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenarios">Scenarios</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-multiple-measurements-same-part"><strong>q3</strong> Multiple measurements, same part</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-multiple-measurements-multiple-parts"><strong>q4</strong> Multiple measurements, multiple parts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-single-measurements-multiple-parts"><strong>q5</strong> Single measurements, multiple parts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#heuristics">Heuristics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pure-error-take-the-mean">Pure Error: Take the mean</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-take-the-mean-strength"><strong>q6</strong> Take the mean strength</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purely-real-use-quantiles">Purely Real: Use quantiles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-compute-a-quantile-of-strength"><strong>q7</strong> Compute a quantile of strength</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-real-and-error-nested-data">Mixed Real and Error: Nested data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8-identify-real-and-erroneous-sources"><strong>q8</strong> Identify real and erroneous sources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q9-apply-the-mean-heuristic"><strong>q9</strong> Apply the mean heuristic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits-of-eliminating-erroneous-variability">Benefits of eliminating erroneous variability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q10-apply-the-quantile-heuristic"><strong>q10</strong> Apply the quantile heuristic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q11-importance-of-structured-data-collection"><strong>q11</strong> Importance of structured data collection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#closing-punchline">Closing punchline</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Zachary del Rosario<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Zachary del Rosario
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

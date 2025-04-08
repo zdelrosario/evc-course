@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Grama: Model Evaluation &#8212; Data Science for Engineers</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,56 +62,98 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises_solution/d12-e-grama03-eval-solution';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Vis: Lines and Related Geometries" href="d13-e-vis04-lines-solution.html" />
     <link rel="prev" title="Data: Pivoting Data" href="d11-e-data03-pivot-solution.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="../frontmatter/home.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Data Science for Engineers</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -109,792 +163,357 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/setup.html">
-   Software Setup
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/howto.html">
-   How To Use These Materials
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/schedule.html">
-   Course Topics and Schedule
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/submission.html">
-   Challenge Submission Instructions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/recordings.html">
-   Class Recordings
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../frontmatter/demos.html">
-   Demo Notebooks
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-20-1.html">
-     Demo Notebook 2022-06-20
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-27.html">
-     Demo Notebook 2022-06-27
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-06.html">
-     Demo Notebook 2022-07-06
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-11.html">
-     Demo Notebook 2022-07-11
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-18.html">
-     Demo Notebook 2022-07-18
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/hours.html">
-   Office Hours Schedule
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../frontmatter/exercises.html">
-   Exercise Solutions
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
-     Introduction to Jupyter Notebooks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
-     Vis: Data Visualization Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
-     Data: Isolating Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d02-e-tips-solution.html">
-     Tips for This Course
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
-     Stats: Introduction to Exploratory Data Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
-     Grama: Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
-     Vis: Bar Charts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d06-e-data02-derive-solution.html">
-     Data: Deriving Quantities
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d07-e-vis02-histograms-solution.html">
-     Vis: Histograms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d08-e-stat02-source-solution.html">
-     Stats: Real and Erroneous Sources of Variability
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d09-e-vis03-scatterplot-solution.html">
-     Vis: Scatterplots and Layers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d10-e-grama02-building-solution.html">
-     Grama: Model Building
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d11-e-data03-pivot-solution.html">
-     Data: Pivoting Data
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Grama: Model Evaluation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d13-e-vis04-lines-solution.html">
-     Vis: Lines and Related Geometries
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d14-e-stat03-descriptive-solution.html">
-     Stats: Descriptive Statistics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d15-e-data04-separate-unite-solution.html">
-     Data: Separating and Uniting Columns
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d16-e-data05-join-solution.html">
-     Data: Joining Datasets
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d17-e-vis05-multiples-solution.html">
-     Vis: Small Multiples
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d18-e-grama04-ema-solution.html">
-     Grama: Exploratory Model Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d19-e-stat04-distributions-solution.html">
-     Stats: Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d20-e-grama05-fit-function-solution.html">
-     Grama: Fitting Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d21-e-stat05-CI-solution.html">
-     Stats: Confidence Intervals and the CLT
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d22-e-stat06-spc-solution.html">
-     Stats: Fundamentals of Statistical Process Monitoring
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">
-     Grama: Fitting Univariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">
-     Grama: Fitting Multivariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d25-e-grama08-duu-solution.html">
-     Grama: Design Under Uncertainty
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/setup.html">Software Setup</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/howto.html">How To Use These Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/schedule.html">Course Topics and Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/submission.html">Challenge Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/recordings.html">Class Recordings</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../frontmatter/demos.html">Demo Notebooks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-20-1.html">Demo Notebook 2022-06-20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-27.html">Demo Notebook 2022-06-27</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-06.html">Demo Notebook 2022-07-06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-11.html">Demo Notebook 2022-07-11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-18.html">Demo Notebook 2022-07-18</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/hours.html">Office Hours Schedule</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../frontmatter/exercises.html">Exercise Solutions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="d01-e-data00-notebooks-solution.html">Introduction to Jupyter Notebooks</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d01-e-vis00-basics-solution.html">Vis: Data Visualization Basics</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="d02-e-data01-isolate-solution.html">Data: Isolating Data</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d02-e-tips-solution.html">Tips for This Course</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d03-e-stat01-eda-solution.html">Stats: Introduction to Exploratory Data Analysis</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d04-e-grama01-basics-solution.html">Grama: Basics</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">Vis: Bar Charts</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d06-e-data02-derive-solution.html">Data: Deriving Quantities</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d07-e-vis02-histograms-solution.html">Vis: Histograms</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d08-e-stat02-source-solution.html">Stats: Real and Erroneous Sources of Variability</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d09-e-vis03-scatterplot-solution.html">Vis: Scatterplots and Layers</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d10-e-grama02-building-solution.html">Grama: Model Building</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d11-e-data03-pivot-solution.html">Data: Pivoting Data</a></li>
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Grama: Model Evaluation</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d13-e-vis04-lines-solution.html">Vis: Lines and Related Geometries</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d14-e-stat03-descriptive-solution.html">Stats: Descriptive Statistics</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d15-e-data04-separate-unite-solution.html">Data: Separating and Uniting Columns</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d16-e-data05-join-solution.html">Data: Joining Datasets</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d17-e-vis05-multiples-solution.html">Vis: Small Multiples</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d18-e-grama04-ema-solution.html">Grama: Exploratory Model Analysis</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d19-e-stat04-distributions-solution.html">Stats: Distributions</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d20-e-grama05-fit-function-solution.html">Grama: Fitting Functions</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d21-e-stat05-CI-solution.html">Stats: Confidence Intervals and the CLT</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d22-e-stat06-spc-solution.html">Stats: Fundamentals of Statistical Process Monitoring</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">Grama: Fitting Univariate Distributions</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">Grama: Fitting Multivariate Distributions</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d25-e-grama08-duu-solution.html">Grama: Design Under Uncertainty</a></li>
+
+
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d12-e-grama03-eval-solution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/exercises_solution/d12-e-grama03-eval-solution.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/exercises_solution/d12-e-grama03-eval-solution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Grama: Model Evaluation
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#evaluation">
-   Evaluation
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#manual-input-values">
-   Manual Input Values
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dataframe-evaluation-ev-df">
-     DataFrame evaluation
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       ev_df()
-      </span>
-     </code>
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q1-set-the-input-values">
-       <strong>
-        q1
-       </strong>
-       Set the input values
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#evaluation-as-transformation-tf-md">
-     Evaluation as transformation
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       tf_md()
-      </span>
-     </code>
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q2-use-a-model-as-a-transform">
-       <strong>
-        q2
-       </strong>
-       Use a model as a transform
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mixed-manual-automatic">
-   Mixed Manual &amp; Automatic
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#nominal-evaluation">
-     Nominal Evaluation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-evaluate-at-nominal-values">
-       <strong>
-        q3
-       </strong>
-       Evaluate at nominal values
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sweeps">
-     Sweeps
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-manual-sweeps">
-       <strong>
-        q4
-       </strong>
-       Manual sweeps
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q5-automatic-sweeps">
-       <strong>
-        q5
-       </strong>
-       Automatic sweeps
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#random-sampling">
-     Random Sampling
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q6-evaluate-a-simple-random-sample">
-       <strong>
-        q6
-       </strong>
-       Evaluate a simple random sample
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q7-skip-evaluation">
-       <strong>
-        q7
-       </strong>
-       Skip evaluation
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sweep-plus-sampling">
-     Sweep Plus Sampling
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q8-sweeps-with-sampling">
-       <strong>
-        q8
-       </strong>
-       Sweeps with sampling
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#automatic-input-values">
-   Automatic Input Values
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#contour-evaluation">
-     Contour Evaluation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q9-visualize-function-contours">
-       <strong>
-        q9
-       </strong>
-       Visualize function contours
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q10-find-specific-contour-levels">
-       <strong>
-        q10
-       </strong>
-       Find specific contour levels
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#constrained-minimization">
-     Constrained Minimization
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#list-of-evaluation-routines">
-   List of evaluation routines
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Grama: Model Evaluation</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Grama: Model Evaluation
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#evaluation">
-   Evaluation
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#manual-input-values">
-   Manual Input Values
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dataframe-evaluation-ev-df">
-     DataFrame evaluation
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       ev_df()
-      </span>
-     </code>
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q1-set-the-input-values">
-       <strong>
-        q1
-       </strong>
-       Set the input values
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#evaluation-as-transformation-tf-md">
-     Evaluation as transformation
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       tf_md()
-      </span>
-     </code>
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q2-use-a-model-as-a-transform">
-       <strong>
-        q2
-       </strong>
-       Use a model as a transform
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mixed-manual-automatic">
-   Mixed Manual &amp; Automatic
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#nominal-evaluation">
-     Nominal Evaluation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-evaluate-at-nominal-values">
-       <strong>
-        q3
-       </strong>
-       Evaluate at nominal values
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sweeps">
-     Sweeps
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-manual-sweeps">
-       <strong>
-        q4
-       </strong>
-       Manual sweeps
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q5-automatic-sweeps">
-       <strong>
-        q5
-       </strong>
-       Automatic sweeps
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#random-sampling">
-     Random Sampling
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q6-evaluate-a-simple-random-sample">
-       <strong>
-        q6
-       </strong>
-       Evaluate a simple random sample
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q7-skip-evaluation">
-       <strong>
-        q7
-       </strong>
-       Skip evaluation
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sweep-plus-sampling">
-     Sweep Plus Sampling
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q8-sweeps-with-sampling">
-       <strong>
-        q8
-       </strong>
-       Sweeps with sampling
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#automatic-input-values">
-   Automatic Input Values
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#contour-evaluation">
-     Contour Evaluation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q9-visualize-function-contours">
-       <strong>
-        q9
-       </strong>
-       Visualize function contours
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q10-find-specific-contour-levels">
-       <strong>
-        q10
-       </strong>
-       Find specific contour levels
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#constrained-minimization">
-     Constrained Minimization
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#list-of-evaluation-routines">
-   List of evaluation routines
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Grama: Model Evaluation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Grama: Model Evaluation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-input-values">Manual Input Values</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-evaluation-ev-df">DataFrame evaluation <code class="docutils literal notranslate"><span class="pre">ev_df()</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-set-the-input-values"><strong>q1</strong> Set the input values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-as-transformation-tf-md">Evaluation as transformation <code class="docutils literal notranslate"><span class="pre">tf_md()</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-use-a-model-as-a-transform"><strong>q2</strong> Use a model as a transform</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-manual-automatic">Mixed Manual &amp; Automatic</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nominal-evaluation">Nominal Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-evaluate-at-nominal-values"><strong>q3</strong> Evaluate at nominal values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sweeps">Sweeps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-manual-sweeps"><strong>q4</strong> Manual sweeps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-automatic-sweeps"><strong>q5</strong> Automatic sweeps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-sampling">Random Sampling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-evaluate-a-simple-random-sample"><strong>q6</strong> Evaluate a simple random sample</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-skip-evaluation"><strong>q7</strong> Skip evaluation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sweep-plus-sampling">Sweep Plus Sampling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8-sweeps-with-sampling"><strong>q8</strong> Sweeps with sampling</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-input-values">Automatic Input Values</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contour-evaluation">Contour Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q9-visualize-function-contours"><strong>q9</strong> Visualize function contours</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q10-find-specific-contour-levels"><strong>q10</strong> Find specific contour levels</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constrained-minimization">Constrained Minimization</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-evaluation-routines">List of evaluation routines</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="grama-model-evaluation">
-<h1>Grama: Model Evaluation<a class="headerlink" href="#grama-model-evaluation" title="Permalink to this headline">#</a></h1>
+<h1>Grama: Model Evaluation<a class="headerlink" href="#grama-model-evaluation" title="Permalink to this heading">#</a></h1>
 <p><em>Purpose</em>: Once we’ve done the hard work of building a grama model, we can use a variety of tools to use the model. The primary way to use a grama model is to <em>evaluate</em> the mode to generate data, then use that data as a means to understand the model’s behavior. We’ll get to understanding soon, but first let’s learn how to generate data using evaluation verbs.</p>
 <section id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">grama</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gr</span>
 <span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -904,7 +523,7 @@ title="Print to PDF"
 <p>To focus this exercise on using models, let’s load up a model to play with:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.models</span> <span class="kn">import</span> <span class="n">make_plate_buckle</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">grama.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_plate_buckle</span>
 <span class="n">md_plate</span> <span class="o">=</span> <span class="n">make_plate_buckle</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -913,7 +532,7 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="evaluation">
-<h1>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">#</a></h1>
+<h1>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this heading">#</a></h1>
 <p>Recall that there are four classes of verb in grama; <em>evaluation</em> verbs take a model as an input and produce data as an output. Once we’ve generated that data, we can use visualization and other data tools to learn something about the model.</p>
 <p><img alt="Grama verb class diagram" src="../_images/verb-classes.png" /></p>
 <p>We’ll discuss three “subtypes” of evaluations:</p>
@@ -924,13 +543,13 @@ title="Print to PDF"
 </ul>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="manual-input-values">
-<h1>Manual Input Values<a class="headerlink" href="#manual-input-values" title="Permalink to this headline">#</a></h1>
+<h1>Manual Input Values<a class="headerlink" href="#manual-input-values" title="Permalink to this heading">#</a></h1>
 <p>There are two core evaluations—<code class="docutils literal notranslate"><span class="pre">ev_df()</span></code> and <code class="docutils literal notranslate"><span class="pre">tf_md()</span></code>—that require us to specify all the input values. These are manual but fundamental tools for working with a model.</p>
 <section id="dataframe-evaluation-ev-df">
-<h2>DataFrame evaluation <code class="docutils literal notranslate"><span class="pre">ev_df()</span></code><a class="headerlink" href="#dataframe-evaluation-ev-df" title="Permalink to this headline">#</a></h2>
+<h2>DataFrame evaluation <code class="docutils literal notranslate"><span class="pre">ev_df()</span></code><a class="headerlink" href="#dataframe-evaluation-ev-df" title="Permalink to this heading">#</a></h2>
 <p>As the prefix implies, <code class="docutils literal notranslate"><span class="pre">ev_df()</span></code> takes a model as an input and returns data as an output. Since we need to specify all model input values, it is most convenient to pair <code class="docutils literal notranslate"><span class="pre">ev_df()</span></code> with the DataFrame constructor <code class="docutils literal notranslate"><span class="pre">df_make()</span></code>. Let’s talk about some practical considerations when putting these tools together.</p>
 <section id="q1-set-the-input-values">
-<h3><strong>q1</strong> Set the input values<a class="headerlink" href="#q1-set-the-input-values" title="Permalink to this headline">#</a></h3>
+<h3><strong>q1</strong> Set the input values<a class="headerlink" href="#q1-set-the-input-values" title="Permalink to this heading">#</a></h3>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">gr.ev_df()</span></code> verb with <code class="docutils literal notranslate"><span class="pre">gr.df_make()</span></code> to set input values for all the inputs of <code class="docutils literal notranslate"><span class="pre">md_plate</span></code>.</p>
 <p><em>Hint</em>: Note that there are a lot of variable values to set! Remember that “executing” a model on its own prints the model summary; use this to your advantage to get a reminder for what inputs you need, and what values might be reasonable.</p>
 <div class="cell docutils container">
@@ -1003,12 +622,12 @@ title="Print to PDF"
 </section>
 </section>
 <section id="evaluation-as-transformation-tf-md">
-<h2>Evaluation as transformation <code class="docutils literal notranslate"><span class="pre">tf_md()</span></code><a class="headerlink" href="#evaluation-as-transformation-tf-md" title="Permalink to this headline">#</a></h2>
+<h2>Evaluation as transformation <code class="docutils literal notranslate"><span class="pre">tf_md()</span></code><a class="headerlink" href="#evaluation-as-transformation-tf-md" title="Permalink to this heading">#</a></h2>
 <p>Evaluations enter into a pipeline in a specific way: an evaluation takes a model and returns a DataFrame. In some cases, it is useful to be able to “add” the results of a model to a DataFrame as a transform. The <code class="docutils literal notranslate"><span class="pre">gr.tf_md()</span></code> helper serves this functionality.</p>
 <p>Let’s look at an example using the following dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_stang</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">grama.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">df_stang</span>
 <span class="n">df_stang</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1093,7 +712,7 @@ title="Print to PDF"
 </div></div></div>
 </div>
 <section id="q2-use-a-model-as-a-transform">
-<h3><strong>q2</strong> Use a model as a transform<a class="headerlink" href="#q2-use-a-model-as-a-transform" title="Permalink to this headline">#</a></h3>
+<h3><strong>q2</strong> Use a model as a transform<a class="headerlink" href="#q2-use-a-model-as-a-transform" title="Permalink to this heading">#</a></h3>
 <p>Use <code class="docutils literal notranslate"><span class="pre">gr.tf_md()</span></code> to add model results to the following dataframe using <code class="docutils literal notranslate"><span class="pre">md_plate</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1320,13 +939,13 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="mixed-manual-automatic">
-<h1>Mixed Manual &amp; Automatic<a class="headerlink" href="#mixed-manual-automatic" title="Permalink to this headline">#</a></h1>
+<h1>Mixed Manual &amp; Automatic<a class="headerlink" href="#mixed-manual-automatic" title="Permalink to this heading">#</a></h1>
 <p>These verbs require that we set values for some of a model’s inputs. This is most commonly split across the deterministic and random variables: We set specific values for the deterministic inputs, and the verb handles the random inputs.</p>
 <section id="nominal-evaluation">
-<h2>Nominal Evaluation<a class="headerlink" href="#nominal-evaluation" title="Permalink to this headline">#</a></h2>
+<h2>Nominal Evaluation<a class="headerlink" href="#nominal-evaluation" title="Permalink to this heading">#</a></h2>
 <p>Sometimes it is useful to just get one set of “typical” values from a model. The <code class="docutils literal notranslate"><span class="pre">gr.ev_nominal()</span></code> verb provides this functionality.</p>
 <section id="q3-evaluate-at-nominal-values">
-<h3><strong>q3</strong> Evaluate at nominal values<a class="headerlink" href="#q3-evaluate-at-nominal-values" title="Permalink to this headline">#</a></h3>
+<h3><strong>q3</strong> Evaluate at nominal values<a class="headerlink" href="#q3-evaluate-at-nominal-values" title="Permalink to this heading">#</a></h3>
 <p>Use <code class="docutils literal notranslate"><span class="pre">gr.ev_nominal()</span></code> to evaluate <code class="docutils literal notranslate"><span class="pre">md_plate</span></code> at nominal input values.</p>
 <p><em>Hint</em>: Consult the documentation to see how you can make a “default” choice for the deterministic inputs.</p>
 <div class="cell docutils container">
@@ -1388,10 +1007,10 @@ title="Print to PDF"
 </section>
 </section>
 <section id="sweeps">
-<h2>Sweeps<a class="headerlink" href="#sweeps" title="Permalink to this headline">#</a></h2>
+<h2>Sweeps<a class="headerlink" href="#sweeps" title="Permalink to this heading">#</a></h2>
 <p>A key way to understand a model’s behavior is to <em>sweep</em> through values of the inputs and study the effects on the outputs. We can do this manually by specifying a grid of points with <code class="docutils literal notranslate"><span class="pre">gr.df_grid()</span></code>, or automatically with <code class="docutils literal notranslate"><span class="pre">gr.ev_sinews()</span></code>.</p>
 <section id="q4-manual-sweeps">
-<h3><strong>q4</strong> Manual sweeps<a class="headerlink" href="#q4-manual-sweeps" title="Permalink to this headline">#</a></h3>
+<h3><strong>q4</strong> Manual sweeps<a class="headerlink" href="#q4-manual-sweeps" title="Permalink to this heading">#</a></h3>
 <p>Construct a manual sweep over values of <code class="docutils literal notranslate"><span class="pre">m</span></code> and <code class="docutils literal notranslate"><span class="pre">h</span></code>. Provide the values <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">=</span> <span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>, and sweep <code class="docutils literal notranslate"><span class="pre">h</span></code> between <code class="docutils literal notranslate"><span class="pre">6</span></code> and <code class="docutils literal notranslate"><span class="pre">12</span></code>.</p>
 <p><em>Hint 1</em>: Remember that in the previous exercise we learned how to use <code class="docutils literal notranslate"><span class="pre">gr.df_grid()</span></code> and <code class="docutils literal notranslate"><span class="pre">gr.linspace()</span></code>. To construct grids of points.</p>
 <div class="cell docutils container">
@@ -1415,7 +1034,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d12-e-grama03-eval-solution_21_0.png" src="../_images/d12-e-grama03-eval-solution_21_0.png" />
+<img alt="../_images/d2a5204e01135576e5025092aa08b15728c00250df4b4e5b58010310fcf62965.png" src="../_images/d2a5204e01135576e5025092aa08b15728c00250df4b4e5b58010310fcf62965.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766400696561)&gt;
 </pre></div>
 </div>
@@ -1424,7 +1043,7 @@ title="Print to PDF"
 <p>Note that you need to write a fair bit of code to produce a manual sweep. However, you also get complete control over which variables to sweep, and what ranges to consider.</p>
 </section>
 <section id="q5-automatic-sweeps">
-<h3><strong>q5</strong> Automatic sweeps<a class="headerlink" href="#q5-automatic-sweeps" title="Permalink to this headline">#</a></h3>
+<h3><strong>q5</strong> Automatic sweeps<a class="headerlink" href="#q5-automatic-sweeps" title="Permalink to this heading">#</a></h3>
 <p>Use <code class="docutils literal notranslate"><span class="pre">gr.ev_sinews()</span></code> with <code class="docutils literal notranslate"><span class="pre">df_det=&quot;swp&quot;</span></code> to sweep all the inputs in the model. Visualize the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1440,7 +1059,7 @@ title="Print to PDF"
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calling plot_sinew_outputs....
 </pre></div>
 </div>
-<img alt="../_images/d12-e-grama03-eval-solution_24_1.png" src="../_images/d12-e-grama03-eval-solution_24_1.png" />
+<img alt="../_images/b69da184395565ea925b9f596018da5acb7fd00380464211672d606bf752cabd.png" src="../_images/b69da184395565ea925b9f596018da5acb7fd00380464211672d606bf752cabd.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766400022477)&gt;
 </pre></div>
 </div>
@@ -1451,10 +1070,10 @@ title="Print to PDF"
 </section>
 </section>
 <section id="random-sampling">
-<h2>Random Sampling<a class="headerlink" href="#random-sampling" title="Permalink to this headline">#</a></h2>
+<h2>Random Sampling<a class="headerlink" href="#random-sampling" title="Permalink to this heading">#</a></h2>
 <p>Deterministic and random inputs are fundamentally different; deterministic inputs must be specified, while random inputs are fundamentally unknown in value. The verb <code class="docutils literal notranslate"><span class="pre">gr.ev_sample()</span></code> draws a random sample according to the random inputs, while handling the deterministic inputs according to the user’s choice.</p>
 <section id="q6-evaluate-a-simple-random-sample">
-<h3><strong>q6</strong> Evaluate a simple random sample<a class="headerlink" href="#q6-evaluate-a-simple-random-sample" title="Permalink to this headline">#</a></h3>
+<h3><strong>q6</strong> Evaluate a simple random sample<a class="headerlink" href="#q6-evaluate-a-simple-random-sample" title="Permalink to this heading">#</a></h3>
 <p>Use <code class="docutils literal notranslate"><span class="pre">gr.ev_sample()</span></code> to draw a sample of size <code class="docutils literal notranslate"><span class="pre">100</span></code>. Use the nominal values for the deterministic inputs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1639,7 +1258,7 @@ title="Print to PDF"
 <p>Like <code class="docutils literal notranslate"><span class="pre">gr.ev_sinews()</span></code>, the verb <code class="docutils literal notranslate"><span class="pre">gr.ev_nominal()</span></code> works with <code class="docutils literal notranslate"><span class="pre">gr.pt_auto()</span></code> to produce quick visuals of model behavior. Combined with the <code class="docutils literal notranslate"><span class="pre">skip</span></code> keyword, this allows us to study both the input and output behavior of the model.</p>
 </section>
 <section id="q7-skip-evaluation">
-<h3><strong>q7</strong> Skip evaluation<a class="headerlink" href="#q7-skip-evaluation" title="Permalink to this headline">#</a></h3>
+<h3><strong>q7</strong> Skip evaluation<a class="headerlink" href="#q7-skip-evaluation" title="Permalink to this heading">#</a></h3>
 <p>Run the code below and inspect the output. Then add the keyword argument <code class="docutils literal notranslate"><span class="pre">skip=True</span></code> and re-run the code. Note the differences between the results. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1666,7 +1285,7 @@ Calling plot_scattermat....
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Matplotlib is currently using module://matplotlib_inline.backend_inline, which is a non-GUI backend, so cannot show the figure.
 </pre></div>
 </div>
-<img alt="../_images/d12-e-grama03-eval-solution_31_2.png" src="../_images/d12-e-grama03-eval-solution_31_2.png" />
+<img alt="../_images/b2faf0a3974b8b3d8c6d62e92cdefc1d9f47df630b5215b86d76451bd1bd7cea.png" src="../_images/b2faf0a3974b8b3d8c6d62e92cdefc1d9f47df630b5215b86d76451bd1bd7cea.png" />
 </div>
 </div>
 <p><em>Observations</em></p>
@@ -1685,10 +1304,10 @@ Calling plot_scattermat....
 </section>
 </section>
 <section id="sweep-plus-sampling">
-<h2>Sweep Plus Sampling<a class="headerlink" href="#sweep-plus-sampling" title="Permalink to this headline">#</a></h2>
+<h2>Sweep Plus Sampling<a class="headerlink" href="#sweep-plus-sampling" title="Permalink to this heading">#</a></h2>
 <p>Using <code class="docutils literal notranslate"><span class="pre">gr.ev_sample()</span></code> we can perform sweeps over deterministic inputs while sampling the random inputs. This follows similar code patterns to what we did with <code class="docutils literal notranslate"><span class="pre">gr.ev_nominal()</span></code>.</p>
 <section id="q8-sweeps-with-sampling">
-<h3><strong>q8</strong> Sweeps with sampling<a class="headerlink" href="#q8-sweeps-with-sampling" title="Permalink to this headline">#</a></h3>
+<h3><strong>q8</strong> Sweeps with sampling<a class="headerlink" href="#q8-sweeps-with-sampling" title="Permalink to this heading">#</a></h3>
 <p>Edit the code below to sweep over deterministic inputs, but sample the random inputs. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1726,7 +1345,7 @@ Calling plot_scattermat....
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eval_sample() is rounding n...
 </pre></div>
 </div>
-<img alt="../_images/d12-e-grama03-eval-solution_35_1.png" src="../_images/d12-e-grama03-eval-solution_35_1.png" />
+<img alt="../_images/b0690f62483296cf5879a477d1fa1a33995c9205b239b574468c2ad592aef4f0.png" src="../_images/b0690f62483296cf5879a477d1fa1a33995c9205b239b574468c2ad592aef4f0.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766369982212)&gt;
 </pre></div>
 </div>
@@ -1744,13 +1363,13 @@ Calling plot_scattermat....
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="automatic-input-values">
-<h1>Automatic Input Values<a class="headerlink" href="#automatic-input-values" title="Permalink to this headline">#</a></h1>
+<h1>Automatic Input Values<a class="headerlink" href="#automatic-input-values" title="Permalink to this heading">#</a></h1>
 <p>Other grama verbs do not require us to specify any input values. Here are a few examples.</p>
 <section id="contour-evaluation">
-<h2>Contour Evaluation<a class="headerlink" href="#contour-evaluation" title="Permalink to this headline">#</a></h2>
+<h2>Contour Evaluation<a class="headerlink" href="#contour-evaluation" title="Permalink to this heading">#</a></h2>
 <p>In cases where we have just two inputs, we can construct contour plots of the output quantities. The verb <code class="docutils literal notranslate"><span class="pre">gr.ev_contour()</span></code> generates the data necessary for a contour plot.</p>
 <section id="q9-visualize-function-contours">
-<h3><strong>q9</strong> Visualize function contours<a class="headerlink" href="#q9-visualize-function-contours" title="Permalink to this headline">#</a></h3>
+<h3><strong>q9</strong> Visualize function contours<a class="headerlink" href="#q9-visualize-function-contours" title="Permalink to this heading">#</a></h3>
 <p>Complete the arguments for <code class="docutils literal notranslate"><span class="pre">gr.ev_contour()</span></code> to generate contour data for the following model. Make sure to generate contours for both outputs <code class="docutils literal notranslate"><span class="pre">f</span></code> and <code class="docutils literal notranslate"><span class="pre">g</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1788,7 +1407,7 @@ Calling plot_scattermat....
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calling plot_contour....
 </pre></div>
 </div>
-<img alt="../_images/d12-e-grama03-eval-solution_39_1.png" src="../_images/d12-e-grama03-eval-solution_39_1.png" />
+<img alt="../_images/bc1dc001c1583e8feba8768a21524065cc75590a73d7f98fcff347f77749c59d.png" src="../_images/bc1dc001c1583e8feba8768a21524065cc75590a73d7f98fcff347f77749c59d.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766369610897)&gt;
 </pre></div>
 </div>
@@ -1797,7 +1416,7 @@ Calling plot_scattermat....
 <p><em>Note</em>: Contours are fundamentally two-input constructions. If your model has more than two inputs, you will need to specify manual values for the other inputs.</p>
 </section>
 <section id="q10-find-specific-contour-levels">
-<h3><strong>q10</strong> Find specific contour levels<a class="headerlink" href="#q10-find-specific-contour-levels" title="Permalink to this headline">#</a></h3>
+<h3><strong>q10</strong> Find specific contour levels<a class="headerlink" href="#q10-find-specific-contour-levels" title="Permalink to this heading">#</a></h3>
 <p>Use <code class="docutils literal notranslate"><span class="pre">gr.ev_contour()</span></code> to find the contour of <code class="docutils literal notranslate"><span class="pre">g</span></code> that is tangent to the contour where <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">==</span> <span class="pre">1</span></code>.</p>
 <p>You’ll need to use the <code class="docutils literal notranslate"><span class="pre">levels</span></code> argument of <code class="docutils literal notranslate"><span class="pre">gr.ev_contour()</span></code> to do this, and it will take a bit of trial-and-error.</p>
 <div class="cell docutils container">
@@ -1840,7 +1459,7 @@ Calling plot_scattermat....
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calling plot_contour....
 </pre></div>
 </div>
-<img alt="../_images/d12-e-grama03-eval-solution_42_1.png" src="../_images/d12-e-grama03-eval-solution_42_1.png" />
+<img alt="../_images/03e0d784f1b76ac1c933fcc8cbd1de08059b2f5b283d3a6b0bcfae53760dbd5f.png" src="../_images/03e0d784f1b76ac1c933fcc8cbd1de08059b2f5b283d3a6b0bcfae53760dbd5f.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766400432162)&gt;
 </pre></div>
 </div>
@@ -1849,7 +1468,7 @@ Calling plot_scattermat....
 </section>
 </section>
 <section id="constrained-minimization">
-<h2>Constrained Minimization<a class="headerlink" href="#constrained-minimization" title="Permalink to this headline">#</a></h2>
+<h2>Constrained Minimization<a class="headerlink" href="#constrained-minimization" title="Permalink to this heading">#</a></h2>
 <p>As one last example of verbs that select automatic input values: Grama provides tools for constrained minimization, which determines the input values necessary to minimize an output quantity. The following code demonstrates how this works:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1950,7 +1569,7 @@ Calling plot_scattermat....
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d12-e-grama03-eval-solution_46_0.png" src="../_images/d12-e-grama03-eval-solution_46_0.png" />
+<img alt="../_images/33eb0ae7efddd601a2df3db724f84110ae8d9ff61917f559a85d0b0ccbf47290.png" src="../_images/33eb0ae7efddd601a2df3db724f84110ae8d9ff61917f559a85d0b0ccbf47290.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8766370353896)&gt;
 </pre></div>
 </div>
@@ -1959,9 +1578,9 @@ Calling plot_scattermat....
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="list-of-evaluation-routines">
-<h1>List of evaluation routines<a class="headerlink" href="#list-of-evaluation-routines" title="Permalink to this headline">#</a></h1>
+<h1>List of evaluation routines<a class="headerlink" href="#list-of-evaluation-routines" title="Permalink to this heading">#</a></h1>
 <p>For your reference, here are a few of the evaluation verbs, sorted by how they handle input values and with a brief description.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Verb</p></th>
 <th class="head"><p>Input values</p></th>
@@ -2017,7 +1636,7 @@ Calling plot_scattermat....
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./exercises_solution"
         },
         predefinedOutput: true
@@ -2025,50 +1644,149 @@ Calling plot_scattermat....
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="d11-e-data03-pivot-solution.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Data: Pivoting Data</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="d11-e-data03-pivot-solution.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data: Pivoting Data</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="d13-e-vis04-lines-solution.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="d13-e-vis04-lines-solution.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Vis: Lines and Related Geometries</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Grama: Model Evaluation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-input-values">Manual Input Values</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-evaluation-ev-df">DataFrame evaluation <code class="docutils literal notranslate"><span class="pre">ev_df()</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-set-the-input-values"><strong>q1</strong> Set the input values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-as-transformation-tf-md">Evaluation as transformation <code class="docutils literal notranslate"><span class="pre">tf_md()</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-use-a-model-as-a-transform"><strong>q2</strong> Use a model as a transform</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-manual-automatic">Mixed Manual &amp; Automatic</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nominal-evaluation">Nominal Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-evaluate-at-nominal-values"><strong>q3</strong> Evaluate at nominal values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sweeps">Sweeps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-manual-sweeps"><strong>q4</strong> Manual sweeps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-automatic-sweeps"><strong>q5</strong> Automatic sweeps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-sampling">Random Sampling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-evaluate-a-simple-random-sample"><strong>q6</strong> Evaluate a simple random sample</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-skip-evaluation"><strong>q7</strong> Skip evaluation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sweep-plus-sampling">Sweep Plus Sampling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8-sweeps-with-sampling"><strong>q8</strong> Sweeps with sampling</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-input-values">Automatic Input Values</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contour-evaluation">Contour Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q9-visualize-function-contours"><strong>q9</strong> Visualize function contours</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q10-find-specific-contour-levels"><strong>q10</strong> Find specific contour levels</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constrained-minimization">Constrained Minimization</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-evaluation-routines">List of evaluation routines</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Zachary del Rosario<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Zachary del Rosario
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

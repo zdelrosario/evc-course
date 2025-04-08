@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Stats: Distributions &#8212; Data Science for Engineers</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,56 +64,98 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises_solution/d19-e-stat04-distributions-solution';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Grama: Fitting Functions" href="d20-e-grama05-fit-function-solution.html" />
     <link rel="prev" title="Grama: Exploratory Model Analysis" href="d18-e-grama04-ema-solution.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="../frontmatter/home.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Data Science for Engineers</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -111,821 +165,361 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/setup.html">
-   Software Setup
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/howto.html">
-   How To Use These Materials
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/schedule.html">
-   Course Topics and Schedule
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/submission.html">
-   Challenge Submission Instructions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/recordings.html">
-   Class Recordings
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../frontmatter/demos.html">
-   Demo Notebooks
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-20-1.html">
-     Demo Notebook 2022-06-20
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-27.html">
-     Demo Notebook 2022-06-27
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-06.html">
-     Demo Notebook 2022-07-06
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-11.html">
-     Demo Notebook 2022-07-11
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-18.html">
-     Demo Notebook 2022-07-18
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/hours.html">
-   Office Hours Schedule
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../frontmatter/exercises.html">
-   Exercise Solutions
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
-     Introduction to Jupyter Notebooks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
-     Vis: Data Visualization Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
-     Data: Isolating Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d02-e-tips-solution.html">
-     Tips for This Course
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
-     Stats: Introduction to Exploratory Data Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
-     Grama: Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
-     Vis: Bar Charts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d06-e-data02-derive-solution.html">
-     Data: Deriving Quantities
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d07-e-vis02-histograms-solution.html">
-     Vis: Histograms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d08-e-stat02-source-solution.html">
-     Stats: Real and Erroneous Sources of Variability
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d09-e-vis03-scatterplot-solution.html">
-     Vis: Scatterplots and Layers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d10-e-grama02-building-solution.html">
-     Grama: Model Building
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d11-e-data03-pivot-solution.html">
-     Data: Pivoting Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d12-e-grama03-eval-solution.html">
-     Grama: Model Evaluation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d13-e-vis04-lines-solution.html">
-     Vis: Lines and Related Geometries
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d14-e-stat03-descriptive-solution.html">
-     Stats: Descriptive Statistics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d15-e-data04-separate-unite-solution.html">
-     Data: Separating and Uniting Columns
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d16-e-data05-join-solution.html">
-     Data: Joining Datasets
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d17-e-vis05-multiples-solution.html">
-     Vis: Small Multiples
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d18-e-grama04-ema-solution.html">
-     Grama: Exploratory Model Analysis
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Stats: Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d20-e-grama05-fit-function-solution.html">
-     Grama: Fitting Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d21-e-stat05-CI-solution.html">
-     Stats: Confidence Intervals and the CLT
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d22-e-stat06-spc-solution.html">
-     Stats: Fundamentals of Statistical Process Monitoring
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">
-     Grama: Fitting Univariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">
-     Grama: Fitting Multivariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d25-e-grama08-duu-solution.html">
-     Grama: Design Under Uncertainty
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/setup.html">Software Setup</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/howto.html">How To Use These Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/schedule.html">Course Topics and Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/submission.html">Challenge Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/recordings.html">Class Recordings</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../frontmatter/demos.html">Demo Notebooks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-20-1.html">Demo Notebook 2022-06-20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-27.html">Demo Notebook 2022-06-27</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-06.html">Demo Notebook 2022-07-06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-11.html">Demo Notebook 2022-07-11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-18.html">Demo Notebook 2022-07-18</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/hours.html">Office Hours Schedule</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../frontmatter/exercises.html">Exercise Solutions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="d01-e-data00-notebooks-solution.html">Introduction to Jupyter Notebooks</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d01-e-vis00-basics-solution.html">Vis: Data Visualization Basics</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="d02-e-data01-isolate-solution.html">Data: Isolating Data</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d02-e-tips-solution.html">Tips for This Course</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d03-e-stat01-eda-solution.html">Stats: Introduction to Exploratory Data Analysis</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d04-e-grama01-basics-solution.html">Grama: Basics</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">Vis: Bar Charts</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d06-e-data02-derive-solution.html">Data: Deriving Quantities</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d07-e-vis02-histograms-solution.html">Vis: Histograms</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d08-e-stat02-source-solution.html">Stats: Real and Erroneous Sources of Variability</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d09-e-vis03-scatterplot-solution.html">Vis: Scatterplots and Layers</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d10-e-grama02-building-solution.html">Grama: Model Building</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d11-e-data03-pivot-solution.html">Data: Pivoting Data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d12-e-grama03-eval-solution.html">Grama: Model Evaluation</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d13-e-vis04-lines-solution.html">Vis: Lines and Related Geometries</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d14-e-stat03-descriptive-solution.html">Stats: Descriptive Statistics</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d15-e-data04-separate-unite-solution.html">Data: Separating and Uniting Columns</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d16-e-data05-join-solution.html">Data: Joining Datasets</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d17-e-vis05-multiples-solution.html">Vis: Small Multiples</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d18-e-grama04-ema-solution.html">Grama: Exploratory Model Analysis</a></li>
+
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Stats: Distributions</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d20-e-grama05-fit-function-solution.html">Grama: Fitting Functions</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d21-e-stat05-CI-solution.html">Stats: Confidence Intervals and the CLT</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d22-e-stat06-spc-solution.html">Stats: Fundamentals of Statistical Process Monitoring</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">Grama: Fitting Univariate Distributions</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">Grama: Fitting Multivariate Distributions</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d25-e-grama08-duu-solution.html">Grama: Design Under Uncertainty</a></li>
+
+
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d19-e-stat04-distributions-solution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/exercises_solution/d19-e-stat04-distributions-solution.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/exercises_solution/d19-e-stat04-distributions-solution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Stats: Distributions
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#motivation-modeling-uncertainty">
-   Motivation: Modeling Uncertainty
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#to-model-variability">
-     To Model Variability
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#to-summarize-data">
-     To Summarize Data
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#to-make-assumptions-explicit">
-     To Make Assumptions Explicit
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#distribution-fundamentals">
-   Distribution Fundamentals
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-a-distribution-represents">
-     What a distribution represents
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#random-variables">
-     Random variables
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q1-define-a-distribution">
-       <strong>
-        q1
-       </strong>
-       Define a distribution
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q2-check-your-distribution-s-summary">
-       <strong>
-        q2
-       </strong>
-       Check your distribution’s summary
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#moments">
-     Moments
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-compare-different-means">
-       <strong>
-        q3
-       </strong>
-       Compare different means
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-compare-different-standard-deviations">
-       <strong>
-        q4
-       </strong>
-       Compare different standard deviations
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q5-compare-different-skewnesses">
-       <strong>
-        q5
-       </strong>
-       Compare different skewnesses
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#simulating-values">
-     Simulating values
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q6-draw-random-values-from-your-distribution">
-       <strong>
-        q6
-       </strong>
-       <em>
-        Draw
-       </em>
-       random values from your distribution
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#estimating-the-mean">
-     Estimating the Mean
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q7-estimate-a-sample-mean">
-       <strong>
-        q7
-       </strong>
-       Estimate a (sample) mean
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probability">
-     Probability
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q8-compute-an-indicator">
-       <strong>
-        q8
-       </strong>
-       Compute an indicator
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q9-estimate-a-probability">
-       <strong>
-        q9
-       </strong>
-       Estimate a probability
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probability-of-failure">
-     Probability of Failure
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q10-estimate-a-probability-of-failure">
-       <strong>
-        q10
-       </strong>
-       Estimate a probability of failure
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quantiles">
-     Quantiles
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q11-compute-sample-quantiles">
-       <strong>
-        q11
-       </strong>
-       Compute sample quantiles
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conservative-values">
-     Conservative values
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q12-estimate-a-conservative-strength">
-       <strong>
-        q12
-       </strong>
-       Estimate a conservative strength
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Stats: Distributions</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Stats: Distributions
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#motivation-modeling-uncertainty">
-   Motivation: Modeling Uncertainty
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#to-model-variability">
-     To Model Variability
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#to-summarize-data">
-     To Summarize Data
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#to-make-assumptions-explicit">
-     To Make Assumptions Explicit
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#distribution-fundamentals">
-   Distribution Fundamentals
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-a-distribution-represents">
-     What a distribution represents
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#random-variables">
-     Random variables
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q1-define-a-distribution">
-       <strong>
-        q1
-       </strong>
-       Define a distribution
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q2-check-your-distribution-s-summary">
-       <strong>
-        q2
-       </strong>
-       Check your distribution’s summary
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#moments">
-     Moments
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-compare-different-means">
-       <strong>
-        q3
-       </strong>
-       Compare different means
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-compare-different-standard-deviations">
-       <strong>
-        q4
-       </strong>
-       Compare different standard deviations
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q5-compare-different-skewnesses">
-       <strong>
-        q5
-       </strong>
-       Compare different skewnesses
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#simulating-values">
-     Simulating values
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q6-draw-random-values-from-your-distribution">
-       <strong>
-        q6
-       </strong>
-       <em>
-        Draw
-       </em>
-       random values from your distribution
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#estimating-the-mean">
-     Estimating the Mean
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q7-estimate-a-sample-mean">
-       <strong>
-        q7
-       </strong>
-       Estimate a (sample) mean
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probability">
-     Probability
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q8-compute-an-indicator">
-       <strong>
-        q8
-       </strong>
-       Compute an indicator
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q9-estimate-a-probability">
-       <strong>
-        q9
-       </strong>
-       Estimate a probability
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probability-of-failure">
-     Probability of Failure
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q10-estimate-a-probability-of-failure">
-       <strong>
-        q10
-       </strong>
-       Estimate a probability of failure
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quantiles">
-     Quantiles
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q11-compute-sample-quantiles">
-       <strong>
-        q11
-       </strong>
-       Compute sample quantiles
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conservative-values">
-     Conservative values
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q12-estimate-a-conservative-strength">
-       <strong>
-        q12
-       </strong>
-       Estimate a conservative strength
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Stats: Distributions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Stats: Distributions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-modeling-uncertainty">Motivation: Modeling Uncertainty</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-model-variability">To Model Variability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-summarize-data">To Summarize Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-make-assumptions-explicit">To Make Assumptions Explicit</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-fundamentals">Distribution Fundamentals</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-a-distribution-represents">What a distribution represents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-variables">Random variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-define-a-distribution"><strong>q1</strong> Define a distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-check-your-distribution-s-summary"><strong>q2</strong> Check your distribution’s summary</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moments">Moments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-compare-different-means"><strong>q3</strong> Compare different means</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-compare-different-standard-deviations"><strong>q4</strong> Compare different standard deviations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-compare-different-skewnesses"><strong>q5</strong> Compare different skewnesses</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-values">Simulating values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-draw-random-values-from-your-distribution"><strong>q6</strong> <em>Draw</em> random values from your distribution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-mean">Estimating the Mean</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-estimate-a-sample-mean"><strong>q7</strong> Estimate a (sample) mean</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability">Probability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8-compute-an-indicator"><strong>q8</strong> Compute an indicator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q9-estimate-a-probability"><strong>q9</strong> Estimate a probability</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-of-failure">Probability of Failure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q10-estimate-a-probability-of-failure"><strong>q10</strong> Estimate a probability of failure</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantiles">Quantiles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q11-compute-sample-quantiles"><strong>q11</strong> Compute sample quantiles</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conservative-values">Conservative values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q12-estimate-a-conservative-strength"><strong>q12</strong> Estimate a conservative strength</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="stats-distributions">
-<h1>Stats: Distributions<a class="headerlink" href="#stats-distributions" title="Permalink to this headline">#</a></h1>
+<h1>Stats: Distributions<a class="headerlink" href="#stats-distributions" title="Permalink to this heading">#</a></h1>
 <p><em>Purpose</em>: We will use distributions to model uncertain quantities. Distributions (and densities, random variables) are useful mathematical objects, but we will need to understand their properties to use them as effective models. This exercise is about distributions and their fundamental properties: In a future exercise (<code class="docutils literal notranslate"><span class="pre">e-grama06-fit-univar</span></code>) we will discuss how to model real quantities with distributions.</p>
 <section id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">grama</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -935,15 +529,15 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="motivation-modeling-uncertainty">
-<h1>Motivation: Modeling Uncertainty<a class="headerlink" href="#motivation-modeling-uncertainty" title="Permalink to this headline">#</a></h1>
+<h1>Motivation: Modeling Uncertainty<a class="headerlink" href="#motivation-modeling-uncertainty" title="Permalink to this heading">#</a></h1>
 <p>Before we discuss distributions, let’s first talk about <em>why</em> distributions are necessary and useful.</p>
 <section id="to-model-variability">
-<h2>To Model Variability<a class="headerlink" href="#to-model-variability" title="Permalink to this headline">#</a></h2>
+<h2>To Model Variability<a class="headerlink" href="#to-model-variability" title="Permalink to this heading">#</a></h2>
 <p>Many real physical quantities exhibit <em>variability</em>; that is, different instances of “the same” quantity take different numerical values. This includes things like part geometry (tolerances), a person’s height and weight, and even material properties. Let’s look at a specific dataset of die cast aluminum material properties.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
-<span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_shewhart</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">grama.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">df_shewhart</span>
 </pre></div>
 </div>
 </div>
@@ -964,7 +558,7 @@ title="Print to PDF"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/stats/stat_bin.py:95: PlotnineWarning: &#39;stat_bin()&#39; using &#39;bins = 7&#39;. Pick better value with &#39;binwidth&#39;.
 </pre></div>
 </div>
-<img alt="../_images/d19-e-stat04-distributions-solution_7_1.png" src="../_images/d19-e-stat04-distributions-solution_7_1.png" />
+<img alt="../_images/1e03c3fbae27b5f162be7226e38193de2e3fb6f01071fb9899d80f5bd5daa659.png" src="../_images/1e03c3fbae27b5f162be7226e38193de2e3fb6f01071fb9899d80f5bd5daa659.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779106334148)&gt;
 </pre></div>
 </div>
@@ -973,7 +567,7 @@ title="Print to PDF"
 <p>In order to design in the presence of this variability, we need a way to represent this variability in a quantitative fashion. Distributions offer one way to quantitatively describe variability.</p>
 </section>
 <section id="to-summarize-data">
-<h2>To Summarize Data<a class="headerlink" href="#to-summarize-data" title="Permalink to this headline">#</a></h2>
+<h2>To Summarize Data<a class="headerlink" href="#to-summarize-data" title="Permalink to this heading">#</a></h2>
 <p>A distribution is one way to <em>summarize</em> a dataset. Rather than using a (potentially large) dataset to describe a variable quantity, we can use a distribution.</p>
 <p>Fitting a lognormal distribution allows us to summarize the variability in <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>. The following code fits a lognormal distribution to the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> data.</p>
 <div class="cell docutils container">
@@ -1019,7 +613,7 @@ title="Print to PDF"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/stats/stat_bin.py:95: PlotnineWarning: &#39;stat_bin()&#39; using &#39;bins = 7&#39;. Pick better value with &#39;binwidth&#39;.
 </pre></div>
 </div>
-<img alt="../_images/d19-e-stat04-distributions-solution_12_1.png" src="../_images/d19-e-stat04-distributions-solution_12_1.png" />
+<img alt="../_images/16d9c39bab884acb08591229686db1ca1c24633bc38ae5a7201098f82bbc1e70.png" src="../_images/16d9c39bab884acb08591229686db1ca1c24633bc38ae5a7201098f82bbc1e70.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779123879403)&gt;
 </pre></div>
 </div>
@@ -1027,7 +621,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="to-make-assumptions-explicit">
-<h2>To Make Assumptions Explicit<a class="headerlink" href="#to-make-assumptions-explicit" title="Permalink to this headline">#</a></h2>
+<h2>To Make Assumptions Explicit<a class="headerlink" href="#to-make-assumptions-explicit" title="Permalink to this heading">#</a></h2>
 <p>Selecting a distribtion helps us make assumptions about an uncertain quantity explicit. For instance, are we assuming that values are strictly bounded between low and high values? Or are there no bounds?</p>
 <p>For example, a normal distribution can take all values between <span class="math notranslate nohighlight">\(-\infty\)</span> and <span class="math notranslate nohighlight">\(+\infty\)</span>, while a beta distribution has a finite width. The following visual compares the two distribution shapes.</p>
 <div class="cell docutils container">
@@ -1068,7 +662,7 @@ A value is trying to be set on a copy of a slice from a DataFrame
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
 </pre></div>
 </div>
-<img alt="../_images/d19-e-stat04-distributions-solution_14_1.png" src="../_images/d19-e-stat04-distributions-solution_14_1.png" />
+<img alt="../_images/3341d68f3cbe6eaf9839ccb91e9b4cd51dc3ce89d81bb7b16be487a0188644bc.png" src="../_images/3341d68f3cbe6eaf9839ccb91e9b4cd51dc3ce89d81bb7b16be487a0188644bc.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779145038065)&gt;
 </pre></div>
 </div>
@@ -1077,15 +671,15 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="distribution-fundamentals">
-<h1>Distribution Fundamentals<a class="headerlink" href="#distribution-fundamentals" title="Permalink to this headline">#</a></h1>
+<h1>Distribution Fundamentals<a class="headerlink" href="#distribution-fundamentals" title="Permalink to this heading">#</a></h1>
 <p><em>Note</em>: In this exercise, to keep things simple, we will focus on distributions for <em>continuous</em> variable.</p>
 <section id="what-a-distribution-represents">
-<h2>What a distribution represents<a class="headerlink" href="#what-a-distribution-represents" title="Permalink to this headline">#</a></h2>
+<h2>What a distribution represents<a class="headerlink" href="#what-a-distribution-represents" title="Permalink to this heading">#</a></h2>
 <p><em>Fundamentally</em>, a distribution describes an uncertain value <em>in a quantitative fashion</em>. Rather than simply saying “I don’t know what value this is,” with a distribution we can express the fact that some values are more <em>likely</em> than others.</p>
 <p>Distributions are particularly useful because they free us from “just” picking a single number. With a distribution we can get a lot more nuanced in our description of uncertain quantities. This exercise is all about using concepts about distributions to represent uncertain quantities.</p>
 </section>
 <section id="random-variables">
-<h2>Random variables<a class="headerlink" href="#random-variables" title="Permalink to this headline">#</a></h2>
+<h2>Random variables<a class="headerlink" href="#random-variables" title="Permalink to this heading">#</a></h2>
 <p>Clearly <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> does not take a single value; therefore, we should think of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> as a <em>random variable</em>. A random variable is a mathematical object that we can use to model an uncertain quantity. Unlike a <em>deterministic variable</em> that has one fixed value (say <span class="math notranslate nohighlight">\(x = 1\)</span>), a random variable can take a different value each time we <em>observe</em> it. For instance, if <span class="math notranslate nohighlight">\(X\)</span> were a random variable, and we used <span class="math notranslate nohighlight">\(X_i\)</span> to denote the value that occurs on the <span class="math notranslate nohighlight">\(i\)</span>-th observation, then we might see a sequence like</p>
 <div class="math notranslate nohighlight">
 \[X_1 = 1, X_2 = -3, X_3 = 1, X_4 = 5, \dots\]</div>
@@ -1191,7 +785,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d19-e-stat04-distributions-solution_23_0.png" src="../_images/d19-e-stat04-distributions-solution_23_0.png" />
+<img alt="../_images/df16f7d386db26c1f286bf17c72c8a46ae148eafdbb1a7e9c29bb921d86834ae.png" src="../_images/df16f7d386db26c1f286bf17c72c8a46ae148eafdbb1a7e9c29bb921d86834ae.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779106618103)&gt;
 </pre></div>
 </div>
@@ -1199,7 +793,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">Value</span></code> pictured here corresponds to all of the potential values that the random variable can take, while the <code class="docutils literal notranslate"><span class="pre">Density</span></code> quantitatively describes how likely (or unlikely) each of those values are. A value with a higher density will tend to occur more often. Density functions tend to “fall off” towards zero as we move towards more extreme values; these lower regions of the density are called “tails” of the distribution. The smallest values are associated with the “lower” or “left” tail, while the largest values are associated with the “upper” or “right” tail.</p>
 <section id="q1-define-a-distribution">
-<h3><strong>q1</strong> Define a distribution<a class="headerlink" href="#q1-define-a-distribution" title="Permalink to this headline">#</a></h3>
+<h3><strong>q1</strong> Define a distribution<a class="headerlink" href="#q1-define-a-distribution" title="Permalink to this heading">#</a></h3>
 <p>Use the grama helper function <code class="docutils literal notranslate"><span class="pre">gr.marg_mom()</span></code> to define a distribution in terms of its <em>moments</em>. Fit a normal <code class="docutils literal notranslate"><span class="pre">&quot;norm&quot;</span></code> distribution with a mean of <code class="docutils literal notranslate"><span class="pre">1</span></code> and a standard deviation of <code class="docutils literal notranslate"><span class="pre">0.3</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1217,7 +811,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d19-e-stat04-distributions-solution_26_0.png" src="../_images/d19-e-stat04-distributions-solution_26_0.png" />
+<img alt="../_images/0eac39674094db439d6509f6b7eb9226e2684cae16c8a230b1b46a2834b1b56d.png" src="../_images/0eac39674094db439d6509f6b7eb9226e2684cae16c8a230b1b46a2834b1b56d.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779106627301)&gt;
 </pre></div>
 </div>
@@ -1225,7 +819,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </section>
 <section id="q2-check-your-distribution-s-summary">
-<h3><strong>q2</strong> Check your distribution’s summary<a class="headerlink" href="#q2-check-your-distribution-s-summary" title="Permalink to this headline">#</a></h3>
+<h3><strong>q2</strong> Check your distribution’s summary<a class="headerlink" href="#q2-check-your-distribution-s-summary" title="Permalink to this heading">#</a></h3>
 <p>Print the distribution’s summary by simply “executing” the distribution (like you would with a DataFrame or grama model).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1262,9 +856,9 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <!-- solution-end --></section>
 </section>
 <section id="moments">
-<h2>Moments<a class="headerlink" href="#moments" title="Permalink to this headline">#</a></h2>
+<h2>Moments<a class="headerlink" href="#moments" title="Permalink to this heading">#</a></h2>
 <p>The summary of a distribution reports a few of its <em>moments</em>. These moments tell us different “facts” about the distribution:</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Moment</p></th>
 <th class="head"><p>Meaning</p></th>
@@ -1288,7 +882,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <p>Note that the distribution summary also reports the <em>coefficient of variation</em> (COV), which is a normalized version of the standard deviation (<code class="docutils literal notranslate"><span class="pre">COV</span> <span class="pre">=</span> <span class="pre">sd</span> <span class="pre">/</span> <span class="pre">mean</span></code>).</p>
 <p>The next few exercises will help you recognize how different moment values affect a distribution.</p>
 <section id="q3-compare-different-means">
-<h3><strong>q3</strong> Compare different means<a class="headerlink" href="#q3-compare-different-means" title="Permalink to this headline">#</a></h3>
+<h3><strong>q3</strong> Compare different means<a class="headerlink" href="#q3-compare-different-means" title="Permalink to this heading">#</a></h3>
 <p>Inspect the following distribution summaries and the plot. Answer the questions under <em>obervations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1330,7 +924,7 @@ A value is trying to be set on a copy of a slice from a DataFrame
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
 </pre></div>
 </div>
-<img alt="../_images/d19-e-stat04-distributions-solution_32_2.png" src="../_images/d19-e-stat04-distributions-solution_32_2.png" />
+<img alt="../_images/3b0d689f124e75bca15955417534e42a5dccd8d60bb55dc7ad88944c5447c27b.png" src="../_images/3b0d689f124e75bca15955417534e42a5dccd8d60bb55dc7ad88944c5447c27b.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779145236625)&gt;
 </pre></div>
 </div>
@@ -1351,7 +945,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </ul>
 <!-- solution-end --></section>
 <section id="q4-compare-different-standard-deviations">
-<h3><strong>q4</strong> Compare different standard deviations<a class="headerlink" href="#q4-compare-different-standard-deviations" title="Permalink to this headline">#</a></h3>
+<h3><strong>q4</strong> Compare different standard deviations<a class="headerlink" href="#q4-compare-different-standard-deviations" title="Permalink to this heading">#</a></h3>
 <p>Inspect the following distribution summaries and the plot. Answer the questions under <em>obervations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1394,7 +988,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 (+0) norm, {&#39;mean&#39;: &#39;0.000e+00&#39;, &#39;s.d.&#39;: &#39;1.000e+00&#39;, &#39;COV&#39;: inf, &#39;skew.&#39;: 0.0, &#39;kurt.&#39;: 3.0}
 </pre></div>
 </div>
-<img alt="../_images/d19-e-stat04-distributions-solution_35_2.png" src="../_images/d19-e-stat04-distributions-solution_35_2.png" />
+<img alt="../_images/1394b7630959a88fe8cc041f5faf5a8d9fd9848ee1d0175bbd00ee9f9fc4c1b1.png" src="../_images/1394b7630959a88fe8cc041f5faf5a8d9fd9848ee1d0175bbd00ee9f9fc4c1b1.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779124034265)&gt;
 </pre></div>
 </div>
@@ -1415,7 +1009,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </ul>
 <!-- solution-end --></section>
 <section id="q5-compare-different-skewnesses">
-<h3><strong>q5</strong> Compare different skewnesses<a class="headerlink" href="#q5-compare-different-skewnesses" title="Permalink to this headline">#</a></h3>
+<h3><strong>q5</strong> Compare different skewnesses<a class="headerlink" href="#q5-compare-different-skewnesses" title="Permalink to this heading">#</a></h3>
 <p>Inspect the following distribution summaries and the plot. Answer the questions under <em>obervations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1456,7 +1050,7 @@ A value is trying to be set on a copy of a slice from a DataFrame
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
 </pre></div>
 </div>
-<img alt="../_images/d19-e-stat04-distributions-solution_38_2.png" src="../_images/d19-e-stat04-distributions-solution_38_2.png" />
+<img alt="../_images/17d25d55f7369b96296e7fb254766a3dbccccf85eeb1e296f40e7cb4b4c68a84.png" src="../_images/17d25d55f7369b96296e7fb254766a3dbccccf85eeb1e296f40e7cb4b4c68a84.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779124051023)&gt;
 </pre></div>
 </div>
@@ -1478,10 +1072,10 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <!-- solution-end --></section>
 </section>
 <section id="simulating-values">
-<h2>Simulating values<a class="headerlink" href="#simulating-values" title="Permalink to this headline">#</a></h2>
+<h2>Simulating values<a class="headerlink" href="#simulating-values" title="Permalink to this heading">#</a></h2>
 <p>With a distribution, we can draw realizations in to generate a synthetic dataset.</p>
 <section id="q6-draw-random-values-from-your-distribution">
-<h3><strong>q6</strong> <em>Draw</em> random values from your distribution<a class="headerlink" href="#q6-draw-random-values-from-your-distribution" title="Permalink to this headline">#</a></h3>
+<h3><strong>q6</strong> <em>Draw</em> random values from your distribution<a class="headerlink" href="#q6-draw-random-values-from-your-distribution" title="Permalink to this heading">#</a></h3>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">Marginal.r(n)</span></code> method to <em>draw</em> <code class="docutils literal notranslate"><span class="pre">1000</span></code> random values from your distribution. Play with the sample size <code class="docutils literal notranslate"><span class="pre">n</span></code>, and answer the questions under <em>observations</em> below.</p>
 <p><em>Hint</em>: A <em>method</em> is a function that you invoke using dot notation. If the marginal were named <code class="docutils literal notranslate"><span class="pre">mg</span></code>, then you could call the random value method via <code class="docutils literal notranslate"><span class="pre">mg.r(1000)</span></code>.</p>
 <div class="cell docutils container">
@@ -1504,7 +1098,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d19-e-stat04-distributions-solution_42_0.png" src="../_images/d19-e-stat04-distributions-solution_42_0.png" />
+<img alt="../_images/87bbc85eb95e415cb306810245a1d6e8ddf536b4d17f4a5a37aca0dff5993fc5.png" src="../_images/87bbc85eb95e415cb306810245a1d6e8ddf536b4d17f4a5a37aca0dff5993fc5.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779124024191)&gt;
 </pre></div>
 </div>
@@ -1526,7 +1120,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <!-- solution-end --></section>
 </section>
 <section id="estimating-the-mean">
-<h2>Estimating the Mean<a class="headerlink" href="#estimating-the-mean" title="Permalink to this headline">#</a></h2>
+<h2>Estimating the Mean<a class="headerlink" href="#estimating-the-mean" title="Permalink to this heading">#</a></h2>
 <p>The average of multiple realizations <span class="math notranslate nohighlight">\(X_i \sim \rho\)</span> is called the <em>sample mean</em></p>
 <div class="math notranslate nohighlight">
 \[\overline{X} = \frac{1}{n} \sum_{i=1}^n X_i.\]</div>
@@ -1535,7 +1129,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 \[\lim_{n\to\infty} \frac{1}{n} \sum_{i=1}^n X_i = \mathbb{E}[X].\]</div>
 <p>However, when <span class="math notranslate nohighlight">\(n &lt; \infty\)</span>, the sample mean will tend to be different from the true mean of the distribution.</p>
 <section id="q7-estimate-a-sample-mean">
-<h3><strong>q7</strong> Estimate a (sample) mean<a class="headerlink" href="#q7-estimate-a-sample-mean" title="Permalink to this headline">#</a></h3>
+<h3><strong>q7</strong> Estimate a (sample) mean<a class="headerlink" href="#q7-estimate-a-sample-mean" title="Permalink to this heading">#</a></h3>
 <p>Complete the following code to compute the sample mean. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1613,7 +1207,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </section>
 </section>
 <section id="probability">
-<h2>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">#</a></h2>
+<h2>Probability<a class="headerlink" href="#probability" title="Permalink to this heading">#</a></h2>
 <p>Probability is the area under the density curve, within a set that you specify. Thus probability is associated with both a set <span class="math notranslate nohighlight">\(A\)</span> and a random variable <span class="math notranslate nohighlight">\(X\)</span>. The set <span class="math notranslate nohighlight">\(A\)</span> is chosen to correspond to an <em>event</em> of interest.</p>
 <p>For instance, if we were interested in the probability of the event <span class="math notranslate nohighlight">\(A = \{0.5 &lt;= X &lt;= 0.7\}\)</span>, the following area would be the probability:</p>
 <div class="cell docutils container">
@@ -1640,7 +1234,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d19-e-stat04-distributions-solution_50_0.png" src="../_images/d19-e-stat04-distributions-solution_50_0.png" />
+<img alt="../_images/943d9c8224f3e3b8bd32c47adec75f179d00db51c5ce1eea21604faba4814f1c.png" src="../_images/943d9c8224f3e3b8bd32c47adec75f179d00db51c5ce1eea21604faba4814f1c.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779145316340)&gt;
 </pre></div>
 </div>
@@ -1671,7 +1265,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d19-e-stat04-distributions-solution_52_0.png" src="../_images/d19-e-stat04-distributions-solution_52_0.png" />
+<img alt="../_images/394a613bb1a3a5f7694b263c2b79e94a61c76804f46a0d69c2e435962780860a.png" src="../_images/394a613bb1a3a5f7694b263c2b79e94a61c76804f46a0d69c2e435962780860a.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779124021221)&gt;
 </pre></div>
 </div>
@@ -1689,7 +1283,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 \[\mathbb{P}[X \in A] \approx \frac{1}{n} \sum_{i=1}^n 1(X_i \in A).\]</div>
 <p>You will use this expression in the next tasks to approximate a probability.</p>
 <section id="q8-compute-an-indicator">
-<h3><strong>q8</strong> Compute an indicator<a class="headerlink" href="#q8-compute-an-indicator" title="Permalink to this headline">#</a></h3>
+<h3><strong>q8</strong> Compute an indicator<a class="headerlink" href="#q8-compute-an-indicator" title="Permalink to this heading">#</a></h3>
 <p>Compute an indicator for the event <span class="math notranslate nohighlight">\(A = \{X \leq +1\}\)</span>.</p>
 <p><em>Hint</em>: Comparison operators like <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, and <code class="docutils literal notranslate"><span class="pre">==</span></code> return boolean values <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code>. However, python also treats these as numerical values, where <code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">==</span> <span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span> <span class="pre">==</span> <span class="pre">0</span></code>. This means you can use a simple comparison to compute an indicator value!</p>
 <div class="cell docutils container">
@@ -1802,7 +1396,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </section>
 <section id="q9-estimate-a-probability">
-<h3><strong>q9</strong> Estimate a probability<a class="headerlink" href="#q9-estimate-a-probability" title="Permalink to this headline">#</a></h3>
+<h3><strong>q9</strong> Estimate a probability<a class="headerlink" href="#q9-estimate-a-probability" title="Permalink to this heading">#</a></h3>
 <p>Use the definition of probability along with your indicator value to approximate the probability that <span class="math notranslate nohighlight">\(X \leq 1\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1860,7 +1454,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </section>
 </section>
 <section id="probability-of-failure">
-<h2>Probability of Failure<a class="headerlink" href="#probability-of-failure" title="Permalink to this headline">#</a></h2>
+<h2>Probability of Failure<a class="headerlink" href="#probability-of-failure" title="Permalink to this heading">#</a></h2>
 <p>Probability is useful as a quantitative measure of a design’s performance. For example, reliability engineers strive to produce designs that have a low <em>probability of failure</em>. This is important for safety-critical applications, such as in the design of buildings, bridges, or aircraft.</p>
 <p>To use probability to describe failure, we need to define an event <span class="math notranslate nohighlight">\(A\)</span> that corresponds to failure for the system we are studying. For example, with the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> of an alloy, we can say failure occurs when the applied stress is greater than the strength. Rendered mathematically, this is the event</p>
 <div class="math notranslate nohighlight">
@@ -1870,7 +1464,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 \[\text{POF} = \mathbb{P}[A_{\text{failure}}].\]</div>
 <p>We can approximate the probability of failure of a part if we know the applied stress and have a dataset of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> values.</p>
 <section id="q10-estimate-a-probability-of-failure">
-<h3><strong>q10</strong> Estimate a probability of failure<a class="headerlink" href="#q10-estimate-a-probability-of-failure" title="Permalink to this headline">#</a></h3>
+<h3><strong>q10</strong> Estimate a probability of failure<a class="headerlink" href="#q10-estimate-a-probability-of-failure" title="Permalink to this heading">#</a></h3>
 <p>Suppose the applied stress is <span class="math notranslate nohighlight">\(\sigma_{\text{applied}} = 25 \times 10^3\)</span> psi. Estimate the probability of failure of a part following the distribution of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> in the <code class="docutils literal notranslate"><span class="pre">df_shewhart</span></code> dataset. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1944,7 +1538,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <!-- solution-end --></section>
 </section>
 <section id="quantiles">
-<h2>Quantiles<a class="headerlink" href="#quantiles" title="Permalink to this headline">#</a></h2>
+<h2>Quantiles<a class="headerlink" href="#quantiles" title="Permalink to this heading">#</a></h2>
 <p>Quantiles “turn around” the idea of probability. With probability we start with a set <span class="math notranslate nohighlight">\(A\)</span> and arrive at a probability value <span class="math notranslate nohighlight">\(p\)</span>. With a <em>quantile</em> we start with a probability value <span class="math notranslate nohighlight">\(p\)</span> and arrive at a set <span class="math notranslate nohighlight">\(A\)</span> that is below a single value <span class="math notranslate nohighlight">\(q\)</span>; that is <span class="math notranslate nohighlight">\(A = \{X \leq q\}\)</span>.</p>
 <p>For instance, for a normal distribution the <code class="docutils literal notranslate"><span class="pre">0.50</span></code> quantile is the value <span class="math notranslate nohighlight">\(q\)</span> where 50% of the probability lies below that value; this will be the middle of the distribution, which happens to be the mean:</p>
 <div class="cell docutils container">
@@ -1975,7 +1569,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d19-e-stat04-distributions-solution_63_0.png" src="../_images/d19-e-stat04-distributions-solution_63_0.png" />
+<img alt="../_images/3e3365c69d9ad3db5b9c923b7a60423324512462e89cee42296945fade065fa9.png" src="../_images/3e3365c69d9ad3db5b9c923b7a60423324512462e89cee42296945fade065fa9.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779145316346)&gt;
 </pre></div>
 </div>
@@ -2010,7 +1604,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d19-e-stat04-distributions-solution_65_0.png" src="../_images/d19-e-stat04-distributions-solution_65_0.png" />
+<img alt="../_images/adcdc665662f97057aada5829579262ca81dae77a8bbbdb75c3c8240702e6f4e.png" src="../_images/adcdc665662f97057aada5829579262ca81dae77a8bbbdb75c3c8240702e6f4e.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8779145337697)&gt;
 </pre></div>
 </div>
@@ -2018,7 +1612,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <p>As with the sample mean and a sample probability, we can compute sample quantiles from a dataset.</p>
 <section id="q11-compute-sample-quantiles">
-<h3><strong>q11</strong> Compute sample quantiles<a class="headerlink" href="#q11-compute-sample-quantiles" title="Permalink to this headline">#</a></h3>
+<h3><strong>q11</strong> Compute sample quantiles<a class="headerlink" href="#q11-compute-sample-quantiles" title="Permalink to this heading">#</a></h3>
 <p>Use the quantile method <code class="docutils literal notranslate"><span class="pre">q()</span></code> to compute the <code class="docutils literal notranslate"><span class="pre">0.10</span></code> and <code class="docutils literal notranslate"><span class="pre">0.50</span></code> quantiles of the <code class="docutils literal notranslate"><span class="pre">mg_norm</span></code> distribution. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2092,11 +1686,11 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <!-- solution-end --></section>
 </section>
 <section id="conservative-values">
-<h2>Conservative values<a class="headerlink" href="#conservative-values" title="Permalink to this headline">#</a></h2>
+<h2>Conservative values<a class="headerlink" href="#conservative-values" title="Permalink to this heading">#</a></h2>
 <p>Quantiles are a useful way to define <em>conservative</em> values associated with a desired probability. Rather than simply “take the mean” of a set of values, we can pick a small or larger probability and compute an associated quantile.</p>
 <p>For instance, since failure under tensile loading occurs when <span class="math notranslate nohighlight">\(\sigma_{\text{strength}} \leq \sigma_{\text{applied}}\)</span>, taking a lower quantile of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> will provide a conservative value appropriate for design.</p>
 <section id="q12-estimate-a-conservative-strength">
-<h3><strong>q12</strong> Estimate a conservative strength<a class="headerlink" href="#q12-estimate-a-conservative-strength" title="Permalink to this headline">#</a></h3>
+<h3><strong>q12</strong> Estimate a conservative strength<a class="headerlink" href="#q12-estimate-a-conservative-strength" title="Permalink to this heading">#</a></h3>
 <p>Compute the empirical <code class="docutils literal notranslate"><span class="pre">0.10</span></code> quantile of the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> in <code class="docutils literal notranslate"><span class="pre">df_shewhart</span></code>; provide this as the column <code class="docutils literal notranslate"><span class="pre">lower</span></code>. Additionally, compute the sample mean of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>; provide this as the column <code class="docutils literal notranslate"><span class="pre">mean</span></code>. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2179,7 +1773,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./exercises_solution"
         },
         predefinedOutput: true
@@ -2187,50 +1781,152 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="d18-e-grama04-ema-solution.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Grama: Exploratory Model Analysis</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="d18-e-grama04-ema-solution.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Grama: Exploratory Model Analysis</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="d20-e-grama05-fit-function-solution.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="d20-e-grama05-fit-function-solution.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Grama: Fitting Functions</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Stats: Distributions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-modeling-uncertainty">Motivation: Modeling Uncertainty</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-model-variability">To Model Variability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-summarize-data">To Summarize Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-make-assumptions-explicit">To Make Assumptions Explicit</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-fundamentals">Distribution Fundamentals</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-a-distribution-represents">What a distribution represents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-variables">Random variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-define-a-distribution"><strong>q1</strong> Define a distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-check-your-distribution-s-summary"><strong>q2</strong> Check your distribution’s summary</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moments">Moments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-compare-different-means"><strong>q3</strong> Compare different means</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-compare-different-standard-deviations"><strong>q4</strong> Compare different standard deviations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-compare-different-skewnesses"><strong>q5</strong> Compare different skewnesses</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-values">Simulating values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-draw-random-values-from-your-distribution"><strong>q6</strong> <em>Draw</em> random values from your distribution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-mean">Estimating the Mean</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-estimate-a-sample-mean"><strong>q7</strong> Estimate a (sample) mean</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability">Probability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8-compute-an-indicator"><strong>q8</strong> Compute an indicator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q9-estimate-a-probability"><strong>q9</strong> Estimate a probability</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-of-failure">Probability of Failure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q10-estimate-a-probability-of-failure"><strong>q10</strong> Estimate a probability of failure</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantiles">Quantiles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q11-compute-sample-quantiles"><strong>q11</strong> Compute sample quantiles</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conservative-values">Conservative values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q12-estimate-a-conservative-strength"><strong>q12</strong> Estimate a conservative strength</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Zachary del Rosario<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Zachary del Rosario
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

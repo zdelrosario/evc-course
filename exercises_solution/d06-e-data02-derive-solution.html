@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Data: Deriving Quantities &#8212; Data Science for Engineers</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,56 +64,98 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises_solution/d06-e-data02-derive-solution';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Vis: Histograms" href="d07-e-vis02-histograms-solution.html" />
     <link rel="prev" title="Vis: Bar Charts" href="d05-e-vis01-bar-charts-solution.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="../frontmatter/home.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Data Science for Engineers</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -111,642 +165,334 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/setup.html">
-   Software Setup
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/howto.html">
-   How To Use These Materials
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/schedule.html">
-   Course Topics and Schedule
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/submission.html">
-   Challenge Submission Instructions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/recordings.html">
-   Class Recordings
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../frontmatter/demos.html">
-   Demo Notebooks
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-20-1.html">
-     Demo Notebook 2022-06-20
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-27.html">
-     Demo Notebook 2022-06-27
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-06.html">
-     Demo Notebook 2022-07-06
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-11.html">
-     Demo Notebook 2022-07-11
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-18.html">
-     Demo Notebook 2022-07-18
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/hours.html">
-   Office Hours Schedule
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../frontmatter/exercises.html">
-   Exercise Solutions
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
-     Introduction to Jupyter Notebooks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
-     Vis: Data Visualization Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
-     Data: Isolating Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d02-e-tips-solution.html">
-     Tips for This Course
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
-     Stats: Introduction to Exploratory Data Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
-     Grama: Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
-     Vis: Bar Charts
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Data: Deriving Quantities
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d07-e-vis02-histograms-solution.html">
-     Vis: Histograms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d08-e-stat02-source-solution.html">
-     Stats: Real and Erroneous Sources of Variability
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d09-e-vis03-scatterplot-solution.html">
-     Vis: Scatterplots and Layers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d10-e-grama02-building-solution.html">
-     Grama: Model Building
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d11-e-data03-pivot-solution.html">
-     Data: Pivoting Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d12-e-grama03-eval-solution.html">
-     Grama: Model Evaluation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d13-e-vis04-lines-solution.html">
-     Vis: Lines and Related Geometries
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d14-e-stat03-descriptive-solution.html">
-     Stats: Descriptive Statistics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d15-e-data04-separate-unite-solution.html">
-     Data: Separating and Uniting Columns
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d16-e-data05-join-solution.html">
-     Data: Joining Datasets
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d17-e-vis05-multiples-solution.html">
-     Vis: Small Multiples
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d18-e-grama04-ema-solution.html">
-     Grama: Exploratory Model Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d19-e-stat04-distributions-solution.html">
-     Stats: Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d20-e-grama05-fit-function-solution.html">
-     Grama: Fitting Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d21-e-stat05-CI-solution.html">
-     Stats: Confidence Intervals and the CLT
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d22-e-stat06-spc-solution.html">
-     Stats: Fundamentals of Statistical Process Monitoring
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">
-     Grama: Fitting Univariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">
-     Grama: Fitting Multivariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d25-e-grama08-duu-solution.html">
-     Grama: Design Under Uncertainty
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/setup.html">Software Setup</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/howto.html">How To Use These Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/schedule.html">Course Topics and Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/submission.html">Challenge Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/recordings.html">Class Recordings</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../frontmatter/demos.html">Demo Notebooks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-20-1.html">Demo Notebook 2022-06-20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-27.html">Demo Notebook 2022-06-27</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-06.html">Demo Notebook 2022-07-06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-11.html">Demo Notebook 2022-07-11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-18.html">Demo Notebook 2022-07-18</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/hours.html">Office Hours Schedule</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../frontmatter/exercises.html">Exercise Solutions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="d01-e-data00-notebooks-solution.html">Introduction to Jupyter Notebooks</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d01-e-vis00-basics-solution.html">Vis: Data Visualization Basics</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="d02-e-data01-isolate-solution.html">Data: Isolating Data</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d02-e-tips-solution.html">Tips for This Course</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d03-e-stat01-eda-solution.html">Stats: Introduction to Exploratory Data Analysis</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d04-e-grama01-basics-solution.html">Grama: Basics</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">Vis: Bar Charts</a></li>
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Data: Deriving Quantities</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d07-e-vis02-histograms-solution.html">Vis: Histograms</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d08-e-stat02-source-solution.html">Stats: Real and Erroneous Sources of Variability</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d09-e-vis03-scatterplot-solution.html">Vis: Scatterplots and Layers</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d10-e-grama02-building-solution.html">Grama: Model Building</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d11-e-data03-pivot-solution.html">Data: Pivoting Data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d12-e-grama03-eval-solution.html">Grama: Model Evaluation</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d13-e-vis04-lines-solution.html">Vis: Lines and Related Geometries</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d14-e-stat03-descriptive-solution.html">Stats: Descriptive Statistics</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d15-e-data04-separate-unite-solution.html">Data: Separating and Uniting Columns</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d16-e-data05-join-solution.html">Data: Joining Datasets</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d17-e-vis05-multiples-solution.html">Vis: Small Multiples</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d18-e-grama04-ema-solution.html">Grama: Exploratory Model Analysis</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d19-e-stat04-distributions-solution.html">Stats: Distributions</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d20-e-grama05-fit-function-solution.html">Grama: Fitting Functions</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d21-e-stat05-CI-solution.html">Stats: Confidence Intervals and the CLT</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d22-e-stat06-spc-solution.html">Stats: Fundamentals of Statistical Process Monitoring</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">Grama: Fitting Univariate Distributions</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">Grama: Fitting Multivariate Distributions</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d25-e-grama08-duu-solution.html">Grama: Design Under Uncertainty</a></li>
+
+
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d06-e-data02-derive-solution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/exercises_solution/d06-e-data02-derive-solution.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/exercises_solution/d06-e-data02-derive-solution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Data: Deriving Quantities
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mutating-dataframes">
-   Mutating DataFrames
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q1-compute-a-mass-density">
-     <strong>
-      q1
-     </strong>
-     Compute a mass density
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vectorized-functions">
-     Vectorized Functions
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q2-do-a-type-conversion">
-       <strong>
-        q2
-       </strong>
-       Do a type conversion
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-sanity-check-the-data">
-       <strong>
-        q3
-       </strong>
-       Sanity-check the data
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#control-functions">
-     Control Functions
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-use-an-if-else-statement">
-       <strong>
-        q4
-       </strong>
-       Use an if/else statement
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summarizing-data-frames">
-   Summarizing Data Frames
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#summary-functions">
-     Summary functions
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q5-count-the-ideal-rows">
-       <strong>
-        q5
-       </strong>
-       Count the Ideal rows
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#grouping-by-variables">
-     Grouping by variables
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q6-try-out-a-two-variable-grouping">
-       <strong>
-        q6
-       </strong>
-       Try out a two-variable grouping
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q7-study-the-color">
-       <strong>
-        q7
-       </strong>
-       Study the color
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Data: Deriving Quantities</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Data: Deriving Quantities
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mutating-dataframes">
-   Mutating DataFrames
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q1-compute-a-mass-density">
-     <strong>
-      q1
-     </strong>
-     Compute a mass density
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vectorized-functions">
-     Vectorized Functions
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q2-do-a-type-conversion">
-       <strong>
-        q2
-       </strong>
-       Do a type conversion
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-sanity-check-the-data">
-       <strong>
-        q3
-       </strong>
-       Sanity-check the data
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#control-functions">
-     Control Functions
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-use-an-if-else-statement">
-       <strong>
-        q4
-       </strong>
-       Use an if/else statement
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summarizing-data-frames">
-   Summarizing Data Frames
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#summary-functions">
-     Summary functions
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q5-count-the-ideal-rows">
-       <strong>
-        q5
-       </strong>
-       Count the Ideal rows
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#grouping-by-variables">
-     Grouping by variables
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q6-try-out-a-two-variable-grouping">
-       <strong>
-        q6
-       </strong>
-       Try out a two-variable grouping
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q7-study-the-color">
-       <strong>
-        q7
-       </strong>
-       Study the color
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data: Deriving Quantities</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data: Deriving Quantities</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mutating-dataframes">Mutating DataFrames</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-compute-a-mass-density"><strong>q1</strong> Compute a mass density</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-functions">Vectorized Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-do-a-type-conversion"><strong>q2</strong> Do a type conversion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-sanity-check-the-data"><strong>q3</strong> Sanity-check the data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-functions">Control Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-use-an-if-else-statement"><strong>q4</strong> Use an if/else statement</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing-data-frames">Summarizing Data Frames</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-functions">Summary functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-count-the-ideal-rows"><strong>q5</strong> Count the Ideal rows</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-by-variables">Grouping by variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-try-out-a-two-variable-grouping"><strong>q6</strong> Try out a two-variable grouping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-study-the-color"><strong>q7</strong> Study the color</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="data-deriving-quantities">
-<h1>Data: Deriving Quantities<a class="headerlink" href="#data-deriving-quantities" title="Permalink to this headline">#</a></h1>
+<h1>Data: Deriving Quantities<a class="headerlink" href="#data-deriving-quantities" title="Permalink to this heading">#</a></h1>
 <p><em>Purpose</em>: Often our data will not tell us <em>directly</em> what we want to know; in
 these cases we need to <em>derive</em> new quantities from our data. In this exercise,
 we’ll work with <code class="docutils literal notranslate"><span class="pre">tf_mutate()</span></code> to create new columns by operating on existing
@@ -754,15 +500,15 @@ variables, and use <code class="docutils literal notranslate"><span class="pre">
 statistics (summaries!) of our data.</p>
 <p>Aside: The data-summary verbs in grama are heavily inspired by the <a class="reference external" href="https://dplyr.tidyverse.org/">dplyr</a> package in the R programming langauge.</p>
 <section id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">grama</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gr</span>
 <span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="c1"># For assertion</span>
-<span class="kn">from</span> <span class="nn">pandas.api.types</span> <span class="kn">import</span> <span class="n">is_numeric_dtype</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pandas.api.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">is_numeric_dtype</span>
 </pre></div>
 </div>
 </div>
@@ -770,7 +516,7 @@ statistics (summaries!) of our data.</p>
 <p>We’ll be using the <code class="docutils literal notranslate"><span class="pre">diamonds</span></code> as seen in <code class="docutils literal notranslate"><span class="pre">e-vis00-basics</span></code> earlier.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_diamonds</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">grama.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">df_diamonds</span>
 </pre></div>
 </div>
 </div>
@@ -778,7 +524,7 @@ statistics (summaries!) of our data.</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="mutating-dataframes">
-<h1>Mutating DataFrames<a class="headerlink" href="#mutating-dataframes" title="Permalink to this headline">#</a></h1>
+<h1>Mutating DataFrames<a class="headerlink" href="#mutating-dataframes" title="Permalink to this heading">#</a></h1>
 <p>A <em>mutation</em> transformation allows us to make new columns (or edit old ones) by <em>combining</em> column values.</p>
 <p>For example, let’s remember the diamonds dataset:</p>
 <div class="cell docutils container">
@@ -1013,7 +759,7 @@ statistics (summaries!) of our data.</p>
 </div>
 <p><em>Aside</em>: Note that we can use dot <code class="docutils literal notranslate"><span class="pre">.</span></code> notation to access columns, rather than bracket <code class="docutils literal notranslate"><span class="pre">[]</span></code> notation. This works only when the column names are valid variable names (i.e. do not contain spaces, do not contain special characters, etc.).</p>
 <section id="q1-compute-a-mass-density">
-<h2><strong>q1</strong> Compute a mass density<a class="headerlink" href="#q1-compute-a-mass-density" title="Permalink to this headline">#</a></h2>
+<h2><strong>q1</strong> Compute a mass density<a class="headerlink" href="#q1-compute-a-mass-density" title="Permalink to this heading">#</a></h2>
 <p>Approximate the density of the diamonds using the expression</p>
 <div class="math notranslate nohighlight">
 \[\rho = \frac{\text{carat}}{xyz}.\]</div>
@@ -1078,9 +824,9 @@ max        0.022647
 </ul>
 <!-- solution-end --></section>
 <section id="vectorized-functions">
-<h2>Vectorized Functions<a class="headerlink" href="#vectorized-functions" title="Permalink to this headline">#</a></h2>
+<h2>Vectorized Functions<a class="headerlink" href="#vectorized-functions" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">gr.tf_mutate()</span></code> verb carries out <em>vector</em> operations; these operations take in one or more columns, and return an entire column. For operations such as addition, this results in <em>elementwise</em> addition, as illustrated below:</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></th>
 <th class="head"><p><code class="docutils literal notranslate"><span class="pre">y</span></code></p></th>
@@ -1103,7 +849,7 @@ max        0.022647
 </tbody>
 </table>
 <p>The <code class="docutils literal notranslate"><span class="pre">gr.tf_mutate()</span></code> verb accepts a wide variety of <em>vectorized</em> functions; the following table organizes these into various types of operations.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Type</p></th>
 <th class="head"><p>Functions</p></th>
@@ -1140,7 +886,7 @@ max        0.022647
 </tbody>
 </table>
 <section id="q2-do-a-type-conversion">
-<h3><strong>q2</strong> Do a type conversion<a class="headerlink" href="#q2-do-a-type-conversion" title="Permalink to this headline">#</a></h3>
+<h3><strong>q2</strong> Do a type conversion<a class="headerlink" href="#q2-do-a-type-conversion" title="Permalink to this heading">#</a></h3>
 <p>Convert the column <code class="docutils literal notranslate"><span class="pre">y</span></code> below into a numeric type.</p>
 <p><em>Hint</em>: Use the table above to find an appropriate data conversion function.</p>
 <div class="cell docutils container">
@@ -1172,7 +918,7 @@ max        0.022647
 </div>
 </section>
 <section id="q3-sanity-check-the-data">
-<h3><strong>q3</strong> Sanity-check the data<a class="headerlink" href="#q3-sanity-check-the-data" title="Permalink to this headline">#</a></h3>
+<h3><strong>q3</strong> Sanity-check the data<a class="headerlink" href="#q3-sanity-check-the-data" title="Permalink to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">depth</span></code> variable in <code class="docutils literal notranslate"><span class="pre">df_diamonds</span></code> is <em>supposedly</em> computed via <code class="docutils literal notranslate"><span class="pre">depth_computed</span> <span class="pre">=</span> <span class="pre">100</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">DF[&quot;z&quot;]</span> <span class="pre">/</span> <span class="pre">(DF[&quot;x&quot;]</span> <span class="pre">+</span> <span class="pre">DF[&quot;y&quot;])</span></code>. Compute <code class="docutils literal notranslate"><span class="pre">diff</span> <span class="pre">=</span> <span class="pre">DF[&quot;depth&quot;]</span> <span class="pre">-</span> <span class="pre">DF[&quot;depth_computed&quot;]</span></code>: This is a measure of discrepancy between the given and computed depth. Answer the questions under <em>observations</em> below.</p>
 <p><em>Hint</em>: If you want to compute <code class="docutils literal notranslate"><span class="pre">depth_computed</span></code> and use it to compute <code class="docutils literal notranslate"><span class="pre">diff</span></code>, you’ll need to use two calls of <code class="docutils literal notranslate"><span class="pre">gr.tf_mutate()</span></code>.</p>
 <div class="cell docutils container">
@@ -1283,10 +1029,10 @@ max        0.022647
 </section>
 </section>
 <section id="control-functions">
-<h2>Control Functions<a class="headerlink" href="#control-functions" title="Permalink to this headline">#</a></h2>
+<h2>Control Functions<a class="headerlink" href="#control-functions" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">gr.if_else()</span></code> and <code class="docutils literal notranslate"><span class="pre">gr.case_when()</span></code> functions are <em>special</em> vectorized functions—they allow us to use more programming-like constructs to control the output. The <code class="docutils literal notranslate"><span class="pre">gr.if_else()</span></code> helper is a simple “yes-no” function, while <code class="docutils literal notranslate"><span class="pre">gr.case_when()</span></code> is a vectorized <a class="reference external" href="https://en.wikipedia.org/wiki/Switch_statement">switch statement</a>. If you are trying to do more complicated data operations, you might want to give these functions a look.</p>
 <section id="q4-use-an-if-else-statement">
-<h3><strong>q4</strong> Use an if/else statement<a class="headerlink" href="#q4-use-an-if-else-statement" title="Permalink to this headline">#</a></h3>
+<h3><strong>q4</strong> Use an if/else statement<a class="headerlink" href="#q4-use-an-if-else-statement" title="Permalink to this heading">#</a></h3>
 <p>Use <code class="docutils literal notranslate"><span class="pre">gr.if_else()</span></code> to flag diamonds as <code class="docutils literal notranslate"><span class="pre">&quot;Big&quot;</span></code> if they have <code class="docutils literal notranslate"><span class="pre">carat</span> <span class="pre">&gt;=</span> <span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;Small&quot;</span></code> otherwise.</p>
 <p><em>Hint</em>: Remember to read the documentation for an unfamiliar function to learn how to call it; in particular, try looking at the <em>Examples</em> section of the documentation.</p>
 <div class="cell docutils container">
@@ -1509,7 +1255,7 @@ max        0.022647
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="summarizing-data-frames">
-<h1>Summarizing Data Frames<a class="headerlink" href="#summarizing-data-frames" title="Permalink to this headline">#</a></h1>
+<h1>Summarizing Data Frames<a class="headerlink" href="#summarizing-data-frames" title="Permalink to this heading">#</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">gr.tf_summarize()</span></code> verb is used to <em>reduce</em> a DataFrame down to fewer rows using summary functions. For instance, we can compute the mean <code class="docutils literal notranslate"><span class="pre">carat</span></code> and <code class="docutils literal notranslate"><span class="pre">price</span></code> across the whole dataset of diamonds:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1559,9 +1305,9 @@ max        0.022647
 </div>
 <p>Notice that we went from having around <code class="docutils literal notranslate"><span class="pre">54,000</span></code> rows down to just one row; in this sense we have <em>summarized</em> the dataset.</p>
 <section id="summary-functions">
-<h2>Summary functions<a class="headerlink" href="#summary-functions" title="Permalink to this headline">#</a></h2>
+<h2>Summary functions<a class="headerlink" href="#summary-functions" title="Permalink to this heading">#</a></h2>
 <p>Summarize accepts a large number of <em>summary functions</em>; the table below lists and categorizes some of the most common summary functions.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Type</p></th>
 <th class="head"><p>Functions</p></th>
@@ -1586,7 +1332,7 @@ max        0.022647
 </tbody>
 </table>
 <section id="q5-count-the-ideal-rows">
-<h3><strong>q5</strong> Count the Ideal rows<a class="headerlink" href="#q5-count-the-ideal-rows" title="Permalink to this headline">#</a></h3>
+<h3><strong>q5</strong> Count the Ideal rows<a class="headerlink" href="#q5-count-the-ideal-rows" title="Permalink to this heading">#</a></h3>
 <p>Use <code class="docutils literal notranslate"><span class="pre">gr.tf_summarize()</span></code> to count the number of rows where <code class="docutils literal notranslate"><span class="pre">cut</span> <span class="pre">==</span> <span class="pre">&quot;Ideal&quot;</span></code>. Provide this as the column <code class="docutils literal notranslate"><span class="pre">n_ideal</span></code>.</p>
 <p><em>Hint</em>: The <code class="docutils literal notranslate"><span class="pre">Summary</span> <span class="pre">functions</span></code> table above provides a recipe for counting the number of cases where some condition is met.</p>
 <div class="cell docutils container">
@@ -1647,7 +1393,7 @@ max        0.022647
 </section>
 </section>
 <section id="grouping-by-variables">
-<h2>Grouping by variables<a class="headerlink" href="#grouping-by-variables" title="Permalink to this headline">#</a></h2>
+<h2>Grouping by variables<a class="headerlink" href="#grouping-by-variables" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">gr.tf_summarize()</span></code> verb is helpful for getting “basic facts” about a dataset, but it is even more powerful when combined with <code class="docutils literal notranslate"><span class="pre">gr.tf_group_by()</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">gr.tf_group_by()</span></code> verb takes a DataFrame and “groups” it by one (or more) columns. This causes other verbs (such as <code class="docutils literal notranslate"><span class="pre">gr.tf_summarize()</span></code>) to treat the data as though it were <em>multiple</em> DataFrames; these sub-DataFrames exactly correspond to the groups determined by <code class="docutils literal notranslate"><span class="pre">gr.tf_group_by()</span></code>.</p>
 <p><img alt="The  verb modifies the behavior of a DataFrame to treat it as a collection of multiple datasets, defined by the grouping variable(s)." src="../_images/group-by.png" /></p>
@@ -1731,7 +1477,7 @@ max        0.022647
 </div>
 <p>Now we can compare the mean <code class="docutils literal notranslate"><span class="pre">carat</span></code> and mean <code class="docutils literal notranslate"><span class="pre">price</span></code> across different <code class="docutils literal notranslate"><span class="pre">cut</span></code> levels. Personally, I was surprised to see that the <code class="docutils literal notranslate"><span class="pre">Fair</span></code> cut diamonds have a higher mean <code class="docutils literal notranslate"><span class="pre">price</span></code> than the <code class="docutils literal notranslate"><span class="pre">Ideal</span></code> diamonds!</p>
 <section id="q6-try-out-a-two-variable-grouping">
-<h3><strong>q6</strong> Try out a two-variable grouping<a class="headerlink" href="#q6-try-out-a-two-variable-grouping" title="Permalink to this headline">#</a></h3>
+<h3><strong>q6</strong> Try out a two-variable grouping<a class="headerlink" href="#q6-try-out-a-two-variable-grouping" title="Permalink to this heading">#</a></h3>
 <p>The code below groups by two variables. Uncomment the <code class="docutils literal notranslate"><span class="pre">tf_group_by()</span></code> line below, and describe how the result changes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2127,7 +1873,7 @@ max        0.022647
 </ul>
 <!-- solution-end --></section>
 <section id="q7-study-the-color">
-<h3><strong>q7</strong> Study the color<a class="headerlink" href="#q7-study-the-color" title="Permalink to this headline">#</a></h3>
+<h3><strong>q7</strong> Study the color<a class="headerlink" href="#q7-study-the-color" title="Permalink to this heading">#</a></h3>
 <p>Compute the mean <code class="docutils literal notranslate"><span class="pre">price</span></code> grouped by <code class="docutils literal notranslate"><span class="pre">color</span></code>. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2228,7 +1974,7 @@ max        0.022647
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="references">
-<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h1>
+<h1>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Naupaka Zimmerman, Greg Wilson, Raniere Silva, Scott Ritchie, François Michonneau, Jeffrey Oliver, … Yuka Takemon. (2019, July). swcarpentry/r-novice-gapminder: Software Carpentry: R for Reproducible Scientific Analysis, June 2019 (Version v2019.06.1). Zenodo. <a class="reference external" href="http://doi.org/10.5281/zenodo.3265164">http://doi.org/10.5281/zenodo.3265164</a></p></li>
 </ul>
@@ -2246,7 +1992,7 @@ max        0.022647
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./exercises_solution"
         },
         predefinedOutput: true
@@ -2254,50 +2000,132 @@ max        0.022647
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="d05-e-vis01-bar-charts-solution.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Vis: Bar Charts</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="d05-e-vis01-bar-charts-solution.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Vis: Bar Charts</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="d07-e-vis02-histograms-solution.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="d07-e-vis02-histograms-solution.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Vis: Histograms</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data: Deriving Quantities</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mutating-dataframes">Mutating DataFrames</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-compute-a-mass-density"><strong>q1</strong> Compute a mass density</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-functions">Vectorized Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-do-a-type-conversion"><strong>q2</strong> Do a type conversion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-sanity-check-the-data"><strong>q3</strong> Sanity-check the data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-functions">Control Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-use-an-if-else-statement"><strong>q4</strong> Use an if/else statement</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing-data-frames">Summarizing Data Frames</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-functions">Summary functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-count-the-ideal-rows"><strong>q5</strong> Count the Ideal rows</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-by-variables">Grouping by variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-try-out-a-two-variable-grouping"><strong>q6</strong> Try out a two-variable grouping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-study-the-color"><strong>q7</strong> Study the color</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Zachary del Rosario<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Zachary del Rosario
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Grama: Model Building &#8212; Data Science for Engineers</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,56 +64,98 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises_solution/d10-e-grama02-building-solution';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Data: Pivoting Data" href="d11-e-data03-pivot-solution.html" />
     <link rel="prev" title="Vis: Scatterplots and Layers" href="d09-e-vis03-scatterplot-solution.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="../frontmatter/home.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Data Science for Engineers</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -111,709 +165,349 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/setup.html">
-   Software Setup
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/howto.html">
-   How To Use These Materials
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/schedule.html">
-   Course Topics and Schedule
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/submission.html">
-   Challenge Submission Instructions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/recordings.html">
-   Class Recordings
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../frontmatter/demos.html">
-   Demo Notebooks
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-20-1.html">
-     Demo Notebook 2022-06-20
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-27.html">
-     Demo Notebook 2022-06-27
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-06.html">
-     Demo Notebook 2022-07-06
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-11.html">
-     Demo Notebook 2022-07-11
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-18.html">
-     Demo Notebook 2022-07-18
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/hours.html">
-   Office Hours Schedule
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../frontmatter/exercises.html">
-   Exercise Solutions
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
-     Introduction to Jupyter Notebooks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
-     Vis: Data Visualization Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
-     Data: Isolating Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d02-e-tips-solution.html">
-     Tips for This Course
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
-     Stats: Introduction to Exploratory Data Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
-     Grama: Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
-     Vis: Bar Charts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d06-e-data02-derive-solution.html">
-     Data: Deriving Quantities
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d07-e-vis02-histograms-solution.html">
-     Vis: Histograms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d08-e-stat02-source-solution.html">
-     Stats: Real and Erroneous Sources of Variability
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d09-e-vis03-scatterplot-solution.html">
-     Vis: Scatterplots and Layers
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Grama: Model Building
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d11-e-data03-pivot-solution.html">
-     Data: Pivoting Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d12-e-grama03-eval-solution.html">
-     Grama: Model Evaluation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d13-e-vis04-lines-solution.html">
-     Vis: Lines and Related Geometries
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d14-e-stat03-descriptive-solution.html">
-     Stats: Descriptive Statistics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d15-e-data04-separate-unite-solution.html">
-     Data: Separating and Uniting Columns
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d16-e-data05-join-solution.html">
-     Data: Joining Datasets
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d17-e-vis05-multiples-solution.html">
-     Vis: Small Multiples
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d18-e-grama04-ema-solution.html">
-     Grama: Exploratory Model Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d19-e-stat04-distributions-solution.html">
-     Stats: Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d20-e-grama05-fit-function-solution.html">
-     Grama: Fitting Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d21-e-stat05-CI-solution.html">
-     Stats: Confidence Intervals and the CLT
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d22-e-stat06-spc-solution.html">
-     Stats: Fundamentals of Statistical Process Monitoring
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">
-     Grama: Fitting Univariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">
-     Grama: Fitting Multivariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d25-e-grama08-duu-solution.html">
-     Grama: Design Under Uncertainty
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/setup.html">Software Setup</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/howto.html">How To Use These Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/schedule.html">Course Topics and Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/submission.html">Challenge Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/recordings.html">Class Recordings</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../frontmatter/demos.html">Demo Notebooks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-20-1.html">Demo Notebook 2022-06-20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-27.html">Demo Notebook 2022-06-27</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-06.html">Demo Notebook 2022-07-06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-11.html">Demo Notebook 2022-07-11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-18.html">Demo Notebook 2022-07-18</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/hours.html">Office Hours Schedule</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../frontmatter/exercises.html">Exercise Solutions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="d01-e-data00-notebooks-solution.html">Introduction to Jupyter Notebooks</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d01-e-vis00-basics-solution.html">Vis: Data Visualization Basics</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="d02-e-data01-isolate-solution.html">Data: Isolating Data</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d02-e-tips-solution.html">Tips for This Course</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d03-e-stat01-eda-solution.html">Stats: Introduction to Exploratory Data Analysis</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d04-e-grama01-basics-solution.html">Grama: Basics</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">Vis: Bar Charts</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d06-e-data02-derive-solution.html">Data: Deriving Quantities</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d07-e-vis02-histograms-solution.html">Vis: Histograms</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d08-e-stat02-source-solution.html">Stats: Real and Erroneous Sources of Variability</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d09-e-vis03-scatterplot-solution.html">Vis: Scatterplots and Layers</a></li>
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Grama: Model Building</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d11-e-data03-pivot-solution.html">Data: Pivoting Data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d12-e-grama03-eval-solution.html">Grama: Model Evaluation</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d13-e-vis04-lines-solution.html">Vis: Lines and Related Geometries</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d14-e-stat03-descriptive-solution.html">Stats: Descriptive Statistics</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d15-e-data04-separate-unite-solution.html">Data: Separating and Uniting Columns</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d16-e-data05-join-solution.html">Data: Joining Datasets</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d17-e-vis05-multiples-solution.html">Vis: Small Multiples</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d18-e-grama04-ema-solution.html">Grama: Exploratory Model Analysis</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d19-e-stat04-distributions-solution.html">Stats: Distributions</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d20-e-grama05-fit-function-solution.html">Grama: Fitting Functions</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d21-e-stat05-CI-solution.html">Stats: Confidence Intervals and the CLT</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d22-e-stat06-spc-solution.html">Stats: Fundamentals of Statistical Process Monitoring</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">Grama: Fitting Univariate Distributions</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">Grama: Fitting Multivariate Distributions</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d25-e-grama08-duu-solution.html">Grama: Design Under Uncertainty</a></li>
+
+
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d10-e-grama02-building-solution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/exercises_solution/d10-e-grama02-building-solution.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/exercises_solution/d10-e-grama02-building-solution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Grama: Model Building
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#composition">
-   Composition
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#useful-programming-tools">
-   Useful Programming Tools
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lambda-functions">
-     Lambda functions
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q1-implement-a-lambda-function">
-       <strong>
-        q1
-       </strong>
-       Implement a
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         lambda
-        </span>
-       </code>
-       function
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#working-with-dataframes">
-     Working with DataFrames
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q2-functions-on-dataframes">
-       <strong>
-        q2
-       </strong>
-       Functions on DataFrames
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#constructing-grama-models">
-   Constructing Grama Models
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#add-a-function">
-     Add a function
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-add-a-function-to-a-model">
-       <strong>
-        q3
-       </strong>
-       Add a function to a model
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#add-bounds">
-     Add bounds
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-add-bounds-to-a-model">
-       <strong>
-        q4
-       </strong>
-       Add bounds to a model
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#composition-quick-reference">
-     Composition: Quick Reference
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#checking-models">
-   Checking models
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q5-create-a-grid-of-values">
-     <strong>
-      q5
-     </strong>
-     Create a grid of values
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q6-evaluate-a-grid-of-values">
-     <strong>
-      q6
-     </strong>
-     Evaluate a grid of values
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-sanity-checks">
-     Model sanity checks
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q7-find-the-error">
-       <strong>
-        q7
-       </strong>
-       Find the error
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#payoff-rapid-model-exploration">
-   Payoff: Rapid model exploration
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Grama: Model Building</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Grama: Model Building
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#composition">
-   Composition
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#useful-programming-tools">
-   Useful Programming Tools
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lambda-functions">
-     Lambda functions
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q1-implement-a-lambda-function">
-       <strong>
-        q1
-       </strong>
-       Implement a
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         lambda
-        </span>
-       </code>
-       function
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#working-with-dataframes">
-     Working with DataFrames
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q2-functions-on-dataframes">
-       <strong>
-        q2
-       </strong>
-       Functions on DataFrames
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#constructing-grama-models">
-   Constructing Grama Models
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#add-a-function">
-     Add a function
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-add-a-function-to-a-model">
-       <strong>
-        q3
-       </strong>
-       Add a function to a model
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#add-bounds">
-     Add bounds
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-add-bounds-to-a-model">
-       <strong>
-        q4
-       </strong>
-       Add bounds to a model
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#composition-quick-reference">
-     Composition: Quick Reference
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#checking-models">
-   Checking models
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q5-create-a-grid-of-values">
-     <strong>
-      q5
-     </strong>
-     Create a grid of values
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q6-evaluate-a-grid-of-values">
-     <strong>
-      q6
-     </strong>
-     Evaluate a grid of values
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-sanity-checks">
-     Model sanity checks
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q7-find-the-error">
-       <strong>
-        q7
-       </strong>
-       Find the error
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#payoff-rapid-model-exploration">
-   Payoff: Rapid model exploration
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Grama: Model Building</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Grama: Model Building</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#composition">Composition</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-programming-tools">Useful Programming Tools</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda-functions">Lambda functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-implement-a-lambda-function"><strong>q1</strong> Implement a <code class="docutils literal notranslate"><span class="pre">lambda</span></code> function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-dataframes">Working with DataFrames</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-functions-on-dataframes"><strong>q2</strong> Functions on DataFrames</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-grama-models">Constructing Grama Models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-function">Add a function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-add-a-function-to-a-model"><strong>q3</strong> Add a function to a model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-bounds">Add bounds</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-add-bounds-to-a-model"><strong>q4</strong> Add bounds to a model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composition-quick-reference">Composition: Quick Reference</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-models">Checking models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-create-a-grid-of-values"><strong>q5</strong> Create a grid of values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-evaluate-a-grid-of-values"><strong>q6</strong> Evaluate a grid of values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-sanity-checks">Model sanity checks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-find-the-error"><strong>q7</strong> Find the error</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#payoff-rapid-model-exploration">Payoff: Rapid model exploration</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="grama-model-building">
-<h1>Grama: Model Building<a class="headerlink" href="#grama-model-building" title="Permalink to this headline">#</a></h1>
+<h1>Grama: Model Building<a class="headerlink" href="#grama-model-building" title="Permalink to this heading">#</a></h1>
 <p><em>Purpose</em>: Grama provides tools to work with models, but in order to use these tools we need to be able to buidl models in grama! This exercise will introduce fundamental concepts for building and sanity-checking models. We’ll build on these skills in future exercises.</p>
 <section id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">grama</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -823,17 +517,17 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="composition">
-<h1>Composition<a class="headerlink" href="#composition" title="Permalink to this headline">#</a></h1>
+<h1>Composition<a class="headerlink" href="#composition" title="Permalink to this heading">#</a></h1>
 <p>Recall that there are four classes of verb in grama; <em>composition</em> verbs take a model as an input and produce a new model as an output. Using compositions we can add information to a model, such as input metadata and functions.</p>
 <p><img alt="Grama verb class diagram" src="../_images/verb-classes.png" /></p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="useful-programming-tools">
-<h1>Useful Programming Tools<a class="headerlink" href="#useful-programming-tools" title="Permalink to this headline">#</a></h1>
+<h1>Useful Programming Tools<a class="headerlink" href="#useful-programming-tools" title="Permalink to this heading">#</a></h1>
 <p>To build grama models, we’ll need to use a few simple programming tools.</p>
 <section id="lambda-functions">
-<h2>Lambda functions<a class="headerlink" href="#lambda-functions" title="Permalink to this headline">#</a></h2>
+<h2>Lambda functions<a class="headerlink" href="#lambda-functions" title="Permalink to this heading">#</a></h2>
 <p>In an earlier exercise, we learned how to define Python functions using the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fcn</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fcn</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
 </pre></div>
 </div>
@@ -844,7 +538,7 @@ title="Print to PDF"
 <p>A <code class="docutils literal notranslate"><span class="pre">lambda</span></code> function starts with the keyword <code class="docutils literal notranslate"><span class="pre">lambda</span></code>, and is followed by its arguments. The example above has just one argument <code class="docutils literal notranslate"><span class="pre">x</span></code>. After the arguments comes a colon <code class="docutils literal notranslate"><span class="pre">:</span></code>, which signals that what follows is the output of the function.</p>
 <p>The advantage of this <code class="docutils literal notranslate"><span class="pre">lambda</span></code> syntax is that it is more compact, and can be incorporated with a grama model building pipeline. Let’s get some practice defining lambda functions.</p>
 <section id="q1-implement-a-lambda-function">
-<h3><strong>q1</strong> Implement a <code class="docutils literal notranslate"><span class="pre">lambda</span></code> function<a class="headerlink" href="#q1-implement-a-lambda-function" title="Permalink to this headline">#</a></h3>
+<h3><strong>q1</strong> Implement a <code class="docutils literal notranslate"><span class="pre">lambda</span></code> function<a class="headerlink" href="#q1-implement-a-lambda-function" title="Permalink to this heading">#</a></h3>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">lambda</span></code> syntax to implement the following function:</p>
 <div class="math notranslate nohighlight">
 \[f(x) = x + 1\]</div>
@@ -871,7 +565,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="working-with-dataframes">
-<h2>Working with DataFrames<a class="headerlink" href="#working-with-dataframes" title="Permalink to this headline">#</a></h2>
+<h2>Working with DataFrames<a class="headerlink" href="#working-with-dataframes" title="Permalink to this heading">#</a></h2>
 <p>Grama uses DataFrames to represent data and to interface with models. The constructor <code class="docutils literal notranslate"><span class="pre">gr.df_make()</span></code> is a convenient way to make a simple DataFrame:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -938,7 +632,7 @@ title="Print to PDF"
 </div>
 <p>Note that this <code class="docutils literal notranslate"><span class="pre">lambda</span></code> function takes in a DataFrame, uses specific columns from that input <code class="docutils literal notranslate"><span class="pre">df</span></code>, and returns a DataFrame.</p>
 <section id="q2-functions-on-dataframes">
-<h3><strong>q2</strong> Functions on DataFrames<a class="headerlink" href="#q2-functions-on-dataframes" title="Permalink to this headline">#</a></h3>
+<h3><strong>q2</strong> Functions on DataFrames<a class="headerlink" href="#q2-functions-on-dataframes" title="Permalink to this heading">#</a></h3>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">lambda</span></code> syntax to implement the following function:</p>
 <div class="math notranslate nohighlight">
 \[y(x) = x + 1\]</div>
@@ -974,13 +668,13 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="constructing-grama-models">
-<h1>Constructing Grama Models<a class="headerlink" href="#constructing-grama-models" title="Permalink to this headline">#</a></h1>
+<h1>Constructing Grama Models<a class="headerlink" href="#constructing-grama-models" title="Permalink to this heading">#</a></h1>
 <p>Remember that <em>composition</em> verbs take in a grama model and return a new model. We use compositions primarily to construct grama models. We can start a blank model with <code class="docutils literal notranslate"><span class="pre">gr.Model()</span></code>, but then we need to add functionality to that model!</p>
 <section id="add-a-function">
-<h2>Add a function<a class="headerlink" href="#add-a-function" title="Permalink to this headline">#</a></h2>
+<h2>Add a function<a class="headerlink" href="#add-a-function" title="Permalink to this heading">#</a></h2>
 <p>One of the most core parts of a model is its set of <em>functions</em>; these map from inputs to outputs. For functions defined by simple mathematical expressions, the composition <code class="docutils literal notranslate"><span class="pre">gr.cp_vec_function()</span></code> is the appropriate tool for the job.</p>
 <section id="q3-add-a-function-to-a-model">
-<h3><strong>q3</strong> Add a function to a model<a class="headerlink" href="#q3-add-a-function-to-a-model" title="Permalink to this headline">#</a></h3>
+<h3><strong>q3</strong> Add a function to a model<a class="headerlink" href="#q3-add-a-function-to-a-model" title="Permalink to this heading">#</a></h3>
 <p>Add a function to <code class="docutils literal notranslate"><span class="pre">md_basic</span></code> that provides the output <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span></code>.</p>
 <p><em>Hint 1</em>: Consult the documentation for <code class="docutils literal notranslate"><span class="pre">gr.cp_vec_function()</span></code> to see what arguments it requires. Remember that you can use <code class="docutils literal notranslate"><span class="pre">help(gr.cp_vec_function)</span></code> or use <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Tab</span></code> to bring up the documentation at your cursor.</p>
 <p><em>Hint 2</em>: Use a DataFrame-based lambda function, as you did for q2 above.</p>
@@ -1030,11 +724,11 @@ title="Print to PDF"
 </section>
 </section>
 <section id="add-bounds">
-<h2>Add bounds<a class="headerlink" href="#add-bounds" title="Permalink to this headline">#</a></h2>
+<h2>Add bounds<a class="headerlink" href="#add-bounds" title="Permalink to this heading">#</a></h2>
 <p>Once your model has a function, it is useful to define bounds for the inputs. This does not <em>force</em> the model to reject values outside the bounds, but rather serves as useful <em>metadata</em> about the model. Bounds are used by other verbs like exploratory tools (e.g. for parameter sweeps) and optimization.</p>
 <p>The verb <code class="docutils literal notranslate"><span class="pre">gr.cp_bounds()</span></code> allows you to add bounds for inputs.</p>
 <section id="q4-add-bounds-to-a-model">
-<h3><strong>q4</strong> Add bounds to a model<a class="headerlink" href="#q4-add-bounds-to-a-model" title="Permalink to this headline">#</a></h3>
+<h3><strong>q4</strong> Add bounds to a model<a class="headerlink" href="#q4-add-bounds-to-a-model" title="Permalink to this heading">#</a></h3>
 <p>For the following model, add bounds <span class="math notranslate nohighlight">\(0 \leq x_1 \leq 1\)</span> and <span class="math notranslate nohighlight">\(0 \leq x_2 \leq 1\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1076,9 +770,9 @@ title="Print to PDF"
 </section>
 </section>
 <section id="composition-quick-reference">
-<h2>Composition: Quick Reference<a class="headerlink" href="#composition-quick-reference" title="Permalink to this headline">#</a></h2>
+<h2>Composition: Quick Reference<a class="headerlink" href="#composition-quick-reference" title="Permalink to this heading">#</a></h2>
 <p>As a quick-reference, here is a list of the most important grama composition verbs. Note that some of these are covered later in the exercise sequence; most notably, the verbs related to quantifying uncertainties (marginals and copulas).</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Verb</p></th>
 <th class="head"><p>Description</p></th>
@@ -1111,11 +805,11 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="checking-models">
-<h1>Checking models<a class="headerlink" href="#checking-models" title="Permalink to this headline">#</a></h1>
+<h1>Checking models<a class="headerlink" href="#checking-models" title="Permalink to this heading">#</a></h1>
 <p>Once you’ve built a grama model, you can use a variety of tools to work with the model. These are useful for making sense of model behavior.</p>
 <p>One of the most key studies you can do with a model is a parameter sweep. There are a variety of grama tools to help do parameter sweeps.</p>
 <section id="q5-create-a-grid-of-values">
-<h2><strong>q5</strong> Create a grid of values<a class="headerlink" href="#q5-create-a-grid-of-values" title="Permalink to this headline">#</a></h2>
+<h2><strong>q5</strong> Create a grid of values<a class="headerlink" href="#q5-create-a-grid-of-values" title="Permalink to this heading">#</a></h2>
 <p>The verb <code class="docutils literal notranslate"><span class="pre">gr.df_grid()</span></code> is a helper function that creates a “grid” of points. Modify the code below to see how this function operates.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1136,7 +830,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d10-e-grama02-building-solution_25_0.png" src="../_images/d10-e-grama02-building-solution_25_0.png" />
+<img alt="../_images/7364fccdf91cd119558a57449fef00a54050d3be000c6a0dc3117c4d991f2c45.png" src="../_images/7364fccdf91cd119558a57449fef00a54050d3be000c6a0dc3117c4d991f2c45.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8793259304930)&gt;
 </pre></div>
 </div>
@@ -1145,7 +839,7 @@ title="Print to PDF"
 <p>Once you’ve created a grid of points, you can evaluate the model on that grid to perform a parameter sweep.</p>
 </section>
 <section id="q6-evaluate-a-grid-of-values">
-<h2><strong>q6</strong> Evaluate a grid of values<a class="headerlink" href="#q6-evaluate-a-grid-of-values" title="Permalink to this headline">#</a></h2>
+<h2><strong>q6</strong> Evaluate a grid of values<a class="headerlink" href="#q6-evaluate-a-grid-of-values" title="Permalink to this heading">#</a></h2>
 <p>Create a grid of points in <code class="docutils literal notranslate"><span class="pre">x1</span></code> and <code class="docutils literal notranslate"><span class="pre">x2</span></code> to evaluate the model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1167,7 +861,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d10-e-grama02-building-solution_28_0.png" src="../_images/d10-e-grama02-building-solution_28_0.png" />
+<img alt="../_images/90d25444956a60aed3cef5bc11f708e7ec14e3284af5a8b318bd8486942957c0.png" src="../_images/90d25444956a60aed3cef5bc11f708e7ec14e3284af5a8b318bd8486942957c0.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8793259611332)&gt;
 </pre></div>
 </div>
@@ -1175,7 +869,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="model-sanity-checks">
-<h2>Model sanity checks<a class="headerlink" href="#model-sanity-checks" title="Permalink to this headline">#</a></h2>
+<h2>Model sanity checks<a class="headerlink" href="#model-sanity-checks" title="Permalink to this heading">#</a></h2>
 <p>Parameter sweeps are particularly useful when checking that you implemented a model <em>correctly</em>. For example, let’s suppose someone implemented the following function in a model</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}f(x, y) &amp;= x + y^2 \,|\, x &lt; 1/2 \\ &amp; = 1 - x + y^2 \,|\, x \geq 1/2 \end{aligned}\end{split}\]</div>
@@ -1223,7 +917,7 @@ title="Print to PDF"
 </div>
 <p>However, the model implementation above is in error. Up next, you’ll use a parameter sweep to help find the error.</p>
 <section id="q7-find-the-error">
-<h3><strong>q7</strong> Find the error<a class="headerlink" href="#q7-find-the-error" title="Permalink to this headline">#</a></h3>
+<h3><strong>q7</strong> Find the error<a class="headerlink" href="#q7-find-the-error" title="Permalink to this heading">#</a></h3>
 <p>Construct a sinew plot to inspect the model behavior and find the implementation error. Answer the questions under <em>observations</em> below.</p>
 <p>Make sure to sweep over all the deterministic variables in the model. Remember that the effect of <code class="docutils literal notranslate"><span class="pre">x</span></code> should switch from positive to negative at the midpoint of its domain.</p>
 <p><em>Hint</em>: We learned about sinew plots in the previous grama exercise <code class="docutils literal notranslate"><span class="pre">e-grama01-basics</span></code>.</p>
@@ -1244,7 +938,7 @@ title="Print to PDF"
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calling plot_sinew_outputs....
 </pre></div>
 </div>
-<img alt="../_images/d10-e-grama02-building-solution_33_1.png" src="../_images/d10-e-grama02-building-solution_33_1.png" />
+<img alt="../_images/65c4c51384cb1878c0d961ef3fdc11a86a118f1527188c2633de30534e1f304f.png" src="../_images/65c4c51384cb1878c0d961ef3fdc11a86a118f1527188c2633de30534e1f304f.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8793259875428)&gt;
 </pre></div>
 </div>
@@ -1267,7 +961,7 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="payoff-rapid-model-exploration">
-<h1>Payoff: Rapid model exploration<a class="headerlink" href="#payoff-rapid-model-exploration" title="Permalink to this headline">#</a></h1>
+<h1>Payoff: Rapid model exploration<a class="headerlink" href="#payoff-rapid-model-exploration" title="Permalink to this heading">#</a></h1>
 <p>One of the big payoffs from these model building tools is the ability to rapidly explore models. Since a grama model includes a lot of information (functions and bounds), the tools for evaluating and visualizing models are extremely simple.</p>
 <p>For instance, we can re-build the model to fix the sign error on <code class="docutils literal notranslate"><span class="pre">x</span></code>, and quickly construct a sinew plot to verify that we’ve fixed the issue:</p>
 <div class="cell docutils container">
@@ -1299,7 +993,7 @@ title="Print to PDF"
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calling plot_sinew_outputs....
 </pre></div>
 </div>
-<img alt="../_images/d10-e-grama02-building-solution_36_1.png" src="../_images/d10-e-grama02-building-solution_36_1.png" />
+<img alt="../_images/7103c859cb41e5370b581f04b90036fda0ac1846377d80cca68e721c6fb600cd.png" src="../_images/7103c859cb41e5370b581f04b90036fda0ac1846377d80cca68e721c6fb600cd.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8793260085965)&gt;
 </pre></div>
 </div>
@@ -1327,7 +1021,7 @@ title="Print to PDF"
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calling plot_contour....
 </pre></div>
 </div>
-<img alt="../_images/d10-e-grama02-building-solution_38_1.png" src="../_images/d10-e-grama02-building-solution_38_1.png" />
+<img alt="../_images/b8f0c1ace067bf5587cdda361fc418279c0219aefbb004e36fdc599fd991dd37.png" src="../_images/b8f0c1ace067bf5587cdda361fc418279c0219aefbb004e36fdc599fd991dd37.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8793259932356)&gt;
 </pre></div>
 </div>
@@ -1347,7 +1041,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./exercises_solution"
         },
         predefinedOutput: true
@@ -1355,50 +1049,140 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="d09-e-vis03-scatterplot-solution.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Vis: Scatterplots and Layers</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="d09-e-vis03-scatterplot-solution.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Vis: Scatterplots and Layers</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="d11-e-data03-pivot-solution.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="d11-e-data03-pivot-solution.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Data: Pivoting Data</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Grama: Model Building</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#composition">Composition</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-programming-tools">Useful Programming Tools</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda-functions">Lambda functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-implement-a-lambda-function"><strong>q1</strong> Implement a <code class="docutils literal notranslate"><span class="pre">lambda</span></code> function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-dataframes">Working with DataFrames</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-functions-on-dataframes"><strong>q2</strong> Functions on DataFrames</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-grama-models">Constructing Grama Models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-function">Add a function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-add-a-function-to-a-model"><strong>q3</strong> Add a function to a model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-bounds">Add bounds</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-add-bounds-to-a-model"><strong>q4</strong> Add bounds to a model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composition-quick-reference">Composition: Quick Reference</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-models">Checking models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-create-a-grid-of-values"><strong>q5</strong> Create a grid of values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-evaluate-a-grid-of-values"><strong>q6</strong> Evaluate a grid of values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-sanity-checks">Model sanity checks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-find-the-error"><strong>q7</strong> Find the error</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#payoff-rapid-model-exploration">Payoff: Rapid model exploration</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Zachary del Rosario<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Zachary del Rosario
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

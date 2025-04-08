@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Grama: Fitting Univariate Distributions &#8212; Data Science for Engineers</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,56 +64,98 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises_solution/d23-e-grama06-fit-univar-solution';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Grama: Fitting Multivariate Distributions" href="d24-e-grama07-fit-multivar-solution.html" />
     <link rel="prev" title="Stats: Fundamentals of Statistical Process Monitoring" href="d22-e-stat06-spc-solution.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="../frontmatter/home.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Data Science for Engineers</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -111,763 +165,355 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/setup.html">
-   Software Setup
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/howto.html">
-   How To Use These Materials
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/schedule.html">
-   Course Topics and Schedule
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/submission.html">
-   Challenge Submission Instructions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/recordings.html">
-   Class Recordings
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../frontmatter/demos.html">
-   Demo Notebooks
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-20-1.html">
-     Demo Notebook 2022-06-20
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-27.html">
-     Demo Notebook 2022-06-27
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-06.html">
-     Demo Notebook 2022-07-06
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-11.html">
-     Demo Notebook 2022-07-11
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-18.html">
-     Demo Notebook 2022-07-18
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/hours.html">
-   Office Hours Schedule
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../frontmatter/exercises.html">
-   Exercise Solutions
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
-     Introduction to Jupyter Notebooks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
-     Vis: Data Visualization Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
-     Data: Isolating Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d02-e-tips-solution.html">
-     Tips for This Course
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
-     Stats: Introduction to Exploratory Data Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
-     Grama: Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
-     Vis: Bar Charts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d06-e-data02-derive-solution.html">
-     Data: Deriving Quantities
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d07-e-vis02-histograms-solution.html">
-     Vis: Histograms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d08-e-stat02-source-solution.html">
-     Stats: Real and Erroneous Sources of Variability
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d09-e-vis03-scatterplot-solution.html">
-     Vis: Scatterplots and Layers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d10-e-grama02-building-solution.html">
-     Grama: Model Building
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d11-e-data03-pivot-solution.html">
-     Data: Pivoting Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d12-e-grama03-eval-solution.html">
-     Grama: Model Evaluation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d13-e-vis04-lines-solution.html">
-     Vis: Lines and Related Geometries
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d14-e-stat03-descriptive-solution.html">
-     Stats: Descriptive Statistics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d15-e-data04-separate-unite-solution.html">
-     Data: Separating and Uniting Columns
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d16-e-data05-join-solution.html">
-     Data: Joining Datasets
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d17-e-vis05-multiples-solution.html">
-     Vis: Small Multiples
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d18-e-grama04-ema-solution.html">
-     Grama: Exploratory Model Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d19-e-stat04-distributions-solution.html">
-     Stats: Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d20-e-grama05-fit-function-solution.html">
-     Grama: Fitting Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d21-e-stat05-CI-solution.html">
-     Stats: Confidence Intervals and the CLT
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d22-e-stat06-spc-solution.html">
-     Stats: Fundamentals of Statistical Process Monitoring
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Grama: Fitting Univariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">
-     Grama: Fitting Multivariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d25-e-grama08-duu-solution.html">
-     Grama: Design Under Uncertainty
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/setup.html">Software Setup</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/howto.html">How To Use These Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/schedule.html">Course Topics and Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/submission.html">Challenge Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/recordings.html">Class Recordings</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../frontmatter/demos.html">Demo Notebooks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-20-1.html">Demo Notebook 2022-06-20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-27.html">Demo Notebook 2022-06-27</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-06.html">Demo Notebook 2022-07-06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-11.html">Demo Notebook 2022-07-11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-18.html">Demo Notebook 2022-07-18</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/hours.html">Office Hours Schedule</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../frontmatter/exercises.html">Exercise Solutions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="d01-e-data00-notebooks-solution.html">Introduction to Jupyter Notebooks</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d01-e-vis00-basics-solution.html">Vis: Data Visualization Basics</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="d02-e-data01-isolate-solution.html">Data: Isolating Data</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d02-e-tips-solution.html">Tips for This Course</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d03-e-stat01-eda-solution.html">Stats: Introduction to Exploratory Data Analysis</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d04-e-grama01-basics-solution.html">Grama: Basics</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">Vis: Bar Charts</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d06-e-data02-derive-solution.html">Data: Deriving Quantities</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d07-e-vis02-histograms-solution.html">Vis: Histograms</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d08-e-stat02-source-solution.html">Stats: Real and Erroneous Sources of Variability</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d09-e-vis03-scatterplot-solution.html">Vis: Scatterplots and Layers</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d10-e-grama02-building-solution.html">Grama: Model Building</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d11-e-data03-pivot-solution.html">Data: Pivoting Data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d12-e-grama03-eval-solution.html">Grama: Model Evaluation</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d13-e-vis04-lines-solution.html">Vis: Lines and Related Geometries</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d14-e-stat03-descriptive-solution.html">Stats: Descriptive Statistics</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d15-e-data04-separate-unite-solution.html">Data: Separating and Uniting Columns</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d16-e-data05-join-solution.html">Data: Joining Datasets</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d17-e-vis05-multiples-solution.html">Vis: Small Multiples</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d18-e-grama04-ema-solution.html">Grama: Exploratory Model Analysis</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d19-e-stat04-distributions-solution.html">Stats: Distributions</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d20-e-grama05-fit-function-solution.html">Grama: Fitting Functions</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d21-e-stat05-CI-solution.html">Stats: Confidence Intervals and the CLT</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d22-e-stat06-spc-solution.html">Stats: Fundamentals of Statistical Process Monitoring</a></li>
+
+
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Grama: Fitting Univariate Distributions</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">Grama: Fitting Multivariate Distributions</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d25-e-grama08-duu-solution.html">Grama: Design Under Uncertainty</a></li>
+
+
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d23-e-grama06-fit-univar-solution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/exercises_solution/d23-e-grama06-fit-univar-solution.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/exercises_solution/d23-e-grama06-fit-univar-solution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Grama: Fitting Univariate Distributions
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-fit-a-distribution">
-   Why fit a distribution?
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dangers-of-assuming-the-mean">
-     Dangers of assuming the mean
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q1-what-fraction-of-tensile-strength-is-below-the-mean">
-       <strong>
-        q1
-       </strong>
-       What fraction of
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         tensile_strength
-        </span>
-       </code>
-       is below the mean?
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#random-variables">
-     Random variables
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-distribution-defines-a-random-variable">
-     A distribution defines a random variable
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-steps-to-fitting">
-   The steps to fitting
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#check-for-statistical-control">
-   1. Check for
-   <em>
-    statistical control
-   </em>
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q2-assess-statistical-control">
-     <strong>
-      q2
-     </strong>
-     Assess statistical control
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#select-candidate-distributions">
-   2. Select candidate distributions
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#short-list-of-distributions">
-     (Short) list of distributions
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-select-reasonable-distributions-for-tensile-strength">
-       <strong>
-        q3
-       </strong>
-       Select reasonable distributions for
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         tensile_strength
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fit-and-assess">
-   3. Fit and assess
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#grama-tools-for-fitting">
-     Grama tools for fitting
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-fit-a-normal-distribution">
-       <strong>
-        q4
-       </strong>
-       Fit a normal distribution
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qq-plots">
-     QQ plots
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q5-inspect-a-perfect-qq-plot">
-       <strong>
-        q5
-       </strong>
-       Inspect a “perfect” QQ plot
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q6-fit-a-distribution-for-the-tensile-strength">
-       <strong>
-        q6
-       </strong>
-       Fit a distribution for the
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         tensile_strength
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#use-the-model">
-   Use the model
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#beyond-assuming-the-mean">
-     Beyond assuming the mean
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q7-evaluate-the-model">
-       <strong>
-        q7
-       </strong>
-       Evaluate the model
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Grama: Fitting Univariate Distributions</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Grama: Fitting Univariate Distributions
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-fit-a-distribution">
-   Why fit a distribution?
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dangers-of-assuming-the-mean">
-     Dangers of assuming the mean
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q1-what-fraction-of-tensile-strength-is-below-the-mean">
-       <strong>
-        q1
-       </strong>
-       What fraction of
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         tensile_strength
-        </span>
-       </code>
-       is below the mean?
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#random-variables">
-     Random variables
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-distribution-defines-a-random-variable">
-     A distribution defines a random variable
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-steps-to-fitting">
-   The steps to fitting
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#check-for-statistical-control">
-   1. Check for
-   <em>
-    statistical control
-   </em>
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q2-assess-statistical-control">
-     <strong>
-      q2
-     </strong>
-     Assess statistical control
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#select-candidate-distributions">
-   2. Select candidate distributions
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#short-list-of-distributions">
-     (Short) list of distributions
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-select-reasonable-distributions-for-tensile-strength">
-       <strong>
-        q3
-       </strong>
-       Select reasonable distributions for
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         tensile_strength
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fit-and-assess">
-   3. Fit and assess
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#grama-tools-for-fitting">
-     Grama tools for fitting
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-fit-a-normal-distribution">
-       <strong>
-        q4
-       </strong>
-       Fit a normal distribution
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qq-plots">
-     QQ plots
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q5-inspect-a-perfect-qq-plot">
-       <strong>
-        q5
-       </strong>
-       Inspect a “perfect” QQ plot
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q6-fit-a-distribution-for-the-tensile-strength">
-       <strong>
-        q6
-       </strong>
-       Fit a distribution for the
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         tensile_strength
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#use-the-model">
-   Use the model
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#beyond-assuming-the-mean">
-     Beyond assuming the mean
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q7-evaluate-the-model">
-       <strong>
-        q7
-       </strong>
-       Evaluate the model
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Grama: Fitting Univariate Distributions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Grama: Fitting Univariate Distributions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#why-fit-a-distribution">Why fit a distribution?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dangers-of-assuming-the-mean">Dangers of assuming the mean</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-what-fraction-of-tensile-strength-is-below-the-mean"><strong>q1</strong> What fraction of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> is below the mean?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-variables">Random variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-distribution-defines-a-random-variable">A distribution defines a random variable</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-steps-to-fitting">The steps to fitting</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#check-for-statistical-control">1. Check for <em>statistical control</em></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-assess-statistical-control"><strong>q2</strong> Assess statistical control</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#select-candidate-distributions">2. Select candidate distributions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#short-list-of-distributions">(Short) list of distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-select-reasonable-distributions-for-tensile-strength"><strong>q3</strong> Select reasonable distributions for <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-and-assess">3. Fit and assess</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grama-tools-for-fitting">Grama tools for fitting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-fit-a-normal-distribution"><strong>q4</strong> Fit a normal distribution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qq-plots">QQ plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-inspect-a-perfect-qq-plot"><strong>q5</strong> Inspect a “perfect” QQ plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-fit-a-distribution-for-the-tensile-strength"><strong>q6</strong> Fit a distribution for the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-model">Use the model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beyond-assuming-the-mean">Beyond assuming the mean</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-evaluate-the-model"><strong>q7</strong> Evaluate the model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="grama-fitting-univariate-distributions">
-<h1>Grama: Fitting Univariate Distributions<a class="headerlink" href="#grama-fitting-univariate-distributions" title="Permalink to this headline">#</a></h1>
+<h1>Grama: Fitting Univariate Distributions<a class="headerlink" href="#grama-fitting-univariate-distributions" title="Permalink to this heading">#</a></h1>
 <p><em>Purpose</em>: As we’ve seen through studying a lot of datasets, many physical systems exhibit variability and other forms of uncertainty. Thus, it is beneficial to be able to <em>model</em> uncertainty using distributions. In this two-part exercise, we’ll first learn how to fit a distribution for a <em>single</em> quantity, then learn how to deal with <em>multiple</em> related quantities.</p>
 <p>In the final exercise <code class="docutils literal notranslate"><span class="pre">e-grama08-duu</span></code> we’ll see how to use a distribution model to do useful engineering work.</p>
 <section id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">grama</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gr</span>
 <span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -878,7 +524,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
-<span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_shewhart</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">grama.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">df_shewhart</span>
 </pre></div>
 </div>
 </div>
@@ -886,7 +532,7 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="why-fit-a-distribution">
-<h1>Why fit a distribution?<a class="headerlink" href="#why-fit-a-distribution" title="Permalink to this headline">#</a></h1>
+<h1>Why fit a distribution?<a class="headerlink" href="#why-fit-a-distribution" title="Permalink to this heading">#</a></h1>
 <p>Before we start fitting distributions: <em>Why</em> would we ever want to fit a distribution?</p>
 <p>As we’ve seen from studying a large number of datasets, most engineering data exhibit <a class="reference external" href="https://zdelrosario.github.io/evc-course/exercises_solution/d08-e-stat02-source-solution.html">variability</a>. If the variability is real, it can have real impacts on the engineering systems we design.</p>
 <p>For instance, here’s a dataset of realized aluminum tensile strength values:</p>
@@ -902,7 +548,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d23-e-grama06-fit-univar-solution_6_0.png" src="../_images/d23-e-grama06-fit-univar-solution_6_0.png" />
+<img alt="../_images/fa5852cee4bdf13bb8ea1097068ec5988939bd302596f03493952f28420d64b1.png" src="../_images/fa5852cee4bdf13bb8ea1097068ec5988939bd302596f03493952f28420d64b1.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8758216577434)&gt;
 </pre></div>
 </div>
@@ -910,7 +556,7 @@ title="Print to PDF"
 </div>
 <p>Clearly, these data exhibit variability—they do not take a single value.</p>
 <section id="dangers-of-assuming-the-mean">
-<h2>Dangers of assuming the mean<a class="headerlink" href="#dangers-of-assuming-the-mean" title="Permalink to this headline">#</a></h2>
+<h2>Dangers of assuming the mean<a class="headerlink" href="#dangers-of-assuming-the-mean" title="Permalink to this heading">#</a></h2>
 <p>Why don’t we just take the mean of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> and use that for design? It turns out this approach is <em>very dangerous</em> when safety is a consideration. Let’s take a look at the tensile strength of an aluminum alloy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -930,7 +576,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d23-e-grama06-fit-univar-solution_9_0.png" src="../_images/d23-e-grama06-fit-univar-solution_9_0.png" />
+<img alt="../_images/350f26cc6730b0810d6eefe1164164770e56173d0bf3e9435e843f93ccc6c46a.png" src="../_images/350f26cc6730b0810d6eefe1164164770e56173d0bf3e9435e843f93ccc6c46a.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8758214365901)&gt;
 </pre></div>
 </div>
@@ -938,7 +584,7 @@ title="Print to PDF"
 </div>
 <p>Clearly, values of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> tend to land both above and below the mean. But what ramifications does this have for engineering design?</p>
 <section id="q1-what-fraction-of-tensile-strength-is-below-the-mean">
-<h3><strong>q1</strong> What fraction of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> is below the mean?<a class="headerlink" href="#q1-what-fraction-of-tensile-strength-is-below-the-mean" title="Permalink to this headline">#</a></h3>
+<h3><strong>q1</strong> What fraction of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> is below the mean?<a class="headerlink" href="#q1-what-fraction-of-tensile-strength-is-below-the-mean" title="Permalink to this heading">#</a></h3>
 <p>Compute the fraction of observations in <code class="docutils literal notranslate"><span class="pre">df_shewhart</span></code> where <code class="docutils literal notranslate"><span class="pre">tensile_strength</span> <span class="pre">&lt;</span> <span class="pre">mean(tensile_strength)</span></code>. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1001,7 +647,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="random-variables">
-<h2>Random variables<a class="headerlink" href="#random-variables" title="Permalink to this headline">#</a></h2>
+<h2>Random variables<a class="headerlink" href="#random-variables" title="Permalink to this heading">#</a></h2>
 <p>Clearly <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> does not take a single value; therefore, we should think of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> as a <em>random variable</em>. A random variable is a mathematical object that we can use to model an uncertain quantity. Unlike a <em>deterministic variable</em> that has one fixed value (say <span class="math notranslate nohighlight">\(x = 1\)</span>), a random variable can take a different value each time we <em>observe</em> it. For instance, if <span class="math notranslate nohighlight">\(X\)</span> were a random variable, and we used <span class="math notranslate nohighlight">\(X_i\)</span> to denote the value that occurs on the <span class="math notranslate nohighlight">\(i\)</span>-th observation, then we might see a sequence like</p>
 <div class="math notranslate nohighlight">
 \[X_1 = 1, X_2 = -3, X_3 = 1, X_4 = 5, \dots\]</div>
@@ -1085,7 +731,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="a-distribution-defines-a-random-variable">
-<h2>A distribution defines a random variable<a class="headerlink" href="#a-distribution-defines-a-random-variable" title="Permalink to this headline">#</a></h2>
+<h2>A distribution defines a random variable<a class="headerlink" href="#a-distribution-defines-a-random-variable" title="Permalink to this heading">#</a></h2>
 <p>As we saw in <code class="docutils literal notranslate"><span class="pre">e-stat04-distributions</span></code>, we can use distributions to quantitatively describe an uncertain quantity. <strong>A distribution defines a random variable</strong>. We say that a random variable <span class="math notranslate nohighlight">\(X\)</span> is <em>distributed according to</em> a particular density <span class="math notranslate nohighlight">\(\rho\)</span>, and we express the same statement mathematically as</p>
 <div class="math notranslate nohighlight">
 \[X \sim \rho.\]</div>
@@ -1093,21 +739,21 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="the-steps-to-fitting">
-<h1>The steps to fitting<a class="headerlink" href="#the-steps-to-fitting" title="Permalink to this headline">#</a></h1>
-<ol class="simple">
+<h1>The steps to fitting<a class="headerlink" href="#the-steps-to-fitting" title="Permalink to this heading">#</a></h1>
+<ol class="arabic simple">
 <li><p>Check for <em>statistical control</em></p></li>
 <li><p>Select candidate distributions</p></li>
 <li><p>Fit and assess</p></li>
 </ol>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="check-for-statistical-control">
-<h1>1. Check for <em>statistical control</em><a class="headerlink" href="#check-for-statistical-control" title="Permalink to this headline">#</a></h1>
+<h1>1. Check for <em>statistical control</em><a class="headerlink" href="#check-for-statistical-control" title="Permalink to this heading">#</a></h1>
 <p>Sometimes the variability we see in a dataset can be <em>explained</em>; in this case, we shouldn’t just model it as random—we should work to understand <em>why</em> we saw that variability, and try to eliminate that source of variation. As we saw in <a class="reference external" href="https://zdelrosario.github.io/evc-course/exercises_solution/d22-e-stat06-spc-solution.html"><code class="docutils literal notranslate"><span class="pre">e-stat06-spc</span></code></a>, we can use <em>control charts</em> to hunt for explainable sources of variability.</p>
 <blockquote>
 <div><p>If we find no explainable sources of variability in a dataset, we can <em>provisionally</em> declare that the data are under <em>statistical control</em>, and model the variability as random.</p>
 </div></blockquote>
 <section id="q2-assess-statistical-control">
-<h2><strong>q2</strong> Assess statistical control<a class="headerlink" href="#q2-assess-statistical-control" title="Permalink to this headline">#</a></h2>
+<h2><strong>q2</strong> Assess statistical control<a class="headerlink" href="#q2-assess-statistical-control" title="Permalink to this heading">#</a></h2>
 <p>Assess the state of statistical control of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> using an X-bar and S chart. Answer the questions under <em>observations</em> below.</p>
 <p><em>Hint</em>: You did this at the end of <a class="reference external" href="https://zdelrosario.github.io/evc-course/exercises_solution/d22-e-stat06-spc-solution.html">e-stat06-spc</a>; see that exercise for a refresher if you need it.</p>
 <div class="cell docutils container">
@@ -1131,7 +777,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 /home/zach/Bin/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
 </pre></div>
 </div>
-<img alt="../_images/d23-e-grama06-fit-univar-solution_24_1.png" src="../_images/d23-e-grama06-fit-univar-solution_24_1.png" />
+<img alt="../_images/0981650d6e10d25893b1830b804ee244779577114339e0f93c0e5172c2173bc3.png" src="../_images/0981650d6e10d25893b1830b804ee244779577114339e0f93c0e5172c2173bc3.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8758214107194)&gt;
 </pre></div>
 </div>
@@ -1154,12 +800,12 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="select-candidate-distributions">
-<h1>2. Select candidate distributions<a class="headerlink" href="#select-candidate-distributions" title="Permalink to this headline">#</a></h1>
+<h1>2. Select candidate distributions<a class="headerlink" href="#select-candidate-distributions" title="Permalink to this heading">#</a></h1>
 <p>Once we’ve decided to proceed modeling a quantity as random, we next need to select candidate distributions to represent the quantity. This is a process that should involve critical thinking about the physical quantity.</p>
 <section id="short-list-of-distributions">
-<h2>(Short) list of distributions<a class="headerlink" href="#short-list-of-distributions" title="Permalink to this headline">#</a></h2>
+<h2>(Short) list of distributions<a class="headerlink" href="#short-list-of-distributions" title="Permalink to this heading">#</a></h2>
 <p>The following is a short list of distributions, along with a short description for each. The description information is helpful for choosing candidate distributions.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Distribution</p></th>
 <th class="head"><p>Name</p></th>
@@ -1191,7 +837,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </table>
 <p>For a longer list of supported distributions, see the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/stats.html">scipy documentation</a> for continuous distributions.</p>
 <section id="q3-select-reasonable-distributions-for-tensile-strength">
-<h3><strong>q3</strong> Select reasonable distributions for <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code><a class="headerlink" href="#q3-select-reasonable-distributions-for-tensile-strength" title="Permalink to this headline">#</a></h3>
+<h3><strong>q3</strong> Select reasonable distributions for <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code><a class="headerlink" href="#q3-select-reasonable-distributions-for-tensile-strength" title="Permalink to this heading">#</a></h3>
 <p>From the list above, select a few <em>reasonable</em> distributions that could describe the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>.</p>
 <p>List the distributions below:</p>
 <ul class="simple">
@@ -1202,12 +848,12 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="fit-and-assess">
-<h1>3. Fit and assess<a class="headerlink" href="#fit-and-assess" title="Permalink to this headline">#</a></h1>
+<h1>3. Fit and assess<a class="headerlink" href="#fit-and-assess" title="Permalink to this heading">#</a></h1>
 <p>Now that we’ve selected reasonable distributions for our quantity, we can fit and assess the distributions.</p>
 <section id="grama-tools-for-fitting">
-<h2>Grama tools for fitting<a class="headerlink" href="#grama-tools-for-fitting" title="Permalink to this headline">#</a></h2>
+<h2>Grama tools for fitting<a class="headerlink" href="#grama-tools-for-fitting" title="Permalink to this heading">#</a></h2>
 <p>Grama provides two ways to fit a distribution:</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Verb</p></th>
 <th class="head"><p>Purpose</p></th>
@@ -1224,7 +870,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </table>
 <p>Let’s learn how to use both!</p>
 <section id="q4-fit-a-normal-distribution">
-<h3><strong>q4</strong> Fit a normal distribution<a class="headerlink" href="#q4-fit-a-normal-distribution" title="Permalink to this headline">#</a></h3>
+<h3><strong>q4</strong> Fit a normal distribution<a class="headerlink" href="#q4-fit-a-normal-distribution" title="Permalink to this heading">#</a></h3>
 <p>Complete the arguments for both <code class="docutils literal notranslate"><span class="pre">gr.marg_mom()</span></code> and <code class="docutils literal notranslate"><span class="pre">gr.marg_fit()</span></code> below to fit a normal distribution for the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>.</p>
 <p><em>Hint 1</em>: Remember the table above (<code class="docutils literal notranslate"><span class="pre">Short</span> <span class="pre">list</span> <span class="pre">of</span> <span class="pre">distributions</span></code>) lists the string names for a set of distributions.</p>
 <p><em>Hint 2</em>: Remember to use the documentation to learn how to call a new function!</p>
@@ -1260,11 +906,11 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </section>
 </section>
 <section id="qq-plots">
-<h2>QQ plots<a class="headerlink" href="#qq-plots" title="Permalink to this headline">#</a></h2>
+<h2>QQ plots<a class="headerlink" href="#qq-plots" title="Permalink to this heading">#</a></h2>
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot">QQ plot</a> is a statistical tool for assessing the quality of a distribution fit. A QQ plot visualizes the <a class="reference external" href="https://zdelrosario.github.io/evc-course/exercises_solution/d19-e-stat04-distributions-solution.html#quantiles">quantiles</a> of the dataset against the quantiles of the fitted distribution: A perfect fit will have all points fall along the line <span class="math notranslate nohighlight">\(y = x\)</span>.</p>
 <p>The grama helper <code class="docutils literal notranslate"><span class="pre">gr.qqvals()</span></code> is used within a call to <code class="docutils literal notranslate"><span class="pre">gr.tf_mutate()</span></code>; we use <code class="docutils literal notranslate"><span class="pre">gr.qqvals()</span></code> to compute the theoretical quantiles for a QQ plot.</p>
 <section id="q5-inspect-a-perfect-qq-plot">
-<h3><strong>q5</strong> Inspect a “perfect” QQ plot<a class="headerlink" href="#q5-inspect-a-perfect-qq-plot" title="Permalink to this headline">#</a></h3>
+<h3><strong>q5</strong> Inspect a “perfect” QQ plot<a class="headerlink" href="#q5-inspect-a-perfect-qq-plot" title="Permalink to this heading">#</a></h3>
 <p>The following code draws a sample from a normal distribution, then assesses a normal fit of that dataset using a QQ plot. Run the code, inspect the plot, then answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1290,7 +936,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d23-e-grama06-fit-univar-solution_35_0.png" src="../_images/d23-e-grama06-fit-univar-solution_35_0.png" />
+<img alt="../_images/511112e98c39ddd529711de00806a2665b0910554dce4a2acab0057d2d22e7c1.png" src="../_images/511112e98c39ddd529711de00806a2665b0910554dce4a2acab0057d2d22e7c1.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8758213920317)&gt;
 </pre></div>
 </div>
@@ -1307,7 +953,7 @@ Keep in mind that this is what a <em>perfectly chosen</em> distribution will loo
 </ul>
 </section>
 <section id="q6-fit-a-distribution-for-the-tensile-strength">
-<h3><strong>q6</strong> Fit a distribution for the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code><a class="headerlink" href="#q6-fit-a-distribution-for-the-tensile-strength" title="Permalink to this headline">#</a></h3>
+<h3><strong>q6</strong> Fit a distribution for the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code><a class="headerlink" href="#q6-fit-a-distribution-for-the-tensile-strength" title="Permalink to this heading">#</a></h3>
 <p>Pick a distribution from the list of “reasonable” distributions you generated in <code class="docutils literal notranslate"><span class="pre">__q3__</span> <span class="pre">Select</span> <span class="pre">reasonable</span> <span class="pre">distributions</span></code>, and fit a distribution for <code class="docutils literal notranslate"><span class="pre">df_shewhart.tensile_strength</span></code>. Answer the questions under <em>observations</em> below.</p>
 <p><em>Hint</em>: If you choose to fit a <code class="docutils literal notranslate"><span class="pre">&quot;lognorm&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;weibull_min&quot;</span></code>, you may find it helpful to set the keyword argument <code class="docutils literal notranslate"><span class="pre">floc=0</span></code> to use the 2-parameter version of the distribution. Anecdotally, I find the 2-parameter version to be more stable for small datasets.</p>
 <div class="cell docutils container">
@@ -1354,7 +1000,7 @@ A value is trying to be set on a copy of a slice from a DataFrame
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
 </pre></div>
 </div>
-<img alt="../_images/d23-e-grama06-fit-univar-solution_38_1.png" src="../_images/d23-e-grama06-fit-univar-solution_38_1.png" />
+<img alt="../_images/5ec5eb6c4ec984d73e8cafc00dcfe33f37dc1e19d5a5107d44ba8aef92b4ea53.png" src="../_images/5ec5eb6c4ec984d73e8cafc00dcfe33f37dc1e19d5a5107d44ba8aef92b4ea53.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8758213873267)&gt;
 </pre></div>
 </div>
@@ -1377,10 +1023,10 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="use-the-model">
-<h1>Use the model<a class="headerlink" href="#use-the-model" title="Permalink to this headline">#</a></h1>
+<h1>Use the model<a class="headerlink" href="#use-the-model" title="Permalink to this heading">#</a></h1>
 <p>Once we’ve fit a distribution, we can use it to do useful work! We’ll discuss this further in a future exercise, but we’ll do a quick tour below.</p>
 <section id="beyond-assuming-the-mean">
-<h2>Beyond assuming the mean<a class="headerlink" href="#beyond-assuming-the-mean" title="Permalink to this headline">#</a></h2>
+<h2>Beyond assuming the mean<a class="headerlink" href="#beyond-assuming-the-mean" title="Permalink to this heading">#</a></h2>
 <p>Above, we saw that simply using the mean of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> for design was dangerous for safety-critical applications. Let’s talk about a more principled way to address the variability in <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code>.</p>
 <p>For a simple structural member subject to uniaxial tension, we can define its *limit state function <span class="math notranslate nohighlight">\(g\)</span> via</p>
 <div class="math notranslate nohighlight">
@@ -1431,7 +1077,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <p>We can use this model to assess the probability of failure of several values of <span class="math notranslate nohighlight">\(A\)</span>, to help inform a design decision.</p>
 <section id="q7-evaluate-the-model">
-<h3><strong>q7</strong> Evaluate the model<a class="headerlink" href="#q7-evaluate-the-model" title="Permalink to this headline">#</a></h3>
+<h3><strong>q7</strong> Evaluate the model<a class="headerlink" href="#q7-evaluate-the-model" title="Permalink to this heading">#</a></h3>
 <p>Draw a random sample from <code class="docutils literal notranslate"><span class="pre">md_structure</span></code> at different values of the cross-sectional area <code class="docutils literal notranslate"><span class="pre">A</span></code>. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1530,7 +1176,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./exercises_solution"
         },
         predefinedOutput: true
@@ -1538,50 +1184,146 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="d22-e-stat06-spc-solution.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Stats: Fundamentals of Statistical Process Monitoring</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="d22-e-stat06-spc-solution.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Stats: Fundamentals of Statistical Process Monitoring</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="d24-e-grama07-fit-multivar-solution.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="d24-e-grama07-fit-multivar-solution.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Grama: Fitting Multivariate Distributions</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Grama: Fitting Univariate Distributions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#why-fit-a-distribution">Why fit a distribution?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dangers-of-assuming-the-mean">Dangers of assuming the mean</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-what-fraction-of-tensile-strength-is-below-the-mean"><strong>q1</strong> What fraction of <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code> is below the mean?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-variables">Random variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-distribution-defines-a-random-variable">A distribution defines a random variable</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-steps-to-fitting">The steps to fitting</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#check-for-statistical-control">1. Check for <em>statistical control</em></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-assess-statistical-control"><strong>q2</strong> Assess statistical control</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#select-candidate-distributions">2. Select candidate distributions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#short-list-of-distributions">(Short) list of distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-select-reasonable-distributions-for-tensile-strength"><strong>q3</strong> Select reasonable distributions for <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-and-assess">3. Fit and assess</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grama-tools-for-fitting">Grama tools for fitting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-fit-a-normal-distribution"><strong>q4</strong> Fit a normal distribution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qq-plots">QQ plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-inspect-a-perfect-qq-plot"><strong>q5</strong> Inspect a “perfect” QQ plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-fit-a-distribution-for-the-tensile-strength"><strong>q6</strong> Fit a distribution for the <code class="docutils literal notranslate"><span class="pre">tensile_strength</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-model">Use the model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beyond-assuming-the-mean">Beyond assuming the mean</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-evaluate-the-model"><strong>q7</strong> Evaluate the model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Zachary del Rosario<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Zachary del Rosario
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

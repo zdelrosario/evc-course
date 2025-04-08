@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Introduction to Jupyter Notebooks &#8212; Data Science for Engineers</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,56 +64,98 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises_solution/d01-e-data00-notebooks-solution';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Vis: Data Visualization Basics" href="d01-e-vis00-basics-solution.html" />
     <link rel="prev" title="Exercise Solutions" href="../frontmatter/exercises.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="../frontmatter/home.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Data Science for Engineers</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -111,865 +165,378 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/setup.html">
-   Software Setup
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/howto.html">
-   How To Use These Materials
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/schedule.html">
-   Course Topics and Schedule
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/submission.html">
-   Challenge Submission Instructions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/recordings.html">
-   Class Recordings
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../frontmatter/demos.html">
-   Demo Notebooks
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-20-1.html">
-     Demo Notebook 2022-06-20
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-27.html">
-     Demo Notebook 2022-06-27
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-06.html">
-     Demo Notebook 2022-07-06
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-11.html">
-     Demo Notebook 2022-07-11
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-18.html">
-     Demo Notebook 2022-07-18
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/hours.html">
-   Office Hours Schedule
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../frontmatter/exercises.html">
-   Exercise Solutions
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Introduction to Jupyter Notebooks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
-     Vis: Data Visualization Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
-     Data: Isolating Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d02-e-tips-solution.html">
-     Tips for This Course
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
-     Stats: Introduction to Exploratory Data Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
-     Grama: Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
-     Vis: Bar Charts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d06-e-data02-derive-solution.html">
-     Data: Deriving Quantities
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d07-e-vis02-histograms-solution.html">
-     Vis: Histograms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d08-e-stat02-source-solution.html">
-     Stats: Real and Erroneous Sources of Variability
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d09-e-vis03-scatterplot-solution.html">
-     Vis: Scatterplots and Layers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d10-e-grama02-building-solution.html">
-     Grama: Model Building
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d11-e-data03-pivot-solution.html">
-     Data: Pivoting Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d12-e-grama03-eval-solution.html">
-     Grama: Model Evaluation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d13-e-vis04-lines-solution.html">
-     Vis: Lines and Related Geometries
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d14-e-stat03-descriptive-solution.html">
-     Stats: Descriptive Statistics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d15-e-data04-separate-unite-solution.html">
-     Data: Separating and Uniting Columns
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d16-e-data05-join-solution.html">
-     Data: Joining Datasets
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d17-e-vis05-multiples-solution.html">
-     Vis: Small Multiples
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d18-e-grama04-ema-solution.html">
-     Grama: Exploratory Model Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d19-e-stat04-distributions-solution.html">
-     Stats: Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d20-e-grama05-fit-function-solution.html">
-     Grama: Fitting Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d21-e-stat05-CI-solution.html">
-     Stats: Confidence Intervals and the CLT
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d22-e-stat06-spc-solution.html">
-     Stats: Fundamentals of Statistical Process Monitoring
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">
-     Grama: Fitting Univariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">
-     Grama: Fitting Multivariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d25-e-grama08-duu-solution.html">
-     Grama: Design Under Uncertainty
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/setup.html">Software Setup</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/howto.html">How To Use These Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/schedule.html">Course Topics and Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/submission.html">Challenge Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/recordings.html">Class Recordings</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../frontmatter/demos.html">Demo Notebooks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-20-1.html">Demo Notebook 2022-06-20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-27.html">Demo Notebook 2022-06-27</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-06.html">Demo Notebook 2022-07-06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-11.html">Demo Notebook 2022-07-11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-18.html">Demo Notebook 2022-07-18</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/hours.html">Office Hours Schedule</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../frontmatter/exercises.html">Exercise Solutions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Introduction to Jupyter Notebooks</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d01-e-vis00-basics-solution.html">Vis: Data Visualization Basics</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="d02-e-data01-isolate-solution.html">Data: Isolating Data</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d02-e-tips-solution.html">Tips for This Course</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d03-e-stat01-eda-solution.html">Stats: Introduction to Exploratory Data Analysis</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d04-e-grama01-basics-solution.html">Grama: Basics</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">Vis: Bar Charts</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d06-e-data02-derive-solution.html">Data: Deriving Quantities</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d07-e-vis02-histograms-solution.html">Vis: Histograms</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d08-e-stat02-source-solution.html">Stats: Real and Erroneous Sources of Variability</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d09-e-vis03-scatterplot-solution.html">Vis: Scatterplots and Layers</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d10-e-grama02-building-solution.html">Grama: Model Building</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d11-e-data03-pivot-solution.html">Data: Pivoting Data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d12-e-grama03-eval-solution.html">Grama: Model Evaluation</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d13-e-vis04-lines-solution.html">Vis: Lines and Related Geometries</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d14-e-stat03-descriptive-solution.html">Stats: Descriptive Statistics</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d15-e-data04-separate-unite-solution.html">Data: Separating and Uniting Columns</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d16-e-data05-join-solution.html">Data: Joining Datasets</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d17-e-vis05-multiples-solution.html">Vis: Small Multiples</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d18-e-grama04-ema-solution.html">Grama: Exploratory Model Analysis</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d19-e-stat04-distributions-solution.html">Stats: Distributions</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d20-e-grama05-fit-function-solution.html">Grama: Fitting Functions</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d21-e-stat05-CI-solution.html">Stats: Confidence Intervals and the CLT</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d22-e-stat06-spc-solution.html">Stats: Fundamentals of Statistical Process Monitoring</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">Grama: Fitting Univariate Distributions</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">Grama: Fitting Multivariate Distributions</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d25-e-grama08-duu-solution.html">Grama: Design Under Uncertainty</a></li>
+
+
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d01-e-data00-notebooks-solution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/exercises_solution/d01-e-data00-notebooks-solution.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/exercises_solution/d01-e-data00-notebooks-solution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Introduction to Jupyter Notebooks
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#highest-level-view">
-     Highest-level View
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#python">
-       Python
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#jupyter">
-       Jupyter
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-to-use-this-notebook">
-     How to use this Notebook
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q0-an-example-question">
-       <strong>
-        q0
-       </strong>
-       : An example question
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#jupyter-introduction">
-   Jupyter Introduction
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cells">
-     Cells
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q1-create-a-new-cell">
-       <strong>
-        q1
-       </strong>
-       Create a new cell
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#types-of-cells">
-       Types of cells
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#edit-and-format-execute-cells">
-       Edit and format / execute cells
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#code-cells">
-       Code cells
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-introduction">
-   Python Introduction
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#simple-operations">
-     Simple operations
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q2-average-some-values">
-       <strong>
-        q2
-       </strong>
-       Average some values
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#variables">
-     Variables
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-display-a-variable">
-       <strong>
-        q3
-       </strong>
-       Display a variable
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lists">
-     Lists
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-working-with-lists">
-       <strong>
-        q4
-       </strong>
-       Working with lists
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#indexing-and-slicing">
-     Indexing and Slicing
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q5-take-the-middle">
-       <strong>
-        q5
-       </strong>
-       Take the middle
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#modules">
-     Modules
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q6-do-the-math">
-       <strong>
-        q6
-       </strong>
-       Do the math
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conditionals-and-logic">
-     Conditionals and logic
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#functions">
-     Functions
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q7-define-a-function">
-       <strong>
-        q7
-       </strong>
-       Define a function
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#getting-help">
-     Getting help
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q8-consult-the-documentation">
-       <strong>
-        q8
-       </strong>
-       Consult the documentation
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q9-use-tab-completion">
-       q9 Use tab completion
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#end-notes">
-   End Notes
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#save-close-quit-and-re-open-this-notebook">
-     Save, close, quit, and re-open this notebook
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#additional-notebook-tips">
-     Additional notebook tips
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#jupyter-magic-functions">
-     Jupyter magic functions
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Introduction to Jupyter Notebooks</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Introduction to Jupyter Notebooks
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#highest-level-view">
-     Highest-level View
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#python">
-       Python
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#jupyter">
-       Jupyter
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-to-use-this-notebook">
-     How to use this Notebook
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q0-an-example-question">
-       <strong>
-        q0
-       </strong>
-       : An example question
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#jupyter-introduction">
-   Jupyter Introduction
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cells">
-     Cells
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q1-create-a-new-cell">
-       <strong>
-        q1
-       </strong>
-       Create a new cell
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#types-of-cells">
-       Types of cells
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#edit-and-format-execute-cells">
-       Edit and format / execute cells
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#code-cells">
-       Code cells
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-introduction">
-   Python Introduction
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#simple-operations">
-     Simple operations
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q2-average-some-values">
-       <strong>
-        q2
-       </strong>
-       Average some values
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#variables">
-     Variables
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-display-a-variable">
-       <strong>
-        q3
-       </strong>
-       Display a variable
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lists">
-     Lists
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-working-with-lists">
-       <strong>
-        q4
-       </strong>
-       Working with lists
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#indexing-and-slicing">
-     Indexing and Slicing
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q5-take-the-middle">
-       <strong>
-        q5
-       </strong>
-       Take the middle
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#modules">
-     Modules
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q6-do-the-math">
-       <strong>
-        q6
-       </strong>
-       Do the math
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conditionals-and-logic">
-     Conditionals and logic
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#functions">
-     Functions
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q7-define-a-function">
-       <strong>
-        q7
-       </strong>
-       Define a function
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#getting-help">
-     Getting help
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q8-consult-the-documentation">
-       <strong>
-        q8
-       </strong>
-       Consult the documentation
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q9-use-tab-completion">
-       q9 Use tab completion
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#end-notes">
-   End Notes
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#save-close-quit-and-re-open-this-notebook">
-     Save, close, quit, and re-open this notebook
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#additional-notebook-tips">
-     Additional notebook tips
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#jupyter-magic-functions">
-     Jupyter magic functions
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to Jupyter Notebooks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction to Jupyter Notebooks</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#highest-level-view">Highest-level View</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter">Jupyter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-notebook">How to use this Notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q0-an-example-question"><strong>q0</strong>: An example question</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-introduction">Jupyter Introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cells">Cells</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-create-a-new-cell"><strong>q1</strong> Create a new cell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-cells">Types of cells</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edit-and-format-execute-cells">Edit and format / execute cells</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-cells">Code cells</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python-introduction">Python Introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-operations">Simple operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-average-some-values"><strong>q2</strong> Average some values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-display-a-variable"><strong>q3</strong> Display a variable</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-working-with-lists"><strong>q4</strong> Working with lists</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-slicing">Indexing and Slicing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-take-the-middle"><strong>q5</strong> Take the middle</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules">Modules</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-do-the-math"><strong>q6</strong> Do the math</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditionals-and-logic">Conditionals and logic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-define-a-function"><strong>q7</strong> Define a function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-help">Getting help</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8-consult-the-documentation"><strong>q8</strong> Consult the documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q9-use-tab-completion">q9 Use tab completion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#end-notes">End Notes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-close-quit-and-re-open-this-notebook">Save, close, quit, and re-open this notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-notebook-tips">Additional notebook tips</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-magic-functions">Jupyter magic functions</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-jupyter-notebooks">
-<h1>Introduction to Jupyter Notebooks<a class="headerlink" href="#introduction-to-jupyter-notebooks" title="Permalink to this headline">#</a></h1>
+<h1>Introduction to Jupyter Notebooks<a class="headerlink" href="#introduction-to-jupyter-notebooks" title="Permalink to this heading">#</a></h1>
 <p><em>Original Authors: Enze Chen, Malcolm Davidson, Zach del Rosario</em></p>
 <p><em>Purpose</em>: We’re going to use programming tools throughout this workshop. There are many benefits to using programming to do data science, but to reap these benefits you will need to know some basics about coding in Python, and working in Jupyter notebooks.</p>
 <section id="highest-level-view">
-<h2>Highest-level View<a class="headerlink" href="#highest-level-view" title="Permalink to this headline">#</a></h2>
+<h2>Highest-level View<a class="headerlink" href="#highest-level-view" title="Permalink to this heading">#</a></h2>
 <p>Throughout this day of the workshop, we will be writing computer software. Before diving into the details, it is beneficial to understand what tools we’ll be using, and why.</p>
 <section id="python">
-<h3>Python<a class="headerlink" href="#python" title="Permalink to this headline">#</a></h3>
+<h3>Python<a class="headerlink" href="#python" title="Permalink to this heading">#</a></h3>
 <p>Python is a <a class="reference external" href="https://www.python.org"><em>programming language</em></a>, and an extremely popular one at that. Python is praised for its readability, is consistently ranked as a top programming language, and is used by both top <a class="reference external" href="https://en.wikipedia.org/wiki/Python_(programming_language)#Uses">software companies</a> and scientists doing computation. All of this is to say that knowing how to write Python code is a valuable skill.</p>
 </section>
 <section id="jupyter">
-<h3>Jupyter<a class="headerlink" href="#jupyter" title="Permalink to this headline">#</a></h3>
+<h3>Jupyter<a class="headerlink" href="#jupyter" title="Permalink to this heading">#</a></h3>
 <p>Jupyter is a <a class="reference external" href="https://jupyter.org"><em>programming environment</em></a>, often used for writing and sharing Python code. Just as one could choose to write English on stone tablets or on paper, one could choose to write Python code in simple files or in <em>jupyter notebooks</em>. These notebooks are useful for a number of reasons:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Multimedia: This document you’re reading now is a jupyter notebook – it is a combination of (executable) Python code and (formatted) plain text. By allowing the juxtaposition of different media (code and natural language, to name a couple options), one can provide human-readable context next to executable software.</p></li>
 <li><p>Saves state: Jupyter notebooks <em>save state</em>, allowing you to run some code, save the results, close the document and come back to it later. This is certainly possible in other coding environments, but jupyter has built-in facilities to make this easy.</p></li>
 <li><p>Reproducible: <a class="reference external" href="https://en.wikipedia.org/wiki/Reproducibility">Reproducibility</a> is a critical issue in science – results cannot be considered scientifically valid unless they can be reproduced under similar conditions. The same principles apply to computational experiments; all too often software is written under time pressure, resulting in scattered documentation and analysis. Consolidating documentation and analysis within a single notebook facilitates scientific reproducibility.</p></li>
@@ -979,7 +546,7 @@ title="Print to PDF"
 </section>
 <hr class="docutils" />
 <section id="how-to-use-this-notebook">
-<h2>How to use this Notebook<a class="headerlink" href="#how-to-use-this-notebook" title="Permalink to this headline">#</a></h2>
+<h2>How to use this Notebook<a class="headerlink" href="#how-to-use-this-notebook" title="Permalink to this heading">#</a></h2>
 <p>This jupyter notebook is an <em>interactive exercise</em> – it contains some reading, but the focus is on fill-in-the-blank sections that are meant to test your understanding and spark further learning. Pedagogy research shows that so-called <em>active learning</em> – learning by doing – is far more effective than lecture alone. Thus, you will get the most out of this workshop if you do the work! Try – to the best of your ability – to complete the exercises in these notebooks, and please feel free to ask the instructors questions if you get stuck. (It’s what we’re here for.)</p>
 <div class="warning admonition">
 <p class="admonition-title">Run this notebook locally!</p>
@@ -988,32 +555,32 @@ title="Print to PDF"
 </div>
 <p>Exercise portions of the notebook will be marked with a “q” subheading, like the following:</p>
 <section id="q0-an-example-question">
-<h3><strong>q0</strong>: An example question<a class="headerlink" href="#q0-an-example-question" title="Permalink to this headline">#</a></h3>
+<h3><strong>q0</strong>: An example question<a class="headerlink" href="#q0-an-example-question" title="Permalink to this heading">#</a></h3>
 <p>Here’s an example of an exercise prompt. Follow the directions here to start the exercise.</p>
 </section>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="jupyter-introduction">
-<h1>Jupyter Introduction<a class="headerlink" href="#jupyter-introduction" title="Permalink to this headline">#</a></h1>
+<h1>Jupyter Introduction<a class="headerlink" href="#jupyter-introduction" title="Permalink to this heading">#</a></h1>
 <section id="cells">
-<h2>Cells<a class="headerlink" href="#cells" title="Permalink to this headline">#</a></h2>
+<h2>Cells<a class="headerlink" href="#cells" title="Permalink to this heading">#</a></h2>
 <p>A Jupyter notebook is organized as a sequence of different <strong>cells</strong>. Cells contain chunks of information and allow you to switch between text and code.</p>
 <p><strong>Current cell</strong>: The currently-selected cell will have a color bar appear on the far left. Use your cursor or arrow keys to select different cells.</p>
 <p><strong>Create new cell</strong>: To create a new cell, click the “<strong>+</strong>” icon at the top. This will create a cell below the currently selected cell.</p>
 <p><strong>Delete a cell</strong>: To delete the currently-selected cell, click the “<strong>scissors</strong>” icon at the top.</p>
 <section id="q1-create-a-new-cell">
-<h3><strong>q1</strong> Create a new cell<a class="headerlink" href="#q1-create-a-new-cell" title="Permalink to this headline">#</a></h3>
+<h3><strong>q1</strong> Create a new cell<a class="headerlink" href="#q1-create-a-new-cell" title="Permalink to this heading">#</a></h3>
 <p><strong>Create a new cell below this one.</strong> Note that it has a different background color! This is because cells have different <em>types</em>.</p>
 </section>
 <section id="types-of-cells">
-<h3>Types of cells<a class="headerlink" href="#types-of-cells" title="Permalink to this headline">#</a></h3>
+<h3>Types of cells<a class="headerlink" href="#types-of-cells" title="Permalink to this heading">#</a></h3>
 <p>There are two types of cells we will discuss here: <code class="docutils literal notranslate"><span class="pre">Markdown</span></code> and <code class="docutils literal notranslate"><span class="pre">Code</span></code>. A single cell can only have 1 type.</p>
 <p><strong>Markdown</strong>: These are text cells that use the <a class="reference external" href="https://en.wikipedia.org/wiki/Markdown">Markdown language</a> for formatting. You can put instructions, headings, links, images, and much more; even <span class="math notranslate nohighlight">\(\LaTeX\)</span> (<a class="reference external" href="https://www.latex-project.org">a language for typesetting mathematics</a>). Here is a <a class="reference external" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">cheatsheet</a> for Markdown syntax.</p>
 <p><strong>Code</strong>: These are cells where you can type Python code, just as you would in a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file. They will have a label <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[</span> <span class="pre">]:</span></code> to their left, or just <code class="docutils literal notranslate"><span class="pre">[]</span></code> if you are using “jupyter lab”.</p>
 <p>To switch the type of cell, you can use the dropdown menu at the top of the top of the page. (Note: While you have this cell selected, the dropdown menu should read <code class="docutils literal notranslate"><span class="pre">Markdown</span></code>.)</p>
 </section>
 <section id="edit-and-format-execute-cells">
-<h3>Edit and format / execute cells<a class="headerlink" href="#edit-and-format-execute-cells" title="Permalink to this headline">#</a></h3>
+<h3>Edit and format / execute cells<a class="headerlink" href="#edit-and-format-execute-cells" title="Permalink to this heading">#</a></h3>
 <p>To edit a Markdown cell, <strong>triple-click</strong> within the cell if you currently see a blue bar. Then type and edit as normal.</p>
 <p>To format (“execute”) a Markdown cell, press <strong>Ctrl+Enter</strong> when in “edit” mode. The cursor will disappear. Your formatting will also take effect.</p>
 <hr class="docutils" />
@@ -1022,7 +589,7 @@ title="Print to PDF"
 <p><em>Cells can also be executed using the Run symbol (play button) at the top of the page.</em></p>
 </section>
 <section id="code-cells">
-<h3>Code cells<a class="headerlink" href="#code-cells" title="Permalink to this headline">#</a></h3>
+<h3>Code cells<a class="headerlink" href="#code-cells" title="Permalink to this heading">#</a></h3>
 <p>So far we’ve only seen Markdown cells. Let’s see what we can do with Code cells! Try selecting the code cell below this one and executing it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1042,9 +609,9 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="python-introduction">
-<h1>Python Introduction<a class="headerlink" href="#python-introduction" title="Permalink to this headline">#</a></h1>
+<h1>Python Introduction<a class="headerlink" href="#python-introduction" title="Permalink to this heading">#</a></h1>
 <section id="simple-operations">
-<h2>Simple operations<a class="headerlink" href="#simple-operations" title="Permalink to this headline">#</a></h2>
+<h2>Simple operations<a class="headerlink" href="#simple-operations" title="Permalink to this heading">#</a></h2>
 <p>We can use python like a calculator to carry out simple operations. Some of these include:</p>
 <ul class="simple">
 <li><p>Simple math operators <code class="docutils literal notranslate"><span class="pre">(+,</span> <span class="pre">-,</span> <span class="pre">*,</span> <span class="pre">/)</span></code></p></li>
@@ -1053,7 +620,7 @@ title="Print to PDF"
 <li><p>Python functions; console output <code class="docutils literal notranslate"><span class="pre">print(&quot;Hello&quot;)</span></code></p></li>
 </ul>
 <section id="q2-average-some-values">
-<h3><strong>q2</strong> Average some values<a class="headerlink" href="#q2-average-some-values" title="Permalink to this headline">#</a></h3>
+<h3><strong>q2</strong> Average some values<a class="headerlink" href="#q2-average-some-values" title="Permalink to this heading">#</a></h3>
 <p>Use basic python operations to average the following numbers: <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">4,</span> <span class="pre">6,</span> <span class="pre">8]</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1076,7 +643,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="variables">
-<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">#</a></h2>
+<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this heading">#</a></h2>
 <p>Jupyter notebooks will save variables across different cells. We can assign values with the <code class="docutils literal notranslate"><span class="pre">=</span></code> operator. Furthermore, typing just the variable on the last line of a code cell will typically display the variable’s values/attributes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1088,7 +655,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="q3-display-a-variable">
-<h3><strong>q3</strong> Display a variable<a class="headerlink" href="#q3-display-a-variable" title="Permalink to this headline">#</a></h3>
+<h3><strong>q3</strong> Display a variable<a class="headerlink" href="#q3-display-a-variable" title="Permalink to this heading">#</a></h3>
 <p>Display the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> in the chunk below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1117,7 +684,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="lists">
-<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">#</a></h2>
+<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this heading">#</a></h2>
 <p>A <em>list</em> is a Python <a class="reference external" href="https://en.wikipedia.org/wiki/Data_structure">data structure</a>. We’ll use lists (and other <em>iterable</em> data structures) quite a bit when doing data analysis – generally we have many observations (elements) to consider.</p>
 <p>Lists (i.e. arrays) in Python are created with square brackets. The entries of a list are called <em>elements</em>.</p>
 <div class="cell docutils container">
@@ -1158,7 +725,7 @@ title="Print to PDF"
 </div>
 <p>Note that I <em>did not need</em> to write an additional line to print the result. This is because the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator <em>returns</em> a list as a result, which is printed by jupyter.</p>
 <section id="q4-working-with-lists">
-<h3><strong>q4</strong> Working with lists<a class="headerlink" href="#q4-working-with-lists" title="Permalink to this headline">#</a></h3>
+<h3><strong>q4</strong> Working with lists<a class="headerlink" href="#q4-working-with-lists" title="Permalink to this heading">#</a></h3>
 <p>Test your understanding of lists; make a prediction about what the following code will display:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">list_a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">list_b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
@@ -1170,7 +737,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="indexing-and-slicing">
-<h2>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">#</a></h2>
+<h2>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this heading">#</a></h2>
 <p>We can access specific elements of a list (and other <em>iterables</em>) by <em>indexing</em>. Python is uses zero-based indexing, meaning the first element of an iterable is <code class="docutils literal notranslate"><span class="pre">0</span></code>, the second is <code class="docutils literal notranslate"><span class="pre">1</span></code>, and so on.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Index</span>    <span class="mi">0</span>    <span class="mi">1</span>    <span class="mi">2</span>    <span class="mi">3</span>    <span class="mi">4</span>
 <span class="n">List</span>  <span class="p">[</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span> <span class="p">]</span>
@@ -1233,7 +800,7 @@ Everything before the second TO LAST element: [0, 1, 2, 3]
 </div>
 </div>
 <section id="q5-take-the-middle">
-<h3><strong>q5</strong> Take the middle<a class="headerlink" href="#q5-take-the-middle" title="Permalink to this headline">#</a></h3>
+<h3><strong>q5</strong> Take the middle<a class="headerlink" href="#q5-take-the-middle" title="Permalink to this heading">#</a></h3>
 <p>Using your understanding of python indexing &amp; slicing, select the <em>middle three elements</em> of the following list.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1257,12 +824,12 @@ Everything before the second TO LAST element: [0, 1, 2, 3]
 </section>
 </section>
 <section id="modules">
-<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">#</a></h2>
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this heading">#</a></h2>
 <p>By default, python provides a relatively small set of functionality. To carry out more specialized operations, we can <em>import module</em>. A module is a set of tools that help us carry out some tasks. For instance, the following module will help us control the execution of python code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import a module first</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="c1"># Pause code execution for 5 seconds</span>
 <span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -1284,7 +851,7 @@ Everything before the second TO LAST element: [0, 1, 2, 3]
 <p>If we don’t import a <em>specific</em> object from a module, then we need to explicitly reference the module in order to use its contents. For instance, we could write the above as the following.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cell is finished running!&quot;</span><span class="p">)</span>
 </pre></div>
@@ -1297,8 +864,8 @@ Everything before the second TO LAST element: [0, 1, 2, 3]
 </div>
 </div>
 <p>We’ll see this a lot later when we start working with the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code> modules, where we tend to use <em>canonical</em> aliases:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
@@ -1308,7 +875,7 @@ Everything before the second TO LAST element: [0, 1, 2, 3]
 </pre></div>
 </div>
 <section id="q6-do-the-math">
-<h3><strong>q6</strong> Do the math<a class="headerlink" href="#q6-do-the-math" title="Permalink to this headline">#</a></h3>
+<h3><strong>q6</strong> Do the math<a class="headerlink" href="#q6-do-the-math" title="Permalink to this heading">#</a></h3>
 <p>Import the functions <code class="docutils literal notranslate"><span class="pre">sin,</span> <span class="pre">cos</span></code> and the constant <code class="docutils literal notranslate"><span class="pre">pi</span></code> from the <code class="docutils literal notranslate"><span class="pre">math</span></code> module, and use them to complete the following code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1319,7 +886,7 @@ Everything before the second TO LAST element: [0, 1, 2, 3]
 <span class="c1"># TODO: Use sin() and cos() to complete the code below</span>
 <span class="c1">###</span>
 
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
 <span class="n">angle_degrees</span> <span class="o">=</span> <span class="mi">15</span>
 
 <span class="n">angle_radians</span> <span class="o">=</span> <span class="n">angle_degrees</span> <span class="o">/</span> <span class="mi">180</span> <span class="o">*</span> <span class="n">pi</span>
@@ -1341,7 +908,7 @@ Everything before the second TO LAST element: [0, 1, 2, 3]
 </section>
 </section>
 <section id="conditionals-and-logic">
-<h2>Conditionals and logic<a class="headerlink" href="#conditionals-and-logic" title="Permalink to this headline">#</a></h2>
+<h2>Conditionals and logic<a class="headerlink" href="#conditionals-and-logic" title="Permalink to this heading">#</a></h2>
 <p>Conditionals and logic allow us to adapt a program to the data.  Python conditional statements are <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code>, and <code class="docutils literal notranslate"><span class="pre">else</span></code>, and they follow a particular syntax:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1396,18 +963,18 @@ Everything before the second TO LAST element: [0, 1, 2, 3]
 </div>
 </section>
 <section id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h2>
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h2>
 <p>Functions are defined in Python using the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword. We specify the arguments by putting variable names in the parentheses <code class="docutils literal notranslate"><span class="pre">()</span></code>. We can specify a value to provide as output by using the <code class="docutils literal notranslate"><span class="pre">return</span></code> keyword, as demonstrated below:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fcn_example</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fcn_example</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 </pre></div>
 </div>
 <p>Like with conditional statements, we must end a function definition line with a colon <code class="docutils literal notranslate"><span class="pre">:</span></code>, and start the following lines indented:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="c1"># This will throw an error: Missing colon</span>
-<span class="k">def</span> <span class="nf">fcn_wrong1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fcn_wrong1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span>
  <span class="c1"># This will throw an error: Missing indentation</span>
-<span class="k">def</span> <span class="nf">fcn_wrong2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fcn_wrong2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">4</span>
 </pre></div>
 </div>
@@ -1418,14 +985,14 @@ Everything before the second TO LAST element: [0, 1, 2, 3]
 </div>
 <p>The inputs <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are called <em>arguments</em>. Arguments without default values must be provided (such as <code class="docutils literal notranslate"><span class="pre">x</span></code>), while arguments with default values are called <em>keyword arguments</em> and do not need to be specified when calling the function (such as <code class="docutils literal notranslate"><span class="pre">y</span></code>). Providing a keyword argument (<code class="docutils literal notranslate"><span class="pre">fcn_example(1,</span> <span class="pre">y=2)</span></code>) allows us to override the default value.</p>
 <section id="q7-define-a-function">
-<h3><strong>q7</strong> Define a function<a class="headerlink" href="#q7-define-a-function" title="Permalink to this headline">#</a></h3>
+<h3><strong>q7</strong> Define a function<a class="headerlink" href="#q7-define-a-function" title="Permalink to this heading">#</a></h3>
 <p>Define a function named <code class="docutils literal notranslate"><span class="pre">fcn_q7</span></code> that takes a single input, adds <code class="docutils literal notranslate"><span class="pre">2</span></code>, and returns the result.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TASK: Define a function `fcn_q7` that adds `2` to the input</span>
 
 
-<span class="k">def</span> <span class="nf">fcn_q7</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fcn_q7</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">2</span>
 <span class="c1"># No need to edit this; use this to check your work</span>
 <span class="k">assert</span> \
@@ -1444,7 +1011,7 @@ Everything before the second TO LAST element: [0, 1, 2, 3]
 </section>
 </section>
 <section id="getting-help">
-<h2>Getting help<a class="headerlink" href="#getting-help" title="Permalink to this headline">#</a></h2>
+<h2>Getting help<a class="headerlink" href="#getting-help" title="Permalink to this heading">#</a></h2>
 <p>If there is a python function that is mysterious to you, you can always consult the <em>documentation</em>. You can call the python built-in <code class="docutils literal notranslate"><span class="pre">help()</span></code> function on an object to display its documentation. The following documentation for <code class="docutils literal notranslate"><span class="pre">list</span></code> points to a number of functions that operate on lists that we did not cover; for instance, the <code class="docutils literal notranslate"><span class="pre">list.sort()</span></code> method is <em>extremely useful</em> for data science.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1475,7 +1042,7 @@ sort(self, /, *, key=None, reverse=False)
 <p>Note that in Jupyter, there’s another way to access documentation on a function. If you move your cursor over a function, click there, and press <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Tab</span></code>, this will open a documentation panel for easy reference!</p>
 </div>
 <section id="q8-consult-the-documentation">
-<h3><strong>q8</strong> Consult the documentation<a class="headerlink" href="#q8-consult-the-documentation" title="Permalink to this headline">#</a></h3>
+<h3><strong>q8</strong> Consult the documentation<a class="headerlink" href="#q8-consult-the-documentation" title="Permalink to this heading">#</a></h3>
 <p>Consult the documentation for <code class="docutils literal notranslate"><span class="pre">list.sort()</span></code> to reverse-sort the following list.</p>
 <p><em>Hint</em>: You will need to set a certain keyword argument to complete this task.</p>
 <div class="cell docutils container">
@@ -1500,7 +1067,7 @@ sort(self, /, *, key=None, reverse=False)
 <p>Practice using tab completion below.</p>
 </section>
 <section id="q9-use-tab-completion">
-<h3>q9 Use tab completion<a class="headerlink" href="#q9-use-tab-completion" title="Permalink to this headline">#</a></h3>
+<h3>q9 Use tab completion<a class="headerlink" href="#q9-use-tab-completion" title="Permalink to this heading">#</a></h3>
 <p>Uncomment the lines below and use tab completion to complete the variable names.</p>
 <p><em>Hint</em>: Make sure your cursor is at the <strong>end</strong> of the line when you press <code class="docutils literal notranslate"><span class="pre">Tab</span></code>; otherwise you’ll indent the line!</p>
 <div class="cell docutils container">
@@ -1525,15 +1092,15 @@ sort(self, /, *, key=None, reverse=False)
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="end-notes">
-<h1>End Notes<a class="headerlink" href="#end-notes" title="Permalink to this headline">#</a></h1>
+<h1>End Notes<a class="headerlink" href="#end-notes" title="Permalink to this heading">#</a></h1>
 <p>The following notes are not required, but you may find these additional Jupyter tips helpful.</p>
 <section id="save-close-quit-and-re-open-this-notebook">
-<h2>Save, close, quit, and re-open this notebook<a class="headerlink" href="#save-close-quit-and-re-open-this-notebook" title="Permalink to this headline">#</a></h2>
+<h2>Save, close, quit, and re-open this notebook<a class="headerlink" href="#save-close-quit-and-re-open-this-notebook" title="Permalink to this heading">#</a></h2>
 <p>You can save by clicking the floppy-disk icon in the top-left of this notebook pane, and can close the notebook by clicking the “X” of its tab. Re-open by double-clicking on <code class="docutils literal notranslate"><span class="pre">e-data00-notebooks-assignment.ipynb</span></code> in the left-hand navigation pane.</p>
 <p>You should find that everything is exactly as you had left it! You will have to re-run the cells to load variables, but having the output saved can be helpful, particularly since Jupyter saves figures.</p>
 </section>
 <section id="additional-notebook-tips">
-<h2>Additional notebook tips<a class="headerlink" href="#additional-notebook-tips" title="Permalink to this headline">#</a></h2>
+<h2>Additional notebook tips<a class="headerlink" href="#additional-notebook-tips" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Save your notebooks frequently! Use the “<strong>Save</strong>” icon at the top or the <strong>Ctrl+S</strong>/<strong>Cmd+S</strong> shortcut.</p></li>
 <li><p>Use <strong>Shift+Enter</strong> to run a cell and move on to the next cell. This allows you to sequentially execute all the cells in your notebook.</p></li>
@@ -1542,11 +1109,11 @@ sort(self, /, *, key=None, reverse=False)
 </ul>
 </section>
 <section id="jupyter-magic-functions">
-<h2>Jupyter magic functions<a class="headerlink" href="#jupyter-magic-functions" title="Permalink to this headline">#</a></h2>
+<h2>Jupyter magic functions<a class="headerlink" href="#jupyter-magic-functions" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://ipython.readthedocs.io/en/stable/interactive/magics.html">Magic functions</a> are a set of commands exclusively for Jupyter notebooks that are part of what makes notebooks so powerful. All magic commands start with a <code class="docutils literal notranslate"><span class="pre">%</span></code> sign, and we give examples of some below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># This command will output how long it takes the following inline command to run</span>
 <span class="o">%</span><span class="k">time</span> np.mean(np.random.randint(low=1, high=7, size=1000))
@@ -1697,7 +1264,7 @@ time	 var
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./exercises_solution"
         },
         predefinedOutput: true
@@ -1705,50 +1272,163 @@ time	 var
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../frontmatter/exercises.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Exercise Solutions</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../frontmatter/exercises.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Exercise Solutions</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="d01-e-vis00-basics-solution.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="d01-e-vis00-basics-solution.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Vis: Data Visualization Basics</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction to Jupyter Notebooks</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#highest-level-view">Highest-level View</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter">Jupyter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-notebook">How to use this Notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q0-an-example-question"><strong>q0</strong>: An example question</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-introduction">Jupyter Introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cells">Cells</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-create-a-new-cell"><strong>q1</strong> Create a new cell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-cells">Types of cells</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edit-and-format-execute-cells">Edit and format / execute cells</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-cells">Code cells</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python-introduction">Python Introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-operations">Simple operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-average-some-values"><strong>q2</strong> Average some values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-display-a-variable"><strong>q3</strong> Display a variable</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-working-with-lists"><strong>q4</strong> Working with lists</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-slicing">Indexing and Slicing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-take-the-middle"><strong>q5</strong> Take the middle</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules">Modules</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-do-the-math"><strong>q6</strong> Do the math</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditionals-and-logic">Conditionals and logic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-define-a-function"><strong>q7</strong> Define a function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-help">Getting help</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8-consult-the-documentation"><strong>q8</strong> Consult the documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q9-use-tab-completion">q9 Use tab completion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#end-notes">End Notes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-close-quit-and-re-open-this-notebook">Save, close, quit, and re-open this notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-notebook-tips">Additional notebook tips</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-magic-functions">Jupyter magic functions</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Zachary del Rosario<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Zachary del Rosario
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

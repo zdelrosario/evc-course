@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Grama: Exploratory Model Analysis &#8212; Data Science for Engineers</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,56 +64,98 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises_solution/d18-e-grama04-ema-solution';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Stats: Distributions" href="d19-e-stat04-distributions-solution.html" />
     <link rel="prev" title="Vis: Small Multiples" href="d17-e-vis05-multiples-solution.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="../frontmatter/home.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Data Science for Engineers</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -111,761 +165,347 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/setup.html">
-   Software Setup
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/howto.html">
-   How To Use These Materials
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/schedule.html">
-   Course Topics and Schedule
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/submission.html">
-   Challenge Submission Instructions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/recordings.html">
-   Class Recordings
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../frontmatter/demos.html">
-   Demo Notebooks
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-20-1.html">
-     Demo Notebook 2022-06-20
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-27.html">
-     Demo Notebook 2022-06-27
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-06.html">
-     Demo Notebook 2022-07-06
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-11.html">
-     Demo Notebook 2022-07-11
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-18.html">
-     Demo Notebook 2022-07-18
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/hours.html">
-   Office Hours Schedule
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../frontmatter/exercises.html">
-   Exercise Solutions
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
-     Introduction to Jupyter Notebooks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
-     Vis: Data Visualization Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
-     Data: Isolating Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d02-e-tips-solution.html">
-     Tips for This Course
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
-     Stats: Introduction to Exploratory Data Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
-     Grama: Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
-     Vis: Bar Charts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d06-e-data02-derive-solution.html">
-     Data: Deriving Quantities
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d07-e-vis02-histograms-solution.html">
-     Vis: Histograms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d08-e-stat02-source-solution.html">
-     Stats: Real and Erroneous Sources of Variability
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d09-e-vis03-scatterplot-solution.html">
-     Vis: Scatterplots and Layers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d10-e-grama02-building-solution.html">
-     Grama: Model Building
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d11-e-data03-pivot-solution.html">
-     Data: Pivoting Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d12-e-grama03-eval-solution.html">
-     Grama: Model Evaluation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d13-e-vis04-lines-solution.html">
-     Vis: Lines and Related Geometries
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d14-e-stat03-descriptive-solution.html">
-     Stats: Descriptive Statistics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d15-e-data04-separate-unite-solution.html">
-     Data: Separating and Uniting Columns
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d16-e-data05-join-solution.html">
-     Data: Joining Datasets
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d17-e-vis05-multiples-solution.html">
-     Vis: Small Multiples
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Grama: Exploratory Model Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d19-e-stat04-distributions-solution.html">
-     Stats: Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d20-e-grama05-fit-function-solution.html">
-     Grama: Fitting Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d21-e-stat05-CI-solution.html">
-     Stats: Confidence Intervals and the CLT
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d22-e-stat06-spc-solution.html">
-     Stats: Fundamentals of Statistical Process Monitoring
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">
-     Grama: Fitting Univariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">
-     Grama: Fitting Multivariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d25-e-grama08-duu-solution.html">
-     Grama: Design Under Uncertainty
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/setup.html">Software Setup</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/howto.html">How To Use These Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/schedule.html">Course Topics and Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/submission.html">Challenge Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/recordings.html">Class Recordings</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../frontmatter/demos.html">Demo Notebooks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-20-1.html">Demo Notebook 2022-06-20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-27.html">Demo Notebook 2022-06-27</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-06.html">Demo Notebook 2022-07-06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-11.html">Demo Notebook 2022-07-11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-18.html">Demo Notebook 2022-07-18</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/hours.html">Office Hours Schedule</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../frontmatter/exercises.html">Exercise Solutions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="d01-e-data00-notebooks-solution.html">Introduction to Jupyter Notebooks</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d01-e-vis00-basics-solution.html">Vis: Data Visualization Basics</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="d02-e-data01-isolate-solution.html">Data: Isolating Data</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d02-e-tips-solution.html">Tips for This Course</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d03-e-stat01-eda-solution.html">Stats: Introduction to Exploratory Data Analysis</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d04-e-grama01-basics-solution.html">Grama: Basics</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">Vis: Bar Charts</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d06-e-data02-derive-solution.html">Data: Deriving Quantities</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d07-e-vis02-histograms-solution.html">Vis: Histograms</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d08-e-stat02-source-solution.html">Stats: Real and Erroneous Sources of Variability</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d09-e-vis03-scatterplot-solution.html">Vis: Scatterplots and Layers</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d10-e-grama02-building-solution.html">Grama: Model Building</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d11-e-data03-pivot-solution.html">Data: Pivoting Data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d12-e-grama03-eval-solution.html">Grama: Model Evaluation</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d13-e-vis04-lines-solution.html">Vis: Lines and Related Geometries</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d14-e-stat03-descriptive-solution.html">Stats: Descriptive Statistics</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d15-e-data04-separate-unite-solution.html">Data: Separating and Uniting Columns</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d16-e-data05-join-solution.html">Data: Joining Datasets</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d17-e-vis05-multiples-solution.html">Vis: Small Multiples</a></li>
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Grama: Exploratory Model Analysis</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d19-e-stat04-distributions-solution.html">Stats: Distributions</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d20-e-grama05-fit-function-solution.html">Grama: Fitting Functions</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d21-e-stat05-CI-solution.html">Stats: Confidence Intervals and the CLT</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d22-e-stat06-spc-solution.html">Stats: Fundamentals of Statistical Process Monitoring</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">Grama: Fitting Univariate Distributions</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">Grama: Fitting Multivariate Distributions</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d25-e-grama08-duu-solution.html">Grama: Design Under Uncertainty</a></li>
+
+
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d18-e-grama04-ema-solution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/exercises_solution/d18-e-grama04-ema-solution.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/exercises_solution/d18-e-grama04-ema-solution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Grama: Exploratory Model Analysis
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#core-idea-curiosity-and-skepticism">
-     Core Idea: Curiosity and Skepticism
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#running-example-circuit-model">
-     Running Example: Circuit model
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basic-facts">
-   Basic Facts
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q1-model-summary">
-     <strong>
-      q1
-     </strong>
-     Model summary
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-context">
-     Model context
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#inputs">
-   Inputs
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q2-overview-of-inputs">
-     <strong>
-      q2
-     </strong>
-     Overview of inputs
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hypothesis-same-variability">
-     Hypothesis: Same Variability
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-compare-designed-and-realized-values">
-       <strong>
-        q3
-       </strong>
-       Compare designed and realized values
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#outputs">
-   Outputs
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q4-nominal-outputs">
-     <strong>
-      q4
-     </strong>
-     Nominal outputs
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q5-overview-of-outputs">
-     <strong>
-      q5
-     </strong>
-     Overview of outputs
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hypothesis-nominal-outputs-are-likely-outputs">
-     Hypothesis: Nominal Outputs are Likely Outputs
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q6-compare-distribution-and-nominal-values-for-omega0">
-       <strong>
-        q6
-       </strong>
-       Compare distribution and nominal values for
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         omega0
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q7-density-of-outputs">
-       <strong>
-        q7
-       </strong>
-       Density of outputs
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q8-compare-nominal-with-distribution">
-       <strong>
-        q8
-       </strong>
-       Compare nominal with distribution
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#input-to-output-relationships">
-   Input-to-output Relationships
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q9-correlation-tile-plot">
-     <strong>
-      q9
-     </strong>
-     Correlation tile plot
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hypothesis-dr-has-no-effect-on-omega0">
-     Hypothesis:
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       dR
-      </span>
-     </code>
-     has no effect on
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       omega0
-      </span>
-     </code>
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q10-sweeps">
-       <strong>
-        q10
-       </strong>
-       Sweeps
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Grama: Exploratory Model Analysis</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Grama: Exploratory Model Analysis
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#core-idea-curiosity-and-skepticism">
-     Core Idea: Curiosity and Skepticism
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#running-example-circuit-model">
-     Running Example: Circuit model
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basic-facts">
-   Basic Facts
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q1-model-summary">
-     <strong>
-      q1
-     </strong>
-     Model summary
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-context">
-     Model context
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#inputs">
-   Inputs
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q2-overview-of-inputs">
-     <strong>
-      q2
-     </strong>
-     Overview of inputs
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hypothesis-same-variability">
-     Hypothesis: Same Variability
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-compare-designed-and-realized-values">
-       <strong>
-        q3
-       </strong>
-       Compare designed and realized values
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#outputs">
-   Outputs
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q4-nominal-outputs">
-     <strong>
-      q4
-     </strong>
-     Nominal outputs
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q5-overview-of-outputs">
-     <strong>
-      q5
-     </strong>
-     Overview of outputs
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hypothesis-nominal-outputs-are-likely-outputs">
-     Hypothesis: Nominal Outputs are Likely Outputs
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q6-compare-distribution-and-nominal-values-for-omega0">
-       <strong>
-        q6
-       </strong>
-       Compare distribution and nominal values for
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         omega0
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q7-density-of-outputs">
-       <strong>
-        q7
-       </strong>
-       Density of outputs
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q8-compare-nominal-with-distribution">
-       <strong>
-        q8
-       </strong>
-       Compare nominal with distribution
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#input-to-output-relationships">
-   Input-to-output Relationships
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q9-correlation-tile-plot">
-     <strong>
-      q9
-     </strong>
-     Correlation tile plot
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hypothesis-dr-has-no-effect-on-omega0">
-     Hypothesis:
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       dR
-      </span>
-     </code>
-     has no effect on
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       omega0
-      </span>
-     </code>
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q10-sweeps">
-       <strong>
-        q10
-       </strong>
-       Sweeps
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Grama: Exploratory Model Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Grama: Exploratory Model Analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-idea-curiosity-and-skepticism">Core Idea: Curiosity and Skepticism</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-example-circuit-model">Running Example: Circuit model</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-facts">Basic Facts</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-model-summary"><strong>q1</strong> Model summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-context">Model context</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs">Inputs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-overview-of-inputs"><strong>q2</strong> Overview of inputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-same-variability">Hypothesis: Same Variability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-compare-designed-and-realized-values"><strong>q3</strong> Compare designed and realized values</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">Outputs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-nominal-outputs"><strong>q4</strong> Nominal outputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-overview-of-outputs"><strong>q5</strong> Overview of outputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-nominal-outputs-are-likely-outputs">Hypothesis: Nominal Outputs are Likely Outputs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-compare-distribution-and-nominal-values-for-omega0"><strong>q6</strong> Compare distribution and nominal values for <code class="docutils literal notranslate"><span class="pre">omega0</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-density-of-outputs"><strong>q7</strong> Density of outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8-compare-nominal-with-distribution"><strong>q8</strong> Compare nominal with distribution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#input-to-output-relationships">Input-to-output Relationships</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q9-correlation-tile-plot"><strong>q9</strong> Correlation tile plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-dr-has-no-effect-on-omega0">Hypothesis: <code class="docutils literal notranslate"><span class="pre">dR</span></code> has no effect on <code class="docutils literal notranslate"><span class="pre">omega0</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q10-sweeps"><strong>q10</strong> Sweeps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="grama-exploratory-model-analysis">
-<h1>Grama: Exploratory Model Analysis<a class="headerlink" href="#grama-exploratory-model-analysis" title="Permalink to this headline">#</a></h1>
+<h1>Grama: Exploratory Model Analysis<a class="headerlink" href="#grama-exploratory-model-analysis" title="Permalink to this heading">#</a></h1>
 <p><em>Purpose</em>: Once we’ve built a grama model, we can use a variety of tools to <em>make sense</em> of the model. However, as we saw with exploratory data analysis (EDA), we need both tools and a <em>mindset</em> to make sense of data. This exercise is about an analogous approach to sense-making with models: <em>exploratory model analysis</em> (EMA).</p>
 <section id="core-idea-curiosity-and-skepticism">
-<h2>Core Idea: Curiosity and Skepticism<a class="headerlink" href="#core-idea-curiosity-and-skepticism" title="Permalink to this headline">#</a></h2>
+<h2>Core Idea: Curiosity and Skepticism<a class="headerlink" href="#core-idea-curiosity-and-skepticism" title="Permalink to this heading">#</a></h2>
 <p>Remember the core principles of EDA:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Curiosity: Generate lots of ideas and hypotheses about your data.</p></li>
 <li><p>Skepticism: Remain unconvinced of those ideas, unless you can find credible patterns to support them.</p></li>
 </ol>
@@ -873,11 +513,11 @@ title="Print to PDF"
 <p>These ideas can be a little abstract, so let’s illustrate them with a concrete example.</p>
 </section>
 <section id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">grama</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -886,11 +526,11 @@ title="Print to PDF"
 </div>
 </section>
 <section id="running-example-circuit-model">
-<h2>Running Example: Circuit model<a class="headerlink" href="#running-example-circuit-model" title="Permalink to this headline">#</a></h2>
+<h2>Running Example: Circuit model<a class="headerlink" href="#running-example-circuit-model" title="Permalink to this heading">#</a></h2>
 <p>The following code initializes a model for a <a class="reference external" href="https://en.wikipedia.org/wiki/RLC_circuit#Parallel_circuit">parallel RLC circuit</a>. I’m not expecting you to know any circuit theory; in fact, I chose this model because you’re unlikely to know much about this system. We will use exploratory model analysis techniques to learn something about this model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.models</span> <span class="kn">import</span> <span class="n">make_prlc_rand</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">grama.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_prlc_rand</span>
 <span class="n">md_circuit</span> <span class="o">=</span> <span class="n">make_prlc_rand</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -899,10 +539,10 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="basic-facts">
-<h1>Basic Facts<a class="headerlink" href="#basic-facts" title="Permalink to this headline">#</a></h1>
+<h1>Basic Facts<a class="headerlink" href="#basic-facts" title="Permalink to this heading">#</a></h1>
 <p>Before we start exploring a model, we should first understand the basic facts about that model. This is most easily done in grama by printing the model’s summary:</p>
 <section id="q1-model-summary">
-<h2><strong>q1</strong> Model summary<a class="headerlink" href="#q1-model-summary" title="Permalink to this headline">#</a></h2>
+<h2><strong>q1</strong> Model summary<a class="headerlink" href="#q1-model-summary" title="Permalink to this heading">#</a></h2>
 <p>Print the model summary for <code class="docutils literal notranslate"><span class="pre">md_circuit</span></code>. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -949,9 +589,9 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="model-context">
-<h2>Model context<a class="headerlink" href="#model-context" title="Permalink to this headline">#</a></h2>
+<h2>Model context<a class="headerlink" href="#model-context" title="Permalink to this heading">#</a></h2>
 <p>The symbols above don’t tell us anything about what the model quantities <em>mean</em>. Here are some basic facts on the quantities in the model</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Variable</p></th>
 <th class="head"><p>I/O</p></th>
@@ -1000,10 +640,10 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="inputs">
-<h1>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">#</a></h1>
+<h1>Inputs<a class="headerlink" href="#inputs" title="Permalink to this heading">#</a></h1>
 <p>First, let’s get a sense for how the inputs of the model vary.</p>
 <section id="q2-overview-of-inputs">
-<h2><strong>q2</strong> Overview of inputs<a class="headerlink" href="#q2-overview-of-inputs" title="Permalink to this headline">#</a></h2>
+<h2><strong>q2</strong> Overview of inputs<a class="headerlink" href="#q2-overview-of-inputs" title="Permalink to this heading">#</a></h2>
 <p>Generate a random sample from the model at its nominal deterministic values, and visualize all of the random <strong>inputs</strong>. Answer the questions under <em>observations</em> below.</p>
 <p><em>Hint</em>: You should be using <code class="docutils literal notranslate"><span class="pre">gr.ev_sample()</span></code> for this task. A particular keyword argument with <code class="docutils literal notranslate"><span class="pre">gr.ev_sample()</span></code> will allow you to generate the appropriate plot using <code class="docutils literal notranslate"><span class="pre">gr.pt_auto()</span></code>.</p>
 <div class="cell docutils container">
@@ -1025,7 +665,7 @@ Calling plot_scattermat....
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/Git/py_grama/grama/plot_auto.py:234: UserWarning: Matplotlib is currently using module://matplotlib_inline.backend_inline, which is a non-GUI backend, so cannot show the figure.
 </pre></div>
 </div>
-<img alt="../_images/d18-e-grama04-ema-solution_13_2.png" src="../_images/d18-e-grama04-ema-solution_13_2.png" />
+<img alt="../_images/3373418536122afc92cd5ceed6a74cdf26b41d60e25c4323f9ead6ac4139f54f.png" src="../_images/3373418536122afc92cd5ceed6a74cdf26b41d60e25c4323f9ead6ac4139f54f.png" />
 </div>
 </div>
 <p><em>Observations</em></p>
@@ -1044,13 +684,13 @@ Calling plot_scattermat....
 </ul>
 </section>
 <section id="hypothesis-same-variability">
-<h2>Hypothesis: Same Variability<a class="headerlink" href="#hypothesis-same-variability" title="Permalink to this headline">#</a></h2>
+<h2>Hypothesis: Same Variability<a class="headerlink" href="#hypothesis-same-variability" title="Permalink to this heading">#</a></h2>
 <blockquote>
 <div><p>Since the random perturbations <code class="docutils literal notranslate"><span class="pre">dL,</span> <span class="pre">dR,</span> <span class="pre">dC</span></code> are mutually independent, we should see the same variability regardless of the circuit component values.</p>
 </div></blockquote>
 <p>You’ll assess this hypothesis in the next task.</p>
 <section id="q3-compare-designed-and-realized-values">
-<h3><strong>q3</strong> Compare designed and realized values<a class="headerlink" href="#q3-compare-designed-and-realized-values" title="Permalink to this headline">#</a></h3>
+<h3><strong>q3</strong> Compare designed and realized values<a class="headerlink" href="#q3-compare-designed-and-realized-values" title="Permalink to this heading">#</a></h3>
 <p>The following plot shows the designed and realized capacitance values. Answer the questions under <em>observations</em> below.</p>
 <p><em>Hint</em>: Remember that you can add <code class="docutils literal notranslate"><span class="pre">gr.scale_x_log10()</span></code> and <code class="docutils literal notranslate"><span class="pre">gr.scale_y_log10()</span></code> to a ggplot to change to a log-log scale.</p>
 <div class="cell docutils container">
@@ -1077,7 +717,7 @@ Calling plot_scattermat....
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d18-e-grama04-ema-solution_17_0.png" src="../_images/d18-e-grama04-ema-solution_17_0.png" />
+<img alt="../_images/a6c041a3dfd5fa546d264ac0a42f88bc09c616a75b6d7202e5c863f4dc4f95f3.png" src="../_images/a6c041a3dfd5fa546d264ac0a42f88bc09c616a75b6d7202e5c863f4dc4f95f3.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763311150466)&gt;
 </pre></div>
 </div>
@@ -1095,10 +735,10 @@ Calling plot_scattermat....
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="outputs">
-<h1>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">#</a></h1>
+<h1>Outputs<a class="headerlink" href="#outputs" title="Permalink to this heading">#</a></h1>
 <p>Next, we’ll study the outputs of the model “on their own”; that is, we’re not yet going to look at the input-to-output relationships.</p>
 <section id="q4-nominal-outputs">
-<h2><strong>q4</strong> Nominal outputs<a class="headerlink" href="#q4-nominal-outputs" title="Permalink to this headline">#</a></h2>
+<h2><strong>q4</strong> Nominal outputs<a class="headerlink" href="#q4-nominal-outputs" title="Permalink to this heading">#</a></h2>
 <p>Evaluate the model at its nominal input values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1170,7 +810,7 @@ Calling plot_scattermat....
 </div>
 </section>
 <section id="q5-overview-of-outputs">
-<h2><strong>q5</strong> Overview of outputs<a class="headerlink" href="#q5-overview-of-outputs" title="Permalink to this headline">#</a></h2>
+<h2><strong>q5</strong> Overview of outputs<a class="headerlink" href="#q5-overview-of-outputs" title="Permalink to this heading">#</a></h2>
 <p>Generate a random sample from the model at its nominal deterministic values, and visualize the distribution of <strong>outputs</strong>. Answer the questions under <em>observations</em> below.</p>
 <p><em>Hint</em>: This is a lot like <strong>qX</strong> Overview of inputs. You should only need to use <code class="docutils literal notranslate"><span class="pre">gr.ev_sample()</span></code> and <code class="docutils literal notranslate"><span class="pre">gr.pt_auto()</span></code>.</p>
 <div class="cell docutils container">
@@ -1194,7 +834,7 @@ Calling plot_hists....
 /Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/facets/facet.py:396: PlotnineWarning: If you need more space for the y-axis tick text use ... + theme(subplots_adjust={&#39;hspace&#39;: 0.25}). Choose an appropriate value for &#39;hspace&#39;
 </pre></div>
 </div>
-<img alt="../_images/d18-e-grama04-ema-solution_23_2.png" src="../_images/d18-e-grama04-ema-solution_23_2.png" />
+<img alt="../_images/88afec4f3df98d6f9d6ce2fa94fe2dc55229c9359a21cbd4061efe16f0aa3e0b.png" src="../_images/88afec4f3df98d6f9d6ce2fa94fe2dc55229c9359a21cbd4061efe16f0aa3e0b.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763303613248)&gt;
 </pre></div>
 </div>
@@ -1221,14 +861,14 @@ Calling plot_hists....
 </ul>
 </section>
 <section id="hypothesis-nominal-outputs-are-likely-outputs">
-<h2>Hypothesis: Nominal Outputs are Likely Outputs<a class="headerlink" href="#hypothesis-nominal-outputs-are-likely-outputs" title="Permalink to this headline">#</a></h2>
+<h2>Hypothesis: Nominal Outputs are Likely Outputs<a class="headerlink" href="#hypothesis-nominal-outputs-are-likely-outputs" title="Permalink to this heading">#</a></h2>
 <p>Here’s something we might intuitively expect:</p>
 <blockquote>
 <div><p>The nominal model outputs should be more likely output values.</p>
 </div></blockquote>
 <p>You’ll assess this hypothesis multiple different ways in the following tasks.</p>
 <section id="q6-compare-distribution-and-nominal-values-for-omega0">
-<h3><strong>q6</strong> Compare distribution and nominal values for <code class="docutils literal notranslate"><span class="pre">omega0</span></code><a class="headerlink" href="#q6-compare-distribution-and-nominal-values-for-omega0" title="Permalink to this headline">#</a></h3>
+<h3><strong>q6</strong> Compare distribution and nominal values for <code class="docutils literal notranslate"><span class="pre">omega0</span></code><a class="headerlink" href="#q6-compare-distribution-and-nominal-values-for-omega0" title="Permalink to this heading">#</a></h3>
 <p>Create a plot that visualizes both a distribution of <code class="docutils literal notranslate"><span class="pre">omega0</span></code> and the nominal output value of <code class="docutils literal notranslate"><span class="pre">omega0</span></code>. Answer the questions under <em>observations</em> below.</p>
 <p><em>Hint</em>: One good way to do this is with a histogram and a vertical line.</p>
 <div class="cell docutils container">
@@ -1250,7 +890,7 @@ Calling plot_hists....
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eval_sample() is rounding n...
 </pre></div>
 </div>
-<img alt="../_images/d18-e-grama04-ema-solution_27_1.png" src="../_images/d18-e-grama04-ema-solution_27_1.png" />
+<img alt="../_images/492b7b6ee1ceceaa084f456a84b0371608ce42c5c514efc768b95b514b42d8f4.png" src="../_images/492b7b6ee1ceceaa084f456a84b0371608ce42c5c514efc768b95b514b42d8f4.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763311154990)&gt;
 </pre></div>
 </div>
@@ -1266,7 +906,7 @@ Calling plot_hists....
 </ul>
 </section>
 <section id="q7-density-of-outputs">
-<h3><strong>q7</strong> Density of outputs<a class="headerlink" href="#q7-density-of-outputs" title="Permalink to this headline">#</a></h3>
+<h3><strong>q7</strong> Density of outputs<a class="headerlink" href="#q7-density-of-outputs" title="Permalink to this heading">#</a></h3>
 <p>Visualize a random sample of <code class="docutils literal notranslate"><span class="pre">Q</span></code> and <code class="docutils literal notranslate"><span class="pre">omega0</span></code> with a 2d bin plot. Increase the sample size <code class="docutils literal notranslate"><span class="pre">n</span></code> to get a “full” plot. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1284,7 +924,7 @@ Calling plot_hists....
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eval_sample() is rounding n...
 </pre></div>
 </div>
-<img alt="../_images/d18-e-grama04-ema-solution_30_1.png" src="../_images/d18-e-grama04-ema-solution_30_1.png" />
+<img alt="../_images/ecd804973ed1a9e9a9f3357a01a45068887bff71908f1e765a59fe1ae747cd02.png" src="../_images/ecd804973ed1a9e9a9f3357a01a45068887bff71908f1e765a59fe1ae747cd02.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763303531936)&gt;
 </pre></div>
 </div>
@@ -1300,7 +940,7 @@ Calling plot_hists....
 </ul>
 </section>
 <section id="q8-compare-nominal-with-distribution">
-<h3><strong>q8</strong> Compare nominal with distribution<a class="headerlink" href="#q8-compare-nominal-with-distribution" title="Permalink to this headline">#</a></h3>
+<h3><strong>q8</strong> Compare nominal with distribution<a class="headerlink" href="#q8-compare-nominal-with-distribution" title="Permalink to this heading">#</a></h3>
 <p>Add a point for the nominal output values to the following plot. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1326,7 +966,7 @@ Calling plot_hists....
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eval_sample() is rounding n...
 </pre></div>
 </div>
-<img alt="../_images/d18-e-grama04-ema-solution_33_1.png" src="../_images/d18-e-grama04-ema-solution_33_1.png" />
+<img alt="../_images/fba983d299d8353c980cf3b082dd9737b27302bc19d1c231ae745288998cb4b9.png" src="../_images/fba983d299d8353c980cf3b082dd9737b27302bc19d1c231ae745288998cb4b9.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763311157447)&gt;
 </pre></div>
 </div>
@@ -1355,10 +995,10 @@ Calling plot_hists....
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="input-to-output-relationships">
-<h1>Input-to-output Relationships<a class="headerlink" href="#input-to-output-relationships" title="Permalink to this headline">#</a></h1>
+<h1>Input-to-output Relationships<a class="headerlink" href="#input-to-output-relationships" title="Permalink to this heading">#</a></h1>
 <p>Now that we have a sense of both the inputs and outputs of the model, let’s do some exploration to see how the two are related.</p>
 <section id="q9-correlation-tile-plot">
-<h2><strong>q9</strong> Correlation tile plot<a class="headerlink" href="#q9-correlation-tile-plot" title="Permalink to this headline">#</a></h2>
+<h2><strong>q9</strong> Correlation tile plot<a class="headerlink" href="#q9-correlation-tile-plot" title="Permalink to this heading">#</a></h2>
 <p>Use the routine <code class="docutils literal notranslate"><span class="pre">tf_iocorr()</span></code> to transform the data from <code class="docutils literal notranslate"><span class="pre">ev_sample()</span></code> into input-to-output correlations. The <code class="docutils literal notranslate"><span class="pre">pt_auto()</span></code> routine will automatically plot those correlations as colors on a tile plot. Study the correlation tile plot, and answer the questions under <em>observations</em> below.</p>
 <p><em>Note</em>: You’re going to see a <em>ton</em> of warnings when you run <code class="docutils literal notranslate"><span class="pre">tf_iocorr()</span></code> on the data; you’ll think about what those mean in the questions below.</p>
 <div class="cell docutils container">
@@ -1399,7 +1039,7 @@ Calling plot_corrtile....
 /Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/scipy/stats/_stats_py.py:4068: PearsonRConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
 </pre></div>
 </div>
-<img alt="../_images/d18-e-grama04-ema-solution_37_2.png" src="../_images/d18-e-grama04-ema-solution_37_2.png" />
+<img alt="../_images/8bbbf36402bd4aa167752f44247211c200624735ab9d92882ee267f7b4d8f457.png" src="../_images/8bbbf36402bd4aa167752f44247211c200624735ab9d92882ee267f7b4d8f457.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763303642555)&gt;
 </pre></div>
 </div>
@@ -1430,7 +1070,7 @@ Calling plot_corrtile....
 </ul>
 </section>
 <section id="hypothesis-dr-has-no-effect-on-omega0">
-<h2>Hypothesis: <code class="docutils literal notranslate"><span class="pre">dR</span></code> has no effect on <code class="docutils literal notranslate"><span class="pre">omega0</span></code><a class="headerlink" href="#hypothesis-dr-has-no-effect-on-omega0" title="Permalink to this headline">#</a></h2>
+<h2>Hypothesis: <code class="docutils literal notranslate"><span class="pre">dR</span></code> has no effect on <code class="docutils literal notranslate"><span class="pre">omega0</span></code><a class="headerlink" href="#hypothesis-dr-has-no-effect-on-omega0" title="Permalink to this heading">#</a></h2>
 <p>Based on the correlation tile plot above, we can formulate the following hypothesis:</p>
 <blockquote>
 <div><p>The variability in the resistance <code class="docutils literal notranslate"><span class="pre">dR</span></code> has no effect on the natural frequency <code class="docutils literal notranslate"><span class="pre">omega0</span></code>.</p>
@@ -1482,7 +1122,7 @@ A value is trying to be set on a copy of a slice from a DataFrame
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
 </pre></div>
 </div>
-<img alt="../_images/d18-e-grama04-ema-solution_40_2.png" src="../_images/d18-e-grama04-ema-solution_40_2.png" />
+<img alt="../_images/35e66d6c9dcd1071036715dd3bea90e125597c978147b831b3ad6bd694197299.png" src="../_images/35e66d6c9dcd1071036715dd3bea90e125597c978147b831b3ad6bd694197299.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763311095077)&gt;
 </pre></div>
 </div>
@@ -1495,7 +1135,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <p>We can further investigate the hypothesis formulated from the correlation tile plot by constructing some sweeps.</p>
 <section id="q10-sweeps">
-<h3><strong>q10</strong> Sweeps<a class="headerlink" href="#q10-sweeps" title="Permalink to this headline">#</a></h3>
+<h3><strong>q10</strong> Sweeps<a class="headerlink" href="#q10-sweeps" title="Permalink to this heading">#</a></h3>
 <p>Construct a sinew plot to investigate how each input affects the outputs of the model. Answer the questions under <em>observations</em> below.</p>
 <p><em>Note</em>: You only need to sweep the random variables; you can use the nominal levels for the deterministic inputs.</p>
 <div class="cell docutils container">
@@ -1516,7 +1156,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
 </pre></div>
 </div>
-<img alt="../_images/d18-e-grama04-ema-solution_43_2.png" src="../_images/d18-e-grama04-ema-solution_43_2.png" />
+<img alt="../_images/efbb0fa4f17976866ffc539314084d65a30713920ce1af1303ff9d39cb4b1f15.png" src="../_images/efbb0fa4f17976866ffc539314084d65a30713920ce1af1303ff9d39cb4b1f15.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763303624807)&gt;
 </pre></div>
 </div>
@@ -1546,7 +1186,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./exercises_solution"
         },
         predefinedOutput: true
@@ -1554,50 +1194,140 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="d17-e-vis05-multiples-solution.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Vis: Small Multiples</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="d17-e-vis05-multiples-solution.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Vis: Small Multiples</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="d19-e-stat04-distributions-solution.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="d19-e-stat04-distributions-solution.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Stats: Distributions</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Grama: Exploratory Model Analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-idea-curiosity-and-skepticism">Core Idea: Curiosity and Skepticism</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-example-circuit-model">Running Example: Circuit model</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-facts">Basic Facts</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-model-summary"><strong>q1</strong> Model summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-context">Model context</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs">Inputs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-overview-of-inputs"><strong>q2</strong> Overview of inputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-same-variability">Hypothesis: Same Variability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-compare-designed-and-realized-values"><strong>q3</strong> Compare designed and realized values</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">Outputs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-nominal-outputs"><strong>q4</strong> Nominal outputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-overview-of-outputs"><strong>q5</strong> Overview of outputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-nominal-outputs-are-likely-outputs">Hypothesis: Nominal Outputs are Likely Outputs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-compare-distribution-and-nominal-values-for-omega0"><strong>q6</strong> Compare distribution and nominal values for <code class="docutils literal notranslate"><span class="pre">omega0</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-density-of-outputs"><strong>q7</strong> Density of outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8-compare-nominal-with-distribution"><strong>q8</strong> Compare nominal with distribution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#input-to-output-relationships">Input-to-output Relationships</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q9-correlation-tile-plot"><strong>q9</strong> Correlation tile plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-dr-has-no-effect-on-omega0">Hypothesis: <code class="docutils literal notranslate"><span class="pre">dR</span></code> has no effect on <code class="docutils literal notranslate"><span class="pre">omega0</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q10-sweeps"><strong>q10</strong> Sweeps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Zachary del Rosario<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Zachary del Rosario
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

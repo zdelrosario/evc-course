@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Grama: Fitting Functions &#8212; Data Science for Engineers</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,56 +64,98 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises_solution/d20-e-grama05-fit-function-solution';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Stats: Confidence Intervals and the CLT" href="d21-e-stat05-CI-solution.html" />
     <link rel="prev" title="Stats: Distributions" href="d19-e-stat04-distributions-solution.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="../frontmatter/home.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Data Science for Engineers</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -111,792 +165,357 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/setup.html">
-   Software Setup
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/howto.html">
-   How To Use These Materials
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/schedule.html">
-   Course Topics and Schedule
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/submission.html">
-   Challenge Submission Instructions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/recordings.html">
-   Class Recordings
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../frontmatter/demos.html">
-   Demo Notebooks
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-20-1.html">
-     Demo Notebook 2022-06-20
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-27.html">
-     Demo Notebook 2022-06-27
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-06.html">
-     Demo Notebook 2022-07-06
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-11.html">
-     Demo Notebook 2022-07-11
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-18.html">
-     Demo Notebook 2022-07-18
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/hours.html">
-   Office Hours Schedule
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../frontmatter/exercises.html">
-   Exercise Solutions
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
-     Introduction to Jupyter Notebooks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
-     Vis: Data Visualization Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
-     Data: Isolating Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d02-e-tips-solution.html">
-     Tips for This Course
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
-     Stats: Introduction to Exploratory Data Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
-     Grama: Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
-     Vis: Bar Charts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d06-e-data02-derive-solution.html">
-     Data: Deriving Quantities
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d07-e-vis02-histograms-solution.html">
-     Vis: Histograms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d08-e-stat02-source-solution.html">
-     Stats: Real and Erroneous Sources of Variability
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d09-e-vis03-scatterplot-solution.html">
-     Vis: Scatterplots and Layers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d10-e-grama02-building-solution.html">
-     Grama: Model Building
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d11-e-data03-pivot-solution.html">
-     Data: Pivoting Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d12-e-grama03-eval-solution.html">
-     Grama: Model Evaluation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d13-e-vis04-lines-solution.html">
-     Vis: Lines and Related Geometries
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d14-e-stat03-descriptive-solution.html">
-     Stats: Descriptive Statistics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d15-e-data04-separate-unite-solution.html">
-     Data: Separating and Uniting Columns
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d16-e-data05-join-solution.html">
-     Data: Joining Datasets
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d17-e-vis05-multiples-solution.html">
-     Vis: Small Multiples
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d18-e-grama04-ema-solution.html">
-     Grama: Exploratory Model Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d19-e-stat04-distributions-solution.html">
-     Stats: Distributions
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Grama: Fitting Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d21-e-stat05-CI-solution.html">
-     Stats: Confidence Intervals and the CLT
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d22-e-stat06-spc-solution.html">
-     Stats: Fundamentals of Statistical Process Monitoring
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">
-     Grama: Fitting Univariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">
-     Grama: Fitting Multivariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d25-e-grama08-duu-solution.html">
-     Grama: Design Under Uncertainty
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/setup.html">Software Setup</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/howto.html">How To Use These Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/schedule.html">Course Topics and Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/submission.html">Challenge Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/recordings.html">Class Recordings</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../frontmatter/demos.html">Demo Notebooks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-20-1.html">Demo Notebook 2022-06-20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-27.html">Demo Notebook 2022-06-27</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-06.html">Demo Notebook 2022-07-06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-11.html">Demo Notebook 2022-07-11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-18.html">Demo Notebook 2022-07-18</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/hours.html">Office Hours Schedule</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../frontmatter/exercises.html">Exercise Solutions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="d01-e-data00-notebooks-solution.html">Introduction to Jupyter Notebooks</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d01-e-vis00-basics-solution.html">Vis: Data Visualization Basics</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="d02-e-data01-isolate-solution.html">Data: Isolating Data</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d02-e-tips-solution.html">Tips for This Course</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d03-e-stat01-eda-solution.html">Stats: Introduction to Exploratory Data Analysis</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d04-e-grama01-basics-solution.html">Grama: Basics</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">Vis: Bar Charts</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d06-e-data02-derive-solution.html">Data: Deriving Quantities</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d07-e-vis02-histograms-solution.html">Vis: Histograms</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d08-e-stat02-source-solution.html">Stats: Real and Erroneous Sources of Variability</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d09-e-vis03-scatterplot-solution.html">Vis: Scatterplots and Layers</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d10-e-grama02-building-solution.html">Grama: Model Building</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d11-e-data03-pivot-solution.html">Data: Pivoting Data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d12-e-grama03-eval-solution.html">Grama: Model Evaluation</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d13-e-vis04-lines-solution.html">Vis: Lines and Related Geometries</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d14-e-stat03-descriptive-solution.html">Stats: Descriptive Statistics</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d15-e-data04-separate-unite-solution.html">Data: Separating and Uniting Columns</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d16-e-data05-join-solution.html">Data: Joining Datasets</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d17-e-vis05-multiples-solution.html">Vis: Small Multiples</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d18-e-grama04-ema-solution.html">Grama: Exploratory Model Analysis</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d19-e-stat04-distributions-solution.html">Stats: Distributions</a></li>
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Grama: Fitting Functions</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d21-e-stat05-CI-solution.html">Stats: Confidence Intervals and the CLT</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d22-e-stat06-spc-solution.html">Stats: Fundamentals of Statistical Process Monitoring</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">Grama: Fitting Univariate Distributions</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">Grama: Fitting Multivariate Distributions</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d25-e-grama08-duu-solution.html">Grama: Design Under Uncertainty</a></li>
+
+
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d20-e-grama05-fit-function-solution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/exercises_solution/d20-e-grama05-fit-function-solution.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/exercises_solution/d20-e-grama05-fit-function-solution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Grama: Fitting Functions
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fitting">
-   Fitting
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#trajectory-data">
-     Trajectory Data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ema-of-proposed-model">
-   EMA of Proposed Model
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#trajectory-model">
-     Trajectory model
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#linear-drag-model">
-       Linear drag model
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sinews-and-bounds">
-     Sinews and bounds
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q1-sweep-values-of-tau">
-       <strong>
-        q1
-       </strong>
-       Sweep values of
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         tau
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q2-plot-a-few-trajectories">
-       <strong>
-        q2
-       </strong>
-       Plot a few trajectories
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fitting-with-least-squares">
-   Fitting with Least Squares
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-ft-nls-routine">
-     The
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       ft_nls()
-      </span>
-     </code>
-     routine
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-run-ft-nls">
-       <strong>
-        q3
-       </strong>
-       Run
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         ft_nls()
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-assess-the-fit">
-       <strong>
-        q4
-       </strong>
-       Assess the fit
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rough-estimation">
-     Rough estimation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q5-choose-reasonable-initial-parameters">
-       <strong>
-        q5
-       </strong>
-       Choose reasonable initial parameters
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model-assessment">
-   Model Assessment
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quantifying-uncertainty">
-     Quantifying uncertainty
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q6-inspect-plausible-input-values">
-       <strong>
-        q6
-       </strong>
-       Inspect plausible input values
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q7-inspect-plausible-trajectories">
-       <strong>
-        q7
-       </strong>
-       Inspect plausible trajectories
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-validation">
-     Model Validation
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#validation-data">
-     Validation data
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q8-compare-the-fit-to-validation-data">
-       <strong>
-        q8
-       </strong>
-       Compare the fit to validation data
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-dramatic-reveal">
-     The dramatic reveal…
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#further-reading">
-   Further Reading
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Grama: Fitting Functions</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Grama: Fitting Functions
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fitting">
-   Fitting
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#trajectory-data">
-     Trajectory Data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ema-of-proposed-model">
-   EMA of Proposed Model
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#trajectory-model">
-     Trajectory model
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#linear-drag-model">
-       Linear drag model
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sinews-and-bounds">
-     Sinews and bounds
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q1-sweep-values-of-tau">
-       <strong>
-        q1
-       </strong>
-       Sweep values of
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         tau
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q2-plot-a-few-trajectories">
-       <strong>
-        q2
-       </strong>
-       Plot a few trajectories
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fitting-with-least-squares">
-   Fitting with Least Squares
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-ft-nls-routine">
-     The
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       ft_nls()
-      </span>
-     </code>
-     routine
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-run-ft-nls">
-       <strong>
-        q3
-       </strong>
-       Run
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         ft_nls()
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-assess-the-fit">
-       <strong>
-        q4
-       </strong>
-       Assess the fit
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rough-estimation">
-     Rough estimation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q5-choose-reasonable-initial-parameters">
-       <strong>
-        q5
-       </strong>
-       Choose reasonable initial parameters
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model-assessment">
-   Model Assessment
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quantifying-uncertainty">
-     Quantifying uncertainty
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q6-inspect-plausible-input-values">
-       <strong>
-        q6
-       </strong>
-       Inspect plausible input values
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q7-inspect-plausible-trajectories">
-       <strong>
-        q7
-       </strong>
-       Inspect plausible trajectories
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-validation">
-     Model Validation
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#validation-data">
-     Validation data
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q8-compare-the-fit-to-validation-data">
-       <strong>
-        q8
-       </strong>
-       Compare the fit to validation data
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-dramatic-reveal">
-     The dramatic reveal…
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#further-reading">
-   Further Reading
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Grama: Fitting Functions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Grama: Fitting Functions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting">Fitting</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trajectory-data">Trajectory Data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ema-of-proposed-model">EMA of Proposed Model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trajectory-model">Trajectory model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-drag-model">Linear drag model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sinews-and-bounds">Sinews and bounds</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-sweep-values-of-tau"><strong>q1</strong> Sweep values of <code class="docutils literal notranslate"><span class="pre">tau</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-plot-a-few-trajectories"><strong>q2</strong> Plot a few trajectories</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-with-least-squares">Fitting with Least Squares</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-ft-nls-routine">The <code class="docutils literal notranslate"><span class="pre">ft_nls()</span></code> routine</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-run-ft-nls"><strong>q3</strong> Run <code class="docutils literal notranslate"><span class="pre">ft_nls()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-assess-the-fit"><strong>q4</strong> Assess the fit</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rough-estimation">Rough estimation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-choose-reasonable-initial-parameters"><strong>q5</strong> Choose reasonable initial parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#model-assessment">Model Assessment</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifying-uncertainty">Quantifying uncertainty</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-inspect-plausible-input-values"><strong>q6</strong> Inspect plausible input values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-inspect-plausible-trajectories"><strong>q7</strong> Inspect plausible trajectories</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-validation">Model Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-data">Validation data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8-compare-the-fit-to-validation-data"><strong>q8</strong> Compare the fit to validation data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dramatic-reveal">The dramatic reveal…</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="grama-fitting-functions">
-<h1>Grama: Fitting Functions<a class="headerlink" href="#grama-fitting-functions" title="Permalink to this headline">#</a></h1>
+<h1>Grama: Fitting Functions<a class="headerlink" href="#grama-fitting-functions" title="Permalink to this heading">#</a></h1>
 <p><em>Purpose</em>: Often, we will be able to write down a function (say, using physical laws) that maps input physical quantities to some output of interest. However, we may not have the means to <em>set values</em> for those physical inputs. Or, we might be using the model to <em>infer</em> values for some physical inputs (i.e. a measurement model). In this case, we can use statistical tools to <em>fit</em> the parameters in a function using a dataset. This exercise will introduce these ideas with a particular case study.</p>
 <section id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">grama</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gr</span>
 <span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -906,11 +525,11 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="fitting">
-<h1>Fitting<a class="headerlink" href="#fitting" title="Permalink to this headline">#</a></h1>
+<h1>Fitting<a class="headerlink" href="#fitting" title="Permalink to this heading">#</a></h1>
 <p>Recall that there are four classes of verb in grama; <em>fitting</em> verbs take data as an input and produce a model as an output. There are various ways to fit a model; in this exercise we’ll focus on fitting a <em>parameterized</em> model using  <em>nonlinear least squares</em>.</p>
 <p><img alt="Grama verb class diagram" src="../_images/verb-classes.png" /></p>
 <section id="trajectory-data">
-<h2>Trajectory Data<a class="headerlink" href="#trajectory-data" title="Permalink to this headline">#</a></h2>
+<h2>Trajectory Data<a class="headerlink" href="#trajectory-data" title="Permalink to this heading">#</a></h2>
 <p>We’re going to use the following trajectory dataset to fit a function predicting the trajectory. Our goal in this case study is as follows:</p>
 <blockquote>
 <div><p>Our goal is to fit a trajectory model and accurately predict the range of the projectile.</p>
@@ -919,7 +538,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: No need to edit</span>
-<span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_trajectory_windowed</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">grama.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">df_trajectory_windowed</span>
 <span class="p">(</span>
     <span class="n">df_trajectory_windowed</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
@@ -929,7 +548,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d20-e-grama05-fit-function-solution_6_0.png" src="../_images/d20-e-grama05-fit-function-solution_6_0.png" />
+<img alt="../_images/9c1b90743388c0eaf51ab3e0558475b1f6811a180d6f4a999450760860b6a0b2.png" src="../_images/9c1b90743388c0eaf51ab3e0558475b1f6811a180d6f4a999450760860b6a0b2.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8789009847730)&gt;
 </pre></div>
 </div>
@@ -938,14 +557,14 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="ema-of-proposed-model">
-<h1>EMA of Proposed Model<a class="headerlink" href="#ema-of-proposed-model" title="Permalink to this headline">#</a></h1>
+<h1>EMA of Proposed Model<a class="headerlink" href="#ema-of-proposed-model" title="Permalink to this heading">#</a></h1>
 <p>Before we jump immediately to using statistical procedures to fit a function, let’s first use EMA to understand the model we’re going to fit.</p>
 <section id="trajectory-model">
-<h2>Trajectory model<a class="headerlink" href="#trajectory-model" title="Permalink to this headline">#</a></h2>
+<h2>Trajectory model<a class="headerlink" href="#trajectory-model" title="Permalink to this heading">#</a></h2>
 <p>The following code loads a model for the trajectory of a projectile subject to a <em>linear drag force</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.models</span> <span class="kn">import</span> <span class="n">make_trajectory_linear</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">grama.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_trajectory_linear</span>
 <span class="n">md_trajectory</span> <span class="o">=</span> <span class="n">make_trajectory_linear</span><span class="p">()</span>
 <span class="n">md_trajectory</span>
 </pre></div>
@@ -974,7 +593,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="linear-drag-model">
-<h3>Linear drag model<a class="headerlink" href="#linear-drag-model" title="Permalink to this headline">#</a></h3>
+<h3>Linear drag model<a class="headerlink" href="#linear-drag-model" title="Permalink to this heading">#</a></h3>
 <p>The drag <span class="math notranslate nohighlight">\(\vec{F}_d\)</span> acting on the projectile in this model has a magnitude equal to</p>
 <div class="math notranslate nohighlight">
 \[F_d \propto - m \tau s\]</div>
@@ -983,10 +602,10 @@ title="Print to PDF"
 </section>
 </section>
 <section id="sinews-and-bounds">
-<h2>Sinews and bounds<a class="headerlink" href="#sinews-and-bounds" title="Permalink to this headline">#</a></h2>
+<h2>Sinews and bounds<a class="headerlink" href="#sinews-and-bounds" title="Permalink to this heading">#</a></h2>
 <p>One “gotcha” with <code class="docutils literal notranslate"><span class="pre">ev_sinews()</span></code> is that it can only sweep inputs with <em>finite bounds</em>. For variables with one-sided bounds, such as <code class="docutils literal notranslate"><span class="pre">[0.1,</span> <span class="pre">inf]</span></code>, we cannot sweep values all the way to infinity! Instead, grama will set the inputs with one-sided bounds to their lower bound, and sweep the remaining variables. We need to set finite bounds in order to use <code class="docutils literal notranslate"><span class="pre">gr.ev_sinews()</span></code>.</p>
 <section id="q1-sweep-values-of-tau">
-<h3><strong>q1</strong> Sweep values of <code class="docutils literal notranslate"><span class="pre">tau</span></code><a class="headerlink" href="#q1-sweep-values-of-tau" title="Permalink to this headline">#</a></h3>
+<h3><strong>q1</strong> Sweep values of <code class="docutils literal notranslate"><span class="pre">tau</span></code><a class="headerlink" href="#q1-sweep-values-of-tau" title="Permalink to this heading">#</a></h3>
 <p>Update the model to enable a sweep over values of <code class="docutils literal notranslate"><span class="pre">tau</span></code>. How does changing <code class="docutils literal notranslate"><span class="pre">tau</span></code> affect the trajectory? Answer the questions under <em>observations</em> below.</p>
 <p><em>Hint</em>: Remember that <code class="docutils literal notranslate"><span class="pre">gr.cp_bounds()</span></code> allows you to adjust the bounds of a grama model. Note that you may need to adjust the bounds of time <code class="docutils literal notranslate"><span class="pre">t</span></code> as well as <code class="docutils literal notranslate"><span class="pre">tau</span></code> to make an informative plot.</p>
 <div class="cell docutils container">
@@ -1007,7 +626,7 @@ title="Print to PDF"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/utils.py:371: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
 </pre></div>
 </div>
-<img alt="../_images/d20-e-grama05-fit-function-solution_13_2.png" src="../_images/d20-e-grama05-fit-function-solution_13_2.png" />
+<img alt="../_images/3d166efb5df2082bf4728f7a06ae54667fd5abb652271069db58c3366f2f24e7.png" src="../_images/3d166efb5df2082bf4728f7a06ae54667fd5abb652271069db58c3366f2f24e7.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8788972083167)&gt;
 </pre></div>
 </div>
@@ -1033,7 +652,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="q2-plot-a-few-trajectories">
-<h3><strong>q2</strong> Plot a few trajectories<a class="headerlink" href="#q2-plot-a-few-trajectories" title="Permalink to this headline">#</a></h3>
+<h3><strong>q2</strong> Plot a few trajectories<a class="headerlink" href="#q2-plot-a-few-trajectories" title="Permalink to this heading">#</a></h3>
 <p>Complete the code below to sweep over values of <code class="docutils literal notranslate"><span class="pre">tau</span></code> and <code class="docutils literal notranslate"><span class="pre">t</span></code>. Compare these results with what you found above. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1056,7 +675,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d20-e-grama05-fit-function-solution_16_0.png" src="../_images/d20-e-grama05-fit-function-solution_16_0.png" />
+<img alt="../_images/2411ef37aab0add691552bd799b1ebcf17eb72b5f9fab996aea25f3b7b6f07e0.png" src="../_images/2411ef37aab0add691552bd799b1ebcf17eb72b5f9fab996aea25f3b7b6f07e0.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8789009954823)&gt;
 </pre></div>
 </div>
@@ -1079,14 +698,14 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="fitting-with-least-squares">
-<h1>Fitting with Least Squares<a class="headerlink" href="#fitting-with-least-squares" title="Permalink to this headline">#</a></h1>
+<h1>Fitting with Least Squares<a class="headerlink" href="#fitting-with-least-squares" title="Permalink to this heading">#</a></h1>
 <p>Above, we used EMA to make sense of the model’s behavior, but we only guessed at parameter values. Now let’s use a statistical fitting procedure to get reasonable values for the inputs.</p>
 <section id="the-ft-nls-routine">
-<h2>The <code class="docutils literal notranslate"><span class="pre">ft_nls()</span></code> routine<a class="headerlink" href="#the-ft-nls-routine" title="Permalink to this headline">#</a></h2>
+<h2>The <code class="docutils literal notranslate"><span class="pre">ft_nls()</span></code> routine<a class="headerlink" href="#the-ft-nls-routine" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">gr.ft_nls()</span></code> routine is a <em>fitting</em> routine; it takes in a dataset and returns a (fitted) model. NLS stands for <a class="reference external" href="https://en.wikipedia.org/wiki/Non-linear_least_squares"><em>nonlinear least squares</em></a>, a general-purpose way to fit a parameterized function to a dataset. There is a great deal of statistical theory underpinning NLS, which we will not cover in this exercise. The short version is: NLS seeks input (parameter) values of a function that give the best “agreement” between the function’s output and measured output values.</p>
 <p>There are a number of practical concerns to using NLS effectively, which we’ll study below.</p>
 <section id="q3-run-ft-nls">
-<h3><strong>q3</strong> Run <code class="docutils literal notranslate"><span class="pre">ft_nls()</span></code><a class="headerlink" href="#q3-run-ft-nls" title="Permalink to this headline">#</a></h3>
+<h3><strong>q3</strong> Run <code class="docutils literal notranslate"><span class="pre">ft_nls()</span></code><a class="headerlink" href="#q3-run-ft-nls" title="Permalink to this heading">#</a></h3>
 <p>Use <code class="docutils literal notranslate"><span class="pre">gr.ft_nls()</span></code> to fit the model <code class="docutils literal notranslate"><span class="pre">md_trajectory</span></code> to the data <code class="docutils literal notranslate"><span class="pre">df_trajectory_windowed</span></code>. Answer the questions under <em>observations</em> below.</p>
 <p><em>Hint</em>: Make sure to read the documentation of an unfamiliar function to learn how to use it!</p>
 <div class="cell docutils container">
@@ -1153,7 +772,7 @@ title="Print to PDF"
 <!-- solution-end --><p>The fitting diagnostics only tell us so much; it is a far better idea to compare predictions from the model directly against the original data.</p>
 </section>
 <section id="q4-assess-the-fit">
-<h3><strong>q4</strong> Assess the fit<a class="headerlink" href="#q4-assess-the-fit" title="Permalink to this headline">#</a></h3>
+<h3><strong>q4</strong> Assess the fit<a class="headerlink" href="#q4-assess-the-fit" title="Permalink to this heading">#</a></h3>
 <p>Evaluate the fitted model <code class="docutils literal notranslate"><span class="pre">md_fit</span></code> to compare the predicted values against the original dataset. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1176,7 +795,7 @@ title="Print to PDF"
 eval_df() is dropping {&#39;y&#39;, &#39;x&#39;}
 </pre></div>
 </div>
-<img alt="../_images/d20-e-grama05-fit-function-solution_25_1.png" src="../_images/d20-e-grama05-fit-function-solution_25_1.png" />
+<img alt="../_images/82eb68572a510e672781e131b9ea8fa19a669711abdc4883214333c9e41175a6.png" src="../_images/82eb68572a510e672781e131b9ea8fa19a669711abdc4883214333c9e41175a6.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8788972445868)&gt;
 </pre></div>
 </div>
@@ -1193,7 +812,7 @@ eval_df() is dropping {&#39;y&#39;, &#39;x&#39;}
 </section>
 </section>
 <section id="rough-estimation">
-<h2>Rough estimation<a class="headerlink" href="#rough-estimation" title="Permalink to this headline">#</a></h2>
+<h2>Rough estimation<a class="headerlink" href="#rough-estimation" title="Permalink to this heading">#</a></h2>
 <p>Clearly, using completely-arbitrary guesses for the initial parameter values has led to a terrible fit. Let’s do some back-of-the envelope calculations to get a rough sense of reasonable parameter values.</p>
 <p>The horizontal velocity is the time-derivative of horizontal position; we can approximate this with a simple finite-difference</p>
 <div class="math notranslate nohighlight">
@@ -1314,7 +933,7 @@ eval_df() is dropping {&#39;y&#39;, &#39;x&#39;}
 </div>
 <p>This <em>does not</em> directly provide the “best” parameter values for <code class="docutils literal notranslate"><span class="pre">u,</span> <span class="pre">v,</span> <span class="pre">tau</span></code>. However, this gets us in the right <em>ballpark</em>. Choosing values similar to the above will be much more effective than picking completely-arbitrary initial guess values.</p>
 <section id="q5-choose-reasonable-initial-parameters">
-<h3><strong>q5</strong> Choose reasonable initial parameters<a class="headerlink" href="#q5-choose-reasonable-initial-parameters" title="Permalink to this headline">#</a></h3>
+<h3><strong>q5</strong> Choose reasonable initial parameters<a class="headerlink" href="#q5-choose-reasonable-initial-parameters" title="Permalink to this heading">#</a></h3>
 <p>Override the default initial parameter guess of <code class="docutils literal notranslate"><span class="pre">ft_nls()</span></code> by adding a keyword argument. Using the rough estimates above, you should be able to achieve a fit of the data that is quite reasonable. Answer the questions under <em>observations</em> below.</p>
 <p><em>Hint</em>: Remember to consult the documentation for <code class="docutils literal notranslate"><span class="pre">ft_nls()</span></code> to see how to use its arguments!</p>
 <div class="cell docutils container">
@@ -1358,7 +977,7 @@ eval_df() is dropping {&#39;y&#39;, &#39;x&#39;}
 eval_df() is dropping {&#39;y&#39;, &#39;x&#39;}
 </pre></div>
 </div>
-<img alt="../_images/d20-e-grama05-fit-function-solution_31_1.png" src="../_images/d20-e-grama05-fit-function-solution_31_1.png" />
+<img alt="../_images/178dae7d521207ed89f28c577c8af189df6e5e17cc7863540bc05db1b31ff18a.png" src="../_images/178dae7d521207ed89f28c577c8af189df6e5e17cc7863540bc05db1b31ff18a.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8788988651201)&gt;
 </pre></div>
 </div>
@@ -1386,10 +1005,10 @@ eval_df() is dropping {&#39;y&#39;, &#39;x&#39;}
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="model-assessment">
-<h1>Model Assessment<a class="headerlink" href="#model-assessment" title="Permalink to this headline">#</a></h1>
+<h1>Model Assessment<a class="headerlink" href="#model-assessment" title="Permalink to this heading">#</a></h1>
 <p>We have successfully fit a function to data! However, before we start using this model to make predictions, we should carry out some <em>model assessment</em> studies to check that this is a reasonable model. The next few tasks will guide you through some useful assessment techniques.</p>
 <section id="quantifying-uncertainty">
-<h2>Quantifying uncertainty<a class="headerlink" href="#quantifying-uncertainty" title="Permalink to this headline">#</a></h2>
+<h2>Quantifying uncertainty<a class="headerlink" href="#quantifying-uncertainty" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">gr.ft_nls()</span></code> routine allows us to quantify the uncertainty in the fitted values by fitting a joint distribution for the inputs. As we saw above, the fit of the function to the data is <em>not</em> perfect; therefore, the noise in the measured values implies we cannot estimate the input values perfectly. Setting <code class="docutils literal notranslate"><span class="pre">uq_method=&quot;linpool&quot;</span></code> in <code class="docutils literal notranslate"><span class="pre">gr.ft_nls()</span></code> accounts for this by finding a “best-fit” value, but additionally fitting a normal distribution to account for the noise in the outputs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1454,7 +1073,7 @@ eval_df() is dropping {&#39;y&#39;, &#39;x&#39;}
 </div>
 <p>Since this is a grama model, we can use the same kind of sampling tools we’ve seen before to inspect the uncertainty in the fitted input values.</p>
 <section id="q6-inspect-plausible-input-values">
-<h3><strong>q6</strong> Inspect plausible input values<a class="headerlink" href="#q6-inspect-plausible-input-values" title="Permalink to this headline">#</a></h3>
+<h3><strong>q6</strong> Inspect plausible input values<a class="headerlink" href="#q6-inspect-plausible-input-values" title="Permalink to this heading">#</a></h3>
 <p>The following code visualizes the input uncertainty of the fitted values. Run the code below, and answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1476,7 +1095,7 @@ Calling plot_scattermat....
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/Git/py_grama/grama/plot_auto.py:234: UserWarning: Matplotlib is currently using module://matplotlib_inline.backend_inline, which is a non-GUI backend, so cannot show the figure.
 </pre></div>
 </div>
-<img alt="../_images/d20-e-grama05-fit-function-solution_38_2.png" src="../_images/d20-e-grama05-fit-function-solution_38_2.png" />
+<img alt="../_images/d92dce67f033d0dc240ad3384e8aca76e744607da683a425ee1f047f14cf8a61.png" src="../_images/d92dce67f033d0dc240ad3384e8aca76e744607da683a425ee1f047f14cf8a61.png" />
 </div>
 </div>
 <p><em>Observations</em></p>
@@ -1489,7 +1108,7 @@ Calling plot_scattermat....
 </ul>
 <!-- solution-end --></section>
 <section id="q7-inspect-plausible-trajectories">
-<h3><strong>q7</strong> Inspect plausible trajectories<a class="headerlink" href="#q7-inspect-plausible-trajectories" title="Permalink to this headline">#</a></h3>
+<h3><strong>q7</strong> Inspect plausible trajectories<a class="headerlink" href="#q7-inspect-plausible-trajectories" title="Permalink to this heading">#</a></h3>
 <p>Draw a random sample of trajectories to study the uncertainty in in the outputs. Make sure to pick a reasonable range of time values <code class="docutils literal notranslate"><span class="pre">t</span></code> so that you can see both the beginning and end (ground-strike at <code class="docutils literal notranslate"><span class="pre">y==0</span></code>) of the trajectory. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1521,7 +1140,7 @@ Calling plot_scattermat....
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d20-e-grama05-fit-function-solution_41_0.png" src="../_images/d20-e-grama05-fit-function-solution_41_0.png" />
+<img alt="../_images/8935c362177029f4bd257caded3fe69c3b007f8a08cc17353ae0ed7839d00de3.png" src="../_images/8935c362177029f4bd257caded3fe69c3b007f8a08cc17353ae0ed7839d00de3.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8788988482241)&gt;
 </pre></div>
 </div>
@@ -1543,16 +1162,16 @@ Calling plot_scattermat....
 </section>
 </section>
 <section id="model-validation">
-<h2>Model Validation<a class="headerlink" href="#model-validation" title="Permalink to this headline">#</a></h2>
+<h2>Model Validation<a class="headerlink" href="#model-validation" title="Permalink to this heading">#</a></h2>
 <p>One of the <em>most important</em> assessments we should carry out is <em>model validation</em>. When validating a model, we use a dataset that was <em>not</em> used to fit the model in order to check how well the model agrees with physical reality. This is to help avoid the statistical phenomenon of <a class="reference external" href="https://en.wikipedia.org/wiki/Overfitting">overfitting</a>.</p>
 </section>
 <section id="validation-data">
-<h2>Validation data<a class="headerlink" href="#validation-data" title="Permalink to this headline">#</a></h2>
+<h2>Validation data<a class="headerlink" href="#validation-data" title="Permalink to this heading">#</a></h2>
 <p>Let’s load a dataset that is appropriate for validation; the following data is from the same trajectory as <code class="docutils literal notranslate"><span class="pre">df_trajectory_windowed</span></code>, but it consists of independent observations, and it runs for a longer span of time values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
-<span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_trajectory_full</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">grama.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">df_trajectory_full</span>
 <span class="p">(</span>
     <span class="n">df_trajectory_full</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;Full&quot;</span><span class="p">)</span>
@@ -1567,14 +1186,14 @@ Calling plot_scattermat....
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d20-e-grama05-fit-function-solution_45_0.png" src="../_images/d20-e-grama05-fit-function-solution_45_0.png" />
+<img alt="../_images/27cac8a14aab9f561bf63ad25fe99047b5edd95cd7b7aa7a882c5bd75e71a072.png" src="../_images/27cac8a14aab9f561bf63ad25fe99047b5edd95cd7b7aa7a882c5bd75e71a072.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8788954606201)&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <section id="q8-compare-the-fit-to-validation-data">
-<h3><strong>q8</strong> Compare the fit to validation data<a class="headerlink" href="#q8-compare-the-fit-to-validation-data" title="Permalink to this headline">#</a></h3>
+<h3><strong>q8</strong> Compare the fit to validation data<a class="headerlink" href="#q8-compare-the-fit-to-validation-data" title="Permalink to this heading">#</a></h3>
 <p>Compare the predictions from the fitted model <code class="docutils literal notranslate"><span class="pre">md_fit_uq</span></code> to compare an ensemble of trajectories against the validation data <code class="docutils literal notranslate"><span class="pre">df_trajectory_full</span></code>. Answer the questions under <em>observations</em> below.</p>
 <p><em>Hint</em>: This part has no starter code! Use what you learned above to carry out this comparison.</p>
 <div class="cell docutils container">
@@ -1598,7 +1217,7 @@ Calling plot_scattermat....
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d20-e-grama05-fit-function-solution_47_0.png" src="../_images/d20-e-grama05-fit-function-solution_47_0.png" />
+<img alt="../_images/a24178a264abda7f3b3dc9b07f84e42f6497e02844fc84c8a5add4742b3b0cc6.png" src="../_images/a24178a264abda7f3b3dc9b07f84e42f6497e02844fc84c8a5add4742b3b0cc6.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8788972613545)&gt;
 </pre></div>
 </div>
@@ -1615,13 +1234,13 @@ Calling plot_scattermat....
 </section>
 </section>
 <section id="the-dramatic-reveal">
-<h2>The dramatic reveal…<a class="headerlink" href="#the-dramatic-reveal" title="Permalink to this headline">#</a></h2>
+<h2>The dramatic reveal…<a class="headerlink" href="#the-dramatic-reveal" title="Permalink to this heading">#</a></h2>
 <p>It turns out the model does <em>not</em> accurately predict the trajectory’s range! This is because our model assumes a <em>linear</em> drag law <span class="math notranslate nohighlight">\(F_d \propto - m \tau s\)</span>, while in reality the data were generated using a <em>quadratic</em> drag law <span class="math notranslate nohighlight">\(F_d \propto - m b s^2\)</span>. This qualitative difference between the model and the data-generating process leads to a mismatch between predicted and measured values that we can’t overcome without changing the model’s <em>form</em>.</p>
 <p>This is why validation is so important: It is difficult to discover this kind of <em>model form error</em> without a validation study. In practice, data scientists will use a <a class="reference external" href="https://en.wikipedia.org/wiki/Training,_validation,_and_test_data_sets"><em>train-validation split</em></a> to help construct this sort of validation study.</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="further-reading">
-<h1>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">#</a></h1>
+<h1>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>This exercise is <a class="reference external" href="https://zdelrosario.github.io/uq-book-preview/02_diagnosing/model-form-error.html">based on a chapter</a> from a forthcoming book I’m writing. You can see that draft chapter for more details on this case study.</p></li>
 <li><p>My most-highly recommended book for a deeper treatment of the train-validation split (and related ideas) is “An Introduction to Statistical Learning,” which is <a class="reference external" href="https://www.statlearning.com/">freely available online</a>.</p></li>
@@ -1640,7 +1259,7 @@ Calling plot_scattermat....
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./exercises_solution"
         },
         predefinedOutput: true
@@ -1648,50 +1267,149 @@ Calling plot_scattermat....
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="d19-e-stat04-distributions-solution.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Stats: Distributions</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="d19-e-stat04-distributions-solution.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Stats: Distributions</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="d21-e-stat05-CI-solution.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="d21-e-stat05-CI-solution.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Stats: Confidence Intervals and the CLT</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Grama: Fitting Functions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting">Fitting</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trajectory-data">Trajectory Data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ema-of-proposed-model">EMA of Proposed Model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trajectory-model">Trajectory model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-drag-model">Linear drag model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sinews-and-bounds">Sinews and bounds</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-sweep-values-of-tau"><strong>q1</strong> Sweep values of <code class="docutils literal notranslate"><span class="pre">tau</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-plot-a-few-trajectories"><strong>q2</strong> Plot a few trajectories</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-with-least-squares">Fitting with Least Squares</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-ft-nls-routine">The <code class="docutils literal notranslate"><span class="pre">ft_nls()</span></code> routine</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-run-ft-nls"><strong>q3</strong> Run <code class="docutils literal notranslate"><span class="pre">ft_nls()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-assess-the-fit"><strong>q4</strong> Assess the fit</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rough-estimation">Rough estimation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-choose-reasonable-initial-parameters"><strong>q5</strong> Choose reasonable initial parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#model-assessment">Model Assessment</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifying-uncertainty">Quantifying uncertainty</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-inspect-plausible-input-values"><strong>q6</strong> Inspect plausible input values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-inspect-plausible-trajectories"><strong>q7</strong> Inspect plausible trajectories</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-validation">Model Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-data">Validation data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8-compare-the-fit-to-validation-data"><strong>q8</strong> Compare the fit to validation data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dramatic-reveal">The dramatic reveal…</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Zachary del Rosario<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Zachary del Rosario
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

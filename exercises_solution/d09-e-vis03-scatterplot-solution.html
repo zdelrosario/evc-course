@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Vis: Scatterplots and Layers &#8212; Data Science for Engineers</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,56 +62,98 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises_solution/d09-e-vis03-scatterplot-solution';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Grama: Model Building" href="d10-e-grama02-building-solution.html" />
     <link rel="prev" title="Stats: Real and Erroneous Sources of Variability" href="d08-e-stat02-source-solution.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="../frontmatter/home.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Data Science for Engineers</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -109,712 +163,338 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/setup.html">
-   Software Setup
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/howto.html">
-   How To Use These Materials
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/schedule.html">
-   Course Topics and Schedule
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/submission.html">
-   Challenge Submission Instructions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/recordings.html">
-   Class Recordings
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../frontmatter/demos.html">
-   Demo Notebooks
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-20-1.html">
-     Demo Notebook 2022-06-20
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-27.html">
-     Demo Notebook 2022-06-27
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-06.html">
-     Demo Notebook 2022-07-06
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-11.html">
-     Demo Notebook 2022-07-11
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-18.html">
-     Demo Notebook 2022-07-18
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/hours.html">
-   Office Hours Schedule
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../frontmatter/exercises.html">
-   Exercise Solutions
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="d01-e-data00-notebooks-solution.html">
-     Introduction to Jupyter Notebooks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d01-e-vis00-basics-solution.html">
-     Vis: Data Visualization Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d02-e-data01-isolate-solution.html">
-     Data: Isolating Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d02-e-tips-solution.html">
-     Tips for This Course
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d03-e-stat01-eda-solution.html">
-     Stats: Introduction to Exploratory Data Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d04-e-grama01-basics-solution.html">
-     Grama: Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">
-     Vis: Bar Charts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d06-e-data02-derive-solution.html">
-     Data: Deriving Quantities
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d07-e-vis02-histograms-solution.html">
-     Vis: Histograms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d08-e-stat02-source-solution.html">
-     Stats: Real and Erroneous Sources of Variability
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Vis: Scatterplots and Layers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d10-e-grama02-building-solution.html">
-     Grama: Model Building
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d11-e-data03-pivot-solution.html">
-     Data: Pivoting Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d12-e-grama03-eval-solution.html">
-     Grama: Model Evaluation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d13-e-vis04-lines-solution.html">
-     Vis: Lines and Related Geometries
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d14-e-stat03-descriptive-solution.html">
-     Stats: Descriptive Statistics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d15-e-data04-separate-unite-solution.html">
-     Data: Separating and Uniting Columns
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d16-e-data05-join-solution.html">
-     Data: Joining Datasets
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d17-e-vis05-multiples-solution.html">
-     Vis: Small Multiples
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d18-e-grama04-ema-solution.html">
-     Grama: Exploratory Model Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d19-e-stat04-distributions-solution.html">
-     Stats: Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d20-e-grama05-fit-function-solution.html">
-     Grama: Fitting Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d21-e-stat05-CI-solution.html">
-     Stats: Confidence Intervals and the CLT
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d22-e-stat06-spc-solution.html">
-     Stats: Fundamentals of Statistical Process Monitoring
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">
-     Grama: Fitting Univariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">
-     Grama: Fitting Multivariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="d25-e-grama08-duu-solution.html">
-     Grama: Design Under Uncertainty
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/setup.html">Software Setup</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/howto.html">How To Use These Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/schedule.html">Course Topics and Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/submission.html">Challenge Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/recordings.html">Class Recordings</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../frontmatter/demos.html">Demo Notebooks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-20-1.html">Demo Notebook 2022-06-20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-27.html">Demo Notebook 2022-06-27</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-06.html">Demo Notebook 2022-07-06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-11.html">Demo Notebook 2022-07-11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-18.html">Demo Notebook 2022-07-18</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/hours.html">Office Hours Schedule</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../frontmatter/exercises.html">Exercise Solutions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="d01-e-data00-notebooks-solution.html">Introduction to Jupyter Notebooks</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d01-e-vis00-basics-solution.html">Vis: Data Visualization Basics</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="d02-e-data01-isolate-solution.html">Data: Isolating Data</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d02-e-tips-solution.html">Tips for This Course</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d03-e-stat01-eda-solution.html">Stats: Introduction to Exploratory Data Analysis</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d04-e-grama01-basics-solution.html">Grama: Basics</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d05-e-vis01-bar-charts-solution.html">Vis: Bar Charts</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d06-e-data02-derive-solution.html">Data: Deriving Quantities</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d07-e-vis02-histograms-solution.html">Vis: Histograms</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d08-e-stat02-source-solution.html">Stats: Real and Erroneous Sources of Variability</a></li>
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Vis: Scatterplots and Layers</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d10-e-grama02-building-solution.html">Grama: Model Building</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d11-e-data03-pivot-solution.html">Data: Pivoting Data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d12-e-grama03-eval-solution.html">Grama: Model Evaluation</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d13-e-vis04-lines-solution.html">Vis: Lines and Related Geometries</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d14-e-stat03-descriptive-solution.html">Stats: Descriptive Statistics</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d15-e-data04-separate-unite-solution.html">Data: Separating and Uniting Columns</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d16-e-data05-join-solution.html">Data: Joining Datasets</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d17-e-vis05-multiples-solution.html">Vis: Small Multiples</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d18-e-grama04-ema-solution.html">Grama: Exploratory Model Analysis</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d19-e-stat04-distributions-solution.html">Stats: Distributions</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="d20-e-grama05-fit-function-solution.html">Grama: Fitting Functions</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d21-e-stat05-CI-solution.html">Stats: Confidence Intervals and the CLT</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d22-e-stat06-spc-solution.html">Stats: Fundamentals of Statistical Process Monitoring</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d23-e-grama06-fit-univar-solution.html">Grama: Fitting Univariate Distributions</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d24-e-grama07-fit-multivar-solution.html">Grama: Fitting Multivariate Distributions</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="d25-e-grama08-duu-solution.html">Grama: Design Under Uncertainty</a></li>
+
+
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/exercises_solution/d09-e-vis03-scatterplot-solution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/exercises_solution/d09-e-vis03-scatterplot-solution.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/exercises_solution/d09-e-vis03-scatterplot-solution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Vis: Scatterplots and Layers
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   Introduction
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#scatterplots">
-     Scatterplots
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q1-how-do-price-and-carat-relate">
-       <strong>
-        q1
-       </strong>
-       How do
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         price
-        </span>
-       </code>
-       and
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         carat
-        </span>
-       </code>
-       relate?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#overplotting">
-       Overplotting
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q2-use-gr-geom-count">
-       <strong>
-        q2
-       </strong>
-       Use
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         gr.geom_count()
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-use-the-alpha-option">
-       <strong>
-        q3
-       </strong>
-       Use the
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         alpha
-        </span>
-       </code>
-       option
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#layers-in-ggplot">
-     <em>
-      Layers
-     </em>
-     in ggplot
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#default-aesthetic-order">
-       Default aesthetic order
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-use-the-default-order">
-       <strong>
-        q4
-       </strong>
-       Use the default order
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#default-data">
-       Default data
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#layer-order">
-       Layer Order
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#scales">
-       Scales
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q5-apply-log10-scales-to-both-axes">
-       <strong>
-        q5
-       </strong>
-       Apply log10 scales to both axes
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q6-interpret-this-plot">
-     <strong>
-      q6
-     </strong>
-     Interpret this plot
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q7-interpret-this-plot">
-     <strong>
-      q7
-     </strong>
-     Interpret this plot
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Vis: Scatterplots and Layers</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Vis: Scatterplots and Layers
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   Introduction
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#scatterplots">
-     Scatterplots
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q1-how-do-price-and-carat-relate">
-       <strong>
-        q1
-       </strong>
-       How do
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         price
-        </span>
-       </code>
-       and
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         carat
-        </span>
-       </code>
-       relate?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#overplotting">
-       Overplotting
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q2-use-gr-geom-count">
-       <strong>
-        q2
-       </strong>
-       Use
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         gr.geom_count()
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-use-the-alpha-option">
-       <strong>
-        q3
-       </strong>
-       Use the
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         alpha
-        </span>
-       </code>
-       option
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#layers-in-ggplot">
-     <em>
-      Layers
-     </em>
-     in ggplot
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#default-aesthetic-order">
-       Default aesthetic order
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-use-the-default-order">
-       <strong>
-        q4
-       </strong>
-       Use the default order
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#default-data">
-       Default data
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#layer-order">
-       Layer Order
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#scales">
-       Scales
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q5-apply-log10-scales-to-both-axes">
-       <strong>
-        q5
-       </strong>
-       Apply log10 scales to both axes
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q6-interpret-this-plot">
-     <strong>
-      q6
-     </strong>
-     Interpret this plot
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q7-interpret-this-plot">
-     <strong>
-      q7
-     </strong>
-     Interpret this plot
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Vis: Scatterplots and Layers</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Vis: Scatterplots and Layers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scatterplots">Scatterplots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-how-do-price-and-carat-relate"><strong>q1</strong> How do <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">carat</span></code> relate?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overplotting">Overplotting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-use-gr-geom-count"><strong>q2</strong> Use <code class="docutils literal notranslate"><span class="pre">gr.geom_count()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-use-the-alpha-option"><strong>q3</strong> Use the <code class="docutils literal notranslate"><span class="pre">alpha</span></code> option</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layers-in-ggplot"><em>Layers</em> in ggplot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-aesthetic-order">Default aesthetic order</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-use-the-default-order"><strong>q4</strong> Use the default order</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-data">Default data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layer-order">Layer Order</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scales">Scales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-apply-log10-scales-to-both-axes"><strong>q5</strong> Apply log10 scales to both axes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-interpret-this-plot"><strong>q6</strong> Interpret this plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-interpret-this-plot"><strong>q7</strong> Interpret this plot</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="vis-scatterplots-and-layers">
-<h1>Vis: Scatterplots and Layers<a class="headerlink" href="#vis-scatterplots-and-layers" title="Permalink to this headline">#</a></h1>
+<h1>Vis: Scatterplots and Layers<a class="headerlink" href="#vis-scatterplots-and-layers" title="Permalink to this heading">#</a></h1>
 <p><em>Purpose</em>: <em>Scatterplots</em> are a key tool for EDA. Scatteplots help us inspect the relationship between two variables. To enhance our scatterplots, we’ll learn how to use <em>layers</em> in ggplot to add multiple pieces of information to our plots.</p>
 <section id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">grama</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gr</span>
 <span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -824,8 +504,8 @@ title="Print to PDF"
 <p>We’ll use the diamonds and mpg datasets in this exercise.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.data</span> <span class="kn">import</span> <span class="n">df_diamonds</span>
-<span class="kn">from</span> <span class="nn">plotnine.data</span> <span class="kn">import</span> <span class="n">mpg</span> <span class="k">as</span> <span class="n">df_mpg</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">grama.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">df_diamonds</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">plotnine.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">mpg</span> <span class="k">as</span> <span class="n">df_mpg</span>
 </pre></div>
 </div>
 </div>
@@ -833,9 +513,9 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
 <section id="scatterplots">
-<h2>Scatterplots<a class="headerlink" href="#scatterplots" title="Permalink to this headline">#</a></h2>
+<h2>Scatterplots<a class="headerlink" href="#scatterplots" title="Permalink to this heading">#</a></h2>
 <p>So far, we have focused on studying one variable at a time using bars/columns:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -852,7 +532,7 @@ title="Print to PDF"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/stats/stat_bin.py:95: PlotnineWarning: &#39;stat_bin()&#39; using &#39;bins = 142&#39;. Pick better value with &#39;binwidth&#39;.
 </pre></div>
 </div>
-<img alt="../_images/d09-e-vis03-scatterplot-solution_7_1.png" src="../_images/d09-e-vis03-scatterplot-solution_7_1.png" />
+<img alt="../_images/ef652e7f917d669272f55d82dc8829089fd488cecf202ca938587b0c14ae6be1.png" src="../_images/ef652e7f917d669272f55d82dc8829089fd488cecf202ca938587b0c14ae6be1.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776099688867)&gt;
 </pre></div>
 </div>
@@ -872,14 +552,14 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d09-e-vis03-scatterplot-solution_9_0.png" src="../_images/d09-e-vis03-scatterplot-solution_9_0.png" />
+<img alt="../_images/305cb224a1b10cb09399c6c87f52cda145e3c1e56371cdaa66b6166159abccbc.png" src="../_images/305cb224a1b10cb09399c6c87f52cda145e3c1e56371cdaa66b6166159abccbc.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776129725630)&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <section id="q1-how-do-price-and-carat-relate">
-<h3><strong>q1</strong> How do <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">carat</span></code> relate?<a class="headerlink" href="#q1-how-do-price-and-carat-relate" title="Permalink to this headline">#</a></h3>
+<h3><strong>q1</strong> How do <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">carat</span></code> relate?<a class="headerlink" href="#q1-how-do-price-and-carat-relate" title="Permalink to this heading">#</a></h3>
 <p>Use the plot above to answer the questions under <em>Observations</em>.</p>
 <p><em>Observations</em></p>
 <ul class="simple">
@@ -896,7 +576,7 @@ title="Print to PDF"
 </ul>
 <!-- solution-end --></section>
 <section id="overplotting">
-<h3>Overplotting<a class="headerlink" href="#overplotting" title="Permalink to this headline">#</a></h3>
+<h3>Overplotting<a class="headerlink" href="#overplotting" title="Permalink to this heading">#</a></h3>
 <p>With larger datasets, it is possible for many observations to “land” in the same <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code> location on a scatterplot. For instance, with the following (silly) dataset, we get the false impression that there are only two points:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -914,7 +594,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d09-e-vis03-scatterplot-solution_13_0.png" src="../_images/d09-e-vis03-scatterplot-solution_13_0.png" />
+<img alt="../_images/410aea9534b07502562c9829b11cfd6ec577f05fe191f4b6b1dcc85f87205b82.png" src="../_images/410aea9534b07502562c9829b11cfd6ec577f05fe191f4b6b1dcc85f87205b82.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776129768189)&gt;
 </pre></div>
 </div>
@@ -937,7 +617,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d09-e-vis03-scatterplot-solution_15_0.png" src="../_images/d09-e-vis03-scatterplot-solution_15_0.png" />
+<img alt="../_images/53f55ce36a762a4e1ffa061cb53957e624214369370795de5fab9cd8ea9ea731.png" src="../_images/53f55ce36a762a4e1ffa061cb53957e624214369370795de5fab9cd8ea9ea731.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776099776802)&gt;
 </pre></div>
 </div>
@@ -945,7 +625,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="q2-use-gr-geom-count">
-<h3><strong>q2</strong> Use <code class="docutils literal notranslate"><span class="pre">gr.geom_count()</span></code><a class="headerlink" href="#q2-use-gr-geom-count" title="Permalink to this headline">#</a></h3>
+<h3><strong>q2</strong> Use <code class="docutils literal notranslate"><span class="pre">gr.geom_count()</span></code><a class="headerlink" href="#q2-use-gr-geom-count" title="Permalink to this heading">#</a></h3>
 <p>Replace <code class="docutils literal notranslate"><span class="pre">gr.geom_point()</span></code> with <code class="docutils literal notranslate"><span class="pre">gr.geom_count()</span></code> in the following plot. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -960,7 +640,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d09-e-vis03-scatterplot-solution_17_0.png" src="../_images/d09-e-vis03-scatterplot-solution_17_0.png" />
+<img alt="../_images/790869f1f6ed545e8d57980bfa89460b364655144e9828d8bb3ccede7a0d0553.png" src="../_images/790869f1f6ed545e8d57980bfa89460b364655144e9828d8bb3ccede7a0d0553.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776111791318)&gt;
 </pre></div>
 </div>
@@ -987,7 +667,7 @@ title="Print to PDF"
 <!-- solution-end --><p>To deal with overplotting, we can also make points <em>transparent</em>. Then overlapping points will tend to appear darker, giving us the means to see where there are more points.</p>
 </section>
 <section id="q3-use-the-alpha-option">
-<h3><strong>q3</strong> Use the <code class="docutils literal notranslate"><span class="pre">alpha</span></code> option<a class="headerlink" href="#q3-use-the-alpha-option" title="Permalink to this headline">#</a></h3>
+<h3><strong>q3</strong> Use the <code class="docutils literal notranslate"><span class="pre">alpha</span></code> option<a class="headerlink" href="#q3-use-the-alpha-option" title="Permalink to this heading">#</a></h3>
 <p>Adjust the <code class="docutils literal notranslate"><span class="pre">alpha</span></code> option in <code class="docutils literal notranslate"><span class="pre">gr.geom_point()</span></code> to better understand where observations concentrate. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1003,7 +683,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d09-e-vis03-scatterplot-solution_21_0.png" src="../_images/d09-e-vis03-scatterplot-solution_21_0.png" />
+<img alt="../_images/25dad8f649207d557d9bd515c037314404fcadcecd8a3c55d97a87a392c1ff54.png" src="../_images/25dad8f649207d557d9bd515c037314404fcadcecd8a3c55d97a87a392c1ff54.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776077910291)&gt;
 </pre></div>
 </div>
@@ -1020,10 +700,10 @@ title="Print to PDF"
 <!-- solution-end --></section>
 </section>
 <section id="layers-in-ggplot">
-<h2><em>Layers</em> in ggplot<a class="headerlink" href="#layers-in-ggplot" title="Permalink to this headline">#</a></h2>
+<h2><em>Layers</em> in ggplot<a class="headerlink" href="#layers-in-ggplot" title="Permalink to this heading">#</a></h2>
 <p>Now is a great time to learn some of the more powerful features of ggplot. We’ll take advantage of the <em>layer</em> functionality to construct more informative plots.</p>
 <section id="default-aesthetic-order">
-<h3>Default aesthetic order<a class="headerlink" href="#default-aesthetic-order" title="Permalink to this headline">#</a></h3>
+<h3>Default aesthetic order<a class="headerlink" href="#default-aesthetic-order" title="Permalink to this heading">#</a></h3>
 <p>So far, we have specified the aesthetic names explicitly in <code class="docutils literal notranslate"><span class="pre">gr.aes()</span></code> with calls like <code class="docutils literal notranslate"><span class="pre">gr.aes(x=&quot;carat&quot;,</span> <span class="pre">y=&quot;price&quot;)</span></code>. However, we can save ourselves a bit of typing by using the <em>order</em> of the arguments. The default order of arguments in <code class="docutils literal notranslate"><span class="pre">gr.aes()</span></code> is <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code>.</p>
 <p>Thus, we can re-write the following:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
@@ -1044,7 +724,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="q4-use-the-default-order">
-<h3><strong>q4</strong> Use the default order<a class="headerlink" href="#q4-use-the-default-order" title="Permalink to this headline">#</a></h3>
+<h3><strong>q4</strong> Use the default order<a class="headerlink" href="#q4-use-the-default-order" title="Permalink to this heading">#</a></h3>
 <p>Re-write the following code to use the default <code class="docutils literal notranslate"><span class="pre">x,y</span></code> order in <code class="docutils literal notranslate"><span class="pre">gr.aes()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1062,7 +742,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d09-e-vis03-scatterplot-solution_26_0.png" src="../_images/d09-e-vis03-scatterplot-solution_26_0.png" />
+<img alt="../_images/305cb224a1b10cb09399c6c87f52cda145e3c1e56371cdaa66b6166159abccbc.png" src="../_images/305cb224a1b10cb09399c6c87f52cda145e3c1e56371cdaa66b6166159abccbc.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776078426832)&gt;
 </pre></div>
 </div>
@@ -1070,7 +750,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="default-data">
-<h3>Default data<a class="headerlink" href="#default-data" title="Permalink to this headline">#</a></h3>
+<h3>Default data<a class="headerlink" href="#default-data" title="Permalink to this heading">#</a></h3>
 <p>Every geometry in a ggplot object also takes a <code class="docutils literal notranslate"><span class="pre">data</span></code> argument. By default all geometries visualize the same dataset, but we can override that default with the <code class="docutils literal notranslate"><span class="pre">data</span></code> argument. This is helpful if we want to highlight particular observations; for instance, the code below highlights all diamonds that have <code class="docutils literal notranslate"><span class="pre">carat</span> <span class="pre">==</span> <span class="pre">1.0</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1090,7 +770,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d09-e-vis03-scatterplot-solution_28_0.png" src="../_images/d09-e-vis03-scatterplot-solution_28_0.png" />
+<img alt="../_images/670c8130679a1091b091d88b086ca7202e1197261f70ac3923b32eb16027ccde.png" src="../_images/670c8130679a1091b091d88b086ca7202e1197261f70ac3923b32eb16027ccde.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776078416782)&gt;
 </pre></div>
 </div>
@@ -1116,7 +796,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d09-e-vis03-scatterplot-solution_30_0.png" src="../_images/d09-e-vis03-scatterplot-solution_30_0.png" />
+<img alt="../_images/8a3906bf049c9f52e05c1a4648b53c8b7cc0dcdb253ffadd9714b5270105b3c6.png" src="../_images/8a3906bf049c9f52e05c1a4648b53c8b7cc0dcdb253ffadd9714b5270105b3c6.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776133149678)&gt;
 </pre></div>
 </div>
@@ -1125,7 +805,7 @@ title="Print to PDF"
 <p>Such a plot helps us to compare both typical (mean) behavior and variation in the same plot.</p>
 </section>
 <section id="layer-order">
-<h3>Layer Order<a class="headerlink" href="#layer-order" title="Permalink to this headline">#</a></h3>
+<h3>Layer Order<a class="headerlink" href="#layer-order" title="Permalink to this heading">#</a></h3>
 <p>The order in which you add geometries to a ggplot is the order in which they are drawn. You can use this to “stack” visual elements in a desirable order.</p>
 <p>For instance; here’s the same diamonds plot from above with <code class="docutils literal notranslate"><span class="pre">carat</span> <span class="pre">==</span> <span class="pre">1.0</span></code> highlighted, but with the order of the layers reverse.</p>
 <div class="cell docutils container">
@@ -1146,7 +826,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d09-e-vis03-scatterplot-solution_33_0.png" src="../_images/d09-e-vis03-scatterplot-solution_33_0.png" />
+<img alt="../_images/7b12f941546d170df2fb5388183c1831900a52b0f50187042e945ae1e15dd708.png" src="../_images/7b12f941546d170df2fb5388183c1831900a52b0f50187042e945ae1e15dd708.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776133143775)&gt;
 </pre></div>
 </div>
@@ -1171,7 +851,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d09-e-vis03-scatterplot-solution_35_0.png" src="../_images/d09-e-vis03-scatterplot-solution_35_0.png" />
+<img alt="../_images/4eb6cc4a3a3bec9cb4fcf4d3c70c9139e4628a53795885b881c08c0e99e183ae.png" src="../_images/4eb6cc4a3a3bec9cb4fcf4d3c70c9139e4628a53795885b881c08c0e99e183ae.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776130955255)&gt;
 </pre></div>
 </div>
@@ -1197,7 +877,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d09-e-vis03-scatterplot-solution_37_0.png" src="../_images/d09-e-vis03-scatterplot-solution_37_0.png" />
+<img alt="../_images/b93a3cc0b92d580f244fcf859d30603f005dfb507b5edfaa1e3b5505fe41b0b4.png" src="../_images/b93a3cc0b92d580f244fcf859d30603f005dfb507b5edfaa1e3b5505fe41b0b4.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776129905924)&gt;
 </pre></div>
 </div>
@@ -1206,7 +886,7 @@ title="Print to PDF"
 <p>By slightly oversizing the lower-layer, we effectively add a “highlight” to our selected points.</p>
 </section>
 <section id="scales">
-<h3>Scales<a class="headerlink" href="#scales" title="Permalink to this headline">#</a></h3>
+<h3>Scales<a class="headerlink" href="#scales" title="Permalink to this heading">#</a></h3>
 <p>One more layer option; by default ggplot maps the <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code> scales to values <em>linearly</em>, but we can apply <em>transforms</em> to the scales to aid in visualization. For instance, we can transform the horizontal axis to use a <code class="docutils literal notranslate"><span class="pre">log10()</span></code> transform using <code class="docutils literal notranslate"><span class="pre">gr.scale_x_log10()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1225,7 +905,7 @@ title="Print to PDF"
 /Users/zach/opt/anaconda3/envs/evc/lib/python3.9/site-packages/plotnine/stats/stat_bin.py:95: PlotnineWarning: &#39;stat_bin()&#39; using &#39;bins = 64&#39;. Pick better value with &#39;binwidth&#39;.
 </pre></div>
 </div>
-<img alt="../_images/d09-e-vis03-scatterplot-solution_40_1.png" src="../_images/d09-e-vis03-scatterplot-solution_40_1.png" />
+<img alt="../_images/1f4a79478e957438794c5bcf60f183dd4b701dc6a0679f094aa7e2580dbed959.png" src="../_images/1f4a79478e957438794c5bcf60f183dd4b701dc6a0679f094aa7e2580dbed959.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776036675178)&gt;
 </pre></div>
 </div>
@@ -1239,7 +919,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="q5-apply-log10-scales-to-both-axes">
-<h3><strong>q5</strong> Apply log10 scales to both axes<a class="headerlink" href="#q5-apply-log10-scales-to-both-axes" title="Permalink to this headline">#</a></h3>
+<h3><strong>q5</strong> Apply log10 scales to both axes<a class="headerlink" href="#q5-apply-log10-scales-to-both-axes" title="Permalink to this heading">#</a></h3>
 <p>Apply a <code class="docutils literal notranslate"><span class="pre">log10()</span></code> transform to <em>both</em> the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> axes.</p>
 <p><em>Hint</em>: If <code class="docutils literal notranslate"><span class="pre">gr.scale_x_log10()</span></code> transforms the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis, what might transform the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis?</p>
 <div class="cell docutils container">
@@ -1255,7 +935,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d09-e-vis03-scatterplot-solution_43_0.png" src="../_images/d09-e-vis03-scatterplot-solution_43_0.png" />
+<img alt="../_images/fc4e65f13f4503f4fa267c1ca038a288b3d219fe979c6bd83c944c2836933409.png" src="../_images/fc4e65f13f4503f4fa267c1ca038a288b3d219fe979c6bd83c944c2836933409.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776036696715)&gt;
 </pre></div>
 </div>
@@ -1265,9 +945,9 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="exercises">
-<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h1>
+<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h1>
 <section id="q6-interpret-this-plot">
-<h2><strong>q6</strong> Interpret this plot<a class="headerlink" href="#q6-interpret-this-plot" title="Permalink to this headline">#</a></h2>
+<h2><strong>q6</strong> Interpret this plot<a class="headerlink" href="#q6-interpret-this-plot" title="Permalink to this heading">#</a></h2>
 <p>Inspect the following plot, and answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1286,7 +966,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d09-e-vis03-scatterplot-solution_46_0.png" src="../_images/d09-e-vis03-scatterplot-solution_46_0.png" />
+<img alt="../_images/eed6075fb228eb6d8412b380f056359d2d266a88cb00be2eb2d759a6f73ce2e5.png" src="../_images/eed6075fb228eb6d8412b380f056359d2d266a88cb00be2eb2d759a6f73ce2e5.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776116031368)&gt;
 </pre></div>
 </div>
@@ -1317,7 +997,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="q7-interpret-this-plot">
-<h2><strong>q7</strong> Interpret this plot<a class="headerlink" href="#q7-interpret-this-plot" title="Permalink to this headline">#</a></h2>
+<h2><strong>q7</strong> Interpret this plot<a class="headerlink" href="#q7-interpret-this-plot" title="Permalink to this heading">#</a></h2>
 <p>Inspect the following plot, and answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1332,7 +1012,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d09-e-vis03-scatterplot-solution_49_0.png" src="../_images/d09-e-vis03-scatterplot-solution_49_0.png" />
+<img alt="../_images/a58b6fa3145a129e1945335f1de1da47d71eea56ff7dc8bccda3f432edbfcf27.png" src="../_images/a58b6fa3145a129e1945335f1de1da47d71eea56ff7dc8bccda3f432edbfcf27.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8776081186958)&gt;
 </pre></div>
 </div>
@@ -1362,7 +1042,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./exercises_solution"
         },
         predefinedOutput: true
@@ -1370,50 +1050,130 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="d08-e-stat02-source-solution.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Stats: Real and Erroneous Sources of Variability</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="d08-e-stat02-source-solution.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Stats: Real and Erroneous Sources of Variability</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="d10-e-grama02-building-solution.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="d10-e-grama02-building-solution.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Grama: Model Building</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Vis: Scatterplots and Layers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scatterplots">Scatterplots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-how-do-price-and-carat-relate"><strong>q1</strong> How do <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">carat</span></code> relate?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overplotting">Overplotting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-use-gr-geom-count"><strong>q2</strong> Use <code class="docutils literal notranslate"><span class="pre">gr.geom_count()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-use-the-alpha-option"><strong>q3</strong> Use the <code class="docutils literal notranslate"><span class="pre">alpha</span></code> option</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layers-in-ggplot"><em>Layers</em> in ggplot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-aesthetic-order">Default aesthetic order</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-use-the-default-order"><strong>q4</strong> Use the default order</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-data">Default data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layer-order">Layer Order</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scales">Scales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-apply-log10-scales-to-both-axes"><strong>q5</strong> Apply log10 scales to both axes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-interpret-this-plot"><strong>q6</strong> Interpret this plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-interpret-this-plot"><strong>q7</strong> Interpret this plot</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Zachary del Rosario<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Zachary del Rosario
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

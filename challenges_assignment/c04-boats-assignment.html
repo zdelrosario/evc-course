@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>c04-boats &#8212; Data Science for Engineers</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,54 +64,96 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'challenges_assignment/c04-boats-assignment';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Data Science for Engineers</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="../frontmatter/home.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Data Science for Engineers</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -109,697 +163,341 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/setup.html">
-   Software Setup
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/howto.html">
-   How To Use These Materials
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/schedule.html">
-   Course Topics and Schedule
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/submission.html">
-   Challenge Submission Instructions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/recordings.html">
-   Class Recordings
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../frontmatter/demos.html">
-   Demo Notebooks
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-20-1.html">
-     Demo Notebook 2022-06-20
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-06-27.html">
-     Demo Notebook 2022-06-27
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-06.html">
-     Demo Notebook 2022-07-06
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-11.html">
-     Demo Notebook 2022-07-11
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../demos/demo2022-07-18.html">
-     Demo Notebook 2022-07-18
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../frontmatter/hours.html">
-   Office Hours Schedule
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../frontmatter/exercises.html">
-   Exercise Solutions
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d01-e-data00-notebooks-solution.html">
-     Introduction to Jupyter Notebooks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d01-e-vis00-basics-solution.html">
-     Vis: Data Visualization Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d02-e-data01-isolate-solution.html">
-     Data: Isolating Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d02-e-tips-solution.html">
-     Tips for This Course
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d03-e-stat01-eda-solution.html">
-     Stats: Introduction to Exploratory Data Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d04-e-grama01-basics-solution.html">
-     Grama: Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d05-e-vis01-bar-charts-solution.html">
-     Vis: Bar Charts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d06-e-data02-derive-solution.html">
-     Data: Deriving Quantities
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d07-e-vis02-histograms-solution.html">
-     Vis: Histograms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d08-e-stat02-source-solution.html">
-     Stats: Real and Erroneous Sources of Variability
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d09-e-vis03-scatterplot-solution.html">
-     Vis: Scatterplots and Layers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d10-e-grama02-building-solution.html">
-     Grama: Model Building
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d11-e-data03-pivot-solution.html">
-     Data: Pivoting Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d12-e-grama03-eval-solution.html">
-     Grama: Model Evaluation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d13-e-vis04-lines-solution.html">
-     Vis: Lines and Related Geometries
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d14-e-stat03-descriptive-solution.html">
-     Stats: Descriptive Statistics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d15-e-data04-separate-unite-solution.html">
-     Data: Separating and Uniting Columns
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d16-e-data05-join-solution.html">
-     Data: Joining Datasets
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d17-e-vis05-multiples-solution.html">
-     Vis: Small Multiples
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d18-e-grama04-ema-solution.html">
-     Grama: Exploratory Model Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d19-e-stat04-distributions-solution.html">
-     Stats: Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d20-e-grama05-fit-function-solution.html">
-     Grama: Fitting Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d21-e-stat05-CI-solution.html">
-     Stats: Confidence Intervals and the CLT
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d22-e-stat06-spc-solution.html">
-     Stats: Fundamentals of Statistical Process Monitoring
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d23-e-grama06-fit-univar-solution.html">
-     Grama: Fitting Univariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d24-e-grama07-fit-multivar-solution.html">
-     Grama: Fitting Multivariate Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises_solution/d25-e-grama08-duu-solution.html">
-     Grama: Design Under Uncertainty
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/setup.html">Software Setup</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/howto.html">How To Use These Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/schedule.html">Course Topics and Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/submission.html">Challenge Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/recordings.html">Class Recordings</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../frontmatter/demos.html">Demo Notebooks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-20-1.html">Demo Notebook 2022-06-20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-06-27.html">Demo Notebook 2022-06-27</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-06.html">Demo Notebook 2022-07-06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-11.html">Demo Notebook 2022-07-11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo2022-07-18.html">Demo Notebook 2022-07-18</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../frontmatter/hours.html">Office Hours Schedule</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../frontmatter/exercises.html">Exercise Solutions</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d01-e-data00-notebooks-solution.html">Introduction to Jupyter Notebooks</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d01-e-vis00-basics-solution.html">Vis: Data Visualization Basics</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d02-e-data01-isolate-solution.html">Data: Isolating Data</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d02-e-tips-solution.html">Tips for This Course</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d03-e-stat01-eda-solution.html">Stats: Introduction to Exploratory Data Analysis</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d04-e-grama01-basics-solution.html">Grama: Basics</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d05-e-vis01-bar-charts-solution.html">Vis: Bar Charts</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d06-e-data02-derive-solution.html">Data: Deriving Quantities</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d07-e-vis02-histograms-solution.html">Vis: Histograms</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d08-e-stat02-source-solution.html">Stats: Real and Erroneous Sources of Variability</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d09-e-vis03-scatterplot-solution.html">Vis: Scatterplots and Layers</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d10-e-grama02-building-solution.html">Grama: Model Building</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d11-e-data03-pivot-solution.html">Data: Pivoting Data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d12-e-grama03-eval-solution.html">Grama: Model Evaluation</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d13-e-vis04-lines-solution.html">Vis: Lines and Related Geometries</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d14-e-stat03-descriptive-solution.html">Stats: Descriptive Statistics</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d15-e-data04-separate-unite-solution.html">Data: Separating and Uniting Columns</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d16-e-data05-join-solution.html">Data: Joining Datasets</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d17-e-vis05-multiples-solution.html">Vis: Small Multiples</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d18-e-grama04-ema-solution.html">Grama: Exploratory Model Analysis</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d19-e-stat04-distributions-solution.html">Stats: Distributions</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d20-e-grama05-fit-function-solution.html">Grama: Fitting Functions</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d21-e-stat05-CI-solution.html">Stats: Confidence Intervals and the CLT</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d22-e-stat06-spc-solution.html">Stats: Fundamentals of Statistical Process Monitoring</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d23-e-grama06-fit-univar-solution.html">Grama: Fitting Univariate Distributions</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d24-e-grama07-fit-multivar-solution.html">Grama: Fitting Multivariate Distributions</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../exercises_solution/d25-e-grama08-duu-solution.html">Grama: Design Under Uncertainty</a></li>
+
+
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/challenges_assignment/c04-boats-assignment.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/challenges_assignment/c04-boats-assignment.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/challenges_assignment/c04-boats-assignment.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   c04-boats
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#informed-consent">
-     Informed Consent
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#context">
-   Context
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#basics-of-boat-hull-design">
-     Basics of Boat Hull Design
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#upright-stability">
-     Upright Stability
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#archival-data">
-     Archival Data
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#data-dictionary">
-       Data Dictionary
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#guided-eda-of-archival-data">
-   Guided EDA of Archival Data
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q1-first-look">
-     <strong>
-      q1
-     </strong>
-     First look
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q2-how-many-designs-are-upright-stable">
-     <strong>
-      q2
-     </strong>
-     How many designs are upright-stable?
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hypothesis-width-controls-upright-stability">
-     Hypothesis: Width controls upright stability
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-correlation-tile-plot">
-       <strong>
-        q3
-       </strong>
-       Correlation tile plot
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-detailed-scatterplots">
-       <strong>
-        q4
-       </strong>
-       Detailed scatterplots
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model-setup">
-   Model Setup
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q5-time-the-analysis">
-     <strong>
-      q5
-     </strong>
-     Time the analysis
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q6-define-the-input-order">
-     <strong>
-      q6
-     </strong>
-     Define the input order
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q7-assemble-the-model">
-     <strong>
-      q7
-     </strong>
-     Assemble the model
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ema-with-expensive-models">
-   EMA with Expensive Models
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q8-plan-a-study">
-     <strong>
-      q8
-     </strong>
-     Plan a study
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q9-run-the-study">
-     <strong>
-      q9
-     </strong>
-     Run the study
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>c04-boats</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   c04-boats
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#informed-consent">
-     Informed Consent
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#context">
-   Context
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#basics-of-boat-hull-design">
-     Basics of Boat Hull Design
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#upright-stability">
-     Upright Stability
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#archival-data">
-     Archival Data
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#data-dictionary">
-       Data Dictionary
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#guided-eda-of-archival-data">
-   Guided EDA of Archival Data
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q1-first-look">
-     <strong>
-      q1
-     </strong>
-     First look
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q2-how-many-designs-are-upright-stable">
-     <strong>
-      q2
-     </strong>
-     How many designs are upright-stable?
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hypothesis-width-controls-upright-stability">
-     Hypothesis: Width controls upright stability
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q3-correlation-tile-plot">
-       <strong>
-        q3
-       </strong>
-       Correlation tile plot
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#q4-detailed-scatterplots">
-       <strong>
-        q4
-       </strong>
-       Detailed scatterplots
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model-setup">
-   Model Setup
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q5-time-the-analysis">
-     <strong>
-      q5
-     </strong>
-     Time the analysis
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q6-define-the-input-order">
-     <strong>
-      q6
-     </strong>
-     Define the input order
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q7-assemble-the-model">
-     <strong>
-      q7
-     </strong>
-     Assemble the model
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ema-with-expensive-models">
-   EMA with Expensive Models
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q8-plan-a-study">
-     <strong>
-      q8
-     </strong>
-     Plan a study
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q9-run-the-study">
-     <strong>
-      q9
-     </strong>
-     Run the study
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>c04-boats</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">c04-boats</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#informed-consent">Informed Consent</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics-of-boat-hull-design">Basics of Boat Hull Design</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upright-stability">Upright Stability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archival-data">Archival Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-dictionary">Data Dictionary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#guided-eda-of-archival-data">Guided EDA of Archival Data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-first-look"><strong>q1</strong> First look</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-how-many-designs-are-upright-stable"><strong>q2</strong> How many designs are upright-stable?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-width-controls-upright-stability">Hypothesis: Width controls upright stability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-correlation-tile-plot"><strong>q3</strong> Correlation tile plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-detailed-scatterplots"><strong>q4</strong> Detailed scatterplots</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">Model Setup</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-time-the-analysis"><strong>q5</strong> Time the analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-define-the-input-order"><strong>q6</strong> Define the input order</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-assemble-the-model"><strong>q7</strong> Assemble the model</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ema-with-expensive-models">EMA with Expensive Models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q8-plan-a-study"><strong>q8</strong> Plan a study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q9-run-the-study"><strong>q9</strong> Run the study</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="c04-boats">
-<h1>c04-boats<a class="headerlink" href="#c04-boats" title="Permalink to this headline">#</a></h1>
+<h1>c04-boats<a class="headerlink" href="#c04-boats" title="Permalink to this heading">#</a></h1>
 <p><em>Purpose</em>: Exploratory model analysis is a way to learn about a model and thus the scenario that it describes. However, computationally-expensive models are challenging to study with EMA, as every function evaluation costs us a lot of compute time. This challenge is about applying EMA ideas to learn about boat hull design, and about interfacing with a more computationally-complex simulation code.</p>
 <section id="informed-consent">
-<h2>Informed Consent<a class="headerlink" href="#informed-consent" title="Permalink to this headline">#</a></h2>
+<h2>Informed Consent<a class="headerlink" href="#informed-consent" title="Permalink to this heading">#</a></h2>
 <p>As a reminder, this course is part of a study of engineers’ behavior. While not all parts of the course are part of the study, the homeworks (challenges) are.</p>
 <p>We will analyze your answers to this homework, and may quote this work as part of published research.</p>
 <p>You can ask to have your responses excluded from the study after the interview by sending us an email. Please remember that this is required to participate in the professional development course. Before starting this assignment, do you consent to sharing your work with the study?</p>
@@ -809,9 +507,9 @@ title="Print to PDF"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">grama</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 <span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -821,18 +519,18 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="context">
-<h1>Context<a class="headerlink" href="#context" title="Permalink to this headline">#</a></h1>
+<h1>Context<a class="headerlink" href="#context" title="Permalink to this heading">#</a></h1>
 <p>This challenge comes with an additional simulation code written in Python. The code is in the file <code class="docutils literal notranslate"><span class="pre">boat_utils.py</span></code>, which you can inspect if you’re interested. For the purposes of this challenge, you only need to load the simulation tools, and read the basics detailed below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Boat analysis code</span>
-<span class="kn">import</span> <span class="nn">boat_utils</span> <span class="k">as</span> <span class="nn">boat</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">boat_utils</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">boat</span>
 </pre></div>
 </div>
 </div>
 </div>
 <section id="basics-of-boat-hull-design">
-<h2>Basics of Boat Hull Design<a class="headerlink" href="#basics-of-boat-hull-design" title="Permalink to this headline">#</a></h2>
+<h2>Basics of Boat Hull Design<a class="headerlink" href="#basics-of-boat-hull-design" title="Permalink to this heading">#</a></h2>
 <p>In order to float safely, a boat has to displace enough water to support its mass, and rotate back to upright as it is rolled by waves and wind. This desired behavior is governed by a surprisingly complex interplay between geometric and mass distribution factors in the boat’s design. The following graphic depicts the cross-section of a simple boat hull, rotated <span class="math notranslate nohighlight">\(30^{\circ}\)</span> from its upright position.</p>
 <p><img alt="Boat diagram" src="../_images/c04-boat-diagram.png" /></p>
 <p>Gravity applies a downward force at the center of mass (G), while buoyancy applies an upward force at the center of buoyancy (B’). These two forces apply a torque that rolls the boat—hopefully back towards its upright position! Naval engineers analyze this behavior using the <em>statical stability curve</em>—this is what the provided boat simulation tools compute.</p>
@@ -876,7 +574,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="upright-stability">
-<h2>Upright Stability<a class="headerlink" href="#upright-stability" title="Permalink to this headline">#</a></h2>
+<h2>Upright Stability<a class="headerlink" href="#upright-stability" title="Permalink to this heading">#</a></h2>
 <p>Note that upright stability is <em>not</em> guaranteed, even when comparing boats of identical geometry. Upright stability depends on a <em>restoring</em> moment acting when the boat is rotated away from upright.</p>
 <blockquote>
 <div><p>For a boat to be upright-stable, the slope of its moment curve must be <strong>negative</strong> at the angle <span class="math notranslate nohighlight">\(\theta = 0^{\circ}\)</span>.</p>
@@ -922,7 +620,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="archival-data">
-<h2>Archival Data<a class="headerlink" href="#archival-data" title="Permalink to this headline">#</a></h2>
+<h2>Archival Data<a class="headerlink" href="#archival-data" title="Permalink to this heading">#</a></h2>
 <p>For this challenge, you have available a set of pre-computed simulation results. The following code loads this archival dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -935,9 +633,9 @@ title="Print to PDF"
 </div>
 </div>
 <section id="data-dictionary">
-<h3>Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this headline">#</a></h3>
+<h3>Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this heading">#</a></h3>
 <p>There is <em>a lot</em> of information available in this dataset; the following is a summary of what’s in the data:</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>I/O</p></th>
@@ -1030,10 +728,10 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="guided-eda-of-archival-data">
-<h1>Guided EDA of Archival Data<a class="headerlink" href="#guided-eda-of-archival-data" title="Permalink to this headline">#</a></h1>
+<h1>Guided EDA of Archival Data<a class="headerlink" href="#guided-eda-of-archival-data" title="Permalink to this heading">#</a></h1>
 <p>Before going to EMA, let’s start with an EDA of the archival data. This will help us frame the model work to come later.</p>
 <section id="q1-first-look">
-<h2><strong>q1</strong> First look<a class="headerlink" href="#q1-first-look" title="Permalink to this headline">#</a></h2>
+<h2><strong>q1</strong> First look<a class="headerlink" href="#q1-first-look" title="Permalink to this heading">#</a></h2>
 <p>Use simple EDA techniques to answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1061,7 +759,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="q2-how-many-designs-are-upright-stable">
-<h2><strong>q2</strong> How many designs are upright-stable?<a class="headerlink" href="#q2-how-many-designs-are-upright-stable" title="Permalink to this headline">#</a></h2>
+<h2><strong>q2</strong> How many designs are upright-stable?<a class="headerlink" href="#q2-how-many-designs-are-upright-stable" title="Permalink to this heading">#</a></h2>
 <p>Remember that upright-stable means the slope of the moment curve at an upright position is negative. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1089,14 +787,14 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="hypothesis-width-controls-upright-stability">
-<h2>Hypothesis: Width controls upright stability<a class="headerlink" href="#hypothesis-width-controls-upright-stability" title="Permalink to this headline">#</a></h2>
+<h2>Hypothesis: Width controls upright stability<a class="headerlink" href="#hypothesis-width-controls-upright-stability" title="Permalink to this heading">#</a></h2>
 <p>To help frame the rest of this challenge, let’s pose and assess a particular hypothesis:</p>
 <blockquote>
 <div><p>A wider boat will tend to have greater upright stability. Thus, we can make a boat stable by making it wider.</p>
 </div></blockquote>
 <p>This seems intuitive, but is it true? Let’s find out!</p>
 <section id="q3-correlation-tile-plot">
-<h3><strong>q3</strong> Correlation tile plot<a class="headerlink" href="#q3-correlation-tile-plot" title="Permalink to this headline">#</a></h3>
+<h3><strong>q3</strong> Correlation tile plot<a class="headerlink" href="#q3-correlation-tile-plot" title="Permalink to this heading">#</a></h3>
 <p>Construct a correlation tile plot to study the input/output relationships. Answer the questions under <em>observations</em> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1131,7 +829,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="q4-detailed-scatterplots">
-<h3><strong>q4</strong> Detailed scatterplots<a class="headerlink" href="#q4-detailed-scatterplots" title="Permalink to this headline">#</a></h3>
+<h3><strong>q4</strong> Detailed scatterplots<a class="headerlink" href="#q4-detailed-scatterplots" title="Permalink to this heading">#</a></h3>
 <p>Make scatterplots to study relationship between <code class="docutils literal notranslate"><span class="pre">dMdtheta_0</span></code> and the relevant inputs you identified above. Add a smooth trend to each scatterplot with <code class="docutils literal notranslate"><span class="pre">gr.geom_smooth()</span></code>. Answer the questions under <em>observations</em> below.</p>
 <p><em>Hint</em>: While it is possible to construct all three plots in a single code cell, you should feel free to create additional cells as-necessary.</p>
 <div class="cell docutils container">
@@ -1169,7 +867,7 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="model-setup">
-<h1>Model Setup<a class="headerlink" href="#model-setup" title="Permalink to this headline">#</a></h1>
+<h1>Model Setup<a class="headerlink" href="#model-setup" title="Permalink to this heading">#</a></h1>
 <p>The primary tool we need from the boat simulation utilities is the performance function, called like so:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">]</span>
 <span class="n">df_res</span> <span class="o">=</span> <span class="n">boat</span><span class="o">.</span><span class="n">fun_performance</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
@@ -1177,7 +875,7 @@ title="Print to PDF"
 </div>
 <p>We will use this function to compute performance metrics (such as <code class="docutils literal notranslate"><span class="pre">dMdtheta_0</span></code>) for various boat designs. However, before we do so, we should quantify how long it takes to run the performance function. Doing so will help us <em>plan</em> our EMA evaluations, so that we don’t try to execute a study that will take too long.</p>
 <section id="q5-time-the-analysis">
-<h2><strong>q5</strong> Time the analysis<a class="headerlink" href="#q5-time-the-analysis" title="Permalink to this headline">#</a></h2>
+<h2><strong>q5</strong> Time the analysis<a class="headerlink" href="#q5-time-the-analysis" title="Permalink to this heading">#</a></h2>
 <p>Evaluate the boat performance function <em>inside</em> the loop below in order to complete the timing study. You’ll use this number later in <code class="docutils literal notranslate"><span class="pre">gr.cp_function()</span></code> (in q7).</p>
 <p><em>Hint</em>: Remember that <code class="docutils literal notranslate"><span class="pre">v_design</span></code> was assigned above in an example chunk. You can use that as the argument to <code class="docutils literal notranslate"><span class="pre">fun_performance()</span></code>.</p>
 <div class="cell docutils container">
@@ -1201,7 +899,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="q6-define-the-input-order">
-<h2><strong>q6</strong> Define the input order<a class="headerlink" href="#q6-define-the-input-order" title="Permalink to this headline">#</a></h2>
+<h2><strong>q6</strong> Define the input order<a class="headerlink" href="#q6-define-the-input-order" title="Permalink to this heading">#</a></h2>
 <p>List the inputs to <code class="docutils literal notranslate"><span class="pre">boat.fun_performance()</span></code> in the correct order. You will use this to assemble the model below.</p>
 <p><em>Hint</em>: Remember to consult the documentation for <code class="docutils literal notranslate"><span class="pre">boat.fun_performance()</span></code> to see the order of its arguments.</p>
 <div class="cell docutils container">
@@ -1240,7 +938,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="q7-assemble-the-model">
-<h2><strong>q7</strong> Assemble the model<a class="headerlink" href="#q7-assemble-the-model" title="Permalink to this headline">#</a></h2>
+<h2><strong>q7</strong> Assemble the model<a class="headerlink" href="#q7-assemble-the-model" title="Permalink to this heading">#</a></h2>
 <p>Complete the code below to assemple the boat performance model. Use the values assigned above as arguments to <code class="docutils literal notranslate"><span class="pre">gr.cp_function()</span></code>, including the variable names, output names, and runtime estimate (value from <strong>q5</strong>). Make sure to add bounds for the inputs that “enclose” the observed archival data.</p>
 <p>```{admonition} Why not <code class="docutils literal notranslate"><span class="pre">gr.cp_vec_function()</span></code>?
 Here we use <code class="docutils literal notranslate"><span class="pre">gr.cp_function()</span></code> rather than <code class="docutils literal notranslate"><span class="pre">gr.cp_vec_function()</span></code>. This is because the boat performance function is not <em>vectorized</em>; it cannot take a DataFrame as its input. Generally we use <code class="docutils literal notranslate"><span class="pre">gr.cp_function()</span></code> with more “expensive” to evaluate functions.</p>
@@ -1284,11 +982,11 @@ Here we use <code class="docutils literal notranslate"><span class="pre">gr.cp_f
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="ema-with-expensive-models">
-<h1>EMA with Expensive Models<a class="headerlink" href="#ema-with-expensive-models" title="Permalink to this headline">#</a></h1>
+<h1>EMA with Expensive Models<a class="headerlink" href="#ema-with-expensive-models" title="Permalink to this heading">#</a></h1>
 <p>We’ve seen trends in the detailed scatterplots, but we should confirm them with the real model. A sinew plot will help us confirm what we saw above and better-assess the width hypothesis.</p>
 <p><em>However</em>, note that the analysis code we’re using has a nontrivial runtime; we should be careful about how many evaluations we request or we could be waiting a <em>long</em> time for the simulation to run. The following task will guide you through balancing runtime with exploring the model’s behavior.</p>
 <section id="q8-plan-a-study">
-<h2><strong>q8</strong> Plan a study<a class="headerlink" href="#q8-plan-a-study" title="Permalink to this headline">#</a></h2>
+<h2><strong>q8</strong> Plan a study<a class="headerlink" href="#q8-plan-a-study" title="Permalink to this heading">#</a></h2>
 <p>Tune the arguments to achieve a “reasonable” runtime. You will need to decide for yourself what a reasonable runtime is (though it will at a minimum be ~3 minutes.) Answer the questions under <em>observations</em> below.</p>
 <p><em>Hint 1</em>: Remember to use the documentation for a function to see which arguments to <code class="docutils literal notranslate"><span class="pre">gr.ev_sinews()</span></code> you can tune.</p>
 <p><em>Hint 2</em>: Running at least three sweeps will help with the task that comes after this one.</p>
@@ -1318,7 +1016,7 @@ Here we use <code class="docutils literal notranslate"><span class="pre">gr.cp_f
 </ul>
 </section>
 <section id="q9-run-the-study">
-<h2><strong>q9</strong> Run the study<a class="headerlink" href="#q9-run-the-study" title="Permalink to this headline">#</a></h2>
+<h2><strong>q9</strong> Run the study<a class="headerlink" href="#q9-run-the-study" title="Permalink to this heading">#</a></h2>
 <p>Now, use the settings you determined above and run the study! Answer the questions under <em>observations</em> below.</p>
 <p><em>Note</em>: It’s a good idea to set this to run, go make yourself a coffee, then come back!</p>
 <div class="cell docutils container">
@@ -1378,7 +1076,7 @@ Here we use <code class="docutils literal notranslate"><span class="pre">gr.cp_f
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./challenges_assignment"
         },
         predefinedOutput: true
@@ -1386,36 +1084,118 @@ Here we use <code class="docutils literal notranslate"><span class="pre">gr.cp_f
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">c04-boats</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#informed-consent">Informed Consent</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics-of-boat-hull-design">Basics of Boat Hull Design</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upright-stability">Upright Stability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archival-data">Archival Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-dictionary">Data Dictionary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#guided-eda-of-archival-data">Guided EDA of Archival Data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-first-look"><strong>q1</strong> First look</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-how-many-designs-are-upright-stable"><strong>q2</strong> How many designs are upright-stable?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-width-controls-upright-stability">Hypothesis: Width controls upright stability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-correlation-tile-plot"><strong>q3</strong> Correlation tile plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-detailed-scatterplots"><strong>q4</strong> Detailed scatterplots</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">Model Setup</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-time-the-analysis"><strong>q5</strong> Time the analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-define-the-input-order"><strong>q6</strong> Define the input order</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-assemble-the-model"><strong>q7</strong> Assemble the model</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ema-with-expensive-models">EMA with Expensive Models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q8-plan-a-study"><strong>q8</strong> Plan a study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q9-run-the-study"><strong>q9</strong> Run the study</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Zachary del Rosario<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Zachary del Rosario
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
